@@ -4,28 +4,111 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Programme Live Juriste d'Entreprise & Droit Social</title>
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Polices -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <!-- Configuration Tailwind (Couleurs de la marque) -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Outfit', 'sans-serif'], inter: ['Inter', 'sans-serif'] },
+                    colors: {
+                        brandBlue: '#0F2C48',
+                        brandGold: '#D9A526',
+                        brandIvory: '#F6F2E8',
+                        brandBronze: '#B4792A',
+                    }
+                }
+            }
+        }
+    </script>
+
     <style>
-        body { font-family: 'Inter', sans-serif; }
-        /* Charte Graphique */
+        :root{
+            --cta: #D9A526;
+            --brand-blue: #0F2C48;
+            --ivory: #F6F2E8;
+            --bronze: #B4792A;
+        }
+
+        body { margin: 0; background-color: var(--ivory); color: var(--brand-blue); font-family: 'Outfit', sans-serif; }
+        
+        /* --- HEADER STICKY --- */
+        .top-banner {
+            position: sticky; top: 0; left: 0; right: 0; z-index: 10000;
+            background: var(--brand-blue); color: white;
+            box-shadow: 0 4px 20px rgba(15,44,72,0.25);
+            padding: 12px 0; border-bottom: 4px solid var(--cta);
+        }
+        .top-inner {
+            max-width: 1400px; margin: 0 auto; padding: 0 24px;
+            display: flex; align-items: center; justify-content: space-between; gap: 20px;
+        }
+        .header-left { display: flex; align-items: center; gap: 16px; flex: 1; }
+        .tb-logo {
+            width: 60px; height: 60px; flex: 0 0 60px; border-radius: 50%; overflow: hidden;
+            background: white; display: flex; align-items: center; justify-content: center;
+            border: 2px solid var(--cta);
+        }
+        .tb-logo img { width: 100%; height: 100%; object-fit: cover; }
+        .tb-text-container { display: flex; flex-direction: column; justify-content: center; }
+        .tb-title { font-weight: 700; font-size: 16px; color: white; line-height: 1.4; }
+        .tb-title .part2 { color: var(--cta); font-style: italic; font-weight: 600; }
+
+        /* Bouton Header Droite */
+        .header-right-btn {
+            display: flex; align-items: center; gap: 10px;
+            background-color: rgba(255,255,255,0.1); padding: 10px 20px;
+            border-radius: 30px; color: white; text-decoration: none; font-weight: 600;
+            transition: all 0.3s ease; border: 1px solid rgba(255,255,255,0.2);
+            white-space: nowrap; cursor: pointer;
+        }
+        .header-right-btn:hover {
+            background-color: var(--cta); color: var(--brand-blue); border-color: var(--cta);
+            transform: translateY(-2px); box-shadow: 0 4px 12px rgba(217,165,38,0.3);
+        }
+
+        /* --- NAVIGATION ONGLETS --- */
+        .tabs-nav-container {
+            background: #fff; box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+            padding: 15px 0; margin-bottom: 30px;
+            position: sticky; top: 87px; z-index: 9000;
+        }
+        .tabs-wrapper {
+            max-width: 1100px; margin: 0 auto; display: flex;
+            justify-content: center; gap: 15px; flex-wrap: wrap; padding: 0 20px;
+        }
+        .tab-button {
+            padding: 12px 28px; border-radius: 30px; font-weight: 700; font-size: 15px;
+            cursor: pointer; transition: all 0.3s ease; background-color: var(--ivory);
+            color: var(--brand-blue); border: 2px solid transparent; display: flex; align-items: center; gap: 10px; text-decoration: none;
+        }
+        .tab-button:hover { transform: translateY(-2px); border-color: var(--cta); background-color: #fff; }
+        .tab-button.active {
+            background-color: var(--brand-blue); color: white; border-color: var(--brand-blue);
+            box-shadow: 0 4px 15px rgba(15, 44, 72, 0.3);
+        }
+        .tab-button.active i { color: var(--cta); }
+
+        /* --- STYLES ORIGINAUX DU PLANNING --- */
         .brand-blue-text { color: #0F2C48; }
         .brand-blue-bg { background-color: #0F2C48; }
-        
         .brand-yellow-text { color: #D9A526; }
         .brand-yellow-bg { background-color: #D9A526; }
         .brand-yellow-border { border-color: #D9A526; }
-        
         .brand-ivory-bg { background-color: #F6F2E8; }
-        
         .brand-bronze-text { color: #B4792A; }
         .brand-bronze-bg { background-color: #B4792A; }
 
         .type-badge {
             font-size: 0.75rem;
             padding: 0.25rem 0.6rem;
-            border-radius: 4px; /* Plus carré pour faire plus pro */
+            border-radius: 4px;
             font-weight: 600;
             white-space: nowrap;
             letter-spacing: 0.025em;
@@ -36,12 +119,116 @@
         .table-container::-webkit-scrollbar-track { background: #f1f1f1; }
         .table-container::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
         .table-container::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+        /* Responsive Header */
+        @media (max-width: 768px) {
+            .top-inner { flex-direction: column; gap: 15px; }
+            .header-left { flex-direction: column; text-align: center; }
+            .header-right-btn { width: 100%; justify-content: center; }
+            .tabs-nav-container { top: 160px; }
+        }
     </style>
 </head>
-<body class="bg-white text-slate-800 p-4 md:p-8">
+<body class="bg-white text-slate-800">
 
-    <div class="max-w-7xl mx-auto">
-        <!-- Header -->
+    <!-- === A. LE HEADER STICKY === -->
+    <div class="top-banner">
+        <div class="top-inner">
+            <!-- Gauche -->
+            <div class="header-left">
+                <div class="tb-logo">
+                    <!-- Utilisation du PNG avec fallback JPG -->
+                    <img src="https://projettechacademy.github.io/Juridique/Asset/Logo_juriste.png" alt="Logo" onerror="this.src='https://projettechacademy.github.io/Juridique/Asset/Logo_juriste.jpg'">
+                </div>
+                <div class="tb-text-container">
+                    <div class="tb-title">
+                        <span class="part1">💫 The Jurist Elite Club By Studi ✨</span><br>
+                        <span class="part2">La Villa des Juristes Brisés 💔 sur l’Île de L’INSTRUCTION !🏝</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Droite : Bouton Accueil -->
+            <a href="https://projettechacademy.github.io/Juridique/index.html" class="header-right-btn">
+                <i class="fa-solid fa-house"></i>
+                <span>Accueil</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- === B. LA NAVIGATION ONGLETS === -->
+    <div class="tabs-nav-container">
+        <div class="tabs-wrapper">
+            <a href="#affaires" class="tab-button">
+                <i class="fa-solid fa-briefcase"></i> Droit des Affaires
+            </a>
+            <a href="#entreprise" class="tab-button">
+                <i class="fa-solid fa-building-columns"></i> Juriste d'Entreprise
+            </a>
+            <a href="#social" class="tab-button active">
+                <i class="fa-solid fa-users"></i> Droit Social
+            </a>
+        </div>
+    </div>
+
+    <!-- === NOUVEAU : C. SECTION BIENVENUE & ACCÈS RAPIDE === -->
+    <div class="max-w-7xl mx-auto px-4 mt-8 mb-12">
+        <div class="bg-[#F6F2E8] rounded-2xl p-8 border-2 border-[#D9A526]/20 text-center shadow-sm">
+            <h2 class="text-3xl font-bold text-[#0F2C48] mb-2">Bienvenue Mathilde ! 👋</h2>
+            <p class="text-[#B4792A] font-semibold mb-8 uppercase tracking-wide text-sm">Espace Personnel de Formation</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- 1. Start -->
+                <a href="https://projettechacademy.github.io/Juridique/index.html" class="bg-white p-6 rounded-xl border border-slate-200 hover:border-[#D9A526] hover:shadow-lg transition-all group text-left flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-full bg-[#0F2C48] text-white flex items-center justify-center text-xl group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-flag-checkered"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-[#0F2C48] leading-tight">Start</h3>
+                        <p class="text-xs text-slate-500 mt-1">Retour au début</p>
+                    </div>
+                </a>
+
+                <!-- 2. Lexique -->
+                <a href="https://projettechacademy.github.io/Juridique/00_Autres/Lexique_Latin_Juridique.html" class="bg-white p-6 rounded-xl border border-slate-200 hover:border-[#D9A526] hover:shadow-lg transition-all group text-left flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-full bg-[#D9A526] text-white flex items-center justify-center text-xl group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-book-open"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-[#0F2C48] leading-tight">Lexique Juridique & Social</h3>
+                        <p class="text-xs text-slate-500 mt-1">Les indispensables du Latin</p>
+                    </div>
+                </a>
+
+                <!-- 3. Planning (Page Actuelle) -->
+                <a href="https://projettechacademy.github.io/Juridique/00_Autres/formation_live_juriste.html" class="bg-white p-6 rounded-xl border-2 border-[#0F2C48] shadow-md group text-left flex items-center gap-4 relative overflow-hidden">
+                    <!-- Badge Actif -->
+                    <div class="absolute top-0 right-0 bg-[#0F2C48] text-white text-[10px] px-2 py-0.5 rounded-bl-lg font-bold">ACTIF</div>
+                    <div class="w-12 h-12 rounded-full bg-[#0F2C48] text-white flex items-center justify-center text-xl">
+                        <i class="fa-solid fa-video"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-[#0F2C48] leading-tight">Planning Live & Suivi</h3>
+                        <p class="text-xs text-slate-500 mt-1">Tableau de bord interactif</p>
+                    </div>
+                </a>
+
+                <!-- 4. Mon Espace -->
+                <a href="https://projettechacademy.github.io/Juridique/00_Autres/Mon_Espace_Juriste_Tableau_de_bord_personnel.html" class="bg-white p-6 rounded-xl border border-slate-200 hover:border-[#D9A526] hover:shadow-lg transition-all group text-left flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-full bg-[#B4792A] text-white flex items-center justify-center text-xl group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-user-tie"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-[#0F2C48] leading-tight">Mon Espace Juriste</h3>
+                        <p class="text-xs text-slate-500 mt-1">Tableau de bord personnel</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- === D. CONTENU PRINCIPAL (PLANNING) === -->
+    <div class="max-w-7xl mx-auto p-4 md:p-8">
+        <!-- Header du Planning -->
         <div class="mb-8 flex flex-col md:flex-row md:items-end justify-between gap-6 border-b-2 border-[#0F2C48] pb-6">
             <div>
                 <h1 class="text-3xl md:text-4xl font-bold brand-blue-text flex items-center gap-3">
@@ -132,6 +319,44 @@
         </div>
     </div>
 
+    <!-- === E. FOOTER === -->
+    <footer class="brand-blue-bg text-white mt-12">
+        <div class="max-w-7xl mx-auto px-4 py-8 md:py-12">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Col 1 -->
+                <div>
+                    <h3 class="text-[#D9A526] font-bold text-lg mb-4 flex items-center gap-2">
+                        <i class="fa-solid fa-scale-balanced"></i> EVA PHILIPPE
+                    </h3>
+                    <p class="text-slate-300 text-sm leading-relaxed">
+                        Accompagnement pédagogique et expertise juridique pour les futurs juristes d'entreprise et experts RH.
+                    </p>
+                </div>
+                <!-- Col 2 -->
+                <div class="md:text-center">
+                    <h3 class="text-[#F6F2E8] font-bold text-lg mb-4">Liens Utiles</h3>
+                    <ul class="space-y-2 text-sm text-slate-300">
+                        <li><a href="#" class="hover:text-[#D9A526] transition-colors">Planning des cours</a></li>
+                        <li><a href="#" class="hover:text-[#D9A526] transition-colors">Ressources MBA</a></li>
+                        <li><a href="#" class="hover:text-[#D9A526] transition-colors">Support Pédagogique</a></li>
+                    </ul>
+                </div>
+                <!-- Col 3 -->
+                <div class="md:text-right">
+                    <h3 class="text-[#F6F2E8] font-bold text-lg mb-4">Contact</h3>
+                    <p class="text-slate-300 text-sm mb-2"><i class="fa-regular fa-envelope mr-2"></i> contact@evaphilippe.com</p>
+                    <div class="flex gap-4 mt-4 md:justify-end">
+                        <a href="#" class="w-8 h-8 rounded-full bg-[#D9A526] text-[#0F2C48] flex items-center justify-center hover:bg-white transition-colors"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="#" class="w-8 h-8 rounded-full bg-[#D9A526] text-[#0F2C48] flex items-center justify-center hover:bg-white transition-colors"><i class="fa-solid fa-graduation-cap"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-white/10 mt-8 pt-8 text-center text-xs text-slate-400">
+                <p>&copy; 2025 Eva Philippe - Tous droits réservés. Document à usage pédagogique.</p>
+            </div>
+        </div>
+    </footer>
+
     <script>
         // Raw Data extraction with Links added
         const rawData = [
@@ -210,11 +435,11 @@
 
         let currentSort = { column: 'dateRaw', direction: 'asc' };
 
-        // Badge colors (Semantic Colors preserved, but styled professionally)
+        // Badge colors
         const typeColors = {
-            'Cours': 'bg-blue-50 text-blue-800 border-blue-200',
-            'Travaux Dirigés': 'bg-emerald-50 text-emerald-800 border-emerald-200',
-            'Objectif Examens': 'bg-amber-50 text-amber-800 border-amber-200',
+            'Cours': 'bg-blue-100 text-blue-800 border-blue-200',
+            'Travaux Dirigés': 'bg-emerald-100 text-emerald-800 border-emerald-200',
+            'Objectif Examens': 'bg-amber-100 text-amber-800 border-amber-200',
             'Méthodologie': 'bg-purple-50 text-purple-800 border-purple-200',
             'Accompagnement pédagogique': 'bg-pink-50 text-pink-800 border-pink-200',
             'Live': 'bg-red-50 text-red-800 border-red-200',
@@ -366,7 +591,7 @@
              const query = searchInput.value.toLowerCase();
              return events.filter(e => 
                 e.title.toLowerCase().includes(query) || 
-                e.type.toLowerCase().includes(query) ||
+                e.type.toLowerCase().includes(query) || 
                 e.desc.toLowerCase().includes(query)
             );
         }
