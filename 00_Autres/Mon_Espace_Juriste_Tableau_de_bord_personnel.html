@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Jurist Elite Club - Dashboard V7</title>
+    <title>The Jurist Elite Club - Dashboard V8</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -107,18 +107,30 @@
         <div class="container mx-auto px-6 py-8 relative z-10">
             <div class="flex flex-col lg:flex-row justify-between items-center gap-6">
                 
-                <!-- Logo / Title -->
-                <div class="text-center lg:text-left w-full lg:w-2/3">
-                    <h1 class="text-2xl md:text-3xl lg:text-4xl font-bold brand-font tracking-wide leading-tight">
-                        <span class="inline-block animate-bounce mr-2">💫</span>The Jurist Elite Club By Studi ✨ <br>
-                        <span class="text-xl md:text-2xl font-light text-cta block mt-2">
-                            La Villa des Juristes Brisés 💔 sur l’Île de L’INSTRUCTION !🏝
-                        </span>
-                    </h1>
+                <!-- Logo & Title Section -->
+                <div class="flex flex-col md:flex-row items-center gap-6 w-full lg:w-auto flex-1">
+                    
+                    <!-- LOGO INTEGRATION -->
+                    <div class="flex-shrink-0">
+                        <img src="https://projettechacademy.github.io/Juridique/Asset/Logo_juriste.png" 
+                             onerror="this.onerror=null; this.src='https://projettechacademy.github.io/Juridique/Asset/Logo_juriste.jpg';" 
+                             alt="Logo The Jurist Elite Club" 
+                             class="h-28 w-28 object-contain rounded-full border-4 border-cta bg-white shadow-2xl hover:scale-105 transition-transform duration-300">
+                    </div>
+
+                    <!-- Title -->
+                    <div class="text-center md:text-left">
+                        <h1 class="text-2xl md:text-3xl lg:text-4xl font-bold brand-font tracking-wide leading-tight">
+                            <span class="inline-block animate-bounce mr-2">💫</span>The Jurist Elite Club By Studi ✨ <br>
+                            <span class="text-xl md:text-2xl font-light text-cta block mt-2">
+                                La Villa des Juristes Brisés 💔 sur l’Île de L’INSTRUCTION !🏝
+                            </span>
+                        </h1>
+                    </div>
                 </div>
 
                 <!-- User Controls -->
-                <div class="bg-white/10 p-4 rounded-xl backdrop-blur-md border border-white/20 shadow-lg w-full lg:w-1/3">
+                <div class="bg-white/10 p-4 rounded-xl backdrop-blur-md border border-white/20 shadow-lg w-full lg:w-auto min-w-[300px]">
                     <div class="flex flex-col gap-3">
                         <div class="flex gap-2">
                             <input type="text" id="userName" placeholder="Prénom" class="glass-input w-full" onchange="saveUserData()">
@@ -526,12 +538,12 @@
                 endDate: document.getElementById('endDate').value,
                 evalDeadline: document.getElementById('evalDeadline').value
             };
-            localStorage.setItem('juristEliteData_V6', JSON.stringify(data));
+            localStorage.setItem('juristEliteData_V8', JSON.stringify(data));
             updateUI(data);
         }
 
         function loadUserData() {
-            const storedData = localStorage.getItem('juristEliteData_V6');
+            const storedData = localStorage.getItem('juristEliteData_V8');
             let data = {};
             
             if (storedData) {
