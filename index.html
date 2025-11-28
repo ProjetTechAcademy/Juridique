@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Espace Juriste Social — 💫The Jurist Elite Club</title>
+  <title>Espace Formation — The Jurist Elite Club</title>
   
-  <!-- Tailwind CSS (pour le contenu interne des cours) -->
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   
   <!-- FontAwesome -->
@@ -23,6 +23,7 @@
                     brandBlue: '#0F2C48',
                     brandGold: '#D9A526',
                     brandIvory: '#F6F2E8',
+                    brandBronze: '#B4792A',
                 }
             }
         }
@@ -31,240 +32,401 @@
 
   <style>
     :root{
-      --cta: #D9A526; /* Jaune */
-      --brand-blue: #0F2C48; /* Titres & séparations */
-      --ivory: #F6F2E8; /* Surfaces */
-      --bronze: #B4792A; /* Alertes */
-      --glass: rgba(15,44,72,0.07);
-      --radius: 12px;
-      --max-width: 1400px;
-      --shadow: 0 8px 30px rgba(15,44,72,0.12);
-      font-family: 'Outfit', Inter, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      --cta: #D9A526;
+      --brand-blue: #0F2C48;
+      --ivory: #F6F2E8;
+      --bronze: #B4792A;
     }
 
-    /* Layout Global */
-    body{margin:0;background:linear-gradient(180deg,#fff 0%, #F6F6F6 100%);color:var(--brand-blue);}
-    .wrap{max-width:1100px;margin:100px auto 60px auto;padding:24px;min-height: 80vh;}
-    
-    h1{color:var(--brand-blue);font-size:28px;margin:0 0 12px}
-    p{color:#22303f;margin:0 0 12px}
-
-    /* --- HEADER (STICKY) --- */
-    .top-banner{
-      position:sticky;
-      top:0;
-      left:0;
-      right:0;
-      z-index:10000;
-      background:var(--brand-blue);
-      color:white;
-      box-shadow:0 6px 20px rgba(15,44,72,0.12);
-      padding: 10px 0;
-      transition: all 0.3s ease;
+    /* --- STYLE GÉNÉRAL --- */
+    body { 
+        margin: 0; 
+        background-color: var(--ivory); 
+        color: var(--brand-blue); 
+        min-height: 100vh;
+        font-family: 'Outfit', sans-serif;
     }
     
-    .top-inner{
-      max-width:var(--max-width);
-      margin:0 auto;
-      display:flex;
-      align-items:center;
+    .wrap { max-width: 1200px; margin: 0 auto 60px auto; padding: 24px; }
+    
+    /* --- HEADER STICKY --- */
+    .top-banner {
+      position: sticky;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 10000;
+      background: var(--brand-blue);
+      color: white;
+      box-shadow: 0 4px 20px rgba(15,44,72,0.25);
+      padding: 12px 0;
+      border-bottom: 4px solid var(--cta);
+    }
+    
+    .top-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
       justify-content: space-between;
-      gap:20px;
-      padding:0 24px;
+      padding: 0 24px;
+      gap: 20px;
     }
 
-    /* Identité */
-    .identity-block { display: flex; align-items: center; gap: 16px; }
-    .tb-logo{
-      width:52px; height:52px; flex:0 0 52px;
-      border-radius:10px; overflow:hidden;
-      background:rgba(255,255,255,0.06);
-      display:flex; align-items:center; justify-content:center;
-      border: 1px solid rgba(255,255,255,0.1);
+    /* Bloc Gauche : Logo + Titre */
+    .header-left {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        flex: 1;
     }
-    .tb-logo img{width:100%;height:100%;object-fit:cover;display:block}
 
-    .tb-text-container { display: flex; flex-direction: column; justify-content: center; align-items: flex-start; }
-    .tb-title{ font-weight:800; font-size:16px; letter-spacing: 0.3px; line-height: 1.2; color: white; }
-    .tb-sub{ font-size:13px; opacity:0.8; font-weight: 400; margin-top: 2px; color: #E0E0E0; }
-
-    /* Navigation */
-    .nav-container { display: flex; align-items: center; gap: 10px; }
-    .nav-item {
-        display: flex; align-items: center; height: 42px; padding: 0 14px;
-        background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.1);
-        border-radius: 50px; text-decoration: none; color: white;
-        transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-        overflow: hidden; cursor: pointer;
+    .tb-logo {
+      width: 60px; height: 60px; flex: 0 0 60px;
+      border-radius: 50%; overflow: hidden;
+      background: white;
+      display: flex; align-items: center; justify-content: center;
+      border: 2px solid var(--cta);
     }
-    .nav-icon { font-size: 18px; line-height: 1; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2)); }
-    .nav-text {
-        max-width: 0; opacity: 0; margin-left: 0; white-space: nowrap;
-        font-size: 13px; font-weight: 600;
-        transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-        transform: translateX(10px);
+    .tb-logo img { width: 100%; height: 100%; object-fit: cover; }
+
+    .tb-text-container { display: flex; flex-direction: column; justify-content: center; }
+    
+    /* Titre */
+    .tb-title { font-weight: 700; font-size: 16px; color: white; line-height: 1.4; }
+    .tb-title .part1 { color: #fff; }
+    .tb-title .part2 { color: var(--cta); font-style: italic; font-weight: 600; }
+
+    /* --- BOUTON ACCUEIL --- */
+    .header-right-btn {
+        display: flex; align-items: center; gap: 10px;
+        background-color: rgba(255,255,255,0.1); padding: 10px 20px;
+        border-radius: 30px; color: white; text-decoration: none; font-weight: 600;
+        transition: all 0.3s ease; border: 1px solid rgba(255,255,255,0.2);
+        white-space: nowrap; cursor: pointer;
     }
-    .nav-item:hover { background: rgba(255,255,255,0.2); box-shadow: 0 4px 12px rgba(0,0,0,0.15); padding-right: 20px; }
-    .nav-item:hover .nav-text { max-width: 200px; opacity: 1; margin-left: 10px; transform: translateX(0); }
+    .header-right-btn:hover {
+        background-color: var(--cta); color: var(--brand-blue); border-color: var(--cta);
+        transform: translateY(-2px); box-shadow: 0 4px 12px rgba(217,165,38,0.3);
+    }
 
-    .nav-item.highlight { background: var(--cta); color: #0F2C48; border-color: var(--cta); }
-    .nav-item.highlight:hover { background: #F0C045; box-shadow: 0 0 15px rgba(217,165,38,0.4); }
+    /* --- NAVIGATION ONGLETS --- */
+    .tabs-nav-container {
+        background: #fff; box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+        padding: 15px 0; margin-bottom: 30px;
+        position: sticky; top: 87px; z-index: 9000;
+    }
+    
+    .tabs-wrapper {
+        max-width: 1100px; margin: 0 auto; display: flex;
+        justify-content: center; gap: 15px; flex-wrap: wrap; padding: 0 20px;
+    }
 
-    /* --- CONTENU COURS (Design V2) --- */
-    .bloc-container { background: white; border-radius: 12px; padding: 25px; margin-bottom: 25px; border-left: 5px solid #D9A526; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
-    .bloc-title { font-size: 1.5rem; font-weight: 700; color: #0F2C48; margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 10px; }
+    .tab-button {
+        padding: 12px 28px; border-radius: 30px; font-weight: 700; font-size: 15px;
+        cursor: pointer; transition: all 0.3s ease; background-color: var(--ivory);
+        color: var(--brand-blue); border: 2px solid transparent; display: flex; align-items: center; gap: 10px;
+    }
+    .tab-button:hover { transform: translateY(-2px); border-color: var(--cta); background-color: #fff; }
+    .tab-button.active {
+        background-color: var(--brand-blue); color: white; border-color: var(--brand-blue);
+        box-shadow: 0 4px 15px rgba(15, 44, 72, 0.3);
+    }
+    .tab-button.active i { color: var(--cta); }
+
+    /* --- CONTENU --- */
+    .tab-pane { display: none; animation: fadeIn 0.5s ease; }
+    .tab-pane.active { display: block; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* Carte Accueil */
+    .welcome-card {
+        background: white; border-radius: 16px; padding: 40px; text-align: center;
+        border-top: 4px solid var(--cta); box-shadow: 0 10px 20px rgba(15, 44, 72, 0.05); margin-bottom: 30px;
+    }
+
+    /* Barre progression globale */
+    .global-progress-box {
+        background: var(--brand-blue); border-radius: 12px; padding: 20px; color: white;
+        margin-bottom: 30px; box-shadow: 0 8px 20px rgba(15, 44, 72, 0.15);
+        display: flex; flex-direction: column; gap: 10px;
+    }
+
+    /* Blocs de cours */
+    .bloc-container { 
+        background: white; border-radius: 12px; padding: 25px; margin-bottom: 25px; 
+        border-left: 6px solid var(--cta); box-shadow: 0 4px 6px rgba(0,0,0,0.02); 
+    }
+    .bloc-header {
+        display: flex; flex-direction: column; align-items: flex-start;
+        margin-bottom: 20px; border-bottom: 2px solid #f1f5f9; padding-bottom: 15px; gap: 15px;
+    }
+    .bloc-title { font-size: 1.4rem; font-weight: 800; color: var(--brand-blue); margin: 0; }
+
+    /* Progress bars BLOCS */
+    .bloc-progress-container {
+        width: 100%;
+        background-color: #f8fafc;
+        padding: 15px;
+        border-radius: 8px;
+        border: 1px solid #e2e8f0;
+    }
+    .bloc-progress-header {
+        display: flex; justify-content: space-between; align-items: center;
+        margin-bottom: 8px; font-size: 0.9rem; font-weight: 600; color: var(--brand-blue);
+    }
+    .prog-track { height: 10px; background: #e2e8f0; border-radius: 10px; overflow: hidden; width: 100%; }
+    .prog-fill { height: 100%; background: var(--cta); border-radius: 10px; width: 0%; transition: width 0.8s ease; }
 
     /* Accordéons */
-    details { margin-bottom: 8px; border: 1px solid #f0f0f0; border-radius: 8px; overflow: hidden; background: #fff; }
-    details[open] { border-color: #D9A526; }
+    details { margin-bottom: 10px; border: 1px solid #f1f5f9; border-radius: 10px; overflow: hidden; background: #fff; transition: all 0.3s; }
+    details[open] { border-color: var(--cta); box-shadow: 0 4px 10px rgba(217,165,38,0.08); }
     summary { 
-        padding: 12px 15px; cursor: pointer; background-color: #fafafa; font-weight: 600; color: #0F2C48; 
-        list-style: none; display: flex; justify-content: space-between; align-items: center; transition: 0.2s;
+        padding: 15px 20px; cursor: pointer; background-color: #fafafa; 
+        font-weight: 700; color: var(--brand-blue); font-size: 1rem;
+        list-style: none; display: flex; justify-content: space-between; align-items: center;
     }
-    summary:hover { background-color: #F6F2E8; color: #B4792A; }
+    summary:hover { background-color: #fffbf0; color: var(--bronze); }
     summary::-webkit-details-marker { display: none; }
-    /* La flèche est gérée ici, pas besoin de l'ajouter en HTML */
-    summary:after { content: '\f078'; font-family: "Font Awesome 6 Free"; font-weight: 900; transition: 0.3s; font-size: 0.8em; color: #B4792A; }
+    summary:after { content: '\f078'; font-family: "Font Awesome 6 Free"; font-weight: 900; color: var(--cta); transition: 0.3s; }
     details[open] summary:after { transform: rotate(180deg); }
 
-    /* Boutons Status (Couleurs directes) */
-    .status-btn { transition: all 0.2s; opacity: 0.7; transform: scale(0.95); margin-left: 5px; }
-    .status-btn:hover { opacity: 1; transform: scale(1.1); }
-    .status-btn.active { opacity: 1; transform: scale(1.2); font-weight: bold; filter: drop-shadow(0 1px 2px rgba(0,0,0,0.1)); }
-    .btn-note { color: #D9A526; }
-    .btn-done { color: #10b981; }
-    .btn-bell { color: #ef4444; }
+    /* Liens */
+    .link-item { display: flex; align-items: center; padding: 12px 20px; border-bottom: 1px solid #f8fafc; transition: 0.2s; }
+    .link-item:hover { background-color: #fdfdfd; padding-left: 25px; }
+    .link-text { flex: 1; color: #334155; font-weight: 500; text-decoration: none; font-size: 0.95rem; display: flex; align-items: center; gap: 12px; }
+    .link-text:hover { color: var(--bronze); }
 
-    /* --- FOOTER --- */
-    footer{ background: var(--brand-blue); color: white; border-top: 4px solid var(--cta); padding: 40px 20px; margin-top: 60px; text-align: center; }
-    .footer-inner{ max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 16px; }
-    .footer-single-line { font-size: 15px; line-height: 1.6; color: white; font-weight: 500; }
-    .footer-single-line strong { font-weight: 800; color: #fff; }
-    .footer-single-line .sep { opacity: 0.5; margin: 0 8px; }
-    .footer .divider { width: 50px; height: 2px; background: rgba(255,255,255,0.2); margin: 4px 0; }
-    .footer .copyright { font-size: 12px; color: rgba(255,255,255,0.6); }
+    /* Boutons action */
+    .status-btn { 
+        width: 34px; height: 34px; border-radius: 8px; display: flex; align-items: center; justify-content: center;
+        border: 1px solid #e2e8f0; background: white; color: #cbd5e1; transition: all 0.2s; cursor: pointer; margin-left: 5px;
+    }
+    .status-btn:hover { transform: scale(1.1); }
+    /* Style Validé */
+    .status-btn.active.btn-done { 
+        background: #10b981; color: white; border-color: #10b981; 
+        box-shadow: 0 2px 5px rgba(16, 185, 129, 0.3);
+    }
+    /* Style PDF */
+    .btn-pdf { color: #e11d48; border-color: #ffe4e6; background: #fff1f2; }
+    .btn-pdf:hover { background: #e11d48; color: white; }
 
-    /* Responsive */
-    @media (max-width: 950px){ .tb-sub { display: none; } }
-    @media (max-width: 768px){ .top-inner { flex-direction: column; gap: 15px; padding: 15px; } .nav-container { flex-wrap: wrap; justify-content: center; } }
+    /* Style Bell */
+    .status-btn.btn-bell:hover { color: #ef4444; border-color: #ef4444; }
+
+    /* Footer */
+    footer { background: var(--brand-blue); color: white; padding: 40px 0; margin-top: 80px; text-align: center; border-top: 6px solid var(--cta); }
+
+    @media (max-width: 768px) {
+        .top-inner { flex-direction: column; gap: 15px; }
+        .header-left { flex-direction: column; text-align: center; }
+        .header-right-btn { width: 100%; justify-content: center; }
+        .bloc-header { align-items: flex-start; }
+    }
   </style>
 </head>
 <body>
 
-  <!-- Top Banner -->
-  <div class="top-banner" id="topBanner" role="banner">
+  <!-- 1. HEADER -->
+  <div class="top-banner">
     <div class="top-inner">
       
-      <!-- GAUCHE : Identité Club -->
-      <div class="identity-block">
+      <!-- Gauche -->
+      <div class="header-left">
           <div class="tb-logo">
             <img src="https://projettechacademy.github.io/Juridique/Asset/Logo_juriste.png" alt="Logo" onerror="this.src='https://projettechacademy.github.io/Juridique/Asset/Logo_juriste.jpg'">
           </div>
           <div class="tb-text-container">
-            <div class="tb-title">💫The Jurist Elite Club By Studi ✨</div>
-            <div class="tb-sub">La Villa des Juristes Brisés 💔 sur l’Île de L’INSTRUCTION !🏝</div>
+            <div class="tb-title">
+                <span class="part1">💫 The Jurist Elite Club By Studi ✨</span><br>
+                <span class="part2">La Villa des Juristes Brisés 💔 sur l’Île de L’INSTRUCTION !🏝</span>
+            </div>
           </div>
       </div>
 
-      <!-- DROITE : Navigation -->
-      <nav class="nav-container" role="navigation">
-        
-        <!-- Accueil -->
-        <a href="#" class="nav-item">
-            <span class="nav-icon">🏠</span>
-            <span class="nav-text">Accueil</span>
-        </a>
+      <!-- Droite -->
+      <div onclick="switchFormation('accueil')" class="header-right-btn">
+          <i class="fa-solid fa-house"></i>
+          <span>Accueil</span>
+      </div>
 
-        <!-- Lexique -->
-        <a href="https://projettechacademy.github.io/Juridique/00_Autres/Lexique_Latin_Juridique.html" target="_blank" class="nav-item">
-            <span class="nav-icon">📘</span>
-            <span class="nav-text">Lexique Juridique</span>
-        </a>
-
-        <!-- Planning -->
-        <a href="https://projettechacademy.github.io/Juridique/00_Autres/formation_live_juriste.html" target="_blank" class="nav-item">
-            <span class="nav-icon">📅</span>
-            <span class="nav-text">Planning Live</span>
-        </a>
-
-        <!-- Mon Espace (Highlight) -->
-        <a href="https://projettechacademy.github.io/Juridique/00_Autres/Mon_Espace_Juriste_Tableau_de_bord_personnel.html" target="_blank" class="nav-item highlight">
-            <span class="nav-icon">🧑‍⚖️</span>
-            <span class="nav-text">Mon Espace Juriste</span>
-        </a>
-
-      </nav>
     </div>
   </div>
 
-  <!-- Contenu Principal -->
-  <main class="wrap" id="accueil">
+  <!-- 2. NAVIGATION ONGLETS -->
+  <div class="tabs-nav-container">
+      <div class="tabs-wrapper">
+          <div class="tab-button" onclick="switchFormation('affaires')">
+              <i class="fa-solid fa-briefcase"></i> Droit des Affaires
+          </div>
+          <div class="tab-button" onclick="switchFormation('entreprise')">
+              <i class="fa-solid fa-building-columns"></i> Juriste d'Entreprise
+          </div>
+          <div class="tab-button active" onclick="switchFormation('social')">
+              <i class="fa-solid fa-users"></i> Droit Social
+          </div>
+      </div>
+  </div>
 
-    <!-- Barre de Progression Intégrée -->
-    <div class="bg-white rounded-lg p-4 shadow-sm border border-slate-200 mb-8 flex items-center justify-between">
-        <div>
-            <h2 class="text-[#0F2C48] font-bold text-lg m-0">Progression Globale</h2>
-            <p class="text-slate-500 text-sm m-0">Suivez votre avancement dans les modules</p>
-        </div>
-        <div class="flex items-center gap-3">
-            <div class="w-32 h-3 bg-slate-100 rounded-full overflow-hidden">
-                <div id="progress-bar-visual" class="h-full bg-[#D9A526] transition-all duration-500" style="width: 0%"></div>
+  <main class="wrap">
+
+    <!-- === ACCUEIL === -->
+    <div id="view-accueil" class="tab-pane">
+        <div class="welcome-card">
+            <h1 class="text-3xl font-bold text-[#0F2C48] mb-2">Bienvenue Mathilde ! 👋</h1>
+            <p class="text-[#B4792A] text-lg font-medium mb-6">Espace Personnel de Formation</p>
+            
+            <!-- Ajout de la classe sm:grid-cols-2 et lg:grid-cols-4 pour 4 colonnes sur grand écran -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                
+                <!-- Bouton START (Nouveau) -->
+                <a href="https://projettechacademy.github.io/Juridique/index.html" class="p-4 bg-[#F6F2E8] rounded-xl border border-[#D9A526]/20 hover:shadow-md transition flex items-center gap-3 group">
+                    <div class="w-10 h-10 rounded-full bg-[#0F2C48] text-white flex items-center justify-center group-hover:scale-110 transition">
+                        <i class="fa-solid fa-flag-checkered"></i> <!-- Emoji Start/Drapeau -->
+                    </div>
+                    <div class="text-left">
+                        <div class="font-bold text-[#0F2C48]">Start</div>
+                        <div class="text-xs text-gray-500">Retour au début</div>
+                    </div>
+                </a>
+
+                <a href="https://projettechacademy.github.io/Juridique/00_Autres/Lexique_Latin_Juridique.html" target="_blank" class="p-4 bg-[#F6F2E8] rounded-xl border border-[#D9A526]/20 hover:shadow-md transition flex items-center gap-3 group">
+                    <div class="w-10 h-10 rounded-full bg-[#D9A526] text-white flex items-center justify-center group-hover:scale-110 transition"><i class="fa-solid fa-book"></i></div>
+                    <div class="text-left">
+                        <div class="font-bold text-[#0F2C48]">Lexique Juridique & Social</div>
+                        <div class="text-xs text-gray-500">Les indispensables du Latin</div>
+                    </div>
+                </a>
+                <a href="https://projettechacademy.github.io/Juridique/00_Autres/formation_live_juriste.html" target="_blank" class="p-4 bg-[#F6F2E8] rounded-xl border border-[#D9A526]/20 hover:shadow-md transition flex items-center gap-3 group">
+                    <div class="w-10 h-10 rounded-full bg-[#0F2C48] text-white flex items-center justify-center group-hover:scale-110 transition"><i class="fa-solid fa-video"></i></div>
+                    <div class="text-left">
+                        <div class="font-bold text-[#0F2C48]">Planning Live & Suivi</div>
+                        <div class="text-xs text-gray-500">Tableau de bord interactif</div>
+                    </div>
+                </a>
+                <a href="https://projettechacademy.github.io/Juridique/00_Autres/Mon_Espace_Juriste_Tableau_de_bord_personnel.html" target="_blank" class="p-4 bg-[#F6F2E8] rounded-xl border border-[#D9A526]/20 hover:shadow-md transition flex items-center gap-3 group">
+                    <div class="w-10 h-10 rounded-full bg-[#B4792A] text-white flex items-center justify-center group-hover:scale-110 transition"><i class="fa-solid fa-user-tie"></i></div>
+                    <div class="text-left">
+                        <div class="font-bold text-[#0F2C48]">Mon Espace Juriste</div>
+                        <div class="text-xs text-gray-500">Tableau de bord personnel</div>
+                    </div>
+                </a>
             </div>
-            <span id="global-progress" class="font-mono text-[#0F2C48] font-bold text-xl">0%</span>
         </div>
     </div>
 
-    <!-- BLOC 0 -->
-    <div class="bloc-container">
-        <h2 class="bloc-title">B0 • Fondamentaux du Droit</h2>
-        <div id="content-b0"></div>
+    <!-- === AFFAIRES === -->
+    <div id="view-affaires" class="tab-pane">
+        <div class="mb-6 pl-4 border-l-4 border-[#D9A526]">
+            <h1 class="text-2xl font-bold text-[#0F2C48]">MBA Juriste d'entreprise en Droit des Affaires</h1>
+            <p class="text-gray-600">Pilotez la performance juridique et économique de l'entreprise.</p>
+        </div>
+        <div class="bloc-container"><h2 class="bloc-title">B0 • Fondamentaux du Droit des Affaires</h2><div class="p-6 text-center text-gray-400 bg-slate-50 rounded border border-dashed border-gray-300 italic">Contenu à venir...</div></div>
     </div>
 
-    <!-- BLOC 1 -->
-    <div class="bloc-container">
-        <h2 class="bloc-title">B1 • Pilotage Stratégique & RH</h2>
-        <div id="content-b1"></div>
+    <!-- === ENTREPRISE === -->
+    <div id="view-entreprise" class="tab-pane">
+        <div class="mb-6 pl-4 border-l-4 border-[#D9A526]">
+            <h1 class="text-2xl font-bold text-[#0F2C48]">MBA Juriste d'Entreprise</h1>
+            <p class="text-gray-600">Devenez le business partner incontournable de la direction.</p>
+        </div>
+        <div class="bloc-container"><h2 class="bloc-title">B0 • Socle Juridique</h2><div class="p-6 text-center text-gray-400 bg-slate-50 rounded border border-dashed border-gray-300 italic">Contenu à venir...</div></div>
     </div>
 
-    <!-- BLOC 2 -->
-    <div class="bloc-container">
-        <h2 class="bloc-title">B2 • Opérations de l'Entreprise</h2>
-        <div id="content-b2"></div>
-    </div>
+    <!-- === SOCIAL (Actif) === -->
+    <div id="view-social" class="tab-pane active">
+        
+        <div class="flex flex-col md:flex-row items-start md:items-center justify-between mb-8 bg-white p-6 rounded-xl shadow-sm border border-[#e2e8f0]">
+            <div>
+                <h1 class="text-2xl font-bold text-[#0F2C48]">Formation Droit Social</h1>
+                <p class="text-[#B4792A]">MBA Juriste d'entreprise - Spécialisation Social</p>
+            </div>
+            <div class="mt-4 md:mt-0 w-full md:w-64">
+                <div class="flex justify-between text-xs font-bold text-[#0F2C48] uppercase mb-1">
+                    <span>Progression Totale</span>
+                    <span id="global-progress-txt">0%</span>
+                </div>
+                <div class="w-full h-3 bg-slate-100 rounded-full overflow-hidden">
+                    <div id="global-progress-bar" class="h-full bg-[#0F2C48] transition-all duration-700" style="width: 0%"></div>
+                </div>
+            </div>
+        </div>
 
-    <!-- BLOC 3 -->
-    <div class="bloc-container">
-        <h2 class="bloc-title">B3 • Gestion des Contentieux</h2>
-        <div id="content-b3"></div>
+        <!-- BLOC B0 -->
+        <div class="bloc-container">
+            <div class="bloc-header">
+                <h2 class="bloc-title">B0 • Fondamentaux du Droit</h2>
+                <div class="bloc-progress-container">
+                    <div class="bloc-progress-header"><span>Avancement du Bloc</span><span id="prog-b0-txt">0%</span></div>
+                    <div class="prog-track"><div id="prog-b0-bar" class="progress-fill"></div></div>
+                </div>
+            </div>
+            <div id="social-content-b0"></div>
+        </div>
+
+        <!-- BLOC B1 -->
+        <div class="bloc-container">
+            <div class="bloc-header">
+                <h2 class="bloc-title">B1 • Pilotage Stratégique & RH</h2>
+                <div class="bloc-progress-container">
+                    <div class="bloc-progress-header"><span>Avancement du Bloc</span><span id="prog-b1-txt">0%</span></div>
+                    <div class="prog-track"><div id="prog-b1-bar" class="progress-fill"></div></div>
+                </div>
+            </div>
+            <div id="social-content-b1"></div>
+        </div>
+
+        <!-- BLOC B2 -->
+        <div class="bloc-container">
+            <div class="bloc-header">
+                <h2 class="bloc-title">B2 • Opérations de l'Entreprise</h2>
+                <div class="bloc-progress-container">
+                    <div class="bloc-progress-header"><span>Avancement du Bloc</span><span id="prog-b2-txt">0%</span></div>
+                    <div class="prog-track"><div id="prog-b2-bar" class="progress-fill"></div></div>
+                </div>
+            </div>
+            <div id="social-content-b2"></div>
+        </div>
+
+        <!-- BLOC B3 -->
+        <div class="bloc-container">
+            <div class="bloc-header">
+                <h2 class="bloc-title">B3 • Gestion des Contentieux</h2>
+                <div class="bloc-progress-container">
+                    <div class="bloc-progress-header"><span>Avancement du Bloc</span><span id="prog-b3-txt">0%</span></div>
+                    <div class="prog-track"><div id="prog-b3-bar" class="progress-fill"></div></div>
+                </div>
+            </div>
+            <div id="social-content-b3"></div>
+        </div>
     </div>
 
   </main>
 
-  <!-- Footer -->
+  <!-- FOOTER -->
   <footer>
-    <div class="footer-inner">
-        <div class="footer-single-line">
-            <strong>💫 The Jurist Elite Club By Studi ✨</strong> 
-            <span class="sep">|</span> 
-            La Villa des Juristes Brisés 💔 sur l’Île de L’INSTRUCTION !🏝 
-            <span class="sep">|</span> 
-            By Mathilde Martine PAISLEY
-        </div>
-        <div class="divider"></div>
-        <div class="copyright">
-            © 2025 Tous droits réservés – Dernière mise à jour : <span id="updatedDate">...</span>
-        </div>
+    <div style="max-width: 600px; margin: 0 auto;">
+        <div style="font-size: 16px; font-weight: 700; margin-bottom: 10px;">💫 The Jurist Elite Club By Studi ✨</div>
+        <div style="height: 2px; width: 60px; background: rgba(255,255,255,0.3); margin: 0 auto 15px auto;"></div>
+        <div style="font-size: 14px; opacity: 0.9; margin-bottom: 20px;">La Villa des Juristes Brisés 💔 sur l’Île de L’INSTRUCTION !🏝</div>
+        <div style="font-size: 12px; opacity: 0.6;">© 2025 Mathilde Martine PAISLEY • Tous droits réservés</div>
     </div>
   </footer>
 
-  <!-- Bouton Retour Haut -->
-  <button onclick="scrollToTop()" id="backToTop" class="fixed bottom-8 right-8 bg-[#D9A526] text-white p-4 rounded-full shadow-lg hover:bg-[#0F2C48] transition-all hover:scale-110 opacity-0 pointer-events-none z-50 border-2 border-white">
-      <i class="fa-solid fa-arrow-up text-xl"></i>
+  <!-- 
+    CORRECTION ICI : Ajout de l'ID "backToTop" 
+    Ajout aussi de "opacity-0" et "pointer-events-none" pour qu'il soit caché par défaut 
+  -->
+  <button id="backToTop" onclick="window.scrollTo({top:0, behavior:'smooth'})" class="fixed bottom-8 right-8 bg-[#D9A526] text-white w-12 h-12 rounded-full shadow-lg hover:bg-[#0F2C48] transition-all duration-300 z-50 flex items-center justify-center border-2 border-white opacity-0 pointer-events-none">
+      <i class="fa-solid fa-arrow-up"></i>
   </button>
 
   <script>
-    // --- DONNÉES BRUTES COMPLÈTES ---
-    const rawData = `
+    const BASE_URL = "https://projettechacademy.github.io/Juridique/";
+
+    // DONNÉES DROIT SOCIAL (Complètes)
+    const socialData = `
 🟨B0_Fondamentaux du droit
 🟦B0_M01_Mise à niveau en droit social
 🟧B0_M01_S001_La notion de droit du travail
@@ -741,35 +903,23 @@
 🟧B7_M05_S005_En attente
 `;
 
-    const BASE_URL = "https://projettechacademy.github.io/Juridique/";
-
-    // Mapping des blocs vers les IDs HTML correspondants
-    const BLOCK_MAP = {
-        "B0": "content-b0",
-        "B1": "content-b1",
-        "B2": "content-b2",
-        "B3": "content-b3"
-    };
-
     function cleanName(str) {
         let clean = str.replace(/^[🟨🟦🟧]/, '').trim();
-        clean = clean.replace(/\.html$/, ''); 
+        clean = clean.replace(/\?/g, ''); // Supprime les points d'interrogation indésirables
+        clean = clean.replace(/\.html$/, '');
         
-        // Normalisation pour l'URL
+        // Normalisation pour URL
         let urlPart = clean.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
         urlPart = urlPart.replace(/[\s':,\/\\]+/g, "_");
         urlPart = urlPart.replace(/[^a-zA-Z0-9_]/g, "");
         urlPart = urlPart.replace(/__+/g, "_");
         urlPart = urlPart.replace(/^_|_$/g, "");
         
-        return {
-            display: clean,
-            urlPart: urlPart
-        };
+        return { display: clean, urlPart: urlPart };
     }
 
     function generateContent() {
-        const lines = rawData.split('\n').filter(line => line.trim() !== '');
+        const lines = socialData.split('\n').filter(line => line.trim() !== '');
         
         let currentBlockId = "";
         let currentBlockUrl = "";
@@ -777,30 +927,36 @@
         let currentDetails = null;
         let currentList = null;
 
+        // Compteurs pour la progression
+        let blockStats = {
+            "content-b0": { total: 0, done: 0 },
+            "content-b1": { total: 0, done: 0 },
+            "content-b2": { total: 0, done: 0 },
+            "content-b3": { total: 0, done: 0 }
+        };
+
         lines.forEach(line => {
             if (line.startsWith('🟨')) {
-                // Nouveau Bloc
                 const blockData = cleanName(line);
-                // On identifie le conteneur par le préfixe B0, B1...
-                const prefix = blockData.urlPart.substring(0, 2);
-                currentBlockId = BLOCK_MAP[prefix];
+                if(blockData.urlPart.startsWith("B0")) currentBlockId = "social-content-b0";
+                else if(blockData.urlPart.startsWith("B1")) currentBlockId = "social-content-b1";
+                else if(blockData.urlPart.startsWith("B2")) currentBlockId = "social-content-b2";
+                else if(blockData.urlPart.startsWith("B3")) currentBlockId = "social-content-b3";
                 currentBlockUrl = blockData.urlPart;
 
             } else if (line.startsWith('🟦')) {
-                // Nouveau Module
                 const moduleData = cleanName(line);
                 currentModuleUrl = moduleData.urlPart;
                 
-                // Création de l'accordéon
-                currentDetails = document.createElement('details');
-                currentDetails.className = "group bg-white border border-[#D9A526]/20 rounded-lg overflow-hidden transition-all hover:shadow-md mb-2";
+                const details = document.createElement('details');
+                details.className = "group bg-white border border-[#D9A526]/20 rounded-lg overflow-hidden transition-all hover:shadow-md mb-2";
                 
                 const summary = document.createElement('summary');
                 // On utilise les classes CSS définies dans <style> pour le look V2
                 // Note: le style summary:after gère la flèche (FontAwesome)
                 summary.innerHTML = `
                     <div class="flex items-center gap-3">
-                        <span class="text-white font-mono text-xs font-bold bg-[#0F2C48] px-2 py-1 rounded shadow-sm">${moduleData.display.split('_')[1] || 'MOD'}</span>
+                        <span class="bg-[#0F2C48] text-white text-xs font-bold px-2 py-1 rounded shadow-sm">${moduleData.display.split('_')[1] || 'MOD'}</span>
                         <h3 class="font-semibold text-[#0F2C48] text-base">${moduleData.display}</h3>
                     </div>
                     <!-- Pas d'icône en dur ici, c'est géré par CSS summary:after -->
@@ -810,38 +966,39 @@
                 contentDiv.className = "p-0 bg-white border-t border-[#D9A526]/10"; // Padding 0 pour coller les liens
                 currentList = contentDiv;
 
-                currentDetails.appendChild(summary);
-                currentDetails.appendChild(contentDiv);
-                
-                // Injection dans le bon conteneur
-                const container = document.getElementById(currentBlockId);
-                if(container) container.appendChild(currentDetails);
+                details.appendChild(summary);
+                details.appendChild(contentDiv);
+                document.getElementById(currentBlockId).appendChild(details);
 
             } else if (line.startsWith('🟧')) {
-                // Session (Lien)
                 const sessionData = cleanName(line);
                 const finalUrl = `${BASE_URL}${currentBlockUrl}/${currentModuleUrl}/${sessionData.urlPart}.html`;
                 const uniqueId = sessionData.urlPart; // ID pour localStorage
+                
+                // Incrémenter le compteur total du bloc
+                let parentBlock = currentBlockId.replace('social-', ''); // content-b0
+                if(blockStats[parentBlock]) blockStats[parentBlock].total++;
 
                 const itemDiv = document.createElement('div');
                 itemDiv.className = "link-item"; // Classe CSS définie plus haut
                 
                 // Contenu du lien avec carré orange (FontAwesome)
                 itemDiv.innerHTML = `
-                    <a href="${finalUrl}" target="_blank" class="flex-1 text-[#0F2C48] font-medium text-sm transition flex items-center gap-2 hover:text-[#D9A526]">
+                    <a href="${finalUrl}" target="_blank" class="link-text">
                         <i class="fa-solid fa-square text-[#D9A526] text-xs mr-2"></i>
                         ${sessionData.display}
                     </a>
-                    <div class="flex gap-1 ml-2 shrink-0">
-                        <button onclick="toggleStatus(this, '${uniqueId}', 'note')" class="status-btn btn-note p-1.5 rounded-md hover:bg-slate-100" title="Alimenté / Prise de note">
-                            <i class="fa-solid fa-pen-to-square"></i>
-                        </button>
-                        <button onclick="toggleStatus(this, '${uniqueId}', 'done')" class="status-btn btn-done p-1.5 rounded-md hover:bg-slate-100" title="Lu et Traité">
-                            <i class="fa-solid fa-check-circle"></i>
-                        </button>
-                        <button onclick="toggleStatus(this, '${uniqueId}', 'bell')" class="status-btn btn-bell p-1.5 rounded-md hover:bg-slate-100" title="Rappel">
-                            <i class="fa-solid fa-bell"></i>
-                        </button>
+                    <div class="status-actions">
+                        <button onclick="toggleStatus(this, '${uniqueId}', 'note')" class="status-btn btn-note" title="Prise de note"><i class="fa-solid fa-pen-to-square"></i></button>
+                        
+                        <!-- Bouton Valider qui déclenche la barre de progression -->
+                        <button onclick="toggleStatus(this, '${uniqueId}', 'done')" class="status-btn btn-done" title="Traité"><i class="fa-solid fa-circle-check"></i></button>
+
+                        <!-- Bouton PDF (fictif pour l'instant) -->
+                        <button onclick="window.open('${finalUrl.replace(".html", ".pdf")}', '_blank')" class="status-btn btn-pdf" title="Télécharger le PDF"><i class="fa-solid fa-file-pdf"></i></button>
+
+                        <!-- Bouton Calendrier -->
+                        <button onclick="addToCalendar('${sessionData.display}', '${finalUrl}')" class="status-btn btn-bell" title="Ajouter au calendrier"><i class="fa-solid fa-bell"></i></button>
                     </div>
                 `;
                 
@@ -851,6 +1008,18 @@
         
         // Charger les statuts (couleurs des boutons) après génération
         loadStatus();
+    }
+
+    // --- AJOUT AU CALENDRIER GOOGLE ---
+    function addToCalendar(title, url) {
+        const baseUrl = "https://calendar.google.com/calendar/render";
+        const action = "TEMPLATE";
+        const text = encodeURIComponent("Formation Juriste : " + title);
+        const details = encodeURIComponent("Lien vers le cours : " + url);
+        
+        // On ouvre sans date pré-remplie pour laisser l'utilisateur choisir
+        const calendarLink = `${baseUrl}?action=${action}&text=${text}&details=${details}`;
+        window.open(calendarLink, '_blank');
     }
 
     // --- GESTION DES STATUTS (LocalStorage) ---
@@ -864,7 +1033,11 @@
         } else {
             localStorage.removeItem(key);
         }
-        updateGlobalProgress();
+        
+        // Si c'est le bouton 'done', on met à jour la progression
+        if (type === 'done') {
+            updateProgress();
+        }
     }
 
     function loadStatus() {
@@ -872,7 +1045,7 @@
         buttons.forEach(btn => {
             const onclickAttr = btn.getAttribute('onclick');
             // Extraction propre des arguments du onclick
-            const match = onclickAttr.match(/'([^']+)',\s*'([^']+)'/); // Amélioration regex
+            const match = onclickAttr.match(/'([^']+)',\s*'([^']+)'/); 
             if (match) {
                 const id = match[1]; // uniqueId
                 const type = match[2]; // 'note', 'done', 'bell'
@@ -883,22 +1056,56 @@
                 }
             }
         });
-        updateGlobalProgress();
+        updateProgress();
     }
 
     // --- PROGRESSION GLOBALE ---
-    function updateGlobalProgress() {
-        const totalChecks = document.querySelectorAll('.btn-done').length;
-        const activeChecks = document.querySelectorAll('.btn-done.active').length;
+    function updateProgress() {
+        // On compte UNIQUEMENT les boutons "done" (traités) pour la progression
         
-        const percent = totalChecks === 0 ? 0 : Math.round((activeChecks / totalChecks) * 100);
+        // 1. Progression Globale (Tous les onglets confondus, mais ici on a que Social rempli)
+        const allDoneBtns = document.querySelectorAll('.btn-done');
+        const allActiveDone = document.querySelectorAll('.btn-done.active');
+        const globalPct = allDoneBtns.length === 0 ? 0 : Math.round((allActiveDone.length / allDoneBtns.length) * 100);
         
-        // Mise à jour texte et visuel
-        const textEl = document.getElementById('global-progress');
-        const barEl = document.getElementById('progress-bar-visual');
+        const globTxt = document.getElementById('global-progress-txt');
+        const globBar = document.getElementById('global-progress-bar');
+        if(globTxt) globTxt.textContent = globalPct + '%';
+        if(globBar) globBar.style.width = globalPct + '%';
+
+        // 2. Progression par Bloc dans Droit Social (Beau Gosse Style)
+        ['b0', 'b1', 'b2', 'b3'].forEach(block => {
+            const container = document.getElementById('social-content-' + block);
+            if(container) {
+                const btns = container.querySelectorAll('.btn-done');
+                const active = container.querySelectorAll('.btn-done.active');
+                const pct = btns.length === 0 ? 0 : Math.round((active.length / btns.length) * 100);
+                
+                const txt = document.getElementById(`prog-${block}-txt`);
+                const bar = document.getElementById(`prog-${block}-bar`);
+                if(txt) txt.textContent = pct + '%';
+                if(bar) bar.style.width = pct + '%';
+            }
+        });
+    }
+
+    // --- NAVIGATION ONGLETS PRINCIPAUX ---
+    function switchFormation(id) {
+        // Contenu
+        document.querySelectorAll('.tab-pane').forEach(el => el.classList.remove('active'));
+        document.getElementById('view-' + id).classList.add('active');
         
-        if(textEl) textEl.textContent = percent + '%';
-        if(barEl) barEl.style.width = percent + '%';
+        // Boutons
+        document.querySelectorAll('.tab-button').forEach(el => el.classList.remove('active'));
+        // On cherche le bouton correspondant (index based simple approach here)
+        const buttons = document.querySelectorAll('.tab-button');
+        if(id === 'accueil') buttons[0].classList.add('active');
+        if(id === 'social') buttons[2].classList.add('active'); // Attention index changé
+        if(id === 'affaires') buttons[1].classList.add('active');
+        if(id === 'entreprise') buttons[3].classList.add('active'); // Si 4e bouton
+        
+        // Scroll top léger
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
     // --- BOUTON RETOUR HAUT ---
@@ -913,13 +1120,6 @@
     
     function scrollToTop() {
         window.scrollTo({top: 0, behavior: 'smooth'});
-    }
-    
-    // --- AUTO-UPDATE DATE ---
-    const dateEl = document.getElementById('updatedDate');
-    if(dateEl) {
-        const now = new Date();
-        dateEl.textContent = new Intl.DateTimeFormat('fr-FR').format(now);
     }
 
     // Lancement au chargement
