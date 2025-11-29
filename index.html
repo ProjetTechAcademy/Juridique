@@ -8,11 +8,11 @@
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   
-  <!-- FontAwesome -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <!-- FontAwesome (6.5.1 pour compatibilité max) -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
   
-  <!-- Polices -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <!-- Polices (Mise à jour avec toutes les graisses demandées) -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&family=Montserrat:wght@500;600;700&family=Outfit:wght@300;400;600;800&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   
   <script>
     tailwind.config = {
@@ -32,10 +32,22 @@
 
   <style>
     :root{
+      /* Couleurs existantes */
       --cta: #D9A526;
       --brand-blue: #0F2C48;
       --ivory: #F6F2E8;
       --bronze: #B4792A;
+      
+      /* Variables Footer */
+      --f-bg: #0F2C48; 
+      --f-text: #F6F2E8; 
+      --f-accent: #D9A526;
+
+      /* Variables Nouveau Header */
+      --h-bg: #0F2C48; 
+      --h-text: #fff; 
+      --h-accent: #D9A526; 
+      --h-bronze: #B4792A;
     }
 
     /* --- STYLE GÉNÉRAL --- */
@@ -45,76 +57,160 @@
         color: var(--brand-blue); 
         min-height: 100vh;
         font-family: 'Outfit', sans-serif;
+        display: flex;
+        flex-direction: column;
     }
     
-    .wrap { max-width: 1200px; margin: 0 auto 60px auto; padding: 24px; }
+    .wrap { max-width: 1200px; margin: 0 auto 60px auto; padding: 24px; width: 100%; flex: 1;}
     
-    /* --- HEADER STICKY --- */
-    .top-banner {
-      position: sticky;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 10000;
-      background: var(--brand-blue);
-      color: white;
-      box-shadow: 0 4px 20px rgba(15,44,72,0.25);
-      padding: 12px 0;
-      border-bottom: 4px solid var(--cta);
-    }
-    
-    .top-inner {
-      max-width: 1400px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 24px;
-      gap: 20px;
+    /* === NOUVEAU HEADER SPECIAL CLUB === */
+    /* Animation */
+    @keyframes cosmic-pulse {
+        0% { transform: scale(1); box-shadow: 0 5px 15px rgba(15, 44, 72, 0.3); }
+        50% { transform: scale(1.02); box-shadow: 0 15px 25px rgba(28, 181, 224, 0.4); }
+        100% { transform: scale(1); box-shadow: 0 5px 15px rgba(15, 44, 72, 0.3); }
     }
 
-    /* Bloc Gauche : Logo + Titre */
-    .header-left {
+    /* Styles Header */
+    .top-bar {
+        background-color: var(--h-bg);
+        color: var(--h-text);
+        padding: 15px 0;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        position: sticky; /* Gardé en sticky pour le confort */
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 10000;
+        font-family: 'Lato', sans-serif;
+        border-bottom: 4px solid var(--h-accent);
+    }
+    
+    .top-bar-container {
+        max-width: 1400px; /* Aligné avec l'ancien layout */
+        margin: 0 auto;
+        padding: 0 24px;
         display: flex;
         align-items: center;
-        gap: 16px;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    /* GAUCHE : Identité Club */
+    .top-bar-left {
+        display: flex;
+        align-items: center;
+        gap: 15px;
         flex: 1;
+        min-width: 320px;
     }
 
-    .tb-logo {
-      width: 60px; height: 60px; flex: 0 0 60px;
-      border-radius: 50%; overflow: hidden;
-      background: white;
-      display: flex; align-items: center; justify-content: center;
-      border: 2px solid var(--cta);
-    }
-    .tb-logo img { width: 100%; height: 100%; object-fit: cover; }
-
-    .tb-text-container { display: flex; flex-direction: column; justify-content: center; }
-    
-    /* Titre */
-    .tb-title { font-weight: 700; font-size: 16px; color: white; line-height: 1.4; }
-    .tb-title .part1 { color: #fff; }
-    .tb-title .part2 { color: var(--cta); font-style: italic; font-weight: 600; }
-
-    /* --- BOUTON ACCUEIL --- */
-    .header-right-btn {
-        display: flex; align-items: center; gap: 10px;
-        background-color: rgba(255,255,255,0.1); padding: 10px 20px;
-        border-radius: 30px; color: white; text-decoration: none; font-weight: 600;
-        transition: all 0.3s ease; border: 1px solid rgba(255,255,255,0.2);
-        white-space: nowrap; cursor: pointer;
-    }
-    .header-right-btn:hover {
-        background-color: var(--cta); color: var(--brand-blue); border-color: var(--cta);
-        transform: translateY(-2px); box-shadow: 0 4px 12px rgba(217,165,38,0.3);
+    .logo-top-bar {
+        width: 60px; height: 60px;
+        border-radius: 50%;
+        border: 2px solid var(--h-accent);
+        object-fit: cover;
+        flex-shrink: 0;
+        background: #fff;
     }
 
-    /* --- NAVIGATION ONGLETS --- */
+    .identity-stack { display: flex; flex-direction: column; justify-content: center; }
+
+    .club-title-main {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.2rem;
+        font-weight: 700; /* GRAS */
+        letter-spacing: 0.5px;
+        color: #ffffff; /* BLANC */
+        line-height: 1.1;
+        margin-bottom: 3px;
+    }
+
+    .club-subtitle {
+        font-family: 'Lato', sans-serif;
+        font-size: 0.75rem;
+        color: var(--h-accent); /* JAUNE */
+        font-weight: 700; /* GRAS */
+        opacity: 0.95;
+        line-height: 1.2;
+    }
+
+    /* CENTRE : Navigation Icones */
+    .top-bar-center {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+    }
+
+    .header-icon-btn {
+        position: relative; 
+        width: 40px; height: 40px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #0F2C48 0%, #1CB5E0 100%);
+        border: 1px solid rgba(255,255,255,0.2);
+        display: flex; align-items: center; justify-content: center;
+        font-size: 1.1rem;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        color: white;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    .header-icon-btn:hover {
+        transform: translateY(3px) scale(1.1);
+        background: linear-gradient(135deg, #163e63 0%, #20c3f0 100%);
+        box-shadow: 0 6px 15px rgba(28, 181, 224, 0.4);
+    }
+
+    /* Image MMPA dans Nav */
+    .nav-mmpa-img { 
+        width: 100%; height: 100%; 
+        border-radius: 50%; 
+        object-fit: cover; 
+        border: 2px solid var(--h-accent);
+    }
+
+    /* Image Profil dans Nav */
+    .nav-profile-img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 2px solid #fff; }
+
+    /* Tooltip */
+    .header-icon-btn::after {
+        content: attr(data-tooltip); position: absolute; top: 130%; left: 50%; transform: translateX(-50%) translateY(-10px);
+        background-color: #fff; color: var(--h-bg); padding: 4px 10px; border-radius: 20px;
+        font-size: 0.7rem; font-weight: 700; white-space: nowrap; opacity: 0; visibility: hidden; transition: all 0.3s ease;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.2); pointer-events: none; z-index: 100;
+    }
+    .header-icon-btn:hover::after { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+
+    /* DROITE : Portfolio */
+    .btn-portfolio-cosmic {
+        padding: 8px 20px;
+        border-radius: 50px;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 600; font-size: 0.9rem;
+        background: linear-gradient(135deg, #0F2C48 0%, #1CB5E0 100%); 
+        color: white !important; text-decoration: none; 
+        border: 1px solid rgba(255,255,255,0.2);
+        display: inline-flex; align-items: center; gap: 8px;
+        animation: cosmic-pulse 4s ease-in-out infinite;
+    }
+    .btn-portfolio-cosmic:hover { background: linear-gradient(135deg, #163e63 0%, #20c3f0 100%); }
+
+    /* Responsive Header */
+    @media (max-width: 950px) {
+        .top-bar-container { justify-content: center; gap: 15px; }
+        .top-bar-left { width: 100%; justify-content: center; text-align: center; }
+        .identity-stack { align-items: center; }
+        .top-bar-center { width: 100%; justify-content: center; margin: 5px 0; }
+    }
+
+    /* --- NAVIGATION ONGLETS (Ajusté sous le nouveau header) --- */
     .tabs-nav-container {
         background: #fff; box-shadow: 0 2px 10px rgba(0,0,0,0.03);
         padding: 15px 0; margin-bottom: 30px;
-        position: sticky; top: 87px; z-index: 9000;
+        position: sticky; top: 96px; /* Ajusté selon la hauteur du header */
+        z-index: 9000;
     }
     
     .tabs-wrapper {
@@ -215,42 +311,157 @@
     /* Style Bell */
     .status-btn.btn-bell:hover { color: #ef4444; border-color: #ef4444; }
 
-    /* Footer */
-    footer { background: var(--brand-blue); color: white; padding: 40px 0; margin-top: 80px; text-align: center; border-top: 6px solid var(--cta); }
+    /* === STYLES FOOTER UNIVERSEL === */
+    .main-footer {
+        background-color: var(--f-bg); color: var(--f-text);
+        padding-top: 50px; font-family: 'Lato', sans-serif; font-size: 0.95rem;
+        position: relative; width: 100%;
+        margin-top: auto; 
+    }
+
+    .footer-container { max-width: 1100px; margin: 0 auto; padding: 0 25px; }
+
+    .footer-content { 
+        display: flex; flex-wrap: wrap; justify-content: space-between; 
+        gap: 30px; padding-bottom: 30px; align-items: flex-start;
+    }
+    
+    /* GAUCHE : Identité */
+    .footer-identity { 
+        display: flex; flex-direction: row; align-items: center; 
+        gap: 20px; min-width: 300px; 
+    }
+    .footer-logo-img { width: 60px; height: 60px; border-radius: 8px; border: 2px solid var(--f-accent); background: #fff; object-fit: cover; }
+    .footer-info-compact { display: flex; flex-direction: column; }
+    .footer-name { 
+        color: var(--f-accent); font-family: 'Playfair Display', serif; 
+        font-size: 1.1rem; font-weight: 700; line-height: 1.2; margin-bottom: 5px; margin-top:0;
+    }
+    
+    .footer-contact-stack { display: flex; flex-direction: column; gap: 5px; font-size: 0.85rem; opacity: 0.8; }
+    /* Liens cliquables */
+    .footer-link { text-decoration: none; color: inherit; transition: color 0.3s; display: inline-block; }
+    .footer-link:hover { color: var(--f-accent); transform: translateX(2px); }
+
+    /* DROITE : Dock Icones */
+    .footer-dock-col { 
+        display: flex; flex-direction: column; align-items: flex-end; 
+        gap: 10px; margin-left: auto; 
+    }
+    .dock-group { display: flex; flex-direction: column; align-items: flex-end; gap: 5px; }
+    .dock-label { 
+        font-family: 'Montserrat', sans-serif; font-size: 0.8rem; 
+        text-transform: uppercase; color: var(--f-accent); opacity: 0.7; 
+    }
+    
+    .icon-dock { display: flex; gap: 15px; flex-wrap: wrap; justify-content: flex-end; align-items: center; }
+
+    /* Style Boutons Icones */
+    .icon-btn { 
+        position: relative; width: 45px; height: 45px; border-radius: 50%; 
+        background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(217, 165, 38, 0.3); 
+        display: flex; align-items: center; justify-content: center; 
+        font-size: 1.3rem; text-decoration: none; 
+        transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+        cursor: pointer; color: #fff; 
+    }
+    .icon-btn:hover { 
+        transform: translateY(-5px) scale(1.1); background: #fff; border-color: #fff; 
+        box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3); 
+    }
+
+    /* Couleurs Marques au survol */
+    .brand-whatsapp { color: #25D366 !important; } .icon-btn:hover .brand-whatsapp { color: #25D366 !important; }
+    .brand-discord { color: #5865F2 !important; } .icon-btn:hover .brand-discord { color: #5865F2 !important; }
+    .brand-linkedin { color: #0077b5 !important; } .icon-btn:hover .brand-linkedin { color: #0077b5 !important; }
+    .brand-instagram { color: #E1306C !important; } .icon-btn:hover .brand-instagram { color: #E1306C !important; }
+    .brand-tiktok { color: #00f2ea !important; text-shadow: 2px 2px 0px #ff0050; } .icon-btn:hover .brand-tiktok { color: #000 !important; text-shadow: none; } 
+    .brand-nav { color: var(--f-accent) !important; } .icon-btn:hover .brand-nav { color: var(--f-bg) !important; }
+
+    /* Tooltips */
+    .icon-btn::after {
+        content: attr(data-tooltip); position: absolute; bottom: 120%; left: 50%; transform: translateX(-50%) translateY(10px);
+        background-color: #fff; color: var(--f-bg); padding: 5px 12px; border-radius: 20px;
+        font-size: 0.75rem; font-weight: 700; white-space: nowrap; opacity: 0; visibility: hidden; transition: all 0.3s ease;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.2); pointer-events: none; z-index: 100;
+    }
+    .icon-btn::before {
+        content: ''; position: absolute; bottom: 110%; left: 50%; transform: translateX(-50%) translateY(10px);
+        border-width: 6px; border-style: solid; border-color: #ffffff transparent transparent transparent;
+        opacity: 0; visibility: hidden; transition: all 0.3s ease; z-index: 100;
+    }
+    .icon-btn:hover::after, .icon-btn:hover::before { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+
+    .dock-separator { width: 1px; height: 30px; background-color: rgba(255,255,255,0.2); margin: 0 10px; }
+    .footer-bottom { 
+        text-align: center; padding: 15px 0; font-size: 0.8rem; 
+        color: rgba(255,255,255,0.4); background-color: rgba(0,0,0,0.2); 
+        border-top: 1px solid rgba(255,255,255,0.05); width: 100%;
+    }
+
+    /* Back to Top (Nouveau style) */
+    #backToTop {
+        position: fixed; bottom: 30px; right: 30px; background-color: var(--f-accent); color: var(--f-bg);
+        width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+        font-size: 1.2rem; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.2); opacity: 0; pointer-events: none;
+        transition: all 0.3s ease; z-index: 100;
+    }
+    #backToTop.show { opacity: 1; pointer-events: all; }
+    #backToTop:hover { transform: translateY(-5px); background-color: #fff; }
 
     @media (max-width: 768px) {
-        .top-inner { flex-direction: column; gap: 15px; }
-        .header-left { flex-direction: column; text-align: center; }
-        .header-right-btn { width: 100%; justify-content: center; }
-        .bloc-header { align-items: flex-start; }
+        .footer-content { flex-direction: column; align-items: center; text-align: center; }
+        .footer-identity { flex-direction: column; text-align: center; }
+        .footer-dock-col { align-items: center; width: 100%; gap: 30px; margin-left: 0; }
+        .icon-dock { justify-content: center; flex-wrap: wrap; }
+        .dock-group { align-items: center; }
+        .dock-separator { display: none; }
     }
   </style>
 </head>
 <body>
 
-  <!-- 1. HEADER -->
-  <div class="top-banner">
-    <div class="top-inner">
-      
-      <!-- Gauche -->
-      <div class="header-left">
-          <div class="tb-logo">
-            <img src="https://projettechacademy.github.io/Juridique/Asset/Logo_juriste.png" alt="Logo" onerror="this.src='https://projettechacademy.github.io/Juridique/Asset/Logo_juriste.jpg'">
-          </div>
-          <div class="tb-text-container">
-            <div class="tb-title">
-                <span class="part1">💫 The Jurist Elite Club By Studi ✨</span><br>
-                <span class="part2">La Villa des Juristes Brisés 💔 sur l’Île de L’INSTRUCTION !🏝</span>
+  <!-- HEADER SPECIAL CLUB - THE JURIST ELITE CLUB -->
+  <div class="top-bar">
+    <div class="top-bar-container">
+        <!-- 1. Identité Spéciale Club (Gauche) -->
+        <div class="top-bar-left">
+            <!-- Logo Juriste -->
+            <img src="https://projettechacademy.github.io/Juridique/Asset/Logo_juriste.png" 
+                 onerror="this.src='https://projettechacademy.github.io/Juridique/Asset/Logo_juriste.jpg';" 
+                 alt="Logo Club" class="logo-top-bar">
+            
+            <div class="identity-stack">
+                <!-- Titre en Blanc (Gras défini dans CSS) -->
+                <span class="club-title-main">The Jurist Elite Club By Studi</span>
+                <!-- Sous-titre en Jaune (Gras défini dans CSS) -->
+                <span class="club-subtitle">La Villa des Juristes Brisés 💔 sur l’Île de L’INSTRUCTION ! 🏝</span>
             </div>
-          </div>
-      </div>
+        </div>
+        
+        <!-- 2. Navigation Icones (Centre) -->
+        <div class="top-bar-center">
+            <!-- MMPA Logo à la place de la Maison (Redirection locale index.html) -->
+            <a href="index.html" class="header-icon-btn" data-tooltip="Start/Accueil" style="padding: 0; overflow: hidden; border: none;">
+                <img src="https://projettechacademy.github.io/Juridique/Asset/Logo_MMPA.jpeg" alt="MMPA" class="nav-mmpa-img">
+            </a>
 
-      <!-- Droite -->
-      <div onclick="switchFormation('accueil')" class="header-right-btn">
-          <i class="fa-solid fa-house"></i>
-          <span>Accueil</span>
-      </div>
+            <a href="https://projettechacademy.github.io/Juridique/00_Autres/Mon_Espace_Juriste_Tableau_de_bord_personnel.html" target="_blank" class="header-icon-btn" data-tooltip="Mon Espace">📊</a>
+            <a href="https://projettechacademy.github.io/Juridique/00_Autres/Lexique_Latin_Juridique.html" target="_blank" class="header-icon-btn" data-tooltip="Lexique Latin">📜</a>
+            <a href="https://projettechacademy.github.io/Juridique/00_Autres/formation_live_juriste.html" target="_blank" class="header-icon-btn" data-tooltip="Planning Live">📅</a>
+            
+            <!-- Photo Profil -->
+            <a href="https://projettechacademy.github.io/Juridique/00_Autres/A_propos_de_moi.html" target="_blank" class="header-icon-btn" data-tooltip="À propos de moi" style="padding: 0; overflow: hidden; border: 2px solid #D9A526;">
+                <img src="https://projettechacademy.github.io/Juridique/Asset/Photo_Mathilde_Martine_PAISLEY.png" 
+                     onerror="this.src='https://projettechacademy.github.io/Juridique/Asset/Photo_Mathilde_Martine_PAISLEY.jpg';" 
+                     alt="Profil" class="nav-profile-img">
+            </a>
+        </div>
 
+        <!-- 3. Portfolio (Droite) -->
+        <a href="https://projettechacademy.github.io/CV_MMPA-CV-Mathilde-Martine-PAISLEY/" target="_blank" class="btn-portfolio-cosmic">
+            <span>📄</span> Mon portfolio
+        </a>
     </div>
   </div>
 
@@ -404,23 +615,70 @@
 
   </main>
 
-  <!-- FOOTER -->
-  <footer>
-    <div style="max-width: 600px; margin: 0 auto;">
-        <div style="font-size: 16px; font-weight: 700; margin-bottom: 10px;">💫 The Jurist Elite Club By Studi ✨</div>
-        <div style="height: 2px; width: 60px; background: rgba(255,255,255,0.3); margin: 0 auto 15px auto;"></div>
-        <div style="font-size: 14px; opacity: 0.9; margin-bottom: 20px;">La Villa des Juristes Brisés 💔 sur l’Île de L’INSTRUCTION !🏝</div>
-        <div style="font-size: 12px; opacity: 0.6;">© 2025 Mathilde Martine PAISLEY • Tous droits réservés</div>
+  <!-- ======================================================================
+       FOOTER UNIVERSEL - MATHILDE PAISLEY
+       ====================================================================== -->
+  <footer class="main-footer">
+    <div class="footer-container">
+        <div class="footer-content">
+            
+            <!-- Identité (Gauche) -->
+            <div class="footer-identity">
+                <img src="https://projettechacademy.github.io/Juridique/Asset/Logo_MMPA.jpeg" alt="Logo MMPA" class="footer-logo-img">
+                <div class="footer-info-compact">
+                    <div class="footer-name">Mathilde Martine PAISLEY</div>
+                    <div class="footer-contact-stack">
+                        <a href="mailto:Mathilde.martine.paisley@gmail.com" class="footer-link">📧 Mathilde.martine.paisley@gmail.com</a>
+                        <a href="tel:+33685900887" class="footer-link">📲 06 85 90 08 87</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dock Navigation & Réseaux (Droite) -->
+            <div class="footer-dock-col">
+                <div class="dock-group">
+                    <div class="dock-label">Navigation & Réseaux</div>
+                    <div class="icon-dock">
+                        <!-- Navigation -->
+                        <a href="https://projettechacademy.github.io/Juridique/index.html" target="_blank" class="icon-btn" data-tooltip="Start/Accueil"><span class="brand-nav">🏠</span></a>
+                        <a href="https://projettechacademy.github.io/Juridique/00_Autres/Mon_Espace_Juriste_Tableau_de_bord_personnel.html" target="_blank" class="icon-btn" data-tooltip="Mon Espace"><span class="brand-nav">📊</span></a>
+                        <a href="https://projettechacademy.github.io/Juridique/00_Autres/Lexique_Latin_Juridique.html" target="_blank" class="icon-btn" data-tooltip="Lexique Latin"><span class="brand-nav">📜</span></a>
+                        <a href="https://projettechacademy.github.io/Juridique/00_Autres/formation_live_juriste.html" target="_blank" class="icon-btn" data-tooltip="Planning Live"><span class="brand-nav">📅</span></a>
+                        <a href="https://projettechacademy.github.io/Juridique/00_Autres/A_propos_de_moi.html" target="_blank" class="icon-btn" data-tooltip="À propos de moi"><span class="brand-nav">👤</span></a>
+                        
+                        <!-- Séparateur -->
+                        <div class="dock-separator"></div>
+
+                        <!-- Réseaux -->
+                        <a href="https://chat.whatsapp.com/IoMXFl4o2otExYKCPVj22b" target="_blank" class="icon-btn" data-tooltip="WhatsApp"><i class="fab fa-whatsapp brand-whatsapp"></i></a>
+                        <a href="https://discord.gg/qwNPV8QzFt" target="_blank" class="icon-btn" data-tooltip="Discord"><i class="fab fa-discord brand-discord"></i></a>
+                        <a href="https://www.linkedin.com/in/mathilde-martine-paisley-1a4422382/" target="_blank" class="icon-btn" data-tooltip="LinkedIn"><i class="fab fa-linkedin brand-linkedin"></i></a>
+                        <a href="https://www.instagram.com/enervyx/" target="_blank" class="icon-btn" data-tooltip="Instagram @enervyx"><i class="fab fa-instagram brand-instagram"></i></a>
+                        <a href="https://www.tiktok.com/@enervyx/" target="_blank" class="icon-btn" data-tooltip="TikTok @enervyx"><i class="fab fa-tiktok brand-tiktok"></i></a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <div class="footer-container">
+            <p>© 2025 Tous droits réservés – Création : 2025 – Dernière mise à jour : Novembre 2025</p>
+        </div>
     </div>
   </footer>
 
-  <!-- 
-    CORRECTION ICI : Ajout de l'ID "backToTop" 
-    Ajout aussi de "opacity-0" et "pointer-events-none" pour qu'il soit caché par défaut 
-  -->
-  <button id="backToTop" onclick="window.scrollTo({top:0, behavior:'smooth'})" class="fixed bottom-8 right-8 bg-[#D9A526] text-white w-12 h-12 rounded-full shadow-lg hover:bg-[#0F2C48] transition-all duration-300 z-50 flex items-center justify-center border-2 border-white opacity-0 pointer-events-none">
-      <i class="fa-solid fa-arrow-up"></i>
-  </button>
+  <!-- Bouton Retour Haut & Script (Nouveau) -->
+  <div id="backToTop" onclick="window.scrollTo(0,0)"><i class="fas fa-arrow-up"></i></div>
+  <script>
+    window.addEventListener('scroll', () => {
+        const btn = document.getElementById('backToTop');
+        if (btn) {
+            if (window.scrollY > 300) btn.classList.add('show'); else btn.classList.remove('show');
+        }
+    });
+  </script>
 
   <script>
     const BASE_URL = "https://projettechacademy.github.io/Juridique/";
@@ -1106,20 +1364,6 @@
         
         // Scroll top léger
         window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    // --- BOUTON RETOUR HAUT ---
-    const backToTopBtn = document.getElementById('backToTop');
-    window.onscroll = function() {
-        if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
-            backToTopBtn.classList.remove('opacity-0', 'pointer-events-none');
-        } else {
-            backToTopBtn.classList.add('opacity-0', 'pointer-events-none');
-        }
-    };
-    
-    function scrollToTop() {
-        window.scrollTo({top: 0, behavior: 'smooth'});
     }
 
     // Lancement au chargement
