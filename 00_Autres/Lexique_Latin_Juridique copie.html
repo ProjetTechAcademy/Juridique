@@ -4,204 +4,119 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Les Indispensables du Latin Juridique</title>
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- FontAwesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <!-- Polices -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;600;800&family=Merriweather:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-    
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: { sans: ['Outfit', 'sans-serif'], serif: ['Merriweather', 'serif'] },
-                    colors: {
-                        brandBlue: '#0F2C48',
-                        brandGold: '#D9A526',
-                        brandIvory: '#F6F2E8',
-                        brandBronze: '#B4792A',
-                    }
-                }
-            }
-        }
-    </script>
-
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <style>
-        :root{
-            --cta: #D9A526;
-            --brand-blue: #0F2C48;
-            --ivory: #F6F2E8;
-            --bronze: #B4792A;
-        }
-
-        body { margin: 0; background-color: var(--ivory); color: var(--brand-blue); font-family: 'Outfit', sans-serif; display: flex; flex-direction: column; min-height: 100vh; }
+        body { font-family: 'Inter', sans-serif; }
         .serif-font { font-family: 'Merriweather', serif; }
-
-        /* --- HEADER STICKY --- */
-        .top-banner {
-            position: sticky; top: 0; left: 0; right: 0; z-index: 10000;
-            background: var(--brand-blue); color: white;
-            box-shadow: 0 4px 20px rgba(15,44,72,0.25);
-            padding: 12px 0; border-bottom: 4px solid var(--cta);
-        }
-        .top-inner {
-            max-width: 1400px; margin: 0 auto; padding: 0 24px;
-            display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px;
-        }
-        .header-left { display: flex; align-items: center; gap: 16px; flex-shrink: 0; }
-        .tb-logo {
-            width: 50px; height: 50px; flex: 0 0 50px; border-radius: 50%; overflow: hidden;
-            background: white; display: flex; align-items: center; justify-content: center;
-            border: 2px solid var(--cta);
-        }
-        .tb-logo img { width: 100%; height: 100%; object-fit: cover; }
-        .tb-text-container { display: flex; flex-direction: column; justify-content: center; }
-        .tb-title { font-weight: 700; font-size: 14px; color: white; line-height: 1.3; }
-        .tb-title .part2 { color: var(--cta); font-style: italic; font-weight: 600; display: none; } /* Hidden on mobile to save space */
-        @media(min-width: 1024px) {
-            .tb-title { font-size: 16px; }
-            .tb-title .part2 { display: block; }
-            .tb-logo { width: 60px; height: 60px; flex: 0 0 60px; }
-        }
-
-        /* Navigation Menu Container */
-        .nav-menu {
-            display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: center;
-        }
-
-        /* Unified Nav Buttons Style */
-        .nav-btn {
-            display: flex; align-items: center; gap: 8px;
-            padding: 8px 16px; border-radius: 20px;
-            font-size: 13px; font-weight: 600;
-            color: rgba(255,255,255,0.8);
-            border: 1px solid transparent;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            background-color: transparent;
-            cursor: pointer;
-        }
-        .nav-btn:hover {
-            background-color: rgba(255,255,255,0.1);
-            color: white;
-            border-color: rgba(255,255,255,0.3);
-            transform: translateY(-2px);
-        }
-        /* Active State for Tabs */
-        .nav-btn.active {
-            background-color: var(--cta);
-            color: var(--brand-blue);
-            border-color: var(--cta);
-            box-shadow: 0 4px 12px rgba(217,165,38,0.3);
-        }
-        /* External Links Style (Yellow Border) */
-        .nav-btn.external {
-            border: 1px solid rgba(217, 165, 38, 0.4);
-        }
-
-        /* --- UTILS LEXIQUE --- */
+        
+        /* Charte Graphique */
         .brand-blue-text { color: #0F2C48; }
         .brand-blue-bg { background-color: #0F2C48; }
+        
         .brand-yellow-text { color: #D9A526; }
         .brand-yellow-bg { background-color: #D9A526; }
-        .brand-ivory-bg { background-color: #F6F2E8; }
-        .brand-bronze-text { color: #B4792A; }
+        .brand-yellow-border { border-color: #D9A526; }
         
+        .brand-ivory-bg { background-color: #F6F2E8; }
+        .brand-ivory-light { background-color: #fcfbf7; }
+        
+        .brand-bronze-text { color: #B4792A; }
+        .brand-bronze-bg { background-color: #B4792A; }
+
+        /* Navigation Active State */
+        .nav-link.active {
+            border-bottom: 3px solid #D9A526;
+            color: #D9A526;
+        }
+
         /* Flip Card Effects */
         .perspective { perspective: 1000px; }
         .card-inner {
-            position: relative; width: 100%; height: 100%;
-            text-align: center; transition: transform 0.6s; transform-style: preserve-3d;
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
         }
         .card-front, .card-back {
-            position: absolute; width: 100%; height: 100%;
-            -webkit-backface-visibility: hidden; backface-visibility: hidden;
-            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             border-radius: 0.5rem;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
         }
-        .card-back { transform: rotateY(180deg); overflow-y: auto; }
-        .flipped .card-inner { transform: rotateY(180deg); }
+        .card-back {
+            transform: rotateY(180deg);
+            overflow-y: auto; /* Allow scrolling for long content */
+        }
+        .flipped .card-inner {
+            transform: rotateY(180deg);
+        }
 
         /* Accordion Transition */
-        .accordion-content { transition: max-height 0.3s ease-out; max-height: 0; overflow: hidden; }
-        .accordion-content.open { max-height: 5000px; transition: max-height 0.5s ease-in; }
+        .accordion-content {
+            transition: max-height 0.3s ease-out;
+            max-height: 0;
+            overflow: hidden;
+        }
+        .accordion-content.open {
+            max-height: 5000px; /* Arbitrary large number */
+            transition: max-height 0.5s ease-in;
+        }
 
         /* Scrollbar */
         ::-webkit-scrollbar { width: 8px; height: 8px; }
         ::-webkit-scrollbar-track { background: #f1f1f1; }
         ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
         ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .top-inner { flex-direction: column; gap: 15px; text-align: center; }
-            .header-left { flex-direction: column; }
-            .nav-menu { width: 100%; justify-content: center; gap: 8px; }
-            .nav-btn { width: auto; flex-grow: 1; justify-content: center; font-size: 12px; padding: 8px 10px; }
-        }
     </style>
 </head>
-<body>
+<body class="bg-slate-50 text-slate-800 flex flex-col min-h-screen">
 
-    <!-- === A. LE HEADER COMPLET === -->
-    <div class="top-banner">
-        <div class="top-inner">
-            <!-- Logo & Titre -->
-            <div class="header-left">
-                <div class="tb-logo">
-                    <img src="https://projettechacademy.github.io/Juridique/Asset/Logo_juriste.png" alt="Logo" onerror="this.src='https://projettechacademy.github.io/Juridique/Asset/Logo_juriste.jpg'">
-                </div>
-                <div class="tb-text-container">
-                    <div class="tb-title">
-                        <span class="part1">💫 The Jurist Elite Club By Studi ✨</span><br>
-                        <span class="part2">La Villa des Juristes Brisés 💔 sur l’Île de L’INSTRUCTION !🏝</span>
+    <nav class="brand-blue-bg text-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center h-auto md:h-20 py-4 md:py-0">
+                <div class="flex items-center gap-3 mb-4 md:mb-0">
+                    <div class="w-10 h-10 rounded-full bg-[#D9A526] flex items-center justify-center text-[#0F2C48] font-bold text-xl">
+                        <i class="fa-solid fa-scale-balanced"></i>
+                    </div>
+                    <div>
+                        <h1 class="font-bold text-lg md:text-xl tracking-wide uppercase">Les Indispensables du Latin</h1>
+                        <p class="text-xs text-[#D9A526] font-medium">Lexique Juridique & Social</p>
                     </div>
                 </div>
-            </div>
 
-            <!-- Barre de Navigation Unifiée -->
-            <div class="nav-menu">
-                <!-- Accueil -->
-                <a href="index.html" class="nav-btn">
-                    <i class="fa-solid fa-house"></i> Accueil
-                </a>
-
-                <!-- Onglet 1: Lexique -->
-                <button onclick="switchTab('lexique')" id="tab-lexique" class="nav-btn active">
-                    <i class="fa-solid fa-book"></i> Lexique A-Z
-                </button>
-
-                <!-- Onglet 2: Jeu -->
-                <button onclick="switchTab('game')" id="tab-game" class="nav-btn">
-                    <i class="fa-solid fa-graduation-cap"></i> Jeu / Entraînement
-                </button>
-
-                <!-- Liens Externes -->
-                <a href="https://projettechacademy.github.io/Juridique/00_Autres/formation_live_juriste.html" target="_blank" class="nav-btn external">
-                    <i class="fa-solid fa-video"></i> Planning Live
-                </a>
-
-                <a href="https://projettechacademy.github.io/Juridique/00_Autres/Mon_Espace_Juriste_Tableau_de_bord_personnel.html" target="_blank" class="nav-btn external">
-                    <i class="fa-solid fa-user-tie"></i> Mon Espace
-                </a>
+                <div class="flex space-x-8 font-medium text-sm uppercase tracking-wider">
+                    <button onclick="switchTab('lexique')" id="tab-lexique" class="nav-link active py-2 md:py-6 hover:text-[#D9A526] transition-colors flex items-center gap-2">
+                        <i class="fa-solid fa-list"></i> Lexique A-Z
+                    </button>
+                    <button onclick="switchTab('game')" id="tab-game" class="nav-link py-2 md:py-6 hover:text-[#D9A526] transition-colors flex items-center gap-2">
+                        <i class="fa-solid fa-graduation-cap"></i> Jeu / Entraînement
+                    </button>
+                </div>
             </div>
         </div>
-    </div>
+    </nav>
 
-    <!-- === C. CONTENU PRINCIPAL === -->
     <main class="flex-grow w-full max-w-7xl mx-auto p-4 md:p-8 relative">
 
-        <!-- VIEW 1: LEXIQUE (Accordéons) -->
         <div id="view-lexique" class="transition-opacity duration-300">
             
-            <div class="bg-white p-6 rounded-lg shadow-sm border-l-4 border-[#D9A526] mb-8">
+            <div class="brand-ivory-bg p-6 rounded-lg shadow-sm border-l-4 border-[#D9A526] mb-8">
                 <div class="flex flex-col md:flex-row gap-4 items-center">
                     <div class="relative w-full md:w-2/3">
                         <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 transform -translate-y-1/2 brand-blue-text"></i>
                         <input type="text" id="searchInput" placeholder="Rechercher un mot latin, une définition..." 
-                               class="w-full pl-10 pr-4 py-3 bg-[#F6F2E8] border border-slate-300 rounded focus:ring-2 focus:ring-[#D9A526] focus:border-[#D9A526] outline-none shadow-sm transition-all text-[#0F2C48]">
+                               class="w-full pl-10 pr-4 py-3 bg-white border border-slate-300 rounded focus:ring-2 focus:ring-[#D9A526] focus:border-[#D9A526] outline-none shadow-sm transition-all">
                     </div>
                     <div class="w-full md:w-1/3 text-right">
                         <span class="text-sm font-bold brand-blue-text"><span id="total-terms">0</span> locutions référencées</span>
@@ -209,8 +124,7 @@
                 </div>
             </div>
 
-            <!-- Sticky Alphabet Nav -->
-            <div class="sticky top-40 md:top-32 z-40 bg-[#F6F2E8]/95 backdrop-blur-sm border-b border-slate-200 py-3 mb-6 overflow-x-auto whitespace-nowrap shadow-sm rounded-lg">
+            <div class="sticky top-20 z-40 bg-white/95 backdrop-blur-sm border-b border-slate-200 py-3 mb-6 overflow-x-auto whitespace-nowrap shadow-sm">
                 <div class="flex gap-2 px-2" id="alphabet-nav">
                     <!-- Letters injected by JS -->
                 </div>
@@ -226,8 +140,7 @@
             </div>
         </div>
 
-        <!-- VIEW 2: GAME (Flashcards) -->
-        <div id="view-game" class="hidden transition-opacity duration-300 flex flex-col items-center justify-center min-h-[50vh]">
+        <div id="view-game" class="hidden transition-opacity duration-300 flex flex-col items-center justify-center min-h-[60vh]">
             
             <div class="text-center mb-8">
                 <h2 class="text-2xl font-bold brand-blue-text mb-2">Mode Entraînement</h2>
@@ -237,7 +150,6 @@
             <div class="perspective w-full max-w-lg h-[400px] cursor-pointer group" onclick="flipCard()">
                 <div class="card-inner transition-transform duration-700 relative w-full h-full" id="game-card-inner">
                     
-                    <!-- Front -->
                     <div class="card-front brand-blue-bg text-white border-4 border-[#D9A526] p-8">
                         <div class="absolute top-4 right-4 text-[#D9A526] text-4xl opacity-20">
                             <i class="fa-solid fa-question"></i>
@@ -247,7 +159,6 @@
                         <p class="mt-8 text-sm text-slate-300 italic animate-pulse">Cliquez pour révéler</p>
                     </div>
 
-                    <!-- Back -->
                     <div class="card-back bg-white border border-slate-200 shadow-xl p-8">
                          <div class="absolute top-4 right-4 brand-bronze-text text-4xl opacity-20">
                             <i class="fa-solid fa-lightbulb"></i>
@@ -280,45 +191,28 @@
 
     </main>
 
-    <!-- Back to Top -->
     <button onclick="scrollToTop()" id="backToTop" class="fixed bottom-8 right-8 w-12 h-12 bg-[#0F2C48] text-white rounded-full shadow-lg flex items-center justify-center hover:bg-[#D9A526] transition-colors z-50 opacity-0 pointer-events-none duration-300">
         <i class="fa-solid fa-arrow-up"></i>
     </button>
 
-    <!-- === D. FOOTER === -->
     <footer class="brand-blue-bg text-white mt-auto">
-        <div class="max-w-7xl mx-auto px-4 py-8 md:py-12">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
-                <!-- Col 1 -->
+        <div class="max-w-7xl mx-auto px-4 py-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
+                
                 <div>
-                    <h3 class="text-[#D9A526] font-bold text-lg mb-4 flex items-center justify-center md:justify-start gap-2">
-                        <i class="fa-solid fa-pen-nib"></i> Mathilde Martine PAISLEY
-                    </h3>
-                    <p class="text-slate-300 text-sm leading-relaxed">
-                        Création originale et pédagogique pour les étudiants en droit.<br>
-                        "Les indispensables du Latin Juridique"
-                    </p>
+                    <h3 class="text-[#D9A526] font-bold text-lg mb-1">Créé par Mathilde Martine PAISLEY</h3>
+                    <p class="text-slate-400 text-xs">Document pédagogique à usage interne</p>
                 </div>
-                <!-- Col 2 -->
-                <div class="md:text-center">
-                    <h3 class="text-[#F6F2E8] font-bold text-lg mb-4">Liens Utiles</h3>
-                    <ul class="space-y-2 text-sm text-slate-300">
-                        <li><a href="index.html" class="hover:text-[#D9A526] transition-colors">Accueil</a></li>
-                        <li><a href="https://projettechacademy.github.io/Juridique/00_Autres/formation_live_juriste.html" class="hover:text-[#D9A526] transition-colors">Planning Live</a></li>
-                        <li><a href="#" class="hover:text-[#D9A526] transition-colors">Mentions Légales</a></li>
-                    </ul>
+
+                <div class="flex gap-4">
+                    <a href="#" class="text-slate-300 hover:text-white transition-colors text-sm">Mentions Légales</a>
+                    <span class="text-slate-600">|</span>
+                    <a href="#" class="text-slate-300 hover:text-white transition-colors text-sm">Contact</a>
                 </div>
-                <!-- Col 3 -->
-                <div class="md:text-right">
-                    <h3 class="text-[#F6F2E8] font-bold text-lg mb-4">Contact</h3>
-                    <p class="text-slate-300 text-sm mb-2"><i class="fa-regular fa-envelope mr-2"></i> contact@evaphilippe.com</p>
-                    <div class="flex gap-4 mt-4 justify-center md:justify-end">
-                        <a href="#" class="w-8 h-8 rounded-full bg-[#D9A526] text-[#0F2C48] flex items-center justify-center hover:bg-white transition-colors"><i class="fa-brands fa-linkedin-in"></i></a>
-                    </div>
+
+                <div class="text-slate-400 text-sm">
+                    &copy; 2025 - Tous droits réservés
                 </div>
-            </div>
-            <div class="border-t border-white/10 mt-8 pt-8 text-center text-xs text-slate-400">
-                <p>&copy; 2025 Mathilde Martine PAISLEY - Tous droits réservés.</p>
             </div>
         </div>
     </footer>
@@ -402,10 +296,14 @@
         // UTILS
         const $ = (id) => document.getElementById(id);
         
+        // DOM Elements References
         let totalTermsEl, container, alphabetNav, searchInput, noResults, backToTopBtn;
         
+        // --- VIEW 1: LEXICON LOGIC ---
+
         function initLexicon() {
             totalTermsEl.textContent = lexiconData.length;
+            // Removed erroneous reference to totalCountEl
 
             // Group by Letter
             const grouped = {};
@@ -419,7 +317,7 @@
             const letters = Object.keys(grouped).sort();
             letters.forEach(letter => {
                 const btn = document.createElement('button');
-                btn.className = 'px-3 py-1 text-sm font-bold text-slate-500 hover:text-[#D9A526] hover:bg-white rounded transition-colors';
+                btn.className = 'px-3 py-1 text-sm font-bold text-slate-500 hover:text-[#D9A526] hover:bg-slate-50 rounded transition-colors';
                 btn.textContent = letter;
                 btn.onclick = () => scrollToLetter(letter);
                 alphabetNav.appendChild(btn);
@@ -476,7 +374,9 @@
         function toggleAccordion(letter) {
             const content = $(`content-${letter}`);
             const icon = $(`icon-${letter}`);
+            
             const isOpen = content.classList.contains('open');
+            
             if (isOpen) {
                 content.classList.remove('open');
                 icon.style.transform = 'rotate(0deg)';
@@ -488,10 +388,12 @@
 
         function scrollToLetter(letter) {
             const el = $(`section-${letter}`);
+            // Open it first
             const content = $(`content-${letter}`);
             if (!content.classList.contains('open')) toggleAccordion(letter);
             
-            const offset = 220; // Adjusted for taller header
+            // Scroll
+            const offset = 180; // Adjust for navbar + sticky alpha nav
             const bodyRect = document.body.getBoundingClientRect().top;
             const elementRect = el.getBoundingClientRect().top;
             const elementPosition = elementRect - bodyRect;
@@ -503,15 +405,17 @@
             });
         }
 
-        // --- GAME LOGIC ---
+        // --- VIEW 2: GAME LOGIC ---
         let currentCardIndex = -1;
 
         function pickRandomCard() {
+            // Unflip first
             const cardInner = $('game-card-inner');
             const wasFlipped = cardInner.parentElement.classList.contains('flipped');
+            
             if (wasFlipped) {
                 cardInner.parentElement.classList.remove('flipped');
-                setTimeout(() => setNewCardContent(), 300);
+                setTimeout(() => setNewCardContent(), 300); // Wait for half flip
             } else {
                 setNewCardContent();
             }
@@ -527,6 +431,8 @@
             const item = lexiconData[currentCardIndex];
 
             $('card-term').textContent = item.term;
+            
+            // Back
             $('card-term-back').textContent = item.term;
             $('card-trans').textContent = `"${item.trans}"`;
             $('card-def').textContent = item.def;
@@ -542,20 +448,21 @@
             pickRandomCard();
         }
 
-        function switchTab(tabId) {
-            document.querySelectorAll('.nav-btn').forEach(el => {
-                if(el.id.startsWith('tab-')) el.classList.remove('active');
-            });
-            const btn = $(`tab-${tabId}`);
-            if(btn) btn.classList.add('active');
 
+        // --- TAB SWITCHING ---
+        function switchTab(tabId) {
+            // Buttons
+            document.querySelectorAll('.nav-link').forEach(el => el.classList.remove('active'));
+            $(`tab-${tabId}`).classList.add('active');
+
+            // Views
             if (tabId === 'lexique') {
                 $('view-lexique').classList.remove('hidden');
                 $('view-game').classList.add('hidden');
             } else {
                 $('view-lexique').classList.add('hidden');
                 $('view-game').classList.remove('hidden');
-                pickRandomCard();
+                pickRandomCard(); // Start game
             }
         }
 
@@ -563,14 +470,19 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
+
+        // INITIALIZATION
         function init() {
+            // Initialize References
             totalTermsEl = $('total-terms');
+            // REMOVED: totalCountEl = $('total-count'); <--- Cause of the error
             container = $('lexicon-container');
             alphabetNav = $('alphabet-nav');
             searchInput = $('searchInput');
             noResults = $('noResults');
             backToTopBtn = $('backToTop');
 
+            // --- SEARCH LOGIC ---
             searchInput.addEventListener('input', (e) => {
                 const query = e.target.value.toLowerCase();
                 const sections = container.children;
@@ -584,7 +496,7 @@
                     cards.forEach(card => {
                         const text = card.textContent.toLowerCase();
                         if (text.includes(query)) {
-                            card.style.display = 'flex';
+                            card.style.display = 'flex'; // Restore flex display
                             sectionHasMatch = true;
                             hasResults = true;
                         } else {
@@ -592,15 +504,19 @@
                         }
                     });
 
+                    // Open accordion if match found inside, or if query is cleared
                     if (query.length > 0 && sectionHasMatch) {
                         section.style.display = 'block';
-                        if (!content.classList.contains('open')) content.classList.add('open');
+                        if (!content.classList.contains('open')) {
+                            content.classList.add('open'); // Force open
+                        }
                     } else if (query.length > 0 && !sectionHasMatch) {
                         section.style.display = 'none';
                     } else {
+                        // Reset: query empty
                         section.style.display = 'block';
                         cards.forEach(c => c.style.display = 'flex');
-                        content.classList.remove('open');
+                        content.classList.remove('open'); // Collapse all on reset
                     }
                 });
 
@@ -611,6 +527,7 @@
                 }
             });
 
+            // --- BACK TO TOP ---
             window.onscroll = function() {
                 if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
                     backToTopBtn.classList.remove('opacity-0', 'pointer-events-none');
@@ -621,6 +538,7 @@
                 }
             };
             
+            // Start App
             initLexicon();
         }
 
