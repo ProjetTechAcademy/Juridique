@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Jurist Elite Club - Dashboard V18</title>
+    <title>The Jurist Elite Club - Dashboard V19</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome -->
@@ -24,7 +24,7 @@
 
         body { 
             margin: 0; 
-            background-color: #F6F2E8; /* FOND IVOIRE (CREME) - CONFIRMÉ */
+            background-color: #F6F2E8; /* FOND IVOIRE CONFIRMÉ */
             color: #0F2C48; /* TEXTE BLEU */
             font-family: 'Outfit', sans-serif; 
             display: flex;
@@ -73,6 +73,7 @@
             transition: all 0.2s ease;
             text-decoration: none;
             position: relative;
+            cursor: pointer;
         }
         .nav-icon-btn:hover {
             background-color: #D9A526;
@@ -211,27 +212,32 @@
                 </div>
             </div>
 
-            <!-- Boutons Accès Rapide (ICÔNES UNIQUEMENT) -->
+            <!-- Boutons Accès Rapide (TOUS EN _BLANK) -->
             <div class="flex items-center gap-2">
-                <!-- BOUTON MAISON (AVEC LIEN EXTERNE) -->
-                <a href="https://projettechacademy.github.io/Juridique/index.html" target="_blank" class="nav-icon-btn" title="Accueil">
+                <!-- BOUTON MAISON -->
+                <a href="https://projettechacademy.github.io/Juridique/index.html" target="_blank" rel="noopener noreferrer" class="nav-icon-btn" title="Accueil">
                     <i class="fa-solid fa-house"></i>
                 </a>
                 
                 <div class="w-[1px] h-6 bg-white/20 mx-1"></div>
                 
-                <!-- BOUTON START (AVEC LIEN EXTERNE) -->
-                <a href="https://projettechacademy.github.io/Juridique/index.html" target="_blank" class="nav-icon-btn" title="Start">
+                <!-- BOUTON START -->
+                <a href="https://projettechacademy.github.io/Juridique/index.html" target="_blank" rel="noopener noreferrer" class="nav-icon-btn" title="Start">
                     <i class="fa-solid fa-flag-checkered text-cta"></i>
                 </a>
                 
-                <a href="https://projettechacademy.github.io/Juridique/00_Autres/Lexique_Latin_Juridique.html" target="_blank" class="nav-icon-btn" title="Lexique Juridique">
+                <!-- BOUTON LEXIQUE -->
+                <a href="https://projettechacademy.github.io/Juridique/00_Autres/Lexique_Latin_Juridique.html" target="_blank" rel="noopener noreferrer" class="nav-icon-btn" title="Lexique Juridique">
                     <i class="fa-solid fa-book text-cta"></i>
                 </a>
-                <a href="https://projettechacademy.github.io/Juridique/00_Autres/formation_live_juriste.html" target="_blank" class="nav-icon-btn" title="Planning Live">
+                
+                <!-- BOUTON PLANNING -->
+                <a href="https://projettechacademy.github.io/Juridique/00_Autres/formation_live_juriste.html" target="_blank" rel="noopener noreferrer" class="nav-icon-btn" title="Planning Live">
                     <i class="fa-solid fa-video text-cta"></i>
                 </a>
-                <a href="https://projettechacademy.github.io/Juridique/00_Autres/Mon_Espace_Juriste_Tableau_de_bord_personnel.html" target="_blank" class="nav-icon-btn" title="Mon Espace">
+                
+                <!-- BOUTON ESPACE -->
+                <a href="https://projettechacademy.github.io/Juridique/00_Autres/Mon_Espace_Juriste_Tableau_de_bord_personnel.html" target="_blank" rel="noopener noreferrer" class="nav-icon-btn" title="Mon Espace">
                     <i class="fa-solid fa-user-tie text-cta"></i>
                 </a>
             </div>
