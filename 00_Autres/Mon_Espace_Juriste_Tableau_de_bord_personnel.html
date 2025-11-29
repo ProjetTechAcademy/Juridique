@@ -3,29 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Jurist Elite Club - Dashboard V19</title>
-    <!-- Tailwind CSS -->
+    <title>🪪 COCKPIT ELITE : Mon Passeport Juriste</title>
+    
+    <!-- FAVICON AJOUTÉ (Balance de Justice) -->
+    <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/e/e0/Balance_of_Justice_SVG.svg" type="image/svg+xml">
+
+    <!-- CSS Libraries -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- FontAwesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <!-- Lucide Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
+    
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&family=Montserrat:wght@500;600;700&family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
 
     <style>
+        /* VARIABLES GLOBALES */
         :root {
             --cta: #D9A526;       /* Jaune Doré */
             --brand-blue: #0F2C48; /* Bleu Nuit */
-            --ivory: #F6F2E8;     /* Ivoire - Fond principal */
+            --ivory: #F6F2E8;     /* Ivoire */
             --bronze: #B4792A;    /* Bronze */
             --alert: #B4792A;
+            
+            /* Variables Header Spécial */
+            --h-bg: #0F2C48; 
+            --h-text: #fff; 
+            --h-accent: #D9A526; 
+            --h-bronze: #B4792A;
+
+            /* VARIABLES FOOTER */
+            --f-bg: #0F2C48; 
+            --f-text: #F6F2E8; 
+            --f-accent: #D9A526;
         }
 
         body { 
             margin: 0; 
-            background-color: #F6F2E8; /* FOND IVOIRE CONFIRMÉ */
-            color: #0F2C48; /* TEXTE BLEU */
+            background-color: var(--ivory); 
+            color: var(--brand-blue); 
             font-family: 'Outfit', sans-serif; 
             display: flex;
             flex-direction: column;
@@ -36,218 +51,212 @@
             font-family: 'Playfair Display', serif;
         }
 
-        /* --- HEADER --- */
-        .top-banner {
-            position: sticky; top: 0; left: 0; right: 0; z-index: 10000;
-            background-color: #0F2C48; /* BLEU FORCÉ */
-            color: white;
-            box-shadow: 0 4px 20px rgba(15,44,72,0.25);
-            padding: 10px 0; border-bottom: 4px solid #D9A526;
-        }
-        
-        .tb-title { 
-            font-family: 'Playfair Display', serif; 
-            font-weight: 700; 
-            font-size: 20px; 
-            color: white; 
-            line-height: 1.2; 
-        }
-        .tb-title .part2 { 
-            color: #D9A526; 
-            font-style: italic; 
-            font-weight: 400; 
-            font-size: 14px; 
-            font-family: 'Outfit', sans-serif; 
-            display: block; 
-            margin-top: 2px;
+        /* --- HEADER SPECIAL CLUB --- */
+        @keyframes cosmic-pulse {
+            0% { transform: scale(1); box-shadow: 0 5px 15px rgba(15, 44, 72, 0.3); }
+            50% { transform: scale(1.02); box-shadow: 0 15px 25px rgba(28, 181, 224, 0.4); }
+            100% { transform: scale(1); box-shadow: 0 5px 15px rgba(15, 44, 72, 0.3); }
         }
 
-        /* Navigation Buttons (Header) */
-        .nav-icon-btn {
-            width: 40px; height: 40px;
-            display: flex; align-items: center; justify-content: center;
-            border-radius: 12px;
-            background-color: rgba(255,255,255,0.1);
-            color: white;
-            border: 1px solid rgba(255,255,255,0.2);
-            transition: all 0.2s ease;
-            text-decoration: none;
-            position: relative;
-            cursor: pointer;
+        .top-bar {
+            background-color: var(--h-bg);
+            color: var(--h-text);
+            padding: 15px 0;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            position: sticky; top: 0; z-index: 10000;
+            font-family: 'Lato', sans-serif;
+            border-bottom: 4px solid var(--h-accent);
         }
-        .nav-icon-btn:hover {
-            background-color: #D9A526;
-            color: #0F2C48;
-            border-color: #D9A526;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(217, 165, 38, 0.4);
-        }
-        .nav-icon-btn i { font-size: 18px; }
         
-        /* Tooltip */
-        .nav-icon-btn:hover::after {
-            content: attr(title);
-            position: absolute;
-            bottom: -35px; left: 50%; transform: translateX(-50%);
-            background: #0F2C48; color: white;
-            padding: 4px 8px; border-radius: 4px; font-size: 10px;
-            white-space: nowrap; pointer-events: none; z-index: 100;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        .top-bar-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
         }
 
-        /* --- CARDS & INPUTS --- */
+        .top-bar-left { display: flex; align-items: center; gap: 15px; flex: 1; min-width: 320px; }
+        .logo-top-bar { width: 60px; height: 60px; border-radius: 50%; border: 2px solid var(--h-accent); object-fit: cover; flex-shrink: 0; background: #fff; }
+        .identity-stack { display: flex; flex-direction: column; justify-content: center; }
+        .club-title-main { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; letter-spacing: 0.5px; color: #ffffff; line-height: 1.1; margin-bottom: 3px; }
+        .club-subtitle { font-family: 'Lato', sans-serif; font-size: 0.7rem; color: var(--h-accent); font-weight: 600; opacity: 0.95; line-height: 1.2; }
+
+        .top-bar-center { display: flex; gap: 12px; align-items: center; }
+        .header-icon-btn {
+            position: relative; width: 40px; height: 40px; border-radius: 50%;
+            background: linear-gradient(135deg, #0F2C48 0%, #1CB5E0 100%);
+            border: 1px solid rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center;
+            font-size: 1.1rem; text-decoration: none; transition: all 0.3s ease; color: white;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        .header-icon-btn:hover { transform: translateY(3px) scale(1.1); background: linear-gradient(135deg, #163e63 0%, #20c3f0 100%); box-shadow: 0 6px 15px rgba(28, 181, 224, 0.4); }
+        .nav-mmpa-img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 2px solid var(--h-accent); }
+        .nav-profile-img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 2px solid #fff; }
+        
+        .header-icon-btn::after {
+            content: attr(data-tooltip); position: absolute; top: 130%; left: 50%; transform: translateX(-50%) translateY(-10px);
+            background-color: #fff; color: var(--h-bg); padding: 4px 10px; border-radius: 20px;
+            font-size: 0.7rem; font-weight: 700; white-space: nowrap; opacity: 0; visibility: hidden; transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2); pointer-events: none; z-index: 100;
+        }
+        .header-icon-btn:hover::after { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+
+        .btn-portfolio-cosmic {
+            padding: 8px 20px; border-radius: 50px; font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 0.9rem;
+            background: linear-gradient(135deg, #0F2C48 0%, #1CB5E0 100%); color: white !important; text-decoration: none; 
+            border: 1px solid rgba(255,255,255,0.2); display: inline-flex; align-items: center; gap: 8px; animation: cosmic-pulse 4s ease-in-out infinite;
+        }
+        .btn-portfolio-cosmic:hover { background: linear-gradient(135deg, #163e63 0%, #20c3f0 100%); }
+
+        /* --- RESTE DU DASHBOARD (Corps) --- */
         .dashboard-card {
-            background: white;
-            border-radius: 16px;
-            padding: 24px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-            border: 1px solid rgba(217, 165, 38, 0.2);
-            transition: transform 0.3s ease;
-            height: 100%;
-            display: flex; flex-direction: column;
+            background: white; border-radius: 16px; padding: 24px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); border: 1px solid rgba(217, 165, 38, 0.2);
+            transition: transform 0.3s ease; height: 100%; display: flex; flex-direction: column;
         }
-        .dashboard-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-        }
-
-        .card-header {
-            display: flex; align-items: center; gap: 10px;
-            margin-bottom: 20px; padding-bottom: 12px;
-            border-bottom: 1px solid #f1f5f9;
-        }
-        .card-icon {
-            width: 36px; height: 36px;
-            border-radius: 8px;
-            background-color: rgba(15, 44, 72, 0.1);
-            color: #0F2C48;
-            display: flex; align-items: center; justify-content: center;
-        }
-
-        .input-label {
-            display: block; font-size: 11px; font-weight: 700; 
-            text-transform: uppercase; letter-spacing: 0.05em; 
-            color: #0F2C48; margin-bottom: 4px; opacity: 0.8;
-        }
-        
-        .styled-input, .styled-select {
-            width: 100%; padding: 10px 12px;
-            border-radius: 8px; border: 1px solid #cbd5e1;
-            background-color: #f8fafc; color: #0F2C48;
-            font-size: 14px; transition: all 0.2s;
-        }
-        .styled-input:focus, .styled-select:focus {
-            outline: none; border-color: #D9A526;
-            background-color: white; box-shadow: 0 0 0 3px rgba(217, 165, 38, 0.1);
-        }
-
-        /* --- PROGRAMME BLOCKS --- */
-        .prog-block {
-            background: white; border-radius: 12px; padding: 20px;
-            border-left: 4px solid #cbd5e1;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
-            transition: all 0.3s;
-        }
+        .dashboard-card:hover { transform: translateY(-4px); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); }
+        .card-header { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid #f1f5f9; }
+        .card-icon { width: 36px; height: 36px; border-radius: 8px; background-color: rgba(15, 44, 72, 0.1); color: var(--brand-blue); display: flex; align-items: center; justify-content: center; }
+        .input-label { display: block; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--brand-blue); margin-bottom: 4px; opacity: 0.8; }
+        .styled-input, .styled-select { width: 100%; padding: 10px 12px; border-radius: 8px; border: 1px solid #cbd5e1; background-color: #f8fafc; color: var(--brand-blue); font-size: 14px; transition: all 0.2s; }
+        .styled-input:focus, .styled-select:focus { outline: none; border-color: var(--cta); background-color: white; box-shadow: 0 0 0 3px rgba(217, 165, 38, 0.1); }
+        .prog-block { background: white; border-radius: 12px; padding: 20px; border-left: 4px solid #cbd5e1; box-shadow: 0 2px 4px rgba(0,0,0,0.02); transition: all 0.3s; }
         .prog-block:hover { transform: translateX(4px); box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
         .prog-block.b-intro { border-color: #94a3b8; }
-        .prog-block.b-strat { border-color: #D9A526; }
-        .prog-block.b-ops { border-color: #D9A526; }
-        .prog-block.b-litige { border-color: #B4792A; }
+        .prog-block.b-strat { border-color: var(--cta); }
+        .prog-block.b-ops { border-color: var(--cta); }
+        .prog-block.b-litige { border-color: var(--alert); }
+        @keyframes pulse-red { 0% { box-shadow: 0 0 0 0 rgba(180, 121, 42, 0.4); } 70% { box-shadow: 0 0 0 10px rgba(180, 121, 42, 0); } 100% { box-shadow: 0 0 0 0 rgba(180, 121, 42, 0); } }
+        .timer-active { border-color: var(--alert) !important; animation: pulse-red 2s infinite; }
 
-        /* Timer Urgent */
-        @keyframes pulse-red {
-            0% { box-shadow: 0 0 0 0 rgba(180, 121, 42, 0.4); }
-            70% { box-shadow: 0 0 0 10px rgba(180, 121, 42, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(180, 121, 42, 0); }
+        /* --- FOOTER SPECIFIC (Ton Code Intégré) --- */
+        .main-footer {
+            background-color: var(--f-bg); color: var(--f-text);
+            padding-top: 50px; font-family: 'Lato', sans-serif; font-size: 0.95rem;
+            position: relative; width: 100%; margin-top: auto;
         }
-        .timer-active { border-color: #B4792A !important; animation: pulse-red 2s infinite; }
+        .footer-container { max-width: 1100px; margin: 0 auto; padding: 0 25px; }
+        .footer-content { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 30px; padding-bottom: 30px; align-items: flex-start; }
+        
+        .footer-identity { display: flex; flex-direction: row; align-items: center; gap: 20px; min-width: 300px; }
+        .footer-logo-img { width: 60px; height: 60px; border-radius: 8px; border: 2px solid var(--f-accent); background: #fff; object-fit: cover; }
+        .footer-info-compact { display: flex; flex-direction: column; }
+        .footer-name { color: var(--f-accent); font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; line-height: 1.2; margin-bottom: 5px; margin-top:0; }
+        .footer-contact-stack { display: flex; flex-direction: column; gap: 5px; font-size: 0.85rem; opacity: 0.8; }
+        .footer-link { text-decoration: none; color: inherit; transition: color 0.3s; display: inline-block; }
+        .footer-link:hover { color: var(--f-accent); transform: translateX(2px); }
 
-        /* --- FOOTER SPECIFIC (BLEU FORCÉ) --- */
-        .site-footer {
-            background-color: #0F2C48 !important; /* BLEU NUIT */
-            color: white !important; /* TEXTE BLANC */
-            padding: 32px 0;
-            margin-top: auto;
-            border-top: 4px solid #D9A526; /* JAUNE */
+        .footer-dock-col { display: flex; flex-direction: column; align-items: flex-end; gap: 10px; margin-left: auto; }
+        .dock-group { display: flex; flex-direction: column; align-items: flex-end; gap: 5px; }
+        .dock-label { font-family: 'Montserrat', sans-serif; font-size: 0.8rem; text-transform: uppercase; color: var(--f-accent); opacity: 0.7; }
+        .icon-dock { display: flex; gap: 15px; flex-wrap: wrap; justify-content: flex-end; align-items: center; }
+
+        .icon-btn { 
+            position: relative; width: 45px; height: 45px; border-radius: 50%; 
+            background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(217, 165, 38, 0.3); 
+            display: flex; align-items: center; justify-content: center; 
+            font-size: 1.3rem; text-decoration: none; 
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+            cursor: pointer; color: #fff; 
         }
-        .footer-text {
-            color: rgba(255, 255, 255, 0.9);
-            font-style: italic;
-            font-weight: 300;
-            font-size: 14px;
+        .icon-btn:hover { transform: translateY(-5px) scale(1.1); background: #fff; border-color: #fff; box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3); }
+
+        .brand-whatsapp { color: #25D366 !important; } .icon-btn:hover .brand-whatsapp { color: #25D366 !important; }
+        .brand-discord { color: #5865F2 !important; } .icon-btn:hover .brand-discord { color: #5865F2 !important; }
+        .brand-linkedin { color: #0077b5 !important; } .icon-btn:hover .brand-linkedin { color: #0077b5 !important; }
+        .brand-instagram { color: #E1306C !important; } .icon-btn:hover .brand-instagram { color: #E1306C !important; }
+        .brand-tiktok { color: #00f2ea !important; text-shadow: 2px 2px 0px #ff0050; } .icon-btn:hover .brand-tiktok { color: #000 !important; text-shadow: none; } 
+        .brand-nav { color: var(--f-accent) !important; } .icon-btn:hover .brand-nav { color: var(--f-bg) !important; }
+
+        .icon-btn::after {
+            content: attr(data-tooltip); position: absolute; bottom: 120%; left: 50%; transform: translateX(-50%) translateY(10px);
+            background-color: #fff; color: var(--f-bg); padding: 5px 12px; border-radius: 20px;
+            font-size: 0.75rem; font-weight: 700; white-space: nowrap; opacity: 0; visibility: hidden; transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2); pointer-events: none; z-index: 100;
         }
-        .footer-sub {
-            color: #D9A526;
-            font-weight: 700;
-            font-style: normal;
-            font-size: 12px;
-            display: block;
-            margin-top: 4px;
+        .icon-btn::before {
+            content: ''; position: absolute; bottom: 110%; left: 50%; transform: translateX(-50%) translateY(10px);
+            border-width: 6px; border-style: solid; border-color: #ffffff transparent transparent transparent;
+            opacity: 0; visibility: hidden; transition: all 0.3s ease; z-index: 100;
         }
-        .footer-copy {
-            color: rgba(255, 255, 255, 0.5);
-            font-size: 10px;
-            margin-top: 16px;
+        .icon-btn:hover::after, .icon-btn:hover::before { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+
+        .dock-separator { width: 1px; height: 30px; background-color: rgba(255,255,255,0.2); margin: 0 10px; }
+        .footer-bottom { 
+            text-align: center; padding: 15px 0; font-size: 0.8rem; 
+            color: rgba(255,255,255,0.4); background-color: rgba(0,0,0,0.2); 
+            border-top: 1px solid rgba(255,255,255,0.05); width: 100%;
+        }
+
+        #backToTop {
+            position: fixed; bottom: 30px; right: 30px; background-color: var(--f-accent); color: var(--f-bg);
+            width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-size: 1.2rem; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.2); opacity: 0; pointer-events: none;
+            transition: all 0.3s ease; z-index: 100;
+        }
+        #backToTop.show { opacity: 1; pointer-events: all; }
+        #backToTop:hover { transform: translateY(-5px); background-color: #fff; }
+
+        @media (max-width: 768px) {
+            .footer-content { flex-direction: column; align-items: center; text-align: center; }
+            .footer-identity { flex-direction: column; text-align: center; }
+            .footer-dock-col { align-items: center; width: 100%; gap: 30px; margin-left: 0; }
+            .icon-dock { justify-content: center; flex-wrap: wrap; }
+            .dock-group { align-items: center; }
+            .dock-separator { display: none; }
         }
     </style>
 </head>
 <body onload="loadUserData()">
 
-    <!-- HEADER -->
-    <header class="top-banner">
-        <div class="container mx-auto px-4 flex flex-wrap items-center justify-between gap-4">
+    <!-- HEADER SPECIAL CLUB -->
+    <div class="top-bar">
+        <div class="top-bar-container">
+            <div class="top-bar-left">
+                <img src="https://projettechacademy.github.io/Juridique/Asset/Logo_juriste.png" 
+                     onerror="this.src='https://projettechacademy.github.io/Juridique/Asset/Logo_juriste.jpg';" 
+                     alt="Logo Club" class="logo-top-bar">
+                <div class="identity-stack">
+                    <span class="club-title-main">💫 The Jurist Elite Club By Studi ✨</span>
+                    <span class="club-subtitle">La Villa des Juristes Brisés 💔 sur l’Île de L’INSTRUCTION ! 🏝</span>
+                </div>
+            </div>
             
-            <!-- Logo & Titre -->
-            <div class="flex items-center gap-4 flex-1 min-w-[300px]">
-                <div class="w-12 h-12 rounded-full bg-white border-2 border-cta overflow-hidden flex-shrink-0 shadow-lg">
-                    <img src="https://projettechacademy.github.io/Juridique/Asset/Logo_juriste.png" 
-                         alt="Logo" 
-                         class="w-full h-full object-contain"
-                         onerror="this.src='https://projettechacademy.github.io/Juridique/Asset/Logo_juriste.jpg'">
-                </div>
-                <div class="tb-title">
-                    <span class="text-white">💫 The Jurist Elite Club</span> 
-                    <span class="text-cta font-light">By Studi ✨</span>
-                    <span class="part2">La Villa des Juristes Brisés 💔 sur l’Île de L’INSTRUCTION ! 🏝</span>
-                </div>
+            <div class="top-bar-center">
+                <a href="https://projettechacademy.github.io/Juridique/index.html" target="_blank" class="header-icon-btn" data-tooltip="Start/Accueil" style="padding: 0; overflow: hidden; border: none;">
+                    <img src="https://projettechacademy.github.io/Juridique/Asset/Logo_MMPA.jpeg" alt="MMPA" class="nav-mmpa-img">
+                </a>
+                <a href="https://projettechacademy.github.io/Juridique/00_Autres/Mon_Espace_Juriste_Tableau_de_bord_personnel.html" target="_blank" class="header-icon-btn" data-tooltip="Mon Espace">📊</a>
+                <a href="https://projettechacademy.github.io/Juridique/00_Autres/Lexique_Latin_Juridique.html" target="_blank" class="header-icon-btn" data-tooltip="Lexique Latin">📜</a>
+                <a href="https://projettechacademy.github.io/Juridique/00_Autres/formation_live_juriste.html" target="_blank" class="header-icon-btn" data-tooltip="Planning Live">📅</a>
+                <a href="https://projettechacademy.github.io/Juridique/00_Autres/A_propos_de_moi.html" target="_blank" class="header-icon-btn" data-tooltip="À propos de moi" style="padding: 0; overflow: hidden; border: 2px solid #D9A526;">
+                    <img src="https://projettechacademy.github.io/Juridique/Asset/Photo_Mathilde_Martine_PAISLEY.png" 
+                         onerror="this.src='https://projettechacademy.github.io/Juridique/Asset/Photo_Mathilde_Martine_PAISLEY.jpg';" 
+                         alt="Profil" class="nav-profile-img">
+                </a>
             </div>
 
-            <!-- Boutons Accès Rapide (TOUS EN _BLANK) -->
-            <div class="flex items-center gap-2">
-                <!-- BOUTON MAISON -->
-                <a href="https://projettechacademy.github.io/Juridique/index.html" target="_blank" rel="noopener noreferrer" class="nav-icon-btn" title="Accueil">
-                    <i class="fa-solid fa-house"></i>
-                </a>
-                
-                <div class="w-[1px] h-6 bg-white/20 mx-1"></div>
-                
-                <!-- BOUTON START -->
-                <a href="https://projettechacademy.github.io/Juridique/index.html" target="_blank" rel="noopener noreferrer" class="nav-icon-btn" title="Start">
-                    <i class="fa-solid fa-flag-checkered text-cta"></i>
-                </a>
-                
-                <!-- BOUTON LEXIQUE -->
-                <a href="https://projettechacademy.github.io/Juridique/00_Autres/Lexique_Latin_Juridique.html" target="_blank" rel="noopener noreferrer" class="nav-icon-btn" title="Lexique Juridique">
-                    <i class="fa-solid fa-book text-cta"></i>
-                </a>
-                
-                <!-- BOUTON PLANNING -->
-                <a href="https://projettechacademy.github.io/Juridique/00_Autres/formation_live_juriste.html" target="_blank" rel="noopener noreferrer" class="nav-icon-btn" title="Planning Live">
-                    <i class="fa-solid fa-video text-cta"></i>
-                </a>
-                
-                <!-- BOUTON ESPACE -->
-                <a href="https://projettechacademy.github.io/Juridique/00_Autres/Mon_Espace_Juriste_Tableau_de_bord_personnel.html" target="_blank" rel="noopener noreferrer" class="nav-icon-btn" title="Mon Espace">
-                    <i class="fa-solid fa-user-tie text-cta"></i>
-                </a>
-            </div>
+            <a href="https://projettechacademy.github.io/CV_MMPA-CV-Mathilde-Martine-PAISLEY/" target="_blank" class="btn-portfolio-cosmic">
+                <span>📄</span> Mon portfolio
+            </a>
         </div>
-    </header>
+    </div>
 
     <!-- MAIN CONTENT -->
     <main class="flex-grow container mx-auto px-4 py-8 space-y-10">
 
-        <!-- Welcome Title -->
+        <!-- Titre de la page (ajouté pour indiquer où l'on se trouve) -->
+        <div class="text-center">
+            <h1 class="text-4xl font-bold brand-font text-brand-blue mb-4">
+                🪪 COCKPIT ELITE : Mon Passeport Juriste
+            </h1>
+        </div>
+
+        <!-- Welcome -->
         <div class="text-center">
             <h2 class="text-3xl font-bold brand-font text-brand-blue mb-2">
                 Bienvenue, Maître <span id="displayFullName" class="text-cta">Juriste</span> ! 👩‍⚖️
@@ -388,28 +397,24 @@
             </h3>
             
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                <!-- Intervenant 1 -->
                 <div class="text-center group">
                     <div class="w-20 h-20 mx-auto rounded-full bg-ivory flex items-center justify-center text-3xl mb-3 border-2 border-brand-blue shadow-md group-hover:scale-110 transition-transform">👩‍⚖️</div>
                     <h4 class="font-bold text-brand-blue">Eva PHILIPPE</h4>
                     <span class="text-xs bg-cta text-white px-2 py-1 rounded full font-bold uppercase tracking-wide">Référente</span>
                     <p class="text-xs text-gray-500 mt-2">CAPA Avocat - 10 ans d'exp.</p>
                 </div>
-                <!-- Intervenant 2 -->
                 <div class="text-center group">
                     <div class="w-20 h-20 mx-auto rounded-full bg-ivory flex items-center justify-center text-3xl mb-3 border-2 border-gray-200 shadow-sm group-hover:border-cta transition-colors">📊</div>
                     <h4 class="font-bold text-brand-blue">Caroline DEBRUMEZ</h4>
                     <span class="text-xs text-gray-400 font-bold uppercase tracking-wide">Fiscalité</span>
                     <p class="text-xs text-gray-500 mt-2">DESS Fiscalité - 10 ans d'exp.</p>
                 </div>
-                <!-- Intervenant 3 -->
                 <div class="text-center group">
                     <div class="w-20 h-20 mx-auto rounded-full bg-ivory flex items-center justify-center text-3xl mb-3 border-2 border-gray-200 shadow-sm group-hover:border-cta transition-colors">🏗️</div>
                     <h4 class="font-bold text-brand-blue">Bénédicte BOBIN</h4>
                     <span class="text-xs text-gray-400 font-bold uppercase tracking-wide">Immobilier</span>
                     <p class="text-xs text-gray-500 mt-2">Master 2 Immo - 7 ans d'exp.</p>
                 </div>
-                <!-- Intervenant 4 -->
                 <div class="text-center group">
                     <div class="w-20 h-20 mx-auto rounded-full bg-ivory flex items-center justify-center text-3xl mb-3 border-2 border-gray-200 shadow-sm group-hover:border-cta transition-colors">💼</div>
                     <h4 class="font-bold text-brand-blue">Christèle LECOINTE</h4>
@@ -420,43 +425,74 @@
             <p class="text-center text-[10px] text-gray-400 mt-8 italic">"Studi peut faire appel à des prestataires externes pour lesquels il conclut un contrat de prestation."</p>
         </section>
 
-        <!-- COMMUNAUTÉ -->
-        <section class="max-w-4xl mx-auto text-center pb-4">
-            <h3 class="text-lg font-bold text-brand-blue mb-4">Rejoindre la Communauté</h3>
-            <div class="flex justify-center gap-4 flex-wrap">
-                <a href="https://discord.gg/Amzqp6Af9D" target="_blank" class="bg-[#5865F2] hover:bg-[#4752C4] text-white px-6 py-3 rounded-full font-bold flex items-center gap-2 transition hover:-translate-y-1 shadow-md">
-                    <i class="fab fa-discord text-xl"></i> Discord
-                </a>
-                <a href="https://chat.whatsapp.com/IoMXFl4o2otExYKCPVj22b" target="_blank" class="bg-[#25D366] hover:bg-[#128C7E] text-white px-6 py-3 rounded-full font-bold flex items-center gap-2 transition hover:-translate-y-1 shadow-md">
-                    <i class="fab fa-whatsapp text-xl"></i> WhatsApp
-                </a>
-            </div>
-        </section>
-
     </main>
 
-    <!-- FOOTER BLEU & TEXTE BLANC -->
-    <footer class="site-footer">
-        <div class="container mx-auto px-4 text-center">
-            <p class="footer-text">
-                💫 The Jurist Elite Club By Studi ✨ La Villa des Juristes Brisés 💔 sur l’Île de L’INSTRUCTION ! 🏝 <br>
-                <span class="footer-sub">| By Mathilde Martine PAISLEY</span>
-            </p>
-            <p class="footer-copy" id="footer-dates"></p>
+    <!-- FOOTER UNIVERSEL -->
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                
+                <!-- Identité -->
+                <div class="footer-identity">
+                    <img src="https://projettechacademy.github.io/Juridique/Asset/Logo_MMPA.jpeg" alt="Logo MMPA" class="footer-logo-img">
+                    <div class="footer-info-compact">
+                        <div class="footer-name">Mathilde Martine PAISLEY</div>
+                        <div class="footer-contact-stack">
+                            <a href="mailto:Mathilde.martine.paisley@gmail.com" target="_blank" class="footer-link">📧 Mathilde.martine.paisley@gmail.com</a>
+                            <a href="tel:+33685900887" class="footer-link">📲 06 85 90 08 87</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dock Navigation -->
+                <div class="footer-dock-col">
+                    <div class="dock-group">
+                        <div class="dock-label">Navigation & Réseaux</div>
+                        <div class="icon-dock">
+                            <!-- Navigation (Target blank pour tous) -->
+                            <a href="https://projettechacademy.github.io/Juridique/index.html" target="_blank" class="icon-btn" data-tooltip="Start/Accueil"><span class="brand-nav">🏠</span></a>
+                            <a href="https://projettechacademy.github.io/Juridique/00_Autres/Mon_Espace_Juriste_Tableau_de_bord_personnel.html" target="_blank" class="icon-btn" data-tooltip="Mon Espace"><span class="brand-nav">📊</span></a>
+                            <a href="https://projettechacademy.github.io/Juridique/00_Autres/Lexique_Latin_Juridique.html" target="_blank" class="icon-btn" data-tooltip="Lexique Latin"><span class="brand-nav">📜</span></a>
+                            <a href="https://projettechacademy.github.io/Juridique/00_Autres/formation_live_juriste.html" target="_blank" class="icon-btn" data-tooltip="Planning Live"><span class="brand-nav">📅</span></a>
+                            <a href="https://projettechacademy.github.io/Juridique/00_Autres/A_propos_de_moi.html" target="_blank" class="icon-btn" data-tooltip="À propos de moi"><span class="brand-nav">👤</span></a>
+                            
+                            <!-- Séparateur -->
+                            <div class="dock-separator"></div>
+
+                            <!-- Réseaux (Target blank pour tous) -->
+                            <a href="https://chat.whatsapp.com/IoMXFl4o2otExYKCPVj22b" target="_blank" class="icon-btn" data-tooltip="WhatsApp"><i class="fab fa-whatsapp brand-whatsapp"></i></a>
+                            <a href="https://discord.gg/qwNPV8QzFt" target="_blank" class="icon-btn" data-tooltip="Discord"><i class="fab fa-discord brand-discord"></i></a>
+                            <a href="https://www.linkedin.com/in/mathilde-martine-paisley-1a4422382/" target="_blank" class="icon-btn" data-tooltip="LinkedIn"><i class="fab fa-linkedin brand-linkedin"></i></a>
+                            <a href="https://www.instagram.com/enervyx/" target="_blank" class="icon-btn" data-tooltip="Instagram @enervyx"><i class="fab fa-instagram brand-instagram"></i></a>
+                            <a href="https://www.tiktok.com/@enervyx/" target="_blank" class="icon-btn" data-tooltip="TikTok @enervyx"><i class="fab fa-tiktok brand-tiktok"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="footer-container">
+                <p>© 2025 Tous droits réservés – Création : 2025 – Dernière mise à jour : Novembre 2025</p>
+            </div>
         </div>
     </footer>
+
+    <!-- Bouton Retour Haut -->
+    <div id="backToTop" onclick="window.scrollTo(0,0)"><i class="fas fa-arrow-up"></i></div>
 
     <script>
         // Init Icons
         lucide.createIcons();
 
-        // Dates Footer
-        const creationDate = "27/11/2025";
-        const today = new Date();
-        const updateDate = today.toLocaleDateString('fr-FR', { day: '2-digit', month: '2-digit', year: 'numeric' });
-        document.getElementById('footer-dates').innerText = `© 2025 Tous droits réservés – Création : ${creationDate} – Dernière mise à jour : ${updateDate}`;
+        // Back to top scroll
+        window.addEventListener('scroll', () => {
+            const btn = document.getElementById('backToTop');
+            if (window.scrollY > 300) btn.classList.add('show'); else btn.classList.remove('show');
+        });
 
-        // Génération des Promos (Juin/Dec 2026 -> 2030)
+        // Génération des Promos
         function initPromoSelect() {
             const select = document.getElementById('promoSelect');
             select.innerHTML = '';

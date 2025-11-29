@@ -4,12 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Les Indispensables du Latin Juridique</title>
+    
+    <!-- FAVICON -->
+    <link rel="icon" type="image/png" href="https://projettechacademy.github.io/Juridique/Asset/Logo_juriste.png">
+    
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- FontAwesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <!-- Polices -->
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
     
     <script>
         tailwind.config = {
@@ -30,6 +34,8 @@
     <style>
         :root{
             --cta: #D9A526;
+            --cta-page: #D9A526; /* Gold pour cette page aussi */
+            --cta-page-gradient: linear-gradient(135deg, #B4792A 0%, #D9A526 50%, #F2C94C 100%); /* Dégradé Doré Premium */
             --brand-blue: #0F2C48;
             --ivory: #F6F2E8;
             --bronze: #B4792A;
@@ -47,50 +53,121 @@
             position: sticky; top: 0; z-index: 50;
         }
         
-        .nav-link {
-            position: relative;
-            padding: 0.5rem 0;
-            color: rgba(255,255,255,0.7);
-            transition: color 0.3s ease;
-            font-weight: 500;
-            text-transform: uppercase;
-            font-size: 0.85rem;
-            letter-spacing: 0.05em;
-        }
-        .nav-link::after {
-            content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px;
-            background-color: var(--cta); transition: width 0.3s ease;
-        }
-        .nav-link:hover { color: white; }
-        .nav-link:hover::after { width: 100%; }
-        .nav-link.active { color: white; font-weight: 700; }
-        .nav-link.active::after { width: 100%; }
-
-        .btn-gold-outline {
-            border: 1px solid var(--cta); color: var(--cta);
-            border-radius: 9999px; padding: 0.4rem 1.2rem;
-            font-size: 0.8rem; font-weight: 600; text-transform: uppercase;
+        /* Boutons Icones (Base) */
+        .icon-btn {
+            position: relative; width: 40px; height: 40px; border-radius: 50%;
+            background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(217, 165, 38, 0.4);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.1rem; text-decoration: none; color: #fff;
             transition: all 0.3s;
         }
-        .btn-gold-outline:hover { background: var(--cta); color: var(--brand-blue); }
+        .icon-btn:hover { 
+            transform: translateY(-3px); background: #fff; border-color: #fff; box-shadow: 0 4px 10px rgba(217, 165, 38, 0.3); color: var(--brand-blue);
+        }
+
+        /* Onglets PAGE (Lexique/Jeu) - Style Premium Gold */
+        .tab-icon-btn {
+            position: relative; width: 45px; height: 45px; border-radius: 50%;
+            background: rgba(217, 165, 38, 0.1); /* Fond doré léger */
+            border: 2px solid var(--cta-page); /* Bordure dorée */
+            color: #fff; display: flex; align-items: center; justify-content: center;
+            font-size: 1.2rem; cursor: pointer; transition: all 0.3s;
+        }
+        .tab-icon-btn:hover {
+            background: var(--cta-page-gradient); color: white; transform: scale(1.1); box-shadow: 0 4px 15px rgba(217, 165, 38, 0.4); border-color: transparent;
+        }
+        .tab-icon-btn.active {
+            background: var(--cta-page-gradient); color: white; box-shadow: 0 4px 10px rgba(217, 165, 38, 0.3); border-color: transparent;
+        }
+
+        /* --- TOOLTIPS (INFOBULLES) CORRIGÉS --- */
+        
+        /* Style de base commun */
+        .icon-btn::after, .tab-icon-btn::after {
+            content: attr(data-tooltip); 
+            position: absolute; 
+            left: 50%; 
+            transform: translateX(-50%);
+            background-color: #fff; 
+            color: var(--brand-blue); 
+            padding: 5px 10px; 
+            border-radius: 6px;
+            font-size: 0.75rem; 
+            font-weight: 700; 
+            white-space: nowrap; 
+            opacity: 0; 
+            visibility: hidden;
+            transition: all 0.2s ease-in-out; 
+            pointer-events: none; 
+            z-index: 100; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            border: 1px solid rgba(0,0,0,0.1);
+        }
+        
+        /* Affichage au survol */
+        .icon-btn:hover::after, .tab-icon-btn::hover::after { opacity: 1; visibility: visible; }
+
+        /* SPECIFIQUE HEADER : Afficher EN DESSOUS (Top > 100%) */
+        .top-banner .icon-btn::after, 
+        .top-banner .tab-icon-btn::after {
+            top: 130%; /* Pousse l'infobulle vers le bas */
+            bottom: auto;
+        }
+
+        /* SPECIFIQUE FOOTER : Afficher AU DESSUS (Bottom > 100%) */
+        .main-footer .icon-btn::after {
+            bottom: 130%; /* Pousse l'infobulle vers le haut */
+            top: auto;
+        }
+
+        /* Logo Accueil */
+        .logo-home-btn {
+            padding: 0; overflow: hidden; border: 2px solid var(--cta); background: white;
+        }
+        .logo-home-btn img {
+            width: 100%; height: 100%; object-fit: cover;
+        }
+        .logo-home-btn:hover {
+            border-color: white; background: white;
+        }
+
+        /* Bouton Portfolio Premium Gold */
+        .btn-portfolio-premium {
+            padding: 0.5rem 1.5rem; border-radius: 9999px; font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 0.95rem;
+            background: var(--cta-page-gradient); /* Dégradé Doré */
+            color: white !important; text-decoration: none; border: 1px solid rgba(255,255,255,0.2);
+            display: inline-flex; align-items: center; gap: 8px; transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(217, 165, 38, 0.3); /* Ombre dorée */
+        }
+        .btn-portfolio-premium:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(217, 165, 38, 0.5); }
+
+        /* --- CONTENU --- */
+        .page-header { text-align: center; margin-bottom: 2rem; }
+        .page-title { font-family: 'Playfair Display', serif; font-weight: 800; color: var(--brand-blue); font-size: 2.5rem; transition: all 0.5s; }
+        .page-subtitle { color: var(--cta-page); font-weight: 700; text-transform: uppercase; letter-spacing: 2px; font-size: 0.9rem; }
 
         /* --- CARTE DESIGN --- */
         .term-card {
-            background: white; border-radius: 12px;
-            border: 1px solid #e5e7eb;
-            transition: all 0.3s ease;
-            position: relative; overflow: hidden;
+            background: white; border-radius: 12px; border: 1px solid #e5e7eb;
+            transition: all 0.3s ease; position: relative; overflow: hidden;
         }
         .term-card:hover {
             transform: translateY(-3px);
-            box-shadow: 0 12px 24px -8px rgba(15, 44, 72, 0.15);
-            border-color: var(--cta);
+            box-shadow: 0 12px 24px -8px rgba(217, 165, 38, 0.15); /* Ombre Dorée */
+            border-color: var(--cta-page);
         }
         .term-card::before {
             content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%;
-            background: var(--cta); opacity: 0; transition: opacity 0.3s;
+            background: var(--cta-page-gradient); /* Dégradé Doré */
+            opacity: 0; transition: opacity 0.3s;
         }
         .term-card:hover::before { opacity: 1; }
+        
+        .copy-btn {
+            position: absolute; top: 10px; right: 10px;
+            color: #cbd5e1; cursor: pointer; transition: color 0.2s;
+        }
+        .copy-btn:hover { color: var(--cta-page); }
 
         /* --- GAME FLIP --- */
         .perspective { perspective: 1000px; }
@@ -105,6 +182,8 @@
             border-radius: 1rem;
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
         }
+        /* Face avant Premium Gold */
+        .card-front { background: #0F2C48; color: white; border: 4px solid var(--cta-page); } 
         .card-back { transform: rotateY(180deg); }
         .flipped .card-inner { transform: rotateY(180deg); }
 
@@ -113,6 +192,32 @@
         ::-webkit-scrollbar-track { background: transparent; }
         ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
         ::-webkit-scrollbar-thumb:hover { background: var(--brand-blue); }
+
+        /* --- FOOTER CSS --- */
+        .main-footer {
+            background-color: var(--brand-blue); color: var(--ivory);
+            padding: 20px 0; font-family: 'Lato', sans-serif; font-size: 0.9rem;
+            margin-top: auto; border-top: 4px solid var(--bronze);
+        }
+        .footer-container { max-width: 1400px; margin: 0 auto; padding: 0 25px; }
+        .footer-row { display: flex; justify-content: space-between; align-items: center; gap: 20px; }
+        .footer-left { display: flex; align-items: center; gap: 15px; }
+        .footer-logo-img { width: 50px; height: 50px; border-radius: 8px; border: 2px solid var(--cta); background: #fff; object-fit: cover; }
+        .footer-info { display: flex; flex-direction: column; justify-content: center; }
+        .footer-name { color: var(--cta); font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; margin: 0; line-height: 1.2; }
+        .footer-details { font-size: 0.8rem; opacity: 0.8; display: flex; gap: 15px; }
+        .footer-right { display: flex; align-items: center; gap: 15px; }
+        .brand-nav { color: var(--cta) !important; } .icon-btn:hover .brand-nav { color: var(--brand-blue) !important; }
+        .brand-whatsapp { color: #25D366 !important; } .brand-discord { color: #5865F2 !important; } .brand-linkedin { color: #0077b5 !important; } .brand-instagram { color: #E1306C !important; } .brand-tiktok { color: #00f2ea !important; text-shadow: 2px 2px 0px #ff0050; }
+        .dock-separator { width: 1px; height: 25px; background-color: rgba(255,255,255,0.2); }
+        .footer-copyright { text-align: center; font-size: 0.75rem; color: rgba(255,255,255,0.3); margin-top: 15px; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.05); }
+        
+        @media (max-width: 900px) {
+            .footer-row { flex-direction: column; text-align: center; gap: 20px; }
+            .footer-left { flex-direction: column; }
+            .footer-details { flex-direction: column; gap: 5px; }
+            .footer-right { flex-wrap: wrap; justify-content: center; }
+        }
     </style>
 </head>
 <body>
@@ -125,39 +230,51 @@
                 <!-- Logo & Titre -->
                 <div class="flex items-center gap-4 w-full lg:w-auto">
                     <div class="w-14 h-14 rounded-full border-2 border-[#D9A526] overflow-hidden bg-white shrink-0 shadow-lg">
-                        <img src="https://projettechacademy.github.io/Juridique/Asset/Logo_juriste.png" 
-                             alt="Logo" class="w-full h-full object-cover"
-                             onerror="this.src='https://projettechacademy.github.io/Juridique/Asset/Logo_juriste.jpg'">
+                        <img src="https://projettechacademy.github.io/Juridique/Asset/Logo_MMPA.jpeg" 
+                             alt="Logo MMPA" class="w-full h-full object-cover">
                     </div>
                     <div>
-                        <h1 class="font-bold text-lg leading-tight tracking-wide">THE JURIST ELITE CLUB <span class="text-[#D9A526]">By Studi</span></h1>
-                        <p class="text-xs text-slate-300 font-light italic">La Villa des Juristes Brisés 💔 sur l’Île de L’INSTRUCTION !🏝</p>
+                        <h1 class="font-bold text-lg leading-tight tracking-wide">Mathilde Martine PAISLEY</h1>
+                        <p class="text-xs text-[#D9A526] font-bold">💫 The Jurist Elite Club By Studi ✨</p>
+                        <p class="text-[0.65rem] text-slate-300 font-light italic leading-tight">La Villa des Juristes Brisés 💔 sur l’Île de L’INSTRUCTION !🏝</p>
                     </div>
                 </div>
 
-                <!-- Navigation Intégrée -->
-                <nav class="flex flex-wrap items-center justify-center gap-6 lg:gap-8 w-full lg:w-auto">
-                    <a href="https://projettechacademy.github.io/Juridique/index.html" class="nav-link">
-                        <i class="fa-solid fa-house mr-1"></i> Accueil
-                    </a>
-                    
-                    <button onclick="switchTab('lexique')" id="nav-lexique" class="nav-link active">
-                        <i class="fa-solid fa-book-open mr-1"></i> Lexique Latin
-                    </button>
-                    
-                    <button onclick="switchTab('game')" id="nav-game" class="nav-link">
-                        <i class="fa-solid fa-gamepad mr-1"></i> Entraînement
-                    </button>
+                <!-- Navigation Intégrée & Bouton Portfolio -->
+                <div class="flex flex-wrap items-center justify-center gap-4 lg:gap-6 w-full lg:w-auto">
+                    <nav class="flex flex-wrap items-center justify-center gap-4">
+                        
+                        <!-- Onglet 1: Lexique (Rond Doré Premium) -->
+                        <button onclick="switchTab('lexique')" id="nav-lexique" class="tab-icon-btn active" data-tooltip="Lexique">
+                            <i class="fa-solid fa-book-open"></i>
+                        </button>
+                        
+                        <!-- Onglet 2: Jeu (Rond Doré Premium) -->
+                        <button onclick="switchTab('game')" id="nav-game" class="tab-icon-btn" data-tooltip="Entraînement">
+                            <i class="fa-solid fa-gamepad"></i>
+                        </button>
 
-                    <div class="h-4 w-px bg-white/20 hidden lg:block"></div>
+                        <div class="h-4 w-px bg-white/20 hidden lg:block"></div>
 
-                    <a href="https://projettechacademy.github.io/Juridique/00_Autres/formation_live_juriste.html" target="_blank" class="btn-gold-outline flex items-center gap-2">
-                        <i class="fa-solid fa-video"></i> Live
+                        <!-- Liens Globaux (Ronds Dorés) -->
+                        <a href="https://projettechacademy.github.io/Juridique/index.html" target="_blank" class="icon-btn logo-home-btn" data-tooltip="Accueil">
+                            <img src="https://projettechacademy.github.io/Juridique/Asset/Logo_juriste.png" 
+                                 alt="Accueil Juriste"
+                                 onerror="this.src='https://projettechacademy.github.io/Juridique/Asset/Logo_juriste.jpg'">
+                        </a>
+
+                        <a href="https://projettechacademy.github.io/Juridique/00_Autres/Mon_Espace_Juriste_Tableau_de_bord_personnel.html" target="_blank" class="icon-btn" data-tooltip="Mon Espace"><span class="brand-nav">📊</span></a>
+                        <a href="https://projettechacademy.github.io/Juridique/00_Autres/formation_live_juriste.html" target="_blank" class="icon-btn" data-tooltip="Planning Live"><span class="brand-nav">📅</span></a>
+                        <a href="https://projettechacademy.github.io/Juridique/00_Autres/A_propos_de_moi.html" target="_blank" class="icon-btn" data-tooltip="À propos de moi" style="padding: 0; overflow: hidden; border: 2px solid #D9A526;">
+                            <img src="https://projettechacademy.github.io/Juridique/Asset/Photo_Mathilde_Martine_PAISLEY.png" onerror="this.src='https://projettechacademy.github.io/Juridique/Asset/Photo_Mathilde_Martine_PAISLEY.jpg';" alt="Profil" class="w-full h-full object-cover">
+                        </a>
+                    </nav>
+
+                    <!-- BOUTON PORTFOLIO PREMIUM GOLD -->
+                    <a href="https://projettechacademy.github.io/CV_MMPA-CV-Mathilde-Martine-PAISLEY/" target="_blank" class="btn-portfolio-premium">
+                        <span>📄</span> Mon portfolio
                     </a>
-                    <a href="https://projettechacademy.github.io/Juridique/00_Autres/Mon_Espace_Juriste_Tableau_de_bord_personnel.html" target="_blank" class="btn-gold-outline flex items-center gap-2">
-                        <i class="fa-solid fa-user"></i> Mon Espace
-                    </a>
-                </nav>
+                </div>
             </div>
         </div>
     </header>
@@ -165,186 +282,132 @@
     <!-- MAIN CONTENT -->
     <main class="flex-grow w-full max-w-7xl mx-auto p-6 md:p-10 relative">
 
-        <!-- VIEW 1: LEXIQUE (NOUVEAU DESIGN) -->
+        <!-- Header Dynamique de la Page -->
+        <div class="page-header">
+            <h1 class="page-title" id="dynamic-title">Lexique Latin Juridique</h1>
+            <p class="page-subtitle">Les indispensables pour exceller</p>
+        </div>
+
+        <!-- VIEW 1: LEXIQUE -->
         <div id="view-lexique" class="transition-all duration-500 ease-in-out">
             
-            <!-- Search Hero -->
-            <div class="bg-[#F6F2E8] rounded-2xl p-8 mb-10 shadow-sm border border-[#D9A526]/20 relative overflow-hidden">
-                <div class="absolute top-0 right-0 p-4 opacity-5 text-[#D9A526]">
-                    <i class="fa-solid fa-scale-balanced text-9xl"></i>
-                </div>
-                <div class="relative z-10 max-w-2xl">
-                    <h2 class="text-2xl font-bold text-[#0F2C48] mb-2 serif-font">Recherche Juridique</h2>
-                    <p class="text-sm text-[#B4792A] mb-6 font-medium">Explorez les définitions et maximisez vos compétences.</p>
-                    
-                    <div class="relative group">
-                        <input type="text" id="searchInput" placeholder="Rechercher une locution (ex: Ad hoc, A contrario...)" 
-                               class="w-full pl-12 pr-4 py-4 bg-white border-2 border-transparent rounded-xl focus:border-[#D9A526] focus:ring-0 outline-none shadow-md transition-all text-[#0F2C48] placeholder-slate-400">
-                        <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 transform -translate-y-1/2 text-slate-400 group-focus-within:text-[#D9A526] transition-colors"></i>
-                    </div>
-                    <div class="mt-3 text-right">
-                        <span class="text-xs font-bold bg-[#0F2C48] text-white px-2 py-1 rounded"><span id="total-terms">0</span> locutions</span>
-                    </div>
-                </div>
+            <!-- Search -->
+            <div class="bg-[#F6F2E8] rounded-2xl p-6 mb-8 shadow-sm border border-[#D9A526]/20 flex items-center gap-4">
+                <i class="fa-solid fa-magnifying-glass text-[#D9A526] text-xl ml-2"></i>
+                <input type="text" id="searchInput" placeholder="Rechercher une locution (ex: Ad hoc, A contrario...)" 
+                       class="w-full bg-transparent border-none outline-none text-[#0F2C48] placeholder-slate-400 text-lg">
+                <span class="text-xs font-bold bg-[#D9A526] text-white px-2 py-1 rounded ml-auto whitespace-nowrap"><span id="total-terms">0</span> termes</span>
             </div>
 
-            <!-- Sticky Alphabet Filter (Pills Style) -->
+            <!-- Sticky Alphabet -->
             <div class="sticky top-[140px] lg:top-[90px] z-40 bg-[#FAFAFA]/95 backdrop-blur py-2 mb-8 -mx-4 px-4 overflow-x-auto">
                 <div class="flex gap-2 min-w-max pb-2" id="alphabet-nav">
                     <!-- JS Injected Pills -->
                 </div>
             </div>
 
-            <!-- Lexicon Grid Layout -->
+            <!-- Grid -->
             <div id="lexicon-container" class="space-y-12">
                 <!-- Sections injected by JS -->
             </div>
             
             <div id="noResults" class="hidden text-center py-20">
-                <div class="inline-block p-6 rounded-full bg-[#F6F2E8] mb-4">
-                    <i class="fa-solid fa-magnifying-glass-minus text-4xl text-[#B4792A]"></i>
-                </div>
                 <h3 class="text-xl font-bold text-[#0F2C48]">Aucun résultat</h3>
-                <p class="text-slate-500">Essayez un autre terme.</p>
             </div>
         </div>
 
-        <!-- VIEW 2: GAME (FLASHCARDS) -->
+        <!-- VIEW 2: GAME -->
         <div id="view-game" class="hidden transition-all duration-500 ease-in-out flex flex-col items-center justify-center py-10 min-h-[60vh]">
             
-            <div class="text-center mb-10">
-                <span class="inline-block px-3 py-1 rounded-full bg-[#F6F2E8] text-[#B4792A] text-xs font-bold uppercase tracking-widest mb-3">Mode Révision</span>
-                <h2 class="text-3xl font-bold text-[#0F2C48] serif-font">Flashcards Latines</h2>
+            <!-- Score -->
+            <div class="flex gap-4 mb-8 text-sm font-bold">
+                <span class="text-emerald-600 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200">
+                    <i class="fa-solid fa-check mr-1"></i> <span id="score-success">0</span>
+                </span>
+                <span class="text-rose-600 bg-rose-50 px-3 py-1 rounded-full border border-rose-200">
+                    <i class="fa-solid fa-xmark mr-1"></i> <span id="score-fail">0</span>
+                </span>
             </div>
 
             <div class="perspective w-full max-w-lg h-[420px] cursor-pointer group" onclick="flipCard()">
                 <div class="card-inner w-full h-full" id="game-card-inner">
-                    
                     <!-- Front -->
-                    <div class="card-front bg-[#0F2C48] text-white p-8 flex flex-col justify-between border-4 border-[#D9A526]">
-                        <div class="w-full flex justify-between items-start opacity-50">
-                            <i class="fa-solid fa-quote-left text-2xl"></i>
-                            <i class="fa-solid fa-question text-2xl"></i>
-                        </div>
-                        
+                    <div class="card-front p-8 flex flex-col justify-between">
+                        <div class="w-full flex justify-between items-start opacity-50"><i class="fa-solid fa-quote-left text-2xl"></i><i class="fa-solid fa-question text-2xl"></i></div>
                         <div>
                             <h3 id="card-term" class="text-4xl font-bold serif-font mb-4">...</h3>
-                            <div class="w-16 h-1 bg-[#D9A526] mx-auto rounded-full"></div>
+                            <div class="w-16 h-1 bg-[#D9A526] mx-auto rounded-full" style="background: var(--cta-page-gradient);"></div>
                         </div>
-
                         <p class="text-sm text-[#D9A526] animate-bounce uppercase tracking-widest font-bold">Cliquez pour révéler</p>
                     </div>
-
                     <!-- Back -->
                     <div class="card-back bg-white p-8 flex flex-col text-left border border-slate-200">
                         <div class="flex justify-between items-start mb-4 pb-4 border-b border-slate-100">
                             <div>
                                 <h3 id="card-term-back" class="text-xl font-bold text-[#0F2C48] serif-font">...</h3>
-                                <p id="card-trans" class="text-[#B4792A] italic font-medium">...</p>
+                                <p id="card-trans" class="text-[#D9A526] italic font-medium">...</p>
                             </div>
-                            <div class="bg-[#F6F2E8] p-2 rounded-full text-[#0F2C48]">
-                                <i class="fa-solid fa-lightbulb"></i>
-                            </div>
+                            <div class="bg-[#F6F2E8] p-2 rounded-full text-[#0F2C48]"><i class="fa-solid fa-lightbulb"></i></div>
                         </div>
-                        
                         <div class="flex-grow overflow-y-auto pr-2 custom-scroll space-y-4">
-                            <div>
-                                <p class="text-xs font-bold text-slate-400 uppercase mb-1">Définition</p>
-                                <p id="card-def" class="text-slate-700 text-sm leading-relaxed">...</p>
-                            </div>
-                            <div class="bg-[#F6F2E8] p-4 rounded-lg border-l-4 border-[#D9A526]">
-                                <p class="text-xs font-bold text-[#0F2C48] uppercase mb-1">Exemple Concret</p>
-                                <p id="card-ex" class="text-slate-600 text-sm italic">...</p>
-                            </div>
+                            <div><p class="text-xs font-bold text-slate-400 uppercase mb-1">Définition</p><p id="card-def" class="text-slate-700 text-sm leading-relaxed">...</p></div>
+                            <div class="bg-[#F6F2E8] p-4 rounded-lg border-l-4 border-[#D9A526]"><p class="text-xs font-bold text-[#0F2C48] uppercase mb-1">Exemple</p><p id="card-ex" class="text-slate-600 text-sm italic">...</p></div>
                         </div>
                     </div>
-
                 </div>
             </div>
 
-            <div class="mt-10">
-                <button onclick="nextCard()" class="group relative px-8 py-3 bg-[#D9A526] text-[#0F2C48] font-bold rounded-full overflow-hidden shadow-lg hover:shadow-xl transition-all">
-                    <span class="relative z-10 flex items-center gap-2">
-                        Suivant <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
-                    </span>
-                    <div class="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity"></div>
-                </button>
+            <div class="mt-10 flex gap-4">
+                <button onclick="updateScore(false); nextCard()" class="px-6 py-2 rounded-full border-2 border-rose-200 text-rose-600 hover:bg-rose-50 font-bold transition-colors"><i class="fa-solid fa-xmark"></i> Oublié</button>
+                <button onclick="nextCard()" class="px-6 py-2 rounded-full bg-[#0F2C48] text-white hover:bg-[#1a3b5c] font-bold transition-colors">Passer <i class="fa-solid fa-arrow-right ml-1"></i></button>
+                <button onclick="updateScore(true); nextCard()" class="px-6 py-2 rounded-full border-2 border-emerald-200 text-emerald-600 hover:bg-emerald-50 font-bold transition-colors"><i class="fa-solid fa-check"></i> Su</button>
             </div>
-
         </div>
 
     </main>
 
-    <!-- FOOTER PRO -->
-    <footer class="bg-[#0F2C48] text-white pt-16 pb-8 border-t-4 border-[#B4792A]">
-        <div class="max-w-7xl mx-auto px-6">
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
-                <!-- Brand -->
-                <div class="lg:col-span-2">
-                    <h3 class="text-[#D9A526] font-bold text-xl mb-4 serif-font">
-                        The Jurist Elite Club By Studi
-                    </h3>
-                    <p class="text-slate-300 text-sm leading-relaxed mb-6 max-w-md">
-                        La Villa des Juristes Brisés 💔 sur l’Île de L’INSTRUCTION !🏝<br>
-                        Une initiative pédagogique unique pour exceller en droit.
-                    </p>
-                    <div class="flex gap-4">
-                        <a href="https://chat.whatsapp.com/IoMXFl4o2otExYKCPVj22b" target="_blank" class="w-10 h-10 rounded-full bg-[#25D366] flex items-center justify-center hover:scale-110 transition-transform text-white shadow-lg" title="WhatsApp">
-                            <i class="fa-brands fa-whatsapp text-xl"></i>
-                        </a>
-                        <a href="https://discord.gg/qwNPV8QzFt" target="_blank" class="w-10 h-10 rounded-full bg-[#5865F2] flex items-center justify-center hover:scale-110 transition-transform text-white shadow-lg" title="Discord">
-                            <i class="fa-brands fa-discord text-xl"></i>
-                        </a>
-                        <a href="https://www.linkedin.com/in/mathilde-martine-paisley-1a4422382/" target="_blank" class="w-10 h-10 rounded-full bg-[#0A66C2] flex items-center justify-center hover:scale-110 transition-transform text-white shadow-lg" title="LinkedIn">
-                            <i class="fa-brands fa-linkedin-in text-xl"></i>
-                        </a>
+    <!-- FOOTER COMPACT -->
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-row">
+                <!-- GAUCHE : IDENTITÉ -->
+                <div class="footer-left">
+                    <img src="https://projettechacademy.github.io/Juridique/Asset/Logo_MMPA.jpeg" alt="Logo" class="footer-logo-img">
+                    <div class="footer-info">
+                        <h3 class="footer-name">Mathilde Martine PAISLEY</h3>
+                        <div class="footer-details">
+                            <span>📧 Mathilde.martine.paisley@gmail.com</span>
+                            <span>📲 06 85 90 08 87</span>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Contact -->
-                <div>
-                    <h4 class="text-[#F6F2E8] font-bold uppercase tracking-wider text-sm mb-6 border-b border-[#B4792A] inline-block pb-1">Contact</h4>
-                    <ul class="space-y-4 text-sm text-slate-300">
-                        <li class="flex items-start gap-3">
-                            <i class="fa-solid fa-user text-[#D9A526] mt-1"></i>
-                            <span class="font-semibold text-white">Mathilde Martine PAISLEY</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <i class="fa-solid fa-envelope text-[#D9A526] mt-1"></i>
-                            <a href="mailto:Mathilde.martine.paisley@gmail.com" class="hover:text-[#D9A526] transition-colors break-all">Mathilde.martine.paisley@gmail.com</a>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <i class="fa-solid fa-phone text-[#D9A526] mt-1"></i>
-                            <span>06 85 90 08 87</span>
-                        </li>
-                    </ul>
-                </div>
+                <!-- DROITE : NAVIGATION & RÉSEAUX -->
+                <div class="footer-right">
+                    <a href="https://projettechacademy.github.io/Juridique/index.html" target="_blank" class="icon-btn logo-home-btn" data-tooltip="Accueil">
+                        <img src="https://projettechacademy.github.io/Juridique/Asset/Logo_juriste.png" alt="Accueil" onerror="this.src='https://projettechacademy.github.io/Juridique/Asset/Logo_juriste.jpg'">
+                    </a>
+                    <a href="https://projettechacademy.github.io/Juridique/00_Autres/Mon_Espace_Juriste_Tableau_de_bord_personnel.html" target="_blank" class="icon-btn" data-tooltip="Mon Espace"><span class="brand-nav">📊</span></a>
+                    <a href="https://projettechacademy.github.io/Juridique/00_Autres/Lexique_Latin_Juridique.html" target="_blank" class="icon-btn" data-tooltip="Lexique"><span class="brand-nav">📜</span></a>
+                    <a href="https://projettechacademy.github.io/Juridique/00_Autres/formation_live_juriste.html" target="_blank" class="icon-btn" data-tooltip="Planning"><span class="brand-nav">📅</span></a>
+                    <a href="https://projettechacademy.github.io/Juridique/00_Autres/A_propos_de_moi.html" target="_blank" class="icon-btn" data-tooltip="Bio"><span class="brand-nav">👤</span></a>
+                    
+                    <div class="dock-separator"></div>
 
-                <!-- Liens Rapides -->
-                <div>
-                    <h4 class="text-[#F6F2E8] font-bold uppercase tracking-wider text-sm mb-6 border-b border-[#B4792A] inline-block pb-1">Accès Rapide</h4>
-                    <ul class="space-y-2 text-sm text-slate-300">
-                        <li><a href="https://projettechacademy.github.io/Juridique/index.html" class="hover:text-[#D9A526] transition-colors flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[10px] text-[#B4792A]"></i> Start / Accueil</a></li>
-                        <li><a href="https://projettechacademy.github.io/Juridique/00_Autres/Mon_Espace_Juriste_Tableau_de_bord_personnel.html" class="hover:text-[#D9A526] transition-colors flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[10px] text-[#B4792A]"></i> Mon Espace</a></li>
-                        <li><a href="https://projettechacademy.github.io/Juridique/00_Autres/formation_live_juriste.html" class="hover:text-[#D9A526] transition-colors flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[10px] text-[#B4792A]"></i> Planning Live</a></li>
-                    </ul>
+                    <a href="https://chat.whatsapp.com/IoMXFl4o2otExYKCPVj22b" target="_blank" class="icon-btn" data-tooltip="WhatsApp"><i class="fab fa-whatsapp brand-whatsapp"></i></a>
+                    <a href="https://discord.gg/qwNPV8QzFt" target="_blank" class="icon-btn" data-tooltip="Discord"><i class="fab fa-discord brand-discord"></i></a>
+                    <a href="https://www.linkedin.com/in/mathilde-martine-paisley-1a4422382/" target="_blank" class="icon-btn" data-tooltip="LinkedIn"><i class="fab fa-linkedin brand-linkedin"></i></a>
+                    <a href="https://www.instagram.com/enervyx/" target="_blank" class="icon-btn" data-tooltip="Instagram"><i class="fab fa-instagram brand-instagram"></i></a>
+                    <a href="https://www.tiktok.com/@enervyx/" target="_blank" class="icon-btn" data-tooltip="TikTok"><i class="fab fa-tiktok brand-tiktok"></i></a>
                 </div>
             </div>
-
-            <!-- Copyright -->
-            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-400">
-                <p>
-                    © 2025 Tous droits réservés | <span class="text-[#D9A526]">By Mathilde Martine PAISLEY</span>
-                </p>
-                <p>
-                    Création : 29/11/2025 – Dernière mise à jour : 29/11/2025
-                </p>
+            <div class="footer-copyright">
+                <p>💫 The Jurist Elite Club By Studi ✨ La Villa des Juristes Brisés 💔 sur l’Île de L’INSTRUCTION !🏝 | By Mathilde Martine PAISLEY | © 2025 Tous droits réservés</p>
             </div>
         </div>
     </footer>
 
-    <!-- Back to Top -->
+    <!-- Back to Top (Doré) -->
     <button onclick="scrollToTop()" id="backToTop" class="fixed bottom-8 right-8 w-12 h-12 bg-[#D9A526] text-[#0F2C48] rounded-full shadow-xl flex items-center justify-center hover:bg-white hover:scale-110 transition-all z-50 opacity-0 pointer-events-none duration-300 border-2 border-[#0F2C48]">
         <i class="fa-solid fa-arrow-up font-bold"></i>
     </button>
@@ -433,9 +496,19 @@
         const $ = (id) => document.getElementById(id);
         
         let totalTermsEl, container, alphabetNav, searchInput, noResults, backToTopBtn;
-        
+        let scoreSuccess = 0;
+        let scoreFail = 0;
+        let currentCardIndex = -1;
+
         // --- LEXICON RENDER (NOUVEAU) ---
         function initLexicon() {
+            totalTermsEl = $('total-terms');
+            container = $('lexicon-container');
+            alphabetNav = $('alphabet-nav');
+            searchInput = $('searchInput');
+            noResults = $('noResults');
+            backToTopBtn = $('backToTop');
+
             totalTermsEl.textContent = lexiconData.length;
 
             const grouped = {};
@@ -451,18 +524,19 @@
             alphabetNav.innerHTML = '';
             letters.forEach(letter => {
                 const btn = document.createElement('button');
+                // Changed hover text and border colors from #D926A9 to #D9A526
                 btn.className = 'w-10 h-10 rounded-full bg-white border border-slate-200 text-[#0F2C48] font-bold hover:bg-[#0F2C48] hover:text-[#D9A526] hover:border-[#D9A526] transition-all shadow-sm';
                 btn.textContent = letter;
                 btn.onclick = () => scrollToLetter(letter);
                 alphabetNav.appendChild(btn);
             });
 
-            // 2. Sections Layout (Dictionary Style)
+            // 2. Sections Layout
             container.innerHTML = '';
             letters.forEach(letter => {
                 const section = document.createElement('div');
                 section.id = `section-${letter}`;
-                section.className = 'lexicon-section scroll-mt-32'; // scroll margin for sticky header
+                section.className = 'lexicon-section scroll-mt-32'; 
 
                 const wrapper = document.createElement('div');
                 wrapper.className = 'flex flex-col md:flex-row gap-6';
@@ -470,8 +544,9 @@
                 // Large Letter Column
                 const letterCol = document.createElement('div');
                 letterCol.className = 'md:w-16 flex-shrink-0';
+                // Changed text color and border color from #D926A9 to #D9A526
                 letterCol.innerHTML = `
-                    <div class="sticky top-40 bg-[#F6F2E8] text-[#B4792A] w-14 h-14 rounded-xl flex items-center justify-center text-3xl font-bold serif-font border-2 border-[#B4792A]/20">
+                    <div class="sticky top-40 bg-[#F6F2E8] text-[#D9A526] w-14 h-14 rounded-xl flex items-center justify-center text-3xl font-bold serif-font border-2 border-[#D9A526]/20">
                         ${letter}
                     </div>
                 `;
@@ -483,9 +558,11 @@
                 grouped[letter].forEach(item => {
                     const card = document.createElement('div');
                     card.className = 'term-card p-6 flex flex-col h-full search-item';
+                    // Changed text colors and border color from #D926A9 to #D9A526
                     card.innerHTML = `
-                        <h3 class="font-bold text-[#0F2C48] text-xl mb-1 serif-font tracking-wide">${item.term}</h3>
-                        <p class="text-[#B4792A] text-sm italic mb-4 font-medium">"${item.trans}"</p>
+                        <i class="fa-regular fa-copy copy-btn" onclick="copyToClipboard('${item.term} : ${item.def}')" title="Copier"></i>
+                        <h3 class="font-bold text-[#0F2C48] text-xl mb-1 serif-font tracking-wide pr-6">${item.term}</h3>
+                        <p class="text-[#D9A526] text-sm italic mb-4 font-medium">"${item.trans}"</p>
                         
                         <p class="text-slate-600 text-sm mb-4 flex-grow leading-relaxed">${item.def}</p>
                         
@@ -501,13 +578,21 @@
                 wrapper.appendChild(gridCol);
                 section.appendChild(wrapper);
                 
-                // Separator
                 const separator = document.createElement('div');
                 separator.className = 'h-px bg-slate-200 my-10 section-separator';
                 section.appendChild(separator);
 
                 container.appendChild(section);
             });
+        }
+
+        function copyToClipboard(text) {
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
         }
 
         function scrollToLetter(letter) {
@@ -560,8 +645,6 @@
         }
 
         // --- GAME LOGIC ---
-        let currentCardIndex = -1;
-
         function pickRandomCard() {
             const cardInner = $('game-card-inner');
             const wasFlipped = cardInner.parentElement.classList.contains('flipped');
@@ -598,18 +681,30 @@
             pickRandomCard();
         }
 
+        function updateScore(success) {
+            if(success) {
+                scoreSuccess++;
+                $('score-success').textContent = scoreSuccess;
+            } else {
+                scoreFail++;
+                $('score-fail').textContent = scoreFail;
+            }
+        }
+
         // --- TABS & SCROLL ---
         function switchTab(tabId) {
-            document.querySelectorAll('.nav-link').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.tab-icon-btn').forEach(el => el.classList.remove('active'));
             const btn = $(`nav-${tabId}`);
             if(btn) btn.classList.add('active');
 
             if (tabId === 'lexique') {
                 $('view-lexique').classList.remove('hidden');
                 $('view-game').classList.add('hidden');
+                $('dynamic-title').textContent = "Lexique Latin Juridique";
             } else {
                 $('view-lexique').classList.add('hidden');
                 $('view-game').classList.remove('hidden');
+                $('dynamic-title').textContent = "Mode Entraînement";
                 pickRandomCard();
             }
         }
@@ -619,13 +714,6 @@
         }
 
         function init() {
-            totalTermsEl = $('total-terms');
-            container = $('lexicon-container');
-            alphabetNav = $('alphabet-nav');
-            searchInput = $('searchInput');
-            noResults = $('noResults');
-            backToTopBtn = $('backToTop');
-
             initLexicon();
 
             searchInput.addEventListener('input', (e) => {
