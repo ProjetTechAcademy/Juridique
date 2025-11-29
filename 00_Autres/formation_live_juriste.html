@@ -1,16 +1,23 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Programme Live Juriste d'Entreprise & Droit Social</title>
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- FontAwesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <!-- Polices -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <meta name="description" content="Plateforme de formation Juriste d'Entreprise & Droit Social - Planning des lives, cours et suivi pédagogique.">
+    <meta name="author" content="Mathilde Martine PAISLEY">
     
+    <title>Programme Live Juriste d'Entreprise & Droit Social</title>
+    
+    <!-- FAVICON (Icône de l'onglet) -->
+    <link rel="icon" type="image/png" href="https://projettechacademy.github.io/Juridique/Asset/Logo_juriste.png">
+
+    <!-- Tailwind CSS (Framework existant) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- FontAwesome & Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&family=Montserrat:wght@500;600;700&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+
     <!-- Configuration Tailwind (Couleurs de la marque) -->
     <script>
         tailwind.config = {
@@ -29,73 +36,163 @@
     </script>
 
     <style>
+        /* --- VARIABLES GLOBALES --- */
         :root{
             --cta: #D9A526;
             --brand-blue: #0F2C48;
             --ivory: #F6F2E8;
             --bronze: #B4792A;
+            /* Header Vars */
+            --h-bg: #0F2C48; --h-text: #fff; --h-accent: #D9A526; --h-bronze: #B4792A;
+            /* Footer Vars */
+            --f-bg: #0F2C48; --f-text: #F6F2E8; --f-accent: #D9A526;
         }
 
         body { margin: 0; background-color: var(--ivory); color: var(--brand-blue); font-family: 'Outfit', sans-serif; }
         
-        /* --- HEADER STICKY --- */
-        .top-banner {
-            position: sticky; top: 0; left: 0; right: 0; z-index: 10000;
-            background: var(--brand-blue); color: white;
-            box-shadow: 0 4px 20px rgba(15,44,72,0.25);
-            padding: 12px 0; border-bottom: 4px solid var(--cta);
-        }
-        .top-inner {
-            max-width: 1400px; margin: 0 auto; padding: 0 24px;
-            display: flex; align-items: center; justify-content: space-between; gap: 20px;
-        }
-        .header-left { display: flex; align-items: center; gap: 16px; flex: 1; }
-        .tb-logo {
-            width: 60px; height: 60px; flex: 0 0 60px; border-radius: 50%; overflow: hidden;
-            background: white; display: flex; align-items: center; justify-content: center;
-            border: 2px solid var(--cta);
-        }
-        .tb-logo img { width: 100%; height: 100%; object-fit: cover; }
-        .tb-text-container { display: flex; flex-direction: column; justify-content: center; }
-        .tb-title { font-weight: 700; font-size: 16px; color: white; line-height: 1.4; }
-        .tb-title .part2 { color: var(--cta); font-style: italic; font-weight: 600; }
-
-        /* Bouton Header Droite */
-        .header-right-btn {
-            display: flex; align-items: center; gap: 10px;
-            background-color: rgba(255,255,255,0.1); padding: 10px 20px;
-            border-radius: 30px; color: white; text-decoration: none; font-weight: 600;
-            transition: all 0.3s ease; border: 1px solid rgba(255,255,255,0.2);
-            white-space: nowrap; cursor: pointer;
-        }
-        .header-right-btn:hover {
-            background-color: var(--cta); color: var(--brand-blue); border-color: var(--cta);
-            transform: translateY(-2px); box-shadow: 0 4px 12px rgba(217,165,38,0.3);
+        /* ======================================================================
+           STYLES DU NOUVEAU HEADER (Jurist Elite Club)
+           ====================================================================== */
+        @keyframes cosmic-pulse {
+            0% { transform: scale(1); box-shadow: 0 5px 15px rgba(15, 44, 72, 0.3); }
+            50% { transform: scale(1.02); box-shadow: 0 15px 25px rgba(28, 181, 224, 0.4); }
+            100% { transform: scale(1); box-shadow: 0 5px 15px rgba(15, 44, 72, 0.3); }
         }
 
-        /* --- NAVIGATION ONGLETS --- */
-        .tabs-nav-container {
-            background: #fff; box-shadow: 0 2px 10px rgba(0,0,0,0.03);
-            padding: 15px 0; margin-bottom: 30px;
-            position: sticky; top: 87px; z-index: 9000;
+        .top-bar {
+            background-color: var(--h-bg);
+            color: var(--h-text);
+            padding: 15px 0;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            position: relative;
+            z-index: 1000;
+            font-family: 'Lato', sans-serif;
         }
-        .tabs-wrapper {
-            max-width: 1100px; margin: 0 auto; display: flex;
-            justify-content: center; gap: 15px; flex-wrap: wrap; padding: 0 20px;
+        
+        .top-bar-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
         }
-        .tab-button {
-            padding: 12px 28px; border-radius: 30px; font-weight: 700; font-size: 15px;
-            cursor: pointer; transition: all 0.3s ease; background-color: var(--ivory);
-            color: var(--brand-blue); border: 2px solid transparent; display: flex; align-items: center; gap: 10px; text-decoration: none;
-        }
-        .tab-button:hover { transform: translateY(-2px); border-color: var(--cta); background-color: #fff; }
-        .tab-button.active {
-            background-color: var(--brand-blue); color: white; border-color: var(--brand-blue);
-            box-shadow: 0 4px 15px rgba(15, 44, 72, 0.3);
-        }
-        .tab-button.active i { color: var(--cta); }
 
-        /* --- STYLES ORIGINAUX DU PLANNING --- */
+        /* GAUCHE : Identité Club */
+        .top-bar-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex: 1;
+            min-width: 320px;
+        }
+
+        .logo-top-bar {
+            width: 60px; height: 60px;
+            border-radius: 50%;
+            border: 2px solid var(--h-accent);
+            object-fit: cover;
+            flex-shrink: 0;
+            background: #fff;
+        }
+
+        .identity-stack { display: flex; flex-direction: column; justify-content: center; }
+
+        .club-title-main {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            color: #ffffff;
+            line-height: 1.1;
+            margin-bottom: 3px;
+        }
+
+        .club-subtitle {
+            font-family: 'Lato', sans-serif;
+            font-size: 0.7rem;
+            color: var(--h-accent);
+            font-weight: 600;
+            opacity: 0.95;
+            line-height: 1.2;
+        }
+
+        /* CENTRE : Navigation Icones */
+        .top-bar-center {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .header-icon-btn {
+            position: relative; 
+            width: 40px; height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #0F2C48 0%, #1CB5E0 100%);
+            border: 1px solid rgba(255,255,255,0.2);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            color: white;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        .header-icon-btn:hover {
+            transform: translateY(3px) scale(1.1);
+            background: linear-gradient(135deg, #163e63 0%, #20c3f0 100%);
+            box-shadow: 0 6px 15px rgba(28, 181, 224, 0.4);
+        }
+
+        .nav-mmpa-img { 
+            width: 100%; height: 100%; 
+            border-radius: 50%; 
+            object-fit: cover; 
+            border: 2px solid var(--h-accent);
+        }
+
+        .nav-profile-img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 2px solid #fff; }
+
+        .header-icon-btn::after {
+            content: attr(data-tooltip); position: absolute; top: 130%; left: 50%; transform: translateX(-50%) translateY(-10px);
+            background-color: #fff; color: var(--h-bg); padding: 4px 10px; border-radius: 20px;
+            font-size: 0.7rem; font-weight: 700; white-space: nowrap; opacity: 0; visibility: hidden; transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2); pointer-events: none; z-index: 100;
+        }
+        .header-icon-btn:hover::after { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+
+        /* DROITE : Portfolio */
+        .btn-portfolio-cosmic {
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600; font-size: 0.9rem;
+            background: linear-gradient(135deg, #0F2C48 0%, #1CB5E0 100%); 
+            color: white !important; text-decoration: none; 
+            border: 1px solid rgba(255,255,255,0.2);
+            display: inline-flex; align-items: center; gap: 8px;
+            animation: cosmic-pulse 4s ease-in-out infinite;
+        }
+        .btn-portfolio-cosmic:hover { background: linear-gradient(135deg, #163e63 0%, #20c3f0 100%); }
+
+        @media (max-width: 950px) {
+            .top-bar-container { justify-content: center; gap: 15px; }
+            .top-bar-left { width: 100%; justify-content: center; text-align: center; }
+            .identity-stack { align-items: center; }
+            .top-bar-center { width: 100%; justify-content: center; margin: 5px 0; }
+        }
+
+        /* --- STYLES UTILITAIRES --- */
+        /* Badges & Scroll */
+        .type-badge { font-size: 0.75rem; padding: 0.25rem 0.6rem; border-radius: 4px; font-weight: 600; white-space: nowrap; letter-spacing: 0.025em; }
+        .table-container::-webkit-scrollbar { width: 8px; height: 8px; }
+        .table-container::-webkit-scrollbar-track { background: #f1f1f1; }
+        .table-container::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        .table-container::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+        
+        /* Classes utilitaires conservées */
         .brand-blue-text { color: #0F2C48; }
         .brand-blue-bg { background-color: #0F2C48; }
         .brand-yellow-text { color: #D9A526; }
@@ -105,150 +202,198 @@
         .brand-bronze-text { color: #B4792A; }
         .brand-bronze-bg { background-color: #B4792A; }
 
-        .type-badge {
-            font-size: 0.75rem;
-            padding: 0.25rem 0.6rem;
-            border-radius: 4px;
-            font-weight: 600;
-            white-space: nowrap;
-            letter-spacing: 0.025em;
+        /* ======================================================================
+           STYLES DU NOUVEAU FOOTER
+           ====================================================================== */
+        .main-footer {
+            background-color: var(--f-bg); color: var(--f-text);
+            padding-top: 50px; font-family: 'Lato', sans-serif; font-size: 0.95rem;
+            position: relative; width: 100%;
+            margin-top: auto;
+        }
+
+        .footer-container { max-width: 1100px; margin: 0 auto; padding: 0 25px; }
+
+        .footer-content { 
+            display: flex; flex-wrap: wrap; justify-content: space-between; 
+            gap: 30px; padding-bottom: 30px; align-items: flex-start;
         }
         
-        /* Custom scrollbar */
-        .table-container::-webkit-scrollbar { width: 8px; height: 8px; }
-        .table-container::-webkit-scrollbar-track { background: #f1f1f1; }
-        .table-container::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
-        .table-container::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+        /* GAUCHE : Identité */
+        .footer-identity { 
+            display: flex; flex-direction: row; align-items: center; 
+            gap: 20px; min-width: 300px; 
+        }
+        .footer-logo-img { width: 60px; height: 60px; border-radius: 8px; border: 2px solid var(--f-accent); background: #fff; object-fit: cover; }
+        .footer-info-compact { display: flex; flex-direction: column; }
+        .footer-name { 
+            color: var(--f-accent); font-family: 'Playfair Display', serif; 
+            font-size: 1.1rem; font-weight: 700; line-height: 1.2; margin-bottom: 5px; margin-top:0;
+        }
+        
+        .footer-contact-stack { display: flex; flex-direction: column; gap: 5px; font-size: 0.85rem; opacity: 0.8; }
+        .footer-link { text-decoration: none; color: inherit; transition: color 0.3s; display: inline-block; }
+        .footer-link:hover { color: var(--f-accent); transform: translateX(2px); }
 
-        /* Responsive Header */
+        /* DROITE : Dock Icones */
+        .footer-dock-col { 
+            display: flex; flex-direction: column; align-items: flex-end; 
+            gap: 10px; margin-left: auto; 
+        }
+        .dock-group { display: flex; flex-direction: column; align-items: flex-end; gap: 5px; }
+        .dock-label { 
+            font-family: 'Montserrat', sans-serif; font-size: 0.8rem; 
+            text-transform: uppercase; color: var(--f-accent); opacity: 0.7; 
+        }
+        
+        .icon-dock { display: flex; gap: 15px; flex-wrap: wrap; justify-content: flex-end; align-items: center; }
+
+        /* Style Boutons Icones */
+        .icon-btn { 
+            position: relative; width: 45px; height: 45px; border-radius: 50%; 
+            background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(217, 165, 38, 0.3); 
+            display: flex; align-items: center; justify-content: center; 
+            font-size: 1.3rem; text-decoration: none; 
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+            cursor: pointer; color: #fff; 
+        }
+        .icon-btn:hover { 
+            transform: translateY(-5px) scale(1.1); background: #fff; border-color: #fff; 
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3); 
+        }
+
+        /* Couleurs Marques au survol */
+        .brand-whatsapp { color: #25D366 !important; } .icon-btn:hover .brand-whatsapp { color: #25D366 !important; }
+        .brand-discord { color: #5865F2 !important; } .icon-btn:hover .brand-discord { color: #5865F2 !important; }
+        .brand-linkedin { color: #0077b5 !important; } .icon-btn:hover .brand-linkedin { color: #0077b5 !important; }
+        .brand-instagram { color: #E1306C !important; } .icon-btn:hover .brand-instagram { color: #E1306C !important; }
+        .brand-tiktok { color: #00f2ea !important; text-shadow: 2px 2px 0px #ff0050; } .icon-btn:hover .brand-tiktok { color: #000 !important; text-shadow: none; } 
+        .brand-nav { color: var(--f-accent) !important; } .icon-btn:hover .brand-nav { color: var(--f-bg) !important; }
+
+        /* Tooltips */
+        .icon-btn::after {
+            content: attr(data-tooltip); position: absolute; bottom: 120%; left: 50%; transform: translateX(-50%) translateY(10px);
+            background-color: #fff; color: var(--f-bg); padding: 5px 12px; border-radius: 20px;
+            font-size: 0.75rem; font-weight: 700; white-space: nowrap; opacity: 0; visibility: hidden; transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2); pointer-events: none; z-index: 100;
+        }
+        .icon-btn::before {
+            content: ''; position: absolute; bottom: 110%; left: 50%; transform: translateX(-50%) translateY(10px);
+            border-width: 6px; border-style: solid; border-color: #ffffff transparent transparent transparent;
+            opacity: 0; visibility: hidden; transition: all 0.3s ease; z-index: 100;
+        }
+        .icon-btn:hover::after, .icon-btn:hover::before { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+
+        .dock-separator { width: 1px; height: 30px; background-color: rgba(255,255,255,0.2); margin: 0 10px; }
+        .footer-bottom { 
+            text-align: center; padding: 15px 0; font-size: 0.8rem; 
+            color: rgba(255,255,255,0.4); background-color: rgba(0,0,0,0.2); 
+            border-top: 1px solid rgba(255,255,255,0.05); width: 100%;
+        }
+
+        /* Back to Top */
+        #backToTop {
+            position: fixed; bottom: 30px; right: 30px; background-color: var(--f-accent); color: var(--f-bg);
+            width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-size: 1.2rem; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.2); opacity: 0; pointer-events: none;
+            transition: all 0.3s ease; z-index: 100;
+        }
+        #backToTop.show { opacity: 1; pointer-events: all; }
+        #backToTop:hover { transform: translateY(-5px); background-color: #fff; }
+
         @media (max-width: 768px) {
-            .top-inner { flex-direction: column; gap: 15px; }
-            .header-left { flex-direction: column; text-align: center; }
-            .header-right-btn { width: 100%; justify-content: center; }
-            .tabs-nav-container { top: 160px; }
+            .footer-content { flex-direction: column; align-items: center; text-align: center; }
+            .footer-identity { flex-direction: column; text-align: center; }
+            .footer-dock-col { align-items: center; width: 100%; gap: 30px; margin-left: 0; }
+            .icon-dock { justify-content: center; flex-wrap: wrap; }
+            .dock-group { align-items: center; }
+            .dock-separator { display: none; }
         }
     </style>
 </head>
 <body class="bg-white text-slate-800">
 
-    <!-- === A. LE HEADER STICKY === -->
-    <div class="top-banner">
-        <div class="top-inner">
-            <!-- Gauche -->
-            <div class="header-left">
-                <div class="tb-logo">
-                    <!-- Utilisation du PNG avec fallback JPG -->
-                    <img src="https://projettechacademy.github.io/Juridique/Asset/Logo_juriste.png" alt="Logo" onerror="this.src='https://projettechacademy.github.io/Juridique/Asset/Logo_juriste.jpg'">
-                </div>
-                <div class="tb-text-container">
-                    <div class="tb-title">
-                        <span class="part1">💫 The Jurist Elite Club By Studi ✨</span><br>
-                        <span class="part2">La Villa des Juristes Brisés 💔 sur l’Île de L’INSTRUCTION !🏝</span>
-                    </div>
+    <!-- === A. NOUVEAU HEADER (SPECIAL CLUB) === -->
+    <div class="top-bar">
+        <div class="top-bar-container">
+            <!-- 1. Identité Spéciale Club (Gauche) -->
+            <div class="top-bar-left">
+                <!-- Logo Juriste -->
+                <img src="https://projettechacademy.github.io/Juridique/Asset/Logo_juriste.png" 
+                     onerror="this.src='https://projettechacademy.github.io/Juridique/Asset/Logo_juriste.jpg';" 
+                     alt="Logo Club" class="logo-top-bar">
+                
+                <div class="identity-stack">
+                    <!-- Titre en Blanc -->
+                    <span class="club-title-main">The Jurist Elite Club By Studi</span>
+                    <!-- Sous-titre en Jaune -->
+                    <span class="club-subtitle">La Villa des Juristes Brisés 💔 sur l’Île de L’INSTRUCTION ! 🏝</span>
                 </div>
             </div>
-            <!-- Droite : Bouton Accueil -->
-            <a href="https://projettechacademy.github.io/Juridique/index.html" class="header-right-btn">
-                <i class="fa-solid fa-house"></i>
-                <span>Accueil</span>
-            </a>
-        </div>
-    </div>
-
-    <!-- === B. LA NAVIGATION ONGLETS === -->
-    <div class="tabs-nav-container">
-        <div class="tabs-wrapper">
-            <a href="#affaires" class="tab-button">
-                <i class="fa-solid fa-briefcase"></i> Droit des Affaires
-            </a>
-            <a href="#entreprise" class="tab-button">
-                <i class="fa-solid fa-building-columns"></i> Juriste d'Entreprise
-            </a>
-            <a href="#social" class="tab-button active">
-                <i class="fa-solid fa-users"></i> Droit Social
-            </a>
-        </div>
-    </div>
-
-    <!-- === NOUVEAU : C. SECTION BIENVENUE & ACCÈS RAPIDE === -->
-    <div class="max-w-7xl mx-auto px-4 mt-8 mb-12">
-        <div class="bg-[#F6F2E8] rounded-2xl p-8 border-2 border-[#D9A526]/20 text-center shadow-sm">
-            <h2 class="text-3xl font-bold text-[#0F2C48] mb-2">Bienvenue Mathilde ! 👋</h2>
-            <p class="text-[#B4792A] font-semibold mb-8 uppercase tracking-wide text-sm">Espace Personnel de Formation</p>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- 1. Start -->
-                <a href="https://projettechacademy.github.io/Juridique/index.html" class="bg-white p-6 rounded-xl border border-slate-200 hover:border-[#D9A526] hover:shadow-lg transition-all group text-left flex items-center gap-4">
-                    <div class="w-12 h-12 rounded-full bg-[#0F2C48] text-white flex items-center justify-center text-xl group-hover:scale-110 transition-transform">
-                        <i class="fa-solid fa-flag-checkered"></i>
-                    </div>
-                    <div>
-                        <h3 class="font-bold text-[#0F2C48] leading-tight">Start</h3>
-                        <p class="text-xs text-slate-500 mt-1">Retour au début</p>
-                    </div>
+            <!-- 2. Navigation Icones (Centre) -->
+            <div class="top-bar-center">
+                <!-- MMPA Logo à la place de la Maison -->
+                <a href="https://projettechacademy.github.io/Juridique/index.html" target="_blank" class="header-icon-btn" aria-label="Start/Accueil" data-tooltip="Start/Accueil" style="padding: 0; overflow: hidden; border: none;">
+                    <img src="https://projettechacademy.github.io/Juridique/Asset/Logo_MMPA.jpeg" alt="MMPA" class="nav-mmpa-img">
                 </a>
 
-                <!-- 2. Lexique -->
-                <a href="https://projettechacademy.github.io/Juridique/00_Autres/Lexique_Latin_Juridique.html" class="bg-white p-6 rounded-xl border border-slate-200 hover:border-[#D9A526] hover:shadow-lg transition-all group text-left flex items-center gap-4">
-                    <div class="w-12 h-12 rounded-full bg-[#D9A526] text-white flex items-center justify-center text-xl group-hover:scale-110 transition-transform">
-                        <i class="fa-solid fa-book-open"></i>
-                    </div>
-                    <div>
-                        <h3 class="font-bold text-[#0F2C48] leading-tight">Lexique Juridique & Social</h3>
-                        <p class="text-xs text-slate-500 mt-1">Les indispensables du Latin</p>
-                    </div>
-                </a>
-
-                <!-- 3. Planning (Page Actuelle) -->
-                <a href="https://projettechacademy.github.io/Juridique/00_Autres/formation_live_juriste.html" class="bg-white p-6 rounded-xl border-2 border-[#0F2C48] shadow-md group text-left flex items-center gap-4 relative overflow-hidden">
-                    <!-- Badge Actif -->
-                    <div class="absolute top-0 right-0 bg-[#0F2C48] text-white text-[10px] px-2 py-0.5 rounded-bl-lg font-bold">ACTIF</div>
-                    <div class="w-12 h-12 rounded-full bg-[#0F2C48] text-white flex items-center justify-center text-xl">
-                        <i class="fa-solid fa-video"></i>
-                    </div>
-                    <div>
-                        <h3 class="font-bold text-[#0F2C48] leading-tight">Planning Live & Suivi</h3>
-                        <p class="text-xs text-slate-500 mt-1">Tableau de bord interactif</p>
-                    </div>
-                </a>
-
-                <!-- 4. Mon Espace -->
-                <a href="https://projettechacademy.github.io/Juridique/00_Autres/Mon_Espace_Juriste_Tableau_de_bord_personnel.html" class="bg-white p-6 rounded-xl border border-slate-200 hover:border-[#D9A526] hover:shadow-lg transition-all group text-left flex items-center gap-4">
-                    <div class="w-12 h-12 rounded-full bg-[#B4792A] text-white flex items-center justify-center text-xl group-hover:scale-110 transition-transform">
-                        <i class="fa-solid fa-user-tie"></i>
-                    </div>
-                    <div>
-                        <h3 class="font-bold text-[#0F2C48] leading-tight">Mon Espace Juriste</h3>
-                        <p class="text-xs text-slate-500 mt-1">Tableau de bord personnel</p>
-                    </div>
+                <a href="https://projettechacademy.github.io/Juridique/00_Autres/Mon_Espace_Juriste_Tableau_de_bord_personnel.html" target="_blank" class="header-icon-btn" aria-label="Mon Espace" data-tooltip="Mon Espace">📊</a>
+                <a href="https://projettechacademy.github.io/Juridique/00_Autres/Lexique_Latin_Juridique.html" target="_blank" class="header-icon-btn" aria-label="Lexique Latin" data-tooltip="Lexique Latin">📜</a>
+                <a href="https://projettechacademy.github.io/Juridique/00_Autres/formation_live_juriste.html" target="_blank" class="header-icon-btn" aria-label="Planning Live" data-tooltip="Planning Live">📅</a>
+                
+                <!-- Photo Profil -->
+                <a href="https://projettechacademy.github.io/Juridique/00_Autres/A_propos_de_moi.html" target="_blank" class="header-icon-btn" aria-label="À propos de moi" data-tooltip="À propos de moi" style="padding: 0; overflow: hidden; border: 2px solid #D9A526;">
+                    <img src="https://projettechacademy.github.io/Juridique/Asset/Photo_Mathilde_Martine_PAISLEY.png" 
+                         onerror="this.src='https://projettechacademy.github.io/Juridique/Asset/Photo_Mathilde_Martine_PAISLEY.jpg';" 
+                         alt="Profil" class="nav-profile-img">
                 </a>
             </div>
+
+            <!-- 3. Portfolio (Droite) -->
+            <a href="https://projettechacademy.github.io/CV_MMPA-CV-Mathilde-Martine-PAISLEY/" target="_blank" class="btn-portfolio-cosmic">
+                <span>📄</span> Mon portfolio
+            </a>
         </div>
     </div>
 
     <!-- === D. CONTENU PRINCIPAL (PLANNING) === -->
     <div class="max-w-7xl mx-auto p-4 md:p-8">
         <!-- Header du Planning -->
-        <div class="mb-8 flex flex-col md:flex-row md:items-end justify-between gap-6 border-b-2 border-[#0F2C48] pb-6">
-            <div>
-                <h1 class="text-3xl md:text-4xl font-bold brand-blue-text flex items-center gap-3">
-                    <i class="fa-solid fa-scale-balanced brand-yellow-text"></i>
-                    Programme Live Juriste d'Entreprise & Droit Social
-                </h1>
-                <p class="brand-bronze-text font-medium mt-3 text-lg">
-                    Organisé par <span class="font-bold border-b border-[#B4792A]">EVA PHILIPPE</span>
-                </p>
+        <div class="mb-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b-2 border-[#0F2C48] pb-6">
+                <div>
+                    <h1 class="text-3xl md:text-4xl font-bold brand-blue-text flex items-center gap-3">
+                        <i class="fa-solid fa-scale-balanced brand-yellow-text"></i>
+                        Programme Live Juriste d'Entreprise & Droit Social
+                    </h1>
+                    <p class="brand-bronze-text font-medium mt-3 text-lg">
+                        Organisé par <span class="font-bold">EVA PHILIPPE</span> sur la plateforme <span class="font-bold text-[#D9A526]">STUDI</span>
+                    </p>
+                </div>
+                
+                <div class="flex gap-3">
+                    <!-- Total Count Box -->
+                    <div class="brand-ivory-bg p-4 rounded-lg shadow-sm border border-[#0F2C48]/10 flex flex-col items-center min-w-[120px]">
+                        <span class="text-xs brand-blue-text uppercase font-bold tracking-widest mb-1">Total Lives</span>
+                        <span class="text-3xl font-bold brand-bronze-text" id="total-count">0</span>
+                    </div>
+                </div>
             </div>
-            
-            <div class="flex gap-3">
-                <div class="brand-ivory-bg p-4 rounded-lg shadow-sm border border-[#0F2C48]/10 flex flex-col items-center min-w-[120px]">
-                    <span class="text-xs brand-blue-text uppercase font-bold tracking-widest mb-1">Total Lives</span>
-                    <span class="text-3xl font-bold brand-bronze-text" id="total-count">0</span>
+
+            <!-- Notice Access (Ajouté comme demandé) -->
+            <div class="mt-6 bg-blue-50 border-l-4 border-[#0F2C48] p-4 rounded-r shadow-sm flex items-start gap-4">
+                <div class="text-[#0F2C48] text-xl mt-0.5"><i class="fa-solid fa-lock"></i></div>
+                <div>
+                    <h3 class="font-bold text-[#0F2C48] text-sm uppercase tracking-wide">Accès Réservé</h3>
+                    <p class="text-slate-600 text-sm mt-1">
+                        L'accès aux cours vidéo live nécessite un <strong>compte apprenant actif</strong> sur la plateforme Studi.
+                    </p>
                 </div>
             </div>
         </div>
 
-        <!-- Progress Bar Section (Carte Ivoire) -->
+        <!-- Progress Bar Section -->
         <div class="brand-ivory-bg p-6 rounded-lg shadow-md border-l-4 border-[#D9A526] mb-8">
             <div class="flex justify-between items-center mb-3">
                 <h2 class="text-lg font-bold brand-blue-text flex items-center gap-2">
@@ -262,19 +407,24 @@
             <p class="text-xs text-slate-500 mt-2 italic text-right">Cochez les cases "Vu" dans le tableau pour mettre à jour.</p>
         </div>
 
-        <!-- Controls (Carte Ivoire) -->
-        <div class="brand-ivory-bg p-5 rounded-lg shadow-sm border border-slate-200 mb-6 flex flex-col md:flex-row gap-4 justify-between items-center">
-            <div class="relative w-full md:w-96">
-                <i class="fa-solid fa-search absolute left-3 top-1/2 transform -translate-y-1/2 brand-blue-text"></i>
-                <input type="text" id="searchInput" placeholder="Rechercher par mot-clé..." 
-                       class="w-full pl-10 pr-4 py-2.5 bg-white border border-slate-300 rounded focus:ring-2 focus:ring-[#D9A526] focus:border-[#D9A526] outline-none transition-all placeholder-slate-400 text-slate-700">
+        <!-- Controls -->
+        <div class="brand-ivory-bg p-4 rounded-lg shadow-sm border border-slate-200 mb-6 flex flex-col gap-4 items-center">
+            <!-- 1. Barre de Recherche (En haut) -->
+            <div class="relative w-full max-w-3xl">
+                <i class="fa-solid fa-search absolute left-3 top-1/2 transform -translate-y-1/2 brand-blue-text text-slate-400"></i>
+                <input type="text" id="searchInput" aria-label="Rechercher" placeholder="Rechercher un cours, un live, un sujet..." 
+                       class="w-full pl-10 pr-4 py-2 bg-white border border-slate-300 rounded-full focus:ring-2 focus:ring-[#D9A526] focus:border-[#D9A526] outline-none transition-all placeholder-slate-400 text-slate-700 text-sm shadow-sm">
             </div>
             
-            <div class="flex flex-wrap gap-2 justify-center">
-                <button onclick="filterByType('all')" class="px-4 py-2 text-sm rounded border border-slate-300 bg-white hover:bg-slate-50 brand-blue-text font-semibold transition-colors">Tout</button>
-                <button onclick="filterByType('Cours')" class="px-4 py-2 text-sm rounded border border-blue-200 bg-blue-50 hover:bg-blue-100 text-[#0F2C48] font-semibold transition-colors">Cours</button>
-                <button onclick="filterByType('Travaux Dirigés')" class="px-4 py-2 text-sm rounded border border-emerald-200 bg-emerald-50 hover:bg-emerald-100 text-emerald-800 font-semibold transition-colors">TD</button>
-                <button onclick="filterByType('Objectif Examens')" class="px-4 py-2 text-sm rounded border border-amber-200 bg-amber-50 hover:bg-amber-100 brand-bronze-text font-semibold transition-colors">Examens</button>
+            <!-- 2. Filtres (En dessous, compacts) -->
+            <div class="flex flex-wrap gap-2 justify-center w-full" role="group" aria-label="Filtres par type de cours">
+                <button onclick="filterByType('all')" class="px-3 py-1.5 text-xs rounded-full border border-slate-300 bg-white hover:bg-slate-50 brand-blue-text font-bold transition-all shadow-sm">Tout</button>
+                <button onclick="filterByType('Cours')" class="px-3 py-1.5 text-xs rounded-full border border-blue-200 bg-blue-50 hover:bg-blue-100 text-[#0F2C48] font-semibold transition-all shadow-sm">Cours</button>
+                <button onclick="filterByType('Travaux Dirigés')" class="px-3 py-1.5 text-xs rounded-full border border-emerald-200 bg-emerald-50 hover:bg-emerald-100 text-emerald-800 font-semibold transition-all shadow-sm">Travaux Dirigés</button>
+                <button onclick="filterByType('Objectif Examens')" class="px-3 py-1.5 text-xs rounded-full border border-amber-200 bg-amber-50 hover:bg-amber-100 brand-bronze-text font-semibold transition-all shadow-sm">Objectif Examens</button>
+                <button onclick="filterByType('Méthodologie')" class="px-3 py-1.5 text-xs rounded-full border border-purple-200 bg-purple-50 hover:bg-purple-100 text-purple-800 font-semibold transition-all shadow-sm">Méthodologie</button>
+                <button onclick="filterByType('Live')" class="px-3 py-1.5 text-xs rounded-full border border-red-200 bg-red-50 hover:bg-red-100 text-red-800 font-semibold transition-all shadow-sm">Live</button>
+                <button onclick="filterByType('Accompagnement pédagogique')" class="px-3 py-1.5 text-xs rounded-full border border-pink-200 bg-pink-50 hover:bg-pink-100 text-pink-800 font-semibold transition-all shadow-sm">Accompagnement Pédago.</button>
             </div>
         </div>
 
@@ -319,43 +469,66 @@
         </div>
     </div>
 
-    <!-- === E. FOOTER === -->
-    <footer class="brand-blue-bg text-white mt-12">
-        <div class="max-w-7xl mx-auto px-4 py-8 md:py-12">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Col 1 -->
-                <div>
-                    <h3 class="text-[#D9A526] font-bold text-lg mb-4 flex items-center gap-2">
-                        <i class="fa-solid fa-scale-balanced"></i> EVA PHILIPPE
-                    </h3>
-                    <p class="text-slate-300 text-sm leading-relaxed">
-                        Accompagnement pédagogique et expertise juridique pour les futurs juristes d'entreprise et experts RH.
-                    </p>
-                </div>
-                <!-- Col 2 -->
-                <div class="md:text-center">
-                    <h3 class="text-[#F6F2E8] font-bold text-lg mb-4">Liens Utiles</h3>
-                    <ul class="space-y-2 text-sm text-slate-300">
-                        <li><a href="#" class="hover:text-[#D9A526] transition-colors">Planning des cours</a></li>
-                        <li><a href="#" class="hover:text-[#D9A526] transition-colors">Ressources MBA</a></li>
-                        <li><a href="#" class="hover:text-[#D9A526] transition-colors">Support Pédagogique</a></li>
-                    </ul>
-                </div>
-                <!-- Col 3 -->
-                <div class="md:text-right">
-                    <h3 class="text-[#F6F2E8] font-bold text-lg mb-4">Contact</h3>
-                    <p class="text-slate-300 text-sm mb-2"><i class="fa-regular fa-envelope mr-2"></i> contact@evaphilippe.com</p>
-                    <div class="flex gap-4 mt-4 md:justify-end">
-                        <a href="#" class="w-8 h-8 rounded-full bg-[#D9A526] text-[#0F2C48] flex items-center justify-center hover:bg-white transition-colors"><i class="fa-brands fa-linkedin-in"></i></a>
-                        <a href="#" class="w-8 h-8 rounded-full bg-[#D9A526] text-[#0F2C48] flex items-center justify-center hover:bg-white transition-colors"><i class="fa-solid fa-graduation-cap"></i></a>
+    <!-- === E. NOUVEAU FOOTER UNIVERSEL === -->
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                
+                <!-- Identité (Gauche) -->
+                <div class="footer-identity">
+                    <img src="https://projettechacademy.github.io/Juridique/Asset/Logo_MMPA.jpeg" alt="Logo MMPA" class="footer-logo-img">
+                    <div class="footer-info-compact">
+                        <div class="footer-name">Mathilde Martine PAISLEY</div>
+                        <div class="footer-contact-stack">
+                            <a href="mailto:Mathilde.martine.paisley@gmail.com" class="footer-link">📧 Mathilde.martine.paisley@gmail.com</a>
+                            <a href="tel:+33685900887" class="footer-link">📲 06 85 90 08 87</a>
+                        </div>
                     </div>
                 </div>
+
+                <!-- Dock Navigation & Réseaux (Droite) -->
+                <div class="footer-dock-col">
+                    <div class="dock-group">
+                        <div class="dock-label">Navigation & Réseaux</div>
+                        <div class="icon-dock">
+                            <!-- Navigation -->
+                            <a href="https://projettechacademy.github.io/Juridique/index.html" target="_blank" class="icon-btn" aria-label="Start/Accueil" data-tooltip="Start/Accueil"><span class="brand-nav">🏠</span></a>
+                            <a href="https://projettechacademy.github.io/Juridique/00_Autres/Mon_Espace_Juriste_Tableau_de_bord_personnel.html" target="_blank" class="icon-btn" aria-label="Mon Espace" data-tooltip="Mon Espace"><span class="brand-nav">📊</span></a>
+                            <a href="https://projettechacademy.github.io/Juridique/00_Autres/Lexique_Latin_Juridique.html" target="_blank" class="icon-btn" aria-label="Lexique Latin" data-tooltip="Lexique Latin"><span class="brand-nav">📜</span></a>
+                            <a href="https://projettechacademy.github.io/Juridique/00_Autres/formation_live_juriste.html" target="_blank" class="icon-btn" aria-label="Planning Live" data-tooltip="Planning Live"><span class="brand-nav">📅</span></a>
+                            <a href="https://projettechacademy.github.io/Juridique/00_Autres/A_propos_de_moi.html" target="_blank" class="icon-btn" aria-label="À propos de moi" data-tooltip="À propos de moi"><span class="brand-nav">👤</span></a>
+                            
+                            <!-- Séparateur -->
+                            <div class="dock-separator"></div>
+
+                            <!-- Réseaux -->
+                            <a href="https://chat.whatsapp.com/IoMXFl4o2otExYKCPVj22b" target="_blank" class="icon-btn" aria-label="WhatsApp" data-tooltip="WhatsApp"><i class="fab fa-whatsapp brand-whatsapp"></i></a>
+                            <a href="https://discord.gg/qwNPV8QzFt" target="_blank" class="icon-btn" aria-label="Discord" data-tooltip="Discord"><i class="fab fa-discord brand-discord"></i></a>
+                            <a href="https://www.linkedin.com/in/mathilde-martine-paisley-1a4422382/" target="_blank" class="icon-btn" aria-label="LinkedIn" data-tooltip="LinkedIn"><i class="fab fa-linkedin brand-linkedin"></i></a>
+                            <a href="https://www.instagram.com/enervyx/" target="_blank" class="icon-btn" aria-label="Instagram @enervyx" data-tooltip="Instagram @enervyx"><i class="fab fa-instagram brand-instagram"></i></a>
+                            <a href="https://www.tiktok.com/@enervyx/" target="_blank" class="icon-btn" aria-label="TikTok @enervyx" data-tooltip="TikTok @enervyx"><i class="fab fa-tiktok brand-tiktok"></i></a>
+                        </div>
+                    </div>
+                </div>
+
             </div>
-            <div class="border-t border-white/10 mt-8 pt-8 text-center text-xs text-slate-400">
-                <p>&copy; 2025 Eva Philippe - Tous droits réservés. Document à usage pédagogique.</p>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="footer-container">
+                <p>© 2025 Tous droits réservés – Création : 2025 – Dernière mise à jour : Novembre 2025</p>
             </div>
         </div>
     </footer>
+
+    <!-- Bouton Retour Haut -->
+    <div id="backToTop" onclick="window.scrollTo(0,0)"><i class="fas fa-arrow-up"></i></div>
+    <script>
+        window.addEventListener('scroll', () => {
+            const btn = document.getElementById('backToTop');
+            if (window.scrollY > 300) btn.classList.add('show'); else btn.classList.remove('show');
+        });
+    </script>
 
     <script>
         // Raw Data extraction with Links added
@@ -513,7 +686,7 @@
                 
                 // Link Button Logic - Brand Yellow CTA
                 const linkButton = event.link 
-                    ? `<a href="${event.link}" target="_blank" class="inline-flex items-center justify-center w-8 h-8 rounded-full border border-[#D9A526] text-[#D9A526] hover:bg-[#D9A526] hover:text-white transition-all shadow-sm" title="Accéder au live">
+                    ? `<a href="${event.link}" target="_blank" aria-label="Voir le live : ${event.title}" class="inline-flex items-center justify-center w-8 h-8 rounded-full border border-[#D9A526] text-[#D9A526] hover:bg-[#D9A526] hover:text-white transition-all shadow-sm" title="Accéder au live">
                          <i class="fa-solid fa-play ml-0.5"></i>
                        </a>`
                     : `<span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-slate-100 text-slate-300 cursor-not-allowed">
@@ -526,7 +699,7 @@
                 row.innerHTML = `
                     <td class="p-4 text-center">
                         <div class="flex justify-center">
-                             <input type="checkbox" 
+                             <input type="checkbox" aria-label="Marquer comme vu : ${event.title}"
                                 class="w-5 h-5 appearance-none border-2 border-[#D9A526] rounded-sm bg-white checked:bg-[#D9A526] checked:border-[#D9A526] cursor-pointer transition-all relative"
                                 style="background-image: url(&quot;data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e&quot;); background-size: 100% 100%; background-repeat: no-repeat; background-position: center;"
                                 onchange="toggleSeen('${event.id}')" 
