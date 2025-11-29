@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- SEO & DESCRIPTION -->
-    <meta name="description" content="Découvrez Mathilde Martine PAISLEY : Apprenante MBA Juriste d'Entreprise, experte Paie & RH, et fondatrice du Jurist Elite Club.">
+    <!-- SEO -->
+    <meta name="description" content="Découvrez Mathilde Martine PAISLEY : Experte Paie, SIRH & Droit Social, fondatrice du Jurist Elite Club.">
     <meta name="author" content="Mathilde Martine PAISLEY">
     
     <title>Mathilde Martine PAISLEY - À propos de moi</title>
@@ -30,6 +30,7 @@
             --color-alert: #B4792A;    /* Bronze */
             --color-text: #2c3e50;
             --color-white: #ffffff;
+            --color-dynamic: #E63946;
         }
 
         html { scroll-behavior: smooth; }
@@ -42,6 +43,7 @@
             line-height: 1.8;
             overflow-x: hidden;
             position: relative;
+            margin: 0;
         }
 
         h1, h2, h3, h4 { font-family: 'Playfair Display', serif; color: var(--color-primary); }
@@ -68,291 +70,119 @@
             100% { transform: translateY(0) scale(1); box-shadow: 0 5px 15px rgba(15, 44, 72, 0.3); }
         }
 
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-            40% { transform: translateY(-10px); }
-            60% { transform: translateY(-5px); }
-        }
-
-        /* --- HEADER DYNAMIQUE --- */
-        .header-peps {
-            background: var(--color-bg);
-            padding: 40px 0 60px 0;
-            border-bottom: 3px solid var(--color-accent);
-            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        /* --- TOP BAR --- */
+        .top-bar {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            padding: 15px 0;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
             position: relative;
-            overflow: hidden;
+            z-index: 100;
         }
-        .header-content {
+        
+        .top-bar-content {
             display: flex;
             align-items: center;
             justify-content: space-between;
-        }
-        .brand-identity {
-            display: flex;
-            align-items: center;
+            flex-wrap: wrap;
             gap: 20px;
         }
-        .logo-mmpa {
-            width: 90px;
-            height: auto;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-        }
-        .logo-mmpa:hover { transform: scale(1.05) rotate(-2deg); }
 
-        .main-title h1 { font-size: 2.2rem; margin-bottom: 5px; line-height: 1.2; }
-        .subtitle {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 500;
-            color: var(--color-alert);
-            text-transform: none;
-            letter-spacing: 0.5px;
-            font-size: 1rem;
-            margin-bottom: 2px;
-        }
-        
-        .club-name-header {
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
-            color: var(--color-alert); /* Bronze pour lisibilité */
-            font-size: 1.2rem;
-            margin-top: 0;
-            font-weight: 600;
-        }
-        
-        .slogan-header {
-            font-family: 'Lato', sans-serif;
-            font-size: 1rem;
-            color: var(--color-text);
-            margin-top: 10px;
-            font-weight: 400;
-            opacity: 0.8;
-            letter-spacing: 0.5px;
-        }
-
-        .scroll-indicator {
-            position: absolute;
-            bottom: 15px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: var(--color-primary);
-            font-size: 1.5rem;
-            animation: bounce 2s infinite;
-            opacity: 0.6;
-            cursor: pointer;
-        }
-
-        /* --- BOUTON PORTFOLIO --- */
-        .btn-portfolio-cosmic {
-            padding: 12px 35px;
-            border-radius: 50px;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 600; 
-            font-size: 1rem;
-            background: linear-gradient(135deg, #0F2C48 0%, #1CB5E0 100%); 
-            color: white !important;
-            text-transform: none; 
-            border: none;
-            cursor: pointer;
+        .top-bar-left {
             display: flex;
             align-items: center;
-            gap: 10px;
-            animation: cosmic-pulse 4s ease-in-out infinite;
+            gap: 15px;
+            flex: 1;
+            min-width: 300px;
         }
-        .btn-portfolio-cosmic:hover { background: linear-gradient(135deg, #163e63 0%, #20c3f0 100%); }
 
-        /* --- SECTION STORYTELLING --- */
-        .story-grid {
-            display: grid;
-            grid-template-columns: 3fr 2fr;
-            gap: 60px;
-            align-items: start;
-        }
-        .discreet-photo-wrapper {
-            float: left;
-            margin: 10px 30px 10px 0;
-            position: relative;
-            shape-outside: circle(50%);
-        }
-        .discreet-photo {
-            width: 150px;
-            height: 150px;
+        .logo-top-bar {
+            width: 55px;
+            height: 55px;
             border-radius: 50%;
+            border: 2px solid var(--color-accent);
             object-fit: cover;
-            border: 4px solid var(--color-white);
-            box-shadow: 0 8px 20px rgba(15, 44, 72, 0.15);
+            flex-shrink: 0;
         }
-        .bio-narrative p { margin-bottom: 20px; font-size: 1.05rem; }
-        .highlight { color: var(--color-accent); font-weight: 700; }
 
-        .identity-card {
-            background: var(--color-white);
-            padding: 35px;
-            border-radius: 20px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
-            border-top: 5px solid var(--color-accent);
-            position: sticky;
-            top: 50px;
-            z-index: 10;
-        }
-        .identity-card h3 { margin-bottom: 25px; text-align: center; }
-        .id-list li { margin-bottom: 15px; display: flex; align-items: center; font-weight: 500; font-size: 1.1rem; }
-        .emoji-icon { font-style: normal; margin-right: 15px; font-size: 1.4rem; width: 30px; text-align: center; }
-
-        /* --- CHAPITRES --- */
-        .narrative-section { background: linear-gradient(to bottom, var(--color-bg), #fff); position: relative; }
-        .section-header { text-align: center; margin-bottom: 60px; }
-        .section-header h2 { font-size: 2.8rem; margin-bottom: 10px; }
-
-        .chapter-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            padding-bottom: 50px;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-        .chapter-card {
-            background: var(--color-white);
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border-bottom: 4px solid transparent;
+        .identity-stack {
             display: flex;
             flex-direction: column;
-            align-items: flex-start;
+            justify-content: center;
         }
-        .chapter-card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); border-bottom-color: var(--color-accent); }
-        .chapter-header { display: flex; align-items: center; width: 100%; margin-bottom: 15px; border-bottom: 1px solid rgba(0,0,0,0.05); padding-bottom: 15px; }
-        .chapter-icon { font-size: 2rem; color: var(--color-primary); margin-right: 15px; background: var(--color-bg); width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; border-radius: 50%; }
-        .chapter-date { background: var(--color-primary); color: white; padding: 4px 12px; border-radius: 15px; font-size: 0.75rem; font-weight: 700; margin-left: auto; }
-        .chapter-card h3 { font-size: 1.3rem; margin: 0; line-height: 1.3; }
-        .chapter-card p { font-size: 0.95rem; margin-top: 10px; color: #555; text-align: left; }
 
-        /* --- VILLA --- */
-        .villa-wrapper {
-            background: radial-gradient(circle at top right, #d9a52655 0%, transparent 40%),
-                        radial-gradient(circle at bottom left, #0f2c4844 0%, transparent 40%),
-                        var(--color-bg);
-            padding: 60px 20px;
-            border-radius: 30px;
-            margin: 40px 0;
-            box-shadow: inset 0 0 50px rgba(255,255,255,0.5);
-        }
-        .villa-section {
-            background: rgba(15, 44, 72, 0.95);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            color: var(--color-white);
-            text-align: center;
-            border-radius: 20px;
-            padding: 60px 30px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-        .villa-section h2 { color: var(--color-white); font-size: 2rem; margin-bottom: 20px; }
-        .villa-intro { font-size: 1.1rem; max-width: 800px; margin: 0 auto 30px; opacity: 0.95; text-align: center !important; }
-        .cta-container { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
-        .btn-peps {
-            padding: 12px 30px;
-            border-radius: 50px;
-            font-family: 'Montserrat', sans-serif;
+        .name-top-bar {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
             font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
+            letter-spacing: 0.5px;
+            color: var(--color-white);
+            line-height: 1.1;
+        }
+
+        .club-line-1 {
+            font-family: 'Lato', sans-serif;
+            font-size: 0.8rem;
+            color: var(--color-accent);
+            opacity: 0.95;
+            margin-top: 4px;
+            line-height: 1.2;
+            font-weight: 700;
+        }
+
+        .club-line-2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 0.75rem;
+            color: #d4af37;
+            font-style: italic;
+            opacity: 0.85;
+            line-height: 1.2;
+        }
+
+        .top-bar-center {
             display: flex;
+            gap: 15px;
             align-items: center;
-            gap: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            background-color: var(--color-accent);
-            color: var(--color-primary);
-            border: none;
-            cursor: pointer;
-        }
-        .btn-discord { background: #5865F2; color: white; }
-        .btn-whatsapp { background: #25D366; color: white; }
-        .btn-peps:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 8px 20px rgba(0,0,0,0.3); }
-
-        /* --- FOOTER OPTIMISÉ --- */
-        .main-footer {
-            background-color: var(--color-primary);
-            color: var(--color-bg);
-            padding-top: 50px;
-            font-size: 0.95rem;
-            position: relative;
         }
 
-        .footer-content { 
-            display: flex; 
-            flex-wrap: wrap; 
-            justify-content: space-between; 
-            gap: 30px; 
-            padding-bottom: 30px; 
-            align-items: flex-start;
-        }
-        
-        .footer-identity { display: flex; flex-direction: row; align-items: center; gap: 20px; min-width: 300px; }
-        .footer-logo-img { width: 60px; height: 60px; border-radius: 8px; border: 2px solid var(--color-accent); background: #fff; }
-        .footer-info-compact { display: flex; flex-direction: column; }
-        .footer-name { color: var(--color-accent); font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; line-height: 1.2; margin-bottom: 5px; }
-        .footer-contact-stack { display: flex; flex-direction: column; gap: 5px; font-size: 0.85rem; opacity: 0.8; }
-
-        .footer-dock-col { display: flex; flex-direction: column; align-items: center; gap: 10px; margin: 0 auto; }
-        .dock-group { display: flex; flex-direction: column; align-items: center; gap: 5px; }
-        .dock-label { font-family: 'Montserrat', sans-serif; font-size: 0.8rem; text-transform: uppercase; color: var(--color-accent); opacity: 0.7; }
-        
-        .icon-dock { display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; align-items: center; }
-
-        .icon-btn {
+        .header-icon-btn {
             position: relative; 
-            width: 45px; 
-            height: 45px;
+            width: 42px; 
+            height: 42px;
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(217, 165, 38, 0.3);
+            background: linear-gradient(135deg, #0F2C48 0%, #1CB5E0 100%);
+            border: 1px solid rgba(255,255,255,0.2);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             text-decoration: none;
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+            transition: all 0.3s ease;
             cursor: pointer;
-            color: var(--color-white);
+            color: white;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
 
-        .icon-btn:hover { transform: translateY(-5px) scale(1.1); background: var(--color-white); border-color: var(--color-white); box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3); }
+        .header-icon-btn:hover {
+            transform: translateY(3px) scale(1.1);
+            background: linear-gradient(135deg, #163e63 0%, #20c3f0 100%);
+            box-shadow: 0 6px 15px rgba(28, 181, 224, 0.4);
+        }
 
-        /* Branding Colors on Hover */
-        .brand-whatsapp { color: #25D366 !important; }
-        .icon-btn:hover .brand-whatsapp { color: #25D366 !important; }
-        
-        .brand-discord { color: #5865F2 !important; }
-        .icon-btn:hover .brand-discord { color: #5865F2 !important; }
-        
-        .brand-linkedin { color: #0077b5 !important; }
-        .icon-btn:hover .brand-linkedin { color: #0077b5 !important; }
-        
-        .brand-instagram { color: #E1306C !important; }
-        .icon-btn:hover .brand-instagram { color: #E1306C !important; }
-        
-        .brand-tiktok { color: #00f2ea !important; text-shadow: 2px 2px 0px #ff0050; }
-        .icon-btn:hover .brand-tiktok { color: #000 !important; text-shadow: none; } 
+        .nav-profile-img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--color-white);
+        }
 
-        .brand-nav { color: var(--color-accent) !important; }
-        .icon-btn:hover .brand-nav { color: var(--color-primary) !important; }
-
-        /* Tooltips */
-        .icon-btn::after {
+        .header-icon-btn::after {
             content: attr(data-tooltip);
             position: absolute;
-            bottom: 120%;
+            top: 130%;
             left: 50%;
-            transform: translateX(-50%) translateY(10px);
+            transform: translateX(-50%) translateY(-10px);
             background-color: var(--color-white);
             color: var(--color-primary);
             padding: 5px 12px;
@@ -367,50 +197,207 @@
             pointer-events: none;
             z-index: 100;
         }
-
-        .icon-btn::before {
+        .header-icon-btn::before {
             content: '';
             position: absolute;
-            bottom: 110%;
+            top: 110%;
             left: 50%;
-            transform: translateX(-50%) translateY(10px);
+            transform: translateX(-50%) translateY(-10px);
             border-width: 6px;
             border-style: solid;
-            border-color: var(--color-white) transparent transparent transparent;
+            border-color: transparent transparent var(--color-white) transparent;
             opacity: 0;
             visibility: hidden;
             transition: all 0.3s ease;
             z-index: 100;
         }
+        .header-icon-btn:hover::after, .header-icon-btn:hover::before { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
 
+        .btn-portfolio-cosmic {
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600; 
+            font-size: 0.95rem;
+            background: linear-gradient(135deg, #0F2C48 0%, #1CB5E0 100%); 
+            color: white !important;
+            text-transform: none; 
+            border: 1px solid rgba(255,255,255,0.2);
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            animation: cosmic-pulse 4s ease-in-out infinite;
+            text-decoration: none;
+        }
+        .btn-portfolio-cosmic:hover { background: linear-gradient(135deg, #163e63 0%, #20c3f0 100%); }
+
+        /* --- CONTENU --- */
+        #mon-histoire { padding-top: 60px; }
+
+        .page-slogan-container { text-align: center; margin-bottom: 40px; }
+        .page-slogan {
+            font-family: 'Lato', sans-serif;
+            font-size: 1.3rem;
+            color: var(--color-alert);
+            font-weight: 600;
+            display: inline-block;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        .page-slogan::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 3px;
+            background-color: var(--color-accent);
+        }
+
+        .story-grid { display: grid; grid-template-columns: 3fr 2fr; gap: 60px; align-items: start; }
+        .discreet-photo-wrapper { float: left; margin: 10px 30px 10px 0; position: relative; shape-outside: circle(50%); }
+        .discreet-photo { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; border: 4px solid var(--color-white); box-shadow: 0 8px 20px rgba(15, 44, 72, 0.15); }
+        .bio-narrative p { margin-bottom: 20px; font-size: 1.05rem; }
+        .highlight { color: var(--color-accent); font-weight: 700; }
+
+        .identity-card {
+            background: var(--color-white); padding: 35px; border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.08); border-top: 5px solid var(--color-accent);
+            position: sticky; top: 120px;
+            z-index: 10;
+        }
+        .identity-card h3 { margin-bottom: 25px; text-align: center; }
+        .id-list li { margin-bottom: 15px; display: flex; align-items: center; font-weight: 500; font-size: 1.1rem; }
+        .emoji-icon { font-style: normal; margin-right: 15px; font-size: 1.4rem; width: 30px; text-align: center; }
+
+        /* --- CHAPITRES & ROTATION --- */
+        .narrative-section { background: linear-gradient(to bottom, var(--color-bg), #fff); position: relative; }
+        .section-header { text-align: center; margin-bottom: 60px; }
+        .section-header h2 { font-size: 2.8rem; margin-bottom: 15px; }
+
+        .rotating-text-wrapper {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--color-dynamic);
+            font-weight: 700;
+            text-align: center;
+            height: 2rem;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .rotating-text { display: inline-block; animation: rotate-text 10s linear infinite; white-space: nowrap; }
+        @keyframes rotate-text {
+            0% { transform: translateY(100%); opacity: 0; }
+            10% { transform: translateY(0%); opacity: 1; }
+            90% { transform: translateY(0%); opacity: 1; }
+            100% { transform: translateY(-100%); opacity: 0; }
+        }
+
+        .chapter-container { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; padding-bottom: 50px; max-width: 1000px; margin: 0 auto; }
+        .chapter-card { background: var(--color-white); padding: 30px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: transform 0.3s ease; border-bottom: 4px solid transparent; display: flex; flex-direction: column; align-items: flex-start; }
+        .chapter-card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); border-bottom-color: var(--color-accent); }
+        .chapter-header { display: flex; align-items: center; width: 100%; margin-bottom: 15px; border-bottom: 1px solid rgba(0,0,0,0.05); padding-bottom: 15px; }
+        .chapter-icon { font-size: 2rem; color: var(--color-primary); margin-right: 15px; background: var(--color-bg); width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; border-radius: 50%; }
+        .chapter-date { background: var(--color-primary); color: white; padding: 4px 12px; border-radius: 15px; font-size: 0.75rem; font-weight: 700; margin-left: auto; }
+        .chapter-card h3 { font-size: 1.3rem; margin: 0; line-height: 1.3; }
+        .chapter-card p { font-size: 0.95rem; margin-top: 10px; color: #555; text-align: left; }
+
+        .villa-wrapper { background: radial-gradient(circle at top right, #d9a52655 0%, transparent 40%), radial-gradient(circle at bottom left, #0f2c4844 0%, transparent 40%), var(--color-bg); padding: 60px 20px; border-radius: 30px; margin: 40px 0; box-shadow: inset 0 0 50px rgba(255,255,255,0.5); }
+        .villa-section { background: rgba(15, 44, 72, 0.95); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); color: var(--color-white); text-align: center; border-radius: 20px; padding: 60px 30px; box-shadow: 0 20px 50px rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.1); }
+        .villa-section h2 { color: var(--color-white); font-size: 2rem; margin-bottom: 20px; }
+        .villa-intro { font-size: 1.1rem; max-width: 800px; margin: 0 auto 30px; opacity: 0.95; text-align: center !important; }
+        .cta-container { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+        .btn-peps { padding: 12px 30px; border-radius: 50px; font-family: 'Montserrat', sans-serif; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; font-size: 0.9rem; transition: all 0.3s ease; display: flex; align-items: center; gap: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.2); background-color: var(--color-accent); color: var(--color-primary); border: none; cursor: pointer; }
+        .btn-discord { background: #5865F2; color: white; }
+        .btn-whatsapp { background: #25D366; color: white; }
+        .btn-peps:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 8px 20px rgba(0,0,0,0.3); }
+
+        /* --- FOOTER --- */
+        .main-footer { background-color: var(--color-primary); color: var(--color-bg); padding-top: 50px; font-size: 0.95rem; position: relative; }
+        .footer-content { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 30px; padding-bottom: 30px; align-items: flex-start; }
+        .footer-identity { display: flex; flex-direction: row; align-items: center; gap: 20px; min-width: 300px; }
+        .footer-logo-img { width: 60px; height: 60px; border-radius: 8px; border: 2px solid var(--color-accent); background: #fff; }
+        .footer-info-compact { display: flex; flex-direction: column; }
+        .footer-name { color: var(--color-accent); font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; line-height: 1.2; margin-bottom: 5px; }
+        
+        .footer-contact-stack { display: flex; flex-direction: column; gap: 5px; font-size: 0.85rem; opacity: 0.8; }
+        /* LIENS CLIQUABLES STYLISÉS */
+        .footer-link { text-decoration: none; color: inherit; transition: color 0.3s; display: inline-block; }
+        .footer-link:hover { color: var(--color-accent); transform: translateX(2px); }
+
+        /* FOOTER DROITE (POUSSÉ AU MAX & ALIGNÉ A DROITE) */
+        .footer-dock-col { 
+            display: flex; 
+            flex-direction: column; 
+            align-items: flex-end; /* Aligné à droite */
+            gap: 10px; 
+            margin-left: auto; /* Pousse le bloc vers la droite */
+        }
+        
+        /* Groupe Unique Aligné à Droite */
+        .dock-group { 
+            display: flex; 
+            flex-direction: column; 
+            align-items: flex-end; /* Aligne le label et les icones à droite */
+            gap: 5px; 
+        }
+        
+        .dock-label { 
+            font-family: 'Montserrat', sans-serif; 
+            font-size: 0.8rem; 
+            text-transform: uppercase; 
+            color: var(--color-accent); 
+            opacity: 0.7; 
+        }
+        
+        /* Icones alignées à droite */
+        .icon-dock { 
+            display: flex; 
+            gap: 15px; 
+            flex-wrap: wrap; 
+            justify-content: flex-end; /* C'est ici que ça se joue */
+            align-items: center; 
+        }
+
+        .icon-btn { position: relative; width: 45px; height: 45px; border-radius: 50%; background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(217, 165, 38, 0.3); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; text-decoration: none; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); cursor: pointer; color: var(--color-white); }
+        .icon-btn:hover { transform: translateY(-5px) scale(1.1); background: var(--color-white); border-color: var(--color-white); box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3); }
+        .brand-whatsapp { color: #25D366 !important; } .icon-btn:hover .brand-whatsapp { color: #25D366 !important; }
+        .brand-discord { color: #5865F2 !important; } .icon-btn:hover .brand-discord { color: #5865F2 !important; }
+        .brand-linkedin { color: #0077b5 !important; } .icon-btn:hover .brand-linkedin { color: #0077b5 !important; }
+        .brand-instagram { color: #E1306C !important; } .icon-btn:hover .brand-instagram { color: #E1306C !important; }
+        .brand-tiktok { color: #00f2ea !important; text-shadow: 2px 2px 0px #ff0050; } .icon-btn:hover .brand-tiktok { color: #000 !important; text-shadow: none; } 
+        .brand-nav { color: var(--color-accent) !important; } .icon-btn:hover .brand-nav { color: var(--color-primary) !important; }
+        .icon-btn::after { content: attr(data-tooltip); position: absolute; bottom: 120%; left: 50%; transform: translateX(-50%) translateY(10px); background-color: var(--color-white); color: var(--color-primary); padding: 5px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; white-space: nowrap; opacity: 0; visibility: hidden; transition: all 0.3s ease; box-shadow: 0 4px 10px rgba(0,0,0,0.2); pointer-events: none; z-index: 100; }
+        .icon-btn::before { content: ''; position: absolute; bottom: 110%; left: 50%; transform: translateX(-50%) translateY(10px); border-width: 6px; border-style: solid; border-color: var(--color-white) transparent transparent transparent; opacity: 0; visibility: hidden; transition: all 0.3s ease; z-index: 100; }
         .icon-btn:hover::after, .icon-btn:hover::before { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
-
         .dock-separator { width: 1px; height: 30px; background-color: rgba(255,255,255,0.2); margin: 0 10px; }
         .footer-bottom { text-align: center; padding: 15px 0; font-size: 0.8rem; color: rgba(255,255,255,0.4); background-color: rgba(0,0,0,0.2); border-top: 1px solid rgba(255,255,255,0.05); }
-
-        /* Back to Top */
-        #backToTop {
-            position: fixed; bottom: 30px; right: 30px;
-            background-color: var(--color-accent); color: var(--color-primary);
-            width: 50px; height: 50px; border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 1.2rem; cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2); opacity: 0; pointer-events: none;
-            transition: all 0.3s ease; z-index: 100;
-        }
+        #backToTop { position: fixed; bottom: 30px; right: 30px; background-color: var(--color-accent); color: var(--color-primary); width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.2); opacity: 0; pointer-events: none; transition: all 0.3s ease; z-index: 100; }
         #backToTop.show { opacity: 1; pointer-events: all; }
         #backToTop:hover { transform: translateY(-5px); background-color: #fff; }
 
+        @media (max-width: 900px) {
+            .top-bar-content { flex-direction: column; gap: 15px; }
+            .top-bar-left { width: 100%; justify-content: center; text-align: center; flex-direction: column; gap: 5px; }
+            .identity-stack { align-items: center; text-align: center; }
+            .top-bar-center { width: 100%; justify-content: center; margin: 10px 0; }
+            .btn-portfolio-cosmic { width: auto; }
+        }
         @media (max-width: 768px) {
-            .header-content { flex-direction: column; text-align: center; gap: 20px; }
             .story-grid { grid-template-columns: 1fr; }
             .chapter-container { grid-template-columns: 1fr; }
             .discreet-photo-wrapper { float: none; margin: 0 auto 20px; display: flex; justify-content: center; }
             .identity-card { position: static; margin-top: 40px; }
             .footer-content { flex-direction: column; align-items: center; text-align: center; }
             .footer-identity { flex-direction: column; text-align: center; }
-            .footer-dock-col { align-items: center; width: 100%; gap: 30px; }
+            /* Sur mobile, on garde centré pour que ce soit joli */
+            .footer-dock-col { align-items: center; width: 100%; gap: 30px; margin-left: 0; }
             .icon-dock { justify-content: center; flex-wrap: wrap; }
+            .dock-group { align-items: center; }
             .footer-contact-stack { align-items: center; gap: 8px; }
             .dock-separator { display: none; }
         }
@@ -418,32 +405,51 @@
 </head>
 <body>
 
-    <!-- HEADER -->
-    <header class="header-peps">
-        <div class="container header-content">
-            <div class="brand-identity fade-up">
-                <img src="https://projettechacademy.github.io/Juridique/Asset/Logo_MMPA.jpeg" alt="Logo MMPA" class="logo-mmpa">
-                <div class="main-title">
-                    <h1>Mathilde Martine PAISLEY</h1>
-                    <p class="subtitle">L'Apprenante & Fondatrice du Club</p>
-                    <p class="club-name-header">The Jurist Elite Club By Studi</p>
-                    <p class="slogan-header">20 ans d'expertise Paie & Droit • Le partage avant tout 💛</p>
+    <!-- 1. TOP BAR -->
+    <div class="top-bar">
+        <div class="container top-bar-content">
+            <!-- GAUCHE : Identité -->
+            <div class="top-bar-left">
+                <img src="https://projettechacademy.github.io/Juridique/Asset/Logo_MMPA.jpeg" alt="Logo MMPA" class="logo-top-bar">
+                <div class="identity-stack">
+                    <span class="name-top-bar">Mathilde Martine PAISLEY</span>
+                    <!-- TITRE DU CLUB EN DEUX LIGNES -->
+                    <span class="club-line-1">💫 The Jurist Elite Club By Studi ✨</span>
+                    <span class="club-line-2">La Villa des Juristes Brisés 💔 sur l’Île de L’INSTRUCTION ! 🏝</span>
                 </div>
             </div>
-            <div class="fade-up" style="transition-delay: 0.2s;">
-                <a href="https://projettechacademy.github.io/CV_MMPA-CV-Mathilde-Martine-PAISLEY/" target="_blank" class="btn-portfolio-cosmic">
-                    <span style="font-size: 1.2rem;">📄</span> Mon portfolio
+            
+            <!-- CENTRE : Navigation (Photo incluse) -->
+            <div class="top-bar-center">
+                <a href="https://projettechacademy.github.io/Juridique/index.html" class="header-icon-btn" data-tooltip="Start/Accueil">🏠</a>
+                <a href="https://projettechacademy.github.io/Juridique/00_Autres/Mon_Espace_Juriste_Tableau_de_bord_personnel.html" class="header-icon-btn" data-tooltip="Mon Espace">📊</a>
+                <a href="https://projettechacademy.github.io/Juridique/00_Autres/Lexique_Latin_Juridique.html" class="header-icon-btn" data-tooltip="Lexique Latin">📜</a>
+                <a href="https://projettechacademy.github.io/Juridique/00_Autres/formation_live_juriste.html" class="header-icon-btn" data-tooltip="Planning Live">📅</a>
+                
+                <!-- PHOTO PROFIL A LA PLACE DU BONHOMME -->
+                <a href="https://projettechacademy.github.io/Juridique/00_Autres/A_propos_de_moi.html" class="header-icon-btn" data-tooltip="À propos de moi" style="padding: 0; overflow: hidden; border: 2px solid #D9A526;">
+                    <img src="https://projettechacademy.github.io/Juridique/Asset/Photo_Mathilde_Martine_PAISLEY.png" 
+                         onerror="this.src='https://projettechacademy.github.io/Juridique/Asset/Photo_Mathilde_Martine_PAISLEY.jpg';" 
+                         alt="Profil" class="nav-profile-img">
                 </a>
             </div>
+
+            <!-- DROITE : Portfolio -->
+            <a href="https://projettechacademy.github.io/CV_MMPA-CV-Mathilde-Martine-PAISLEY/" target="_blank" class="btn-portfolio-cosmic">
+                <span style="font-size: 1.2rem;">📄</span> Mon portfolio
+            </a>
         </div>
-        <a href="#mon-histoire" class="scroll-indicator">
-            <i class="fas fa-chevron-down"></i>
-        </a>
-    </header>
+    </div>
 
     <!-- SECTION MON HISTOIRE -->
     <section id="mon-histoire">
         <div class="container">
+            
+            <!-- SLOGAN CENTRÉ -->
+            <div class="page-slogan-container fade-up">
+                <p class="page-slogan">Consulting SIRH & Droit Social • L'Expertise 360°... sans se prendre la tête ! 💛</p>
+            </div>
+
             <div class="story-grid">
                 <div class="bio-narrative fade-up">
                     <div class="discreet-photo-wrapper floaty">
@@ -488,7 +494,10 @@
         <div class="container">
             <div class="section-header fade-up">
                 <h2>Mon Aventure en 4 Chapitres</h2>
-                <p>Une évolution constante, structurée en étapes clés.</p>
+                <!-- TEXTE ROTATIF -->
+                <div class="rotating-text-wrapper">
+                    <span class="rotating-text">Une évolution constante, structurée en étapes clés.</span>
+                </div>
             </div>
 
             <div class="chapter-container">
@@ -564,14 +573,15 @@
                     <img src="https://projettechacademy.github.io/Juridique/Asset/Logo_MMPA.jpeg" alt="Logo MMPA" class="footer-logo-img">
                     <div class="footer-info-compact">
                         <div class="footer-name">Mathilde Martine PAISLEY</div>
+                        <!-- Empilement Vertical & Cliquable -->
                         <div class="footer-contact-stack">
-                            <span>📧 Mathilde.martine.paisley@gmail.com</span>
-                            <span>📲 06 85 90 08 87</span>
+                            <a href="mailto:Mathilde.martine.paisley@gmail.com" class="footer-link">📧 Mathilde.martine.paisley@gmail.com</a>
+                            <a href="tel:+33685900887" class="footer-link">📲 06 85 90 08 87</a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Colonne Droite : Le Dock d'Icônes FUSIONNÉ & CENTRÉ -->
+                <!-- Colonne Droite : Le Dock d'Icônes FUSIONNÉ & ALIGNÉ À DROITE -->
                 <div class="footer-col footer-dock-col">
                     
                     <!-- Groupe Unique : Navigation & Réseaux -->
