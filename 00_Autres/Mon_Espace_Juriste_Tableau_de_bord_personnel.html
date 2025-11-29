@@ -3,410 +3,438 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Jurist Elite Club - Dashboard V8</title>
+    <title>The Jurist Elite Club - Dashboard V16</title>
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap');
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 
+    <style>
         :root {
-            --color-cta: #D9A526;
-            --color-title: #0F2C48;
-            --color-surface: #F6F2E8;
-            --color-alert: #B4792A;
-            --discord: #5865F2;
-            --whatsapp: #25D366;
+            --cta: #D9A526;       /* Jaune Doré */
+            --brand-blue: #0F2C48; /* Bleu Nuit */
+            --ivory: #F6F2E8;     /* Ivoire - Fond principal */
+            --bronze: #B4792A;    /* Bronze */
+            --alert: #B4792A;
         }
 
-        body {
-            font-family: 'Lato', sans-serif;
-            background-color: #fdfdfd;
-            color: var(--color-title);
+        body { 
+            margin: 0; 
+            background-color: #F6F2E8; /* FOND IVOIRE (CREME) */
+            color: #0F2C48; /* TEXTE BLEU */
+            font-family: 'Outfit', sans-serif; 
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
         h1, h2, h3, .brand-font {
             font-family: 'Playfair Display', serif;
         }
 
-        .bg-cta { background-color: var(--color-cta); }
-        .text-cta { color: var(--color-cta); }
-        .border-cta { border-color: var(--color-cta); }
-
-        .bg-brand-blue { background-color: var(--color-title); }
-        .text-brand-blue { color: var(--color-title); }
-        .border-brand-blue { border-color: var(--color-title); }
-
-        .bg-surface { background-color: var(--color-surface); }
-        
-        .text-alert { color: var(--color-alert); }
-        .bg-alert { background-color: var(--color-alert); }
-        .border-alert { border-color: var(--color-alert); }
-
-        .card-hover {
-            transition: all 0.3s ease;
-        }
-        .card-hover:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-        }
-
-        /* Inputs Styling */
-        .glass-input {
-            background-color: rgba(255, 255, 255, 0.15);
-            border: 1px solid rgba(255, 255, 255, 0.3);
+        /* --- HEADER --- */
+        .top-banner {
+            position: sticky; top: 0; left: 0; right: 0; z-index: 10000;
+            background-color: #0F2C48; /* BLEU FORCÉ */
             color: white;
-            padding: 0.3rem 0.6rem;
-            border-radius: 0.5rem;
-            backdrop-filter: blur(5px);
+            box-shadow: 0 4px 20px rgba(15,44,72,0.25);
+            padding: 10px 0; border-bottom: 4px solid #D9A526;
         }
-        .glass-input:focus {
-            outline: none;
-            border-color: var(--color-cta);
-            background-color: rgba(255, 255, 255, 0.25);
+        
+        .tb-title { 
+            font-family: 'Playfair Display', serif; 
+            font-weight: 700; 
+            font-size: 20px; 
+            color: white; 
+            line-height: 1.2; 
         }
-        .glass-input option {
-            color: var(--color-title);
+        .tb-title .part2 { 
+            color: #D9A526; 
+            font-style: italic; 
+            font-weight: 400; 
+            font-size: 14px; 
+            font-family: 'Outfit', sans-serif; 
+            display: block; 
+            margin-top: 2px;
+        }
+
+        /* Navigation Buttons (Header) */
+        .nav-icon-btn {
+            width: 40px; height: 40px;
+            display: flex; align-items: center; justify-content: center;
+            border-radius: 12px;
+            background-color: rgba(255,255,255,0.1);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: all 0.2s ease;
+            text-decoration: none;
+            position: relative;
+        }
+        .nav-icon-btn:hover {
+            background-color: #D9A526;
+            color: #0F2C48;
+            border-color: #D9A526;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(217, 165, 38, 0.4);
+        }
+        .nav-icon-btn i { font-size: 18px; }
+        
+        /* Tooltip */
+        .nav-icon-btn:hover::after {
+            content: attr(title);
+            position: absolute;
+            bottom: -35px; left: 50%; transform: translateX(-50%);
+            background: #0F2C48; color: white;
+            padding: 4px 8px; border-radius: 4px; font-size: 10px;
+            white-space: nowrap; pointer-events: none; z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        /* --- CARDS & INPUTS --- */
+        .dashboard-card {
             background: white;
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(217, 165, 38, 0.2);
+            transition: transform 0.3s ease;
+            height: 100%;
+            display: flex; flex-direction: column;
+        }
+        .dashboard-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
         }
 
-        .light-input {
-            background-color: white;
-            border: 1px solid #e2e8f0;
-            padding: 0.5rem;
-            border-radius: 0.5rem;
-            width: 100%;
-            transition: border-color 0.2s;
+        .card-header {
+            display: flex; align-items: center; gap: 10px;
+            margin-bottom: 20px; padding-bottom: 12px;
+            border-bottom: 1px solid #f1f5f9;
         }
-        .light-input:focus {
-            outline: none;
-            border-color: var(--color-cta);
-            box-shadow: 0 0 0 3px rgba(217, 165, 38, 0.1);
+        .card-icon {
+            width: 36px; height: 36px;
+            border-radius: 8px;
+            background-color: rgba(15, 44, 72, 0.1);
+            color: #0F2C48;
+            display: flex; align-items: center; justify-content: center;
         }
 
-        /* Timer Pulse */
-        @keyframes pulse-urgent {
-            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.7); }
-            70% { transform: scale(1.02); box-shadow: 0 0 0 10px rgba(220, 38, 38, 0); }
-            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(220, 38, 38, 0); }
+        .input-label {
+            display: block; font-size: 11px; font-weight: 700; 
+            text-transform: uppercase; letter-spacing: 0.05em; 
+            color: #0F2C48; margin-bottom: 4px; opacity: 0.8;
         }
-        .timer-urgent {
-            animation: pulse-urgent 2s infinite;
-            border: 2px solid #ef4444 !important;
+        
+        .styled-input, .styled-select {
+            width: 100%; padding: 10px 12px;
+            border-radius: 8px; border: 1px solid #cbd5e1;
+            background-color: #f8fafc; color: #0F2C48;
+            font-size: 14px; transition: all 0.2s;
+        }
+        .styled-input:focus, .styled-select:focus {
+            outline: none; border-color: #D9A526;
+            background-color: white; box-shadow: 0 0 0 3px rgba(217, 165, 38, 0.1);
+        }
+
+        /* --- PROGRAMME BLOCKS --- */
+        .prog-block {
+            background: white; border-radius: 12px; padding: 20px;
+            border-left: 4px solid #cbd5e1;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            transition: all 0.3s;
+        }
+        .prog-block:hover { transform: translateX(4px); box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+        .prog-block.b-intro { border-color: #94a3b8; }
+        .prog-block.b-strat { border-color: #D9A526; }
+        .prog-block.b-ops { border-color: #D9A526; }
+        .prog-block.b-litige { border-color: #B4792A; }
+
+        /* Timer Urgent */
+        @keyframes pulse-red {
+            0% { box-shadow: 0 0 0 0 rgba(180, 121, 42, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(180, 121, 42, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(180, 121, 42, 0); }
+        }
+        .timer-active { border-color: #B4792A !important; animation: pulse-red 2s infinite; }
+
+        /* --- FOOTER SPECIFIC (CORRECTION) --- */
+        .site-footer {
+            background-color: #0F2C48 !important; /* BLEU IMPÉRATIF */
+            color: white !important;
+            padding: 32px 0;
+            margin-top: auto;
+            border-top: 4px solid #D9A526; /* JAUNE */
+        }
+        .footer-text {
+            color: rgba(255, 255, 255, 0.8);
+            font-style: italic;
+            font-weight: 300;
+            font-size: 14px;
+        }
+        .footer-sub {
+            color: #D9A526;
+            font-weight: 700;
+            font-style: normal;
+            font-size: 12px;
+            display: block;
+            margin-top: 4px;
+        }
+        .footer-copy {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 10px;
+            margin-top: 16px;
         }
     </style>
 </head>
-<body class="flex flex-col min-h-screen" onload="loadUserData()">
+<body onload="loadUserData()">
 
-    <!-- Header -->
-    <header class="bg-brand-blue text-white shadow-xl relative overflow-hidden">
-        <div class="absolute top-0 right-0 p-4 opacity-10 text-9xl transform rotate-12 translate-x-10 -translate-y-10">
-            <i class="fas fa-balance-scale"></i>
-        </div>
-        
-        <div class="container mx-auto px-6 py-8 relative z-10">
-            <div class="flex flex-col lg:flex-row justify-between items-center gap-6">
+    <!-- HEADER -->
+    <header class="top-banner">
+        <div class="container mx-auto px-4 flex flex-wrap items-center justify-between gap-4">
+            
+            <!-- Logo & Titre -->
+            <div class="flex items-center gap-4 flex-1 min-w-[300px]">
+                <div class="w-12 h-12 rounded-full bg-white border-2 border-cta overflow-hidden flex-shrink-0 shadow-lg">
+                    <img src="https://projettechacademy.github.io/Juridique/Asset/Logo_juriste.png" 
+                         alt="Logo" 
+                         class="w-full h-full object-contain"
+                         onerror="this.src='https://projettechacademy.github.io/Juridique/Asset/Logo_juriste.jpg'">
+                </div>
+                <div class="tb-title">
+                    <span class="text-white">💫 The Jurist Elite Club</span> 
+                    <span class="text-cta font-light">By Studi ✨</span>
+                    <span class="part2">La Villa des Juristes Brisés 💔 sur l’Île de L’INSTRUCTION ! 🏝</span>
+                </div>
+            </div>
+
+            <!-- Boutons Accès Rapide -->
+            <div class="flex items-center gap-2">
+                <a href="index.html" class="nav-icon-btn" title="Accueil">
+                    <i class="fa-solid fa-house"></i>
+                </a>
+                <div class="w-[1px] h-6 bg-white/20 mx-1"></div>
                 
-                <!-- Logo & Title Section -->
-                <div class="flex flex-col md:flex-row items-center gap-6 w-full lg:w-auto flex-1">
-                    
-                    <!-- LOGO INTEGRATION -->
-                    <div class="flex-shrink-0">
-                        <img src="https://projettechacademy.github.io/Juridique/Asset/Logo_juriste.png" 
-                             onerror="this.onerror=null; this.src='https://projettechacademy.github.io/Juridique/Asset/Logo_juriste.jpg';" 
-                             alt="Logo The Jurist Elite Club" 
-                             class="h-28 w-28 object-contain rounded-full border-4 border-cta bg-white shadow-2xl hover:scale-105 transition-transform duration-300">
-                    </div>
-
-                    <!-- Title -->
-                    <div class="text-center md:text-left">
-                        <h1 class="text-2xl md:text-3xl lg:text-4xl font-bold brand-font tracking-wide leading-tight">
-                            <span class="inline-block animate-bounce mr-2">💫</span>The Jurist Elite Club By Studi ✨ <br>
-                            <span class="text-xl md:text-2xl font-light text-cta block mt-2">
-                                La Villa des Juristes Brisés 💔 sur l’Île de L’INSTRUCTION !🏝
-                            </span>
-                        </h1>
-                    </div>
-                </div>
-
-                <!-- User Controls -->
-                <div class="bg-white/10 p-4 rounded-xl backdrop-blur-md border border-white/20 shadow-lg w-full lg:w-auto min-w-[300px]">
-                    <div class="flex flex-col gap-3">
-                        <div class="flex gap-2">
-                            <input type="text" id="userName" placeholder="Prénom" class="glass-input w-full" onchange="saveUserData()">
-                            <input type="text" id="userSurname" placeholder="Nom" class="glass-input w-full" onchange="saveUserData()">
-                        </div>
-                        
-                        <!-- Specialization Selector -->
-                         <div class="flex flex-col gap-1">
-                            <label class="text-[10px] uppercase font-bold text-cta tracking-wider">Spécialisation</label>
-                            <select id="userSpecialization" class="glass-input cursor-pointer font-bold bg-cta/20" onchange="saveUserData()">
-                                <option value="social">⚖️ MBA Droit Social</option>
-                                <option value="affaires">💼 MBA Droit des Affaires</option>
-                                <option value="entreprise">🏢 MBA Juriste d'Entreprise</option>
-                            </select>
-                        </div>
-
-                        <div class="flex items-center gap-2 justify-between text-sm mt-1">
-                            <span class="font-bold text-gray-200"><i class="fas fa-bullseye text-cta mr-1"></i> Session :</span>
-                            <div class="flex gap-2">
-                                <select id="sessionMonth" class="glass-input cursor-pointer" onchange="saveUserData()">
-                                    <option value="Juin">Juin</option>
-                                    <option value="Décembre">Décembre</option>
-                                </select>
-                                <select id="sessionYear" class="glass-input cursor-pointer" onchange="saveUserData()">
-                                    <!-- Options generated by JS -->
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <!-- BOUTON START -->
+                <a href="https://projettechacademy.github.io/Juridique/index.html" class="nav-icon-btn" title="Start">
+                    <i class="fa-solid fa-flag-checkered text-cta"></i>
+                </a>
+                
+                <a href="https://projettechacademy.github.io/Juridique/00_Autres/Lexique_Latin_Juridique.html" target="_blank" class="nav-icon-btn" title="Lexique Juridique">
+                    <i class="fa-solid fa-book text-cta"></i>
+                </a>
+                <a href="https://projettechacademy.github.io/Juridique/00_Autres/formation_live_juriste.html" target="_blank" class="nav-icon-btn" title="Planning Live">
+                    <i class="fa-solid fa-video text-cta"></i>
+                </a>
+                <a href="https://projettechacademy.github.io/Juridique/00_Autres/Mon_Espace_Juriste_Tableau_de_bord_personnel.html" target="_blank" class="nav-icon-btn" title="Mon Espace">
+                    <i class="fa-solid fa-user-tie text-cta"></i>
+                </a>
             </div>
         </div>
     </header>
 
-    <!-- RNCP Badge -->
-    <div class="bg-surface border-b border-gray-200">
-        <div class="container mx-auto px-4 py-2 flex justify-center md:justify-end text-xs text-gray-500 gap-4">
-            <span class="flex items-center gap-1"><i class="fas fa-certificate text-alert"></i> RNCP 40844</span>
-            <span class="flex items-center gap-1"><i class="fas fa-graduation-cap text-alert"></i> Niveau 7 (Master)</span>
-            <span class="flex items-center gap-1"><i class="far fa-clock text-alert"></i> Valide jusqu'au 25/06/2030</span>
-        </div>
-    </div>
-
-    <!-- Main Content -->
-    <main class="flex-grow container mx-auto px-4 py-8 space-y-12">
+    <!-- MAIN CONTENT -->
+    <main class="flex-grow container mx-auto px-4 py-8 space-y-10">
 
         <!-- Welcome Title -->
-        <div class="text-center space-y-2">
-            <h2 class="text-3xl md:text-4xl font-bold brand-font text-brand-blue">
-                Bienvenue, Maître <span id="displayFullName" class="text-cta underline decoration-wavy decoration-alert/30">Juriste</span> ! 👩‍⚖️
+        <div class="text-center">
+            <h2 class="text-3xl font-bold brand-font text-brand-blue mb-2">
+                Bienvenue, Maître <span id="displayFullName" class="text-cta">Juriste</span> ! 👩‍⚖️
             </h2>
-            <p id="welcomeTagline" class="text-gray-500 italic text-lg animate-pulse">
-                <!-- Dynamic Text -->
-            </p>
+            <p id="welcomeTagline" class="text-gray-500 italic text-lg"></p>
         </div>
 
-        <!-- Section 1: Chronos & Dates -->
-        <section class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        <!-- DASHBOARD GRID -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
             
-            <!-- Calendrier -->
-            <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 relative overflow-hidden group">
-                <div class="absolute top-0 left-0 w-2 h-full bg-brand-blue"></div>
-                <h3 class="text-xl font-bold text-brand-blue mb-4 flex items-center gap-2">
-                    <span class="bg-brand-blue/10 p-2 rounded-lg text-brand-blue"><i class="far fa-calendar-alt"></i></span>
-                    Mon Calendrier 📅
-                </h3>
-                <div class="space-y-3">
-                    <div>
-                        <label class="text-xs font-bold text-gray-400 uppercase tracking-wider">Début de l'aventure</label>
-                        <input type="date" id="startDate" class="light-input" onchange="saveUserData()">
-                    </div>
-                    <div>
-                        <label class="text-xs font-bold text-gray-400 uppercase tracking-wider">Fin de mission</label>
-                        <input type="date" id="endDate" class="light-input" onchange="saveUserData()">
+            <!-- 1. MON PROFIL (Config) -->
+            <div class="dashboard-card border-t-4 border-t-brand-blue">
+                <div class="card-header">
+                    <div class="card-icon"><i class="fa-solid fa-id-card"></i></div>
+                    <h3 class="font-bold text-lg text-brand-blue">Mon Profil</h3>
+                </div>
+                <div class="space-y-4 flex-grow">
+                    <div class="grid grid-cols-2 gap-3">
+                        <div>
+                            <label class="input-label">Prénom</label>
+                            <input type="text" id="userName" placeholder="Votre Prénom" class="styled-input" onchange="saveUserData()">
+                        </div>
+                        <div>
+                            <label class="input-label">Nom</label>
+                            <input type="text" id="userSurname" placeholder="Votre Nom" class="styled-input" onchange="saveUserData()">
+                        </div>
                     </div>
                     
-                    <!-- INFO EXAMEN -->
-                    <div class="pt-4 mt-2 border-t border-gray-100">
-                         <h4 class="text-sm font-bold text-brand-blue mb-2"><i class="fas fa-graduation-cap text-cta mr-1"></i> Modalités d'Examen</h4>
-                         <div class="grid grid-cols-2 gap-2 text-xs">
-                             <div class="bg-surface p-2 rounded">
-                                 <span class="block text-gray-500">Mois d'examen</span>
-                                 <strong class="text-brand-blue">Juin & Décembre</strong>
-                             </div>
-                             <div class="bg-surface p-2 rounded">
-                                 <span class="block text-gray-500">Stage conseillé</span>
-                                 <strong class="text-brand-blue">8 semaines</strong>
-                             </div>
-                             <div class="col-span-2 bg-surface p-2 rounded">
-                                 <span class="block text-gray-500">Type d'épreuves</span>
-                                 <strong class="text-brand-blue">Mises en situation pro (Écrit + Oral/Vidéo)</strong>
-                             </div>
-                         </div>
+                    <div>
+                        <label class="input-label text-cta">🎓 Spécialité (Programme)</label>
+                        <select id="userSpecialization" class="styled-select font-bold" onchange="saveUserData()">
+                            <option value="social">⚖️ Droit Social</option>
+                            <option value="affaires">💼 Droit des Affaires</option>
+                            <option value="entreprise">🏢 Juriste d'Entreprise</option>
+                        </select>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-3">
+                        <div>
+                            <label class="input-label">Promo</label>
+                            <select id="promoSelect" class="styled-select" onchange="saveUserData()">
+                                <!-- Généré en JS -->
+                            </select>
+                        </div>
+                        <div>
+                            <label class="input-label">Session</label>
+                            <select id="sessionNb" class="styled-select" onchange="saveUserData()">
+                                <option value="1">Session 1</option>
+                                <option value="2">Session 2</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Compte à Rebours -->
-            <div id="timerCard" class="bg-surface p-6 rounded-2xl shadow-lg border-2 border-cta relative card-hover">
-                <div class="absolute -top-3 -right-3 bg-red-500 text-white w-10 h-10 flex items-center justify-center rounded-full shadow-md animate-bounce">
-                    <i class="fas fa-exclamation"></i>
+            <!-- 2. MON CALENDRIER -->
+            <div class="dashboard-card border-t-4 border-t-cta">
+                <div class="card-header">
+                    <div class="card-icon"><i class="fa-regular fa-calendar-alt"></i></div>
+                    <h3 class="font-bold text-lg text-brand-blue">Calendrier Formation</h3>
                 </div>
-                
-                <h3 class="text-xl font-bold text-alert mb-4 flex items-center gap-2">
-                    <span class="bg-alert/10 p-2 rounded-lg"><i class="fas fa-hourglass-half"></i></span>
-                    Deadline Évaluations ⏳
-                </h3>
-                
-                <div class="mb-4">
-                    <label class="text-xs font-bold text-alert/70 uppercase tracking-wider">Date limite de dépôt</label>
-                    <input type="date" id="evalDeadline" class="light-input border-alert/30 text-alert font-bold" onchange="saveUserData()">
-                </div>
-
-                <div id="countdownDisplay" class="hidden grid grid-cols-4 gap-2 text-center">
-                    <div class="bg-brand-blue text-white p-2 rounded-lg shadow-inner">
-                        <div class="text-2xl font-bold" id="cd-days">00</div>
-                        <div class="text-[9px] uppercase opacity-70">Jours</div>
+                <div class="space-y-4">
+                    <div>
+                        <label class="input-label">Début de formation</label>
+                        <input type="date" id="startDate" class="styled-input" onchange="saveUserData()">
                     </div>
-                    <div class="bg-brand-blue text-white p-2 rounded-lg shadow-inner">
-                        <div class="text-2xl font-bold" id="cd-hours">00</div>
-                        <div class="text-[9px] uppercase opacity-70">Heures</div>
+                    <div>
+                        <label class="input-label">Fin de formation</label>
+                        <input type="date" id="endDate" class="styled-input" onchange="saveUserData()">
                     </div>
-                    <div class="bg-brand-blue text-white p-2 rounded-lg shadow-inner">
-                        <div class="text-2xl font-bold" id="cd-min">00</div>
-                        <div class="text-[9px] uppercase opacity-70">Min</div>
-                    </div>
-                    <div class="bg-brand-blue text-white p-2 rounded-lg shadow-inner">
-                        <div class="text-2xl font-bold" id="cd-sec">00</div>
-                        <div class="text-[9px] uppercase opacity-70">Sec</div>
+                    <div class="bg-gray-50 p-3 rounded-lg text-sm space-y-2 border border-gray-200 mt-2">
+                        <div class="flex justify-between">
+                            <span class="text-gray-500"><i class="fas fa-briefcase text-cta mr-1"></i> Stage conseillé</span>
+                            <span class="font-bold text-brand-blue">8 semaines</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-500"><i class="fas fa-graduation-cap text-cta mr-1"></i> Examens</span>
+                            <span class="font-bold text-brand-blue">Juin & Décembre</span>
+                        </div>
                     </div>
                 </div>
-                <p id="countdownPlaceholder" class="text-center text-sm text-gray-400 italic mt-2">
-                    "Le temps est le meilleur bâtisseur de l'amitié... et du stress." 😅 <br> Fixez une date !
-                </p>
             </div>
-        </section>
 
-        <!-- Section 2: Programme Académique -->
-        <section class="max-w-6xl mx-auto">
-            <h3 class="text-2xl font-bold text-brand-blue mb-8 text-center flex items-center justify-center gap-3">
-                <span class="w-12 h-1 bg-cta rounded-full"></span>
-                <i class="fas fa-graduation-cap"></i> <span id="programTitle">Programme Académique</span>
-                <span class="w-12 h-1 bg-cta rounded-full"></span>
-            </h3>
+            <!-- 3. DEADLINE & CHRONO -->
+            <div id="timerCard" class="dashboard-card border-t-4 border-t-alert">
+                <div class="card-header">
+                    <div class="card-icon text-alert"><i class="fa-solid fa-hourglass-half"></i></div>
+                    <h3 class="font-bold text-lg text-alert">Deadline Évaluations</h3>
+                </div>
+                <div class="space-y-4 flex flex-col h-full justify-between">
+                    <div>
+                        <label class="input-label">Date limite de dépôt</label>
+                        <input type="date" id="evalDeadline" class="styled-input border-alert/30 text-alert font-bold" onchange="saveUserData()">
+                    </div>
+
+                    <div id="countdownDisplay" class="hidden grid grid-cols-4 gap-2 text-center mt-2">
+                        <div class="bg-brand-blue text-white p-2 rounded-lg">
+                            <div class="text-xl font-bold" id="cd-days">00</div>
+                            <div class="text-[9px] uppercase opacity-70">Jours</div>
+                        </div>
+                        <div class="bg-brand-blue text-white p-2 rounded-lg">
+                            <div class="text-xl font-bold" id="cd-hours">00</div>
+                            <div class="text-[9px] uppercase opacity-70">Hrs</div>
+                        </div>
+                        <div class="bg-brand-blue text-white p-2 rounded-lg">
+                            <div class="text-xl font-bold" id="cd-min">00</div>
+                            <div class="text-[9px] uppercase opacity-70">Min</div>
+                        </div>
+                        <div class="bg-brand-blue text-white p-2 rounded-lg">
+                            <div class="text-xl font-bold" id="cd-sec">00</div>
+                            <div class="text-[9px] uppercase opacity-70">Sec</div>
+                        </div>
+                    </div>
+                    <p id="countdownPlaceholder" class="text-center text-sm text-gray-400 italic py-4">
+                        Sélectionnez une date pour activer le compte à rebours.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- PROGRAMME ACADÉMIQUE -->
+        <section>
+            <div class="flex items-center gap-3 mb-6 border-b-2 border-cta pb-2">
+                <h3 class="text-2xl font-bold text-brand-blue brand-font">Programme Académique</h3>
+                <span class="text-sm bg-white border border-cta text-brand-blue px-3 py-1 rounded-full font-bold shadow-sm" id="programLabel">Spécialité...</span>
+            </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="programContainer">
-                <!-- Content injected by JS -->
+                <!-- Injecté via JS -->
             </div>
         </section>
 
-        <!-- Section 3: LISTE DES FORMATEURS ET QUALIFICATIONS (SECTION VI) -->
-        <section class="max-w-6xl mx-auto">
-            <div class="text-center mb-8">
-                <h3 class="text-2xl font-bold text-brand-blue flex items-center justify-center gap-3">
-                    <span class="w-12 h-1 bg-cta rounded-full"></span>
-                    <i class="fas fa-chalkboard-teacher"></i> VI- LISTE DES FORMATEURS ET QUALIFICATIONS
-                    <span class="w-12 h-1 bg-cta rounded-full"></span>
-                </h3>
-                <p class="text-gray-500 italic text-xs mt-2 max-w-2xl mx-auto">
-                    "En fonction du domaine et des besoins d’expertise, Studi peut faire appel à des prestataires externes pour lesquels il conclut, au besoin, un contrat de 'sous-traitance' / contrat de prestation."
-                </p>
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- Eva PHILIPPE -->
-                <div class="bg-white p-5 rounded-xl shadow-md border-t-4 border-brand-blue text-center card-hover flex flex-col items-center">
-                    <div class="w-20 h-20 bg-surface rounded-full flex items-center justify-center text-3xl mb-4 border-2 border-brand-blue shadow-inner relative">
-                        👩‍⚖️
-                        <div class="absolute bottom-0 right-0 bg-cta text-white text-[10px] px-2 py-0.5 rounded-full shadow">Ref.</div>
-                    </div>
-                    <h5 class="font-bold text-lg text-brand-blue">Eva PHILIPPE</h5>
-                    <p class="text-xs font-bold text-cta uppercase mb-1 tracking-wide">Formateur référent du parcours</p>
-                    <div class="w-full border-t border-gray-100 my-2"></div>
-                    <p class="text-xs text-gray-600 font-semibold">Certificat d’Aptitude à la Profession d’Avocat</p>
-                    <p class="text-xs text-gray-500 italic mt-1">10 ans d’expérience</p>
-                </div>
-
-                <!-- Caroline DEBRUMEZ -->
-                <div class="bg-white p-5 rounded-xl shadow-md border-t-4 border-gray-300 text-center card-hover flex flex-col items-center">
-                    <div class="w-20 h-20 bg-surface rounded-full flex items-center justify-center text-3xl mb-4 border-2 border-gray-300 shadow-inner">
-                        📊
-                    </div>
-                    <h5 class="font-bold text-brand-blue">Caroline DEBRUMEZ</h5>
-                    <p class="text-xs font-bold text-gray-400 uppercase mb-1">Fiscalité & Droit</p>
-                    <div class="w-full border-t border-gray-100 my-2"></div>
-                    <p class="text-xs text-gray-600 font-semibold">D.E.S.S « Fiscalité personnelle » <br>(Univ. Aix-Marseille)</p>
-                    <p class="text-xs text-gray-500 italic mt-1">10 ans d’expérience</p>
-                </div>
-
-                <!-- Bénédicte BOBIN -->
-                <div class="bg-white p-5 rounded-xl shadow-md border-t-4 border-gray-300 text-center card-hover flex flex-col items-center">
-                    <div class="w-20 h-20 bg-surface rounded-full flex items-center justify-center text-3xl mb-4 border-2 border-gray-300 shadow-inner">
-                        🏗️
-                    </div>
-                    <h5 class="font-bold text-brand-blue">Bénédicte BOBIN</h5>
-                    <p class="text-xs font-bold text-gray-400 uppercase mb-1">Immobilier & Construction</p>
-                    <div class="w-full border-t border-gray-100 my-2"></div>
-                    <p class="text-xs text-gray-600 font-semibold">Master 2 Droit de l'immobilier et de la construction</p>
-                    <p class="text-xs text-gray-500 italic mt-1">7 ans d’expérience</p>
-                </div>
-
-                <!-- Christèle LECOINTE -->
-                <div class="bg-white p-5 rounded-xl shadow-md border-t-4 border-gray-300 text-center card-hover flex flex-col items-center">
-                    <div class="w-20 h-20 bg-surface rounded-full flex items-center justify-center text-3xl mb-4 border-2 border-gray-300 shadow-inner">
-                        💼
-                    </div>
-                    <h5 class="font-bold text-brand-blue">Christèle LECOINTE</h5>
-                    <p class="text-xs font-bold text-gray-400 uppercase mb-1">Relations de Travail</p>
-                    <div class="w-full border-t border-gray-100 my-2"></div>
-                    <p class="text-xs text-gray-600 font-semibold">DESS Droit et Pratique des Relations de Travail</p>
-                    <p class="text-xs text-gray-500 italic mt-1">10 ans d’expérience</p>
-                </div>
-            </div>
-            
-            <div class="mt-4 text-center text-xs text-gray-400">
-                * Ces formateurs interviennent sur les blocs : Fondamentaux, Pilotage Stratégique, Accompagnement juridique & Gestion des contentieux.
-            </div>
-        </section>
-
-        <!-- Section 4: Communauté -->
-        <section class="max-w-4xl mx-auto">
-            <h3 class="text-2xl font-bold text-brand-blue mb-8 text-center flex items-center justify-center gap-3">
-                <i class="fas fa-users"></i> Mes Espaces Communautaires
+        <!-- ÉQUIPE PÉDAGOGIQUE -->
+        <section class="bg-white p-8 rounded-2xl shadow-sm border border-gray-200">
+            <h3 class="text-xl font-bold text-center text-brand-blue mb-8">
+                <i class="fa-solid fa-chalkboard-teacher text-cta mr-2"></i> Équipe Pédagogique
             </h3>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Intervenant 1 -->
+                <div class="text-center group">
+                    <div class="w-20 h-20 mx-auto rounded-full bg-ivory flex items-center justify-center text-3xl mb-3 border-2 border-brand-blue shadow-md group-hover:scale-110 transition-transform">👩‍⚖️</div>
+                    <h4 class="font-bold text-brand-blue">Eva PHILIPPE</h4>
+                    <span class="text-xs bg-cta text-white px-2 py-1 rounded full font-bold uppercase tracking-wide">Référente</span>
+                    <p class="text-xs text-gray-500 mt-2">CAPA Avocat - 10 ans d'exp.</p>
+                </div>
+                <!-- Intervenant 2 -->
+                <div class="text-center group">
+                    <div class="w-20 h-20 mx-auto rounded-full bg-ivory flex items-center justify-center text-3xl mb-3 border-2 border-gray-200 shadow-sm group-hover:border-cta transition-colors">📊</div>
+                    <h4 class="font-bold text-brand-blue">Caroline DEBRUMEZ</h4>
+                    <span class="text-xs text-gray-400 font-bold uppercase tracking-wide">Fiscalité</span>
+                    <p class="text-xs text-gray-500 mt-2">DESS Fiscalité - 10 ans d'exp.</p>
+                </div>
+                <!-- Intervenant 3 -->
+                <div class="text-center group">
+                    <div class="w-20 h-20 mx-auto rounded-full bg-ivory flex items-center justify-center text-3xl mb-3 border-2 border-gray-200 shadow-sm group-hover:border-cta transition-colors">🏗️</div>
+                    <h4 class="font-bold text-brand-blue">Bénédicte BOBIN</h4>
+                    <span class="text-xs text-gray-400 font-bold uppercase tracking-wide">Immobilier</span>
+                    <p class="text-xs text-gray-500 mt-2">Master 2 Immo - 7 ans d'exp.</p>
+                </div>
+                <!-- Intervenant 4 -->
+                <div class="text-center group">
+                    <div class="w-20 h-20 mx-auto rounded-full bg-ivory flex items-center justify-center text-3xl mb-3 border-2 border-gray-200 shadow-sm group-hover:border-cta transition-colors">💼</div>
+                    <h4 class="font-bold text-brand-blue">Christèle LECOINTE</h4>
+                    <span class="text-xs text-gray-400 font-bold uppercase tracking-wide">Social</span>
+                    <p class="text-xs text-gray-500 mt-2">DESS Relations - 10 ans d'exp.</p>
+                </div>
+            </div>
+            <p class="text-center text-[10px] text-gray-400 mt-8 italic">"Studi peut faire appel à des prestataires externes pour lesquels il conclut un contrat de prestation."</p>
+        </section>
 
-            <div class="grid md:grid-cols-2 gap-8">
-                
-                <!-- Discord Square -->
-                <a href="https://discord.gg/Amzqp6Af9D" target="_blank" class="bg-[#5865F2] text-white p-8 rounded-3xl shadow-lg hover:shadow-2xl transition-all transform hover:-translate-y-2 flex flex-col items-center justify-center gap-4 text-center aspect-square md:aspect-auto md:h-64">
-                    <i class="fab fa-discord text-6xl"></i>
-                    <div>
-                        <h4 class="text-2xl font-bold">DISCORD</h4>
-                        <p class="text-white/80 text-sm mt-1">Le QG de l'Élite 💬</p>
-                    </div>
-                    <span class="bg-white/20 px-4 py-2 rounded-full text-sm font-bold mt-2 hover:bg-white hover:text-[#5865F2] transition-colors">
-                        Rejoindre le Serveur <i class="fas fa-arrow-right ml-2"></i>
-                    </span>
+        <!-- COMMUNAUTÉ -->
+        <section class="max-w-4xl mx-auto text-center pb-4">
+            <h3 class="text-lg font-bold text-brand-blue mb-4">Rejoindre la Communauté</h3>
+            <div class="flex justify-center gap-4 flex-wrap">
+                <a href="https://discord.gg/Amzqp6Af9D" target="_blank" class="bg-[#5865F2] hover:bg-[#4752C4] text-white px-6 py-3 rounded-full font-bold flex items-center gap-2 transition hover:-translate-y-1 shadow-md">
+                    <i class="fab fa-discord text-xl"></i> Discord
                 </a>
-
-                <!-- WhatsApp Square -->
-                <a href="https://chat.whatsapp.com/IoMXFl4o2otExYKCPVj22b" target="_blank" class="bg-[#25D366] text-white p-8 rounded-3xl shadow-lg hover:shadow-2xl transition-all transform hover:-translate-y-2 flex flex-col items-center justify-center gap-4 text-center aspect-square md:aspect-auto md:h-64">
-                    <i class="fab fa-whatsapp text-6xl"></i>
-                    <div>
-                        <h4 class="text-2xl font-bold">WHATSAPP</h4>
-                        <p class="text-white/80 text-sm mt-1">Alertes & Potins 📱</p>
-                    </div>
-                    <span class="bg-white/20 px-4 py-2 rounded-full text-sm font-bold mt-2 hover:bg-white hover:text-[#25D366] transition-colors">
-                        Rejoindre le Groupe <i class="fas fa-arrow-right ml-2"></i>
-                    </span>
+                <a href="https://chat.whatsapp.com/IoMXFl4o2otExYKCPVj22b" target="_blank" class="bg-[#25D366] hover:bg-[#128C7E] text-white px-6 py-3 rounded-full font-bold flex items-center gap-2 transition hover:-translate-y-1 shadow-md">
+                    <i class="fab fa-whatsapp text-xl"></i> WhatsApp
                 </a>
-
             </div>
         </section>
 
     </main>
 
-    <!-- Footer Personnalisé -->
-    <footer class="bg-brand-blue text-white py-10 mt-auto border-t-8 border-cta">
-        <div class="container mx-auto px-4 text-center space-y-4">
-            
-            <div class="flex items-center justify-center gap-3 text-xl font-serif flex-wrap">
-                <span>💫</span>
-                <span class="font-bold tracking-wider">The Jurist Elite Club By Studi</span>
-                <span>🌸</span>
-            </div>
-
-            <p class="text-gray-300 font-light italic leading-relaxed">
-                La Villa des Juristes Brisés 💔 sur l’Île de L’INSTRUCTION ! 🏝 <br>
-                <span class="text-sm not-italic mt-2 block opacity-80 text-cta">| By Mathilde Martine PAISLEY</span>
+    <!-- FOOTER BLEU & TEXTE BLANC -->
+    <footer class="site-footer">
+        <div class="container mx-auto px-4 text-center">
+            <p class="footer-text">
+                💫 The Jurist Elite Club By Studi ✨ La Villa des Juristes Brisés 💔 sur l’Île de L’INSTRUCTION ! 🏝 <br>
+                <span class="footer-sub">| By Mathilde Martine PAISLEY</span>
             </p>
-
-            <div class="border-t border-white/10 w-2/3 mx-auto my-6"></div>
-
-            <p class="text-xs text-gray-500" id="footer-dates">
-                <!-- Date auto générée -->
-            </p>
+            <p class="footer-copy" id="footer-dates"></p>
         </div>
     </footer>
 
@@ -414,153 +442,91 @@
         // Init Icons
         lucide.createIcons();
 
-        // Footer Dates Logic
+        // Dates Footer
         const creationDate = "27/11/2025";
         const today = new Date();
-        const options = { day: '2-digit', month: '2-digit', year: 'numeric' };
-        const updateDate = today.toLocaleDateString('fr-FR', options);
+        const updateDate = today.toLocaleDateString('fr-FR', { day: '2-digit', month: '2-digit', year: 'numeric' });
         document.getElementById('footer-dates').innerText = `© 2025 Tous droits réservés – Création : ${creationDate} – Dernière mise à jour : ${updateDate}`;
 
-        // Generate Year Options (2025 -> 2030)
-        function generateYearOptions(selectedYear) {
-            const select = document.getElementById('sessionYear');
-            select.innerHTML = ''; 
-            for (let year = 2025; year <= 2030; year++) {
-                const option = document.createElement('option');
-                option.value = year;
-                option.text = year;
-                if (year == selectedYear) option.selected = true;
-                select.appendChild(option);
+        // Génération des Promos (Juin/Dec 2026 -> 2030)
+        function initPromoSelect() {
+            const select = document.getElementById('promoSelect');
+            select.innerHTML = '';
+            const months = ['Juin', 'Décembre'];
+            const startYear = 2026;
+            const endYear = 2030;
+
+            for (let year = startYear; year <= endYear; year++) {
+                months.forEach(month => {
+                    const opt = document.createElement('option');
+                    const val = `${month} ${year}`;
+                    opt.value = val;
+                    opt.text = `Promo ${val}`;
+                    select.appendChild(opt);
+                });
             }
         }
+        initPromoSelect();
 
-        // --- PROGRAM DATA STRUCTURE ---
+        // --- DATA PROGRAMMES ---
         const programsData = {
             social: {
+                label: "Droit Social ⚖️",
                 tagline: "Prête à conquérir le Droit Social ? 🚀",
                 blocks: [
-                    {
-                        title: "Introduction & Fondamentaux 🏁",
-                        color: "border-gray-400",
-                        hours: "~173h",
-                        items: ["Droit Social & Organisation Judiciaire", "Propriété Intellectuelle & Contrats", "Droit des Sociétés & Fiscalité", "Concurrence & IA en entreprise"]
-                    },
-                    {
-                        title: "Pilotage Stratégique RH 🎯",
-                        color: "border-cta",
-                        hours: "180h",
-                        items: ["Veille Juridique & Sociale", "Audit Juridique & Conformité", "Politique Rémunération (Comp & Ben)", "Projets de Transformation RH"]
-                    },
-                    {
-                        title: "Accompagnement Opérationnel 🤝",
-                        color: "border-cta",
-                        hours: "165h",
-                        items: ["Conseil Juridique Collaborateurs/Direction", "Droit des Contrats & Ruptures", "Relations Collectives & CSE", "Diagnostic Pratiques RH"]
-                    },
-                    {
-                        title: "Contentieux Social & Crise 🔥",
-                        color: "border-alert",
-                        hours: "70-85h",
-                        items: ["Anticipation Risques Prud'homaux", "Gestion de Crise Juridique", "Contentieux Sécurité Sociale (URSSAF)", "Exécution Décisions"]
-                    }
+                    { title: "Fondamentaux", color: "b-intro", hours: "~173h", items: ["Droit Social & Organisation", "Propriété Intellectuelle", "Droit des Sociétés", "Concurrence & IA"] },
+                    { title: "Pilotage RH", color: "b-strat", hours: "180h", items: ["Veille Sociale & Audit", "Compliance & Conformité", "Politique Rémunération", "Transformation RH"] },
+                    { title: "Accompagnement", color: "b-ops", hours: "165h", items: ["Conseil Juridique", "Contrats & Ruptures", "Relations Collectives", "Diagnostic RH"] },
+                    { title: "Contentieux", color: "b-litige", hours: "85h", items: ["Risques Prud'homaux", "Gestion de Crise", "Contentieux URSSAF", "Exécution Décisions"] }
                 ]
             },
             affaires: {
-                tagline: "Prête à conquérir le Droit des Affaires ? 💼",
+                label: "Droit des Affaires 💼",
+                tagline: "Prête à conquérir le Business ? 💼",
                 blocks: [
-                    {
-                        title: "Introduction & Fondamentaux 🏁",
-                        color: "border-gray-400",
-                        hours: "~173h",
-                        items: ["Droit Social & Organisation Judiciaire", "Propriété Intellectuelle & Industrielle", "Théorie du Contrat & Responsabilités", "Droit Fiscal & Concurrence"]
-                    },
-                    {
-                        title: "Pilotage Juridique Business 🎯",
-                        color: "border-cta",
-                        hours: "180h",
-                        items: ["Veille Affaires & Audit Stratégique", "Compliance & Conformité", "Archivage Numérique & RGPD", "Management Équipe Juridique"]
-                    },
-                    {
-                        title: "Opérations & Contrats 🤝",
-                        color: "border-cta",
-                        hours: "165h",
-                        items: ["Conseil Direction & Opérationnels", "Contrats Commerciaux Complexes", "Ingénierie Pédagogique & RSE", "Pilotage Changement Structurel"]
-                    },
-                    {
-                        title: "Contentieux & Risques Affaires 🔥",
-                        color: "border-alert",
-                        hours: "70-85h",
-                        items: ["Cartographie des Risques", "Négociation & MARD", "Contentieux Judiciaires Commerciaux", "Exécution Décisions"]
-                    }
+                    { title: "Fondamentaux", color: "b-intro", hours: "~173h", items: ["Droit des Obligations", "Baux Commerciaux", "Fiscalité des Affaires", "Procédures Collectives"] },
+                    { title: "Stratégie Business", color: "b-strat", hours: "180h", items: ["Veille & Audit d'Acquisition", "Compliance & Sapin II", "RGPD & Data", "Management Juridique"] },
+                    { title: "Contrats & Ops", color: "b-ops", hours: "165h", items: ["Négociation Contractuelle", "Fusions-Acquisitions", "Propriété Industrielle", "Ingénierie Sociétaire"] },
+                    { title: "Litiges Affaires", color: "b-litige", hours: "85h", items: ["Contentieux Commercial", "Arbitrage & Médiation", "Droit Pénal des Affaires", "Recouvrement"] }
                 ]
             },
             entreprise: {
-                tagline: "Prête à conquérir l'Entreprise ? 🏢",
+                label: "Juriste d'Entreprise 🏢",
+                tagline: "Prête à piloter l'Entreprise ? 🏢",
                 blocks: [
-                    {
-                        title: "Introduction & Fondamentaux 🏁",
-                        color: "border-gray-400",
-                        hours: "~173h",
-                        items: ["Droit du Travail & Pénal des Affaires", "Financement & Procédures Collectives", "Droit des Sociétés & Fiscalité", "Propriété Intellectuelle & IA"]
-                    },
-                    {
-                        title: "Pilotage Stratégique Global 🎯",
-                        color: "border-cta",
-                        hours: "180h",
-                        items: ["Veille Juridique & Audit Global", "Politiques de Conformité", "Digitalisation & LegalTech", "Management Service Juridique"]
-                    },
-                    {
-                        title: "Business Partner & Conseil 🤝",
-                        color: "border-cta",
-                        hours: "165h",
-                        items: ["Conseil Stratégique Direction", "Droit des Contrats & Sociétés", "Gestion Budgétaire Service", "RSE & Inclusion"]
-                    },
-                    {
-                        title: "Gestion des Litiges & Crise 🔥",
-                        color: "border-alert",
-                        hours: "70-85h",
-                        items: ["Anticipation Risques Contentieux", "Conseil Stratégique Litiges", "Gestion de Crise & Médiation", "Suivi Exécution Décisions"]
-                    }
+                    { title: "Fondamentaux", color: "b-intro", hours: "~173h", items: ["Droit Civil & Commercial", "Financement Entreprise", "Droit des Sociétés", "Propriété Intellectuelle"] },
+                    { title: "Pilotage Global", color: "b-strat", hours: "180h", items: ["Veille Stratégique", "Politiques Conformité", "Digitalisation Juridique", "Gestion des Risques"] },
+                    { title: "Business Partner", color: "b-ops", hours: "165h", items: ["Conseil Direction", "Techniques Contractuelles", "Gestion Budgétaire", "RSE & Éthique"] },
+                    { title: "Gestion Crise", color: "b-litige", hours: "85h", items: ["Précontentieux", "Stratégie Judiciaire", "Médiation", "Suivi Exécution"] }
                 ]
             }
         };
 
         // --- LOCAL STORAGE & LOGIC ---
-
         function saveUserData() {
             const data = {
                 name: document.getElementById('userName').value,
                 surname: document.getElementById('userSurname').value,
                 specialization: document.getElementById('userSpecialization').value,
-                sessionMonth: document.getElementById('sessionMonth').value,
-                sessionYear: document.getElementById('sessionYear').value,
+                promo: document.getElementById('promoSelect').value,
+                session: document.getElementById('sessionNb').value,
                 startDate: document.getElementById('startDate').value,
                 endDate: document.getElementById('endDate').value,
                 evalDeadline: document.getElementById('evalDeadline').value
             };
-            localStorage.setItem('juristEliteData_V8', JSON.stringify(data));
+            localStorage.setItem('juristEliteData_V13', JSON.stringify(data));
             updateUI(data);
         }
 
         function loadUserData() {
-            const storedData = localStorage.getItem('juristEliteData_V8');
-            let data = {};
-            
-            if (storedData) {
-                data = JSON.parse(storedData);
-            } else {
-                // Defaults
-                data = { sessionYear: 2027, specialization: 'social' };
-            }
+            const storedData = localStorage.getItem('juristEliteData_V13');
+            let data = storedData ? JSON.parse(storedData) : { specialization: 'social', promo: 'Juin 2027' };
 
-            // Populate fields
             document.getElementById('userName').value = data.name || "";
             document.getElementById('userSurname').value = data.surname || "";
             document.getElementById('userSpecialization').value = data.specialization || "social";
-            document.getElementById('sessionMonth').value = data.sessionMonth || "Juin";
-            
-            generateYearOptions(data.sessionYear || 2027);
-
+            document.getElementById('promoSelect').value = data.promo || "Juin 2027";
+            document.getElementById('sessionNb').value = data.session || "1";
             document.getElementById('startDate').value = data.startDate || "";
             document.getElementById('endDate').value = data.endDate || "";
             document.getElementById('evalDeadline').value = data.evalDeadline || "";
@@ -569,47 +535,37 @@
         }
 
         function updateUI(data) {
-            // Update Welcome Name
+            // Update Welcome
             const fullName = `${data.name || ''} ${data.surname || ''}`.trim();
             document.getElementById('displayFullName').innerText = fullName || "Juriste";
 
-            // Update Specialization Content
+            // Update Program
             const spec = data.specialization || 'social';
             const program = programsData[spec];
-
-            // Update Tagline
             document.getElementById('welcomeTagline').innerText = program.tagline;
+            document.getElementById('programLabel').innerText = program.label;
 
-            // Render Blocks
             const container = document.getElementById('programContainer');
-            container.innerHTML = ''; // Clear current
-
-            program.blocks.forEach((block, index) => {
-                const number = index; 
-
-                // Generate List Items HTML
-                const listItemsHtml = block.items.map(item => `<li><i class="fas fa-check text-green-500 mr-2"></i>${item}</li>`).join('');
-
-                const blockHtml = `
-                <div class="bg-white p-6 rounded-2xl shadow-sm border-l-8 ${block.color} card-hover relative">
-                    <div class="absolute top-4 right-4 text-4xl opacity-10">${number}️⃣</div>
-                    <h4 class="text-xl font-bold text-brand-blue mb-2">${block.title}</h4>
-                    <span class="bg-gray-100 text-gray-600 text-xs px-2 py-1 rounded-full font-bold">${block.hours}</span>
-                    <ul class="mt-4 space-y-2 text-sm text-gray-600">
-                        ${listItemsHtml}
+            container.innerHTML = '';
+            program.blocks.forEach((block, idx) => {
+                const html = `
+                <div class="prog-block ${block.color}">
+                    <div class="flex justify-between items-start mb-3">
+                        <h4 class="font-bold text-lg text-brand-blue">${idx}️⃣ ${block.title}</h4>
+                        <span class="bg-gray-100 text-xs font-bold px-2 py-1 rounded text-gray-600">${block.hours}</span>
+                    </div>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        ${block.items.map(item => `<li><i class="fa-solid fa-check text-green-500 mr-2"></i>${item}</li>`).join('')}
                     </ul>
-                </div>
-                `;
-                container.innerHTML += blockHtml;
+                </div>`;
+                container.innerHTML += html;
             });
 
             // Update Countdown
             updateCountdown(data.evalDeadline);
         }
 
-        // Countdown Logic
         let countdownInterval;
-
         function updateCountdown(deadlineDate) {
             const displayEl = document.getElementById('countdownDisplay');
             const placeholderEl = document.getElementById('countdownPlaceholder');
@@ -618,13 +574,12 @@
             if (!deadlineDate) {
                 displayEl.classList.add('hidden');
                 placeholderEl.classList.remove('hidden');
-                timerCard.classList.remove('timer-urgent');
+                timerCard.classList.remove('timer-active');
                 return;
             }
 
             placeholderEl.classList.add('hidden');
             displayEl.classList.remove('hidden');
-
             if (countdownInterval) clearInterval(countdownInterval);
 
             function calculate() {
@@ -634,10 +589,7 @@
 
                 if (distance < 0) {
                     clearInterval(countdownInterval);
-                    document.getElementById('cd-days').innerText = "00";
-                    document.getElementById('cd-hours').innerText = "00";
-                    document.getElementById('cd-min').innerText = "00";
-                    document.getElementById('cd-sec').innerText = "00";
+                    timerCard.classList.remove('timer-active');
                     return;
                 }
 
@@ -651,18 +603,12 @@
                 document.getElementById('cd-min').innerText = minutes < 10 ? "0" + minutes : minutes;
                 document.getElementById('cd-sec').innerText = seconds < 10 ? "0" + seconds : seconds;
 
-                // Urgency Animation (< 7 jours)
-                if (days < 7) {
-                    timerCard.classList.add('timer-urgent');
-                } else {
-                    timerCard.classList.remove('timer-urgent');
-                }
+                if (days < 7) timerCard.classList.add('timer-active');
+                else timerCard.classList.remove('timer-active');
             }
-
             calculate();
             countdownInterval = setInterval(calculate, 1000);
         }
-
     </script>
 </body>
 </html>
