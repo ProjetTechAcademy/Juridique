@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programme Live Juriste d'Entreprise & Droit Social</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Polices -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <!-- Configuration Tailwind (Couleurs de la marque) -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Outfit', 'sans-serif'], inter: ['Inter', 'sans-serif'] },
+                    colors: {
+                        brandBlue: '#0F2C48',
+                        brandGold: '#D9A526',
+                        brandIvory: '#F6F2E8',
+                        brandBronze: '#B4792A',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        :root{
+            --cta: #D9A526;
+            --brand-blue: #0F2C48;
+            --ivory: #F6F2E8;
+            --bronze: #B4792A;
+        }
+
+        body { margin: 0; background-color: var(--ivory); color: var(--brand-blue); font-family: 'Outfit', sans-serif; }
+        
+        /* --- HEADER STICKY --- */
+        .top-banner {
+            position: sticky; top: 0; left: 0; right: 0; z-index: 10000;
+            background: var(--brand-blue); color: white;
+            box-shadow: 0 4px 20px rgba(15,44,72,0.25);
+            padding: 12px 0; border-bottom: 4px solid var(--cta);
+        }
+        .top-inner {
+            max-width: 1400px; margin: 0 auto; padding: 0 24px;
+            display: flex; align-items: center; justify-content: space-between; gap: 20px;
+        }
+        .header-left { display: flex; align-items: center; gap: 16px; flex: 1; }
+        .tb-logo {
+            width: 60px; height: 60px; flex: 0 0 60px; border-radius: 50%; overflow: hidden;
+            background: white; display: flex; align-items: center; justify-content: center;
+            border: 2px solid var(--cta);
+        }
+        .tb-logo img { width: 100%; height: 100%; object-fit: cover; }
+        .tb-text-container { display: flex; flex-direction: column; justify-content: center; }
+        .tb-title { font-weight: 700; font-size: 16px; color: white; line-height: 1.4; }
+        .tb-title .part2 { color: var(--cta); font-style: italic; font-weight: 600; }
+
+        /* Bouton Header Droite */
+        .header-right-btn {
+            display: flex; align-items: center; gap: 10px;
+            background-color: rgba(255,255,255,0.1); padding: 10px 20px;
+            border-radius: 30px; color: white; text-decoration: none; font-weight: 600;
+            transition: all 0.3s ease; border: 1px solid rgba(255,255,255,0.2);
+            white-space: nowrap; cursor: pointer;
+        }
+        .header-right-btn:hover {
+            background-color: var(--cta); color: var(--brand-blue); border-color: var(--cta);
+            transform: translateY(-2px); box-shadow: 0 4px 12px rgba(217,165,38,0.3);
+        }
+
+        /* --- NAVIGATION ONGLETS --- */
+        .tabs-nav-container {
+            background: #fff; box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+            padding: 15px 0; margin-bottom: 30px;
+            position: sticky; top: 87px; z-index: 9000;
+        }
+        .tabs-wrapper {
+            max-width: 1100px; margin: 0 auto; display: flex;
+            justify-content: center; gap: 15px; flex-wrap: wrap; padding: 0 20px;
+        }
+        .tab-button {
+            padding: 12px 28px; border-radius: 30px; font-weight: 700; font-size: 15px;
+            cursor: pointer; transition: all 0.3s ease; background-color: var(--ivory);
+            color: var(--brand-blue); border: 2px solid transparent; display: flex; align-items: center; gap: 10px; text-decoration: none;
+        }
+        .tab-button:hover { transform: translateY(-2px); border-color: var(--cta); background-color: #fff; }
+        .tab-button.active {
+            background-color: var(--brand-blue); color: white; border-color: var(--brand-blue);
+            box-shadow: 0 4px 15px rgba(15, 44, 72, 0.3);
+        }
+        .tab-button.active i { color: var(--cta); }
+
+        /* --- STYLES ORIGINAUX DU PLANNING --- */
+        .brand-blue-text { color: #0F2C48; }
+        .brand-blue-bg { background-color: #0F2C48; }
+        .brand-yellow-text { color: #D9A526; }
+        .brand-yellow-bg { background-color: #D9A526; }
+        .brand-yellow-border { border-color: #D9A526; }
+        .brand-ivory-bg { background-color: #F6F2E8; }
+        .brand-bronze-text { color: #B4792A; }
+        .brand-bronze-bg { background-color: #B4792A; }
+
+        .type-badge {
+            font-size: 0.75rem;
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            font-weight: 600;
+            white-space: nowrap;
+            letter-spacing: 0.025em;
+        }
+        
+        /* Custom scrollbar */
+        .table-container::-webkit-scrollbar { width: 8px; height: 8px; }
+        .table-container::-webkit-scrollbar-track { background: #f1f1f1; }
+        .table-container::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        .table-container::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+        /* Responsive Header */
+        @media (max-width: 768px) {
+            .top-inner { flex-direction: column; gap: 15px; }
+            .header-left { flex-direction: column; text-align: center; }
+            .header-right-btn { width: 100%; justify-content: center; }
+            .tabs-nav-container { top: 160px; }
+        }
+    </style>
+</head>
+<body class="bg-white text-slate-800">
+
+    <!-- === A. LE HEADER STICKY === -->
+    <div class="top-banner">
+        <div class="top-inner">
+            <!-- Gauche -->
+            <div class="header-left">
+                <div class="tb-logo">
+                    <!-- Utilisation du PNG avec fallback JPG -->
+                    <img src="https://projettechacademy.github.io/Juridique/Asset/Logo_juriste.png" alt="Logo" onerror="this.src='https://projettechacademy.github.io/Juridique/Asset/Logo_juriste.jpg'">
+                </div>
+                <div class="tb-text-container">
+                    <div class="tb-title">
+                        <span class="part1">💫 The Jurist Elite Club By Studi ✨</span><br>
+                        <span class="part2">La Villa des Juristes Brisés 💔 sur l’Île de L’INSTRUCTION !🏝</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Droite : Bouton Accueil -->
+            <a href="https://projettechacademy.github.io/Juridique/index.html" class="header-right-btn">
+                <i class="fa-solid fa-house"></i>
+                <span>Accueil</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- === B. LA NAVIGATION ONGLETS === -->
+    <div class="tabs-nav-container">
+        <div class="tabs-wrapper">
+            <a href="#affaires" class="tab-button">
+                <i class="fa-solid fa-briefcase"></i> Droit des Affaires
+            </a>
+            <a href="#entreprise" class="tab-button">
+                <i class="fa-solid fa-building-columns"></i> Juriste d'Entreprise
+            </a>
+            <a href="#social" class="tab-button active">
+                <i class="fa-solid fa-users"></i> Droit Social
+            </a>
+        </div>
+    </div>
+
+    <!-- === NOUVEAU : C. SECTION BIENVENUE & ACCÈS RAPIDE === -->
+    <div class="max-w-7xl mx-auto px-4 mt-8 mb-12">
+        <div class="bg-[#F6F2E8] rounded-2xl p-8 border-2 border-[#D9A526]/20 text-center shadow-sm">
+            <h2 class="text-3xl font-bold text-[#0F2C48] mb-2">Bienvenue Mathilde ! 👋</h2>
+            <p class="text-[#B4792A] font-semibold mb-8 uppercase tracking-wide text-sm">Espace Personnel de Formation</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- 1. Start -->
+                <a href="https://projettechacademy.github.io/Juridique/index.html" class="bg-white p-6 rounded-xl border border-slate-200 hover:border-[#D9A526] hover:shadow-lg transition-all group text-left flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-full bg-[#0F2C48] text-white flex items-center justify-center text-xl group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-flag-checkered"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-[#0F2C48] leading-tight">Start</h3>
+                        <p class="text-xs text-slate-500 mt-1">Retour au début</p>
+                    </div>
+                </a>
+
+                <!-- 2. Lexique -->
+                <a href="https://projettechacademy.github.io/Juridique/00_Autres/Lexique_Latin_Juridique.html" class="bg-white p-6 rounded-xl border border-slate-200 hover:border-[#D9A526] hover:shadow-lg transition-all group text-left flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-full bg-[#D9A526] text-white flex items-center justify-center text-xl group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-book-open"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-[#0F2C48] leading-tight">Lexique Juridique & Social</h3>
+                        <p class="text-xs text-slate-500 mt-1">Les indispensables du Latin</p>
+                    </div>
+                </a>
+
+                <!-- 3. Planning (Page Actuelle) -->
+                <a href="https://projettechacademy.github.io/Juridique/00_Autres/formation_live_juriste.html" class="bg-white p-6 rounded-xl border-2 border-[#0F2C48] shadow-md group text-left flex items-center gap-4 relative overflow-hidden">
+                    <!-- Badge Actif -->
+                    <div class="absolute top-0 right-0 bg-[#0F2C48] text-white text-[10px] px-2 py-0.5 rounded-bl-lg font-bold">ACTIF</div>
+                    <div class="w-12 h-12 rounded-full bg-[#0F2C48] text-white flex items-center justify-center text-xl">
+                        <i class="fa-solid fa-video"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-[#0F2C48] leading-tight">Planning Live & Suivi</h3>
+                        <p class="text-xs text-slate-500 mt-1">Tableau de bord interactif</p>
+                    </div>
+                </a>
+
+                <!-- 4. Mon Espace -->
+                <a href="https://projettechacademy.github.io/Juridique/00_Autres/Mon_Espace_Juriste_Tableau_de_bord_personnel.html" class="bg-white p-6 rounded-xl border border-slate-200 hover:border-[#D9A526] hover:shadow-lg transition-all group text-left flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-full bg-[#B4792A] text-white flex items-center justify-center text-xl group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-user-tie"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-[#0F2C48] leading-tight">Mon Espace Juriste</h3>
+                        <p class="text-xs text-slate-500 mt-1">Tableau de bord personnel</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- === D. CONTENU PRINCIPAL (PLANNING) === -->
+    <div class="max-w-7xl mx-auto p-4 md:p-8">
+        <!-- Header du Planning -->
+        <div class="mb-8 flex flex-col md:flex-row md:items-end justify-between gap-6 border-b-2 border-[#0F2C48] pb-6">
+            <div>
+                <h1 class="text-3xl md:text-4xl font-bold brand-blue-text flex items-center gap-3">
+                    <i class="fa-solid fa-scale-balanced brand-yellow-text"></i>
+                    Programme Live Juriste d'Entreprise & Droit Social
+                </h1>
+                <p class="brand-bronze-text font-medium mt-3 text-lg">
+                    Organisé par <span class="font-bold border-b border-[#B4792A]">EVA PHILIPPE</span>
+                </p>
+            </div>
+            
+            <div class="flex gap-3">
+                <div class="brand-ivory-bg p-4 rounded-lg shadow-sm border border-[#0F2C48]/10 flex flex-col items-center min-w-[120px]">
+                    <span class="text-xs brand-blue-text uppercase font-bold tracking-widest mb-1">Total Lives</span>
+                    <span class="text-3xl font-bold brand-bronze-text" id="total-count">0</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Progress Bar Section (Carte Ivoire) -->
+        <div class="brand-ivory-bg p-6 rounded-lg shadow-md border-l-4 border-[#D9A526] mb-8">
+            <div class="flex justify-between items-center mb-3">
+                <h2 class="text-lg font-bold brand-blue-text flex items-center gap-2">
+                    <i class="fa-solid fa-list-check brand-yellow-text"></i> Progression de vos révisions
+                </h2>
+                <span id="progress-text" class="text-lg font-bold brand-blue-text">0%</span>
+            </div>
+            <div class="w-full bg-white rounded-full h-4 overflow-hidden border border-slate-200">
+                <div id="progress-bar" class="brand-yellow-bg h-4 rounded-full transition-all duration-500 ease-out shadow-sm" style="width: 0%"></div>
+            </div>
+            <p class="text-xs text-slate-500 mt-2 italic text-right">Cochez les cases "Vu" dans le tableau pour mettre à jour.</p>
+        </div>
+
+        <!-- Controls (Carte Ivoire) -->
+        <div class="brand-ivory-bg p-5 rounded-lg shadow-sm border border-slate-200 mb-6 flex flex-col md:flex-row gap-4 justify-between items-center">
+            <div class="relative w-full md:w-96">
+                <i class="fa-solid fa-search absolute left-3 top-1/2 transform -translate-y-1/2 brand-blue-text"></i>
+                <input type="text" id="searchInput" placeholder="Rechercher par mot-clé..." 
+                       class="w-full pl-10 pr-4 py-2.5 bg-white border border-slate-300 rounded focus:ring-2 focus:ring-[#D9A526] focus:border-[#D9A526] outline-none transition-all placeholder-slate-400 text-slate-700">
+            </div>
+            
+            <div class="flex flex-wrap gap-2 justify-center">
+                <button onclick="filterByType('all')" class="px-4 py-2 text-sm rounded border border-slate-300 bg-white hover:bg-slate-50 brand-blue-text font-semibold transition-colors">Tout</button>
+                <button onclick="filterByType('Cours')" class="px-4 py-2 text-sm rounded border border-blue-200 bg-blue-50 hover:bg-blue-100 text-[#0F2C48] font-semibold transition-colors">Cours</button>
+                <button onclick="filterByType('Travaux Dirigés')" class="px-4 py-2 text-sm rounded border border-emerald-200 bg-emerald-50 hover:bg-emerald-100 text-emerald-800 font-semibold transition-colors">TD</button>
+                <button onclick="filterByType('Objectif Examens')" class="px-4 py-2 text-sm rounded border border-amber-200 bg-amber-50 hover:bg-amber-100 brand-bronze-text font-semibold transition-colors">Examens</button>
+            </div>
+        </div>
+
+        <!-- Table -->
+        <div class="bg-white rounded-t-lg shadow-lg border border-slate-200 overflow-hidden">
+            <div class="table-container overflow-x-auto">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <!-- En-tête Bleu Institutionnel -->
+                        <tr class="brand-blue-bg text-white text-sm uppercase tracking-wider">
+                            <th class="p-4 font-semibold w-16 text-center border-r border-white/10">Vu</th>
+                            <th class="p-4 font-semibold cursor-pointer hover:bg-[#1a3b5c] transition-colors group border-r border-white/10" onclick="sortTable('dateRaw')">
+                                Date <i class="fa-solid fa-sort ml-1 text-[#D9A526] opacity-70 group-hover:opacity-100"></i>
+                            </th>
+                            <th class="p-4 font-semibold border-r border-white/10">Horaire</th>
+                            <th class="p-4 font-semibold cursor-pointer hover:bg-[#1a3b5c] transition-colors group border-r border-white/10" onclick="sortTable('type')">
+                                Type <i class="fa-solid fa-sort ml-1 text-[#D9A526] opacity-70 group-hover:opacity-100"></i>
+                            </th>
+                            <th class="p-4 font-semibold w-1/3 cursor-pointer hover:bg-[#1a3b5c] transition-colors group" onclick="sortTable('title')">
+                                Intitulé <i class="fa-solid fa-sort ml-1 text-[#D9A526] opacity-70 group-hover:opacity-100"></i>
+                            </th>
+                            <th class="p-4 font-semibold hidden md:table-cell">Description</th>
+                            <th class="p-4 font-semibold text-center cursor-pointer hover:bg-[#1a3b5c] transition-colors group" onclick="sortTable('participants')">
+                                <i class="fa-solid fa-users"></i>
+                            </th>
+                            <th class="p-4 font-semibold text-center">Accès</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody" class="text-sm divide-y divide-slate-200">
+                        <!-- Rows generated by JS -->
+                    </tbody>
+                </table>
+            </div>
+            <div id="noResults" class="hidden p-12 text-center text-slate-500 brand-ivory-bg">
+                <i class="fa-solid fa-folder-open text-5xl mb-4 text-[#D9A526]"></i>
+                <p class="text-lg">Aucun événement trouvé pour cette recherche.</p>
+            </div>
+        </div>
+        
+        <div class="mt-6 text-center text-xs text-slate-400 font-mono">
+            Dernière mise à jour : 25/11/2025
+        </div>
+    </div>
+
+    <!-- === E. FOOTER === -->
+    <footer class="brand-blue-bg text-white mt-12">
+        <div class="max-w-7xl mx-auto px-4 py-8 md:py-12">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Col 1 -->
+                <div>
+                    <h3 class="text-[#D9A526] font-bold text-lg mb-4 flex items-center gap-2">
+                        <i class="fa-solid fa-scale-balanced"></i> EVA PHILIPPE
+                    </h3>
+                    <p class="text-slate-300 text-sm leading-relaxed">
+                        Accompagnement pédagogique et expertise juridique pour les futurs juristes d'entreprise et experts RH.
+                    </p>
+                </div>
+                <!-- Col 2 -->
+                <div class="md:text-center">
+                    <h3 class="text-[#F6F2E8] font-bold text-lg mb-4">Liens Utiles</h3>
+                    <ul class="space-y-2 text-sm text-slate-300">
+                        <li><a href="#" class="hover:text-[#D9A526] transition-colors">Planning des cours</a></li>
+                        <li><a href="#" class="hover:text-[#D9A526] transition-colors">Ressources MBA</a></li>
+                        <li><a href="#" class="hover:text-[#D9A526] transition-colors">Support Pédagogique</a></li>
+                    </ul>
+                </div>
+                <!-- Col 3 -->
+                <div class="md:text-right">
+                    <h3 class="text-[#F6F2E8] font-bold text-lg mb-4">Contact</h3>
+                    <p class="text-slate-300 text-sm mb-2"><i class="fa-regular fa-envelope mr-2"></i> contact@evaphilippe.com</p>
+                    <div class="flex gap-4 mt-4 md:justify-end">
+                        <a href="#" class="w-8 h-8 rounded-full bg-[#D9A526] text-[#0F2C48] flex items-center justify-center hover:bg-white transition-colors"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="#" class="w-8 h-8 rounded-full bg-[#D9A526] text-[#0F2C48] flex items-center justify-center hover:bg-white transition-colors"><i class="fa-solid fa-graduation-cap"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-white/10 mt-8 pt-8 text-center text-xs text-slate-400">
+                <p>&copy; 2025 Eva Philippe - Tous droits réservés. Document à usage pédagogique.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Raw Data extraction with Links added
+        const rawData = [
+            { link: "https://app.comptalia.com/v3/events/97190/stream", date: "21/11/2025", time: "08:00 - 09:00", type: "Travaux Dirigés", title: "Cas pratique transverse", desc: "Prêt à mettre en pratique vos compétences ? Réalisez un projet complet et appliquez votre savoir-faire !", count: 55 },
+            { link: "https://app.comptalia.com/v3/events/97185/stream", date: "19/11/2025", time: "16:30 - 17:30", type: "Accompagnement pédagogique", title: "Permanence pédagogique MBA juriste d'entreprise", desc: "Besoin d'accompagnement dans votre parcours ? Sessions d'échanges.", count: 50 },
+            { link: "https://app.comptalia.com/v3/events/97189/stream", date: "19/11/2025", time: "08:00 - 09:00", type: "Travaux Dirigés", title: "Théorie et pratique : stratégie contentieuse et négociation", desc: "Comment prévenir les litiges ? Identifiez les signaux d'alerte.", count: 57 },
+            { link: "https://app.comptalia.com/v3/events/97184/stream", date: "14/11/2025", time: "15:00 - 16:00", type: "Accompagnement pédagogique", title: "Permanence pédagogique MBA juriste d'entreprise", desc: "Besoin d'accompagnement dans votre parcours ? Sessions d'échanges.", count: 55 },
+            { link: "https://app.comptalia.com/v3/events/97188/stream", date: "12/11/2025", time: "08:00 - 09:00", type: "Travaux Dirigés", title: "Théorie et pratique : anticipation des risques contentieux", desc: "Comment prévenir les litiges ? Identifiez les signaux d'alerte.", count: 67 },
+            { link: "https://app.comptalia.com/v3/events/96303/stream", date: "10/11/2025", time: "08:00 - 09:00", type: "Cours", title: "Bachelor RH - spécialité Droit Social : Théorie & pratique", desc: "Comment évaluer efficacement la performance de vos collaborateurs ?", count: 46 },
+            { link: "https://app.comptalia.com/v3/events/97183/stream", date: "06/11/2025", time: "08:00 - 09:00", type: "Accompagnement pédagogique", title: "Permanence pédagogique MBA juriste d'entreprise", desc: "Besoin d'accompagnement dans votre parcours ?", count: 43 },
+            { link: "https://app.comptalia.com/v3/events/97182/stream", date: "05/11/2025", time: "08:00 - 09:00", type: "Accompagnement pédagogique", title: "Permanence pédagogique MBA juriste d'entreprise", desc: "Besoin d'accompagnement dans votre parcours ?", count: 36 },
+            { link: "https://app.comptalia.com/v3/events/96300/stream", date: "03/11/2025", time: "08:00 - 09:00", type: "Cours", title: "Bachelor RH - Droit des affaires numériques", desc: "Comment identifier et prévenir les risques de responsabilité numérique ?", count: 26 },
+            { link: "https://app.comptalia.com/v3/events/96298/stream", date: "27/10/2025", time: "15:30 - 16:30", type: "Cours", title: "Bachelor RH - Droit des affaires numériques", desc: "Quelles clauses essentielles intégrer dans vos contrats numériques ?", count: 10 },
+            { link: "https://app.comptalia.com/v3/events/93770/stream", date: "26/09/2025", time: "15:00 - 16:00", type: "Objectif Examens", title: "Préparation examen : accompagner les acteurs internes", desc: "Besoin d'entraînement ? Testez votre maîtrise.", count: 68 },
+            { link: "https://app.comptalia.com/v3/events/93769/stream", date: "25/09/2025", time: "09:00 - 10:00", type: "Travaux Dirigés", title: "Théorie et pratique : ingénierie pédagogique pour juristes", desc: "Concevez des actions pédagogiques adaptées aux enjeux juridiques !", count: 66 },
+            { link: "https://app.comptalia.com/v3/events/93768/stream", date: "25/09/2025", time: "08:00 - 09:00", type: "Travaux Dirigés", title: "Théorie et pratique : rédaction de contrats sécurisés", desc: "Comment rédiger des contrats fiables ?", count: 72 },
+            { link: "https://app.comptalia.com/v3/events/93766/stream", date: "18/09/2025", time: "09:00 - 10:00", type: "Objectif Examens", title: "Préparation examen : piloter les activités juridiques", desc: "Besoin d'entraînement ? Testez votre maîtrise.", count: 70 },
+            { link: "https://app.comptalia.com/v3/events/93767/stream", date: "18/09/2025", time: "08:00 - 09:00", type: "Méthodologie", title: "Méthodo examen : accompagner les acteurs internes", desc: "Avez-vous toutes les clefs pour réussir vos épreuves ?", count: 66 },
+            { link: "https://app.comptalia.com/v3/events/93764/stream", date: "17/09/2025", time: "09:00 - 10:00", type: "Travaux Dirigés", title: "Théorie et pratique : conseil juridique aux collaborateurs", desc: "Comment conseiller efficacement vos équipes ?", count: 67 },
+            { link: "https://app.comptalia.com/v3/events/92528/stream", date: "04/09/2025", time: "14:30 - 15:30", type: "Cours", title: "Career Coaching - Masterclass Pro : Droit - Évolutions 2025", desc: "Quelles nouvelles réglementations impactent les entreprises ?", count: 154 },
+            { link: "https://app.comptalia.com/v3/events/91328/stream", date: "26/06/2025", time: "14:30 - 15:00", type: "Live", title: "Live de méthodologue - Activité du groupe", desc: "Questions liées à l'activité du groupe.", count: 60 },
+            { link: "https://app.comptalia.com/v3/events/90644/stream", date: "04/06/2025", time: "09:00 - 10:00", type: "Méthodologie", title: "Préparation examens MBA Juriste d'entreprise", desc: "Méthodologie essentielle pour les examens.", count: 81 },
+            { link: "https://app.comptalia.com/v3/events/88417/stream", date: "26/05/2025", time: "15:00 - 16:00", type: "Cours", title: "STRETCH AFFAIRES | Conséquences resp. civile et pénale", desc: "Conséquences de la responsabilité civile et pénale.", count: 75 },
+            { link: "https://app.comptalia.com/v3/events/88424/stream", date: "26/05/2025", time: "14:00 - 15:00", type: "Cours", title: "STRETCH AFFAIRES | Les instruments de paiement", desc: "MBA", count: 57 },
+            { link: "https://app.comptalia.com/v3/events/88422/stream", date: "22/05/2025", time: "15:00 - 16:00", type: "Cours", title: "STRETCH AFFAIRES | Les instruments de crédit", desc: "MBA", count: 48 },
+            { link: "https://app.comptalia.com/v3/events/88857/stream", date: "22/05/2025", time: "14:00 - 15:00", type: "Cours", title: "STRETCH AFFAIRES | Augmentation et réduction de capital", desc: "MBA", count: 48 },
+            { link: "https://app.comptalia.com/v3/events/88856/stream", date: "21/05/2025", time: "10:00 - 11:00", type: "Cours", title: "STRETCH AFFAIRES | La SARL", desc: "MBA", count: 49 },
+            { link: "https://app.comptalia.com/v3/events/88855/stream", date: "21/05/2025", time: "09:00 - 10:00", type: "Cours", title: "STRETCH AFFAIRES | La cession des parts sociales", desc: "Cession à des tiers, entre associés...", count: 47 },
+            { link: "https://app.comptalia.com/v3/events/88416/stream", date: "19/05/2025", time: "15:00 - 16:00", type: "Cours", title: "STRETCH AFFAIRES | Appel public à l'épargne", desc: "MBA", count: 44 },
+            { link: "https://app.comptalia.com/v3/events/88697/stream", date: "15/05/2025", time: "09:00 - 10:00", type: "Cours", title: "STRETCH AFFAIRES | La Société anonyme", desc: "MBA", count: 43 },
+            { link: "https://app.comptalia.com/v3/events/87574/stream", date: "21/04/2025", time: "09:00 - 10:00", type: "Cours", title: "ACTUALITÉ, MÉTHODES, EXAMEN | LE MOT DU MBA", desc: "Actualité de formation et préparation examens.", count: 59 },
+            { link: "https://app.comptalia.com/v3/events/87575/stream", date: "22/04/2025", time: "09:00 - 10:00", type: "Cours", title: "DROIT DES AFFAIRES | How to get away : le contrat", desc: "Techniques de rédaction d’un contrat.", count: 78 },
+            { link: "https://app.comptalia.com/v3/events/87573/stream", date: "18/04/2025", time: "10:00 - 11:00", type: "Cours", title: "LES BAUX COMMERCIAUX | MBA", desc: "MBA", count: 52 },
+            { link: "https://app.comptalia.com/v3/events/87571/stream", date: "18/04/2025", time: "09:00 - 10:00", type: "Cours", title: "STRETCH AFFAIRES | Le fond de commerce", desc: "MBA", count: 51 },
+            { link: "https://app.comptalia.com/v3/events/87126/stream", date: "03/04/2025", time: "16:00 - 17:00", type: "Cours", title: "POLITIQUE D'INCLUSION | Le harcèlement", desc: "Revue de jurisprudence.", count: 51 },
+            { link: "https://app.comptalia.com/v3/events/87125/stream", date: "03/04/2025", time: "14:00 - 15:00", type: "Cours", title: "CONSEIL JURIDIQUE | Gestion des...", desc: "Conseil juridique et opérationnel.", count: 67 },
+            { link: "https://app.comptalia.com/v3/events/86661/stream", date: "28/03/2025", time: "09:00 - 10:00", type: "Cours", title: "Veille juridique et sociale | Réforme indemnisation", desc: "Focus sur une réforme.", count: 81 },
+            { link: "https://app.comptalia.com/v3/events/86611/stream", date: "27/03/2025", time: "13:30 - 14:30", type: "Cours", title: "Veille juridique et sociale | Loi ZAN", desc: "Réforme Zéro Artificialisation Nette.", count: 80 },
+            { link: "https://app.comptalia.com/v3/events/85212/stream", date: "20/03/2025", time: "14:30 - 15:30", type: "Cours", title: "Diagnostiquer les risques juridiques | Le risque d'impayé", desc: "Evaluer et prévenir le risque.", count: 68 },
+            { link: "https://app.comptalia.com/v3/events/85211/stream", date: "18/03/2025", time: "09:30 - 10:30", type: "Cours", title: "Diagnostiquer les risques | Resp. pénale pers. morales", desc: "Responsabilité pénale.", count: 69 },
+            { link: "https://app.comptalia.com/v3/events/85210/stream", date: "13/03/2025", time: "14:00 - 15:00", type: "Cours", title: "Comprendre les enjeux | La reprise d'entreprises", desc: "Stratégie de l'entreprise.", count: 55 },
+            { link: "https://app.comptalia.com/v3/events/85209/stream", date: "11/03/2025", time: "09:30 - 10:30", type: "Cours", title: "Stratégies pour s'insérer ou innover sur un marché", desc: "Courbe de vie produit, innovation.", count: 42 },
+            { link: "https://app.comptalia.com/v3/events/85007/stream", date: "07/03/2025", time: "11:00 - 12:00", type: "Méthodologie", title: "Q&R méthodologie résolution cas pratique", desc: "MBA juriste d'entreprise.", count: 98 },
+            { link: "https://app.comptalia.com/v3/events/85213/stream", date: "04/03/2025", time: "09:30 - 10:30", type: "Cours", title: "Qualification du marché et positionnement concurrentiel", desc: "Fondamentaux de la qualification du marché.", count: 52 },
+            { link: "https://app.comptalia.com/v3/events/82594/stream", date: "23/01/2025", time: "14:30 - 15:30", type: "Cours", title: "COMPRENDRE LES ENJEUX : Les opérations...", desc: "Stratégie de l'entreprise.", count: 57 },
+            { link: "https://app.comptalia.com/v3/events/82079/stream", date: "16/01/2025", time: "14:30 - 15:30", type: "Cours", title: "Droit de la concurrence : le controle des concentrations", desc: "Droit de la concurrence.", count: 54 },
+            { link: "https://app.comptalia.com/v3/events/81381/stream", date: "09/01/2025", time: "15:00 - 16:00", type: "Cours", title: "Droit de la concurrence : concurrence déloyale", desc: "Exemples de jurisprudence.", count: 60 },
+        ];
+
+        // Parse date utility
+        function parseDate(dateStr) {
+            const parts = dateStr.split('/');
+            return new Date(parts[2], parts[1] - 1, parts[0]);
+        }
+
+        // Local Storage Key
+        const STORAGE_KEY = 'planning_seen_state';
+
+        // Load seen state
+        let seenState = JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
+
+        // Augment data with Date object for sorting & Unique ID
+        let events = rawData.map((e, index) => {
+            // Create a unique ID for state tracking (Date + Time + Title partial)
+            const id = `${e.date}-${e.time}-${e.title.substring(0, 10)}`.replace(/\s+/g, '');
+            return {
+                ...e,
+                id: id,
+                dateRaw: parseDate(e.date),
+                seen: !!seenState[id]
+            };
+        });
+
+        // Sort by date ascending (oldest first) by default
+        events.sort((a, b) => a.dateRaw - b.dateRaw);
+
+        let currentSort = { column: 'dateRaw', direction: 'asc' };
+
+        // Badge colors
+        const typeColors = {
+            'Cours': 'bg-blue-100 text-blue-800 border-blue-200',
+            'Travaux Dirigés': 'bg-emerald-100 text-emerald-800 border-emerald-200',
+            'Objectif Examens': 'bg-amber-100 text-amber-800 border-amber-200',
+            'Méthodologie': 'bg-purple-50 text-purple-800 border-purple-200',
+            'Accompagnement pédagogique': 'bg-pink-50 text-pink-800 border-pink-200',
+            'Live': 'bg-red-50 text-red-800 border-red-200',
+            'default': 'bg-slate-50 text-slate-800 border-slate-200'
+        };
+
+        function getBadgeClass(type) {
+            return typeColors[type] || typeColors['default'];
+        }
+
+        const tableBody = document.getElementById('tableBody');
+        const totalCountEl = document.getElementById('total-count');
+        const searchInput = document.getElementById('searchInput');
+        const noResults = document.getElementById('noResults');
+        const progressBar = document.getElementById('progress-bar');
+        const progressText = document.getElementById('progress-text');
+
+        function toggleSeen(id) {
+            const event = events.find(e => e.id === id);
+            if (event) {
+                event.seen = !event.seen;
+                
+                // Update Local Storage
+                if (event.seen) {
+                    seenState[id] = true;
+                } else {
+                    delete seenState[id];
+                }
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(seenState));
+
+                updateProgress();
+                renderTable(getCurrentFilteredEvents());
+            }
+        }
+
+        function updateProgress() {
+            const total = events.length;
+            const seenCount = events.filter(e => e.seen).length;
+            const percentage = total === 0 ? 0 : Math.round((seenCount / total) * 100);
+
+            progressBar.style.width = `${percentage}%`;
+            progressText.textContent = `${percentage}% (${seenCount}/${total})`;
+            
+            // Checkmark color logic (Yellow when in progress, Bronze when done?)
+            // Keeping yellow as primary CTA
+        }
+
+        function renderTable(data) {
+            tableBody.innerHTML = '';
+            
+            if (data.length === 0) {
+                noResults.classList.remove('hidden');
+            } else {
+                noResults.classList.add('hidden');
+            }
+
+            data.forEach((event, index) => {
+                const row = document.createElement('tr');
+                // Alternating row colors for ivory theme? Let's keep white/very light grey
+                const isEven = index % 2 === 0;
+                const rowBg = event.seen ? 'bg-slate-50' : (isEven ? 'bg-white' : 'bg-[#fcfbf7]'); // Subtle alternation
+                
+                row.className = `hover:bg-[#F6F2E8] transition-colors border-b border-slate-100 last:border-0 ${rowBg} ${event.seen ? 'opacity-60' : ''}`;
+                
+                const badgeClass = getBadgeClass(event.type);
+                
+                // Format date nicely
+                const dateOptions = { weekday: 'short', day: 'numeric', month: 'short' };
+                const dateDisplay = event.dateRaw.toLocaleDateString('fr-FR', dateOptions);
+                const yearDisplay = event.dateRaw.getFullYear();
+                
+                // Link Button Logic - Brand Yellow CTA
+                const linkButton = event.link 
+                    ? `<a href="${event.link}" target="_blank" class="inline-flex items-center justify-center w-8 h-8 rounded-full border border-[#D9A526] text-[#D9A526] hover:bg-[#D9A526] hover:text-white transition-all shadow-sm" title="Accéder au live">
+                         <i class="fa-solid fa-play ml-0.5"></i>
+                       </a>`
+                    : `<span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-slate-100 text-slate-300 cursor-not-allowed">
+                         <i class="fa-solid fa-ban"></i>
+                       </span>`;
+
+                // Checkbox Logic - Custom styling
+                const checkedAttr = event.seen ? 'checked' : '';
+
+                row.innerHTML = `
+                    <td class="p-4 text-center">
+                        <div class="flex justify-center">
+                             <input type="checkbox" 
+                                class="w-5 h-5 appearance-none border-2 border-[#D9A526] rounded-sm bg-white checked:bg-[#D9A526] checked:border-[#D9A526] cursor-pointer transition-all relative"
+                                style="background-image: url(&quot;data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e&quot;); background-size: 100% 100%; background-repeat: no-repeat; background-position: center;"
+                                onchange="toggleSeen('${event.id}')" 
+                                ${checkedAttr}>
+                        </div>
+                    </td>
+                    <td class="p-4 whitespace-nowrap">
+                        <div class="font-bold brand-blue-text capitalize">${dateDisplay}</div>
+                        <div class="text-xs text-slate-400 font-mono">${yearDisplay}</div>
+                    </td>
+                    <td class="p-4 whitespace-nowrap text-slate-600 font-mono text-xs font-semibold">
+                        ${event.time}
+                    </td>
+                    <td class="p-4">
+                        <span class="type-badge border ${badgeClass}">${event.type}</span>
+                    </td>
+                    <td class="p-4 font-bold text-slate-700">
+                        ${event.title}
+                    </td>
+                    <td class="p-4 hidden md:table-cell text-slate-500 text-sm max-w-xs truncate" title="${event.desc}">
+                        ${event.desc}
+                    </td>
+                    <td class="p-4 text-center">
+                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-bold bg-[#F6F2E8] brand-bronze-text border border-[#B4792A]/20">
+                            ${event.count}
+                        </span>
+                    </td>
+                    <td class="p-4 text-center">
+                        ${linkButton}
+                    </td>
+                `;
+                tableBody.appendChild(row);
+            });
+            
+            totalCountEl.textContent = events.length;
+        }
+
+        function sortTable(column) {
+            if (currentSort.column === column) {
+                currentSort.direction = currentSort.direction === 'asc' ? 'desc' : 'asc';
+            } else {
+                currentSort.column = column;
+                currentSort.direction = 'asc';
+            }
+
+            events.sort((a, b) => {
+                let valA = a[column];
+                let valB = b[column];
+                
+                if (typeof valA === 'string') valA = valA.toLowerCase();
+                if (typeof valB === 'string') valB = valB.toLowerCase();
+
+                if (valA < valB) return currentSort.direction === 'asc' ? -1 : 1;
+                if (valA > valB) return currentSort.direction === 'asc' ? 1 : -1;
+                return 0;
+            });
+
+            renderTable(getCurrentFilteredEvents());
+        }
+
+        function getCurrentFilteredEvents() {
+             const query = searchInput.value.toLowerCase();
+             return events.filter(e => 
+                e.title.toLowerCase().includes(query) || 
+                e.type.toLowerCase().includes(query) || 
+                e.desc.toLowerCase().includes(query)
+            );
+        }
+
+        function filterData() {
+            renderTable(getCurrentFilteredEvents());
+        }
+        
+        function filterByType(type) {
+             if (type === 'all') {
+                searchInput.value = '';
+                filterData();
+                return;
+            }
+            searchInput.value = type;
+            filterData();
+        }
+
+        searchInput.addEventListener('input', filterData);
+
+        // Initial render
+        updateProgress();
+        renderTable(events);
+    </script>
+</body>
+</html>
