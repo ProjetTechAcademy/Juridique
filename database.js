@@ -15,7 +15,7 @@ window.dbRessources = {
         quiz: "",
         info: "https://drive.google.com/file/d/1_jIUvYOrpshFHRC_aWuXCybVZDqTQiwc/view?usp=drive_link",
         pdf: "https://drive.google.com/file/d/1E6Hk9kVz6mCEgr5vWKL0xv9JGUQEbv42/view?usp=drive_link", 
-        studi: "https://www.studi.com/fr/connexion"
+        studi: "https://app.comptalia.com/v3/medialibrary/lib/resources?promotionId=4104&subjectId=49238&moduleId=70012&themeId=107321"
     },
     
     // Ajoute les autres blocs ici en suivant le modèle...
