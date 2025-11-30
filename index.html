@@ -1061,6 +1061,27 @@
         });
     }
 
+    function safeEncodeURIComponent(str) {
+        try { return encodeURIComponent(String(str)); } 
+        catch (e) { 
+            const cleaned = String(str).replace(/[\uD800-\uDFFF]/g, ''); 
+            try { return encodeURIComponent(cleaned); } catch (e2) { return ''; } 
+        }
+    }
+
+    function addToCalendar(title, url) {
+        const baseUrl = "https://calendar.google.com/calendar/render";
+        const action = "TEMPLATE";
+        const rawTitle = title ? ("Relecture : " + String(title)) : "Relecture";
+        const rawDetails = url ? ("Lien vers le cours : " + String(url)) : "";
+        
+        const safeTitle = safeEncodeURIComponent(rawTitle);
+        const safeDetails = safeEncodeURIComponent(rawDetails);
+
+        const calendarLink = `${baseUrl}?action=${action}&text=${safeTitle}&details=${safeDetails}`;
+        window.open(calendarLink, '_blank');
+    }
+
     function renderSocialContent() {
         const contentContainer = document.getElementById('social-active-content');
         contentContainer.innerHTML = '';
@@ -1117,9 +1138,12 @@
                     return `<button class="action-btn ${colorClass}" title="${title}" onclick="${onclick}"><i class="fa-solid ${icon}"></i></button>`;
                 };
 
-                // Échapper les apostrophes pour les fonctions JS in-line
-                const safeTitle = sess.title.replace(/'/g, "\\'");
-                const safeUrl = sess.fullUrl.replace(/'/g, "\\'");
+                // Utilisation de JSON.stringify pour sécuriser les chaînes dans le HTML
+                const jsTitle = JSON.stringify(sess.title);
+                const jsUrl = JSON.stringify(sess.fullUrl);
+                // Pour les ressources PDF/Studi, on fait pareil si besoin, ou on garde simple si pas de caractères spéciaux
+                const pdfLink = resources.pdf || sess.fullUrl.replace(".html", ".pdf");
+                const studiLink = resources.studi || "https://www.studi.com/fr/connexion";
 
                 sessionCard.innerHTML = `
                     <div class="session-header">
@@ -1135,13 +1159,13 @@
                         ${getBtn('quiz', 'fa-circle-question', 'Quiz', 'btn-quiz')}
                         ${getBtn('info', 'fa-chart-pie', 'Infographie', 'btn-info')}
                         
-                        <button class="action-btn btn-pdf" title="Note PDF" onclick="window.open('${resources.pdf || sess.fullUrl.replace(".html", ".pdf")}', '_blank')"><i class="fa-solid fa-file-pdf"></i></button>
+                        <button class="action-btn btn-pdf" title="Note PDF" onclick="window.open('${pdfLink}', '_blank')"><i class="fa-solid fa-file-pdf"></i></button>
                         
                         <div class="w-px h-8 bg-slate-200 mx-1 hidden sm:block"></div>
 
-                        <button class="action-btn btn-link" title="Accès Studi" onclick="window.open('${resources.studi || "https://www.studi.com/fr/connexion"}', '_blank')"><i class="fa-solid fa-link"></i></button>
+                        <button class="action-btn btn-link" title="Accès Studi" onclick="window.open('${studiLink}', '_blank')"><i class="fa-solid fa-link"></i></button>
 
-                        <button class="action-btn btn-bell" title="Rappel Agenda" onclick="addToCalendar('${safeTitle}', '${safeUrl}')"><i class="fa-solid fa-bell"></i></button>
+                        <button class="action-btn btn-bell" title="Rappel Agenda" onclick='addToCalendar(${jsTitle}, ${jsUrl})'><i class="fa-solid fa-bell"></i></button>
                         <button class="action-btn btn-check status-btn btn-done" id="${btnDoneId}" onclick="toggleStatus(this, '${uniqueId}', 'done')" title="Valider"><i class="fa-solid fa-check"></i></button>
                     </div>
                 `;
@@ -1163,18 +1187,6 @@
         renderSocialNav();
         renderSocialContent();
         updateProgress();
-    }
-
-    function addToCalendar(title, url) {
-        const baseUrl = "https://calendar.google.com/calendar/render";
-        const action = "TEMPLATE";
-        
-        // Protection et encodage
-        const safeTitle = title ? encodeURIComponent("Relecture : " + title) : "Relecture";
-        const safeUrl = url ? encodeURIComponent("Lien vers le cours : " + url) : "";
-        
-        const calendarLink = `${baseUrl}?action=${action}&text=${safeTitle}&details=${safeUrl}`;
-        window.open(calendarLink, '_blank');
     }
 
     function toggleStatus(btn, id, type) {
