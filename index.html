@@ -129,7 +129,7 @@
     .tab-pane.active { display: block; }
     @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-    /* STYLES SPÉCIAUX POUR L'ACCUEIL */
+    /* STYLES SPÉCIAUX POUR L'ACCUEIL & BLOCS NON ACTIFS */
     .bg-animated {
         background: linear-gradient(-45deg, #0F2C48, #0e7490, #D9A526, #b45309);
         background-size: 400% 400%;
@@ -166,15 +166,14 @@
     
     /* BOUTON PROGRAMME SOCIAL (FUCHSIA PREMIUM) */
     .btn-social-prog {
-        background: linear-gradient(135deg, #C026D3 0%, #9D174D 100%); /* Fuchsia foncé */
+        background: linear-gradient(135deg, #C026D3 0%, #9D174D 100%); /* Fuchsia */
         border: 1px solid #FBCFE8;
-        box-shadow: 0 0 15px rgba(192, 38, 211, 0.5); /* Glow effet */
+        box-shadow: 0 0 15px rgba(192, 38, 211, 0.5);
         text-transform: uppercase; letter-spacing: 0.5px;
     }
     .btn-social-prog:hover {
         background: linear-gradient(135deg, #DB2777 0%, #BE185D 100%);
-        box-shadow: 0 0 25px rgba(192, 38, 211, 0.8); /* Glow plus fort au survol */
-        transform: translateY(-3px) scale(1.05);
+        box-shadow: 0 0 25px rgba(192, 38, 211, 0.8); transform: translateY(-3px) scale(1.05);
     }
 
 
@@ -188,7 +187,7 @@
     .disclaimer-text { line-height: 1.6; text-align: justify; }
     .disclaimer-text strong { color: var(--brand-blue); font-weight: 700; }
 
-    /* --- DESIGN SOCIAL HIERARCHIQUE (BLOCS & MODULES RESTAURÉS) --- */
+    /* --- DESIGN SOCIAL HIERARCHIQUE (BLOCS & MODULES) --- */
     .block-nav-grid { display: grid; grid-template-columns: repeat(1, 1fr); gap: 20px; margin-bottom: 30px; }
     @media (min-width: 768px) { .block-nav-grid { grid-template-columns: repeat(2, 1fr); } }
     @media (min-width: 1024px) { .block-nav-grid { grid-template-columns: repeat(4, 1fr); } }
@@ -199,7 +198,7 @@
     .block-nav-card.active-block .block-nav-icon { background: var(--cta); color: white; }
     .block-nav-card h3 { font-size: 1.1rem; font-weight: 800; margin: 5px 0; }
     
-    /* MODULES (DESIGN CARD RESTAURÉ) */
+    /* MODULES (DESIGN RESTAURÉ ET AMÉLIORÉ) */
     .modules-list-container { display: flex; flex-direction: column; gap: 20px; }
     details.module-accordion { 
         background: white; border-radius: 16px; overflow: hidden; 
@@ -224,15 +223,12 @@
     /* SESSIONS */
     .sessions-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; padding: 25px; background: #f8fafc; }
     .session-card { 
-        background: white; border-radius: 14px; padding: 15px 20px 20px 20px; 
-        box-shadow: 0 4px 6px rgba(0,0,0,0.02); border: 1px solid #e2e8f0; 
-        display: flex; flex-direction: column; gap: 12px; transition: all 0.2s; border-left: 5px solid transparent; 
+        background: white; border-radius: 14px; padding: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.02); border: 1px solid #e2e8f0; display: flex; flex-direction: column; gap: 15px; transition: all 0.2s; border-left: 5px solid transparent; 
         position: relative;
     }
     .session-card:hover { transform: translateY(-4px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); border-color: #cbd5e1; }
     .session-card.completed { border-left-color: #10b981; }
     
-    /* NOUVEAU LAYOUT HEADER SESSION (OPTIMISÉ) */
     .session-header { display: flex; align-items: flex-start; gap: 15px; justify-content: space-between; }
     .session-info { display: flex; align-items: flex-start; gap: 15px; flex: 1; }
     
@@ -246,7 +242,6 @@
     .session-title { font-weight: 700; color: #334155; font-size: 1rem; line-height: 1.3; text-decoration: none; padding-top: 2px; }
     .session-title:hover { color: var(--brandGold); }
 
-    /* BOUTON CHECK EN HAUT */
     .btn-check-top {
         width: 32px; height: 32px; border-radius: 8px; border: 1px solid #e2e8f0; color: #cbd5e1;
         display: flex; align-items: center; justify-content: center; cursor: pointer; transition: 0.2s; flex-shrink: 0;
@@ -254,12 +249,11 @@
     .btn-check-top:hover { border-color: #10b981; color: #10b981; }
     .btn-check-top.active { background-color: #10b981; color: white; border-color: #10b981; box-shadow: 0 3px 10px rgba(16, 185, 129, 0.3); }
 
-    /* ACTIONS BAS (Sans le check) */
     .session-actions { display: flex; flex-wrap: wrap; gap: 10px; padding-top: 12px; border-top: 1px dashed #e2e8f0; justify-content: flex-start; align-items: center; }
     .action-btn { width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: all 0.2s; cursor: pointer; font-size: 0.9rem; border: 1px solid #e2e8f0; background: white; color: #64748b; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
     .action-btn:hover { transform: scale(1.15); box-shadow: 0 5px 12px rgba(0,0,0,0.1); }
 
-    /* Couleurs Boutons */
+    /* Couleurs */
     .btn-audio { color: #8b5cf6; background-color: #f5f3ff; border-color: #ddd6fe; }
     .btn-video { color: #ef4444; background-color: #fef2f2; border-color: #fca5a5; }
     .btn-info { color: #06b6d4; background-color: #ecfeff; border-color: #cffafe; }
@@ -268,7 +262,7 @@
     .btn-bell { color: #eab308; background-color: #fefce8; border-color: #fef08a; }
     .btn-link { color: #2563eb; background-color: #eff6ff; border-color: #dbeafe; }
 
-    /* FOOTER ORIGINAL (RESTITUÉ) */
+    /* FOOTER ORIGINAL */
     .main-footer { background-color: var(--footer-bg); color: var(--footer-text); padding-top: 50px; font-family: 'Lato', sans-serif; font-size: 0.95rem; position: relative; width: 100%; margin-top: auto; box-sizing: border-box; }
     .footer-container { max-width: 1400px; margin: 0 auto; padding: 0 25px; }
     .footer-row { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding-bottom: 30px; }
@@ -421,11 +415,11 @@
             </div>
         </div>
 
-        <div class="flex flex-col md:flex-row items-start md:items-center justify-between mb-8 bg-white p-6 rounded-xl shadow-sm border border-[#e2e8f0]">
-            <div><h1 class="text-2xl font-bold text-[#0F2C48]">Formation Droit Social</h1><p class="text-[#B4792A]">MBA Juriste d'entreprise - Spécialisation Social</p></div>
+        <div class="flex flex-col md:flex-row items-start md:items-center justify-between mb-8 bg-animated p-6 rounded-xl shadow-sm">
+            <div><h1 class="text-2xl font-bold text-white">Formation Droit Social</h1><p class="text-white/80">MBA Juriste d'entreprise - Spécialisation Droit Social</p></div>
             <div class="mt-4 md:mt-0 w-full md:w-64">
-                <div class="flex justify-between text-xs font-bold text-[#0F2C48] uppercase mb-1"><span>Progression Totale</span><span id="global-progress-txt">0%</span></div>
-                <div class="w-full h-3 bg-slate-100 rounded-full overflow-hidden"><div id="global-progress-bar" class="h-full bg-[#0F2C48] transition-all duration-700" style="width: 0%"></div></div>
+                <div class="flex justify-between text-xs font-bold text-white uppercase mb-1"><span>Progression Totale</span><span id="global-progress-txt">0%</span></div>
+                <div class="w-full h-3 bg-white/20 rounded-full overflow-hidden"><div id="global-progress-bar" class="h-full bg-brandGold transition-all duration-700" style="width: 0%"></div></div>
             </div>
         </div>
 
@@ -810,7 +804,7 @@
 🟧B1_M18_S014_La gestion du budget du projet
 🟧B1_M18_S015_Application : Faire face aux évolutions RH
 🟦B1_M19_Piloter les impacts en matière de droit de la responsabilité
-🟧B1_M19_S001_Onboarding vidéo : Piloter les impacts en matière de droit de la responsabilité
+🟧B1_M19_S001_Onboarding vidéo : Comprendre et analyser des situations en droit de la sécurité sociale
 🟧B1_M19_S002_Les bases du droit de la responsabilité
 🟧B1_M19_S003_La responsabilité des dirigeants et des administrateurs
 🟧B1_M19_S004_La responsabilité des professionnel
@@ -980,7 +974,7 @@
 🟧B3_M03_S001_En attente
 🟧B4_M03_S002_En attente
 🟧B5_M03_S003_En attente
-🟧B6_M03_S004_En attente
+🟧6_M03_S004_En attente
 🟦B3_M04_Gestion des contentieux judiciaires
 🟧B3_M04_S001_Onboarding - Gestion des contentieux judiciaires
 🟧B3_M04_S002_Principes du procès civil en droit français
@@ -999,9 +993,9 @@
 🟦B3_M05_Piloter l’exécution des décisions judiciaires
 🟧B3_M05_S001_En attente
 🟧B4_M05_S002_En attente
-🟧B5_M05_S003_En attente
-🟧B6_M05_S004_En attente
-🟧B7_M05_S005_En attente
+🟧5_M05_S003_En attente
+🟧6_M05_S004_En attente
+🟧7_M05_S005_En attente
 `;
 
     function cleanName(str) {
@@ -1136,7 +1130,6 @@
             const summary = document.createElement('summary');
             summary.className = 'module-summary';
             
-            // RESTAURATION DU DESIGN "CARD" POUR LES MODULES
             summary.innerHTML = `
                 <div class="flex items-center gap-4 flex-1">
                     <div class="w-12 h-12 rounded-xl bg-blue-50 text-[#0F2C48] flex items-center justify-center text-lg border border-blue-100 shadow-sm">
@@ -1165,6 +1158,7 @@
                 const sessionNum = idx + 1;
 
                 // --- SÉCURITÉ ---
+                // On vérifie que window.dbRessources existe avant de l'utiliser
                 const resources = (window.dbRessources && window.dbRessources[uniqueId]) ? window.dbRessources[uniqueId] : {};
                 
                 const getBtn = (type, icon, title, colorClass) => {
@@ -1175,6 +1169,8 @@
 
                 const jsTitle = JSON.stringify(sess.title);
                 const jsUrl = JSON.stringify(sess.fullUrl);
+                
+                // Gestion sécurisée du PDF et du lien Studi (Comptalia par défaut)
                 const pdfLink = resources.pdf || "#"; 
                 const studiLink = resources.studi || "https://app.comptalia.com/v3/dashboard";
 
