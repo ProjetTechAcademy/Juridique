@@ -11,7 +11,7 @@ window.dbRessources = {
         mindmap: "https://drive.google.com/file/d/1_OcOsCuAw_gazFfIvMJsmgYDBkheSMYN/view?usp=sharing",
         info: "https://drive.google.com/file/d/1_jIUvYOrpshFHRC_aWuXCybVZDqTQiwc/view?usp=sharing",
         pdf: "https://drive.google.com/file/d/1E6Hk9kVz6mCEgr5vWKL0xv9JGUQEbv42/view?usp=sharing",
-        learn: "https://notebooklm.google.com/notebook/8c2e21c7-ce62-4d54-8849-ce1244d6fde0?artifactId=d82d7aeb-8636-41a3-98b0-e3dd82c2097a", 
+        learn: "https://docs.google.com/spreadsheets/d/1Wc-BhjHdFXsut_U2K4AETNte1fPyTuil/edit?usp=drive_link&ouid=108746249066667293401&rtpof=true&sd=true", 
         studi: "https://app.comptalia.com/v3/dashboard"
     },
     "B0_M01_S002_La_formation_du_contrat_de_travail": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
