@@ -4,18 +4,11 @@
     const fileName = window.location.pathname.split('/').pop().replace('.html', '');
     const titleReadable = fileName.replace(/_/g, ' '); // Titre propre pour l'agenda
     
-    // --- TA BASE DE DONNÉES ---
-    // (Même structure que dans index.html)
-    const dbRessources = {
-      "B0_M01_S001_La_notion_de_droit_du_travail": {
-          audio: "LIEN_DRIVE_AUDIO",
-          video: "LIEN_DRIVE_VIDEO",
-          mindmap: "LIEN_DRIVE_CARTE",
-          // ...
-      }
-    };
-    
-    const resources = dbRessources[fileName] || {};
+    // --- CONNEXION INTELLIGENTE ---
+    // On regarde si la base de données globale (database.js) est chargée
+    // Sinon, on utilise une liste vide pour ne pas planter
+    const globalDB = window.dbRessources || {};
+    const resources = globalDB[fileName] || {};
 
     // 2. Fonction Calendrier (Google Agenda)
     const addToCalendar = () => {
@@ -23,7 +16,6 @@
         const action = "TEMPLATE";
         const text = encodeURIComponent("Relecture : " + titleReadable);
         const details = encodeURIComponent("Lien vers le cours : " + window.location.href);
-        // On laisse l'utilisateur choisir la date dans Google Agenda
         const calendarLink = `${baseUrl}?action=${action}&text=${text}&details=${details}`;
         window.open(calendarLink, '_blank');
     };
@@ -119,7 +111,6 @@
     document.body.appendChild(toolbar);
 
     // 6. Attacher les événements (Alarme & Check)
-    // On le fait après l'injection HTML pour être sûr que les éléments existent
     document.getElementById('btn-alarm-toolbar').addEventListener('click', addToCalendar);
     document.getElementById('btn-check-toolbar').addEventListener('click', function() { toggleCheck(this); });
 

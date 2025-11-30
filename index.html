@@ -5,10 +5,13 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Espace Formation — The Jurist Elite Club</title>
   
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   
+  <!-- FontAwesome (6.5.1) -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
   
+  <!-- Polices -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&family=Montserrat:wght@500;600;700&family=Outfit:wght@300;400;600;800&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   
   <script>
@@ -230,6 +233,7 @@
 </head>
 <body>
 
+  <!-- HEADER SPECIAL CLUB (GOLD) -->
   <div class="top-bar" id="mainHeader">
     <div class="top-bar-container">
         <div class="top-bar-left">
@@ -259,6 +263,7 @@
   </div>
 
   <main class="wrap">
+    <!-- ACCUEIL -->
     <div id="view-accueil" class="tab-pane">
         <div class="welcome-card">
             <h1 class="text-3xl font-bold text-[#0F2C48] mb-2">Bienvenue Mathilde ! 👋</h1>
@@ -275,8 +280,10 @@
     <div id="view-affaires" class="tab-pane"><div class="mb-6 pl-4 border-l-4 border-[#D9A526]"><h1 class="text-2xl font-bold text-[#0F2C48]">MBA Juriste d'entreprise en Droit des Affaires</h1></div><div class="p-6 text-center text-gray-400 bg-slate-50 rounded border border-dashed border-gray-300 italic">Contenu à venir...</div></div>
     <div id="view-entreprise" class="tab-pane"><div class="mb-6 pl-4 border-l-4 border-[#D9A526]"><h1 class="text-2xl font-bold text-[#0F2C48]">MBA Juriste d'Entreprise</h1></div><div class="p-6 text-center text-gray-400 bg-slate-50 rounded border border-dashed border-gray-300 italic">Contenu à venir...</div></div>
 
+    <!-- SOCIAL -->
     <div id="view-social" class="tab-pane active">
         
+        <!-- AVERTISSEMENT LEGAL -->
         <div class="disclaimer-box">
             <div class="disclaimer-title"><i class="fa-solid fa-triangle-exclamation"></i> Avertissement Légal & Accès</div>
             <div class="disclaimer-text">
@@ -293,12 +300,15 @@
             </div>
         </div>
 
+        <!-- 1. NAVIGATION BLOCS -->
         <div class="block-nav-grid" id="social-blocks-nav"></div>
 
+        <!-- 2. CONTENU BLOC (ACCORDÉONS) -->
         <div id="social-active-content" class="active-block-content"></div>
     </div>
   </main>
 
+  <!-- FOOTER ORIGINAL -->
   <footer class="main-footer">
     <div class="footer-container">
         <div class="footer-row">
@@ -336,6 +346,7 @@
 
   <div id="backToTop" onclick="window.scrollTo(0,0)"><i class="fas fa-arrow-up"></i></div>
   
+  <!-- Charge la Base de Données -->
   <script src="database.js"></script>
 
   <script>
@@ -1064,10 +1075,6 @@
                 iconContainer.style.borderColor = '#10b981';
             } else {
                 // Pour rafraîchir l'icône, on recharge le contenu (simple mais efficace)
-                // Idéalement on remettrait juste le numéro, mais renderSocialContent le fera au prochain chargement.
-                // Ici on change juste le style visuellement pour l'instant T
-                iconContainer.innerHTML = id.split('_').pop().replace('S',''); // Juste un placeholder si besoin, ou on laisse l'icône
-                // Mieux : on relance le rendu complet pour être propre
                 renderSocialContent();
             }
         }
