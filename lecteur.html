@@ -8,88 +8,182 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Outfit', sans-serif; background-color: #F6F2E8; color: #0F2C48; padding-top: 100px; display: flex; flex-direction: column; min-height: 100vh; }
+        /* --- FOND DYNAMIQUE "PEPS & VITALITÉ" --- */
+        body { 
+            font-family: 'Outfit', sans-serif; 
+            padding-top: 100px; 
+            display: flex; flex-direction: column; min-height: 100vh;
+            /* Animation de couleurs chaudes et élégantes */
+            background: linear-gradient(-45deg, #0F2C48, #0e7490, #D9A526, #b45309);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: #0F2C48;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
         
-        .content-container { 
-            max-width: 1000px; width: 95%; margin: 0 auto 40px auto; padding: 60px 40px; 
-            background: white; border-radius: 24px; 
-            box-shadow: 0 15px 40px rgba(15, 44, 72, 0.08); 
-            text-align: center; flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center;
-            border: 1px solid rgba(217, 165, 38, 0.15);
+        .main-wrapper {
+            max-width: 1300px; width: 95%; margin: 0 auto 40px auto;
+            display: flex; flex-direction: column; align-items: center;
+        }
+
+        /* --- EN-TÊTE --- */
+        .header-course { text-align: center; margin-bottom: 40px; position: relative; z-index: 10; }
+        
+        h1 { 
+            color: #fff; 
+            font-size: 2rem; font-weight: 800; margin-bottom: 5px; 
+            line-height: 1.2; 
+            text-shadow: 0 4px 15px rgba(0,0,0,0.3); 
+        }
+        
+        .course-id-tag { 
+            background: rgba(255, 255, 255, 0.25); 
+            color: #fff; border: 1px solid rgba(255,255,255,0.5);
+            padding: 6px 16px; border-radius: 50px; 
+            font-size: 0.8rem; font-weight: 700; margin-bottom: 15px; display: inline-block; 
+            backdrop-filter: blur(5px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        /* --- GRILLE 5 CARTES (Toutes visibles en même temps) --- */
+        .inspiration-grid { 
+            display: grid; 
+            grid-template-columns: repeat(1, 1fr); 
+            gap: 25px; 
+            width: 100%; 
+        }
+        
+        @media (min-width: 700px) { 
+            .inspiration-grid { grid-template-columns: repeat(2, 1fr); }
+            /* La carte musique prend toute la largeur en bas sur tablette */
+            .card-music-span { grid-column: span 2; }
+        }
+
+        @media (min-width: 1100px) { 
+            .inspiration-grid { 
+                grid-template-columns: repeat(3, 1fr); 
+                grid-template-rows: auto auto; /* 2 lignes */
+            }
+            /* Disposition intelligente des 5 cartes */
+            .card-network { grid-column: 1 / 2; grid-row: 2; }
+            .card-music-span { grid-column: 2 / span 2; grid-row: 2; }
+        }
+
+        /* --- STYLE DES CARTES --- */
+        .card-box {
+            background: rgba(255, 255, 255, 0.95); 
+            border-radius: 24px; padding: 30px 25px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2); 
+            border: 2px solid transparent;
+            display: flex; flex-direction: column; align-items: center; text-align: center;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
             position: relative; overflow: hidden;
-        }
-
-        /* Titre du module en haut */
-        h1 { color: #0F2C48; font-size: 1.5rem; font-weight: 800; margin-bottom: 10px; line-height: 1.3; z-index: 10; }
-        .course-id-tag { background: #fffbeb; color: #B4792A; border: 1px solid #fde68a; padding: 6px 18px; border-radius: 50px; font-size: 0.75rem; font-weight: 700; margin-bottom: 20px; display: inline-block; letter-spacing: 1px; z-index: 10; }
-
-        /* SÉPARATEUR ÉLÉGANT */
-        .separator { width: 60px; height: 4px; background: #D9A526; border-radius: 2px; margin: 30px 0; opacity: 0.8; z-index: 10; }
-
-        /* ZONE DYNAMIQUE "RESSOURCE DU MOMENT" */
-        .resource-box { 
-            width: 100%; max-width: 700px; 
-            padding: 30px; 
-            background: linear-gradient(135deg, #fafafa 0%, #ffffff 100%);
-            border-radius: 20px; 
-            border: 1px dashed #cbd5e1;
-            position: relative;
-            transition: all 0.3s ease;
-            z-index: 10;
-        }
-        .resource-box:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.05); border-color: #D9A526; }
-
-        .res-badge {
-            display: inline-flex; align-items: center; gap: 8px;
-            padding: 6px 16px; border-radius: 20px;
-            font-size: 0.8rem; font-weight: 700; text-transform: uppercase;
-            margin-bottom: 20px;
-        }
-        .badge-book { background: #ecfdf5; color: #059669; }
-        .badge-video { background: #fef2f2; color: #dc2626; }
-        .badge-tip { background: #eff6ff; color: #2563eb; }
-        .badge-quote { background: #fffbeb; color: #d97706; }
-
-        .res-content { 
-            font-family: 'Playfair Display', serif; 
-            font-size: 1.8rem; 
-            color: #0F2C48; 
-            font-weight: 700;
-            line-height: 1.3;
-            margin-bottom: 15px;
+            min-height: 240px; justify-content: center;
+            cursor: default;
         }
         
-        .res-sub { font-family: 'Outfit', sans-serif; font-size: 1rem; color: #64748b; font-weight: 500; }
-        
-        .res-icon-bg {
-            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-            font-size: 15rem; color: #f1f5f9; opacity: 0.4; z-index: 0; pointer-events: none;
+        .card-clickable { cursor: pointer; }
+        .card-box:hover { 
+            transform: translateY(-8px) scale(1.02); 
+            border-color: #D9A526; 
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
         }
 
-        .footer-hint { margin-top: 40px; font-size: 0.9rem; color: #94a3b8; font-style: italic; z-index: 10; display: flex; align-items: center; gap: 10px; }
+        .card-bg-icon { 
+            position: absolute; bottom: -15px; right: -15px; 
+            font-size: 8rem; opacity: 0.08; color: #0F2C48; 
+            pointer-events: none; transition: 0.4s;
+        }
+        .card-box:hover .card-bg-icon { transform: rotate(-10deg) scale(1.1); opacity: 0.15; color: #D9A526; }
+
+        .card-badge { padding: 6px 14px; border-radius: 20px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; margin-bottom: 15px; letter-spacing: 1px; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        
+        .badge-mindset { background: #fff7ed; color: #c2410c; border: 1px solid #ffedd5; }
+        .badge-method { background: #eff6ff; color: #1d4ed8; border: 1px solid #dbeafe; }
+        .badge-culture { background: #f0fdf4; color: #15803d; border: 1px solid #dcfce7; }
+        .badge-network { background: #e0f2fe; color: #0284c7; border: 1px solid #bae6fd; } 
+        .badge-music { background: #fdf2f8; color: #be185d; border: 1px solid #fce7f3; } 
+
+        .card-content { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; color: #0F2C48; margin-bottom: 10px; line-height: 1.3; }
+        .card-sub { font-family: 'Outfit', sans-serif; font-size: 0.95rem; color: #64748b; font-weight: 500; }
+        
+        .card-action { 
+            margin-top: 20px; font-size: 0.85rem; color: #fff; font-weight: 700; text-transform: uppercase; 
+            background: #D9A526; padding: 8px 20px; border-radius: 50px;
+            opacity: 0; transform: translateY(10px); transition: 0.3s;
+            box-shadow: 0 4px 10px rgba(217, 165, 38, 0.4);
+        }
+        .card-clickable:hover .card-action { opacity: 1; transform: translateY(0); }
+
+        .footer-hint { 
+            margin-top: 50px; font-size: 0.95rem; color: rgba(255,255,255,0.9); 
+            font-weight: 600; display: flex; align-items: center; gap: 10px; 
+            background: rgba(15, 44, 72, 0.6); padding: 10px 25px; border-radius: 50px;
+            backdrop-filter: blur(5px); border: 1px solid rgba(255,255,255,0.2);
+        }
         .footer-hint i { color: #D9A526; animation: bounce 2s infinite; }
-
         @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
     </style>
 </head>
 <body>
 
-    <div class="content-container">
+    <div class="main-wrapper">
         
-        <i class="fa-solid fa-graduation-cap res-icon-bg" id="bg-icon"></i>
+        <div class="header-course">
+            <div class="course-id-tag" id="course-id-display">MODULE</div>
+            <h1 id="course-title">Chargement du module...</h1>
+        </div>
 
-        <div class="course-id-tag" id="course-id-display">MODULE</div>
-        
-        <h1 id="course-title">Chargement du module...</h1>
-        
-        <div class="separator"></div>
-
-        <div class="resource-box" id="resource-container">
+        <div class="inspiration-grid">
+            
+            <div class="card-box">
+                <i class="fa-solid fa-brain card-bg-icon"></i>
+                <div class="card-badge badge-mindset"><i class="fa-solid fa-fire"></i> Mindset</div>
+                <div class="card-content" id="txt-mindset">...</div>
+                <div class="card-sub" id="sub-mindset"></div>
             </div>
+
+            <div class="card-box">
+                <i class="fa-solid fa-toolbox card-bg-icon"></i>
+                <div class="card-badge badge-method"><i class="fa-solid fa-lightbulb"></i> Méthode</div>
+                <div class="card-content" id="txt-method">...</div>
+                <div class="card-sub" id="sub-method"></div>
+            </div>
+
+            <div class="card-box card-clickable" id="link-culture">
+                <i class="fa-solid fa-book-open card-bg-icon"></i>
+                <div class="card-badge badge-culture"><i class="fa-solid fa-seedling"></i> Culture</div>
+                <div class="card-content" id="txt-culture">...</div>
+                <div class="card-sub" id="sub-culture"></div>
+                <div class="card-action"><i class="fa-solid fa-external-link-alt"></i> Voir la ressource</div>
+            </div>
+
+            <div class="card-box card-clickable card-network" id="link-network">
+                <i class="fa-brands fa-linkedin card-bg-icon"></i>
+                <div class="card-badge badge-network"><i class="fa-brands fa-linkedin-in"></i> Réseau Pro</div>
+                <div class="card-content" id="txt-network">...</div>
+                <div class="card-sub" id="sub-network"></div>
+                <div class="card-action"><i class="fa-solid fa-user-plus"></i> Voir le profil</div>
+            </div>
+
+            <div class="card-box card-clickable card-music-span" id="link-music">
+                <i class="fa-solid fa-music card-bg-icon"></i>
+                <div class="card-badge badge-music"><i class="fa-solid fa-headphones"></i> Work Vibe</div>
+                <div class="card-content" id="txt-music">...</div>
+                <div class="card-sub" id="sub-music">Clique pour lancer la playlist YouTube</div>
+                <div class="card-action"><i class="fa-solid fa-play"></i> Écouter</div>
+            </div>
+
+        </div>
 
         <div class="footer-hint">
             <i class="fa-solid fa-arrow-up"></i>
-            <span>Utilise la barre d'outils ci-dessus pour accéder à tes supports de cours (Audio, Vidéo, Fiches...)</span>
+            <span>Tes outils de travail (Audio, Vidéo, Fiches...) sont dans la barre ci-dessus.</span>
         </div>
 
     </div>
@@ -98,73 +192,183 @@
     <script src="toolbar_injector.js"></script>
 
     <script>
-        // 1. GESTION DU TITRE ET DE L'ID
+        // 1. GESTION DU TITRE
         const params = new URLSearchParams(window.location.search);
         const courseId = params.get('id');
-        
         if(courseId) {
             const parts = courseId.split('_');
             let cleanTitle = courseId.replace(/_/g, ' ');
             let idTag = "MODULE";
-
-            // Essai de détection des codes (B0, M01...)
             if(parts.length > 3) {
-                idTag = parts.slice(0, 3).join(' '); // Récupère B0 M01 S001
-                cleanTitle = parts.slice(3).join(' '); // Le reste est le titre
+                idTag = parts.slice(0, 3).join(' '); 
+                cleanTitle = parts.slice(3).join(' '); 
             }
-
             document.getElementById('course-title').textContent = cleanTitle;
             document.getElementById('course-id-display').textContent = idTag;
             document.title = cleanTitle; 
         }
 
-        // 2. BASE DE DONNÉES "SMART JURIST"
-        const resources = [
-            // LIVRES
-            { type: 'book', icon: 'fa-book', label: 'Lecture Conseillée', title: "Code Civil (Dernière Édition)", sub: "La bible du juriste. À garder toujours à portée de main." },
-            { type: 'book', icon: 'fa-book-open', label: 'Lecture Conseillée', title: "La méthodologie du cas pratique", sub: "Essentiel pour réussir tes examens et tes analyses." },
-            { type: 'book', icon: 'fa-scale-balanced', label: 'Culture Juridique', title: "L'art de la guerre (Sun Tzu)", sub: "Pour affûter ta stratégie en contentieux et négociation." },
-            
-            // YOUTUBE / VIDÉOS
-            { type: 'video', icon: 'fa-youtube', label: 'Vidéo Youtube', title: "Chaîne : Jurixio", sub: "Idéal pour réviser les fondamentaux du droit en vidéo." },
-            { type: 'video', icon: 'fa-play-circle', label: 'Vidéo Youtube', title: "Chaîne : Le Droit en 5 minutes", sub: "Parfait pour comprendre une notion complexe rapidement." },
-            { type: 'video', icon: 'fa-laptop-code', label: 'Veille Juridique', title: "Village de la Justice", sub: "Le site incontournable pour suivre l'actualité des métiers du droit." },
-
-            // CONSEILS / TIPS
-            { type: 'tip', icon: 'fa-lightbulb', label: 'Conseil Pro', title: "Fais ta veille hebdomadaire", sub: "Le droit bouge vite. Abonne-toi à une newsletter juridique." },
-            { type: 'tip', icon: 'fa-list-check', label: 'Méthodologie', title: "Le syllogisme juridique", sub: "Majeure, Mineure, Conclusion. Ne l'oublie jamais dans tes démonstrations." },
-            { type: 'tip', icon: 'fa-brain', label: 'Productivité', title: "La méthode Pomodoro", sub: "25min de travail intense, 5min de pause. Efficacité garantie." },
-
-            // CITATIONS (Pour garder la motivation)
-            { type: 'quote', icon: 'fa-quote-left', label: 'Inspiration', title: "« Dura lex, sed lex. »", sub: "La loi est dure, mais c'est la loi." },
-            { type: 'quote', icon: 'fa-bolt', label: 'Motivation', title: "« Tu es l'architecte de ton propre avenir juridique. »", sub: "Jurist Elite Club" },
-            { type: 'quote', icon: 'fa-fire', label: 'Mindset', title: "« La rigueur d'aujourd'hui fait l'excellence de demain. »", sub: "MMPA" }
+        // ============================================================
+        // 🎰 LA MÉGA BASE DE DONNÉES (+200 items combinés)
+        // ============================================================
+        
+        // 1. MINDSET (Citations)
+        const dbMindset = [
+            { txt: "« Dura lex, sed lex. »", sub: "La loi est dure, mais c'est la loi." },
+            { txt: "« Tu es l'architecte de ton propre avenir juridique. »", sub: "The Jurist Elite Club" },
+            { txt: "« Nul n'est censé ignorer la loi. »", sub: "Principe fondamental" },
+            { txt: "« La rigueur d'aujourd'hui fait l'excellence de demain. »", sub: "MMPA Motivation" },
+            { txt: "« Pacta sunt servanda. »", sub: "Les conventions doivent être respectées." },
+            { txt: "« Ce qui ne nous tue pas nous rend plus fort. »", sub: "Nietzsche" },
+            { txt: "« La justice est le pain du peuple. »", sub: "Chateaubriand" },
+            { txt: "« Ubi societas, ibi jus. »", sub: "Là où il y a société, il y a droit." },
+            { txt: "« Actore non probante, reus absolvitur. »", sub: "Si le demandeur ne prouve pas, le défendeur est absous." },
+            { txt: "« Le droit est l'art du bon et de l'équitable. »", sub: "Celse" },
+            { txt: "« Summum jus, summa injuria. »", sub: "L'application excessive du droit conduit à l'injustice." },
+            { txt: "« Ne remets jamais à demain la fiche que tu peux faire aujourd'hui. »", sub: "Conseil d'ami" },
+            { txt: "« Le doute est le commencement de la sagesse. »", sub: "Aristote" },
+            { txt: "« La liberté consiste à pouvoir faire tout ce qui ne nuit pas à autrui. »", sub: "DDHC 1789" },
+            { txt: "« On ne naît pas juriste, on le devient. »", sub: "Par le travail" },
+            { txt: "« Respire. Tu vas y arriver. »", sub: "Gestion du stress" },
+            { txt: "« La meilleure façon de prédire l'avenir est de le créer. »", sub: "Peter Drucker" },
+            { txt: "« Nemo censetur ignorare legem. »", sub: "Nul n'est censé ignorer la loi." },
+            { txt: "« L'instruction est l'arme la plus puissante. »", sub: "Nelson Mandela" },
+            { txt: "« Fais de ta vie un rêve, et d'un rêve, une réalité. »", sub: "Antoine de Saint-Exupéry" },
+            { txt: "« Nul ne peut se prévaloir de sa propre turpitude. »", sub: "Nemo auditur..." },
+            { txt: "« En fait de meubles, la possession vaut titre. »", sub: "Code Civil, Art 2276" },
+            { txt: "« Le contrat est la loi des parties. »", sub: "Force obligatoire" },
+            { txt: "« Pas de peine sans loi. »", sub: "Nulla poena sine lege" },
+            { txt: "« L'accessoire suit le principal. »", sub: "Accessorium sequitur principale" },
+            { txt: "« À l'impossible nul n'est tenu. »", sub: "Adage" },
+            { txt: "« La forme donne l'être à la chose. »", sub: "Forma dat esse rei" },
+            { txt: "« Les lois ne disposent que pour l'avenir. »", sub: "Non-rétroactivité" },
+            { txt: "« Un mauvais arrangement vaut mieux qu'un bon procès. »", sub: "Balzac" },
+            { txt: "« La justice doit non seulement être rendue, mais être vue. »", sub: "Lord Hewart" }
         ];
 
-        // 3. MOTEUR DE SÉLECTION ALÉATOIRE
-        const randomIndex = Math.floor(Math.random() * resources.length);
-        const item = resources[randomIndex];
+        // 2. MÉTHODE (Productivité)
+        const dbMethod = [
+            { txt: "Le Syllogisme Juridique", sub: "Majeure, Mineure, Conclusion. La base absolue." },
+            { txt: "La Veille Hebdomadaire", sub: "Bloque 1h le vendredi pour lire l'actu juridique." },
+            { txt: "Le Vocabulaire Précis", sub: "On ne dit pas 'le contrat stipule', mais 'le contrat prévoit'." },
+            { txt: "Méthode Pomodoro", sub: "25 min de focus total, 5 min de pause. Répète 4 fois." },
+            { txt: "Le Sommeil", sub: "C'est la nuit que ton cerveau classe les arrêts appris." },
+            { txt: "Hydratation", sub: "Un cerveau hydraté réfléchit 15% plus vite. Bois de l'eau !" },
+            { txt: "La Fiche d'Arrêt", sub: "Fait, Procédure, Prétentions, Problème de droit, Solution." },
+            { txt: "L'Annotation du Code", sub: "Surligne intelligemment, ne colorie pas tout ton Code Civil !" },
+            { txt: "Deep Work", sub: "Coupe les notifications pendant tes sessions d'apprentissage." },
+            { txt: "La Règle des 80/20", sub: "20% des connaissances apportent 80% des points. Cible l'essentiel." },
+            { txt: "Relire ses notes", sub: "La répétition espacée est la clé de la mémoire long terme." },
+            { txt: "Planifier sa semaine", sub: "Le dimanche soir, organise ton agenda de la semaine." },
+            { txt: "L'Air Frais", sub: "Sors marcher 10 min après un gros module pour t'aérer l'esprit." },
+            { txt: "Explain Like I'm 5", sub: "Si tu ne peux pas l'expliquer simplement, tu n'as pas compris." },
+            { txt: "Sauvegarde !", sub: "Ctrl+S est ton meilleur ami. Ne perds pas tes notes." },
+            { txt: "La Loi de Parkinson", sub: "Le travail s'étale pour occuper tout le temps disponible. Fixe des deadlines courtes." },
+            { txt: "Active Recall", sub: "Ne relis pas juste tes fiches, cache-les et récite." },
+            { txt: "Le Plan Détaillé", sub: "Ne rédige jamais sans un plan solide (I. A. B. / II. A. B.)." },
+            { txt: "Qualifier les Faits", sub: "Traduis l'histoire du client en langage juridique." },
+            { txt: "La Jurisprudence", sub: "Cite toujours un arrêt pour appuyer ton argument." },
+            { txt: "Ergonomie", sub: "Règle ta chaise et ton écran. Ton dos te remerciera dans 10 ans." },
+            { txt: "Lumière Bleue", sub: "Installe f.lux ou porte des lunettes le soir pour mieux dormir." },
+            { txt: "Le 'Pourquoi'", sub: "Comprends la raison d'être de la loi, pas juste la règle." },
+            { txt: "Mind Mapping", sub: "Dessine les liens entre les notions pour visualiser le cours." },
+            { txt: "La Pause Café", sub: "Prends de vraies pauses, sans téléphone." }
+        ];
 
-        // Construction du HTML dynamique
-        const container = document.getElementById('resource-container');
-        const bgIcon = document.getElementById('bg-icon');
+        // 3. CULTURE (Liens Web - Livres)
+        const dbCulture = [
+            { txt: "Code Civil (Dalloz/Lexis)", sub: "La bible à garder sous le coude.", url: "https://www.legifrance.gouv.fr/codes/texte_lc/LEGITEXT000006070721/" },
+            { txt: "Village de la Justice", sub: "Le site de la communauté juridique.", url: "https://www.village-justice.com/" },
+            { txt: "Légifrance", sub: "La source officielle brute.", url: "https://www.legifrance.gouv.fr/" },
+            { txt: "Dalloz Actualité", sub: "Pour les revirements de jurisprudence.", url: "https://www.dalloz-actualite.fr/" },
+            { txt: "Le Petit Juriste", sub: "Magazine étudiant et pro.", url: "https://www.lepetitjuriste.fr/" },
+            { txt: "L'art de la guerre (Sun Tzu)", sub: "Stratégie pour contentieux.", url: "https://www.amazon.fr/s?k=art+de+la+guerre" },
+            { txt: "Jurixio (YouTube)", sub: "Réviser les fondamentaux.", url: "https://www.youtube.com/c/Jurixio" },
+            { txt: "Le Droit en 5 minutes", sub: "Comprendre vite et bien.", url: "https://www.youtube.com/channel/UCyXqW5V_oXNlB9Hk_w_wXg" },
+            { txt: "HugoDécrypte", sub: "Culture générale et actu.", url: "https://www.youtube.com/c/HugoDecrypte" },
+            { txt: "Ame de Juriste", sub: "Conseils vie étudiante.", url: "https://www.youtube.com/channel/UC5J_j5_j5_j5_j5_j5_j5" },
+            { txt: "LexisNexis", sub: "Base de données juridique.", url: "https://www.lexisnexis.fr/" },
+            { txt: "Doctrine.fr", sub: "L'intelligence juridique.", url: "https://www.doctrine.fr/" },
+            { txt: "Conseil Constitutionnel", sub: "Les Sages et la QPC.", url: "https://www.conseil-constitutionnel.fr/" },
+            { txt: "Cour de Cassation", sub: "La haute juridiction.", url: "https://www.courdecassation.fr/" },
+            { txt: "Le Monde - Droit", sub: "L'actualité sous l'angle juridique.", url: "https://www.lemonde.fr/droit/" },
+            { txt: "Google Scholar", sub: "Recherche d'articles doctrinaux.", url: "https://scholar.google.fr/" },
+            { txt: "Jus Mundi", sub: "Droit international.", url: "https://jusmundi.com/fr" },
+            { txt: "Legalstart", sub: "Le droit pour les entrepreneurs.", url: "https://www.legalstart.fr/" },
+            { txt: "Service-Public.fr", sub: "L'administration française.", url: "https://www.service-public.fr/" },
+            { txt: "CNIL", sub: "Données personnelles et RGPD.", url: "https://www.cnil.fr/" },
+            { txt: "TED Talks Law", sub: "Conférences inspirantes.", url: "https://www.ted.com/topics/law" }
+        ];
 
-        // Changer l'icône de fond selon le type
-        bgIcon.className = `fa-solid ${item.icon} res-icon-bg`;
+        // 4. RÉSEAU (Profils LinkedIn & Organismes)
+        const dbNetwork = [
+            { txt: "Village de la Justice", sub: "Page LinkedIn incontournable.", url: "https://www.linkedin.com/company/village-justice/" },
+            { txt: "Editions Dalloz", sub: "L'actualité du droit.", url: "https://www.linkedin.com/company/editions-dalloz/" },
+            { txt: "Eric Dupond-Moretti", sub: "Ministre et Pénaliste célèbre.", url: "https://www.linkedin.com/in/eric-dupond-moretti-1b1b1b1b/" },
+            { txt: "Kami Haeri", sub: "Avocat renommé en Droit des Affaires.", url: "https://www.linkedin.com/in/kamihaeri/" },
+            { txt: "Le Petit Juriste", sub: "Réseau étudiant/pro.", url: "https://www.linkedin.com/company/le-petit-juriste/" },
+            { txt: "Fidal", sub: "Grand cabinet d'affaires.", url: "https://www.linkedin.com/company/fidal/" },
+            { txt: "CMS Francis Lefebvre", sub: "Expertise fiscale et juridique.", url: "https://www.linkedin.com/company/cms-francis-lefebvre-avocats/" },
+            { txt: "Dan Kohn", sub: "Expert en Legal Design.", url: "https://www.linkedin.com/in/dankohn/" },
+            { txt: "Cercle des Juristes", sub: "Réseau d'influence.", url: "https://www.linkedin.com/company/cercle-montesquieu/" },
+            { txt: "Studi Droit", sub: "Ton école (recherche alumni).", url: "https://www.linkedin.com/school/studi-fr/" },
+            { txt: "AFJE", sub: "Assoc. Française des Juristes d'Entreprise.", url: "https://www.linkedin.com/company/afje/" },
+            { txt: "Eloïse Wagner", sub: "Avocate (Droit de la santé/YouTube).", url: "https://www.linkedin.com/in/eloisewagner/" },
+            { txt: "Gide Loyrette Nouel", sub: "Prestigieux cabinet français.", url: "https://www.linkedin.com/company/gide-loyrette-nouel/" },
+            { txt: "EY Société d'Avocats", sub: "Droit des affaires et fiscalité.", url: "https://www.linkedin.com/company/ey-societe-d-avocats/" },
+            { txt: "Pwc Société d'Avocats", sub: "Audit et juridique.", url: "https://www.linkedin.com/company/pwc-soci-t-d-avocats/" },
+            { txt: "Lamy Liaisons", sub: "Éditeur juridique.", url: "https://www.linkedin.com/company/lamy-liaisons/" },
+            { txt: "LexisNexis France", sub: "Innovation juridique.", url: "https://www.linkedin.com/company/lexisnexis-france/" },
+            { txt: "Conseil National des Barreaux", sub: "Institution des avocats.", url: "https://www.linkedin.com/company/cnb/" },
+            { txt: "Ordre des Avocats de Paris", sub: "Le Barreau de Paris.", url: "https://www.linkedin.com/company/ordre-des-avocats-de-paris/" },
+            { txt: "ANDRH", sub: "Ressources Humaines.", url: "https://www.linkedin.com/company/andrh/" },
+            { txt: "Focus RH", sub: "Actu RH et Droit Social.", url: "https://www.linkedin.com/company/focus-rh/" },
+            { txt: "Francis Lefebvre Formation", sub: "Formation continue.", url: "https://www.linkedin.com/company/francis-lefebvre-formation/" }
+        ];
 
-        // Couleurs de badges
-        let badgeClass = 'badge-tip';
-        if(item.type === 'book') badgeClass = 'badge-book';
-        if(item.type === 'video') badgeClass = 'badge-video';
-        if(item.type === 'quote') badgeClass = 'badge-quote';
+        // 5. VIBE (Musique YouTube)
+        const dbMusic = [
+            { txt: "Lofi Girl - Study", sub: "Beats pour concentration maximale.", url: "https://www.youtube.com/watch?v=jfKfPfyJRdk" },
+            { txt: "Mozart for Brain Power", sub: "Musique classique stimulante.", url: "https://www.youtube.com/watch?v=RDfjXj5EGqI" },
+            { txt: "Deep Focus House", sub: "Rythme constant pour travailler.", url: "https://www.youtube.com/watch?v=5qap5aO4i9A" },
+            { txt: "Hans Zimmer - Interstellar", sub: "Pour les sessions intenses.", url: "https://www.youtube.com/watch?v=UDVtMYqUAyw" },
+            { txt: "Jazz Coffee Shop", sub: "Ambiance calme et posée.", url: "https://www.youtube.com/watch?v=5qap5aO4i9A" },
+            { txt: "Binaural Beats Focus", sub: "Ondes pour le cerveau.", url: "https://www.youtube.com/watch?v=1s58rW0_LN4" },
+            { txt: "Harry Potter Ambience", sub: "Étudier comme à Poudlard.", url: "https://www.youtube.com/watch?v=hG1X6JvG1X0" },
+            { txt: "Pluie et Tonnerre", sub: "Bruit blanc pour s'isoler.", url: "https://www.youtube.com/watch?v=mPZKDNFkNps" },
+            { txt: "Piano Doux", sub: "Pour une lecture apaisée.", url: "https://www.youtube.com/watch?v=W-fFHeTX70Q" },
+            { txt: "Suits Soundtrack", sub: "Se sentir comme Harvey Specter.", url: "https://www.youtube.com/watch?v=PyiJDq-7X_4" },
+            { txt: "Study with Me (Pomodoro)", sub: "Travailler avec quelqu'un.", url: "https://www.youtube.com/watch?v=4dPd708Skxc" },
+            { txt: "Alpha Waves", sub: "Concentration profonde.", url: "https://www.youtube.com/watch?v=WPni755-Krg" },
+            { txt: "Ludovico Einaudi", sub: "Piano contemporain sublime.", url: "https://www.youtube.com/watch?v=P2K7D-uMH2g" },
+            { txt: "Chillhop Music", sub: "Hip Hop instrumental doux.", url: "https://www.youtube.com/watch?v=5yx6BWlEVcY" },
+            { txt: "Lord of the Rings", sub: "Épique et calme (La Comté).", url: "https://www.youtube.com/watch?v=C7D73JtBfK4" },
+            { txt: "Café de Paris", sub: "Ambiance Jazz français.", url: "https://www.youtube.com/watch?v=3jWRrafhO7M" },
+            { txt: "Study MD", sub: "Musique médicale focus.", url: "https://www.youtube.com/watch?v=I5tXh2y3eL4" },
+            { txt: "Dark Academia", sub: "Ambiance bibliothèque ancienne.", url: "https://www.youtube.com/watch?v=5RsTC71nqsE" },
+            { txt: "Zelda & Chill", sub: "Nostalgie et concentration.", url: "https://www.youtube.com/watch?v=GdzrrWA8e7A" },
+            { txt: "Ambient Space", sub: "Flotter dans l'espace.", url: "https://www.youtube.com/watch?v=8mP5xOg7ijY" }
+        ];
 
-        container.innerHTML = `
-            <div class="res-badge ${badgeClass}">
-                <i class="fa-solid ${item.icon}"></i> ${item.label}
-            </div>
-            <div class="res-content">${item.title}</div>
-            <div class="res-sub">${item.sub}</div>
-        `;
+        // --- MOTEUR DE TIRAGE ALÉATOIRE ---
+        function setCard(category, idTxt, idSub, idLink = null) {
+            const randomItem = category[Math.floor(Math.random() * category.length)];
+            document.getElementById(idTxt).textContent = randomItem.txt;
+            document.getElementById(idSub).textContent = randomItem.sub;
+            
+            // Si c'est une carte cliquable (avec lien)
+            if(idLink && randomItem.url) {
+                const card = document.getElementById(idLink);
+                card.onclick = function() { window.open(randomItem.url, '_blank'); };
+            }
+        }
+
+        // Lancer les dés !
+        setCard(dbMindset, 'txt-mindset', 'sub-mindset');
+        setCard(dbMethod, 'txt-method', 'sub-method');
+        setCard(dbCulture, 'txt-culture', 'sub-culture', 'link-culture');
+        setCard(dbNetwork, 'txt-network', 'sub-network', 'link-network');
+        setCard(dbMusic, 'txt-music', 'sub-music', 'link-music');
 
     </script>
 
