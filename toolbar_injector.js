@@ -1,5 +1,5 @@
 // ======================================================================
-// 🔧 MOTEUR DE LA BARRE D'OUTILS (MMPA🌹) - COMPTALIA VERSION
+// 🔧 MOTEUR DE LA BARRE D'OUTILS (MMPA🌹) - VERSION ÉPURÉE
 // ======================================================================
 (function() {
     
@@ -7,7 +7,7 @@
     const params = new URLSearchParams(window.location.search);
     let fileName = params.get('id');
 
-    // Sécurité
+    // Sécurité : Si pas d'ID dans l'url, on regarde le nom du fichier
     if (!fileName) {
         fileName = window.location.pathname.split('/').pop().replace('.html', '');
     }
@@ -70,7 +70,7 @@
     const checkColor = isChecked ? 'white' : '#cbd5e1';
     const checkBorder = isChecked ? '#10b981' : '#e2e8f0';
 
-    // --- LE CONTENU DE LA BARRE ---
+    // --- LE CONTENU DE LA BARRE (C'est ici qu'on a fait le ménage) ---
     toolbar.innerHTML = `
         <div style="font-weight:bold; color:#0F2C48; font-size:14px; display:flex; align-items:center;">
             <i class="fa-solid fa-graduation-cap" style="color:#D9A526; margin-right:8px;"></i>
@@ -86,7 +86,7 @@
             
             <div style="width:1px; height:20px; background:#e2e8f0; margin:0 10px;"></div>
 
-            ${getBtn('studi', 'fa-link', 'Accès Studi', '#2563eb', `window.open('${resources.studi || "https://app.comptalia.com/v3/dashboard"}', '_blank')`)}
+            ${getBtn('studi', 'fa-link', 'Accès Studi', '#2563eb', `window.open('${resources.studi || "https://www.studi.com/fr/connexion"}', '_blank')`)}
             
             <button style="background:#fefce8; color:#eab308; border:1px solid #fef08a; width:36px; height:36px; border-radius:50%; cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:14px; margin-left:5px;" 
                     title="Rappel Agenda" id="btn-alarm-toolbar">
@@ -102,7 +102,7 @@
         </div>
     `;
 
-    // Injecter FontAwesome
+    // Injecter FontAwesome si absent
     if (!document.querySelector('link[href*="font-awesome"]')) {
         const fa = document.createElement('link');
         fa.rel = 'stylesheet';
