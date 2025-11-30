@@ -8,10 +8,10 @@
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   
-  <!-- FontAwesome (6.5.1 pour compatibilité max) -->
+  <!-- FontAwesome -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
   
-  <!-- Polices (Mise à jour avec toutes les graisses demandées) -->
+  <!-- Polices -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&family=Montserrat:wght@500;600;700&family=Outfit:wght@300;400;600;800&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   
   <script>
@@ -32,658 +32,227 @@
 
   <style>
     :root{
-      /* Couleurs existantes */
-      --cta: #D9A526;
-      --brand-blue: #0F2C48;
-      --ivory: #F6F2E8;
-      --bronze: #B4792A;
-      
-      /* Variables Footer */
-      --f-bg: #0F2C48; 
-      --f-text: #F6F2E8; 
-      --f-accent: #D9A526;
-
-      /* Variables Nouveau Header */
-      --h-bg: #0F2C48; 
-      --h-text: #fff; 
-      --h-accent: #D9A526; 
-      --h-bronze: #B4792A;
+      --cta: #D9A526; --brand-blue: #0F2C48; --ivory: #F6F2E8; --bronze: #B4792A;
+      --f-bg: #0F2C48; --f-text: #F6F2E8; --f-accent: #D9A526;
+      --h-bg: #0F2C48; --h-text: #fff; --h-accent: #D9A526;
+      --header-height: 96px; 
     }
 
-    /* --- STYLE GÉNÉRAL --- */
-    body { 
-        margin: 0; 
-        background-color: var(--ivory); 
-        color: var(--brand-blue); 
-        min-height: 100vh;
-        font-family: 'Outfit', sans-serif;
-        display: flex;
-        flex-direction: column;
-    }
-    
+    body { margin: 0; background-color: var(--ivory); color: var(--brand-blue); min-height: 100vh; font-family: 'Outfit', sans-serif; display: flex; flex-direction: column; }
     .wrap { max-width: 1200px; margin: 0 auto 60px auto; padding: 24px; width: 100%; flex: 1;}
     
-    /* === NOUVEAU HEADER SPECIAL CLUB === */
-    /* Animation */
-    @keyframes cosmic-pulse {
-        0% { transform: scale(1); box-shadow: 0 5px 15px rgba(15, 44, 72, 0.3); }
-        50% { transform: scale(1.02); box-shadow: 0 15px 25px rgba(28, 181, 224, 0.4); }
-        100% { transform: scale(1); box-shadow: 0 5px 15px rgba(15, 44, 72, 0.3); }
-    }
-
-    /* Styles Header */
-    .top-bar {
-        background-color: var(--h-bg);
-        color: var(--h-text);
-        padding: 15px 0;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-        position: sticky; /* Gardé en sticky pour le confort */
-        top: 0;
-        left: 0;
-        right: 0;
-        z-index: 10000;
-        font-family: 'Lato', sans-serif;
-        border-bottom: 4px solid var(--h-accent);
-    }
-    
-    .top-bar-container {
-        max-width: 1400px; /* Aligné avec l'ancien layout */
-        margin: 0 auto;
-        padding: 0 24px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        flex-wrap: wrap;
-        gap: 20px;
-    }
-
-    /* GAUCHE : Identité Club */
-    .top-bar-left {
-        display: flex;
-        align-items: center;
-        gap: 15px;
-        flex: 1;
-        min-width: 320px;
-    }
-
-    .logo-top-bar {
-        width: 60px; height: 60px;
-        border-radius: 50%;
-        border: 2px solid var(--h-accent);
-        object-fit: cover;
-        flex-shrink: 0;
-        background: #fff;
-    }
-
+    /* HEADER & NAV (Identique) */
+    .top-bar { background-color: var(--h-bg); color: var(--h-text); padding: 15px 0; box-shadow: 0 4px 20px rgba(0,0,0,0.15); position: sticky; top: 0; z-index: 10000; border-bottom: 4px solid var(--h-accent); transition: height 0.3s ease; }
+    .top-bar-container { max-width: 1400px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
+    .top-bar-left { display: flex; align-items: center; gap: 15px; flex: 1; min-width: 320px; }
+    .logo-top-bar { width: 60px; height: 60px; border-radius: 50%; border: 2px solid var(--h-accent); object-fit: cover; background: #fff; }
     .identity-stack { display: flex; flex-direction: column; justify-content: center; }
-
-    .club-title-main {
-        font-family: 'Playfair Display', serif;
-        font-size: 1.2rem;
-        font-weight: 700; /* GRAS */
-        letter-spacing: 0.5px;
-        color: #ffffff; /* BLANC */
-        line-height: 1.1;
-        margin-bottom: 3px;
-    }
-
-    .club-subtitle {
-        font-family: 'Lato', sans-serif;
-        font-size: 0.75rem;
-        color: var(--h-accent); /* JAUNE */
-        font-weight: 700; /* GRAS */
-        opacity: 0.95;
-        line-height: 1.2;
-    }
-
-    /* CENTRE : Navigation Icones */
-    .top-bar-center {
-        display: flex;
-        gap: 12px;
-        align-items: center;
-    }
-
-    .header-icon-btn {
-        position: relative; 
-        width: 40px; height: 40px;
-        border-radius: 50%;
-        background: linear-gradient(135deg, #0F2C48 0%, #1CB5E0 100%);
-        border: 1px solid rgba(255,255,255,0.2);
-        display: flex; align-items: center; justify-content: center;
-        font-size: 1.1rem;
-        text-decoration: none;
-        transition: all 0.3s ease;
-        color: white;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    }
-
-    .header-icon-btn:hover {
-        transform: translateY(3px) scale(1.1);
-        background: linear-gradient(135deg, #163e63 0%, #20c3f0 100%);
-        box-shadow: 0 6px 15px rgba(28, 181, 224, 0.4);
-    }
-
-    /* Image MMPA dans Nav */
-    .nav-mmpa-img { 
-        width: 100%; height: 100%; 
-        border-radius: 50%; 
-        object-fit: cover; 
-        border: 2px solid var(--h-accent);
-    }
-
-    /* Image Profil dans Nav */
+    .club-title-main { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; color: #ffffff; line-height: 1.1; margin-bottom: 3px; }
+    .club-subtitle { font-family: 'Lato', sans-serif; font-size: 0.75rem; color: var(--h-accent); font-weight: 700; opacity: 0.95; }
+    .top-bar-center { display: flex; gap: 12px; align-items: center; }
+    .header-icon-btn { position: relative; width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, #0F2C48 0%, #1CB5E0 100%); border: 1px solid rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; text-decoration: none; transition: all 0.3s ease; color: white; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+    .header-icon-btn:hover { transform: translateY(3px) scale(1.1); }
+    .nav-mmpa-img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 2px solid var(--h-accent); }
     .nav-profile-img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 2px solid #fff; }
+    .btn-portfolio-cosmic { padding: 8px 20px; border-radius: 50px; font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 0.9rem; background: linear-gradient(135deg, #0F2C48 0%, #1CB5E0 100%); color: white !important; text-decoration: none; border: 1px solid rgba(255,255,255,0.2); display: inline-flex; align-items: center; gap: 8px; }
 
-    /* Tooltip */
-    .header-icon-btn::after {
-        content: attr(data-tooltip); position: absolute; top: 130%; left: 50%; transform: translateX(-50%) translateY(-10px);
-        background-color: #fff; color: var(--h-bg); padding: 4px 10px; border-radius: 20px;
-        font-size: 0.7rem; font-weight: 700; white-space: nowrap; opacity: 0; visibility: hidden; transition: all 0.3s ease;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.2); pointer-events: none; z-index: 100;
-    }
-    .header-icon-btn:hover::after { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
-
-    /* DROITE : Portfolio */
-    .btn-portfolio-cosmic {
-        padding: 8px 20px;
-        border-radius: 50px;
-        font-family: 'Montserrat', sans-serif;
-        font-weight: 600; font-size: 0.9rem;
-        background: linear-gradient(135deg, #0F2C48 0%, #1CB5E0 100%); 
-        color: white !important; text-decoration: none; 
-        border: 1px solid rgba(255,255,255,0.2);
-        display: inline-flex; align-items: center; gap: 8px;
-        animation: cosmic-pulse 4s ease-in-out infinite;
-    }
-    .btn-portfolio-cosmic:hover { background: linear-gradient(135deg, #163e63 0%, #20c3f0 100%); }
-
-    /* Responsive Header */
-    @media (max-width: 950px) {
-        .top-bar-container { justify-content: center; gap: 15px; }
-        .top-bar-left { width: 100%; justify-content: center; text-align: center; }
-        .identity-stack { align-items: center; }
-        .top-bar-center { width: 100%; justify-content: center; margin: 5px 0; }
-    }
-
-    /* --- NAVIGATION ONGLETS (Ajusté sous le nouveau header) --- */
-    .tabs-nav-container {
-        background: #fff; box-shadow: 0 2px 10px rgba(0,0,0,0.03);
-        padding: 15px 0; margin-bottom: 30px;
-        position: sticky; top: 96px; /* Ajusté selon la hauteur du header */
-        z-index: 9000;
-    }
-    
-    .tabs-wrapper {
-        max-width: 1100px; margin: 0 auto; display: flex;
-        justify-content: center; gap: 15px; flex-wrap: wrap; padding: 0 20px;
-    }
-
-    .tab-button {
-        padding: 12px 28px; border-radius: 30px; font-weight: 700; font-size: 15px;
-        cursor: pointer; transition: all 0.3s ease; background-color: var(--ivory);
-        color: var(--brand-blue); border: 2px solid transparent; display: flex; align-items: center; gap: 10px;
-    }
+    .tabs-nav-container { background: #fff; box-shadow: 0 2px 10px rgba(0,0,0,0.03); padding: 15px 0; margin-bottom: 30px; position: sticky; top: var(--header-height); z-index: 9000; transition: top 0.3s ease; }
+    .tabs-wrapper { max-width: 1100px; margin: 0 auto; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; padding: 0 20px; }
+    .tab-button { padding: 12px 28px; border-radius: 30px; font-weight: 700; font-size: 15px; cursor: pointer; transition: all 0.3s ease; background-color: var(--ivory); color: var(--brand-blue); border: 2px solid transparent; display: flex; align-items: center; gap: 10px; }
     .tab-button:hover { transform: translateY(-2px); border-color: var(--cta); background-color: #fff; }
-    .tab-button.active {
-        background-color: var(--brand-blue); color: white; border-color: var(--brand-blue);
-        box-shadow: 0 4px 15px rgba(15, 44, 72, 0.3);
-    }
-    .tab-button.active i { color: var(--cta); }
+    .tab-button.active { background-color: var(--brand-blue); color: white; border-color: var(--brand-blue); box-shadow: 0 4px 15px rgba(15, 44, 72, 0.3); }
 
-    /* --- CONTENU --- */
     .tab-pane { display: none; animation: fadeIn 0.5s ease; }
     .tab-pane.active { display: block; }
     @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-    /* Carte Accueil */
-    .welcome-card {
-        background: white; border-radius: 16px; padding: 40px; text-align: center;
-        border-top: 4px solid var(--cta); box-shadow: 0 10px 20px rgba(15, 44, 72, 0.05); margin-bottom: 30px;
-    }
+    .welcome-card { background: white; border-radius: 16px; padding: 40px; text-align: center; border-top: 4px solid var(--cta); box-shadow: 0 10px 20px rgba(15, 44, 72, 0.05); margin-bottom: 30px; }
 
-    /* Barre progression globale */
-    .global-progress-box {
-        background: var(--brand-blue); border-radius: 12px; padding: 20px; color: white;
-        margin-bottom: 30px; box-shadow: 0 8px 20px rgba(15, 44, 72, 0.15);
-        display: flex; flex-direction: column; gap: 10px;
-    }
+    /* MODULES & SESSIONS */
+    .modules-list-container { display: flex; flex-direction: column; gap: 20px; }
+    details.module-accordion { background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.03); border: 1px solid #f1f5f9; transition: all 0.3s ease; }
+    details.module-accordion[open] { box-shadow: 0 12px 35px rgba(0,0,0,0.08); border-color: var(--cta); transform: scale(1.01); }
+    summary.module-summary { padding: 20px; cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between; background: #fff; transition: background 0.2s; border-left: 6px solid transparent; }
+    summary.module-summary:hover { background: #fafafa; }
+    details.module-accordion[open] summary.module-summary { border-left-color: var(--cta); border-bottom: 1px solid #f1f5f9; }
+    summary.module-summary::-webkit-details-marker { display: none; }
+    .mini-module-progress { width: 80px; height: 6px; background: #e2e8f0; border-radius: 10px; overflow: hidden; margin-right: 10px; }
+    .mini-fill { height: 100%; background: var(--cta); width: 0%; transition: width 0.5s; }
 
-    /* Blocs de cours */
-    .bloc-container { 
-        background: white; border-radius: 12px; padding: 25px; margin-bottom: 25px; 
-        border-left: 6px solid var(--cta); box-shadow: 0 4px 6px rgba(0,0,0,0.02); 
-    }
-    .bloc-header {
-        display: flex; flex-direction: column; align-items: flex-start;
-        margin-bottom: 20px; border-bottom: 2px solid #f1f5f9; padding-bottom: 15px; gap: 15px;
-    }
-    .bloc-title { font-size: 1.4rem; font-weight: 800; color: var(--brand-blue); margin: 0; }
+    .sessions-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; padding: 25px; background: #f8fafc; }
+    .session-card { background: white; border-radius: 14px; padding: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.02); border: 1px solid #e2e8f0; display: flex; flex-direction: column; gap: 15px; transition: all 0.2s; border-left: 5px solid transparent; }
+    .session-card:hover { transform: translateY(-4px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); border-color: #cbd5e1; }
+    .session-card.completed { border-left-color: #10b981; }
+    .session-header { display: flex; align-items: flex-start; gap: 15px; }
 
-    /* Progress bars BLOCS */
-    .bloc-progress-container {
-        width: 100%;
-        background-color: #f8fafc;
-        padding: 15px;
-        border-radius: 8px;
-        border: 1px solid #e2e8f0;
+    /* NUMEROTATION ROUGE PAR DEFAUT */
+    .session-number {
+        background: #ef4444; /* ROUGE */
+        color: white; font-size: 1.1rem; font-weight: 800; font-family: 'Montserrat', sans-serif;
+        width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center;
+        flex-shrink: 0; box-shadow: 0 4px 10px rgba(15, 44, 72, 0.2); border: 2px solid #fff; transition: all 0.3s ease;
     }
-    .bloc-progress-header {
-        display: flex; justify-content: space-between; align-items: center;
-        margin-bottom: 8px; font-size: 0.9rem; font-weight: 600; color: var(--brand-blue);
-    }
-    .prog-track { height: 10px; background: #e2e8f0; border-radius: 10px; overflow: hidden; width: 100%; }
-    .prog-fill { height: 100%; background: var(--cta); border-radius: 10px; width: 0%; transition: width 0.8s ease; }
-
-    /* Accordéons */
-    details { margin-bottom: 10px; border: 1px solid #f1f5f9; border-radius: 10px; overflow: hidden; background: #fff; transition: all 0.3s; }
-    details[open] { border-color: var(--cta); box-shadow: 0 4px 10px rgba(217,165,38,0.08); }
-    summary { 
-        padding: 15px 20px; cursor: pointer; background-color: #fafafa; 
-        font-weight: 700; color: var(--brand-blue); font-size: 1rem;
-        list-style: none; display: flex; justify-content: space-between; align-items: center;
-    }
-    summary:hover { background-color: #fffbf0; color: var(--bronze); }
-    summary::-webkit-details-marker { display: none; }
-    summary:after { content: '\f078'; font-family: "Font Awesome 6 Free"; font-weight: 900; color: var(--cta); transition: 0.3s; }
-    details[open] summary:after { transform: rotate(180deg); }
-
-    /* Liens */
-    .link-item { display: flex; align-items: center; padding: 12px 20px; border-bottom: 1px solid #f8fafc; transition: 0.2s; }
-    .link-item:hover { background-color: #fdfdfd; padding-left: 25px; }
-    .link-text { flex: 1; color: #334155; font-weight: 500; text-decoration: none; font-size: 0.95rem; display: flex; align-items: center; gap: 12px; }
-    .link-text:hover { color: var(--bronze); }
-
-    /* Boutons action */
-    .status-btn { 
-        width: 34px; height: 34px; border-radius: 8px; display: flex; align-items: center; justify-content: center;
-        border: 1px solid #e2e8f0; background: white; color: #cbd5e1; transition: all 0.2s; cursor: pointer; margin-left: 5px;
-    }
-    .status-btn:hover { transform: scale(1.1); }
-    /* Style Validé */
-    .status-btn.active.btn-done { 
-        background: #10b981; color: white; border-color: #10b981; 
-        box-shadow: 0 2px 5px rgba(16, 185, 129, 0.3);
-    }
-    /* Style PDF */
-    .btn-pdf { color: #e11d48; border-color: #ffe4e6; background: #fff1f2; }
-    .btn-pdf:hover { background: #e11d48; color: white; }
-
-    /* Style Bell */
-    .status-btn.btn-bell:hover { color: #ef4444; border-color: #ef4444; }
-
-    /* === STYLES FOOTER UNIVERSEL === */
-    .main-footer {
-        background-color: var(--f-bg); color: var(--f-text);
-        padding-top: 50px; font-family: 'Lato', sans-serif; font-size: 0.95rem;
-        position: relative; width: 100%;
-        margin-top: auto; 
-    }
-
-    .footer-container { max-width: 1100px; margin: 0 auto; padding: 0 25px; }
-
-    .footer-content { 
-        display: flex; flex-wrap: wrap; justify-content: space-between; 
-        gap: 30px; padding-bottom: 30px; align-items: flex-start;
-    }
+    .session-card.completed .session-number { background: #10b981; border-color: #10b981; } /* VERT VALIDÉ */
     
-    /* GAUCHE : Identité */
-    .footer-identity { 
-        display: flex; flex-direction: row; align-items: center; 
-        gap: 20px; min-width: 300px; 
-    }
+    .session-title { font-weight: 700; color: #334155; font-size: 1rem; line-height: 1.4; text-decoration: none; padding-top: 5px; }
+    .session-title:hover { color: var(--brandGold); }
+    .session-actions { display: flex; flex-wrap: wrap; gap: 12px; padding-top: 15px; border-top: 1px dashed #e2e8f0; justify-content: flex-start; align-items: center; }
+    
+    .action-btn { width: 38px; height: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: all 0.2s; cursor: pointer; font-size: 0.95rem; border: 1px solid #e2e8f0; background: white; color: #64748b; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+    .action-btn:hover { transform: scale(1.15); box-shadow: 0 5px 12px rgba(0,0,0,0.1); }
+    .action-btn.disabled { opacity: 0.3; cursor: not-allowed; filter: grayscale(1); background: #f1f5f9; }
+
+    /* Couleurs Actions */
+    .btn-audio { color: #8b5cf6; background-color: #f5f3ff; border-color: #ddd6fe; }
+    .btn-video { color: #ef4444; background-color: #fef2f2; border-color: #fca5a5; }
+    .btn-info { color: #06b6d4; background-color: #ecfeff; border-color: #cffafe; }
+    .btn-mindmap { color: #d946ef; background-color: #fdf4ff; border-color: #f5d0fe; }
+    .btn-report { color: #64748b; background-color: #f8fafc; border-color: #cbd5e1; }
+    .btn-quiz { color: #f59e0b; background-color: #fffbeb; border-color: #fde68a; }
+    .btn-learn { color: #10b981; background-color: #ecfdf5; border-color: #a7f3d0; }
+    .btn-pdf { color: #f97316; background-color: #fff7ed; border-color: #ffedd5; }
+    .btn-bell { color: #eab308; background-color: #fefce8; border-color: #fef08a; }
+    .btn-link { color: #2563eb; background-color: #eff6ff; border-color: #dbeafe; }
+    .btn-check { margin-left: auto; width: 42px; height: 42px; font-size: 1.1rem; border-radius: 12px; }
+    .btn-check.active { background-color: #10b981; color: white; border-color: #10b981; box-shadow: 0 4px 10px rgba(16, 185, 129, 0.4); }
+
+    /* Footer */
+    .main-footer { background-color: var(--f-bg); color: var(--f-text); padding-top: 50px; font-family: 'Lato', sans-serif; margin-top: auto; }
+    .footer-content { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 30px; padding-bottom: 30px; }
+    .footer-identity { display: flex; gap: 20px; }
     .footer-logo-img { width: 60px; height: 60px; border-radius: 8px; border: 2px solid var(--f-accent); background: #fff; object-fit: cover; }
-    .footer-info-compact { display: flex; flex-direction: column; }
-    .footer-name { 
-        color: var(--f-accent); font-family: 'Playfair Display', serif; 
-        font-size: 1.1rem; font-weight: 700; line-height: 1.2; margin-bottom: 5px; margin-top:0;
-    }
-    
-    .footer-contact-stack { display: flex; flex-direction: column; gap: 5px; font-size: 0.85rem; opacity: 0.8; }
-    /* Liens cliquables */
-    .footer-link { text-decoration: none; color: inherit; transition: color 0.3s; display: inline-block; }
-    .footer-link:hover { color: var(--f-accent); transform: translateX(2px); }
-
-    /* DROITE : Dock Icones */
-    .footer-dock-col { 
-        display: flex; flex-direction: column; align-items: flex-end; 
-        gap: 10px; margin-left: auto; 
-    }
-    .dock-group { display: flex; flex-direction: column; align-items: flex-end; gap: 5px; }
-    .dock-label { 
-        font-family: 'Montserrat', sans-serif; font-size: 0.8rem; 
-        text-transform: uppercase; color: var(--f-accent); opacity: 0.7; 
-    }
-    
-    .icon-dock { display: flex; gap: 15px; flex-wrap: wrap; justify-content: flex-end; align-items: center; }
-
-    /* Style Boutons Icones */
-    .icon-btn { 
-        position: relative; width: 45px; height: 45px; border-radius: 50%; 
-        background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(217, 165, 38, 0.3); 
-        display: flex; align-items: center; justify-content: center; 
-        font-size: 1.3rem; text-decoration: none; 
-        transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
-        cursor: pointer; color: #fff; 
-    }
-    .icon-btn:hover { 
-        transform: translateY(-5px) scale(1.1); background: #fff; border-color: #fff; 
-        box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3); 
-    }
-
-    /* Couleurs Marques au survol */
-    .brand-whatsapp { color: #25D366 !important; } .icon-btn:hover .brand-whatsapp { color: #25D366 !important; }
-    .brand-discord { color: #5865F2 !important; } .icon-btn:hover .brand-discord { color: #5865F2 !important; }
-    .brand-linkedin { color: #0077b5 !important; } .icon-btn:hover .brand-linkedin { color: #0077b5 !important; }
-    .brand-instagram { color: #E1306C !important; } .icon-btn:hover .brand-instagram { color: #E1306C !important; }
-    .brand-tiktok { color: #00f2ea !important; text-shadow: 2px 2px 0px #ff0050; } .icon-btn:hover .brand-tiktok { color: #000 !important; text-shadow: none; } 
-    .brand-nav { color: var(--f-accent) !important; } .icon-btn:hover .brand-nav { color: var(--f-bg) !important; }
-
-    /* Tooltips */
-    .icon-btn::after {
-        content: attr(data-tooltip); position: absolute; bottom: 120%; left: 50%; transform: translateX(-50%) translateY(10px);
-        background-color: #fff; color: var(--f-bg); padding: 5px 12px; border-radius: 20px;
-        font-size: 0.75rem; font-weight: 700; white-space: nowrap; opacity: 0; visibility: hidden; transition: all 0.3s ease;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.2); pointer-events: none; z-index: 100;
-    }
-    .icon-btn::before {
-        content: ''; position: absolute; bottom: 110%; left: 50%; transform: translateX(-50%) translateY(10px);
-        border-width: 6px; border-style: solid; border-color: #ffffff transparent transparent transparent;
-        opacity: 0; visibility: hidden; transition: all 0.3s ease; z-index: 100;
-    }
-    .icon-btn:hover::after, .icon-btn:hover::before { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
-
-    .dock-separator { width: 1px; height: 30px; background-color: rgba(255,255,255,0.2); margin: 0 10px; }
-    .footer-bottom { 
-        text-align: center; padding: 15px 0; font-size: 0.8rem; 
-        color: rgba(255,255,255,0.4); background-color: rgba(0,0,0,0.2); 
-        border-top: 1px solid rgba(255,255,255,0.05); width: 100%;
-    }
-
-    /* Back to Top (Nouveau style) */
-    #backToTop {
-        position: fixed; bottom: 30px; right: 30px; background-color: var(--f-accent); color: var(--f-bg);
-        width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
-        font-size: 1.2rem; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.2); opacity: 0; pointer-events: none;
-        transition: all 0.3s ease; z-index: 100;
-    }
+    .icon-dock { display: flex; gap: 15px; flex-wrap: wrap; justify-content: flex-end; }
+    .icon-btn { width: 45px; height: 45px; border-radius: 50%; background: rgba(255,255,255,0.1); border: 1px solid rgba(217,165,38,0.3); display: flex; align-items: center; justify-content: center; color: #fff; transition: 0.3s; }
+    .footer-bottom { text-align: center; padding: 15px 0; font-size: 0.8rem; color: rgba(255,255,255,0.4); background: rgba(0,0,0,0.2); border-top: 1px solid rgba(255,255,255,0.05); }
+    #backToTop { position: fixed; bottom: 30px; right: 30px; background: var(--f-accent); color: var(--f-bg); width: 50px; height: 50px; border-radius: 50%; display: flex; justify-content: center; align-items: center; cursor: pointer; opacity: 0; pointer-events: none; transition: 0.3s; }
     #backToTop.show { opacity: 1; pointer-events: all; }
-    #backToTop:hover { transform: translateY(-5px); background-color: #fff; }
-
-    @media (max-width: 768px) {
-        .footer-content { flex-direction: column; align-items: center; text-align: center; }
-        .footer-identity { flex-direction: column; text-align: center; }
-        .footer-dock-col { align-items: center; width: 100%; gap: 30px; margin-left: 0; }
-        .icon-dock { justify-content: center; flex-wrap: wrap; }
-        .dock-group { align-items: center; }
-        .dock-separator { display: none; }
-    }
+    .disclaimer-box { background-color: #fff; border-left: 5px solid #ea580c; border-radius: 8px; padding: 20px; margin-bottom: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); font-size: 0.95rem; color: #475569; }
+    
+    /* BLOCKS NAV */
+    .block-nav-grid { display: grid; grid-template-columns: repeat(1, 1fr); gap: 20px; margin-bottom: 30px; }
+    @media (min-width: 768px) { .block-nav-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 1024px) { .block-nav-grid { grid-template-columns: repeat(4, 1fr); } }
+    .block-nav-card { background: white; border-radius: 16px; padding: 20px; cursor: pointer; border: 2px solid transparent; box-shadow: 0 4px 15px rgba(0,0,0,0.05); transition: all 0.3s ease; text-align: center; }
+    .block-nav-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); border-color: var(--cta); }
+    .block-nav-card.active-block { background: var(--brand-blue); color: white; border-color: var(--cta); box-shadow: 0 10px 30px rgba(15, 44, 72, 0.3); }
+    .block-nav-icon { width: 50px; height: 50px; border-radius: 50%; background: #f1f5f9; color: var(--brand-blue); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin: 0 auto 10px auto; transition: 0.3s; }
+    .block-nav-card.active-block .block-nav-icon { background: var(--cta); color: white; }
   </style>
 </head>
 <body>
 
-  <!-- HEADER SPECIAL CLUB - THE JURIST ELITE CLUB -->
-  <div class="top-bar">
+  <div class="top-bar" id="mainHeader">
     <div class="top-bar-container">
-        <!-- 1. Identité Spéciale Club (Gauche) -->
         <div class="top-bar-left">
-            <!-- Logo Juriste -->
-            <img src="https://projettechacademy.github.io/Juridique/Asset/Logo_juriste.png" 
-                 onerror="this.src='https://projettechacademy.github.io/Juridique/Asset/Logo_juriste.jpg';" 
-                 alt="Logo Club" class="logo-top-bar">
-            
+            <img src="https://projettechacademy.github.io/Juridique/Asset/Logo_juriste.png" onerror="this.src='https://projettechacademy.github.io/Juridique/Asset/Logo_juriste.jpg';" alt="Logo Club" class="logo-top-bar">
             <div class="identity-stack">
-                <!-- Titre en Blanc (Gras défini dans CSS) -->
                 <span class="club-title-main">The Jurist Elite Club By Studi</span>
-                <!-- Sous-titre en Jaune (Gras défini dans CSS) -->
                 <span class="club-subtitle">La Villa des Juristes Brisés 💔 sur l’Île de L’INSTRUCTION ! 🏝</span>
             </div>
         </div>
-        
-        <!-- 2. Navigation Icones (Centre) -->
         <div class="top-bar-center">
-            <!-- MMPA Logo à la place de la Maison (Redirection locale index.html) -->
-            <a href="index.html" class="header-icon-btn" data-tooltip="Start/Accueil" style="padding: 0; overflow: hidden; border: none;">
-                <img src="https://projettechacademy.github.io/Juridique/Asset/Logo_MMPA.jpeg" alt="MMPA" class="nav-mmpa-img">
-            </a>
-
+            <a href="index.html" class="header-icon-btn" data-tooltip="Start/Accueil"><img src="https://projettechacademy.github.io/Juridique/Asset/Logo_MMPA.jpeg" alt="MMPA" class="nav-mmpa-img"></a>
             <a href="https://projettechacademy.github.io/Juridique/00_Autres/Mon_Espace_Juriste_Tableau_de_bord_personnel.html" target="_blank" class="header-icon-btn" data-tooltip="Mon Espace">📊</a>
             <a href="https://projettechacademy.github.io/Juridique/00_Autres/Lexique_Latin_Juridique.html" target="_blank" class="header-icon-btn" data-tooltip="Lexique Latin">📜</a>
             <a href="https://projettechacademy.github.io/Juridique/00_Autres/formation_live_juriste.html" target="_blank" class="header-icon-btn" data-tooltip="Planning Live">📅</a>
-            
-            <!-- Photo Profil -->
-            <a href="https://projettechacademy.github.io/Juridique/00_Autres/A_propos_de_moi.html" target="_blank" class="header-icon-btn" data-tooltip="À propos de moi" style="padding: 0; overflow: hidden; border: 2px solid #D9A526;">
-                <img src="https://projettechacademy.github.io/Juridique/Asset/Photo_Mathilde_Martine_PAISLEY.png" 
-                     onerror="this.src='https://projettechacademy.github.io/Juridique/Asset/Photo_Mathilde_Martine_PAISLEY.jpg';" 
-                     alt="Profil" class="nav-profile-img">
-            </a>
+            <a href="https://projettechacademy.github.io/Juridique/00_Autres/A_propos_de_moi.html" target="_blank" class="header-icon-btn" data-tooltip="À propos de moi"><img src="https://projettechacademy.github.io/Juridique/Asset/Photo_Mathilde_Martine_PAISLEY.png" onerror="this.src='https://projettechacademy.github.io/Juridique/Asset/Photo_Mathilde_Martine_PAISLEY.jpg';" alt="Profil" class="nav-profile-img"></a>
         </div>
-
-        <!-- 3. Portfolio (Droite) -->
-        <a href="https://projettechacademy.github.io/CV_MMPA-CV-Mathilde-Martine-PAISLEY/" target="_blank" class="btn-portfolio-cosmic">
-            <span>📄</span> Mon portfolio
-        </a>
+        <a href="https://projettechacademy.github.io/CV_MMPA-CV-Mathilde-Martine-PAISLEY/" target="_blank" class="btn-portfolio-cosmic"><span>📄</span> Mon portfolio</a>
     </div>
   </div>
 
-  <!-- 2. NAVIGATION ONGLETS -->
   <div class="tabs-nav-container">
       <div class="tabs-wrapper">
-          <div class="tab-button" onclick="switchFormation('affaires')">
-              <i class="fa-solid fa-briefcase"></i> Droit des Affaires
-          </div>
-          <div class="tab-button" onclick="switchFormation('entreprise')">
-              <i class="fa-solid fa-building-columns"></i> Juriste d'Entreprise
-          </div>
-          <div class="tab-button active" onclick="switchFormation('social')">
-              <i class="fa-solid fa-users"></i> Droit Social
-          </div>
+          <div class="tab-button" onclick="switchFormation('affaires')"><i class="fa-solid fa-briefcase"></i> Droit des Affaires</div>
+          <div class="tab-button" onclick="switchFormation('entreprise')"><i class="fa-solid fa-building-columns"></i> Juriste d'Entreprise</div>
+          <div class="tab-button active" onclick="switchFormation('social')"><i class="fa-solid fa-users"></i> Droit Social</div>
       </div>
   </div>
 
   <main class="wrap">
-
-    <!-- === ACCUEIL === -->
+    <!-- ACCUEIL -->
     <div id="view-accueil" class="tab-pane">
         <div class="welcome-card">
             <h1 class="text-3xl font-bold text-[#0F2C48] mb-2">Bienvenue Mathilde ! 👋</h1>
             <p class="text-[#B4792A] text-lg font-medium mb-6">Espace Personnel de Formation</p>
-            
-            <!-- Ajout de la classe sm:grid-cols-2 et lg:grid-cols-4 pour 4 colonnes sur grand écran -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                
-                <!-- Bouton START (Nouveau) -->
-                <a href="https://projettechacademy.github.io/Juridique/index.html" class="p-4 bg-[#F6F2E8] rounded-xl border border-[#D9A526]/20 hover:shadow-md transition flex items-center gap-3 group">
-                    <div class="w-10 h-10 rounded-full bg-[#0F2C48] text-white flex items-center justify-center group-hover:scale-110 transition">
-                        <i class="fa-solid fa-flag-checkered"></i> <!-- Emoji Start/Drapeau -->
-                    </div>
-                    <div class="text-left">
-                        <div class="font-bold text-[#0F2C48]">Start</div>
-                        <div class="text-xs text-gray-500">Retour au début</div>
-                    </div>
-                </a>
-
-                <a href="https://projettechacademy.github.io/Juridique/00_Autres/Lexique_Latin_Juridique.html" target="_blank" class="p-4 bg-[#F6F2E8] rounded-xl border border-[#D9A526]/20 hover:shadow-md transition flex items-center gap-3 group">
-                    <div class="w-10 h-10 rounded-full bg-[#D9A526] text-white flex items-center justify-center group-hover:scale-110 transition"><i class="fa-solid fa-book"></i></div>
-                    <div class="text-left">
-                        <div class="font-bold text-[#0F2C48]">Lexique Juridique & Social</div>
-                        <div class="text-xs text-gray-500">Les indispensables du Latin</div>
-                    </div>
-                </a>
-                <a href="https://projettechacademy.github.io/Juridique/00_Autres/formation_live_juriste.html" target="_blank" class="p-4 bg-[#F6F2E8] rounded-xl border border-[#D9A526]/20 hover:shadow-md transition flex items-center gap-3 group">
-                    <div class="w-10 h-10 rounded-full bg-[#0F2C48] text-white flex items-center justify-center group-hover:scale-110 transition"><i class="fa-solid fa-video"></i></div>
-                    <div class="text-left">
-                        <div class="font-bold text-[#0F2C48]">Planning Live & Suivi</div>
-                        <div class="text-xs text-gray-500">Tableau de bord interactif</div>
-                    </div>
-                </a>
-                <a href="https://projettechacademy.github.io/Juridique/00_Autres/Mon_Espace_Juriste_Tableau_de_bord_personnel.html" target="_blank" class="p-4 bg-[#F6F2E8] rounded-xl border border-[#D9A526]/20 hover:shadow-md transition flex items-center gap-3 group">
-                    <div class="w-10 h-10 rounded-full bg-[#B4792A] text-white flex items-center justify-center group-hover:scale-110 transition"><i class="fa-solid fa-user-tie"></i></div>
-                    <div class="text-left">
-                        <div class="font-bold text-[#0F2C48]">Mon Espace Juriste</div>
-                        <div class="text-xs text-gray-500">Tableau de bord personnel</div>
-                    </div>
-                </a>
+                <a href="index.html" class="p-4 bg-[#F6F2E8] rounded-xl border border-[#D9A526]/20 hover:shadow-md transition flex items-center gap-3 group"><div class="w-10 h-10 rounded-full bg-[#0F2C48] text-white flex items-center justify-center group-hover:scale-110 transition"><i class="fa-solid fa-flag-checkered"></i></div><div class="text-left"><div class="font-bold text-[#0F2C48]">Start</div><div class="text-xs text-gray-500">Retour au début</div></div></a>
+                <a href="https://projettechacademy.github.io/Juridique/00_Autres/Lexique_Latin_Juridique.html" target="_blank" class="p-4 bg-[#F6F2E8] rounded-xl border border-[#D9A526]/20 hover:shadow-md transition flex items-center gap-3 group"><div class="w-10 h-10 rounded-full bg-[#D9A526] text-white flex items-center justify-center group-hover:scale-110 transition"><i class="fa-solid fa-book"></i></div><div class="text-left"><div class="font-bold text-[#0F2C48]">Lexique Juridique</div><div class="text-xs text-gray-500">Latin & Notions</div></div></a>
+                <a href="https://projettechacademy.github.io/Juridique/00_Autres/formation_live_juriste.html" target="_blank" class="p-4 bg-[#F6F2E8] rounded-xl border border-[#D9A526]/20 hover:shadow-md transition flex items-center gap-3 group"><div class="w-10 h-10 rounded-full bg-[#0F2C48] text-white flex items-center justify-center group-hover:scale-110 transition"><i class="fa-solid fa-video"></i></div><div class="text-left"><div class="font-bold text-[#0F2C48]">Planning Live</div><div class="text-xs text-gray-500">Suivi interactif</div></div></a>
+                <a href="https://projettechacademy.github.io/Juridique/00_Autres/Mon_Espace_Juriste_Tableau_de_bord_personnel.html" target="_blank" class="p-4 bg-[#F6F2E8] rounded-xl border border-[#D9A526]/20 hover:shadow-md transition flex items-center gap-3 group"><div class="w-10 h-10 rounded-full bg-[#B4792A] text-white flex items-center justify-center group-hover:scale-110 transition"><i class="fa-solid fa-user-tie"></i></div><div class="text-left"><div class="font-bold text-[#0F2C48]">Mon Espace</div><div class="text-xs text-gray-500">Tableau personnel</div></div></a>
             </div>
         </div>
     </div>
 
-    <!-- === AFFAIRES === -->
-    <div id="view-affaires" class="tab-pane">
-        <div class="mb-6 pl-4 border-l-4 border-[#D9A526]">
-            <h1 class="text-2xl font-bold text-[#0F2C48]">MBA Juriste d'entreprise en Droit des Affaires</h1>
-            <p class="text-gray-600">Pilotez la performance juridique et économique de l'entreprise.</p>
-        </div>
-        <div class="bloc-container"><h2 class="bloc-title">B0 • Fondamentaux du Droit des Affaires</h2><div class="p-6 text-center text-gray-400 bg-slate-50 rounded border border-dashed border-gray-300 italic">Contenu à venir...</div></div>
-    </div>
+    <div id="view-affaires" class="tab-pane"><div class="mb-6 pl-4 border-l-4 border-[#D9A526]"><h1 class="text-2xl font-bold text-[#0F2C48]">MBA Juriste d'entreprise en Droit des Affaires</h1></div><div class="p-6 text-center text-gray-400 bg-slate-50 rounded border border-dashed border-gray-300 italic">Contenu à venir...</div></div>
+    <div id="view-entreprise" class="tab-pane"><div class="mb-6 pl-4 border-l-4 border-[#D9A526]"><h1 class="text-2xl font-bold text-[#0F2C48]">MBA Juriste d'Entreprise</h1></div><div class="p-6 text-center text-gray-400 bg-slate-50 rounded border border-dashed border-gray-300 italic">Contenu à venir...</div></div>
 
-    <!-- === ENTREPRISE === -->
-    <div id="view-entreprise" class="tab-pane">
-        <div class="mb-6 pl-4 border-l-4 border-[#D9A526]">
-            <h1 class="text-2xl font-bold text-[#0F2C48]">MBA Juriste d'Entreprise</h1>
-            <p class="text-gray-600">Devenez le business partner incontournable de la direction.</p>
-        </div>
-        <div class="bloc-container"><h2 class="bloc-title">B0 • Socle Juridique</h2><div class="p-6 text-center text-gray-400 bg-slate-50 rounded border border-dashed border-gray-300 italic">Contenu à venir...</div></div>
-    </div>
-
-    <!-- === SOCIAL (Actif) === -->
+    <!-- SOCIAL -->
     <div id="view-social" class="tab-pane active">
-        
+        <!-- AVERTISSEMENT -->
+        <div class="disclaimer-box">
+            <div class="disclaimer-title"><i class="fa-solid fa-triangle-exclamation"></i> Avertissement Légal & Accès</div>
+            <div class="disclaimer-text">
+                Cette application web est une création personnelle de <strong>Mathilde Martine PAISLEY (MMPA🌹)</strong>. Le contenu proposé ici (fiches, audios, vidéos, infographies) est le fruit de mes propres recherches et prises de notes.<br>
+                Par respect pour la charte de <strong>Studi</strong> et le droit d'auteur, <strong>aucun document officiel de l'école n'est hébergé ou diffusé ici</strong>. Les boutons menant vers les cours PDF officiels sont des <strong>liens de redirection</strong> : ils ne fonctionnent que si vous possédez votre propre accès apprenant valide à la plateforme Studi.
+            </div>
+        </div>
+
         <div class="flex flex-col md:flex-row items-start md:items-center justify-between mb-8 bg-white p-6 rounded-xl shadow-sm border border-[#e2e8f0]">
-            <div>
-                <h1 class="text-2xl font-bold text-[#0F2C48]">Formation Droit Social</h1>
-                <p class="text-[#B4792A]">MBA Juriste d'entreprise - Spécialisation Social</p>
-            </div>
+            <div><h1 class="text-2xl font-bold text-[#0F2C48]">Formation Droit Social</h1><p class="text-[#B4792A]">MBA Juriste d'entreprise - Spécialisation Social</p></div>
             <div class="mt-4 md:mt-0 w-full md:w-64">
-                <div class="flex justify-between text-xs font-bold text-[#0F2C48] uppercase mb-1">
-                    <span>Progression Totale</span>
-                    <span id="global-progress-txt">0%</span>
-                </div>
-                <div class="w-full h-3 bg-slate-100 rounded-full overflow-hidden">
-                    <div id="global-progress-bar" class="h-full bg-[#0F2C48] transition-all duration-700" style="width: 0%"></div>
-                </div>
+                <div class="flex justify-between text-xs font-bold text-[#0F2C48] uppercase mb-1"><span>Progression Totale</span><span id="global-progress-txt">0%</span></div>
+                <div class="w-full h-3 bg-slate-100 rounded-full overflow-hidden"><div id="global-progress-bar" class="h-full bg-[#0F2C48] transition-all duration-700" style="width: 0%"></div></div>
             </div>
         </div>
-
-        <!-- BLOC B0 -->
-        <div class="bloc-container">
-            <div class="bloc-header">
-                <h2 class="bloc-title">B0 • Fondamentaux du Droit</h2>
-                <div class="bloc-progress-container">
-                    <div class="bloc-progress-header"><span>Avancement du Bloc</span><span id="prog-b0-txt">0%</span></div>
-                    <div class="prog-track"><div id="prog-b0-bar" class="progress-fill"></div></div>
-                </div>
-            </div>
-            <div id="social-content-b0"></div>
-        </div>
-
-        <!-- BLOC B1 -->
-        <div class="bloc-container">
-            <div class="bloc-header">
-                <h2 class="bloc-title">B1 • Pilotage Stratégique & RH</h2>
-                <div class="bloc-progress-container">
-                    <div class="bloc-progress-header"><span>Avancement du Bloc</span><span id="prog-b1-txt">0%</span></div>
-                    <div class="prog-track"><div id="prog-b1-bar" class="progress-fill"></div></div>
-                </div>
-            </div>
-            <div id="social-content-b1"></div>
-        </div>
-
-        <!-- BLOC B2 -->
-        <div class="bloc-container">
-            <div class="bloc-header">
-                <h2 class="bloc-title">B2 • Opérations de l'Entreprise</h2>
-                <div class="bloc-progress-container">
-                    <div class="bloc-progress-header"><span>Avancement du Bloc</span><span id="prog-b2-txt">0%</span></div>
-                    <div class="prog-track"><div id="prog-b2-bar" class="progress-fill"></div></div>
-                </div>
-            </div>
-            <div id="social-content-b2"></div>
-        </div>
-
-        <!-- BLOC B3 -->
-        <div class="bloc-container">
-            <div class="bloc-header">
-                <h2 class="bloc-title">B3 • Gestion des Contentieux</h2>
-                <div class="bloc-progress-container">
-                    <div class="bloc-progress-header"><span>Avancement du Bloc</span><span id="prog-b3-txt">0%</span></div>
-                    <div class="prog-track"><div id="prog-b3-bar" class="progress-fill"></div></div>
-                </div>
-            </div>
-            <div id="social-content-b3"></div>
-        </div>
+        <!-- BLOCS & CONTENU -->
+        <div class="block-nav-grid" id="social-blocks-nav"></div>
+        <div id="social-active-content" class="active-block-content"></div>
     </div>
-
   </main>
 
-  <!-- ======================================================================
-       FOOTER UNIVERSEL - MATHILDE PAISLEY
-       ====================================================================== -->
   <footer class="main-footer">
     <div class="footer-container">
         <div class="footer-content">
-            
-            <!-- Identité (Gauche) -->
-            <div class="footer-identity">
-                <img src="https://projettechacademy.github.io/Juridique/Asset/Logo_MMPA.jpeg" alt="Logo MMPA" class="footer-logo-img">
-                <div class="footer-info-compact">
-                    <div class="footer-name">Mathilde Martine PAISLEY</div>
-                    <div class="footer-contact-stack">
-                        <a href="mailto:Mathilde.martine.paisley@gmail.com" class="footer-link">📧 Mathilde.martine.paisley@gmail.com</a>
-                        <a href="tel:+33685900887" class="footer-link">📲 06 85 90 08 87</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Dock Navigation & Réseaux (Droite) -->
-            <div class="footer-dock-col">
-                <div class="dock-group">
-                    <div class="dock-label">Navigation & Réseaux</div>
-                    <div class="icon-dock">
-                        <!-- Navigation -->
-                        <a href="https://projettechacademy.github.io/Juridique/index.html" target="_blank" class="icon-btn" data-tooltip="Start/Accueil"><span class="brand-nav">🏠</span></a>
-                        <a href="https://projettechacademy.github.io/Juridique/00_Autres/Mon_Espace_Juriste_Tableau_de_bord_personnel.html" target="_blank" class="icon-btn" data-tooltip="Mon Espace"><span class="brand-nav">📊</span></a>
-                        <a href="https://projettechacademy.github.io/Juridique/00_Autres/Lexique_Latin_Juridique.html" target="_blank" class="icon-btn" data-tooltip="Lexique Latin"><span class="brand-nav">📜</span></a>
-                        <a href="https://projettechacademy.github.io/Juridique/00_Autres/formation_live_juriste.html" target="_blank" class="icon-btn" data-tooltip="Planning Live"><span class="brand-nav">📅</span></a>
-                        <a href="https://projettechacademy.github.io/Juridique/00_Autres/A_propos_de_moi.html" target="_blank" class="icon-btn" data-tooltip="À propos de moi"><span class="brand-nav">👤</span></a>
-                        
-                        <!-- Séparateur -->
-                        <div class="dock-separator"></div>
-
-                        <!-- Réseaux -->
-                        <a href="https://chat.whatsapp.com/IoMXFl4o2otExYKCPVj22b" target="_blank" class="icon-btn" data-tooltip="WhatsApp"><i class="fab fa-whatsapp brand-whatsapp"></i></a>
-                        <a href="https://discord.gg/qwNPV8QzFt" target="_blank" class="icon-btn" data-tooltip="Discord"><i class="fab fa-discord brand-discord"></i></a>
-                        <a href="https://www.linkedin.com/in/mathilde-martine-paisley-1a4422382/" target="_blank" class="icon-btn" data-tooltip="LinkedIn"><i class="fab fa-linkedin brand-linkedin"></i></a>
-                        <a href="https://www.instagram.com/enervyx/" target="_blank" class="icon-btn" data-tooltip="Instagram @enervyx"><i class="fab fa-instagram brand-instagram"></i></a>
-                        <a href="https://www.tiktok.com/@enervyx/" target="_blank" class="icon-btn" data-tooltip="TikTok @enervyx"><i class="fab fa-tiktok brand-tiktok"></i></a>
-                    </div>
-                </div>
-            </div>
-
+            <div class="footer-identity"><img src="https://projettechacademy.github.io/Juridique/Asset/Logo_MMPA.jpeg" alt="Logo MMPA" class="footer-logo-img"><div class="footer-info-compact"><div class="footer-name">Mathilde Martine PAISLEY</div><div class="footer-contact-stack"><a href="mailto:Mathilde.martine.paisley@gmail.com" class="footer-link">📧 Mathilde.martine.paisley@gmail.com</a><a href="tel:+33685900887" class="footer-link">📲 06 85 90 08 87</a></div></div></div>
+            <div class="footer-dock-col"><div class="dock-group"><div class="dock-label">Navigation & Réseaux</div><div class="icon-dock"><a href="index.html" class="icon-btn" data-tooltip="Start/Accueil"><span class="brand-nav">🏠</span></a><a href="https://projettechacademy.github.io/Juridique/00_Autres/Mon_Espace_Juriste_Tableau_de_bord_personnel.html" target="_blank" class="icon-btn" data-tooltip="Mon Espace"><span class="brand-nav">📊</span></a><a href="https://projettechacademy.github.io/Juridique/00_Autres/Lexique_Latin_Juridique.html" target="_blank" class="icon-btn" data-tooltip="Lexique Latin"><span class="brand-nav">📜</span></a><a href="https://projettechacademy.github.io/Juridique/00_Autres/formation_live_juriste.html" target="_blank" class="icon-btn" data-tooltip="Planning Live"><span class="brand-nav">📅</span></a><a href="https://projettechacademy.github.io/Juridique/00_Autres/A_propos_de_moi.html" target="_blank" class="icon-btn" data-tooltip="À propos de moi"><span class="brand-nav">👤</span></a><div class="dock-separator"></div><a href="https://chat.whatsapp.com/IoMXFl4o2otExYKCPVj22b" target="_blank" class="icon-btn" data-tooltip="WhatsApp"><i class="fab fa-whatsapp brand-whatsapp"></i></a><a href="https://discord.gg/qwNPV8QzFt" target="_blank" class="icon-btn" data-tooltip="Discord"><i class="fab fa-discord brand-discord"></i></a><a href="https://www.linkedin.com/in/mathilde-martine-paisley-1a4422382/" target="_blank" class="icon-btn" data-tooltip="LinkedIn"><i class="fab fa-linkedin brand-linkedin"></i></a><a href="https://www.instagram.com/enervyx/" target="_blank" class="icon-btn" data-tooltip="Instagram @enervyx"><i class="fab fa-instagram brand-instagram"></i></a><a href="https://www.tiktok.com/@enervyx/" target="_blank" class="icon-btn" data-tooltip="TikTok @enervyx"><i class="fab fa-tiktok brand-tiktok"></i></a></div></div></div>
         </div>
     </div>
-
-    <div class="footer-bottom">
-        <div class="footer-container">
-            <p>© 2025 Tous droits réservés – Création : 2025 – Dernière mise à jour : Novembre 2025</p>
-        </div>
-    </div>
+    <div class="footer-bottom"><div class="footer-container"><p>© 2025 Tous droits réservés – Création : 2025 – Dernière mise à jour : Novembre 2025</p></div></div>
   </footer>
-
-  <!-- Bouton Retour Haut & Script (Nouveau) -->
   <div id="backToTop" onclick="window.scrollTo(0,0)"><i class="fas fa-arrow-up"></i></div>
+  
   <script>
-    window.addEventListener('scroll', () => {
-        const btn = document.getElementById('backToTop');
-        if (btn) {
-            if (window.scrollY > 300) btn.classList.add('show'); else btn.classList.remove('show');
-        }
-    });
+    function updateHeaderHeight() { const header = document.getElementById('mainHeader'); if(header) document.documentElement.style.setProperty('--header-height', header.offsetHeight + 'px'); }
+    window.addEventListener('load', updateHeaderHeight); window.addEventListener('resize', updateHeaderHeight);
+    window.addEventListener('scroll', () => { const btn = document.getElementById('backToTop'); if (btn) { if (window.scrollY > 300) btn.classList.add('show'); else btn.classList.remove('show'); } });
   </script>
 
   <script>
+    // ======================================================================
+    // 1. BASE DE DONNÉES RESSOURCES (À COMPLÉTER PAR TOI) 
+    // ======================================================================
+    const dbRessources = {
+      // EXEMPLE DE REMPLISSAGE
+      // La clé doit correspondre EXACTEMENT au code orange (ex: "B0_M01_S001_La_notion_de_droit_du_travail")
+      // Pour trouver la clé exacte, regarde l'URL de la page quand tu cliques dessus ou inspecte l'élément.
+      
+      "B0_M01_S001": { // Code court possible si on adapte le parser, sinon titre complet
+          audio: "LIEN_DRIVE_AUDIO",
+          video: "LIEN_DRIVE_VIDEO",
+          mindmap: "LIEN_DRIVE_CARTE",
+          report: "LIEN_DRIVE_RAPPORT",
+          learn: "LIEN_DRIVE_FICHE",
+          quiz: "LIEN_DRIVE_QUIZ",
+          info: "LIEN_DRIVE_INFOGRAPHIE",
+          pdf: "LIEN_DRIVE_NOTE_PDF"
+      }
+      // Ajoute tes autres cours ici...
+    };
+
     const BASE_URL = "https://projettechacademy.github.io/Juridique/";
 
-    // DONNÉES DROIT SOCIAL (Complètes)
+    // 2. DATA SOCIAL (Ta liste brute)
     const socialData = `
 🟨B0_Fondamentaux du droit
 🟦B0_M01_Mise à niveau en droit social
@@ -1163,138 +732,237 @@
 
     function cleanName(str) {
         let clean = str.replace(/^[🟨🟦🟧]/, '').trim();
-        clean = clean.replace(/\?/g, ''); // Supprime les points d'interrogation indésirables
+        clean = clean.replace(/\?/g, ''); 
         clean = clean.replace(/\.html$/, '');
-        
-        // Normalisation pour URL
         let urlPart = clean.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
         urlPart = urlPart.replace(/[\s':,\/\\]+/g, "_");
         urlPart = urlPart.replace(/[^a-zA-Z0-9_]/g, "");
         urlPart = urlPart.replace(/__+/g, "_");
         urlPart = urlPart.replace(/^_|_$/g, "");
-        
         return { display: clean, urlPart: urlPart };
     }
 
-    function generateContent() {
-        const lines = socialData.split('\n').filter(line => line.trim() !== '');
-        
-        let currentBlockId = "";
-        let currentBlockUrl = "";
-        let currentModuleUrl = "";
-        let currentDetails = null;
-        let currentList = null;
-
-        // Compteurs pour la progression
-        let blockStats = {
-            "content-b0": { total: 0, done: 0 },
-            "content-b1": { total: 0, done: 0 },
-            "content-b2": { total: 0, done: 0 },
-            "content-b3": { total: 0, done: 0 }
-        };
-
-        lines.forEach(line => {
-            if (line.startsWith('🟨')) {
-                const blockData = cleanName(line);
-                if(blockData.urlPart.startsWith("B0")) currentBlockId = "social-content-b0";
-                else if(blockData.urlPart.startsWith("B1")) currentBlockId = "social-content-b1";
-                else if(blockData.urlPart.startsWith("B2")) currentBlockId = "social-content-b2";
-                else if(blockData.urlPart.startsWith("B3")) currentBlockId = "social-content-b3";
-                currentBlockUrl = blockData.urlPart;
-
-            } else if (line.startsWith('🟦')) {
-                const moduleData = cleanName(line);
-                currentModuleUrl = moduleData.urlPart;
-                
-                const details = document.createElement('details');
-                details.className = "group bg-white border border-[#D9A526]/20 rounded-lg overflow-hidden transition-all hover:shadow-md mb-2";
-                
-                const summary = document.createElement('summary');
-                // On utilise les classes CSS définies dans <style> pour le look V2
-                // Note: le style summary:after gère la flèche (FontAwesome)
-                summary.innerHTML = `
-                    <div class="flex items-center gap-3">
-                        <span class="bg-[#0F2C48] text-white text-xs font-bold px-2 py-1 rounded shadow-sm">${moduleData.display.split('_')[1] || 'MOD'}</span>
-                        <h3 class="font-semibold text-[#0F2C48] text-base">${moduleData.display}</h3>
-                    </div>
-                    <!-- Pas d'icône en dur ici, c'est géré par CSS summary:after -->
-                `;
-                
-                const contentDiv = document.createElement('div');
-                contentDiv.className = "p-0 bg-white border-t border-[#D9A526]/10"; // Padding 0 pour coller les liens
-                currentList = contentDiv;
-
-                details.appendChild(summary);
-                details.appendChild(contentDiv);
-                document.getElementById(currentBlockId).appendChild(details);
-
-            } else if (line.startsWith('🟧')) {
-                const sessionData = cleanName(line);
-                const finalUrl = `${BASE_URL}${currentBlockUrl}/${currentModuleUrl}/${sessionData.urlPart}.html`;
-                const uniqueId = sessionData.urlPart; // ID pour localStorage
-                
-                // Incrémenter le compteur total du bloc
-                let parentBlock = currentBlockId.replace('social-', ''); // content-b0
-                if(blockStats[parentBlock]) blockStats[parentBlock].total++;
-
-                const itemDiv = document.createElement('div');
-                itemDiv.className = "link-item"; // Classe CSS définie plus haut
-                
-                // Contenu du lien avec carré orange (FontAwesome)
-                itemDiv.innerHTML = `
-                    <a href="${finalUrl}" target="_blank" class="link-text">
-                        <i class="fa-solid fa-square text-[#D9A526] text-xs mr-2"></i>
-                        ${sessionData.display}
-                    </a>
-                    <div class="status-actions">
-                        <button onclick="toggleStatus(this, '${uniqueId}', 'note')" class="status-btn btn-note" title="Prise de note"><i class="fa-solid fa-pen-to-square"></i></button>
-                        
-                        <!-- Bouton Valider qui déclenche la barre de progression -->
-                        <button onclick="toggleStatus(this, '${uniqueId}', 'done')" class="status-btn btn-done" title="Traité"><i class="fa-solid fa-circle-check"></i></button>
-
-                        <!-- Bouton PDF (fictif pour l'instant) -->
-                        <button onclick="window.open('${finalUrl.replace(".html", ".pdf")}', '_blank')" class="status-btn btn-pdf" title="Télécharger le PDF"><i class="fa-solid fa-file-pdf"></i></button>
-
-                        <!-- Bouton Calendrier -->
-                        <button onclick="addToCalendar('${sessionData.display}', '${finalUrl}')" class="status-btn btn-bell" title="Ajouter au calendrier"><i class="fa-solid fa-bell"></i></button>
-                    </div>
-                `;
-                
-                if(currentList) currentList.appendChild(itemDiv);
-            }
-        });
-        
-        // Charger les statuts (couleurs des boutons) après génération
-        loadStatus();
+    // NETTOYAGE TITRES
+    function getCleanTitle(rawTitle) {
+        const parts = rawTitle.split('_');
+        let startIndex = 0;
+        for(let i=0; i<parts.length; i++) {
+            const part = parts[i];
+            if(/^(B|M|S)\d+$/.test(part) || /^[0-9]+$/.test(part)) { startIndex = i + 1; } 
+            else { break; }
+        }
+        if (startIndex < parts.length) return parts.slice(startIndex).join(' ');
+        return rawTitle;
     }
 
-    // --- AJOUT AU CALENDRIER GOOGLE ---
+    let allSocialDataStructure = { b0:[], b1:[], b2:[], b3:[] };
+    let currentSocialBlock = 'b0';
+
+    function parseSocialDataRefined() {
+        const lines = socialData.split('\n').filter(line => line.trim() !== '');
+        let currentBlockKey = '';
+        let currentBlockUrl = '';
+        let currentModule = null;
+
+        lines.forEach((line, index) => {
+            if (line.startsWith('🟨')) {
+                const blockData = cleanName(line);
+                if(blockData.urlPart.startsWith("B0")) currentBlockKey = 'b0';
+                else if(blockData.urlPart.startsWith("B1")) currentBlockKey = 'b1';
+                else if(blockData.urlPart.startsWith("B2")) currentBlockKey = 'b2';
+                else if(blockData.urlPart.startsWith("B3")) currentBlockKey = 'b3';
+                currentBlockUrl = blockData.urlPart;
+            } else if (line.startsWith('🟦')) {
+                const moduleData = cleanName(line);
+                const prettyTitle = getCleanTitle(moduleData.display);
+                currentModule = {
+                    title: prettyTitle,
+                    rawTitle: moduleData.display,
+                    url: moduleData.urlPart,
+                    sessions: [],
+                    id: "mod-" + index,
+                    parentUrl: currentBlockUrl
+                };
+                if(currentBlockKey) allSocialDataStructure[currentBlockKey].push(currentModule);
+            } else if (line.startsWith('🟧')) {
+                const sessionData = cleanName(line);
+                const prettySessionTitle = getCleanTitle(sessionData.display);
+                if(currentModule) {
+                    currentModule.sessions.push({
+                        title: prettySessionTitle,
+                        url: sessionData.urlPart,
+                        fullUrl: `${BASE_URL}${currentModule.parentUrl}/${currentModule.url}/${sessionData.urlPart}.html`
+                    });
+                }
+            }
+        });
+    }
+
+    function renderSocialNav() {
+        const navContainer = document.getElementById('social-blocks-nav');
+        navContainer.innerHTML = '';
+        const blocksInfo = [
+            { key:'b0', title:'Bloc 0', desc:'Fondamentaux', icon:'fa-scale-balanced' },
+            { key:'b1', title:'Bloc 1', desc:'Pilotage RH', icon:'fa-compass' },
+            { key:'b2', title:'Bloc 2', desc:'Opérations', icon:'fa-briefcase' },
+            { key:'b3', title:'Bloc 3', desc:'Contentieux', icon:'fa-gavel' }
+        ];
+        blocksInfo.forEach(block => {
+            const card = document.createElement('div');
+            card.className = `block-nav-card ${currentSocialBlock === block.key ? 'active-block' : ''}`;
+            card.onclick = () => {
+                currentSocialBlock = block.key;
+                renderSocialNav(); 
+                renderSocialContent();
+            };
+            card.innerHTML = `<div class="block-nav-icon"><i class="fa-solid ${block.icon}"></i></div><h3>${block.title}</h3><p>${block.desc}</p>`;
+            navContainer.appendChild(card);
+        });
+    }
+
+    // --- RENDU DYNAMIQUE (Modifié pour utiliser la DB) ---
+    function renderSocialContent() {
+        const contentContainer = document.getElementById('social-active-content');
+        contentContainer.innerHTML = '';
+        const modulesData = allSocialDataStructure[currentSocialBlock];
+        
+        if(!modulesData || modulesData.length === 0) {
+            contentContainer.innerHTML = '<div class="p-10 text-center text-slate-400 italic">Aucun module disponible pour ce bloc.</div>';
+            return;
+        }
+
+        const listContainer = document.createElement('div');
+        listContainer.className = 'modules-list-container';
+
+        modulesData.forEach(mod => {
+            const details = document.createElement('details');
+            details.className = 'module-accordion';
+            details.id = mod.id;
+
+            const summary = document.createElement('summary');
+            summary.className = 'module-summary';
+            
+            summary.innerHTML = `
+                <div class="flex items-center gap-4 flex-1">
+                    <div class="w-12 h-12 rounded-xl bg-blue-50 text-[#0F2C48] flex items-center justify-center text-lg border border-blue-100 shadow-sm">
+                        <i class="fa-solid fa-folder"></i>
+                    </div>
+                    <div class="flex flex-col flex-1">
+                        <h4 class="font-bold text-[#0F2C48] text-base">${mod.title}</h4>
+                        <div class="flex items-center gap-3 mt-1">
+                            <div class="mini-module-progress"><div class="mini-fill" id="progress-${mod.id}"></div></div>
+                            <span class="text-xs text-slate-400 font-medium" id="txt-progress-${mod.id}">0%</span>
+                        </div>
+                    </div>
+                </div>
+                <i class="fa-solid fa-chevron-down text-slate-300 transition-transform duration-300"></i>
+            `;
+
+            const contentDiv = document.createElement('div');
+            const sessionsGrid = document.createElement('div');
+            sessionsGrid.className = 'sessions-grid';
+
+            mod.sessions.forEach((sess, idx) => {
+                const uniqueId = sess.url;
+                const btnDoneId = `btn-${uniqueId}`;
+                const sessionCard = document.createElement('div');
+                sessionCard.className = 'session-card';
+                const sessionNum = idx + 1;
+
+                // --- RÉCUPÉRATION DES LIENS DE LA DB ---
+                const resources = dbRessources[uniqueId] || {};
+                
+                // Fonction helper pour générer le bouton ou le désactiver
+                const getBtn = (type, icon, title, colorClass) => {
+                    const link = resources[type];
+                    if (link) {
+                        return `<button class="action-btn ${colorClass}" title="${title}" onclick="window.open('${link}', '_blank')"><i class="fa-solid ${icon}"></i></button>`;
+                    } else {
+                        return `<button class="action-btn disabled" title="Bientôt disponible"><i class="fa-solid ${icon}"></i></button>`;
+                    }
+                };
+
+                sessionCard.innerHTML = `
+                    <div class="session-header">
+                        <div class="session-number" id="icon-${uniqueId}">${sessionNum}</div>
+                        <a href="${sess.fullUrl}" target="_blank" class="session-title">${sess.title}</a>
+                    </div>
+                    <div class="session-actions">
+                        ${getBtn('audio', 'fa-headphones', 'Résumé Audio', 'btn-audio')}
+                        ${getBtn('video', 'fa-video', 'Résumé Vidéo', 'btn-video')}
+                        ${getBtn('mindmap', 'fa-brain', 'Carte Mentale', 'btn-mindmap')}
+                        ${getBtn('report', 'fa-file-lines', 'Rapports', 'btn-report')}
+                        ${getBtn('learn', 'fa-graduation-cap', 'Fiches d\'apprentissage', 'btn-learn')}
+                        ${getBtn('quiz', 'fa-circle-question', 'Quiz', 'btn-quiz')}
+                        ${getBtn('info', 'fa-chart-pie', 'Infographie', 'btn-info')}
+                        
+                        <!-- Note PDF (Local si pas dans DB, sinon lien DB) -->
+                        <button class="action-btn btn-pdf" title="Note PDF" onclick="window.open('${resources.pdf || sess.fullUrl.replace(".html", ".pdf")}', '_blank')"><i class="fa-solid fa-file-pdf"></i></button>
+                        
+                        <div class="w-px h-8 bg-slate-200 mx-1 hidden sm:block"></div>
+
+                        <!-- Lien Externe STUDI -->
+                        <button class="action-btn btn-link" title="Accès Cours Studi (Réservé Apprenant)" onclick="window.open('https://www.studi.com/fr/connexion', '_blank')"><i class="fa-solid fa-link"></i></button>
+
+                        <button class="action-btn btn-bell" title="Rappel J+7" onclick="addToCalendar('${sess.title}', '${sess.fullUrl}')"><i class="fa-solid fa-bell"></i></button>
+                        <button class="action-btn btn-check status-btn btn-done" id="${btnDoneId}" onclick="toggleStatus(this, '${uniqueId}', 'done')" title="Marquer comme traité"><i class="fa-solid fa-check"></i></button>
+                    </div>
+                `;
+                sessionsGrid.appendChild(sessionCard);
+            });
+
+            contentDiv.appendChild(sessionsGrid);
+            details.appendChild(summary);
+            details.appendChild(contentDiv);
+            listContainer.appendChild(details);
+        });
+
+        contentContainer.appendChild(listContainer);
+        loadStatus(); 
+    }
+
+    function initSocial() {
+        parseSocialDataRefined();
+        renderSocialNav();
+        renderSocialContent();
+        updateProgress();
+    }
+
+    // --- UTILS ---
     function addToCalendar(title, url) {
+        const date = new Date(); date.setDate(date.getDate() + 7);
+        const dateString = date.toISOString().replace(/-|:|\.\d\d\d/g,"").split("T")[0]; 
         const baseUrl = "https://calendar.google.com/calendar/render";
         const action = "TEMPLATE";
-        const text = encodeURIComponent("Formation Juriste : " + title);
+        const text = encodeURIComponent("Relecture : " + title);
         const details = encodeURIComponent("Lien vers le cours : " + url);
-        
-        // On ouvre sans date pré-remplie pour laisser l'utilisateur choisir
+        // J'enlève le champ "dates" pour te laisser choisir manuellement
         const calendarLink = `${baseUrl}?action=${action}&text=${text}&details=${details}`;
         window.open(calendarLink, '_blank');
     }
 
-    // --- GESTION DES STATUTS (LocalStorage) ---
     function toggleStatus(btn, id, type) {
         btn.classList.toggle('active');
         const key = `status_${id}_${type}`;
         const isActive = btn.classList.contains('active');
+        if (isActive) localStorage.setItem(key, 'true'); else localStorage.removeItem(key);
+        if (type === 'done') { updateSessionIcon(id, isActive); updateProgress(); }
+    }
+
+    function updateSessionIcon(id, isDone) {
+        const iconContainer = document.getElementById(`icon-${id}`);
+        const card = iconContainer ? iconContainer.closest('.session-card') : null;
         
-        if (isActive) {
-            localStorage.setItem(key, 'true');
-        } else {
-            localStorage.removeItem(key);
+        if(iconContainer) {
+            if(isDone) iconContainer.innerHTML = '<i class="fa-solid fa-check"></i>';
+            else {
+                // Si on dé-valide, on force le rechargement pour réafficher le numéro rouge
+                renderSocialContent();
+            }
         }
-        
-        // Si c'est le bouton 'done', on met à jour la progression
-        if (type === 'done') {
-            updateProgress();
+        if(card) {
+            if(isDone) card.classList.add('completed');
+            else card.classList.remove('completed');
         }
     }
 
@@ -1302,72 +970,68 @@
         const buttons = document.querySelectorAll('.status-btn');
         buttons.forEach(btn => {
             const onclickAttr = btn.getAttribute('onclick');
-            // Extraction propre des arguments du onclick
-            const match = onclickAttr.match(/'([^']+)',\s*'([^']+)'/); 
-            if (match) {
-                const id = match[1]; // uniqueId
-                const type = match[2]; // 'note', 'done', 'bell'
-                const key = `status_${id}_${type}`;
-                
-                if (localStorage.getItem(key) === 'true') {
-                    btn.classList.add('active');
+            if(onclickAttr) {
+                const match = onclickAttr.match(/'([^']+)',\s*'([^']+)'/); 
+                if (match) {
+                    const id = match[1]; const type = match[2]; 
+                    const key = `status_${id}_${type}`;
+                    if (localStorage.getItem(key) === 'true') {
+                        btn.classList.add('active');
+                        if(type === 'done') updateSessionIcon(id, true);
+                    }
                 }
             }
         });
         updateProgress();
     }
 
-    // --- PROGRESSION GLOBALE ---
     function updateProgress() {
-        // On compte UNIQUEMENT les boutons "done" (traités) pour la progression
-        
-        // 1. Progression Globale (Tous les onglets confondus, mais ici on a que Social rempli)
-        const allDoneBtns = document.querySelectorAll('.btn-done');
-        const allActiveDone = document.querySelectorAll('.btn-done.active');
-        const globalPct = allDoneBtns.length === 0 ? 0 : Math.round((allActiveDone.length / allDoneBtns.length) * 100);
-        
+        let totalSessions = 0;
+        let completedSessions = 0;
+        Object.values(allSocialDataStructure).forEach(blockMods => {
+            blockMods.forEach(mod => {
+                mod.sessions.forEach(sess => {
+                    totalSessions++;
+                    if(localStorage.getItem(`status_${sess.url}_done`) === 'true') completedSessions++;
+                });
+            });
+        });
+        const globalPct = totalSessions === 0 ? 0 : Math.round((completedSessions / totalSessions) * 100);
         const globTxt = document.getElementById('global-progress-txt');
         const globBar = document.getElementById('global-progress-bar');
         if(globTxt) globTxt.textContent = globalPct + '%';
         if(globBar) globBar.style.width = globalPct + '%';
 
-        // 2. Progression par Bloc dans Droit Social (Beau Gosse Style)
-        ['b0', 'b1', 'b2', 'b3'].forEach(block => {
-            const container = document.getElementById('social-content-' + block);
-            if(container) {
-                const btns = container.querySelectorAll('.btn-done');
-                const active = container.querySelectorAll('.btn-done.active');
-                const pct = btns.length === 0 ? 0 : Math.round((active.length / btns.length) * 100);
-                
-                const txt = document.getElementById(`prog-${block}-txt`);
-                const bar = document.getElementById(`prog-${block}-bar`);
-                if(txt) txt.textContent = pct + '%';
-                if(bar) bar.style.width = pct + '%';
+        const modules = document.querySelectorAll('.module-accordion');
+        modules.forEach(modEl => {
+            const btns = modEl.querySelectorAll('.btn-done');
+            const active = modEl.querySelectorAll('.btn-done.active');
+            if(btns.length > 0) {
+                const pct = Math.round((active.length / btns.length) * 100);
+                const progressBar = document.getElementById(`progress-${modEl.id}`);
+                const progressTxt = document.getElementById(`txt-progress-${modEl.id}`);
+                if(progressBar) progressBar.style.width = pct + '%';
+                if(progressTxt) progressTxt.textContent = pct + '%';
             }
         });
     }
 
-    // --- NAVIGATION ONGLETS PRINCIPAUX ---
     function switchFormation(id) {
-        // Contenu
         document.querySelectorAll('.tab-pane').forEach(el => el.classList.remove('active'));
         document.getElementById('view-' + id).classList.add('active');
-        
-        // Boutons
         document.querySelectorAll('.tab-button').forEach(el => el.classList.remove('active'));
-        // On cherche le bouton correspondant (index based simple approach here)
         const buttons = document.querySelectorAll('.tab-button');
         if(id === 'accueil') buttons[0].classList.add('active');
-        if(id === 'social') buttons[2].classList.add('active'); // Attention index changé
+        if(id === 'social') buttons[2].classList.add('active'); 
         if(id === 'affaires') buttons[1].classList.add('active');
-        if(id === 'entreprise') buttons[3].classList.add('active'); // Si 4e bouton
-        
-        // Scroll top léger
+        if(id === 'entreprise') buttons[3].classList.add('active'); 
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // Lancement au chargement
-    document.addEventListener('DOMContentLoaded', generateContent);
+    document.addEventListener('DOMContentLoaded', () => {
+        updateHeaderHeight();
+        initSocial();
+    });
   </script>
 
 </body>
