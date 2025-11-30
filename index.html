@@ -729,12 +729,12 @@
 🟧B2_M10_S001_Onboarding - Manager une équipe d'un service juridique et transverse
 🟧B2_M10_S002_Identifier les compétences de l'équipe
 🟧B2_M10_S003_Fixer des objectifs pertinents
-🟧B2_M10_S004_Méthodes et outils de suivi des activités
+🟧B2_M10_S004_Methodes et outils de suivi des activités
 🟧B2_M10_S005_Application des méthodes de suivi
-🟧B2_M10_S006_Résolution de problèmes et gestion des conflits
+🟧B2_M10_S006_Resolution de problèmes et gestion des conflits
 🟧B2_M10_S007_Gestion du temps et des priorités
 🟧B2_M10_S008_Gestion de projet au sein d'une équipe juridique
-🟧B2_M10_S009_Auto-Evaluation - Manager une équipe d'un service juridique et transverse
+🟧B2_M10_S009_AutoEvaluation - Manager une équipe d'un service juridique et transverse
 🟧B2_M10_S010_Application - Manager une équipe d'un service juridique et transverse
 🟧B2_M10_S011_Offboarding - Manager une équipe d'un service juridique et transverse
 🟦B2_M11_Diagnostiquer les pratiques RH au sein de l’organisation
@@ -998,9 +998,9 @@
                 const jsTitle = JSON.stringify(sess.title);
                 const jsUrl = JSON.stringify(sess.fullUrl);
                 
-                // Gestion sécurisée du PDF et du lien Studi
+                // Gestion sécurisée du PDF et du lien Studi (Comptalia par défaut)
                 const pdfLink = resources.pdf || "#"; 
-                const studiLink = resources.studi || "https://www.studi.com/fr/connexion";
+                const studiLink = resources.studi || "https://app.comptalia.com/v3/dashboard";
 
                 sessionCard.innerHTML = `
                     <div class="session-header">
