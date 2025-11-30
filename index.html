@@ -5,13 +5,10 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Espace Formation — The Jurist Elite Club</title>
   
-  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   
-  <!-- FontAwesome (6.5.1) -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
   
-  <!-- Polices -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&family=Montserrat:wght@500;600;700&family=Outfit:wght@300;400;600;800&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   
   <script>
@@ -184,9 +181,6 @@
     .btn-audio { color: #8b5cf6; background-color: #f5f3ff; border-color: #ddd6fe; }
     .btn-video { color: #ef4444; background-color: #fef2f2; border-color: #fca5a5; }
     .btn-info { color: #06b6d4; background-color: #ecfeff; border-color: #cffafe; }
-    .btn-mindmap { color: #d946ef; background-color: #fdf4ff; border-color: #f5d0fe; }
-    .btn-report { color: #64748b; background-color: #f8fafc; border-color: #cbd5e1; }
-    .btn-quiz { color: #f59e0b; background-color: #fffbeb; border-color: #fde68a; }
     .btn-learn { color: #10b981; background-color: #ecfdf5; border-color: #a7f3d0; }
     .btn-pdf { color: #f97316; background-color: #fff7ed; border-color: #ffedd5; }
     .btn-bell { color: #eab308; background-color: #fefce8; border-color: #fef08a; }
@@ -233,7 +227,6 @@
 </head>
 <body>
 
-  <!-- HEADER SPECIAL CLUB (GOLD) -->
   <div class="top-bar" id="mainHeader">
     <div class="top-bar-container">
         <div class="top-bar-left">
@@ -263,7 +256,6 @@
   </div>
 
   <main class="wrap">
-    <!-- ACCUEIL -->
     <div id="view-accueil" class="tab-pane">
         <div class="welcome-card">
             <h1 class="text-3xl font-bold text-[#0F2C48] mb-2">Bienvenue Mathilde ! 👋</h1>
@@ -280,10 +272,8 @@
     <div id="view-affaires" class="tab-pane"><div class="mb-6 pl-4 border-l-4 border-[#D9A526]"><h1 class="text-2xl font-bold text-[#0F2C48]">MBA Juriste d'entreprise en Droit des Affaires</h1></div><div class="p-6 text-center text-gray-400 bg-slate-50 rounded border border-dashed border-gray-300 italic">Contenu à venir...</div></div>
     <div id="view-entreprise" class="tab-pane"><div class="mb-6 pl-4 border-l-4 border-[#D9A526]"><h1 class="text-2xl font-bold text-[#0F2C48]">MBA Juriste d'Entreprise</h1></div><div class="p-6 text-center text-gray-400 bg-slate-50 rounded border border-dashed border-gray-300 italic">Contenu à venir...</div></div>
 
-    <!-- SOCIAL -->
     <div id="view-social" class="tab-pane active">
         
-        <!-- AVERTISSEMENT LEGAL -->
         <div class="disclaimer-box">
             <div class="disclaimer-title"><i class="fa-solid fa-triangle-exclamation"></i> Avertissement Légal & Accès</div>
             <div class="disclaimer-text">
@@ -300,15 +290,12 @@
             </div>
         </div>
 
-        <!-- 1. NAVIGATION BLOCS -->
         <div class="block-nav-grid" id="social-blocks-nav"></div>
 
-        <!-- 2. CONTENU BLOC (ACCORDÉONS) -->
         <div id="social-active-content" class="active-block-content"></div>
     </div>
   </main>
 
-  <!-- FOOTER ORIGINAL -->
   <footer class="main-footer">
     <div class="footer-container">
         <div class="footer-row">
@@ -346,7 +333,6 @@
 
   <div id="backToTop" onclick="window.scrollTo(0,0)"><i class="fas fa-arrow-up"></i></div>
   
-  <!-- Charge la Base de Données -->
   <script src="database.js"></script>
 
   <script>
@@ -358,6 +344,7 @@
     window.addEventListener('load', updateHeaderHeight); window.addEventListener('resize', updateHeaderHeight);
     window.addEventListener('scroll', () => { const btn = document.getElementById('backToTop'); if (btn) { if (window.scrollY > 300) btn.classList.add('show'); else btn.classList.remove('show'); } });
 
+    // --- DONNÉES DE NAVIGATION ---
     const BASE_URL = "https://projettechacademy.github.io/Juridique/";
     const socialData = `
 🟨B0_Fondamentaux du droit
@@ -863,6 +850,9 @@
     let allSocialDataStructure = { b0:[], b1:[], b2:[], b3:[] };
     let currentSocialBlock = 'b0';
 
+    // ----------------------------------------------------------------------
+    // ⚠️ LA PARTIE IMPORTANTE CORRIGÉE POUR LE LECTEUR UNIVERSEL
+    // ----------------------------------------------------------------------
     function parseSocialDataRefined() {
         const lines = socialData.split('\n').filter(line => line.trim() !== '');
         let currentBlockKey = '';
@@ -893,10 +883,11 @@
                 const sessionData = cleanName(line);
                 const prettySessionTitle = getCleanTitle(sessionData.display);
                 if(currentModule) {
+                    // C'est ICI que ça se joue : on pointe vers lecteur.html?id=...
                     currentModule.sessions.push({
                         title: prettySessionTitle,
                         url: sessionData.urlPart,
-                        fullUrl: `${BASE_URL}${currentModule.parentUrl}/${currentModule.url}/${sessionData.urlPart}.html`
+                        fullUrl: `lecteur.html?id=${sessionData.urlPart}` 
                     });
                 }
             }
@@ -1000,7 +991,6 @@
                 
                 const getBtn = (type, icon, title, colorClass) => {
                     const link = resources[type];
-                    // Correction de la syntaxe onclick pour éviter les erreurs
                     const onclick = link ? `window.open('${link}', '_blank')` : `alert('${title} : Lien à venir')`;
                     return `<button class="action-btn ${colorClass}" title="${title}" onclick="${onclick}"><i class="fa-solid ${icon}"></i></button>`;
                 };
@@ -1009,7 +999,7 @@
                 const jsUrl = JSON.stringify(sess.fullUrl);
                 
                 // Gestion sécurisée du PDF et du lien Studi
-                const pdfLink = resources.pdf || sess.fullUrl.replace(".html", ".pdf");
+                const pdfLink = resources.pdf || "#"; 
                 const studiLink = resources.studi || "https://www.studi.com/fr/connexion";
 
                 sessionCard.innerHTML = `
@@ -1020,10 +1010,7 @@
                     <div class="session-actions">
                         ${getBtn('audio', 'fa-headphones', 'Résumé Audio', 'btn-audio')}
                         ${getBtn('video', 'fa-video', 'Résumé Vidéo', 'btn-video')}
-                        ${getBtn('mindmap', 'fa-brain', 'Carte Mentale', 'btn-mindmap')}
-                        ${getBtn('report', 'fa-file-lines', 'Rapports', 'btn-report')}
                         ${getBtn('learn', 'fa-graduation-cap', 'Fiches d\'apprentissage', 'btn-learn')}
-                        ${getBtn('quiz', 'fa-circle-question', 'Quiz', 'btn-quiz')}
                         ${getBtn('info', 'fa-chart-pie', 'Infographie', 'btn-info')}
                         
                         <button class="action-btn btn-pdf" title="Note PDF" onclick="window.open('${pdfLink}', '_blank')"><i class="fa-solid fa-file-pdf"></i></button>
@@ -1074,7 +1061,7 @@
                 iconContainer.style.backgroundColor = '#10b981';
                 iconContainer.style.borderColor = '#10b981';
             } else {
-                // Pour rafraîchir l'icône, on recharge le contenu (simple mais efficace)
+                // Pour rafraîchir l'icône, on recharge le contenu
                 renderSocialContent();
             }
         }
