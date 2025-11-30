@@ -6,38 +6,166 @@
     <title>Lecteur de Cours</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Outfit', sans-serif; background-color: #F6F2E8; color: #0F2C48; padding-top: 100px; }
-        .content-container { max-width: 900px; margin: 0 auto 60px auto; padding: 40px; background: white; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); min-height: 60vh; text-align: center; }
-        h1 { color: #D9A526; font-size: 2rem; font-weight: 800; margin-bottom: 30px; line-height: 1.3; }
-        .empty-state { color: #94a3b8; font-style: italic; margin-top: 50px; }
+        body { font-family: 'Outfit', sans-serif; background-color: #F6F2E8; color: #0F2C48; padding-top: 100px; display: flex; flex-direction: column; min-height: 100vh; }
+        
+        .content-container { 
+            max-width: 1000px; width: 95%; margin: 0 auto 40px auto; padding: 60px 40px; 
+            background: white; border-radius: 24px; 
+            box-shadow: 0 15px 40px rgba(15, 44, 72, 0.08); 
+            text-align: center; flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center;
+            border: 1px solid rgba(217, 165, 38, 0.15);
+            position: relative; overflow: hidden;
+        }
+
+        /* Titre du module en haut */
+        h1 { color: #0F2C48; font-size: 1.5rem; font-weight: 800; margin-bottom: 10px; line-height: 1.3; z-index: 10; }
+        .course-id-tag { background: #fffbeb; color: #B4792A; border: 1px solid #fde68a; padding: 6px 18px; border-radius: 50px; font-size: 0.75rem; font-weight: 700; margin-bottom: 20px; display: inline-block; letter-spacing: 1px; z-index: 10; }
+
+        /* SÉPARATEUR ÉLÉGANT */
+        .separator { width: 60px; height: 4px; background: #D9A526; border-radius: 2px; margin: 30px 0; opacity: 0.8; z-index: 10; }
+
+        /* ZONE DYNAMIQUE "RESSOURCE DU MOMENT" */
+        .resource-box { 
+            width: 100%; max-width: 700px; 
+            padding: 30px; 
+            background: linear-gradient(135deg, #fafafa 0%, #ffffff 100%);
+            border-radius: 20px; 
+            border: 1px dashed #cbd5e1;
+            position: relative;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+        .resource-box:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.05); border-color: #D9A526; }
+
+        .res-badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 6px 16px; border-radius: 20px;
+            font-size: 0.8rem; font-weight: 700; text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+        .badge-book { background: #ecfdf5; color: #059669; }
+        .badge-video { background: #fef2f2; color: #dc2626; }
+        .badge-tip { background: #eff6ff; color: #2563eb; }
+        .badge-quote { background: #fffbeb; color: #d97706; }
+
+        .res-content { 
+            font-family: 'Playfair Display', serif; 
+            font-size: 1.8rem; 
+            color: #0F2C48; 
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 15px;
+        }
+        
+        .res-sub { font-family: 'Outfit', sans-serif; font-size: 1rem; color: #64748b; font-weight: 500; }
+        
+        .res-icon-bg {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            font-size: 15rem; color: #f1f5f9; opacity: 0.4; z-index: 0; pointer-events: none;
+        }
+
+        .footer-hint { margin-top: 40px; font-size: 0.9rem; color: #94a3b8; font-style: italic; z-index: 10; display: flex; align-items: center; gap: 10px; }
+        .footer-hint i { color: #D9A526; animation: bounce 2s infinite; }
+
+        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
     </style>
 </head>
 <body>
 
     <div class="content-container">
+        
+        <i class="fa-solid fa-graduation-cap res-icon-bg" id="bg-icon"></i>
+
+        <div class="course-id-tag" id="course-id-display">MODULE</div>
+        
         <h1 id="course-title">Chargement du module...</h1>
         
-        <div class="empty-state">
-            <i class="fa-solid fa-book-open fa-3x mb-4 opacity-50"></i><br>
-            Utilise la barre d'outils ci-dessus pour accéder aux ressources (Audio, Vidéo, Fiches...).<br>
-            <span class="text-sm mt-2 block text-slate-400">Aucun contenu textuel rédigé pour ce module.</span>
+        <div class="separator"></div>
+
+        <div class="resource-box" id="resource-container">
+            </div>
+
+        <div class="footer-hint">
+            <i class="fa-solid fa-arrow-up"></i>
+            <span>Utilise la barre d'outils ci-dessus pour accéder à tes supports de cours (Audio, Vidéo, Fiches...)</span>
         </div>
+
     </div>
 
     <script src="database.js"></script>
     <script src="toolbar_injector.js"></script>
 
     <script>
-        // Script pour afficher le bon titre sur la page
+        // 1. GESTION DU TITRE ET DE L'ID
         const params = new URLSearchParams(window.location.search);
         const courseId = params.get('id');
+        
         if(courseId) {
-            const cleanTitle = courseId.replace(/_/g, ' ');
+            const parts = courseId.split('_');
+            let cleanTitle = courseId.replace(/_/g, ' ');
+            let idTag = "MODULE";
+
+            // Essai de détection des codes (B0, M01...)
+            if(parts.length > 3) {
+                idTag = parts.slice(0, 3).join(' '); // Récupère B0 M01 S001
+                cleanTitle = parts.slice(3).join(' '); // Le reste est le titre
+            }
+
             document.getElementById('course-title').textContent = cleanTitle;
-            document.title = cleanTitle; // Change le titre de l'onglet
+            document.getElementById('course-id-display').textContent = idTag;
+            document.title = cleanTitle; 
         }
+
+        // 2. BASE DE DONNÉES "SMART JURIST"
+        const resources = [
+            // LIVRES
+            { type: 'book', icon: 'fa-book', label: 'Lecture Conseillée', title: "Code Civil (Dernière Édition)", sub: "La bible du juriste. À garder toujours à portée de main." },
+            { type: 'book', icon: 'fa-book-open', label: 'Lecture Conseillée', title: "La méthodologie du cas pratique", sub: "Essentiel pour réussir tes examens et tes analyses." },
+            { type: 'book', icon: 'fa-scale-balanced', label: 'Culture Juridique', title: "L'art de la guerre (Sun Tzu)", sub: "Pour affûter ta stratégie en contentieux et négociation." },
+            
+            // YOUTUBE / VIDÉOS
+            { type: 'video', icon: 'fa-youtube', label: 'Vidéo Youtube', title: "Chaîne : Jurixio", sub: "Idéal pour réviser les fondamentaux du droit en vidéo." },
+            { type: 'video', icon: 'fa-play-circle', label: 'Vidéo Youtube', title: "Chaîne : Le Droit en 5 minutes", sub: "Parfait pour comprendre une notion complexe rapidement." },
+            { type: 'video', icon: 'fa-laptop-code', label: 'Veille Juridique', title: "Village de la Justice", sub: "Le site incontournable pour suivre l'actualité des métiers du droit." },
+
+            // CONSEILS / TIPS
+            { type: 'tip', icon: 'fa-lightbulb', label: 'Conseil Pro', title: "Fais ta veille hebdomadaire", sub: "Le droit bouge vite. Abonne-toi à une newsletter juridique." },
+            { type: 'tip', icon: 'fa-list-check', label: 'Méthodologie', title: "Le syllogisme juridique", sub: "Majeure, Mineure, Conclusion. Ne l'oublie jamais dans tes démonstrations." },
+            { type: 'tip', icon: 'fa-brain', label: 'Productivité', title: "La méthode Pomodoro", sub: "25min de travail intense, 5min de pause. Efficacité garantie." },
+
+            // CITATIONS (Pour garder la motivation)
+            { type: 'quote', icon: 'fa-quote-left', label: 'Inspiration', title: "« Dura lex, sed lex. »", sub: "La loi est dure, mais c'est la loi." },
+            { type: 'quote', icon: 'fa-bolt', label: 'Motivation', title: "« Tu es l'architecte de ton propre avenir juridique. »", sub: "Jurist Elite Club" },
+            { type: 'quote', icon: 'fa-fire', label: 'Mindset', title: "« La rigueur d'aujourd'hui fait l'excellence de demain. »", sub: "MMPA" }
+        ];
+
+        // 3. MOTEUR DE SÉLECTION ALÉATOIRE
+        const randomIndex = Math.floor(Math.random() * resources.length);
+        const item = resources[randomIndex];
+
+        // Construction du HTML dynamique
+        const container = document.getElementById('resource-container');
+        const bgIcon = document.getElementById('bg-icon');
+
+        // Changer l'icône de fond selon le type
+        bgIcon.className = `fa-solid ${item.icon} res-icon-bg`;
+
+        // Couleurs de badges
+        let badgeClass = 'badge-tip';
+        if(item.type === 'book') badgeClass = 'badge-book';
+        if(item.type === 'video') badgeClass = 'badge-video';
+        if(item.type === 'quote') badgeClass = 'badge-quote';
+
+        container.innerHTML = `
+            <div class="res-badge ${badgeClass}">
+                <i class="fa-solid ${item.icon}"></i> ${item.label}
+            </div>
+            <div class="res-content">${item.title}</div>
+            <div class="res-sub">${item.sub}</div>
+        `;
+
     </script>
 
 </body>
