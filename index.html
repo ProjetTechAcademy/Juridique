@@ -5,13 +5,10 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Espace Formation — The Jurist Elite Club</title>
   
-  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   
-  <!-- FontAwesome (6.5.1) -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
   
-  <!-- Polices -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&family=Montserrat:wght@500;600;700&family=Outfit:wght@300;400;600;800&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   
   <script>
@@ -233,7 +230,6 @@
 </head>
 <body>
 
-  <!-- HEADER SPECIAL CLUB (GOLD) -->
   <div class="top-bar" id="mainHeader">
     <div class="top-bar-container">
         <div class="top-bar-left">
@@ -263,7 +259,6 @@
   </div>
 
   <main class="wrap">
-    <!-- ACCUEIL -->
     <div id="view-accueil" class="tab-pane">
         <div class="welcome-card">
             <h1 class="text-3xl font-bold text-[#0F2C48] mb-2">Bienvenue Mathilde ! 👋</h1>
@@ -280,10 +275,8 @@
     <div id="view-affaires" class="tab-pane"><div class="mb-6 pl-4 border-l-4 border-[#D9A526]"><h1 class="text-2xl font-bold text-[#0F2C48]">MBA Juriste d'entreprise en Droit des Affaires</h1></div><div class="p-6 text-center text-gray-400 bg-slate-50 rounded border border-dashed border-gray-300 italic">Contenu à venir...</div></div>
     <div id="view-entreprise" class="tab-pane"><div class="mb-6 pl-4 border-l-4 border-[#D9A526]"><h1 class="text-2xl font-bold text-[#0F2C48]">MBA Juriste d'Entreprise</h1></div><div class="p-6 text-center text-gray-400 bg-slate-50 rounded border border-dashed border-gray-300 italic">Contenu à venir...</div></div>
 
-    <!-- SOCIAL -->
     <div id="view-social" class="tab-pane active">
         
-        <!-- AVERTISSEMENT LEGAL -->
         <div class="disclaimer-box">
             <div class="disclaimer-title"><i class="fa-solid fa-triangle-exclamation"></i> Avertissement Légal & Accès</div>
             <div class="disclaimer-text">
@@ -300,15 +293,12 @@
             </div>
         </div>
 
-        <!-- 1. NAVIGATION BLOCS -->
         <div class="block-nav-grid" id="social-blocks-nav"></div>
 
-        <!-- 2. CONTENU BLOC (ACCORDÉONS) -->
         <div id="social-active-content" class="active-block-content"></div>
     </div>
   </main>
 
-  <!-- FOOTER ORIGINAL -->
   <footer class="main-footer">
     <div class="footer-container">
         <div class="footer-row">
@@ -346,10 +336,13 @@
 
   <div id="backToTop" onclick="window.scrollTo(0,0)"><i class="fas fa-arrow-up"></i></div>
   
-  <!-- Charge la Base de Données -->
   <script src="database.js"></script>
 
   <script>
+    // --- PROTECTION CONTRE LES ERREURS ---
+    window.dbRessources = window.dbRessources || {};
+    if (Object.keys(window.dbRessources).length === 0) { console.warn("⚠️ Attention : dbRessources est vide ou non chargé."); }
+
     function updateHeaderHeight() { const header = document.getElementById('mainHeader'); if(header) document.documentElement.style.setProperty('--header-height', header.offsetHeight + 'px'); }
     window.addEventListener('load', updateHeaderHeight); window.addEventListener('resize', updateHeaderHeight);
     window.addEventListener('scroll', () => { const btn = document.getElementById('backToTop'); if (btn) { if (window.scrollY > 300) btn.classList.add('show'); else btn.classList.remove('show'); } });
@@ -990,17 +983,21 @@
                 sessionCard.className = 'session-card';
                 const sessionNum = idx + 1;
 
-                const resources = dbRessources[uniqueId] || {};
+                // --- SÉCURITÉ ---
+                // On vérifie que window.dbRessources existe avant de l'utiliser
+                const resources = (window.dbRessources && window.dbRessources[uniqueId]) ? window.dbRessources[uniqueId] : {};
                 
                 const getBtn = (type, icon, title, colorClass) => {
                     const link = resources[type];
+                    // Correction de la syntaxe onclick pour éviter les erreurs
                     const onclick = link ? `window.open('${link}', '_blank')` : `alert('${title} : Lien à venir')`;
                     return `<button class="action-btn ${colorClass}" title="${title}" onclick="${onclick}"><i class="fa-solid ${icon}"></i></button>`;
                 };
 
-                // JSON.stringify prevents syntax errors
                 const jsTitle = JSON.stringify(sess.title);
                 const jsUrl = JSON.stringify(sess.fullUrl);
+                
+                // Gestion sécurisée du PDF et du lien Studi
                 const pdfLink = resources.pdf || sess.fullUrl.replace(".html", ".pdf");
                 const studiLink = resources.studi || "https://www.studi.com/fr/connexion";
 
@@ -1066,6 +1063,11 @@
                 iconContainer.style.backgroundColor = '#10b981';
                 iconContainer.style.borderColor = '#10b981';
             } else {
+                // Pour rafraîchir l'icône, on recharge le contenu (simple mais efficace)
+                // Idéalement on remettrait juste le numéro, mais renderSocialContent le fera au prochain chargement.
+                // Ici on change juste le style visuellement pour l'instant T
+                iconContainer.innerHTML = id.split('_').pop().replace('S',''); // Juste un placeholder si besoin, ou on laisse l'icône
+                // Mieux : on relance le rendu complet pour être propre
                 renderSocialContent();
             }
         }
