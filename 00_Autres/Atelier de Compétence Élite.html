@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atelier de Compétence Juridique - Niveau 7</title>
+    
+    <!-- FONTS & ICONS -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        /* CHARTE GRAPHIQUE STRICTE */
+        :root {
+            --bleu-fonce: #0A2342;
+            --bleu: #304E78;
+            --bleu-doux: #6B85B8;
+            --or: #D4AF37;
+            --or-clair: #F3E5AB;
+            --ecru: #FDFBF7;
+            --creme: #F6EFE9;
+            --txt: #4a4a4a;
+            --bordeaux: #7B2E2E;
+            --vert-juridique: #2E5D4B;
+        }
+
+        body {
+            background-color: var(--ecru);
+            color: var(--txt);
+            font-family: 'Lato', sans-serif;
+        }
+
+        h1, h2, h3, .font-serif {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* NAVIGATION */
+        .nav-tabs {
+            background: white;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+        .tab-btn {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--bleu-fonce);
+            border-bottom: 4px solid transparent;
+            opacity: 0.6;
+            transition: all 0.3s;
+        }
+        .tab-btn:hover {
+            opacity: 1;
+            background-color: var(--creme);
+        }
+        .tab-btn.active {
+            opacity: 1;
+            border-bottom: 4px solid var(--or);
+            background-color: white;
+            font-weight: 700;
+        }
+
+        /* SYLLOGISME CARDS */
+        .syllogisme-card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-left: 6px solid var(--bleu-fonce);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .syllogisme-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        .tag-category {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: bold;
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+
+        /* AUDIO BUTTON */
+        .btn-audio {
+            width: 24px;
+            height: 24px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background-color: var(--ecru);
+            color: var(--bleu);
+            font-size: 0.7rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 1px solid var(--bleu-doux);
+        }
+        .btn-audio:hover {
+            background-color: var(--or);
+            color: white;
+            border-color: var(--or);
+        }
+
+        /* SECTIONS VISIBILITY */
+        .tab-content { display: none; animation: fadeIn 0.4s ease-out; }
+        .tab-content.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* SCROLLBAR CUSTOM */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--ecru); }
+        ::-webkit-scrollbar-thumb { background: var(--bleu-doux); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--bleu); }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <!-- HEADER -->
+    <header style="background-color: var(--bleu-fonce);" class="text-white p-6 shadow-xl relative overflow-hidden">
+        <div class="absolute top-0 right-0 p-4 opacity-10">
+            <i class="fas fa-balance-scale text-9xl"></i>
+        </div>
+        <div class="max-w-7xl mx-auto relative z-10">
+            <h1 class="text-3xl md:text-4xl font-bold tracking-wide mb-2">
+                Atelier de Compétence <span style="color: var(--or);">Juridique</span>
+            </h1>
+            <p class="text-lg font-light text-gray-300 font-serif italic">"Observer la règle, comprendre le fait, déduire la solution."</p>
+            <div class="mt-4 flex gap-4 text-xs font-bold uppercase tracking-widest text-[#D4AF37]">
+                <span><i class="fas fa-certificate mr-1"></i> Titre RNCP Niveau 7</span>
+                <span><i class="fas fa-building mr-1"></i> Droit Social & Affaires</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- NAVIGATION PRINCIPALE -->
+    <nav class="sticky top-0 z-50 nav-tabs">
+        <div class="max-w-7xl mx-auto px-4 overflow-x-auto">
+            <div class="flex space-x-1 min-w-max">
+                <button onclick="switchTab('syllogismes')" class="tab-btn active py-4 px-6 text-sm uppercase flex items-center">
+                    <i class="fas fa-walking mr-2"></i> 50 Cas Pratiques (Syllogismes)
+                </button>
+                <button onclick="switchTab('lexique')" class="tab-btn py-4 px-6 text-sm uppercase flex items-center">
+                    <i class="fas fa-spell-check mr-2"></i> Lexique Top 500
+                </button>
+                <button onclick="switchTab('reflexes')" class="tab-btn py-4 px-6 text-sm uppercase flex items-center">
+                    <i class="fas fa-shield-alt mr-2"></i> Fiches Réflexes
+                </button>
+                <!-- BONUS 1 -->
+                <button onclick="switchTab('chrono')" class="tab-btn py-4 px-6 text-sm uppercase flex items-center text-green-700">
+                    <i class="fas fa-hourglass-half mr-2"></i> Chrono-Machine
+                </button>
+                <!-- BONUS 2 -->
+                <button onclick="switchTab('clauses')" class="tab-btn py-4 px-6 text-sm uppercase flex items-center text-green-700">
+                    <i class="fas fa-file-signature mr-2"></i> Boîte à Clauses
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex-grow p-4 md:p-8 max-w-7xl mx-auto w-full">
+
+        <!-- ================================================================== -->
+        <!-- ONGLET 1 : LES 50 SYLLOGISMES (Marche comme Maman)                 -->
+        <!-- ================================================================== -->
+        <div id="syllogismes" class="tab-content active">
+            
+            <!-- HEADER DE SECTION -->
+            <div class="mb-8 bg-white p-6 rounded-lg shadow-sm border-l-4 border-[#D4AF37]">
+                <h2 class="text-2xl font-serif text-[#0A2342] mb-2">L'Art du Syllogisme : Apprendre par l'Exemple</h2>
+                <p class="text-gray-600 mb-4">
+                    Le droit n'est pas de la magie, c'est de la logique. Pour chaque situation ci-dessous, observe la structure : 
+                    <span class="font-bold text-[#D4AF37]">1. La Règle</span> (Ce que dit la loi), 
+                    <span class="font-bold text-[#304E78]">2. Les Faits</span> (Ce qui s'est passé), 
+                    <span class="font-bold text-[#0A2342]">3. La Solution</span> (Le résultat inévitable).
+                </p>
+                <!-- FILTRES -->
+                <div class="flex flex-wrap gap-2 mt-4">
+                    <button onclick="filterSyllogisms('all')" class="filter-btn bg-[#0A2342] text-white px-4 py-2 rounded-full text-xs font-bold hover:bg-opacity-90">TOUT VOIR</button>
+                    <button onclick="filterSyllogisms('Rupture')" class="filter-btn bg-white border border-gray-300 px-4 py-2 rounded-full text-xs font-bold text-gray-600 hover:bg-gray-50">RUPTURE CONTRAT</button>
+                    <button onclick="filterSyllogisms('Discipline')" class="filter-btn bg-white border border-gray-300 px-4 py-2 rounded-full text-xs font-bold text-gray-600 hover:bg-gray-50">DISCIPLINAIRE</button>
+                    <button onclick="filterSyllogisms('Contrat')" class="filter-btn bg-white border border-gray-300 px-4 py-2 rounded-full text-xs font-bold text-gray-600 hover:bg-gray-50">VIE DU CONTRAT</button>
+                    <button onclick="filterSyllogisms('Sante')" class="filter-btn bg-white border border-gray-300 px-4 py-2 rounded-full text-xs font-bold text-gray-600 hover:bg-gray-50">SANTÉ & SÉCURITÉ</button>
+                    <button onclick="filterSyllogisms('Affaires')" class="filter-btn bg-white border border-gray-300 px-4 py-2 rounded-full text-xs font-bold text-gray-600 hover:bg-gray-50">DROIT DES AFFAIRES</button>
+                </div>
+            </div>
+
+            <!-- GRID DES CAS -->
+            <div id="syllogism-grid" class="grid md:grid-cols-2 gap-6">
+                <!-- LE JAVASCRIPT VA REMPLIR CETTE SECTION AUTOMATIQUEMENT -->
+            </div>
+        </div>
+
+        <!-- ================================================================== -->
+        <!-- ONGLET 2 : LEXIQUE TOP 500                                         -->
+        <!-- ================================================================== -->
+        <div id="lexique" class="tab-content">
+            <div class="flex flex-col md:flex-row justify-between items-center mb-6 bg-[#0A2342] p-6 rounded-lg text-white">
+                <div>
+                    <h2 class="text-2xl font-serif mb-1">Le Vocabulaire de l'Expert</h2>
+                    <p class="text-sm opacity-80">Maîtriser les mots pour maîtriser les situations.</p>
+                </div>
+                <div class="relative mt-4 md:mt-0 w-full md:w-1/3">
+                    <input type="text" id="lexiqueSearch" placeholder="Rechercher un terme (ex: Avenant)..." class="w-full p-3 pl-10 rounded text-gray-800 focus:outline-none focus:ring-2 focus:ring-[#D4AF37]">
+                    <i class="fas fa-search absolute left-3 top-3.5 text-gray-400"></i>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow overflow-hidden">
+                <table class="w-full text-left">
+                    <thead class="bg-gray-100 text-gray-600 uppercase text-xs">
+                        <tr>
+                            <th class="p-4 w-1/4">Mot & Prononciation</th>
+                            <th class="p-4 w-1/3">Définition (Ce que c'est)</th>
+                            <th class="p-4 w-1/3">Contexte Manager (Quand l'utiliser)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="lexique-table-body" class="divide-y divide-gray-100">
+                        <!-- REMPLI PAR JS -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- ================================================================== -->
+        <!-- ONGLET 3 : FICHES RÉFLEXES (Manager)                               -->
+        <!-- ================================================================== -->
+        <div id="reflexes" class="tab-content">
+            <h2 class="text-2xl font-serif text-[#0A2342] mb-6 border-b-2 border-[#D4AF37] inline-block pb-2">Fiches Réflexes : Sécuriser la Prise de Décision</h2>
+            <p class="mb-8 text-gray-600">Avant d'agir, consulter la fiche correspondante pour vérifier que tous les feux sont au vert.</p>
+
+            <div class="space-y-10" id="reflexes-container">
+                <!-- REMPLI PAR JS -->
+            </div>
+        </div>
+
+        <!-- ================================================================== -->
+        <!-- ONGLET 4 : LA CHRONO-MACHINE (Calcul Délais)                       -->
+        <!-- ================================================================== -->
+        <div id="chrono" class="tab-content">
+            <div class="bg-white p-8 rounded-xl shadow-lg border-t-8 border-green-600 max-w-3xl mx-auto">
+                <h2 class="text-2xl font-serif text-green-800 mb-4"><i class="fas fa-clock mr-2"></i> Calculateur de Délais de Procédure</h2>
+                <p class="text-gray-600 mb-6">Ne ratez plus jamais une date butoir. Distinguez Jours Ouvrables (Lundi-Samedi) et Jours Ouvrés (Lundi-Vendredi).</p>
+                
+                <div class="grid grid-cols-2 gap-6 mb-6">
+                    <div>
+                        <label class="block text-xs font-bold text-gray-500 uppercase mb-1">Date de départ (ex: Réception lettre)</label>
+                        <input type="date" id="date-depart" class="w-full p-3 border rounded focus:ring-2 focus:ring-green-500">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-gray-500 uppercase mb-1">Délai à respecter</label>
+                        <div class="flex gap-2">
+                            <input type="number" id="duree-delai" class="w-20 p-3 border rounded" placeholder="Ex: 5">
+                            <select id="type-delai" class="flex-1 p-3 border rounded bg-gray-50">
+                                <option value="calendaires">Jours Calendaires (Tous les jours)</option>
+                                <option value="ouvrables">Jours Ouvrables (Lun-Sam)</option>
+                                <option value="ouvres">Jours Ouvrés (Lun-Ven)</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                
+                <button onclick="calculerDate()" class="w-full bg-green-700 text-white font-bold py-3 rounded hover:bg-green-800 transition shadow-md">
+                    CALCULER LA DATE BUTOIR
+                </button>
+
+                <div id="resultat-date" class="mt-6 p-4 bg-green-50 border border-green-200 rounded text-center hidden">
+                    <p class="text-sm text-green-800">L'action doit être réalisée avant le :</p>
+                    <p class="text-3xl font-bold text-green-900 mt-2" id="date-finale">--/--/----</p>
+                    <p class="text-xs text-gray-500 mt-1 italic">Attention : Si la date tombe un dimanche ou jour férié, report au 1er jour ouvrable suivant.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================================================================== -->
+        <!-- ONGLET 5 : BOÎTE À CLAUSES                                         -->
+        <!-- ================================================================== -->
+        <div id="clauses" class="tab-content">
+            <h2 class="text-2xl font-serif text-[#0A2342] mb-6">Modèles de Clauses Prêtes à l'Emploi</h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- Clause 1 -->
+                <div class="bg-white p-6 rounded shadow border-l-4 border-gray-400">
+                    <h3 class="font-bold text-lg mb-2">Clause de Mobilité Géographique</h3>
+                    <p class="text-xs text-gray-500 mb-4">À insérer pour permettre de muter un salarié sans son accord (si dans la zone).</p>
+                    <div class="bg-gray-50 p-4 rounded text-sm font-mono text-gray-700 border border-gray-200 mb-2 select-all">
+                        "Compte tenu de la nature de ses fonctions, M/Mme [NOM] pourra être amené(e) à exercer ses fonctions dans tous les établissements de l'entreprise situés dans la zone géographique suivante : [DÉFINIR PRÉCISÉMENT LA ZONE, ex: Région Île-de-France]. Un refus de mutation dans cette zone pourra constituer une faute."
+                    </div>
+                    <button class="text-xs font-bold text-[#0A2342] uppercase hover:underline" onclick="copyText(this)">Copier la clause</button>
+                </div>
+
+                <!-- Clause 2 -->
+                <div class="bg-white p-6 rounded shadow border-l-4 border-red-400">
+                    <h3 class="font-bold text-lg mb-2">Clause de Non-Concurrence</h3>
+                    <p class="text-xs text-gray-500 mb-4">Attention : Valide UNIQUEMENT si contrepartie financière !</p>
+                    <div class="bg-gray-50 p-4 rounded text-sm font-mono text-gray-700 border border-gray-200 mb-2 select-all">
+                        "En cas de rupture du contrat, M/Mme [NOM] s'interdit d'entrer au service d'une entreprise concurrente [TYPE ACTIVITÉ] située dans [ZONE GÉOGRAPHIQUE] pendant une durée de [DURÉE]. En contrepartie, il/elle percevra une indemnité mensuelle spéciale égale à [X]% de son salaire moyen."
+                    </div>
+                    <button class="text-xs font-bold text-[#0A2342] uppercase hover:underline" onclick="copyText(this)">Copier la clause</button>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- JAVASCRIPT POWERHOUSE -->
+    <script>
+        // --- 1. DONNÉES : SYLLOGISMES (EXTENSIBLE À 50+) ---
+        // Je mets ici 15 exemples variés pour la démo, mais la structure permet d'en mettre 50.
+        // Copier-coller un bloc {} pour ajouter un cas.
+        const dbSyllogismes = [
+            {
+                cat: "Rupture",
+                titre: "Abandon de Poste",
+                contexte: "Un salarié ne vient plus depuis 1 semaine sans justificatif.",
+                majeure: "L'absence injustifiée prolongée désorganise l'entreprise et constitue une faute grave (Cass. Soc.). Attention, depuis 2023, la présomption de démission existe mais la procédure disciplinaire reste plus sûre.",
+                mineure: "M. X est absent depuis le 4 mars. Il n'a pas répondu à la mise en demeure envoyée le 6 mars.",
+                conclusion: "L'employeur peut engager une procédure de licenciement pour faute grave (privative d'indemnités)."
+            },
+            {
+                cat: "Discipline",
+                titre: "Faits de Vie Privée",
+                contexte: "Un salarié insulte son patron sur Facebook (profil privé).",
+                majeure: "Un fait tiré de la vie personnelle ne peut pas constituer une faute, sauf s'il constitue un manquement à l'obligation de loyauté ou s'il est public.",
+                mineure: "Les insultes ont été proférées sur un groupe Facebook 'Privé' accessible uniquement à 5 amis.",
+                conclusion: "Il n'y a pas de caractère public. Le licenciement serait abusif (violation vie privée)."
+            },
+            {
+                cat: "Sante",
+                titre: "Ivresse au travail",
+                contexte: "Un cariste sent l'alcool et titube.",
+                majeure: "L'employeur a une obligation de sécurité de résultat. Il doit empêcher un salarié ivre de travailler, surtout sur poste à risque.",
+                mineure: "Le salarié conduit un chariot élévateur. Son état met en danger la vie d'autrui.",
+                conclusion: "Retrait immédiat du poste (mise à pied conservatoire). Alcootest possible si prévu au Règlement Intérieur. Faute grave probable."
+            },
+            {
+                cat: "Contrat",
+                titre: "Requalification CDD",
+                contexte: "Le motif du CDD est 'Surcroît d'activité' mais le salarié est là depuis 2 ans sur le poste d'un CDI parti.",
+                majeure: "Le CDD ne peut avoir pour objet de pourvoir durablement un emploi lié à l'activité normale et permanente de l'entreprise (L.1242-1).",
+                mineure: "Le salarié occupe en réalité un poste permanent camouflé en CDD successifs.",
+                conclusion: "Risque très élevé de requalification en CDI + Indemnité de requalification (1 mois salaire min)."
+            },
+            {
+                cat: "Affaires",
+                titre: "Concurrence Déloyale",
+                contexte: "Un ex-salarié débauche massivement ses anciens collègues.",
+                majeure: "La liberté d'entreprendre existe, mais le débauchage massif désorganisant l'ancien employeur constitue une concurrence déloyale (Art 1240 Code Civil).",
+                mineure: "L'ex-salarié a recruté 50% de l'équipe commerciale de son ancienne boîte en 1 mois.",
+                conclusion: "L'entreprise victime peut agir en justice (Tribunal de Commerce) pour demander des dommages et intérêts."
+            },
+            {
+                cat: "Discipline",
+                titre: "Liberté d'expression",
+                contexte: "Un salarié critique la stratégie de l'entreprise à la machine à café.",
+                majeure: "Le salarié jouit de sa liberté d'expression dans et hors de l'entreprise, sauf abus (injure, diffamation, excès).",
+                mineure: "Les propos sont critiques mais restés polis, en interne, sans publicité excessive.",
+                conclusion: "Aucune sanction n'est possible. Ce n'est pas une faute."
+            },
+            {
+                cat: "Sante",
+                titre: "Harcèlement Moral",
+                contexte: "Un manager envoie des mails le dimanche et critique le salarié en réunion.",
+                majeure: "Le harcèlement moral se définit par des agissements répétés ayant pour objet ou effet une dégradation des conditions de travail (L.1152-1).",
+                mineure: "Les mails hors temps de travail + les humiliations publiques sont des faits répétés et dégradants.",
+                conclusion: "Le harcèlement est caractérisé. L'employeur doit agir (enquête, sanction du manager) pour se protéger."
+            },
+            {
+                cat: "Rupture",
+                titre: "Vol de faible valeur",
+                contexte: "Une caissière avec 20 ans d'ancienneté vole un bon de réduction de 2€.",
+                majeure: "La faute grave doit être proportionnée. L'ancienneté exemplaire peut atténuer la gravité d'un vol minime (Jurisprudence 'Pain au chocolat').",
+                mineure: "Le préjudice est de 2€, l'ancienneté est de 20 ans sans aucun antécédent.",
+                conclusion: "Le licenciement pour faute grave serait probablement jugé disproportionné. Une mise à pied disciplinaire est plus sûre."
+            },
+            {
+                cat: "Contrat",
+                titre: "Période d'essai & Grossesse",
+                contexte: "L'employeur veut rompre l'essai en apprenant que la salariée est enceinte.",
+                majeure: "Il est interdit de rompre la période d'essai en raison de la grossesse (Discrimination L.1132-1).",
+                mineure: "La rupture intervient 2 jours après l'annonce de la grossesse, sans motif professionnel lié aux compétences.",
+                conclusion: "La rupture est nulle. La salariée peut demander sa réintégration ou des dommages et intérêts lourds."
+            },
+            {
+                cat: "Rupture",
+                titre: "Rupture Conventionnelle (Harcèlement)",
+                contexte: "Un salarié harcelé signe une rupture conventionnelle.",
+                majeure: "Le consentement doit être libre et éclairé. Une rupture signée dans un contexte de harcèlement moral est nulle.",
+                mineure: "Le salarié subissait des pressions et a signé pour 's'enfuir'.",
+                conclusion: "La rupture conventionnelle risque d'être annulée par le juge et requalifiée en licenciement sans cause réelle et sérieuse."
+            },
+            {
+                cat: "Contrat",
+                titre: "Clause de Mobilité",
+                contexte: "Mutation de Paris à Bordeaux. Le contrat dit 'Toute la France'.",
+                majeure: "Une clause de mobilité doit définir de façon précise sa zone géographique d'application. 'Toute la France' est souvent jugé trop large selon le poste.",
+                mineure: "Si le salarié est un cadre commercial national, c'est valide. Si c'est une assistante, c'est abusif.",
+                conclusion: "Analyse au cas par cas. Si la clause est valide, le refus est une faute. Sinon, le refus est légitime."
+            },
+            {
+                cat: "Sante",
+                titre: "Inaptitude & Reclassement",
+                contexte: "Inaptitude prononcée. L'employeur licencie sans chercher de poste.",
+                majeure: "L'employeur a une obligation de moyens renforcée de rechercher un reclassement avant de licencier pour inaptitude.",
+                mineure: "Aucune recherche n'a été faite, aucun courrier envoyé aux autres agences.",
+                conclusion: "Le licenciement est sans cause réelle et sérieuse pour manquement à l'obligation de reclassement."
+            },
+            {
+                cat: "Discipline",
+                titre: "Tenue vestimentaire",
+                contexte: "Un salarié vient en bermuda au contact de la clientèle (banque).",
+                majeure: "La liberté de se vêtir n'est pas fondamentale. L'employeur peut imposer une tenue si justifié par la tâche et proportionné (Contact client).",
+                mineure: "L'image de la banque et les codes du secteur justifient une tenue correcte.",
+                conclusion: "L'employeur peut demander au salarié de se changer. Le refus obstiné peut être sanctionné."
+            },
+            {
+                cat: "Affaires",
+                titre: "Abus de Biens Sociaux",
+                contexte: "Le gérant utilise la carte de la société pour ses vacances.",
+                majeure: "L'usage des biens de la société à des fins personnelles contraires à l'intérêt social constitue un délit d'ABS.",
+                mineure: "Les dépenses sont purement privées.",
+                conclusion: "Risque pénal (prison/amende) pour le dirigeant et redressement fiscal pour la société."
+            },
+            {
+                cat: "Rupture",
+                titre: "Lettre de Licenciement",
+                contexte: "La lettre dit juste 'On ne s'entend plus'.",
+                majeure: "La lettre de licenciement fixe les limites du litige. Le motif doit être précis, objectif et vérifiable.",
+                mineure: "La perte de confiance ou la mésentente ne sont pas des motifs valables en soi.",
+                conclusion: "Licenciement sans cause réelle et sérieuse automatique."
+            }
+        ];
+
+        // --- 2. DONNÉES : LEXIQUE TOP 500 (ECHANTILLON A-Z) ---
+        // J'en mets une cinquantaine représentative pour la démo, la structure supporte 500
+        const dbLexique = [
+            { m: "Abandon de poste", d: "Absence injustifiée et prolongée du salarié à son poste de travail.", c: "À ne pas confondre avec la démission. Nécessite une mise en demeure." },
+            { m: "Abrogation", d: "Suppression pour l'avenir d'un acte juridique (loi, décret).", c: "Cette loi a été abrogée, elle ne s'applique plus." },
+            { m: "Accord d'entreprise", d: "Texte négocié entre l'employeur et les syndicats (ou CSE).", c: "L'accord d'entreprise prime souvent sur la branche (Ordonnances Macron)." },
+            { m: "Astreinte", d: "Période où le salarié doit être joignable pour intervenir, sans être sur place.", c: "Doit être rémunérée ou compensée en repos." },
+            { m: "Avenant", d: "Document écrit constatant une modification du contrat de travail.", c: "Obligatoire pour changer le salaire, la durée ou le lieu de travail." },
+            { m: "Ayant droit", d: "Personne détenant un droit du fait de son lien avec l'auteur (héritier, enfant).", c: "Utilisé pour la mutuelle ou les décès." },
+            { m: "Bail Commercial", d: "Contrat de location d'un local pour exploiter un fonds de commerce.", c: "Droit au renouvellement (Propriété commerciale)." },
+            { m: "Caducité", d: "État d'un acte juridique valable mais privé d'effet par la survenance d'un fait.", c: "L'offre d'emploi est caduque si non signée dans le délai." },
+            { m: "Cassation (Cour de)", d: "Plus haute juridiction judiciaire. Juge le droit, pas les faits.", c: "L'arrêt de la Cour de Cassation fait jurisprudence." },
+            { m: "Cause réelle et sérieuse", d: "Motif obligatoire pour tout licenciement (Vrai et Suffisant).", c: "Sans cause réelle et sérieuse = Indemnités aux Prud'hommes." },
+            { m: "Clause de dédit-formation", d: "Oblige le salarié à rembourser sa formation s'il part trop tôt.", c: "Doit être précise et signée avant la formation." },
+            { m: "Clause de non-concurrence", d: "Interdiction de travailler chez le concurrent après le départ.", c: "Nulle sans contrepartie financière mensuelle." },
+            { m: "Conseil de Prud'hommes (CPH)", d: "Tribunal des litiges individuels du travail.", c: "Composé de juges non-professionnels (Conseillers salariés et employeurs)." },
+            { m: "Convention Collective", d: "Accord écrit régissant les conditions de travail dans une branche (ex: Métallurgie).", c: "Toujours vérifier si elle est plus favorable que la loi." },
+            { m: "Débouté", d: "Le demandeur a perdu son procès.", c: "Le salarié a été débouté de ses demandes." },
+            { m: "Délit d'entrave", d: "Infraction consistant à gêner le fonctionnement des IRP (CSE).", c: "Ne pas convoquer le CSE est un délit d'entrave (Pénal)." },
+            { m: "Démission", d: "Acte unilatéral de rupture par le salarié. Doit être CLAIRE et NON ÉQUIVOQUE.", c: "Si le salarié démissionne sous la pression, c'est une prise d'acte." },
+            { m: "Droit de retrait", d: "Droit d'arrêter le travail en cas de danger grave et imminent.", c: "Pas de sanction possible si le motif est raisonnable." },
+            { m: "Faute Grave", d: "Violation des obligations rendant impossible le maintien dans l'entreprise.", c: "Départ immédiat, pas de préavis, pas d'indemnité de licenciement." },
+            { m: "Faute Lourde", d: "Faute d'une exceptionnelle gravité avec INTENTION DE NUIRE.", c: "Très rare (ex: Sabotage, concurrence déloyale active)." },
+            { m: "Forfait Jours", d: "Décompte du temps de travail en jours par an (max 218) et non en heures.", c: "Réservé aux cadres autonomes. Attention au suivi de la charge." },
+            { m: "Grève", d: "Cessation collective et concertée du travail pour des revendications pro.", c: "Le contrat est suspendu. Pas de salaire, mais pas de sanction." },
+            { m: "Harcèlement Moral", d: "Agissements répétés dégradant les conditions de travail.", c: "L'employeur doit protéger la santé mentale des salariés." },
+            { m: "Heures supplémentaires", d: "Heures au-delà de 35h (ou durée légale).", c: "Majorées à 25% (ou 10% selon accord). Paiement ou Repos." },
+            { m: "Inaptitude", d: "État physique/mental incompatible avec le poste, déclaré par le Médecin du Travail.", c: "Obligation de chercher un reclassement avant de rompre." },
+            { m: "Indemnité de précarité", d: "10% du salaire brut total versé à la fin d'un CDD.", c: "Non due si CDD transformé en CDI ou faute grave." },
+            { m: "Intuitu Personae", d: "Contrat conclu en considération de la personne.", c: "Le salarié ne peut pas se faire remplacer par quelqu'un d'autre." },
+            { m: "Jurisprudence", d: "Ensemble des décisions de justice qui interprètent la loi.", c: "La loi est le squelette, la jurisprudence est la chair." },
+            { m: "Licenciement Économique", d: "Rupture pour motif non inhérent à la personne (Difficultés éco, mutations...).", c: "Critères d'ordre obligatoires." },
+            { m: "Lien de subordination", d: "Critère du contrat de travail : Ordre, Contrôle, Sanction.", c: "Ce qui distingue le salarié du freelance." },
+            { m: "Mise à pied conservatoire", d: "Suspension du contrat dans l'attente d'une sanction (Faute grave).", c: "Pas de salaire si la faute grave est confirmée." },
+            { m: "Mise à pied disciplinaire", d: "Sanction consistant à interdire de travailler (et ne pas payer) qques jours.", c: "Doit être prévue au Règlement Intérieur." },
+            { m: "Mise en demeure", d: "Courrier formel ordonnant à quelqu'un d'exécuter une obligation.", c: "Dernière étape avant le contentieux ou la sanction." },
+            { m: "Non bis in idem", d: "On ne peut pas sanctionner deux fois pour les mêmes faits.", c: "Si j'ai donné un avertissement, je ne peux plus licencier pour ça." },
+            { m: "Nullité", d: "Sanction d'un acte qui ne respecte pas les conditions de validité.", c: "Le licenciement d'une femme enceinte est nul (réintégration possible)." },
+            { m: "Obligation de sécurité", d: "L'employeur doit assurer la sécurité physique et mentale des salariés.", c: "Obligation de résultat (ou moyens renforcés)." },
+            { m: "Période d'essai", d: "Période test au début du contrat. Rupture libre (avec délai de prévenance).", c: "Ne se présume pas, doit être écrite." },
+            { m: "Préavis", d: "Délai à respecter entre l'annonce de la rupture et la fin effective.", c: "Payé même si l'employeur dispense le salarié de venir." },
+            { m: "Prescription", d: "Délai au-delà duquel on ne peut plus agir.", c: "Salaires : 3 ans. Faute : 2 mois." },
+            { m: "Prise d'acte", d: "Le salarié rompt le contrat aux torts de l'employeur (manquements graves).", c: "Risqué : soit c'est un licenciement injustifié (gain), soit une démission (perte)." },
+            { m: "Règlement Intérieur", d: "Document fixant les règles d'hygiène, sécurité et discipline.", c: "Obligatoire si > 50 salariés. Fixe l'échelle des sanctions." },
+            { m: "Rescision", d: "Annulation d'un contrat pour lésion (prix trop bas/haut).", c: "Rare en social, fréquent en immo." },
+            { m: "Reçu pour solde de tout compte", d: "Document listant les sommes versées à la sortie.", c: "Le salarié a 6 mois pour le contester après signature." },
+            { m: "Rupture Conventionnelle", d: "Divorce à l'amiable entre salarié et employeur.", c: "Ouvre droit au chômage. Nécessite homologation Direccte (Drets)." },
+            { m: "Sanction pécuniaire", d: "Amende infligée au salarié.", c: "STRICTEMENT INTERDITE en droit français." },
+            { m: "Subrogation", d: "L'employeur avance les IJSS (Sécu) et se fait rembourser plus tard.", c: "Évite au salarié d'attendre son argent quand il est malade." },
+            { m: "Synallagmatique", d: "Contrat créant des obligations réciproques.", c: "Le travail contre le salaire." },
+            { m: "Tacite reconduction", d: "Renouvellement automatique du contrat.", c: "Interdit pour les CDD (qui deviennent des CDI)." },
+            { m: "Télétravail", d: "Travail hors des locaux de l'entreprise.", c: "Réversible. L'employeur doit motiver son refus." },
+            { m: "Transaction", d: "Contrat pour mettre fin à un litige (après rupture) moyennant argent.", c: "On ne transige pas sur des droits d'ordre public." },
+            { m: "Usage", d: "Avantage accordé librement par l'employeur (Général, Constant, Fixe).", c: "Pour le supprimer, il faut une dénonciation formelle." },
+            { m: "Visite médicale", d: "Examen obligatoire (Embauche, Reprise...).", c: "Seul le médecin décide de l'aptitude." }
+        ];
+
+        // --- 3. DONNÉES : FICHES RÉFLEXES (DÉFINITIONS + ACTION) ---
+        const dbReflexes = [
+            {
+                titre: "Gérer une Faute Grave (Insubordination, Vol...)",
+                definition: "La faute grave est un manquement tel qu'il rend impossible le maintien du salarié dans l'entreprise, même pendant la durée du préavis. Elle prive le salarié des indemnités de licenciement et de préavis.",
+                etapes: [
+                    { t: "1. Agir vite (Prescription)", d: "Vous avez 2 mois maximum après la connaissance des faits pour engager la procédure. Au-delà, le fait est prescrit." },
+                    { t: "2. Mise à pied conservatoire ?", d: "Si le salarié est dangereux ou nuisible, le renvoyer chez lui immédiatement (oralement puis confirmé par écrit le jour même) en attendant la convocation. Attention : maintien de salaire si la faute grave n'est pas retenue au final." },
+                    { t: "3. Verrouiller la preuve", d: "Qui a vu ? Demandez des attestations écrites (Cerfa 11527*03) avec copie de la CNI du témoin. Gardez les mails, les logs." },
+                    { t: "4. Respecter la procédure", d: "Convocation (LRAR ou remise main propre) -> Entretien (min 5 jours ouvrables après) -> Notification (min 2 jours ouvrables après)." }
+                ],
+                danger: "Attention au 'Non bis in idem' : Si vous avez déjà envoyé un mail disant 'C'est inacceptable, ne recommencez pas', vous avez épuisé votre pouvoir de sanction. Vous ne pouvez plus licencier pour ce fait."
+            },
+            {
+                titre: "Gérer une Inaptitude Médicale",
+                definition: "Situation où l'état de santé du salarié (physique ou mental) ne lui permet plus d'occuper son poste. Seul le Médecin du Travail peut la prononcer.",
+                etapes: [
+                    { t: "1. L'avis du médecin", d: "Vérifiez que l'avis déclare bien 'Inapte à son poste'. Le médecin peut préciser 'Tout maintien dans l'emploi serait gravement préjudiciable'." },
+                    { t: "2. La recherche de reclassement (CRUCIAL)", d: "Même si le médecin dit qu'il ne peut plus travailler, vous DEVEZ chercher s'il y a un autre poste (administratif, autre site...) compatible. Faites-le par écrit. Si impossible, informez le salarié par écrit." },
+                    { t: "3. La consultation du CSE", d: "Vous devez demander l'avis du CSE sur les possibilités de reclassement avant de licencier." },
+                    { t: "4. Le délai d'un mois", d: "Si le salarié n'est ni reclassé ni licencié 1 mois après l'avis, vous devez recommencer à payer son salaire." }
+                ],
+                danger: "Le licenciement pour inaptitude sans recherche de reclassement sérieuse est automatiquement jugé 'Sans cause réelle et sérieuse' (très coûteux)."
+            }
+        ];
+
+        // --- MOTEUR JAVASCRIPT ---
+
+        // 1. Initialisation
+        window.onload = function() {
+            renderSyllogisms(dbSyllogismes);
+            renderLexique(dbLexique);
+            renderReflexes(dbReflexes);
+        };
+
+        // 2. Gestion des Onglets
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            
+            document.getElementById(tabId).classList.add('active');
+            // Trouver le bouton qui a appelé la fonction
+            const buttons = document.querySelectorAll('.tab-btn');
+            if(tabId === 'syllogismes') buttons[0].classList.add('active');
+            if(tabId === 'lexique') buttons[1].classList.add('active');
+            if(tabId === 'reflexes') buttons[2].classList.add('active');
+            if(tabId === 'chrono') buttons[3].classList.add('active');
+            if(tabId === 'clauses') buttons[4].classList.add('active');
+        }
+
+        // 3. Rendu Syllogismes
+        function renderSyllogisms(data) {
+            const container = document.getElementById('syllogism-grid');
+            container.innerHTML = '';
+            data.forEach((item, index) => {
+                const card = `
+                    <div class="syllogisme-card p-5 rounded relative flex flex-col h-full">
+                        <div class="flex justify-between items-start mb-3">
+                            <span class="tag-category bg-gray-100 text-gray-500">${item.cat}</span>
+                            <span class="font-bold text-[#D4AF37] text-xl">#${index+1}</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-[#0A2342] mb-3">${item.titre}</h3>
+                        <p class="text-sm italic text-gray-600 mb-4 bg-gray-50 p-2 rounded border border-gray-100">
+                            <i class="fas fa-info-circle mr-1"></i> ${item.contexte}
+                        </p>
+                        
+                        <div class="space-y-3 flex-grow">
+                            <div class="pl-3 border-l-2 border-[#D4AF37]">
+                                <p class="text-xs font-bold text-[#D4AF37] uppercase">La Règle</p>
+                                <p class="text-sm text-gray-800">${item.majeure}</p>
+                            </div>
+                            <div class="pl-3 border-l-2 border-[#304E78]">
+                                <p class="text-xs font-bold text-[#304E78] uppercase">Les Faits</p>
+                                <p class="text-sm text-gray-800">${item.mineure}</p>
+                            </div>
+                            <div class="pl-3 border-l-2 border-[#0A2342] bg-[#E9F0F6] rounded-r p-2">
+                                <p class="text-xs font-bold text-[#0A2342] uppercase">La Solution</p>
+                                <p class="text-sm font-bold text-gray-900">${item.conclusion}</p>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-4 pt-4 border-t border-gray-100 flex justify-end">
+                            <button onclick="speak('${item.conclusion.replace(/'/g, "\\'")}')" class="text-xs text-gray-400 hover:text-[#0A2342] flex items-center gap-1 transition">
+                                <i class="fas fa-volume-up"></i> Écouter le verdict
+                            </button>
+                        </div>
+                    </div>
+                `;
+                container.innerHTML += card;
+            });
+        }
+
+        function filterSyllogisms(category) {
+            if(category === 'all') {
+                renderSyllogisms(dbSyllogismes);
+            } else {
+                const filtered = dbSyllogismes.filter(item => item.cat === category);
+                renderSyllogisms(filtered);
+            }
+        }
+
+        // 4. Rendu Lexique
+        function renderLexique(data) {
+            const tbody = document.getElementById('lexique-table-body');
+            tbody.innerHTML = '';
+            // Tri alphabétique
+            data.sort((a, b) => a.m.localeCompare(b.m));
+
+            data.forEach(item => {
+                const row = `
+                    <tr class="border-b border-gray-100 hover:bg-[#FDFBF7] transition">
+                        <td class="p-4 font-bold text-[#0A2342]">
+                            ${item.m}
+                            <button onclick="speak('${item.m.replace(/'/g, "\\'")}')" class="btn-audio ml-2" title="Prononciation"><i class="fas fa-volume-down"></i></button>
+                        </td>
+                        <td class="p-4 text-sm text-gray-700">
+                            ${item.d}
+                            <button onclick="speak('${item.d.replace(/'/g, "\\'")}')" class="btn-audio ml-1 scale-75" title="Lire la définition"><i class="fas fa-volume-up"></i></button>
+                        </td>
+                        <td class="p-4 text-sm italic text-[#304E78] bg-gray-50">
+                            ${item.c}
+                            <button onclick="speak('${item.c.replace(/'/g, "\\'")}')" class="btn-audio ml-1 scale-75" title="Lire le contexte"><i class="fas fa-volume-up"></i></button>
+                        </td>
+                    </tr>
+                `;
+                tbody.innerHTML += row;
+            });
+        }
+
+        // Recherche Lexique
+        document.getElementById('lexiqueSearch').addEventListener('keyup', (e) => {
+            const term = e.target.value.toLowerCase();
+            const filtered = dbLexique.filter(item => item.m.toLowerCase().includes(term));
+            renderLexique(filtered);
+        });
+
+        // 5. Rendu Réflexes
+        function renderReflexes(data) {
+            const container = document.getElementById('reflexes-container');
+            container.innerHTML = '';
+            data.forEach(item => {
+                let etapesHtml = '';
+                item.etapes.forEach(step => {
+                    etapesHtml += `
+                        <div class="flex gap-4 p-3 hover:bg-gray-50 rounded transition">
+                            <div class="flex-shrink-0 w-8 h-8 rounded-full bg-[#0A2342] text-white flex items-center justify-center font-bold text-sm">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-[#0A2342] text-sm">${step.t}</h4>
+                                <p class="text-sm text-gray-600">${step.d}</p>
+                            </div>
+                        </div>
+                    `;
+                });
+
+                const block = `
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-200">
+                        <div class="bg-[#0A2342] p-4 text-white flex justify-between items-center">
+                            <h3 class="font-bold text-lg"><i class="fas fa-clipboard-check mr-2"></i> ${item.titre}</h3>
+                        </div>
+                        <div class="p-6 bg-[#F6EFE9] border-b border-gray-200">
+                            <p class="font-bold text-[#D4AF37] uppercase text-xs mb-1">Définition</p>
+                            <p class="text-gray-800 italic">${item.definition}</p>
+                        </div>
+                        <div class="p-6 space-y-2">
+                            ${etapesHtml}
+                        </div>
+                        <div class="bg-red-50 p-4 border-t border-red-100 flex items-start gap-3">
+                            <i class="fas fa-exclamation-triangle text-red-600 mt-1"></i>
+                            <div>
+                                <p class="font-bold text-red-800 text-xs uppercase">Zone de Danger</p>
+                                <p class="text-sm text-red-700">${item.danger}</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                container.innerHTML += block;
+            });
+        }
+
+        // 6. Chrono-Machine Logic
+        function calculerDate() {
+            const dateInput = document.getElementById('date-depart').value;
+            const duree = parseInt(document.getElementById('duree-delai').value);
+            const type = document.getElementById('type-delai').value;
+
+            if(!dateInput || !duree) return;
+
+            let date = new Date(dateInput);
+            let count = 0;
+
+            while(count < duree) {
+                date.setDate(date.getDate() + 1);
+                const day = date.getDay(); // 0 = Dimanche, 6 = Samedi
+                
+                if(type === 'calendaires') {
+                    count++;
+                } else if(type === 'ouvrables') {
+                    if(day !== 0) count++; // On compte tout sauf dimanche
+                } else if(type === 'ouvres') {
+                    if(day !== 0 && day !== 6) count++; // On compte tout sauf samedi et dimanche
+                }
+            }
+
+            // Affichage
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            document.getElementById('date-finale').innerText = date.toLocaleDateString('fr-FR', options);
+            document.getElementById('resultat-date').classList.remove('hidden');
+        }
+
+        // 7. Utilitaires
+        function speak(text) {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel(); // Stop précédent
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'fr-FR';
+                utterance.rate = 0.95; 
+                window.speechSynthesis.speak(utterance);
+            }
+        }
+
+        function copyText(btn) {
+            const text = btn.previousElementSibling.innerText.replace(/"/g, "");
+            navigator.clipboard.writeText(text).then(() => {
+                const originalText = btn.innerText;
+                btn.innerText = "COPIÉ !";
+                btn.classList.add('text-green-600');
+                setTimeout(() => {
+                    btn.innerText = originalText;
+                    btn.classList.remove('text-green-600');
+                }, 2000);
+            });
+        }
+
+    </script>
+</body>
+</html>

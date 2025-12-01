@@ -1,741 +1,1447 @@
 <!DOCTYPE html>
-<html lang="fr" class="scroll-smooth">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Les Indispensables du Latin Juridique</title>
     
+    <!-- SEO -->
+    <meta name="description" content="Lexique Latin Juridique - Les expressions latines indispensables pour exceller en droit">
+    <meta name="author" content="Mathilde Martine PAISLEY">
+    
+    <title>Lexique Latin Juridique</title>
+
     <!-- FAVICON -->
-    <link rel="icon" type="image/png" href="https://projettechacademy.github.io/Juridique/Asset/Logo_juriste.png">
+    <link rel="icon" type="image/jpeg" href="https://projettechacademy.github.io/Juridique/Asset/Logo_MMPA.jpeg">
+
+    <!-- FONTS -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&family=Montserrat:wght@500;600;700&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
     
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Font Awesome -->
+    <!-- ICONS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <!-- Polices -->
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
     
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: { sans: ['Outfit', 'sans-serif'], serif: ['Playfair Display', 'serif'] },
-                    colors: {
-                        brandBlue: '#0F2C48',
-                        brandGold: '#D9A526',
-                        brandIvory: '#F6F2E8',
-                        brandBronze: '#B4792A',
-                    }
-                }
-            }
-        }
-    </script>
-
     <style>
-        :root{
-            --cta: #D9A526;
-            --cta-page: #D9A526; /* Gold pour cette page aussi */
-            --cta-page-gradient: linear-gradient(135deg, #B4792A 0%, #D9A526 50%, #F2C94C 100%); /* Dégradé Doré Premium */
-            --brand-blue: #0F2C48;
-            --ivory: #F6F2E8;
-            --bronze: #B4792A;
+        /* ========================================
+           VARIABLES CSS (COSMIC PREMIUM)
+           ======================================== */
+        :root {
+            --color-bg: #F6F2E8;       /* Ivoire */
+            --color-primary: #0F2C48;  /* Bleu Nuit */
+            --color-accent: #D9A526;   /* Jaune Doré */
+            --color-alert: #B4792A;    /* Bronze */
+            --color-text: #2c3e50;
+            --color-white: #ffffff;
+            
+            /* Couleurs spécifiques Lexique (Feedback) */
+            --color-success: #10b981;
+            --color-warning: #f59e0b;
+            --color-error: #ef4444;
+            
+            /* Couleurs Tags Spécialisation */
+            --tag-je-bg: #e0f2fe; --tag-je-text: #0F2C48; /* Juriste Entreprise */
+            --tag-da-bg: #fef3c7; --tag-da-text: #B4792A; /* Droit Affaires */
+            --tag-ds-bg: #fffbeb; --tag-ds-text: #D9A526; /* Droit Social */
         }
 
-        body { background-color: #FAFAFA; color: var(--brand-blue); font-family: 'Outfit', sans-serif; display: flex; flex-direction: column; min-height: 100vh; }
-        .serif-font { font-family: 'Playfair Display', serif; }
+        /* ========================================
+           RESET & BASE
+           ======================================== */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.8;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
 
-        /* --- HEADER STYLÉ --- */
-        .top-banner {
-            background: linear-gradient(to right, #0F2C48, #163b5e);
-            color: white;
-            box-shadow: 0 10px 30px -10px rgba(15,44,72,0.5);
-            border-bottom: 4px solid var(--cta);
-            position: sticky; top: 0; z-index: 50;
+        h1, h2, h3, h4 { 
+            font-family: 'Playfair Display', serif; 
+            color: var(--color-primary); 
+            font-weight: 700;
         }
         
-        /* Boutons Icones (Base) */
-        .icon-btn {
-            position: relative; width: 40px; height: 40px; border-radius: 50%;
-            background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(217, 165, 38, 0.4);
-            display: flex; align-items: center; justify-content: center;
-            font-size: 1.1rem; text-decoration: none; color: #fff;
-            transition: all 0.3s;
-        }
-        .icon-btn:hover { 
-            transform: translateY(-3px); background: #fff; border-color: #fff; box-shadow: 0 4px 10px rgba(217, 165, 38, 0.3); color: var(--brand-blue);
-        }
-
-        /* Onglets PAGE (Lexique/Jeu) - Style Premium Gold */
-        .tab-icon-btn {
-            position: relative; width: 45px; height: 45px; border-radius: 50%;
-            background: rgba(217, 165, 38, 0.1); /* Fond doré léger */
-            border: 2px solid var(--cta-page); /* Bordure dorée */
-            color: #fff; display: flex; align-items: center; justify-content: center;
-            font-size: 1.2rem; cursor: pointer; transition: all 0.3s;
-        }
-        .tab-icon-btn:hover {
-            background: var(--cta-page-gradient); color: white; transform: scale(1.1); box-shadow: 0 4px 15px rgba(217, 165, 38, 0.4); border-color: transparent;
-        }
-        .tab-icon-btn.active {
-            background: var(--cta-page-gradient); color: white; box-shadow: 0 4px 10px rgba(217, 165, 38, 0.3); border-color: transparent;
-        }
-
-        /* --- TOOLTIPS (INFOBULLES) CORRIGÉS --- */
+        p { margin-bottom: 1rem; }
+        a { text-decoration: none; color: inherit; transition: all 0.3s ease; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 25px; }
         
-        /* Style de base commun */
-        .icon-btn::after, .tab-icon-btn::after {
-            content: attr(data-tooltip); 
-            position: absolute; 
-            left: 50%; 
-            transform: translateX(-50%);
-            background-color: #fff; 
-            color: var(--brand-blue); 
-            padding: 5px 10px; 
-            border-radius: 6px;
-            font-size: 0.75rem; 
+        /* Animation "Pulse" */
+        @keyframes cosmic-pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(217, 165, 38, 0.7); }
+            70% { transform: scale(1.02); box-shadow: 0 0 0 10px rgba(217, 165, 38, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(217, 165, 38, 0); }
+        }
+
+        /* ========================================
+           TOP BAR (COSMIC STYLE)
+           ======================================== */
+        .top-bar {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            padding: 15px 0;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .top-bar-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .top-bar-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .logo-top-bar {
+            width: 55px; height: 55px;
+            border-radius: 50%;
+            border: 2px solid var(--color-accent);
+            object-fit: cover;
+            background: white;
+        }
+
+        .identity-stack { display: flex; flex-direction: column; justify-content: center; }
+        
+        .name-top-bar {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem; font-weight: 700;
+            color: var(--color-white); line-height: 1.2;
+        }
+        
+        .club-subtitle { 
+            font-size: 0.85rem; 
+            color: var(--color-accent); 
             font-weight: 700; 
-            white-space: nowrap; 
-            opacity: 0; 
-            visibility: hidden;
-            transition: all 0.2s ease-in-out; 
-            pointer-events: none; 
-            z-index: 100; 
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-            border: 1px solid rgba(0,0,0,0.1);
+            margin-top: 2px;
+        }
+
+        .top-bar-center { display: flex; gap: 15px; align-items: center; }
+
+        /* Onglets Or/Bronze */
+        .header-icon-btn {
+            position: relative;
+            width: 42px; height: 42px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #D9A526 0%, #B4792A 100%);
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.2rem; transition: all 0.3s ease;
+            cursor: pointer; color: white; text-decoration: none;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        .header-icon-btn:hover {
+            transform: translateY(-3px) scale(1.1);
+            background: linear-gradient(135deg, #FFD700 0%, #D9A526 100%);
+            box-shadow: 0 0 15px rgba(217, 165, 38, 0.6);
+            border-color: #fff;
         }
         
-        /* Affichage au survol */
-        .icon-btn:hover::after, .tab-icon-btn::hover::after { opacity: 1; visibility: visible; }
+        .header-icon-btn::after {
+            content: attr(data-tooltip);
+            position: absolute; top: 130%; left: 50%;
+            transform: translateX(-50%) translateY(-10px);
+            background-color: var(--color-white); color: var(--color-primary);
+            padding: 5px 12px; border-radius: 20px;
+            font-size: 0.75rem; font-weight: 700; white-space: nowrap;
+            opacity: 0; visibility: hidden; transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2); pointer-events: none; z-index: 100;
+        }
+        .header-icon-btn:hover::after { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
 
-        /* SPECIFIQUE HEADER : Afficher EN DESSOUS (Top > 100%) */
-        .top-banner .icon-btn::after, 
-        .top-banner .tab-icon-btn::after {
-            top: 130%; /* Pousse l'infobulle vers le bas */
-            bottom: auto;
+        .nav-profile-img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: none; }
+
+        /* Bouton Portfolio Pulse */
+        .btn-portfolio-cosmic {
+            padding: 10px 25px; border-radius: 50px;
+            font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 0.95rem;
+            background: linear-gradient(135deg, #D9A526 0%, #B4792A 100%);
+            color: white; border: 1px solid rgba(255,255,255,0.4);
+            cursor: pointer; display: inline-flex; align-items: center; gap: 8px;
+            transition: all 0.3s ease; text-decoration: none;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            animation: cosmic-pulse 2s infinite;
+        }
+        .btn-portfolio-cosmic:hover {
+            background: linear-gradient(135deg, #F1C40F 0%, #D9A526 100%);
+            transform: translateY(-2px); color: white;
         }
 
-        /* SPECIFIQUE FOOTER : Afficher AU DESSUS (Bottom > 100%) */
-        .main-footer .icon-btn::after {
-            bottom: 130%; /* Pousse l'infobulle vers le haut */
-            top: auto;
+        /* ========================================
+           CONTENU PRINCIPAL
+           ======================================== */
+        main { flex: 1; padding: 40px 0; }
+
+        /* Page Header Style Cosmic */
+        .page-header { text-align: center; margin-bottom: 40px; }
+        .page-title {
+            font-family: 'Playfair Display', serif; font-size: 2.5rem;
+            color: var(--color-primary); margin-bottom: 10px;
+            display: flex; align-items: center; justify-content: center; gap: 15px;
+        }
+        .page-subtitle { font-size: 1.1rem; color: var(--color-alert); margin-bottom: 20px; font-weight: 600; }
+
+        /* Controls Section */
+        .controls-section {
+            background: white; padding: 25px; border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08); margin-bottom: 30px;
+            border-top: 4px solid var(--color-accent);
         }
 
-        /* Logo Accueil */
-        .logo-home-btn {
-            padding: 0; overflow: hidden; border: 2px solid var(--cta); background: white;
+        .search-bar { display: flex; gap: 15px; margin-bottom: 20px; align-items: center; }
+        .search-input {
+            flex: 1; padding: 12px 20px; border: 2px solid #e5e7eb;
+            border-radius: 50px; font-size: 1rem; transition: all 0.3s ease;
         }
-        .logo-home-btn img {
-            width: 100%; height: 100%; object-fit: cover;
-        }
-        .logo-home-btn:hover {
-            border-color: white; background: white;
+        .search-input:focus {
+            outline: none; border-color: var(--color-accent);
+            box-shadow: 0 0 0 3px rgba(217, 165, 38, 0.1);
         }
 
-        /* Bouton Portfolio Premium Gold */
-        .btn-portfolio-premium {
-            padding: 0.5rem 1.5rem; border-radius: 9999px; font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 0.95rem;
-            background: var(--cta-page-gradient); /* Dégradé Doré */
-            color: white !important; text-decoration: none; border: 1px solid rgba(255,255,255,0.2);
-            display: inline-flex; align-items: center; gap: 8px; transition: all 0.3s;
-            box-shadow: 0 4px 15px rgba(217, 165, 38, 0.3); /* Ombre dorée */
+        /* Toggle Mode Révision */
+        .toggle-container {
+            display: flex; align-items: center; gap: 10px; 
+            background: #f1f5f9; padding: 8px 16px; border-radius: 50px;
+            border: 1px solid #e2e8f0;
         }
-        .btn-portfolio-premium:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(217, 165, 38, 0.5); }
+        .toggle-switch {
+            position: relative; width: 50px; height: 26px;
+        }
+        .toggle-switch input { opacity: 0; width: 0; height: 0; }
+        .slider {
+            position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0;
+            background-color: #ccc; transition: .4s; border-radius: 34px;
+        }
+        .slider:before {
+            position: absolute; content: ""; height: 20px; width: 20px; left: 3px; bottom: 3px;
+            background-color: white; transition: .4s; border-radius: 50%;
+        }
+        input:checked + .slider { background-color: var(--color-accent); }
+        input:checked + .slider:before { transform: translateX(24px); }
+        .toggle-label { font-weight: 700; font-size: 0.9rem; color: var(--color-primary); cursor: pointer; user-select: none; }
 
-        /* --- CONTENU --- */
-        .page-header { text-align: center; margin-bottom: 2rem; }
-        .page-title { font-family: 'Playfair Display', serif; font-weight: 800; color: var(--brand-blue); font-size: 2.5rem; transition: all 0.5s; }
-        .page-subtitle { color: var(--cta-page); font-weight: 700; text-transform: uppercase; letter-spacing: 2px; font-size: 0.9rem; }
+        /* Filter Buttons */
+        .filter-container {
+            display: flex; gap: 10px; margin-top: 15px; justify-content: center; flex-wrap: wrap;
+        }
+        .filter-btn {
+            padding: 6px 14px; border-radius: 20px; border: 1px solid #e2e8f0;
+            background: white; color: var(--color-text); font-size: 0.8rem;
+            font-weight: 600; cursor: pointer; transition: all 0.2s;
+        }
+        .filter-btn:hover { background: #f8fafc; border-color: #cbd5e1; }
+        .filter-btn.active {
+            background: var(--color-primary); color: white;
+            border-color: var(--color-primary); box-shadow: 0 4px 6px rgba(15, 44, 72, 0.2);
+        }
+        .filter-btn.active.filter-ds { background: var(--color-accent); border-color: var(--color-accent); } /* Jaune */
+        .filter-btn.active.filter-da { background: var(--color-alert); border-color: var(--color-alert); } /* Bronze */
+        .filter-btn.active.filter-je { background: var(--color-primary); border-color: var(--color-primary); } /* Bleu */
 
-        /* --- CARTE DESIGN --- */
+
+        /* Stats Bar Style Cosmic */
+        .stats-bar {
+            display: flex; justify-content: space-around; padding: 20px;
+            background: linear-gradient(135deg, var(--color-primary), #1a3b5c);
+            border-radius: 12px; flex-wrap: wrap; gap: 15px; color: white; margin-top: 20px;
+        }
+        .stat-item { text-align: center; }
+        .stat-value {
+            display: block; font-size: 2rem; font-weight: 700;
+            color: var(--color-accent);
+        }
+        .stat-label { font-size: 0.85rem; opacity: 0.9; }
+
+        /* Cards Grid */
+        .cards-grid {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 25px;
+        }
+
         .term-card {
-            background: white; border-radius: 12px; border: 1px solid #e5e7eb;
-            transition: all 0.3s ease; position: relative; overflow: hidden;
+            background: white; border-radius: 16px; padding: 25px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08); transition: all 0.3s ease;
+            border-left: 5px solid var(--color-accent); cursor: pointer;
+            position: relative; overflow: hidden;
+            display: flex; flex-direction: column;
         }
-        .term-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 24px -8px rgba(217, 165, 38, 0.15); /* Ombre Dorée */
-            border-color: var(--cta-page);
+        .term-card:hover { transform: translateY(-5px); box-shadow: 0 12px 30px rgba(0,0,0,0.12); }
+
+        /* Mode Révision : Flou sur les réponses */
+        .revision-mode .term-translation,
+        .revision-mode .term-definition,
+        .revision-mode .term-example,
+        .revision-mode .term-usage-box { /* On cache aussi l'usage */
+            filter: blur(8px);
+            user-select: none;
+            transition: filter 0.3s ease;
         }
-        .term-card::before {
-            content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%;
-            background: var(--cta-page-gradient); /* Dégradé Doré */
-            opacity: 0; transition: opacity 0.3s;
+        .revision-mode .term-card:hover .term-translation,
+        .revision-mode .term-card:hover .term-definition,
+        .revision-mode .term-card:hover .term-example,
+        .revision-mode .term-card:hover .term-usage-box {
+            filter: blur(0);
         }
-        .term-card:hover::before { opacity: 1; }
+
+        .term-header {
+            display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;
+        }
+        .term-title-group { display: flex; align-items: center; gap: 10px; }
+        .audio-btn {
+            background: none; border: 2px solid var(--color-accent); color: var(--color-accent);
+            width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            cursor: pointer; transition: all 0.2s; font-size: 1rem; flex-shrink: 0;
+        }
+        .audio-btn:hover { background: var(--color-accent); color: white; }
         
-        .copy-btn {
-            position: absolute; top: 10px; right: 10px;
-            color: #cbd5e1; cursor: pointer; transition: color 0.2s;
+        .term-latin {
+            font-family: 'Playfair Display', serif; font-size: 1.3rem;
+            color: var(--color-primary); font-weight: 700; font-style: italic;
+            line-height: 1.2; flex: 1;
         }
-        .copy-btn:hover { color: var(--cta-page); }
-
-        /* --- GAME FLIP --- */
-        .perspective { perspective: 1000px; }
-        .card-inner {
-            position: relative; width: 100%; height: 100%;
-            text-align: center; transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            transform-style: preserve-3d;
+        
+        /* TAGS SPECIALISATION - RONDS & DÉCALÉS À DROITE */
+        .tags-container {
+            display: flex; gap: 8px; flex-wrap: wrap; margin-left: auto;
         }
-        .card-front, .card-back {
-            position: absolute; width: 100%; height: 100%;
-            -webkit-backface-visibility: hidden; backface-visibility: hidden;
-            border-radius: 1rem;
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        .tag-spec {
+            width: 30px; height: 30px; border-radius: 50%; font-size: 0.65rem; font-weight: 800; text-transform: uppercase;
+            border: 2px solid; display: flex; align-items: center; justify-content: center;
+            cursor: default; transition: transform 0.2s;
         }
-        /* Face avant Premium Gold */
-        .card-front { background: #0F2C48; color: white; border: 4px solid var(--cta-page); } 
-        .card-back { transform: rotateY(180deg); }
-        .flipped .card-inner { transform: rotateY(180deg); }
+        .tag-spec:hover { transform: scale(1.1); }
+        .tag-je { color: #0F2C48; border-color: #0F2C48; background: #e0f2fe; } /* JE */
+        .tag-da { color: #B4792A; border-color: #B4792A; background: #fef3c7; } /* DA */
+        .tag-ds { color: #D9A526; border-color: #D9A526; background: #fffbeb; } /* DS */
 
-        /* Scrollbar */
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: transparent; }
-        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
-        ::-webkit-scrollbar-thumb:hover { background: var(--brand-blue); }
+        .term-translation {
+            font-size: 1rem; color: var(--color-alert); font-weight: 700;
+            margin-bottom: 12px; display: block;
+        }
+        .term-definition { color: var(--color-text); line-height: 1.6; margin-bottom: 12px; font-size: 0.95rem; }
+        
+        /* Boîte "Quand l'utiliser ?" - Mise en valeur */
+        .term-usage-box {
+            background: linear-gradient(to right, #fff7ed, #fffaf0); 
+            border-left: 4px solid var(--color-alert); /* Bronze pour ressortir */
+            padding: 12px; margin-bottom: 12px; border-radius: 0 8px 8px 0;
+            box-shadow: 0 2px 5px rgba(180, 121, 42, 0.1);
+        }
+        .term-usage-title {
+            color: var(--color-alert); font-weight: 800; font-size: 0.75rem; 
+            text-transform: uppercase; margin-bottom: 6px; display: block; letter-spacing: 0.5px;
+        }
+        .term-usage-text {
+            color: #7c2d12; font-size: 0.9rem; font-style: italic; font-weight: 500;
+        }
 
-        /* --- FOOTER CSS --- */
+        .term-example {
+            padding: 12px; background: #f0f9ff; border-left: 3px solid var(--color-primary);
+            border-radius: 8px; font-style: italic; color: #1e3a8a; font-size: 0.9rem; margin-top: auto;
+        }
+        .term-example::before { content: 'Ex : '; font-weight: 700; }
+
+        /* Buttons Actions */
+        .term-actions {
+            display: flex; gap: 10px; margin-top: 15px;
+            padding-top: 15px; border-top: 1px solid #e5e7eb;
+        }
+        .action-btn {
+            flex: 1; padding: 8px; border: none; border-radius: 50px;
+            cursor: pointer; font-weight: 600; font-size: 0.85rem;
+            transition: all 0.3s ease; display: flex; align-items: center;
+            justify-content: center; gap: 5px;
+        }
+        .btn-forgot { background: #fee2e2; color: #991b1b; }
+        .btn-forgot:hover { background: #fecaca; transform: scale(1.05); }
+        
+        .btn-pass { background: #fef3c7; color: #92400e; }
+        .btn-pass:hover { background: #fde68a; transform: scale(1.05); }
+        
+        .btn-knew { background: #d1fae5; color: #065f46; }
+        .btn-knew:hover { background: #a7f3d0; transform: scale(1.05); }
+
+        /* Empty State */
+        .empty-state { text-align: center; padding: 60px 20px; color: #6b7280; }
+        .empty-state i { font-size: 4rem; margin-bottom: 20px; opacity: 0.3; color: var(--color-accent); }
+
+        /* ========================================
+           FOOTER (COSMIC STYLE)
+           ======================================== */
         .main-footer {
-            background-color: var(--brand-blue); color: var(--ivory);
-            padding: 20px 0; font-family: 'Lato', sans-serif; font-size: 0.9rem;
-            margin-top: auto; border-top: 4px solid var(--bronze);
+            background-color: var(--color-primary); color: var(--color-bg);
+            padding: 50px 0 20px; margin-top: auto;
         }
-        .footer-container { max-width: 1400px; margin: 0 auto; padding: 0 25px; }
-        .footer-row { display: flex; justify-content: space-between; align-items: center; gap: 20px; }
-        .footer-left { display: flex; align-items: center; gap: 15px; }
-        .footer-logo-img { width: 50px; height: 50px; border-radius: 8px; border: 2px solid var(--cta); background: #fff; object-fit: cover; }
-        .footer-info { display: flex; flex-direction: column; justify-content: center; }
-        .footer-name { color: var(--cta); font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; margin: 0; line-height: 1.2; }
-        .footer-details { font-size: 0.8rem; opacity: 0.8; display: flex; gap: 15px; }
-        .footer-right { display: flex; align-items: center; gap: 15px; }
-        .brand-nav { color: var(--cta) !important; } .icon-btn:hover .brand-nav { color: var(--brand-blue) !important; }
-        .brand-whatsapp { color: #25D366 !important; } .brand-discord { color: #5865F2 !important; } .brand-linkedin { color: #0077b5 !important; } .brand-instagram { color: #E1306C !important; } .brand-tiktok { color: #00f2ea !important; text-shadow: 2px 2px 0px #ff0050; }
-        .dock-separator { width: 1px; height: 25px; background-color: rgba(255,255,255,0.2); }
-        .footer-copyright { text-align: center; font-size: 0.75rem; color: rgba(255,255,255,0.3); margin-top: 15px; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.05); }
+        .footer-content {
+            display: flex; justify-content: space-between; align-items: flex-start;
+            flex-wrap: wrap; gap: 30px; margin-bottom: 30px;
+        }
+        .footer-identity { display: flex; align-items: center; gap: 15px; }
+        .footer-logo-img {
+            width: 60px; height: 60px; border-radius: 8px;
+            border: 2px solid var(--color-accent); object-fit: cover; background: white;
+        }
+        .footer-info-col { display: flex; flex-direction: column; }
+        .footer-name {
+            color: var(--color-accent); font-family: 'Playfair Display', serif;
+            font-weight: 700; font-size: 1.2rem; margin-bottom: 5px;
+        }
+        .footer-contact-stack {
+            font-size: 0.9rem; opacity: 0.8;
+            display: flex; flex-direction: column; gap: 4px;
+        }
+        .footer-link { color: inherit; text-decoration: none; transition: color 0.3s ease; }
+        .footer-link:hover { color: var(--color-accent); }
+
+        .dock-group { display: flex; flex-direction: column; align-items: flex-end; gap: 10px; }
+        .dock-label {
+            font-family: 'Montserrat', sans-serif; font-size: 0.8rem;
+            text-transform: uppercase; color: var(--color-accent); opacity: 0.8;
+        }
+        .icon-dock {
+            display: flex; gap: 12px; align-items: center;
+            flex-wrap: wrap; justify-content: flex-end;
+        }
+        .icon-btn {
+            width: 40px; height: 40px; border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            display: flex; align-items: center; justify-content: center;
+            transition: all 0.3s ease; border: 1px solid rgba(255,255,255,0.2);
+            color: white; text-decoration: none; font-size: 1.1rem; position: relative;
+        }
+        .icon-btn:hover {
+            background: white; color: var(--color-primary);
+            transform: translateY(-3px); border-color: white;
+        }
         
+        .brand-whatsapp { color: #25D366; } .icon-btn:hover .brand-whatsapp { color: #25D366; }
+        .brand-discord { color: #5865F2; } .icon-btn:hover .brand-discord { color: #5865F2; }
+        .brand-linkedin { color: #0077b5; } .icon-btn:hover .brand-linkedin { color: #0077b5; }
+        .brand-instagram { color: #E1306C; } .icon-btn:hover .brand-instagram { color: #E1306C; }
+        .brand-tiktok { color: #00f2ea; } .icon-btn:hover .brand-tiktok { color: #000; }
+
+        .icon-btn::after {
+            content: attr(data-tooltip); position: absolute; bottom: 125%; left: 50%;
+            transform: translateX(-50%); background: white; color: var(--color-primary);
+            padding: 4px 8px; border-radius: 4px; font-size: 0.7rem; white-space: nowrap;
+            opacity: 0; visibility: hidden; transition: 0.2s; pointer-events: none; font-weight: bold;
+        }
+        .icon-btn:hover::after { opacity: 1; visibility: visible; }
+
+        .footer-bottom {
+            text-align: center; padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.85rem; opacity: 0.6;
+        }
+
+        /* Back To Top - Style Premium */
+        #backToTop {
+            position: fixed; bottom: 30px; right: 30px;
+            width: 50px; height: 50px;
+            background: linear-gradient(135deg, #D9A526, #B4792A);
+            color: white; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; opacity: 0; visibility: hidden;
+            transition: all 0.3s ease; box-shadow: 0 4px 12px rgba(0,0,0,0.3); z-index: 1000;
+        }
+        #backToTop.visible { opacity: 1; visibility: visible; }
+        #backToTop:hover { transform: translateY(-5px) scale(1.1); box-shadow: 0 6px 16px rgba(217, 165, 38, 0.5); }
+
+        /* Responsive */
         @media (max-width: 900px) {
-            .footer-row { flex-direction: column; text-align: center; gap: 20px; }
-            .footer-left { flex-direction: column; }
-            .footer-details { flex-direction: column; gap: 5px; }
-            .footer-right { flex-wrap: wrap; justify-content: center; }
+            .top-bar-content { flex-direction: column; text-align: center; }
+            .top-bar-left { justify-content: center; }
+            .footer-content { flex-direction: column; align-items: center; text-align: center; }
+            .dock-group, .icon-dock { align-items: center; justify-content: center; }
+            .cards-grid { grid-template-columns: 1fr; }
+            .search-bar { flex-direction: column; }
         }
     </style>
 </head>
 <body>
 
-    <!-- HEADER PREMIUM -->
-    <header class="top-banner">
-        <div class="max-w-7xl mx-auto px-4 py-3">
-            <div class="flex flex-col lg:flex-row items-center justify-between gap-4">
-                
-                <!-- Logo & Titre -->
-                <div class="flex items-center gap-4 w-full lg:w-auto">
-                    <div class="w-14 h-14 rounded-full border-2 border-[#D9A526] overflow-hidden bg-white shrink-0 shadow-lg">
-                        <img src="https://projettechacademy.github.io/Juridique/Asset/Logo_MMPA.jpeg" 
-                             alt="Logo MMPA" class="w-full h-full object-cover">
-                    </div>
-                    <div>
-                        <h1 class="font-bold text-lg leading-tight tracking-wide">Mathilde Martine PAISLEY</h1>
-                        <p class="text-xs text-[#D9A526] font-bold">💫 The Jurist Elite Club By Studi ✨</p>
-                        <p class="text-[0.65rem] text-slate-300 font-light italic leading-tight">La Villa des Juristes Brisés 💔 sur l’Île de L’INSTRUCTION !🏝</p>
+    <!-- === HEADER === -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-content">
+                <div class="top-bar-left">
+                    <img src="https://projettechacademy.github.io/Juridique/Asset/Logo_juriste.png" onerror="this.src='https://projettechacademy.github.io/Juridique/Asset/Logo_juriste.jpg';" alt="Logo Club" class="logo-top-bar">
+                    <div class="identity-stack">
+                        <span class="name-top-bar">💫The Jurist Elite Club By Studi ✨</span>
+                        <span class="club-subtitle">La Villa des Juristes Brisés 💔 sur l’Île de  L’INSTRUCTION !🏝</span>
                     </div>
                 </div>
-
-                <!-- Navigation Intégrée & Bouton Portfolio -->
-                <div class="flex flex-wrap items-center justify-center gap-4 lg:gap-6 w-full lg:w-auto">
-                    <nav class="flex flex-wrap items-center justify-center gap-4">
-                        
-                        <!-- Onglet 1: Lexique (Rond Doré Premium) -->
-                        <button onclick="switchTab('lexique')" id="nav-lexique" class="tab-icon-btn active" data-tooltip="Lexique">
-                            <i class="fa-solid fa-book-open"></i>
-                        </button>
-                        
-                        <!-- Onglet 2: Jeu (Rond Doré Premium) -->
-                        <button onclick="switchTab('game')" id="nav-game" class="tab-icon-btn" data-tooltip="Entraînement">
-                            <i class="fa-solid fa-gamepad"></i>
-                        </button>
-
-                        <div class="h-4 w-px bg-white/20 hidden lg:block"></div>
-
-                        <!-- Liens Globaux (Ronds Dorés) -->
-                        <a href="https://projettechacademy.github.io/Juridique/index.html" target="_blank" class="icon-btn logo-home-btn" data-tooltip="Accueil">
-                            <img src="https://projettechacademy.github.io/Juridique/Asset/Logo_juriste.png" 
-                                 alt="Accueil Juriste"
-                                 onerror="this.src='https://projettechacademy.github.io/Juridique/Asset/Logo_juriste.jpg'">
-                        </a>
-
-                        <a href="https://projettechacademy.github.io/Juridique/00_Autres/Mon_Espace_Juriste_Tableau_de_bord_personnel.html" target="_blank" class="icon-btn" data-tooltip="Mon Espace"><span class="brand-nav">📊</span></a>
-                        <a href="https://projettechacademy.github.io/Juridique/00_Autres/formation_live_juriste.html" target="_blank" class="icon-btn" data-tooltip="Planning Live"><span class="brand-nav">📅</span></a>
-                        <a href="https://projettechacademy.github.io/Juridique/00_Autres/A_propos_de_moi.html" target="_blank" class="icon-btn" data-tooltip="À propos de moi" style="padding: 0; overflow: hidden; border: 2px solid #D9A526;">
-                            <img src="https://projettechacademy.github.io/Juridique/Asset/Photo_Mathilde_Martine_PAISLEY.png" onerror="this.src='https://projettechacademy.github.io/Juridique/Asset/Photo_Mathilde_Martine_PAISLEY.jpg';" alt="Profil" class="w-full h-full object-cover">
-                        </a>
-                    </nav>
-
-                    <!-- BOUTON PORTFOLIO PREMIUM GOLD -->
-                    <a href="https://projettechacademy.github.io/CV_MMPA-CV-Mathilde-Martine-PAISLEY/" target="_blank" class="btn-portfolio-premium">
-                        <span>📄</span> Mon portfolio
+                
+                <div class="top-bar-center">
+                    <a href="https://projettechacademy.github.io/Juridique/index.html" target="_blank" class="header-icon-btn" aria-label="Start/Accueil" data-tooltip="Accueil">
+                        🏠
+                    </a>
+                    <a href="https://projettechacademy.github.io/Juridique/00_Autres/Mon_Espace_Juriste_Tableau_de_bord_personnel.html" target="_blank" class="header-icon-btn" aria-label="Mon Espace" data-tooltip="Mon Espace">📊</a>
+                    <a href="https://projettechacademy.github.io/Juridique/00_Autres/Lexique_Latin_Juridique.html" target="_blank" class="header-icon-btn" aria-label="Lexique Latin" data-tooltip="Lexique">📜</a>
+                    <a href="https://projettechacademy.github.io/Juridique/00_Autres/formation_live_juriste.html" target="_blank" class="header-icon-btn" aria-label="Planning Live" data-tooltip="Planning">📅</a>
+                    <a href="https://projettechacademy.github.io/Juridique/00_Autres/A_propos_de_moi.html" target="_blank" class="header-icon-btn" aria-label="À propos de moi" data-tooltip="Profil">
+                        👤
                     </a>
                 </div>
+
+                <a href="https://projettechacademy.github.io/CV_MMPA-CV-Mathilde-Martine-PAISLEY/" target="_blank" class="btn-portfolio-cosmic">
+                    <span>📄</span> Mon portfolio
+                </a>
             </div>
         </div>
-    </header>
+    </div>
 
-    <!-- MAIN CONTENT -->
-    <main class="flex-grow w-full max-w-7xl mx-auto p-6 md:p-10 relative">
-
-        <!-- Header Dynamique de la Page -->
-        <div class="page-header">
-            <h1 class="page-title" id="dynamic-title">Lexique Latin Juridique</h1>
-            <p class="page-subtitle">Les indispensables pour exceller</p>
-        </div>
-
-        <!-- VIEW 1: LEXIQUE -->
-        <div id="view-lexique" class="transition-all duration-500 ease-in-out">
-            
-            <!-- Search -->
-            <div class="bg-[#F6F2E8] rounded-2xl p-6 mb-8 shadow-sm border border-[#D9A526]/20 flex items-center gap-4">
-                <i class="fa-solid fa-magnifying-glass text-[#D9A526] text-xl ml-2"></i>
-                <input type="text" id="searchInput" placeholder="Rechercher une locution (ex: Ad hoc, A contrario...)" 
-                       class="w-full bg-transparent border-none outline-none text-[#0F2C48] placeholder-slate-400 text-lg">
-                <span class="text-xs font-bold bg-[#D9A526] text-white px-2 py-1 rounded ml-auto whitespace-nowrap"><span id="total-terms">0</span> termes</span>
+    <!-- === MAIN CONTENT === -->
+    <main id="main-content">
+        <div class="container">
+            <!-- Page Header -->
+            <div class="page-header">
+                <h1 class="page-title">
+                    <i class="fas fa-scroll" style="color: var(--color-accent); margin-right: 10px;"></i>
+                    Lexique Latin Juridique
+                </h1>
+                <p class="page-subtitle">Les indispensables pour exceller en droit (Social / Affaires / Entreprise)</p>
             </div>
 
-            <!-- Sticky Alphabet -->
-            <div class="sticky top-[140px] lg:top-[90px] z-40 bg-[#FAFAFA]/95 backdrop-blur py-2 mb-8 -mx-4 px-4 overflow-x-auto">
-                <div class="flex gap-2 min-w-max pb-2" id="alphabet-nav">
-                    <!-- JS Injected Pills -->
-                </div>
-            </div>
-
-            <!-- Grid -->
-            <div id="lexicon-container" class="space-y-12">
-                <!-- Sections injected by JS -->
-            </div>
-            
-            <div id="noResults" class="hidden text-center py-20">
-                <h3 class="text-xl font-bold text-[#0F2C48]">Aucun résultat</h3>
-            </div>
-        </div>
-
-        <!-- VIEW 2: GAME -->
-        <div id="view-game" class="hidden transition-all duration-500 ease-in-out flex flex-col items-center justify-center py-10 min-h-[60vh]">
-            
-            <!-- Score -->
-            <div class="flex gap-4 mb-8 text-sm font-bold">
-                <span class="text-emerald-600 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200">
-                    <i class="fa-solid fa-check mr-1"></i> <span id="score-success">0</span>
-                </span>
-                <span class="text-rose-600 bg-rose-50 px-3 py-1 rounded-full border border-rose-200">
-                    <i class="fa-solid fa-xmark mr-1"></i> <span id="score-fail">0</span>
-                </span>
-            </div>
-
-            <div class="perspective w-full max-w-lg h-[420px] cursor-pointer group" onclick="flipCard()">
-                <div class="card-inner w-full h-full" id="game-card-inner">
-                    <!-- Front -->
-                    <div class="card-front p-8 flex flex-col justify-between">
-                        <div class="w-full flex justify-between items-start opacity-50"><i class="fa-solid fa-quote-left text-2xl"></i><i class="fa-solid fa-question text-2xl"></i></div>
-                        <div>
-                            <h3 id="card-term" class="text-4xl font-bold serif-font mb-4">...</h3>
-                            <div class="w-16 h-1 bg-[#D9A526] mx-auto rounded-full" style="background: var(--cta-page-gradient);"></div>
-                        </div>
-                        <p class="text-sm text-[#D9A526] animate-bounce uppercase tracking-widest font-bold">Cliquez pour révéler</p>
-                    </div>
-                    <!-- Back -->
-                    <div class="card-back bg-white p-8 flex flex-col text-left border border-slate-200">
-                        <div class="flex justify-between items-start mb-4 pb-4 border-b border-slate-100">
-                            <div>
-                                <h3 id="card-term-back" class="text-xl font-bold text-[#0F2C48] serif-font">...</h3>
-                                <p id="card-trans" class="text-[#D9A526] italic font-medium">...</p>
-                            </div>
-                            <div class="bg-[#F6F2E8] p-2 rounded-full text-[#0F2C48]"><i class="fa-solid fa-lightbulb"></i></div>
-                        </div>
-                        <div class="flex-grow overflow-y-auto pr-2 custom-scroll space-y-4">
-                            <div><p class="text-xs font-bold text-slate-400 uppercase mb-1">Définition</p><p id="card-def" class="text-slate-700 text-sm leading-relaxed">...</p></div>
-                            <div class="bg-[#F6F2E8] p-4 rounded-lg border-l-4 border-[#D9A526]"><p class="text-xs font-bold text-[#0F2C48] uppercase mb-1">Exemple</p><p id="card-ex" class="text-slate-600 text-sm italic">...</p></div>
-                        </div>
+            <!-- Controls -->
+            <section class="controls-section">
+                <div class="search-bar">
+                    <input type="text" 
+                           id="searchInput" 
+                           class="search-input" 
+                           placeholder="🔍 Rechercher un terme latin, une traduction ou une définition..."
+                           aria-label="Rechercher dans le lexique">
+                    
+                    <!-- Toggle Mode Révision (Recto/Verso) -->
+                    <div class="toggle-container" title="Masquer les réponses pour s'entraîner">
+                        <label class="toggle-label" for="revisionToggle">Mode Révision</label>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="revisionToggle">
+                            <span class="slider"></span>
+                        </label>
                     </div>
                 </div>
+
+                <!-- Boutons de filtre -->
+                <div class="filter-container">
+                    <button class="filter-btn active" data-filter="all">Tous</button>
+                    <button class="filter-btn filter-ds" data-filter="DS">DS (Droit Social)</button>
+                    <button class="filter-btn filter-da" data-filter="DA">DA (Droit Affaires)</button>
+                    <button class="filter-btn filter-je" data-filter="JE">JE (Juriste Entreprise)</button>
+                </div>
+
+                <div class="stats-bar">
+                    <div class="stat-item">
+                        <span class="stat-value" id="totalTerms">0</span>
+                        <span class="stat-label">termes</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value" id="knewCount">0</span>
+                        <span class="stat-label">Sus</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value" id="passCount">0</span>
+                        <span class="stat-label">Passés</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value" id="forgotCount">0</span>
+                        <span class="stat-label">Oubliés</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Cards Grid -->
+            <div id="cardsGrid" class="cards-grid">
+                <!-- Généré dynamiquement par JS -->
             </div>
 
-            <div class="mt-10 flex gap-4">
-                <button onclick="updateScore(false); nextCard()" class="px-6 py-2 rounded-full border-2 border-rose-200 text-rose-600 hover:bg-rose-50 font-bold transition-colors"><i class="fa-solid fa-xmark"></i> Oublié</button>
-                <button onclick="nextCard()" class="px-6 py-2 rounded-full bg-[#0F2C48] text-white hover:bg-[#1a3b5c] font-bold transition-colors">Passer <i class="fa-solid fa-arrow-right ml-1"></i></button>
-                <button onclick="updateScore(true); nextCard()" class="px-6 py-2 rounded-full border-2 border-emerald-200 text-emerald-600 hover:bg-emerald-50 font-bold transition-colors"><i class="fa-solid fa-check"></i> Su</button>
+            <div id="emptyState" class="empty-state" style="display: none;">
+                <i class="fas fa-search"></i>
+                <h3>Aucun résultat</h3>
+                <p>Essayez un autre terme de recherche</p>
             </div>
         </div>
-
     </main>
 
-    <!-- FOOTER COMPACT -->
+    <!-- === FOOTER === -->
     <footer class="main-footer">
-        <div class="footer-container">
-            <div class="footer-row">
-                <!-- GAUCHE : IDENTITÉ -->
-                <div class="footer-left">
-                    <img src="https://projettechacademy.github.io/Juridique/Asset/Logo_MMPA.jpeg" alt="Logo" class="footer-logo-img">
-                    <div class="footer-info">
-                        <h3 class="footer-name">Mathilde Martine PAISLEY</h3>
-                        <div class="footer-details">
-                            <span>📧 Mathilde.martine.paisley@gmail.com</span>
-                            <span>📲 06 85 90 08 87</span>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-identity">
+                    <img src="https://projettechacademy.github.io/Juridique/Asset/Logo_MMPA.jpeg" alt="Logo MMPA" class="footer-logo-img">
+                    <div class="footer-info-col">
+                        <div class="footer-name">Mathilde Martine PAISLEY</div>
+                        <div class="footer-contact-stack">
+                            <a href="mailto:Mathilde.martine.paisley@gmail.com" class="footer-link">📧 Mathilde.martine.paisley@gmail.com</a>
+                            <a href="tel:+33685900887" class="footer-link">📲 06 85 90 08 87</a>
                         </div>
                     </div>
                 </div>
-
-                <!-- DROITE : NAVIGATION & RÉSEAUX -->
-                <div class="footer-right">
-                    <a href="https://projettechacademy.github.io/Juridique/index.html" target="_blank" class="icon-btn logo-home-btn" data-tooltip="Accueil">
-                        <img src="https://projettechacademy.github.io/Juridique/Asset/Logo_juriste.png" alt="Accueil" onerror="this.src='https://projettechacademy.github.io/Juridique/Asset/Logo_juriste.jpg'">
-                    </a>
-                    <a href="https://projettechacademy.github.io/Juridique/00_Autres/Mon_Espace_Juriste_Tableau_de_bord_personnel.html" target="_blank" class="icon-btn" data-tooltip="Mon Espace"><span class="brand-nav">📊</span></a>
-                    <a href="https://projettechacademy.github.io/Juridique/00_Autres/Lexique_Latin_Juridique.html" target="_blank" class="icon-btn" data-tooltip="Lexique"><span class="brand-nav">📜</span></a>
-                    <a href="https://projettechacademy.github.io/Juridique/00_Autres/formation_live_juriste.html" target="_blank" class="icon-btn" data-tooltip="Planning"><span class="brand-nav">📅</span></a>
-                    <a href="https://projettechacademy.github.io/Juridique/00_Autres/A_propos_de_moi.html" target="_blank" class="icon-btn" data-tooltip="Bio"><span class="brand-nav">👤</span></a>
-                    
-                    <div class="dock-separator"></div>
-
-                    <a href="https://chat.whatsapp.com/IoMXFl4o2otExYKCPVj22b" target="_blank" class="icon-btn" data-tooltip="WhatsApp"><i class="fab fa-whatsapp brand-whatsapp"></i></a>
-                    <a href="https://discord.gg/qwNPV8QzFt" target="_blank" class="icon-btn" data-tooltip="Discord"><i class="fab fa-discord brand-discord"></i></a>
-                    <a href="https://www.linkedin.com/in/mathilde-martine-paisley-1a4422382/" target="_blank" class="icon-btn" data-tooltip="LinkedIn"><i class="fab fa-linkedin brand-linkedin"></i></a>
-                    <a href="https://www.instagram.com/enervyx/" target="_blank" class="icon-btn" data-tooltip="Instagram"><i class="fab fa-instagram brand-instagram"></i></a>
-                    <a href="https://www.tiktok.com/@enervyx/" target="_blank" class="icon-btn" data-tooltip="TikTok"><i class="fab fa-tiktok brand-tiktok"></i></a>
+                
+                <div class="dock-group">
+                    <div class="dock-label">Navigation & Réseaux</div>
+                    <div class="icon-dock">
+                        <a href="https://projettechacademy.github.io/Juridique/index.html" target="_blank" class="icon-btn" data-tooltip="Accueil">🏠</a>
+                        <a href="https://projettechacademy.github.io/Juridique/00_Autres/Mon_Espace_Juriste_Tableau_de_bord_personnel.html" target="_blank" class="icon-btn" data-tooltip="Mon Espace">📊</a>
+                        <a href="https://projettechacademy.github.io/Juridique/00_Autres/Lexique_Latin_Juridique.html" target="_blank" class="icon-btn" data-tooltip="Lexique">📜</a>
+                        <a href="https://chat.whatsapp.com/IoMXFl4o2otExYKCPVj22b" target="_blank" class="icon-btn" data-tooltip="WhatsApp"><i class="fab fa-whatsapp brand-whatsapp"></i></a>
+                        <a href="https://discord.gg/qwNPV8QzFt" target="_blank" class="icon-btn" data-tooltip="Discord"><i class="fab fa-discord brand-discord"></i></a>
+                        <a href="https://www.linkedin.com/in/mathilde-martine-paisley-1a4422382/" target="_blank" class="icon-btn" data-tooltip="LinkedIn"><i class="fab fa-linkedin brand-linkedin"></i></a>
+                        <a href="https://www.instagram.com/enervyx/" target="_blank" class="icon-btn" data-tooltip="Instagram"><i class="fab fa-instagram brand-instagram"></i></a>
+                        <a href="https://www.tiktok.com/@enervyx/" target="_blank" class="icon-btn" data-tooltip="TikTok"><i class="fab fa-tiktok brand-tiktok"></i></a>
+                    </div>
                 </div>
             </div>
-            <div class="footer-copyright">
-                <p>💫 The Jurist Elite Club By Studi ✨ La Villa des Juristes Brisés 💔 sur l’Île de L’INSTRUCTION !🏝 | By Mathilde Martine PAISLEY | © 2025 Tous droits réservés</p>
+            
+            <div class="footer-bottom">
+                <p>© 2025 Tous droits réservés – Création : 2025 – Dernière mise à jour : Novembre 2025</p>
             </div>
         </div>
     </footer>
 
-    <!-- Back to Top (Doré) -->
-    <button onclick="scrollToTop()" id="backToTop" class="fixed bottom-8 right-8 w-12 h-12 bg-[#D9A526] text-[#0F2C48] rounded-full shadow-xl flex items-center justify-center hover:bg-white hover:scale-110 transition-all z-50 opacity-0 pointer-events-none duration-300 border-2 border-[#0F2C48]">
-        <i class="fa-solid fa-arrow-up font-bold"></i>
-    </button>
+    <div id="backToTop" onclick="window.scrollTo(0,0)"><i class="fas fa-arrow-up"></i></div>
 
+    <!-- ========================================
+         JAVASCRIPT
+         ======================================== -->
     <script>
-        // DATA
-        const lexiconData = [
-            { term: "A contrario", trans: "Par le contraire", def: "Argumentation déduisant d'une situation non prévue l'application de la règle inverse.", ex: "La loi prévoit X pour les CDI. A contrario, pour les CDD, c'est la règle Y qui s'applique." },
-            { term: "A fortiori", trans: "À plus forte raison", def: "Argumentation qui étend une règle à un cas non prévu, car les raisons sont encore plus évidentes.", ex: "Si la faute simple justifie une sanction, a fortiori la faute grave justifie un licenciement." },
-            { term: "Ab absurdo", trans: "Par l'absurde", def: "Démontrer la fausseté d'une proposition en montrant que sa conséquence est absurde.", ex: "Le raisonnement aboutirait à ce que l'employeur paie le salarié qui n'a jamais travaillé : absurde." },
-            { term: "Ab initio", trans: "Dès le commencement", def: "Se dit d'un acte qui prend effet depuis son origine.", ex: "Si une condition essentielle manque, le contrat est nul ab initio." },
-            { term: "Ab irato", trans: "Sous le coup de la colère", def: "Qualification d'un acte accompli sous l'emportement.", ex: "Une sanction prononcée ab irato risque d'être annulée." },
-            { term: "Abusus non tollit usum", trans: "L'abus n'empêche pas l'usage", def: "Le fait qu'un droit soit abusé ne signifie pas qu'il n'existe pas.", ex: "L'abus des périodes d'essai par certains ne supprime pas le droit d'en insérer une." },
-            { term: "Accessorium sequitur principale", trans: "L'accessoire suit le principal", def: "Le sort de l'accessoire est lié à celui de l'élément principal.", ex: "L'annulation du contrat (principal) entraîne l'annulation de la clause de non-concurrence." },
-            { term: "Actio personalis moritur cum persona", trans: "L'action meurt avec la personne", def: "L'action en justice s'éteint avec le décès.", ex: "Le décès du salarié met fin au contrat et aux actions personnelles." },
-            { term: "Actori incumbit probatio", trans: "La preuve incombe au demandeur", def: "C'est à celui qui allègue un fait de le prouver.", ex: "Le salarié qui réclame des heures supplémentaires doit les prouver." },
-            { term: "Actor sequitur forum rei", trans: "Le demandeur suit le tribunal du défendeur", def: "Le litige est porté devant le tribunal du défendeur.", ex: "Principe de compétence territoriale." },
-            { term: "Actus reus / Mens rea", trans: "Acte coupable / Esprit coupable", def: "Éléments constitutifs de l'infraction (matériel et moral).", ex: "Pour le vol : prendre (actus) avec l'intention de voler (mens)." },
-            { term: "Ad cautelam", trans: "Par précaution", def: "Par mesure de prudence.", ex: "Courrier de contestation envoyé ad cautelam." },
-            { term: "Ad hoc", trans: "À cet effet précis", def: "Spécialement désigné pour une fonction.", ex: "Administrateur ad hoc pour une succession délicate." },
-            { term: "Ad impossibilia nemo tenetur", trans: "À l'impossible nul n'est tenu", def: "On ne peut être contraint à une obligation impossible.", ex: "Cas de force majeure rendant le travail impossible." },
-            { term: "Ad litem", trans: "Pour le procès", def: "Relatif à l'instance en cours.", ex: "Mandataire ad litem désigné pour la procédure." },
-            { term: "Ad nutum", trans: "Au gré de", def: "Révoqué sans motif exigé.", ex: "Révocation ad nutum du président de SAS." },
-            { term: "Ad probationem", trans: "À titre de preuve", def: "Condition de forme pour prouver l'acte.", ex: "L'écrit est souvent requis ad probationem." },
-            { term: "Ad validitatem", trans: "À titre de validité", def: "Condition de forme pour la validité de l'acte.", ex: "Certains contrats solennels exigent un écrit ad validitatem." },
-            { term: "Affectio societatis", trans: "Volonté de s'associer", def: "Volonté de collaborer à l'œuvre commune.", ex: "Élément essentiel du contrat de société." },
-            { term: "Aliud est celare, aliud tacere", trans: "Cacher est une chose, se taire une autre", def: "Distinction entre réticence dolosive et simple silence.", ex: "Dissimulation active vs omission." },
-            { term: "Amicus curiæ", trans: "Ami de la Cour", def: "Tiers présentant un avis éclairé au tribunal.", ex: "Une association dépose un mémoire amicus curiæ." },
-            { term: "Argumentum a silentio", trans: "Argument du silence", def: "Conclure du silence d'un texte.", ex: "La loi ne l'interdit pas, donc c'est permis." },
-            { term: "Audi alteram partem", trans: "Que l'autre partie soit entendue", def: "Principe du contradictoire.", ex: "Entretien préalable au licenciement." },
-            { term: "Bona fide", trans: "De bonne foi", def: "Honnêteté, loyauté.", ex: "Exécution du contrat de bonne foi." },
-            { term: "Bonus dolus", trans: "Le bon dol", def: "Petite exagération tolérée.", ex: "Embellir légèrement un CV (sans fausse déclaration)." },
-            { term: "Casus belli", trans: "Cas de guerre", def: "Fait justifiant une hostilité majeure.", ex: "Faute lourde justifiant rupture immédiate." },
-            { term: "Caveat emptor", trans: "Que l'acheteur soit vigilant", def: "L'acheteur doit s'informer.", ex: "Vigilance dans les relations commerciales." },
-            { term: "Cogito ergo sum", trans: "Je pense donc je suis", def: "Principe philosophique d'existence.", ex: "Capacité juridique de la personne physique." },
-            { term: "Contra legem", trans: "Contre la loi", def: "Acte violant la règle légale.", ex: "Clause inférieure au SMIC." },
-            { term: "Corpus delicti", trans: "Corps du délit", def: "Élément matériel de l'infraction.", ex: "L'objet volé." },
-            { term: "Cui bono ?", trans: "À qui profite le crime ?", def: "Recherche du mobile.", ex: "Enquête interne." },
-            { term: "Culpa lata", trans: "Faute lourde", def: "Faute d'une extrême gravité.", ex: "Intention de nuire." },
-            { term: "Culpa levis", trans: "Faute légère", def: "Simple négligence.", ex: "Erreur involontaire." },
-            { term: "Curia novit iura", trans: "La Cour connaît le droit", def: "Le juge applique la règle de droit adéquate.", ex: "Requalification juridique par le juge." },
-            { term: "Damnum emergens", trans: "Dommage émergent", def: "Perte subie immédiatement.", ex: "Perte de salaire." },
-            { term: "De facto", trans: "De fait", def: "Situation réelle.", ex: "Gérant de fait." },
-            { term: "De jure", trans: "De droit", def: "Situation légale.", ex: "Gérant de droit." },
-            { term: "Dura lex, sed lex", trans: "La loi est dure, mais c'est la loi", def: "Application stricte de la loi.", ex: "Rigueur des délais de prescription." },
-            { term: "Erga omnes", trans: "À l'égard de tous", def: "Opposable à tout le monde.", ex: "Publication au greffe." },
-            { term: "Exceptio non adimpleti contractus", trans: "Exception d'inexécution", def: "Suspension si l'autre ne paie pas/n'exécute pas.", ex: "Droit de retrait." },
-            { term: "Ex nunc", trans: "Pour l'avenir", def: "Pas d'effet rétroactif.", ex: "Résiliation." },
-            { term: "Ex tunc", trans: "Depuis l'origine", def: "Effet rétroactif.", ex: "Nullité du contrat." },
-            { term: "In abstracto", trans: "Dans l'abstrait", def: "Par rapport à un standard moyen.", ex: "Le bon père de famille." },
-            { term: "In concreto", trans: "Dans le concret", def: "Selon les circonstances réelles.", ex: "Appréciation de la faute." },
-            { term: "In limine litis", trans: "Au seuil du procès", def: "Avant tout débat au fond.", ex: "Exception de procédure." },
-            { term: "In solidum", trans: "Solidairement", def: "Tenus ensemble de la dette.", ex: "Condamnation solidaire." },
-            { term: "Intuitu personæ", trans: "En considération de la personne", def: "La personne est déterminante.", ex: "Contrat de travail." },
-            { term: "Ipso facto", trans: "Par le fait même", def: "Automatiquement.", ex: "Fin du CDD à l'échéance." },
-            { term: "Lucrum cessans", trans: "Gain manqué", def: "Manque à gagner.", ex: "Perte de commissions futures." },
-            { term: "Mala fides", trans: "Mauvaise foi", def: "Intention malhonnête.", ex: "Sabotage." },
-            { term: "Mutatis mutandis", trans: "En changeant ce qui doit l'être", def: "Adaptation à un contexte différent.", ex: "Application par analogie." },
-            { term: "Mutuus dissensus", trans: "Consentement mutuel à rompre", def: "Accord pour rompre.", ex: "Rupture conventionnelle." },
-            { term: "Ne bis in idem", trans: "Pas deux fois pour la même chose", def: "Interdiction de double sanction.", ex: "Avertissement puis licenciement pour les mêmes faits : interdit." },
-            { term: "Nemo auditur...", trans: "Nul ne peut se prévaloir de sa turpitude", def: "On ne réclame pas justice d'une situation illégale qu'on a créée.", ex: "Fraudeur réclamant des indemnités." },
-            { term: "Nemo censetur ignorare legem", trans: "Nul n'est censé ignorer la loi", def: "L'ignorance n'est pas une excuse.", ex: "L'employeur doit connaître le Code du travail." },
-            { term: "Nullum crimen sine lege", trans: "Pas de crime sans loi", def: "Légalité des délits et peines.", ex: "Sanction prévue au règlement intérieur." },
-            { term: "Pacta sunt servanda", trans: "Les contrats doivent être respectés", def: "Force obligatoire du contrat.", ex: "Le contrat est la loi des parties." },
-            { term: "Prima facie", trans: "À première vue", def: "Apparence de vérité.", ex: "Preuve apparente." },
-            { term: "Pro rata temporis", trans: "Proportionnel au temps", def: "Calcul selon la durée.", ex: "Calcul des congés payés." },
-            { term: "Quantum", trans: "Montant", def: "La somme due.", ex: "Quantum des dommages-intérêts." },
-            { term: "Quid pro quo", trans: "Donnant donnant", def: "Contrepartie.", ex: "Salaire contre travail." },
-            { term: "Ratio decidendi", trans: "Raison de la décision", def: "Motif juridique déterminant.", ex: "Fondement de la jurisprudence." },
-            { term: "Res judicata", trans: "Chose jugée", def: "Définitif.", ex: "Autorité de la chose jugée." },
-            { term: "Statu quo", trans: "État actuel", def: "Maintien de la situation.", ex: "Geler les positions." },
-            { term: "Sub judice", trans: "En cours de jugement", def: "Affaire non tranchée.", ex: "Devant le tribunal." },
-            { term: "Sui generis", trans: "De son propre genre", def: "Spécifique, unique.", ex: "Contrat atypique." },
-            { term: "Ultra petita", trans: "Au-delà de la demande", def: "Statuer sur ce qui n'est pas demandé.", ex: "Interdiction pour le juge." },
-            { term: "Vacatio legis", trans: "Vacance de la loi", def: "Délai avant application.", ex: "Entrée en vigueur différée." },
-            { term: "Veni, vidi, vici", trans: "Je suis venu, j'ai vu, j'ai vaincu", def: "Adage de succès rapide.", ex: "Victoire judiciaire éclatante." },
-            { term: "Utilitas publica", trans: "Utilité publique", def: "L'intérêt général prime sur les intérêts privés.", ex: "Expropriation pour cause d'utilité publique." },
-            { term: "Ubi societas ibi jus", trans: "Là où il y a société, il y a droit", def: "Toute vie sociale implique des règles.", ex: "Le droit naît des interactions humaines." },
-            { term: "Testis unus, testis nullus", trans: "Témoin unique, témoin nul", def: "La parole d'un seul ne suffit pas toujours à prouver.", ex: "Besoin de corroboration des faits." },
-            { term: "Terra nullius", trans: "Terre n'appartenant à personne", def: "Territoire sans maître (droit international).", ex: "Zone non revendiquée par un État." }
+        // Fonction de sécurité pour échapper le HTML
+        function escapeHtml(unsafe) {
+            if (unsafe === null || unsafe === undefined) return '';
+            return String(unsafe)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#039;');
+        }
+
+        // Données du lexique (Liste enrichie à ~80 termes)
+        const lexiqueData = [
+            // --- Droit du Travail / Contrat ---
+            { 
+                latin: "Ab initio", 
+                translation: "Dès le début", 
+                definition: "Désigne ce qui est valable ou nul dès le commencement, sans effet rétroactif.", 
+                example: "Le contrat de travail fictif est nul ab initio.",
+                usage: "Pour contester la validité d'un acte depuis son origine.",
+                tags: ["JE", "DA", "DS"]
+            },
+            { 
+                latin: "Accessorium sequitur principale", 
+                translation: "L'accessoire suit le principal", 
+                definition: "Règle selon laquelle l'élément accessoire subit le même sort juridique que l'élément principal.", 
+                example: "La prime de précarité (accessoire) suit le sort du salaire (principal).",
+                usage: "Pour justifier le sort d'une clause ou d'un avantage lié à un contrat principal.",
+                tags: ["DS", "JE"]
+            },
+            { 
+                latin: "Actus reus", 
+                translation: "L'acte coupable", 
+                definition: "L'élément matériel de l'infraction (l'acte commis).", 
+                example: "Le vol de matériel constitue l'actus reus du délit.",
+                usage: "En droit pénal pour désigner l'acte matériel de l'infraction.",
+                tags: ["DA", "JE", "DS"]
+            },
+            { 
+                latin: "Ad hoc", 
+                translation: "Pour cela", 
+                definition: "Mesure prise spécialement pour une situation donnée.", 
+                example: "Un comité ad hoc a été créé pour gérer la crise.",
+                usage: "Pour une solution spécifique à un problème donné.",
+                tags: ["JE", "DA", "DS"]
+            },
+            { 
+                latin: "Ad litem", 
+                translation: "Pour le procès", 
+                definition: "Désigne un mandat donné spécifiquement pour une action en justice.", 
+                example: "Un représentant ad litem a été nommé pour le salarié mineur.",
+                usage: "Pour désigner un représentant nommé pour la durée du procès.",
+                tags: ["JE", "DA", "DS"]
+            },
+            { 
+                latin: "Ad valorem", 
+                translation: "Selon la valeur", 
+                definition: "Taxation proportionnelle à la valeur du bien.", 
+                example: "Les cotisations sont calculées ad valorem sur le salaire.",
+                usage: "En fiscalité et paie, impôt/taxe basé sur le montant.",
+                tags: ["DA", "JE", "DS"]
+            },
+             { 
+                latin: "Actori incumbit probatio", 
+                translation: "La charge de la preuve incombe au demandeur", 
+                definition: "C'est à celui qui allègue un fait de le prouver.", 
+                example: "Aux prud'hommes, actori incumbit probatio pour les heures supplémentaires.",
+                usage: "Fondamental en contentieux : c'est à celui qui attaque de prouver ses dires.",
+                tags: ["DS", "JE"]
+            },
+            { 
+                latin: "Addendum", 
+                translation: "Chose à ajouter", 
+                definition: "Document ajouté à un acte pour le compléter ou le modifier.", 
+                example: "Un addendum au contrat de travail pour le télétravail.",
+                usage: "Pour modifier un contrat sans le réécrire entièrement.",
+                tags: ["DS", "DA", "JE"]
+            },
+            { 
+                latin: "Affectio societatis", 
+                translation: "La volonté de s'associer", 
+                definition: "L'élément intentionnel indispensable à la formation du contrat de société.", 
+                example: "La mésentente grave entraîne la disparition de l'affectio societatis.",
+                usage: "Fondamental en droit des sociétés pour prouver l'existence d'une société.",
+                tags: ["DA", "JE"]
+            },
+            { 
+                latin: "Alias", 
+                translation: "Autrement dit", 
+                definition: "Nom d'emprunt ou pseudonyme.", 
+                example: "L'entreprise connue sous l'alias 'Start-up X'.",
+                usage: "Pour désigner un autre nom commercial.",
+                tags: ["JE", "DA"]
+            },
+            { 
+                latin: "Alibi", 
+                translation: "Ailleurs", 
+                definition: "Preuve qu'une personne était ailleurs au moment des faits.", 
+                example: "Le salarié a fourni un alibi pour son absence injustifiée.",
+                usage: "Moyen de défense pour prouver son absence sur les lieux.",
+                tags: ["DA", "JE", "DS"]
+            },
+            { 
+                latin: "Amicus curiae", 
+                translation: "Ami de la cour", 
+                definition: "Personne ou organisme qui intervient pour éclairer le tribunal.", 
+                example: "Le syndicat est intervenu comme amicus curiae.",
+                usage: "Intervention d'un tiers neutre pour donner un avis technique.",
+                tags: ["JE", "DA", "DS"]
+            },
+            { 
+                latin: "Animus", 
+                translation: "Intention", 
+                definition: "L'élément moral ou l'intention derrière un acte.", 
+                example: "L'animus nocendi (intention de nuire) dans le harcèlement.",
+                usage: "Pour prouver l'intentionnalité d'une faute.",
+                tags: ["DA", "DS"]
+            },
+            { 
+                latin: "A posteriori", 
+                translation: "En partant de ce qui vient après", 
+                definition: "Raisonnement basé sur l'expérience ou les faits observés.", 
+                example: "Une analyse a posteriori des risques psychosociaux.",
+                usage: "Analyse faite après coup, une fois les faits réalisés.",
+                tags: ["JE", "DA", "DS"]
+            },
+            { 
+                latin: "A priori", 
+                translation: "En partant de ce qui est avant", 
+                definition: "Raisonnement théorique, avant expérience.", 
+                example: "Un jugement a priori sur la culpabilité.",
+                usage: "Raisonnement théorique, avant de voir les faits.",
+                tags: ["JE", "DA", "DS"]
+            },
+            { 
+                latin: "Bona fide", 
+                translation: "De bonne foi", 
+                definition: "Agir avec honnêteté et sincérité.", 
+                example: "Les négociations ont été menées bona fide.",
+                usage: "Pour prouver la légitimité d'une action ou d'une transaction.",
+                tags: ["DA", "JE", "DS"]
+            },
+            { 
+                latin: "Casus belli", 
+                translation: "Cas de guerre", 
+                definition: "Acte justifiant un conflit majeur.", 
+                example: "Cette rupture abusive est un casus belli avec le partenaire.",
+                usage: "Au sens figuré : acte qui déclenche un conflit majeur.",
+                tags: ["JE", "DA"]
+            },
+            { 
+                latin: "Caveat emptor", 
+                translation: "Que l'acheteur soit vigilant", 
+                definition: "Principe selon lequel l'acheteur doit vérifier le bien.", 
+                example: "Pour le rachat d'entreprise, caveat emptor s'applique.",
+                usage: "L'acheteur achète à ses risques et périls (audit nécessaire).",
+                tags: ["DA", "JE"]
+            },
+            { 
+                latin: "Compos mentis", 
+                translation: "Sain d'esprit", 
+                definition: "Avoir la capacité mentale de prendre des décisions.", 
+                example: "Le salarié était non compos mentis lors de la signature.",
+                usage: "Pour contester la validité d'un acte pour cause d'incapacité.",
+                tags: ["DA", "JE", "DS"]
+            },
+            { 
+                latin: "Consensus", 
+                translation: "Accord", 
+                definition: "Accord entre plusieurs parties.", 
+                example: "Un consensus a été trouvé avec les délégués syndicaux.",
+                usage: "Pour souligner l'accord mutuel dans une négociation.",
+                tags: ["JE", "DS"]
+            },
+            { 
+                latin: "Contra legem", 
+                translation: "Contre la loi", 
+                definition: "Décision ou acte contraire à la loi.", 
+                example: "Une clause de non-concurrence contra legem est nulle.",
+                usage: "Pour dénoncer une pratique illégale.",
+                tags: ["JE", "DA", "DS"]
+            },
+            { 
+                latin: "Corpus delicti", 
+                translation: "Le corps du délit", 
+                definition: "L'ensemble des éléments matériels prouvant l'infraction.", 
+                example: "Les fichiers volés constituent le corpus delicti.",
+                usage: "Preuve matérielle de l'infraction.",
+                tags: ["DA", "JE", "DS"]
+            },
+            { 
+                latin: "De facto", 
+                translation: "De fait", 
+                definition: "Situation réelle mais non officielle.", 
+                example: "Un gérant de fait qui n'est pas mandataire social.",
+                usage: "Pour décrire une situation de fait qui a des conséquences juridiques.",
+                tags: ["DA", "JE", "DS"]
+            },
+            { 
+                latin: "De jure", 
+                translation: "De droit", 
+                definition: "Situation reconnue par la loi.", 
+                example: "Le représentant légal de jure de l'association.",
+                usage: "Pour opposer la situation légale à la situation de fait.",
+                tags: ["DA", "JE", "DS"]
+            },
+            { 
+                latin: "De minimis", 
+                translation: "Choses minimes", 
+                definition: "Le droit ne s'occupe pas des détails insignifiants.", 
+                example: "Une erreur de quelques centimes est de minimis.",
+                usage: "Pour écarter les arguments sur des points de détail sans importance.",
+                tags: ["JE", "DA", "DS"]
+            },
+            { 
+                latin: "De novo", 
+                translation: "À nouveau", 
+                definition: "Recommencer une procédure depuis le début.", 
+                example: "L'affaire sera jugée de novo en appel.",
+                usage: "Pour demander que l'affaire soit rejugée entièrement.",
+                tags: ["JE", "DA", "DS"]
+            },
+            { 
+                latin: "Dura lex sed lex", 
+                translation: "La loi est dure mais c'est la loi", 
+                definition: "La loi doit être respectée même si elle semble sévère.", 
+                example: "Le délai est dépassé, le recours est rejeté : dura lex sed lex.",
+                usage: "Pour justifier l'application stricte d'une règle sévère.",
+                tags: ["JE", "DA", "DS"]
+            },
+            { 
+                latin: "Erga omnes", 
+                translation: "À l'égard de tous", 
+                definition: "Droit ou décision opposable à tout le monde.", 
+                example: "Un accord collectif étendu a un effet erga omnes.",
+                usage: "Pour une décision qui s'applique à tout le monde, pas seulement aux signataires.",
+                tags: ["DA", "JE", "DS"]
+            },
+            { 
+                latin: "Erratum", 
+                translation: "Erreur", 
+                definition: "Correction d'une erreur dans un texte.", 
+                example: "Un erratum a été publié au Journal Officiel.",
+                usage: "Pour corriger une coquille dans un document officiel.",
+                tags: ["JE", "DA", "DS"]
+            },
+            { 
+                latin: "Ex aequo et bono", 
+                translation: "En équité", 
+                definition: "Jugement rendu selon l'équité et non la stricte loi.", 
+                example: "L'arbitre a statué ex aequo et bono sur le litige.",
+                usage: "En arbitrage, pour statuer selon ce qui est juste plutôt que strictement légal.",
+                tags: ["DA", "JE"]
+            },
+            { 
+                latin: "Ex cathedra", 
+                translation: "De la chaire", 
+                definition: "Parler avec autorité officielle.", 
+                example: "Le DRH a fait une déclaration ex cathedra.",
+                usage: "Parler avec une autorité incontestable (parfois ironique).",
+                tags: ["JE", "DA", "DS"]
+            },
+            { 
+                latin: "Ex officio", 
+                translation: "D'office", 
+                definition: "En vertu de sa fonction, sans demande particulière.", 
+                example: "L'inspecteur du travail a agi ex officio.",
+                usage: "Quand une autorité agit de sa propre initiative.",
+                tags: ["JE", "DA", "DS"]
+            },
+            { 
+                latin: "Ex parte", 
+                translation: "D'une seule partie", 
+                definition: "Procédure où une seule partie est présente.", 
+                example: "Une ordonnance sur requête est une procédure ex parte.",
+                usage: "Procédure d'urgence où l'autre partie n'est pas entendue.",
+                tags: ["DA", "JE", "DS"]
+            },
+            { 
+                latin: "Ex post facto", 
+                translation: "Après coup", 
+                definition: "Loi rétroactive.", 
+                example: "On ne peut appliquer une sanction ex post facto.",
+                usage: "Pour contester l'application d'une règle nouvelle à des faits anciens.",
+                tags: ["DA", "JE", "DS"]
+            },
+            { 
+                latin: "Habeas corpus", 
+                translation: "Que tu aies le corps", 
+                definition: "Droit fondamental contre la détention arbitraire.", 
+                example: "Le droit à la sûreté est l'héritier de l'habeas corpus.",
+                usage: "Protection fondamentale de la liberté individuelle.",
+                tags: ["DA", "JE"]
+            },
+            { 
+                latin: "Ibidem", 
+                translation: "Au même endroit", 
+                definition: "Référence à la même source citée précédemment.", 
+                example: "Voir Cass. Soc. 2023, ibidem.",
+                usage: "Dans les notes de bas de page pour citer la même source.",
+                tags: ["JE", "DA", "DS"]
+            },
+            { 
+                latin: "Id est", 
+                translation: "C'est-à-dire", 
+                definition: "Utilisé pour clarifier ou expliquer.", 
+                example: "Le défendeur, id est l'employeur.",
+                usage: "Pour préciser ou reformuler.",
+                tags: ["JE", "DA", "DS"]
+            },
+            { 
+                latin: "In absentia", 
+                translation: "En l'absence", 
+                definition: "Jugement rendu en l'absence de la partie concernée.", 
+                example: "La décision a été rendue in absentia.",
+                usage: "Jugement par défaut.",
+                tags: ["DA", "JE", "DS"]
+            },
+            { 
+                latin: "In camera", 
+                translation: "En chambre", 
+                definition: "Audience à huis clos.", 
+                example: "L'audience disciplinaire s'est tenue in camera.",
+                usage: "Pour demander le secret des débats.",
+                tags: ["DA", "JE", "DS"]
+            },
+            { 
+                latin: "In dubio pro reo", 
+                translation: "Le doute profite à l'accusé", 
+                definition: "En cas de doute, la décision doit être favorable à l'accusé.", 
+                example: "Faute de preuve, le doute profite au salarié (in dubio pro reo).",
+                usage: "Principe de base de la défense : le doute bénéficie à la personne poursuivie.",
+                tags: ["DA", "DS"]
+            },
+            { 
+                latin: "In fine", 
+                translation: "À la fin", 
+                definition: "À la fin d'un paragraphe ou d'un texte.", 
+                example: "Voir l'article L.1232-6, in fine.",
+                usage: "Pour citer précisément la fin d'un article de loi.",
+                tags: ["JE", "DA", "DS"]
+            },
+            { 
+                latin: "In limine litis", 
+                translation: "Au seuil du procès", 
+                definition: "Avant tout débat au fond.", 
+                example: "L'avocat a soulevé la nullité in limine litis.",
+                usage: "Stratégie : Soulever une irrégularité de procédure dès le début.",
+                tags: ["JE", "DA", "DS"]
+            },
+            { 
+                latin: "In situ", 
+                translation: "Sur place", 
+                definition: "Dans son milieu naturel ou d'origine.", 
+                example: "L'expert a fait ses constatations in situ.",
+                usage: "Pour dire que les constatations ont été faites sur les lieux.",
+                tags: ["JE", "DA", "DS"]
+            },
+            { 
+                latin: "Inter partes", 
+                translation: "Entre les parties", 
+                definition: "Effet limité aux contractants.", 
+                example: "Cet accord transactionnel a un effet inter partes.",
+                usage: "Pour limiter l'effet d'un accord aux seules personnes qui l'ont signé.",
+                tags: ["DA", "DS"]
+            },
+            { 
+                latin: "Intra vires", 
+                translation: "Dans les pouvoirs", 
+                definition: "Acte accompli dans les limites des pouvoirs conférés.", 
+                example: "Le directeur a agi intra vires.",
+                usage: "Acte valide car pris par une personne compétente.",
+                tags: ["DA", "JE"]
+            },
+            { 
+                latin: "Intuitu personae", 
+                translation: "En considération de la personne", 
+                definition: "Contrat conclu pour les qualités spécifiques d'une personne.", 
+                example: "Le contrat de travail est conclu intuitu personae.",
+                usage: "Pour justifier que le contrat ne peut pas être cédé à un tiers.",
+                tags: ["DS", "DA"]
+            },
+            { 
+                latin: "Ipso facto", 
+                translation: "Par le fait même", 
+                definition: "Conséquence automatique d'un fait.", 
+                example: "La faute lourde entraîne ipso facto la rupture.",
+                usage: "Pour indiquer une conséquence immédiate et automatique.",
+                tags: ["DS", "JE"]
+            },
+            { 
+                latin: "Jus cogens", 
+                translation: "Droit impératif", 
+                definition: "Norme impérative à laquelle on ne peut déroger.", 
+                example: "L'interdiction du travail forcé est du jus cogens.",
+                usage: "Norme supérieure absolue.",
+                tags: ["DA", "JE", "DS"]
+            },
+            { 
+                latin: "Jus sanguinis", 
+                translation: "Droit du sang", 
+                definition: "Nationalité transmise par les parents.", 
+                example: "Le code civil applique le jus sanguinis.",
+                usage: "Règle d'attribution de la nationalité.",
+                tags: ["DA", "JE"]
+            },
+            { 
+                latin: "Jus soli", 
+                translation: "Droit du sol", 
+                definition: "Nationalité acquise par le lieu de naissance.", 
+                example: "Le débat sur le jus soli.",
+                usage: "Règle d'attribution de la nationalité.",
+                tags: ["DA", "JE"]
+            },
+            { 
+                latin: "Locus standi", 
+                translation: "Droit d'agir", 
+                definition: "Qualité pour agir en justice.", 
+                example: "Le syndicat a le locus standi pour défendre l'intérêt collectif.",
+                usage: "Pour contester ou affirmer le droit d'une personne à faire un procès.",
+                tags: ["JE", "DA", "DS"]
+            },
+            { 
+                latin: "Mea culpa", 
+                translation: "Ma faute", 
+                definition: "Aveu de sa propre erreur.", 
+                example: "La direction a fait son mea culpa sur la gestion de crise.",
+                usage: "Reconnaître ses torts.",
+                tags: ["JE", "DA", "DS"]
+            },
+            { 
+                latin: "Modus operandi", 
+                translation: "Mode opératoire", 
+                definition: "Manière de procéder.", 
+                example: "Le modus operandi de la fraude est identique.",
+                usage: "Pour décrire la méthode utilisée pour commettre une infraction.",
+                tags: ["DA", "JE", "DS"]
+            },
+            { 
+                latin: "Modus vivendi", 
+                translation: "Mode de vie", 
+                definition: "Arrangement provisoire entre parties en conflit.", 
+                example: "Direction et syndicats ont trouvé un modus vivendi.",
+                usage: "Accord temporaire pour coexister malgré un désaccord.",
+                tags: ["JE", "DA", "DS"]
+            },
+            { 
+                latin: "Mutatis mutandis", 
+                translation: "En changeant ce qui doit l'être", 
+                definition: "Appliquer une règle en adaptant les détails.", 
+                example: "Cette jurisprudence s'applique mutatis mutandis au télétravail.",
+                usage: "Pour appliquer un raisonnement similaire à une situation différente.",
+                tags: ["JE", "DA", "DS"]
+            },
+            { 
+                latin: "Nemo auditur", 
+                translation: "Nul ne peut...", 
+                definition: "Nemo auditur propriam turpitudinem allegans : Nul ne peut se prévaloir de sa propre turpitude.", 
+                example: "L'employeur fautif ne peut invoquer nemo auditur.",
+                usage: "Pour empêcher quelqu'un de demander réparation d'un dommage causé par sa propre faute.",
+                tags: ["DS", "DA"]
+            },
+            { 
+                latin: "Non bis in idem", 
+                translation: "Pas deux fois pour la même chose", 
+                definition: "On ne peut être jugé/puni deux fois pour les mêmes faits.", 
+                example: "Interdiction de sanctionner deux fois (non bis in idem).",
+                usage: "Pour interdire une double sanction (ex: avertissement puis licenciement pour les mêmes faits).",
+                tags: ["DS", "DA"]
+            },
+            { 
+                latin: "Nullum crimen sine lege", 
+                translation: "Pas de crime sans loi", 
+                definition: "Légalité des délits et des peines.", 
+                example: "Pas de sanction sans texte (nullum crimen sine lege).",
+                usage: "On ne peut pas inventer une infraction ou une sanction qui n'est pas prévue.",
+                tags: ["DA", "DS"]
+            },
+            { 
+                latin: "Onus probandi", 
+                translation: "Charge de la preuve", 
+                definition: "La charge de la preuve incombe au demandeur.", 
+                example: "L'onus probandi pèse sur celui qui réclame.",
+                usage: "Pour rappeler qui doit prouver les faits.",
+                tags: ["DS", "DA"]
+            },
+            { 
+                latin: "Pacta sunt servanda", 
+                translation: "Les conventions doivent être respectées", 
+                definition: "Force obligatoire des contrats.", 
+                example: "Le contrat est la loi des parties (pacta sunt servanda).",
+                usage: "Pour rappeler que les contrats signés doivent être exécutés.",
+                tags: ["DA", "DS"]
+            },
+            { 
+                latin: "Per capita", 
+                translation: "Par tête", 
+                definition: "Partage égal par personne.", 
+                example: "Le budget social est réparti per capita.",
+                usage: "Répartition par individu et non par part.",
+                tags: ["DA", "JE", "DS"]
+            },
+            { 
+                latin: "Persona non grata", 
+                translation: "Personne indésirable", 
+                definition: "Personne dont la présence n'est pas acceptée.", 
+                example: "Ce consultant est persona non grata dans l'usine.",
+                usage: "Personne qui n'est plus la bienvenue.",
+                tags: ["JE", "DA"]
+            },
+            { 
+                latin: "Pro bono", 
+                translation: "Pour le bien public", 
+                definition: "Travail juridique effectué gratuitement.", 
+                example: "L'avocat a pris le dossier pro bono.",
+                usage: "Travail bénévole d'un avocat.",
+                tags: ["JE", "DA"]
+            },
+            { 
+                latin: "Pro rata", 
+                translation: "En proportion", 
+                definition: "Proportionnellement à.", 
+                example: "Calcul de la prime pro rata temporis.",
+                usage: "Pour calculer des droits en fonction du temps de présence.",
+                tags: ["DS", "JE"]
+            },
+            { 
+                latin: "Quid pro quo", 
+                translation: "Quoi pour quoi", 
+                definition: "Échange de bons procédés, donnant-donnant.", 
+                example: "La négociation s'est faite sur un quid pro quo.",
+                usage: "Contrepartie, échange mutuel.",
+                tags: ["DA", "JE", "DS"]
+            },
+            { 
+                latin: "Res judicata", 
+                translation: "Chose jugée", 
+                definition: "Autorité de la chose jugée.", 
+                example: "Le licenciement est définitif, il y a res judicata.",
+                usage: "Pour empêcher de rejuger une affaire déjà tranchée définitivement.",
+                tags: ["JE", "DA", "DS"]
+            },
+            { 
+                latin: "Sine qua non", 
+                translation: "Sans quoi non", 
+                definition: "Condition indispensable.", 
+                example: "La confiance est une condition sine qua non.",
+                usage: "Pour définir une condition absolue et nécessaire.",
+                tags: ["JE", "DA", "DS"]
+            },
+            { 
+                latin: "Status quo", 
+                translation: "État actuel", 
+                definition: "L'état des choses tel qu'il est.", 
+                example: "Les négociations visent à maintenir le status quo.",
+                usage: "Garder la situation en l'état, ne rien changer.",
+                tags: ["JE", "DA", "DS"]
+            },
+            { 
+                latin: "Sui generis", 
+                translation: "De son propre genre", 
+                definition: "Unique en son genre, spécifique.", 
+                example: "Le portage salarial est un contrat sui generis.",
+                usage: "Pour qualifier une situation juridique unique, hors des cases habituelles.",
+                tags: ["JE", "DS"]
+            },
+            { 
+                latin: "Terra nullius", 
+                translation: "Terre de personne", 
+                definition: "Territoire n'appartenant à aucun État.", 
+                example: "Internet n'est pas une terra nullius juridique.",
+                usage: "Espace sans loi ou sans maître.",
+                tags: ["DA", "JE"]
+            },
+            { 
+                latin: "Ultra vires", 
+                translation: "Au-delà des pouvoirs", 
+                definition: "Agir au-delà de sa compétence légale.", 
+                example: "Le licenciement signé par une personne incompétente est ultra vires.",
+                usage: "Acte nul car pris par une personne incompétente.",
+                tags: ["DA", "JE", "DS"]
+            },
+            { 
+                latin: "Veto", 
+                translation: "J'interdis", 
+                definition: "Pouvoir de bloquer une décision.", 
+                example: "Le CSE a mis son veto sur le projet.",
+                usage: "S'opposer formellement à une décision.",
+                tags: ["JE", "DA", "DS"]
+            },
+            { 
+                latin: "Vice versa", 
+                translation: "Inversement", 
+                definition: "Et réciproquement.", 
+                example: "Les droits impliquent des devoirs, et vice versa.",
+                usage: "La réciproque est vraie.",
+                tags: ["JE", "DA", "DS"]
+            },
+            { 
+                latin: "Vigilantibus jura succurrunt", 
+                translation: "Les lois viennent en aide aux vigilants", 
+                definition: "Le droit ne protège pas ceux qui négligent leurs intérêts.", 
+                example: "La prescription a joué : vigilantibus jura succurrunt.",
+                usage: "Pour rappeler qu'il ne faut pas attendre pour faire valoir ses droits.",
+                tags: ["JE", "DA", "DS"]
+            },
+            { 
+                latin: "Vox populi", 
+                translation: "Voix du peuple", 
+                definition: "L'opinion publique.", 
+                example: "La vox populi réclame plus de justice sociale.",
+                usage: "L'avis du grand public.",
+                tags: ["JE", "DA"]
+            }
         ];
 
-        lexiconData.sort((a, b) => a.term.localeCompare(b.term));
+        // LocalStorage
+        const STORAGE_KEY = 'lexique_progress_v1';
+        let progressState = {};
 
-        // UTILS
-        const $ = (id) => document.getElementById(id);
-        
-        let totalTermsEl, container, alphabetNav, searchInput, noResults, backToTopBtn;
-        let scoreSuccess = 0;
-        let scoreFail = 0;
-        let currentCardIndex = -1;
+        try {
+            progressState = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+        } catch (e) {
+            console.warn('Erreur localStorage', e);
+            progressState = {};
+        }
 
-        // --- LEXICON RENDER (NOUVEAU) ---
-        function initLexicon() {
-            totalTermsEl = $('total-terms');
-            container = $('lexicon-container');
-            alphabetNav = $('alphabet-nav');
-            searchInput = $('searchInput');
-            noResults = $('noResults');
-            backToTopBtn = $('backToTop');
+        // Préparer les termes
+        let terms = lexiqueData.map((term, index) => ({
+            ...term,
+            id: `term-${index}`,
+            status: progressState[`term-${index}`] || null
+        }));
 
-            totalTermsEl.textContent = lexiconData.length;
+        let currentFilter = 'all';
+        let filteredTerms = [...terms];
 
-            const grouped = {};
-            lexiconData.forEach(item => {
-                const letter = item.term.charAt(0).toUpperCase();
-                if (!grouped[letter]) grouped[letter] = [];
-                grouped[letter].push(item);
+        // Mode Révision (Flashcards)
+        const revisionToggle = document.getElementById('revisionToggle');
+        const cardsGrid = document.getElementById('cardsGrid');
+
+        revisionToggle.addEventListener('change', () => {
+            if (revisionToggle.checked) {
+                cardsGrid.classList.add('revision-mode');
+            } else {
+                cardsGrid.classList.remove('revision-mode');
+            }
+        });
+
+        // Synthèse Vocale (Audio)
+        function speakLatin(text) {
+            if ('speechSynthesis' in window) {
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'it-IT'; 
+                utterance.rate = 0.9; 
+                window.speechSynthesis.speak(utterance);
+            } else {
+                alert("Votre navigateur ne supporte pas la synthèse vocale.");
+            }
+        }
+
+        // Synthèse Vocale (Texte Français)
+        function speakFrench(text) {
+            if ('speechSynthesis' in window) {
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'fr-FR'; 
+                utterance.rate = 1; 
+                window.speechSynthesis.speak(utterance);
+            } else {
+                alert("Votre navigateur ne supporte pas la synthèse vocale.");
+            }
+        }
+
+        // Filtrage par Tag
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                // Gestion de l'état actif des boutons
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                e.target.classList.add('active');
+
+                currentFilter = e.target.dataset.filter;
+                applyFilters();
+            });
+        });
+
+        // Application des filtres (Recherche + Tags)
+        function applyFilters() {
+            const search = document.getElementById('searchInput').value.toLowerCase();
+
+            filteredTerms = terms.filter(term => {
+                // Filtre par recherche texte
+                const matchesSearch = !search || 
+                       term.latin.toLowerCase().includes(search) ||
+                       term.translation.toLowerCase().includes(search) ||
+                       term.definition.toLowerCase().includes(search) ||
+                       term.example.toLowerCase().includes(search);
+
+                // Filtre par bouton de catégorie
+                let matchesTag = true;
+                if (currentFilter !== 'all') {
+                    matchesTag = term.tags && term.tags.includes(currentFilter);
+                }
+
+                return matchesSearch && matchesTag;
             });
 
-            const letters = Object.keys(grouped).sort();
-            
-            // 1. Pills Nav
-            alphabetNav.innerHTML = '';
-            letters.forEach(letter => {
-                const btn = document.createElement('button');
-                // Changed hover text and border colors from #D926A9 to #D9A526
-                btn.className = 'w-10 h-10 rounded-full bg-white border border-slate-200 text-[#0F2C48] font-bold hover:bg-[#0F2C48] hover:text-[#D9A526] hover:border-[#D9A526] transition-all shadow-sm';
-                btn.textContent = letter;
-                btn.onclick = () => scrollToLetter(letter);
-                alphabetNav.appendChild(btn);
-            });
+            renderCards();
+        }
 
-            // 2. Sections Layout
-            container.innerHTML = '';
-            letters.forEach(letter => {
-                const section = document.createElement('div');
-                section.id = `section-${letter}`;
-                section.className = 'lexicon-section scroll-mt-32'; 
+        // Rendu des cartes
+        function renderCards() {
+            const grid = document.getElementById('cardsGrid');
+            const emptyState = document.getElementById('emptyState');
 
-                const wrapper = document.createElement('div');
-                wrapper.className = 'flex flex-col md:flex-row gap-6';
+            if (filteredTerms.length === 0) {
+                grid.innerHTML = '';
+                emptyState.style.display = 'block';
+                updateStats();
+                return;
+            }
 
-                // Large Letter Column
-                const letterCol = document.createElement('div');
-                letterCol.className = 'md:w-16 flex-shrink-0';
-                // Changed text color and border color from #D926A9 to #D9A526
-                letterCol.innerHTML = `
-                    <div class="sticky top-40 bg-[#F6F2E8] text-[#D9A526] w-14 h-14 rounded-xl flex items-center justify-center text-3xl font-bold serif-font border-2 border-[#D9A526]/20">
-                        ${letter}
-                    </div>
-                `;
+            emptyState.style.display = 'none';
 
-                // Cards Grid
-                const gridCol = document.createElement('div');
-                gridCol.className = 'flex-grow grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5';
-
-                grouped[letter].forEach(item => {
-                    const card = document.createElement('div');
-                    card.className = 'term-card p-6 flex flex-col h-full search-item';
-                    // Changed text colors and border color from #D926A9 to #D9A526
-                    card.innerHTML = `
-                        <i class="fa-regular fa-copy copy-btn" onclick="copyToClipboard('${item.term} : ${item.def}')" title="Copier"></i>
-                        <h3 class="font-bold text-[#0F2C48] text-xl mb-1 serif-font tracking-wide pr-6">${item.term}</h3>
-                        <p class="text-[#D9A526] text-sm italic mb-4 font-medium">"${item.trans}"</p>
-                        
-                        <p class="text-slate-600 text-sm mb-4 flex-grow leading-relaxed">${item.def}</p>
-                        
-                        <div class="mt-auto bg-slate-50 p-3 rounded-lg border-l-2 border-[#D9A526]">
-                            <span class="text-[10px] font-bold text-[#0F2C48] uppercase tracking-wider block mb-1">Exemple</span>
-                            <p class="text-slate-500 text-xs italic">"${item.ex}"</p>
+            grid.innerHTML = filteredTerms.map(term => `
+                <article class="term-card" data-id="${escapeHtml(term.id)}">
+                    <div class="term-header">
+                        <div class="term-title-group">
+                            <div class="audio-controls">
+                                <button class="audio-btn" onclick="speakLatin('${escapeHtml(term.latin.replace(/'/g, "\\'"))}')" aria-label="Écouter le latin">
+                                    <i class="fas fa-volume-up"></i>
+                                </button>
+                                <button class="audio-btn" onclick="speakFrench('${escapeHtml(term.definition.replace(/'/g, "\\'") + ". Exemple : " + term.example.replace(/'/g, "\\'"))}')" aria-label="Écouter la définition">
+                                    <i class="fas fa-book-reader"></i>
+                                </button>
+                            </div>
+                            <div class="term-latin">${escapeHtml(term.latin)}</div>
                         </div>
-                    `;
-                    gridCol.appendChild(card);
-                });
+                    </div>
+                    
+                    <div class="tags-container">
+                        ${term.tags ? term.tags.map(tag => {
+                            let className = 'tag-spec';
+                            if (tag === 'JE') { className += ' tag-je'; }
+                            if (tag === 'DA') { className += ' tag-da'; }
+                            if (tag === 'DS') { className += ' tag-ds'; }
+                            return `<span class="${className}">${escapeHtml(tag)}</span>`;
+                        }).join('') : ''}
+                    </div>
 
-                wrapper.appendChild(letterCol);
-                wrapper.appendChild(gridCol);
-                section.appendChild(wrapper);
-                
-                const separator = document.createElement('div');
-                separator.className = 'h-px bg-slate-200 my-10 section-separator';
-                section.appendChild(separator);
+                    <span class="term-translation">${escapeHtml(term.translation)}</span>
+                    <p class="term-definition">${escapeHtml(term.definition)}</p>
+                    
+                    ${term.usage ? `
+                    <div class="term-usage-box">
+                        <span class="term-usage-title">Quand l'utiliser ?</span>
+                        <span class="term-usage-text">${escapeHtml(term.usage)}</span>
+                    </div>` : ''}
 
-                container.appendChild(section);
-            });
+                    <div class="term-example">
+                        <i class="fas fa-quote-left"></i> ${escapeHtml(term.example)}
+                    </div>
+                    <div class="term-actions">
+                        <button class="action-btn btn-forgot" onclick="setStatus('${escapeHtml(term.id)}', 'forgot')" aria-label="Marquer comme oublié">
+                            <i class="fas fa-times"></i> Oublié
+                        </button>
+                        <button class="action-btn btn-pass" onclick="setStatus('${escapeHtml(term.id)}', 'pass')" aria-label="Passer">
+                            <i class="fas fa-forward"></i> Passer
+                        </button>
+                        <button class="action-btn btn-knew" onclick="setStatus('${escapeHtml(term.id)}', 'knew')" aria-label="Marquer comme su">
+                            <i class="fas fa-check"></i> Su
+                        </button>
+                    </div>
+                </article>
+            `).join('');
+
+            updateStats();
         }
 
-        function copyToClipboard(text) {
-            const textarea = document.createElement('textarea');
-            textarea.value = text;
-            document.body.appendChild(textarea);
-            textarea.select();
-            document.execCommand('copy');
-            document.body.removeChild(textarea);
-        }
-
-        function scrollToLetter(letter) {
-            const el = $(`section-${letter}`);
-            const offset = 180;
-            const bodyRect = document.body.getBoundingClientRect().top;
-            const elementRect = el.getBoundingClientRect().top;
-            const elementPosition = elementRect - bodyRect;
-            const offsetPosition = elementPosition - offset;
-
-            window.scrollTo({
-                top: offsetPosition,
-                behavior: 'smooth'
-            });
-        }
-
-        // --- SEARCH LOGIC ---
-        function filterLexicon(query) {
-            const sections = document.querySelectorAll('.lexicon-section');
-            let globalMatch = false;
-
-            sections.forEach(section => {
-                const items = section.querySelectorAll('.search-item');
-                let sectionMatch = false;
-
-                items.forEach(item => {
-                    if (item.textContent.toLowerCase().includes(query)) {
-                        item.style.display = 'flex';
-                        sectionMatch = true;
-                        globalMatch = true;
-                    } else {
-                        item.style.display = 'none';
-                    }
-                });
-
-                // Toggle Section Visibility
-                if (query === '' || sectionMatch) {
-                    section.style.display = 'block';
-                } else {
-                    section.style.display = 'none';
+        // Mettre à jour statut
+        function setStatus(termId, status) {
+            const term = terms.find(t => t.id === termId);
+            if (term) {
+                term.status = status;
+                progressState[termId] = status;
+                try {
+                    localStorage.setItem(STORAGE_KEY, JSON.stringify(progressState));
+                } catch (e) {
+                    console.warn('Erreur sauvegarde localStorage', e);
                 }
-            });
-
-            const noRes = $('noResults');
-            if (!globalMatch && query !== '') {
-                noRes.classList.remove('hidden');
-            } else {
-                noRes.classList.add('hidden');
+                // renderCards(); // Optionnel : re-render si on veut masquer les cartes traitées
             }
         }
 
-        // --- GAME LOGIC ---
-        function pickRandomCard() {
-            const cardInner = $('game-card-inner');
-            const wasFlipped = cardInner.parentElement.classList.contains('flipped');
-            if (wasFlipped) {
-                cardInner.parentElement.classList.remove('flipped');
-                setTimeout(() => setNewCardContent(), 300);
+        // Mise à jour statistiques
+        function updateStats() {
+            const total = filteredTerms.length; // Total filtré
+            const globalTotal = terms.length; // Total global (fixe)
+            const knew = terms.filter(t => t.status === 'knew').length;
+            const pass = terms.filter(t => t.status === 'pass').length;
+            const forgot = terms.filter(t => t.status === 'forgot').length;
+
+            document.getElementById('totalTerms').textContent = globalTotal;
+            document.getElementById('knewCount').textContent = knew;
+            document.getElementById('passCount').textContent = pass;
+            document.getElementById('forgotCount').textContent = forgot;
+        }
+
+        // Recherche (Input Event)
+        document.getElementById('searchInput').addEventListener('input', applyFilters);
+
+        // Back to top
+        const backToTop = document.getElementById('backToTop');
+
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTop.classList.add('visible');
             } else {
-                setNewCardContent();
+                backToTop.classList.remove('visible');
             }
-        }
+        });
 
-        function setNewCardContent() {
-            let newIndex;
-            do {
-                newIndex = Math.floor(Math.random() * lexiconData.length);
-            } while (newIndex === currentCardIndex);
-            
-            currentCardIndex = newIndex;
-            const item = lexiconData[currentCardIndex];
-
-            $('card-term').textContent = item.term;
-            $('card-term-back').textContent = item.term;
-            $('card-trans').textContent = `"${item.trans}"`;
-            $('card-def').textContent = item.def;
-            $('card-ex').textContent = item.ex;
-        }
-
-        function flipCard() {
-            const card = $('game-card-inner').parentElement;
-            card.classList.toggle('flipped');
-        }
-
-        function nextCard() {
-            pickRandomCard();
-        }
-
-        function updateScore(success) {
-            if(success) {
-                scoreSuccess++;
-                $('score-success').textContent = scoreSuccess;
-            } else {
-                scoreFail++;
-                $('score-fail').textContent = scoreFail;
-            }
-        }
-
-        // --- TABS & SCROLL ---
-        function switchTab(tabId) {
-            document.querySelectorAll('.tab-icon-btn').forEach(el => el.classList.remove('active'));
-            const btn = $(`nav-${tabId}`);
-            if(btn) btn.classList.add('active');
-
-            if (tabId === 'lexique') {
-                $('view-lexique').classList.remove('hidden');
-                $('view-game').classList.add('hidden');
-                $('dynamic-title').textContent = "Lexique Latin Juridique";
-            } else {
-                $('view-lexique').classList.add('hidden');
-                $('view-game').classList.remove('hidden');
-                $('dynamic-title').textContent = "Mode Entraînement";
-                pickRandomCard();
-            }
-        }
-
-        function scrollToTop() {
+        backToTop.addEventListener('click', () => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
+        });
 
-        function init() {
-            initLexicon();
-
-            searchInput.addEventListener('input', (e) => {
-                filterLexicon(e.target.value.toLowerCase());
-            });
-
-            window.onscroll = function() {
-                if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
-                    backToTopBtn.classList.remove('opacity-0', 'pointer-events-none');
-                    backToTopBtn.classList.add('opacity-100', 'pointer-events-auto');
-                } else {
-                    backToTopBtn.classList.add('opacity-0', 'pointer-events-none');
-                    backToTopBtn.classList.remove('opacity-100', 'pointer-events-auto');
-                }
-            };
-        }
-
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', init);
-        } else {
-            init();
-        }
+        // Init
+        renderCards();
     </script>
 </body>
 </html>
