@@ -6,7 +6,7 @@
     <title>Atelier de Compétence Juridique - Niveau 7</title>
     
     <!-- FONTS & ICONS -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&family=Montserrat:wght@500;600;700&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script src="https://cdn.tailwindcss.com"></script>
 
@@ -16,29 +16,148 @@
             --bleu-fonce: #0A2342;
             --bleu: #304E78;
             --bleu-doux: #6B85B8;
-            --or: #D4AF37;
+            --or: #D9A526; /* Jaune Doré ajusté */
             --or-clair: #F3E5AB;
-            --ecru: #FDFBF7;
+            --ecru: #F6F2E8; /* Ivoire ajusté */
             --creme: #F6EFE9;
-            --txt: #4a4a4a;
+            --txt: #2c3e50; /* Texte ajusté */
             --bordeaux: #7B2E2E;
             --vert-juridique: #2E5D4B;
+            /* Ajout variables Cosmic */
+            --color-bg: #F6F2E8;
+            --color-primary: #0F2C48;
+            --color-accent: #D9A526;
+            --color-alert: #B4792A;
+            --color-text: #2c3e50;
+            --color-white: #ffffff;
         }
 
         body {
             background-color: var(--ecru);
             color: var(--txt);
             font-family: 'Lato', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
         h1, h2, h3, .font-serif {
             font-family: 'Playfair Display', serif;
         }
 
-        /* NAVIGATION */
+        /* --- HEADER COSMIC --- */
+        @keyframes cosmic-pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(217, 165, 38, 0.7); }
+            70% { transform: scale(1.02); box-shadow: 0 0 0 10px rgba(217, 165, 38, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(217, 165, 38, 0); }
+        }
+
+        .top-bar {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            padding: 15px 0;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .top-bar-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+            max-width: 1400px; /* Container width */
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .top-bar-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .logo-top-bar {
+            width: 55px; height: 55px;
+            border-radius: 50%;
+            border: 2px solid var(--color-accent);
+            object-fit: cover;
+            background: white;
+        }
+
+        .identity-stack { display: flex; flex-direction: column; justify-content: center; }
+        
+        .name-top-bar {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem; font-weight: 700;
+            color: var(--color-white); line-height: 1.2;
+        }
+        
+        .club-subtitle { 
+            font-size: 0.85rem; 
+            color: var(--color-accent); 
+            font-weight: 700; 
+            margin-top: 2px;
+        }
+
+        .top-bar-center { display: flex; gap: 15px; align-items: center; }
+
+        .header-icon-btn {
+            position: relative;
+            width: 42px; height: 42px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #D9A526 0%, #B4792A 100%);
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.2rem; transition: all 0.3s ease;
+            cursor: pointer; color: white; text-decoration: none;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        .header-icon-btn:hover {
+            transform: translateY(-3px) scale(1.1);
+            background: linear-gradient(135deg, #FFD700 0%, #D9A526 100%);
+            box-shadow: 0 0 15px rgba(217, 165, 38, 0.6);
+            border-color: #fff;
+        }
+        
+        .header-icon-btn::after {
+            content: attr(data-tooltip);
+            position: absolute; top: 130%; left: 50%;
+            transform: translateX(-50%) translateY(-10px);
+            background-color: var(--color-white); color: var(--color-primary);
+            padding: 5px 12px; border-radius: 20px;
+            font-size: 0.75rem; font-weight: 700; white-space: nowrap;
+            opacity: 0; visibility: hidden; transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2); pointer-events: none; z-index: 100;
+        }
+        .header-icon-btn:hover::after { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+
+        .nav-profile-img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: none; }
+
+        .btn-portfolio-cosmic {
+            padding: 10px 25px; border-radius: 50px;
+            font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 0.95rem;
+            background: linear-gradient(135deg, #D9A526 0%, #B4792A 100%);
+            color: white; border: 1px solid rgba(255,255,255,0.4);
+            cursor: pointer; display: inline-flex; align-items: center; gap: 8px;
+            transition: all 0.3s ease; text-decoration: none;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            animation: cosmic-pulse 2s infinite;
+        }
+        .btn-portfolio-cosmic:hover {
+            background: linear-gradient(135deg, #F1C40F 0%, #D9A526 100%);
+            transform: translateY(-2px); color: white;
+        }
+
+        /* --- NAVIGATION --- */
         .nav-tabs {
             background: white;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            z-index: 40; /* En dessous du header */
         }
         .tab-btn {
             font-family: 'Montserrat', sans-serif;
@@ -78,59 +197,136 @@
             border-radius: 4px;
         }
 
-        /* AUDIO BUTTON */
-        .btn-audio {
-            width: 24px;
-            height: 24px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            background-color: var(--ecru);
-            color: var(--bleu);
-            font-size: 0.7rem;
-            cursor: pointer;
-            transition: all 0.2s;
-            border: 1px solid var(--bleu-doux);
-        }
-        .btn-audio:hover {
-            background-color: var(--or);
-            color: white;
-            border-color: var(--or);
-        }
-
         /* SECTIONS VISIBILITY */
         .tab-content { display: none; animation: fadeIn 0.4s ease-out; }
         .tab-content.active { display: block; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* SCROLLBAR CUSTOM */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: var(--ecru); }
-        ::-webkit-scrollbar-thumb { background: var(--bleu-doux); border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: var(--bleu); }
+        /* --- FOOTER COSMIC --- */
+        .main-footer {
+            background-color: var(--color-primary); color: var(--color-bg);
+            padding: 50px 0 20px; margin-top: auto;
+        }
+        .footer-content {
+            display: flex; justify-content: space-between; align-items: flex-start;
+            flex-wrap: wrap; gap: 30px; margin-bottom: 30px;
+            max-width: 1400px; margin: 0 auto 30px; padding: 0 20px;
+        }
+        .footer-identity { display: flex; align-items: center; gap: 15px; }
+        .footer-logo-img {
+            width: 60px; height: 60px; border-radius: 8px;
+            border: 2px solid var(--color-accent); object-fit: cover; background: white;
+        }
+        .footer-info-col { display: flex; flex-direction: column; }
+        .footer-name {
+            color: var(--color-accent); font-family: 'Playfair Display', serif;
+            font-weight: 700; font-size: 1.2rem; margin-bottom: 5px;
+        }
+        .footer-contact-stack {
+            font-size: 0.9rem; opacity: 0.8;
+            display: flex; flex-direction: column; gap: 4px;
+        }
+        .footer-link { color: inherit; text-decoration: none; transition: color 0.3s ease; }
+        .footer-link:hover { color: var(--color-accent); }
+
+        .dock-group { display: flex; flex-direction: column; align-items: flex-end; gap: 10px; }
+        .dock-label {
+            font-family: 'Montserrat', sans-serif; font-size: 0.8rem;
+            text-transform: uppercase; color: var(--color-accent); opacity: 0.8;
+        }
+        .icon-dock {
+            display: flex; gap: 12px; align-items: center;
+            flex-wrap: wrap; justify-content: flex-end;
+        }
+        .icon-btn {
+            width: 40px; height: 40px; border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            display: flex; align-items: center; justify-content: center;
+            transition: all 0.3s ease; border: 1px solid rgba(255,255,255,0.2);
+            color: white; text-decoration: none; font-size: 1.1rem; position: relative;
+        }
+        .icon-btn:hover {
+            background: white; color: var(--color-primary);
+            transform: translateY(-3px); border-color: white;
+        }
+        
+        .brand-whatsapp { color: #25D366; } .icon-btn:hover .brand-whatsapp { color: #25D366; }
+        .brand-discord { color: #5865F2; } .icon-btn:hover .brand-discord { color: #5865F2; }
+        .brand-linkedin { color: #0077b5; } .icon-btn:hover .brand-linkedin { color: #0077b5; }
+        .brand-instagram { color: #E1306C; } .icon-btn:hover .brand-instagram { color: #E1306C; }
+        .brand-tiktok { color: #00f2ea; } .icon-btn:hover .brand-tiktok { color: #000; }
+
+        .icon-btn::after {
+            content: attr(data-tooltip); position: absolute; bottom: 125%; left: 50%;
+            transform: translateX(-50%); background: white; color: var(--color-primary);
+            padding: 4px 8px; border-radius: 4px; font-size: 0.7rem; white-space: nowrap;
+            opacity: 0; visibility: hidden; transition: 0.2s; pointer-events: none; font-weight: bold;
+        }
+        .icon-btn:hover::after { opacity: 1; visibility: visible; }
+
+        .footer-bottom {
+            text-align: center; padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.85rem; opacity: 0.6;
+        }
+
+        /* Back To Top */
+        #backToTop {
+            position: fixed; bottom: 30px; right: 30px;
+            width: 50px; height: 50px;
+            background: linear-gradient(135deg, #D9A526, #B4792A);
+            color: white; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; opacity: 0; visibility: hidden;
+            transition: all 0.3s ease; box-shadow: 0 4px 12px rgba(0,0,0,0.3); z-index: 1000;
+        }
+        #backToTop.visible { opacity: 1; visibility: visible; }
+        #backToTop:hover { transform: translateY(-5px) scale(1.1); box-shadow: 0 6px 16px rgba(217, 165, 38, 0.5); }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .top-bar-content { flex-direction: column; text-align: center; }
+            .top-bar-left { justify-content: center; }
+            .footer-content { flex-direction: column; align-items: center; text-align: center; }
+            .dock-group, .icon-dock { align-items: center; justify-content: center; }
+        }
     </style>
 </head>
 <body class="min-h-screen flex flex-col">
 
-    <!-- HEADER -->
-    <header style="background-color: var(--bleu-fonce);" class="text-white p-6 shadow-xl relative overflow-hidden">
-        <div class="absolute top-0 right-0 p-4 opacity-10">
-            <i class="fas fa-balance-scale text-9xl"></i>
-        </div>
-        <div class="max-w-7xl mx-auto relative z-10">
-            <h1 class="text-3xl md:text-4xl font-bold tracking-wide mb-2">
-                Atelier de Compétence <span style="color: var(--or);">Juridique</span>
-            </h1>
-            <p class="text-lg font-light text-gray-300 font-serif italic">"Observer la règle, comprendre le fait, déduire la solution."</p>
-            <div class="mt-4 flex gap-4 text-xs font-bold uppercase tracking-widest text-[#D4AF37]">
-                <span><i class="fas fa-certificate mr-1"></i> Titre RNCP Niveau 7</span>
-                <span><i class="fas fa-building mr-1"></i> Droit Social & Affaires</span>
+    <!-- === HEADER (IDENTIQUE) === -->
+    <div class="top-bar">
+        <div class="top-bar-content">
+            <div class="top-bar-left">
+                <img src="https://projettechacademy.github.io/Juridique/Asset/Logo_juriste.png" onerror="this.src='https://projettechacademy.github.io/Juridique/Asset/Logo_juriste.jpg';" alt="Logo Club" class="logo-top-bar">
+                <div class="identity-stack">
+                    <span class="name-top-bar">💫The Jurist Elite Club By Studi ✨</span>
+                    <span class="club-subtitle">La Villa des Juristes Brisés 💔 sur l’Île de  L’INSTRUCTION !🏝</span>
+                </div>
             </div>
-        </div>
-    </header>
+            
+            <div class="top-bar-center">
+                <a href="https://projettechacademy.github.io/Juridique/index.html" target="_blank" class="header-icon-btn" aria-label="Start/Accueil" data-tooltip="Accueil">
+                    🏠
+                </a>
+                <a href="https://projettechacademy.github.io/Juridique/00_Autres/Mon_Espace_Juriste_Tableau_de_bord_personnel.html" target="_blank" class="header-icon-btn" aria-label="Mon Espace" data-tooltip="Mon Espace">📊</a>
+                <a href="https://projettechacademy.github.io/Juridique/00_Autres/Lexique_Latin_Juridique.html" target="_blank" class="header-icon-btn" aria-label="Lexique Latin" data-tooltip="Lexique">📜</a>
+                
+                <!-- NOUVEL ONGLET : ATELIER -->
+                <a href="https://projettechacademy.github.io/Juridique/00_Autres/Atelier_de_Competence.html" class="header-icon-btn" aria-label="Atelier de Compétence" data-tooltip="Atelier" style="border-color: #fff; background: linear-gradient(135deg, #163e63 0%, #20c3f0 100%);">🛠️</a>
 
-    <!-- NAVIGATION PRINCIPALE -->
+                <a href="https://projettechacademy.github.io/Juridique/00_Autres/formation_live_juriste.html" target="_blank" class="header-icon-btn" aria-label="Planning Live" data-tooltip="Planning">📅</a>
+                <a href="https://projettechacademy.github.io/Juridique/00_Autres/A_propos_de_moi.html" target="_blank" class="header-icon-btn" aria-label="À propos de moi" data-tooltip="Profil">
+                    👤
+                </a>
+            </div>
+
+            <a href="https://projettechacademy.github.io/CV_MMPA-CV-Mathilde-Martine-PAISLEY/" target="_blank" class="btn-portfolio-cosmic">
+                <span>📄</span> Mon portfolio
+            </a>
+        </div>
+    </div>
+
+    <!-- NAVIGATION SECONDAIRE (Interne à la page) -->
     <nav class="sticky top-0 z-50 nav-tabs">
         <div class="max-w-7xl mx-auto px-4 overflow-x-auto">
             <div class="flex space-x-1 min-w-max">
@@ -163,11 +359,11 @@
         <div id="syllogismes" class="tab-content active">
             
             <!-- HEADER DE SECTION -->
-            <div class="mb-8 bg-white p-6 rounded-lg shadow-sm border-l-4 border-[#D4AF37]">
+            <div class="mb-8 bg-white p-6 rounded-lg shadow-sm border-l-4 border-[#D9A526]">
                 <h2 class="text-2xl font-serif text-[#0A2342] mb-2">L'Art du Syllogisme : Apprendre par l'Exemple</h2>
                 <p class="text-gray-600 mb-4">
                     Le droit n'est pas de la magie, c'est de la logique. Pour chaque situation ci-dessous, observe la structure : 
-                    <span class="font-bold text-[#D4AF37]">1. La Règle</span> (Ce que dit la loi), 
+                    <span class="font-bold text-[#D9A526]">1. La Règle</span> (Ce que dit la loi), 
                     <span class="font-bold text-[#304E78]">2. Les Faits</span> (Ce qui s'est passé), 
                     <span class="font-bold text-[#0A2342]">3. La Solution</span> (Le résultat inévitable).
                 </p>
@@ -198,7 +394,7 @@
                     <p class="text-sm opacity-80">Maîtriser les mots pour maîtriser les situations.</p>
                 </div>
                 <div class="relative mt-4 md:mt-0 w-full md:w-1/3">
-                    <input type="text" id="lexiqueSearch" placeholder="Rechercher un terme (ex: Avenant)..." class="w-full p-3 pl-10 rounded text-gray-800 focus:outline-none focus:ring-2 focus:ring-[#D4AF37]">
+                    <input type="text" id="lexiqueSearch" placeholder="Rechercher un terme (ex: Avenant)..." class="w-full p-3 pl-10 rounded text-gray-800 focus:outline-none focus:ring-2 focus:ring-[#D9A526]">
                     <i class="fas fa-search absolute left-3 top-3.5 text-gray-400"></i>
                 </div>
             </div>
@@ -223,7 +419,7 @@
         <!-- ONGLET 3 : FICHES RÉFLEXES (Manager)                               -->
         <!-- ================================================================== -->
         <div id="reflexes" class="tab-content">
-            <h2 class="text-2xl font-serif text-[#0A2342] mb-6 border-b-2 border-[#D4AF37] inline-block pb-2">Fiches Réflexes : Sécuriser la Prise de Décision</h2>
+            <h2 class="text-2xl font-serif text-[#0A2342] mb-6 border-b-2 border-[#D9A526] inline-block pb-2">Fiches Réflexes : Sécuriser la Prise de Décision</h2>
             <p class="mb-8 text-gray-600">Avant d'agir, consulter la fiche correspondante pour vérifier que tous les feux sont au vert.</p>
 
             <div class="space-y-10" id="reflexes-container">
@@ -299,11 +495,47 @@
 
     </main>
 
+    <!-- === FOOTER (IDENTIQUE AUX AUTRES PAGES) === -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-identity">
+                    <img src="https://projettechacademy.github.io/Juridique/Asset/Logo_MMPA.jpeg" alt="Logo MMPA" class="footer-logo-img">
+                    <div class="footer-info-col">
+                        <div class="footer-name">Mathilde Martine PAISLEY</div>
+                        <div class="footer-contact-stack">
+                            <a href="mailto:Mathilde.martine.paisley@gmail.com" class="footer-link">📧 Mathilde.martine.paisley@gmail.com</a>
+                            <a href="tel:+33685900887" class="footer-link">📲 06 85 90 08 87</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="dock-group">
+                    <div class="dock-label">Navigation & Réseaux</div>
+                    <div class="icon-dock">
+                        <a href="https://projettechacademy.github.io/Juridique/index.html" target="_blank" class="icon-btn" data-tooltip="Accueil">🏠</a>
+                        <a href="https://projettechacademy.github.io/Juridique/00_Autres/Mon_Espace_Juriste_Tableau_de_bord_personnel.html" target="_blank" class="icon-btn" data-tooltip="Mon Espace">📊</a>
+                        <a href="https://projettechacademy.github.io/Juridique/00_Autres/Lexique_Latin_Juridique.html" target="_blank" class="icon-btn" data-tooltip="Lexique">📜</a>
+                        <a href="https://chat.whatsapp.com/IoMXFl4o2otExYKCPVj22b" target="_blank" class="icon-btn" data-tooltip="WhatsApp"><i class="fab fa-whatsapp brand-whatsapp"></i></a>
+                        <a href="https://discord.gg/qwNPV8QzFt" target="_blank" class="icon-btn" data-tooltip="Discord"><i class="fab fa-discord brand-discord"></i></a>
+                        <a href="https://www.linkedin.com/in/mathilde-martine-paisley-1a4422382/" target="_blank" class="icon-btn" data-tooltip="LinkedIn"><i class="fab fa-linkedin brand-linkedin"></i></a>
+                        <a href="https://www.instagram.com/enervyx/" target="_blank" class="icon-btn" data-tooltip="Instagram"><i class="fab fa-instagram brand-instagram"></i></a>
+                        <a href="https://www.tiktok.com/@enervyx/" target="_blank" class="icon-btn" data-tooltip="TikTok"><i class="fab fa-tiktok brand-tiktok"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© 2025 Tous droits réservés – Création : 2025 – Dernière mise à jour : Novembre 2025</p>
+            </div>
+        </div>
+    </footer>
+
+    <div id="backToTop" onclick="window.scrollTo(0,0)"><i class="fas fa-arrow-up"></i></div>
+
     <!-- JAVASCRIPT POWERHOUSE -->
     <script>
         // --- 1. DONNÉES : SYLLOGISMES (EXTENSIBLE À 50+) ---
-        // Je mets ici 15 exemples variés pour la démo, mais la structure permet d'en mettre 50.
-        // Copier-coller un bloc {} pour ajouter un cas.
         const dbSyllogismes = [
             {
                 cat: "Rupture",
@@ -428,7 +660,6 @@
         ];
 
         // --- 2. DONNÉES : LEXIQUE TOP 500 (ECHANTILLON A-Z) ---
-        // J'en mets une cinquantaine représentative pour la démo, la structure supporte 500
         const dbLexique = [
             { m: "Abandon de poste", d: "Absence injustifiée et prolongée du salarié à son poste de travail.", c: "À ne pas confondre avec la démission. Nécessite une mise en demeure." },
             { m: "Abrogation", d: "Suppression pour l'avenir d'un acte juridique (loi, décret).", c: "Cette loi a été abrogée, elle ne s'applique plus." },
@@ -517,6 +748,18 @@
             renderSyllogisms(dbSyllogismes);
             renderLexique(dbLexique);
             renderReflexes(dbReflexes);
+            
+            // Back To Top & Animation Scroll
+            const backToTop = document.getElementById('backToTop');
+
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 300) backToTop.classList.add('visible');
+                else backToTop.classList.remove('visible');
+            });
+
+            backToTop.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
         };
 
         // 2. Gestion des Onglets
