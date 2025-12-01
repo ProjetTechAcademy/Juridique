@@ -3,105 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🪪 COCKPIT ELITE : Mon Passeport Juriste</title>
     
-    <!-- SEO -->
-    <meta name="description" content="Tableau de bord personnel - Mon Espace Juriste - Suivi de formation MBA Juriste d'Entreprise">
-    <meta name="author" content="Mathilde Martine PAISLEY">
+    <!-- FAVICON AJOUTÉ (Balance de Justice) -->
+    <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/e/e0/Balance_of_Justice_SVG.svg" type="image/svg+xml">
+
+    <!-- CSS Libraries -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
     
-    <title>Mon Espace Juriste - Tableau de bord</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&family=Montserrat:wght@500;600;700&family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-    <!-- Canonical -->
-    <link rel="canonical" href="https://projettechacademy.github.io/Juridique/00_Autres/Mon_Espace_Juriste_Tableau_de_bord_personnel.html">
-
-    <!-- Open Graph -->
-    <meta property="og:title" content="Mon Espace Juriste - Tableau de bord">
-    <meta property="og:description" content="Cockpit Elite : Suivi personnalisé de formation juridique">
-    <meta property="og:type" content="website">
-
-    <!-- FAVICON -->
-    <link rel="icon" type="image/jpeg" href="https://projettechacademy.github.io/Juridique/Asset/Logo_MMPA.jpeg">
-
-    <!-- FONTS -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;700&family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- ICONS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous">
-    
     <style>
-        /* ========================================
-           VARIABLES
-           ======================================== */
+        /* VARIABLES GLOBALES */
         :root {
-            --color-bg: #F6F2E8;
-            --color-primary: #0F2C48;
-            --color-accent: #D9A526;
-            --color-alert: #B4792A;
-            --color-text: #2c3e50;
-            --color-white: #ffffff;
-            --color-success: #10b981;
-            --color-warning: #f59e0b;
-            --color-info: #3b82f6;
+            --cta: #D9A526;       /* Jaune Doré */
+            --brand-blue: #0F2C48; /* Bleu Nuit */
+            --ivory: #F6F2E8;     /* Ivoire */
+            --bronze: #B4792A;    /* Bronze */
+            --alert: #B4792A;
+            
+            /* Variables Header Spécial */
+            --h-bg: #0F2C48; 
+            --h-text: #fff; 
+            --h-accent: #D9A526; 
+            --h-bronze: #B4792A;
+
+            /* VARIABLES FOOTER */
+            --f-bg: #0F2C48; 
+            --f-text: #F6F2E8; 
+            --f-accent: #D9A526;
         }
 
-        /* ========================================
-           RESET & BASE
-           ======================================== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Lato', sans-serif;
-            background: linear-gradient(135deg, #f6f2e8 0%, #e8e0d0 100%);
-            color: var(--color-text);
-            line-height: 1.6;
+        body { 
+            margin: 0; 
+            background-color: var(--ivory); 
+            color: var(--brand-blue); 
+            font-family: 'Outfit', sans-serif; 
+            display: flex;
+            flex-direction: column;
             min-height: 100vh;
         }
 
-        .skip-link {
-            position: absolute;
-            left: -9999px;
-            top: -9999px;
-            background: var(--color-white);
-            color: var(--color-primary);
-            padding: 10px 15px;
-            z-index: 9999;
-            border-radius: 6px;
-            text-decoration: none;
-        }
-        .skip-link:focus {
-            left: 20px;
-            top: 20px;
+        h1, h2, h3, .brand-font {
+            font-family: 'Playfair Display', serif;
         }
 
-        /* ========================================
-           TOP BAR
-           ======================================== */
+        /* --- HEADER SPECIAL CLUB --- */
+        @keyframes cosmic-pulse {
+            0% { transform: scale(1); box-shadow: 0 5px 15px rgba(15, 44, 72, 0.3); }
+            50% { transform: scale(1.02); box-shadow: 0 15px 25px rgba(28, 181, 224, 0.4); }
+            100% { transform: scale(1); box-shadow: 0 5px 15px rgba(15, 44, 72, 0.3); }
+        }
+
         .top-bar {
-            background: linear-gradient(135deg, var(--color-primary) 0%, #1a3b5c 100%);
-            color: var(--color-white);
+            background-color: var(--h-bg);
+            color: var(--h-text);
             padding: 15px 0;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-            position: sticky;
-            top: 0;
-            z-index: 100;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            position: sticky; top: 0; z-index: 10000;
+            font-family: 'Lato', sans-serif;
+            border-bottom: 4px solid var(--h-accent);
         }
-
-        .container {
+        
+        .top-bar-container {
             max-width: 1400px;
             margin: 0 auto;
             padding: 0 20px;
-        }
-
-        .top-bar-content {
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -109,860 +79,580 @@
             gap: 20px;
         }
 
-        .top-bar-left {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
+        .top-bar-left { display: flex; align-items: center; gap: 15px; flex: 1; min-width: 320px; }
+        .logo-top-bar { width: 60px; height: 60px; border-radius: 50%; border: 2px solid var(--h-accent); object-fit: cover; flex-shrink: 0; background: #fff; }
+        .identity-stack { display: flex; flex-direction: column; justify-content: center; }
+        .club-title-main { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; letter-spacing: 0.5px; color: #ffffff; line-height: 1.1; margin-bottom: 3px; }
+        .club-subtitle { font-family: 'Lato', sans-serif; font-size: 0.7rem; color: var(--h-accent); font-weight: 600; opacity: 0.95; line-height: 1.2; }
 
-        .logo-top-bar {
-            width: 55px;
-            height: 55px;
-            border-radius: 50%;
-            border: 3px solid var(--color-accent);
-            object-fit: cover;
-        }
-
-        .identity-stack h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: var(--color-white);
-            margin: 0;
-        }
-
-        .club-line-1 {
-            font-size: 0.8rem;
-            color: var(--color-accent);
-            font-weight: 700;
-        }
-
-        .top-bar-nav {
-            display: flex;
-            gap: 12px;
-            align-items: center;
-        }
-
+        .top-bar-center { display: flex; gap: 12px; align-items: center; }
         .header-icon-btn {
-            width: 42px;
-            height: 42px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.15);
-            border: 1px solid rgba(255,255,255,0.3);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            color: white;
-            position: relative;
-        }
-
-        .header-icon-btn:hover {
-            background: rgba(255,255,255,0.25);
-            transform: translateY(-3px);
-        }
-
-        .header-icon-btn::after {
-            content: attr(data-tooltip);
-            position: absolute;
-            top: 130%;
-            left: 50%;
-            transform: translateX(-50%) translateY(-10px);
-            background: var(--color-white);
-            color: var(--color-primary);
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 0.7rem;
-            font-weight: 700;
-            white-space: nowrap;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
+            position: relative; width: 40px; height: 40px; border-radius: 50%;
+            background: linear-gradient(135deg, #0F2C48 0%, #1CB5E0 100%);
+            border: 1px solid rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center;
+            font-size: 1.1rem; text-decoration: none; transition: all 0.3s ease; color: white;
             box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-            pointer-events: none;
-            z-index: 100;
+        }
+        .header-icon-btn:hover { transform: translateY(3px) scale(1.1); background: linear-gradient(135deg, #163e63 0%, #20c3f0 100%); box-shadow: 0 6px 15px rgba(28, 181, 224, 0.4); }
+        .nav-mmpa-img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 2px solid var(--h-accent); }
+        .nav-profile-img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 2px solid #fff; }
+        
+        .header-icon-btn::after {
+            content: attr(data-tooltip); position: absolute; top: 130%; left: 50%; transform: translateX(-50%) translateY(-10px);
+            background-color: #fff; color: var(--h-bg); padding: 4px 10px; border-radius: 20px;
+            font-size: 0.7rem; font-weight: 700; white-space: nowrap; opacity: 0; visibility: hidden; transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2); pointer-events: none; z-index: 100;
+        }
+        .header-icon-btn:hover::after { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+
+        .btn-portfolio-cosmic {
+            padding: 8px 20px; border-radius: 50px; font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 0.9rem;
+            background: linear-gradient(135deg, #0F2C48 0%, #1CB5E0 100%); color: white !important; text-decoration: none; 
+            border: 1px solid rgba(255,255,255,0.2); display: inline-flex; align-items: center; gap: 8px; animation: cosmic-pulse 4s ease-in-out infinite;
+        }
+        .btn-portfolio-cosmic:hover { background: linear-gradient(135deg, #163e63 0%, #20c3f0 100%); }
+
+        /* --- RESTE DU DASHBOARD (Corps) --- */
+        .dashboard-card {
+            background: white; border-radius: 16px; padding: 24px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); border: 1px solid rgba(217, 165, 38, 0.2);
+            transition: transform 0.3s ease; height: 100%; display: flex; flex-direction: column;
+        }
+        .dashboard-card:hover { transform: translateY(-4px); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); }
+        .card-header { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid #f1f5f9; }
+        .card-icon { width: 36px; height: 36px; border-radius: 8px; background-color: rgba(15, 44, 72, 0.1); color: var(--brand-blue); display: flex; align-items: center; justify-content: center; }
+        .input-label { display: block; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--brand-blue); margin-bottom: 4px; opacity: 0.8; }
+        .styled-input, .styled-select { width: 100%; padding: 10px 12px; border-radius: 8px; border: 1px solid #cbd5e1; background-color: #f8fafc; color: var(--brand-blue); font-size: 14px; transition: all 0.2s; }
+        .styled-input:focus, .styled-select:focus { outline: none; border-color: var(--cta); background-color: white; box-shadow: 0 0 0 3px rgba(217, 165, 38, 0.1); }
+        .prog-block { background: white; border-radius: 12px; padding: 20px; border-left: 4px solid #cbd5e1; box-shadow: 0 2px 4px rgba(0,0,0,0.02); transition: all 0.3s; }
+        .prog-block:hover { transform: translateX(4px); box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+        .prog-block.b-intro { border-color: #94a3b8; }
+        .prog-block.b-strat { border-color: var(--cta); }
+        .prog-block.b-ops { border-color: var(--cta); }
+        .prog-block.b-litige { border-color: var(--alert); }
+        @keyframes pulse-red { 0% { box-shadow: 0 0 0 0 rgba(180, 121, 42, 0.4); } 70% { box-shadow: 0 0 0 10px rgba(180, 121, 42, 0); } 100% { box-shadow: 0 0 0 0 rgba(180, 121, 42, 0); } }
+        .timer-active { border-color: var(--alert) !important; animation: pulse-red 2s infinite; }
+
+        /* --- FOOTER SPECIFIC (Ton Code Intégré) --- */
+        .main-footer {
+            background-color: var(--f-bg); color: var(--f-text);
+            padding-top: 50px; font-family: 'Lato', sans-serif; font-size: 0.95rem;
+            position: relative; width: 100%; margin-top: auto;
+        }
+        .footer-container { max-width: 1100px; margin: 0 auto; padding: 0 25px; }
+        .footer-content { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 30px; padding-bottom: 30px; align-items: flex-start; }
+        
+        .footer-identity { display: flex; flex-direction: row; align-items: center; gap: 20px; min-width: 300px; }
+        .footer-logo-img { width: 60px; height: 60px; border-radius: 8px; border: 2px solid var(--f-accent); background: #fff; object-fit: cover; }
+        .footer-info-compact { display: flex; flex-direction: column; }
+        .footer-name { color: var(--f-accent); font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; line-height: 1.2; margin-bottom: 5px; margin-top:0; }
+        .footer-contact-stack { display: flex; flex-direction: column; gap: 5px; font-size: 0.85rem; opacity: 0.8; }
+        .footer-link { text-decoration: none; color: inherit; transition: color 0.3s; display: inline-block; }
+        .footer-link:hover { color: var(--f-accent); transform: translateX(2px); }
+
+        .footer-dock-col { display: flex; flex-direction: column; align-items: flex-end; gap: 10px; margin-left: auto; }
+        .dock-group { display: flex; flex-direction: column; align-items: flex-end; gap: 5px; }
+        .dock-label { font-family: 'Montserrat', sans-serif; font-size: 0.8rem; text-transform: uppercase; color: var(--f-accent); opacity: 0.7; }
+        .icon-dock { display: flex; gap: 15px; flex-wrap: wrap; justify-content: flex-end; align-items: center; }
+
+        .icon-btn { 
+            position: relative; width: 45px; height: 45px; border-radius: 50%; 
+            background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(217, 165, 38, 0.3); 
+            display: flex; align-items: center; justify-content: center; 
+            font-size: 1.3rem; text-decoration: none; 
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+            cursor: pointer; color: #fff; 
+        }
+        .icon-btn:hover { transform: translateY(-5px) scale(1.1); background: #fff; border-color: #fff; box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3); }
+
+        .brand-whatsapp { color: #25D366 !important; } .icon-btn:hover .brand-whatsapp { color: #25D366 !important; }
+        .brand-discord { color: #5865F2 !important; } .icon-btn:hover .brand-discord { color: #5865F2 !important; }
+        .brand-linkedin { color: #0077b5 !important; } .icon-btn:hover .brand-linkedin { color: #0077b5 !important; }
+        .brand-instagram { color: #E1306C !important; } .icon-btn:hover .brand-instagram { color: #E1306C !important; }
+        .brand-tiktok { color: #00f2ea !important; text-shadow: 2px 2px 0px #ff0050; } .icon-btn:hover .brand-tiktok { color: #000 !important; text-shadow: none; } 
+        .brand-nav { color: var(--f-accent) !important; } .icon-btn:hover .brand-nav { color: var(--f-bg) !important; }
+
+        .icon-btn::after {
+            content: attr(data-tooltip); position: absolute; bottom: 120%; left: 50%; transform: translateX(-50%) translateY(10px);
+            background-color: #fff; color: var(--f-bg); padding: 5px 12px; border-radius: 20px;
+            font-size: 0.75rem; font-weight: 700; white-space: nowrap; opacity: 0; visibility: hidden; transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2); pointer-events: none; z-index: 100;
+        }
+        .icon-btn::before {
+            content: ''; position: absolute; bottom: 110%; left: 50%; transform: translateX(-50%) translateY(10px);
+            border-width: 6px; border-style: solid; border-color: #ffffff transparent transparent transparent;
+            opacity: 0; visibility: hidden; transition: all 0.3s ease; z-index: 100;
+        }
+        .icon-btn:hover::after, .icon-btn:hover::before { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+
+        .dock-separator { width: 1px; height: 30px; background-color: rgba(255,255,255,0.2); margin: 0 10px; }
+        .footer-bottom { 
+            text-align: center; padding: 15px 0; font-size: 0.8rem; 
+            color: rgba(255,255,255,0.4); background-color: rgba(0,0,0,0.2); 
+            border-top: 1px solid rgba(255,255,255,0.05); width: 100%;
         }
 
-        .header-icon-btn:hover::after {
-            opacity: 1;
-            visibility: visible;
-            transform: translateX(-50%) translateY(0);
-        }
-
-        .nav-profile-img {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 2px solid var(--color-white);
-        }
-
-        /* ========================================
-           HERO SECTION
-           ======================================== */
-        .hero-section {
-            background: linear-gradient(135deg, var(--color-primary) 0%, #1a3b5c 100%);
-            color: white;
-            padding: 60px 20px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at 20% 50%, rgba(217, 165, 38, 0.1) 0%, transparent 50%),
-                        radial-gradient(circle at 80% 80%, rgba(28, 181, 224, 0.1) 0%, transparent 50%);
-            pointer-events: none;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero-badge {
-            display: inline-block;
-            padding: 8px 20px;
-            background: rgba(255,255,255,0.15);
-            border-radius: 30px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 20px;
-            backdrop-filter: blur(10px);
-        }
-
-        .hero-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-            font-weight: 700;
-        }
-
-        .hero-subtitle {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            margin-bottom: 10px;
-        }
-
-        /* ========================================
-           DASHBOARD GRID
-           ======================================== */
-        .dashboard {
-            padding: 40px 0;
-        }
-
-        .dashboard-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 25px;
-            margin-bottom: 30px;
-        }
-
-        .card {
-            background: white;
-            border-radius: 16px;
-            padding: 30px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-            transition: all 0.3s ease;
-            border-top: 4px solid var(--color-accent);
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
-        }
-
-        .card-header {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 20px;
-            padding-bottom: 15px;
-            border-bottom: 2px solid #f3f4f6;
-        }
-
-        .card-icon {
-            width: 50px;
-            height: 50px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
-            color: white;
-        }
-
-        .card-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.3rem;
-            color: var(--color-primary);
-            font-weight: 700;
-            margin: 0;
-        }
-
-        .card-content {
-            color: var(--color-text);
-        }
-
-        /* Profile Card */
-        .profile-photo {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin: 0 auto 20px;
-            display: block;
-            border: 4px solid var(--color-accent);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-        }
-
-        .profile-name {
-            text-align: center;
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: var(--color-primary);
-            margin-bottom: 5px;
-        }
-
-        .profile-title {
-            text-align: center;
-            color: var(--color-alert);
-            font-size: 1rem;
-            margin-bottom: 20px;
-        }
-
-        .profile-stats {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .stat-box {
-            text-align: center;
-            padding: 15px;
-            background: linear-gradient(135deg, #f9fafb, #f3f4f6);
-            border-radius: 12px;
-        }
-
-        .stat-value {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--color-accent);
-            display: block;
-        }
-
-        .stat-label {
-            font-size: 0.85rem;
-            color: var(--color-text);
-            opacity: 0.7;
-        }
-
-        /* Calendar Card */
-        .calendar-dates {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .date-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 12px;
-            background: #f9fafb;
-            border-radius: 8px;
-            border-left: 4px solid var(--color-info);
-        }
-
-        .date-label {
-            font-weight: 600;
-            color: var(--color-primary);
-        }
-
-        .date-value {
-            color: var(--color-alert);
-            font-weight: 700;
-        }
-
-        /* Countdown Card */
-        .countdown-selector {
-            margin-bottom: 20px;
-        }
-
-        .countdown-selector label {
-            display: block;
-            font-weight: 600;
-            margin-bottom: 8px;
-            color: var(--color-primary);
-        }
-
-        .countdown-selector input {
-            width: 100%;
-            padding: 12px;
-            border: 2px solid #e5e7eb;
-            border-radius: 8px;
-            font-size: 1rem;
-        }
-
-        .countdown-display {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .countdown-box {
-            text-align: center;
-            padding: 20px 10px;
-            background: linear-gradient(135deg, var(--color-primary), #1a3b5c);
-            border-radius: 12px;
-            color: white;
-        }
-
-        .countdown-value {
-            font-size: 2.5rem;
-            font-weight: 700;
-            display: block;
-            line-height: 1;
-        }
-
-        .countdown-label {
-            font-size: 0.75rem;
-            opacity: 0.8;
-            margin-top: 5px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .countdown-message {
-            text-align: center;
-            padding: 20px;
-            background: #fef3c7;
-            border-radius: 8px;
-            color: #92400e;
-            font-weight: 600;
-        }
-
-        /* Programme Card */
-        .specialty-selector {
-            margin-bottom: 20px;
-        }
-
-        .specialty-selector label {
-            display: block;
-            font-weight: 600;
-            margin-bottom: 8px;
-            color: var(--color-primary);
-        }
-
-        .specialty-selector select {
-            width: 100%;
-            padding: 12px;
-            border: 2px solid #e5e7eb;
-            border-radius: 8px;
-            font-size: 1rem;
-            background: white;
-        }
-
-        .modules-list {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .module-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 12px;
-            background: #f9fafb;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-        }
-
-        .module-item:hover {
-            background: #f3f4f6;
-            transform: translateX(5px);
-        }
-
-        .module-checkbox {
-            width: 20px;
-            height: 20px;
-            cursor: pointer;
-            accent-color: var(--color-accent);
-        }
-
-        .module-name {
-            flex: 1;
-            font-weight: 500;
-        }
-
-        .module-hours {
-            font-size: 0.85rem;
-            color: var(--color-alert);
-            font-weight: 600;
-        }
-
-        /* Team Card */
-        .team-grid {
-            display: grid;
-            gap: 15px;
-        }
-
-        .team-member {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            padding: 15px;
-            background: #f9fafb;
-            border-radius: 12px;
-            transition: all 0.3s ease;
-        }
-
-        .team-member:hover {
-            background: #f3f4f6;
-            transform: translateX(5px);
-        }
-
-        .team-icon {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            color: white;
-            flex-shrink: 0;
-        }
-
-        .team-info h4 {
-            margin: 0;
-            color: var(--color-primary);
-            font-size: 1.05rem;
-        }
-
-        .team-role {
-            font-size: 0.85rem;
-            color: var(--color-alert);
-            font-weight: 600;
-        }
-
-        .team-exp {
-            font-size: 0.8rem;
-            color: #6b7280;
-        }
-
-        /* Footer */
-        .dashboard-footer {
-            margin-top: 40px;
-            padding: 30px;
-            background: white;
-            border-radius: 16px;
-            text-align: center;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-        }
-
-        .footer-note {
-            font-size: 0.9rem;
-            color: #6b7280;
-            font-style: italic;
-            line-height: 1.6;
-        }
-
-        /* Back to Top */
         #backToTop {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-            z-index: 1000;
+            position: fixed; bottom: 30px; right: 30px; background-color: var(--f-accent); color: var(--f-bg);
+            width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-size: 1.2rem; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.2); opacity: 0; pointer-events: none;
+            transition: all 0.3s ease; z-index: 100;
         }
+        #backToTop.show { opacity: 1; pointer-events: all; }
+        #backToTop:hover { transform: translateY(-5px); background-color: #fff; }
 
-        #backToTop.visible {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        #backToTop:hover {
-            transform: translateY(-5px) scale(1.1);
-        }
-
-        /* Responsive */
         @media (max-width: 768px) {
-            .hero-title {
-                font-size: 1.8rem;
-            }
-
-            .dashboard-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .countdown-display {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .profile-stats {
-                grid-template-columns: 1fr;
-            }
+            .footer-content { flex-direction: column; align-items: center; text-align: center; }
+            .footer-identity { flex-direction: column; text-align: center; }
+            .footer-dock-col { align-items: center; width: 100%; gap: 30px; margin-left: 0; }
+            .icon-dock { justify-content: center; flex-wrap: wrap; }
+            .dock-group { align-items: center; }
+            .dock-separator { display: none; }
         }
     </style>
 </head>
-<body>
-    <!-- Skip Link -->
-    <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+<body onload="loadUserData()">
 
-    <!-- ========================================
-         TOP BAR
-         ======================================== -->
-    <header class="top-bar">
-        <div class="container">
-            <div class="top-bar-content">
-                <div class="top-bar-left">
-                    <img src="https://projettechacademy.github.io/Juridique/Asset/Logo_MMPA.jpeg" alt="Logo" class="logo-top-bar" loading="eager">
-                    <div class="identity-stack">
-                        <h1>Mathilde Martine PAISLEY</h1>
-                        <div class="club-line-1">🪪 COCKPIT ELITE : Mon Passeport Juriste</div>
-                    </div>
+    <!-- HEADER SPECIAL CLUB -->
+    <div class="top-bar">
+        <div class="top-bar-container">
+            <div class="top-bar-left">
+                <img src="https://projettechacademy.github.io/Juridique/Asset/Logo_juriste.png" 
+                     onerror="this.src='https://projettechacademy.github.io/Juridique/Asset/Logo_juriste.jpg';" 
+                     alt="Logo Club" class="logo-top-bar">
+                <div class="identity-stack">
+                    <span class="club-title-main">💫 The Jurist Elite Club By Studi ✨</span>
+                    <span class="club-subtitle">La Villa des Juristes Brisés 💔 sur l’Île de L’INSTRUCTION ! 🏝</span>
                 </div>
-
-                <nav class="top-bar-nav" aria-label="Navigation principale">
-                    <a href="https://projettechacademy.github.io/Juridique/index.html" target="_blank" rel="noopener noreferrer" class="header-icon-btn" data-tooltip="Accueil" aria-label="Accueil">🏠</a>
-                    <a href="https://projettechacademy.github.io/Juridique/00_Autres/Mon_Espace_Juriste_Tableau_de_bord_personnel.html" class="header-icon-btn" data-tooltip="Mon Espace" aria-label="Mon Espace">📊</a>
-                    <a href="https://projettechacademy.github.io/Juridique/00_Autres/Lexique_Latin_Juridique.html" target="_blank" rel="noopener noreferrer" class="header-icon-btn" data-tooltip="Lexique" aria-label="Lexique">📜</a>
-                    <a href="https://projettechacademy.github.io/Juridique/00_Autres/formation_live_juriste.html" target="_blank" rel="noopener noreferrer" class="header-icon-btn" data-tooltip="Planning" aria-label="Planning">📅</a>
-                    <a href="https://projettechacademy.github.io/Juridique/00_Autres/A_propos_de_moi.html" target="_blank" rel="noopener noreferrer" class="header-icon-btn" data-tooltip="À propos" aria-label="À propos">
-                        <img src="https://projettechacademy.github.io/Juridique/Asset/Photo_Mathilde_Martine_PAISLEY.jpg" alt="Photo profil" class="nav-profile-img" loading="eager">
-                    </a>
-                </nav>
             </div>
-        </div>
-    </header>
-
-    <!-- ========================================
-         HERO SECTION
-         ======================================== -->
-    <section class="hero-section">
-        <div class="hero-content">
-            <div class="hero-badge">👩‍⚖️ MBA Juriste d'Entreprise</div>
-            <h2 class="hero-title">Bienvenue, Maître Juriste !</h2>
-            <p class="hero-subtitle">Tableau de bord personnel de suivi de formation</p>
-        </div>
-    </section>
-
-    <!-- ========================================
-         DASHBOARD
-         ======================================== -->
-    <main id="main-content" class="dashboard">
-        <div class="container">
-            <div class="dashboard-grid">
-                <!-- Mon Profil -->
-                <article class="card">
-                    <div class="card-header">
-                        <div class="card-icon">👤</div>
-                        <h3 class="card-title">Mon Profil</h3>
-                    </div>
-                    <div class="card-content">
-                        <img src="https://projettechacademy.github.io/Juridique/Asset/Photo_Mathilde_Martine_PAISLEY.jpg" alt="Mathilde Martine PAISLEY" class="profile-photo" loading="eager">
-                        <div class="profile-name">Mathilde Martine PAISLEY</div>
-                        <div class="profile-title">Apprenante MBA Juriste</div>
-                        <div class="profile-stats">
-                            <div class="stat-box">
-                                <span class="stat-value">2025</span>
-                                <span class="stat-label">Année</span>
-                            </div>
-                            <div class="stat-box">
-                                <span class="stat-value">MBA</span>
-                                <span class="stat-label">Niveau</span>
-                            </div>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Calendrier Formation -->
-                <article class="card">
-                    <div class="card-header">
-                        <div class="card-icon">📅</div>
-                        <h3 class="card-title">Calendrier Formation</h3>
-                    </div>
-                    <div class="card-content">
-                        <div class="calendar-dates">
-                            <div class="date-item">
-                                <span class="date-label">Stage conseillé</span>
-                                <span class="date-value">8 semaines</span>
-                            </div>
-                            <div class="date-item">
-                                <span class="date-label">Examens</span>
-                                <span class="date-value">Juin & Décembre</span>
-                            </div>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Deadline Évaluations -->
-                <article class="card" style="grid-column: span 2;">
-                    <div class="card-header">
-                        <div class="card-icon">⏰</div>
-                        <h3 class="card-title">Deadline Évaluations</h3>
-                    </div>
-                    <div class="card-content">
-                        <div class="countdown-selector">
-                            <label for="deadlineDate">Sélectionnez une date pour activer le compte à rebours :</label>
-                            <input type="date" id="deadlineDate" aria-label="Date limite">
-                        </div>
-                        <div id="countdownDisplay" class="countdown-display" style="display: none;">
-                            <div class="countdown-box">
-                                <span class="countdown-value" id="days">00</span>
-                                <span class="countdown-label">Jours</span>
-                            </div>
-                            <div class="countdown-box">
-                                <span class="countdown-value" id="hours">00</span>
-                                <span class="countdown-label">Hrs</span>
-                            </div>
-                            <div class="countdown-box">
-                                <span class="countdown-value" id="minutes">00</span>
-                                <span class="countdown-label">Min</span>
-                            </div>
-                            <div class="countdown-box">
-                                <span class="countdown-value" id="seconds">00</span>
-                                <span class="countdown-label">Sec</span>
-                            </div>
-                        </div>
-                        <div id="countdownMessage" class="countdown-message">
-                            Sélectionnez une date pour activer le compte à rebours.
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Programme Académique -->
-                <article class="card" style="grid-column: span 2;">
-                    <div class="card-header">
-                        <div class="card-icon">📚</div>
-                        <h3 class="card-title">Programme Académique</h3>
-                    </div>
-                    <div class="card-content">
-                        <div class="specialty-selector">
-                            <label for="specialtySelect">Spécialité :</label>
-                            <select id="specialtySelect" aria-label="Sélectionner une spécialité">
-                                <option value="">Sélectionnez...</option>
-                                <option value="general">Droit Général</option>
-                                <option value="social">Droit Social</option>
-                                <option value="fiscal">Droit Fiscal</option>
-                                <option value="immobilier">Droit Immobilier</option>
-                            </select>
-                        </div>
-                        <div id="modulesList" class="modules-list">
-                            <p style="text-align: center; color: #6b7280; padding: 20px;">Sélectionnez une spécialité pour voir les modules</p>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Équipe Pédagogique -->
-                <article class="card" style="grid-column: span 2;">
-                    <div class="card-header">
-                        <div class="card-icon">👥</div>
-                        <h3 class="card-title">Équipe Pédagogique</h3>
-                    </div>
-                    <div class="card-content">
-                        <div class="team-grid">
-                            <div class="team-member">
-                                <div class="team-icon">👩‍⚖️</div>
-                                <div class="team-info">
-                                    <h4>Eva PHILIPPE</h4>
-                                    <div class="team-role">Référente</div>
-                                    <div class="team-exp">CAPA Avocat - 10 ans d'exp.</div>
-                                </div>
-                            </div>
-
-                            <div class="team-member">
-                                <div class="team-icon">💼</div>
-                                <div class="team-info">
-                                    <h4>Caroline DEBRUMEZ</h4>
-                                    <div class="team-role">Fiscalité</div>
-                                    <div class="team-exp">DESS Fiscalité - 10 ans d'exp.</div>
-                                </div>
-                            </div>
-
-                            <div class="team-member">
-                                <div class="team-icon">🏗️</div>
-                                <div class="team-info">
-                                    <h4>Bénédicte BOBIN</h4>
-                                    <div class="team-role">Immobilier</div>
-                                    <div class="team-exp">Master 2 Immo - 7 ans d'exp.</div>
-                                </div>
-                            </div>
-
-                            <div class="team-member">
-                                <div class="team-icon">⚖️</div>
-                                <div class="team-info">
-                                    <h4>Christèle LECOINTRE</h4>
-                                    <div class="team-role">Social</div>
-                                    <div class="team-exp">DESS Relations - 10 ans d'exp.</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </article>
+            
+            <div class="top-bar-center">
+                <a href="https://projettechacademy.github.io/Juridique/index.html" target="_blank" class="header-icon-btn" data-tooltip="Start/Accueil" style="padding: 0; overflow: hidden; border: none;">
+                    <img src="https://projettechacademy.github.io/Juridique/Asset/Logo_MMPA.jpeg" alt="MMPA" class="nav-mmpa-img">
+                </a>
+                <a href="https://projettechacademy.github.io/Juridique/00_Autres/Mon_Espace_Juriste_Tableau_de_bord_personnel.html" target="_blank" class="header-icon-btn" data-tooltip="Mon Espace">📊</a>
+                <a href="https://projettechacademy.github.io/Juridique/00_Autres/Lexique_Latin_Juridique.html" target="_blank" class="header-icon-btn" data-tooltip="Lexique Latin">📜</a>
+                <a href="https://projettechacademy.github.io/Juridique/00_Autres/formation_live_juriste.html" target="_blank" class="header-icon-btn" data-tooltip="Planning Live">📅</a>
+                <a href="https://projettechacademy.github.io/Juridique/00_Autres/A_propos_de_moi.html" target="_blank" class="header-icon-btn" data-tooltip="À propos de moi" style="padding: 0; overflow: hidden; border: 2px solid #D9A526;">
+                    <img src="https://projettechacademy.github.io/Juridique/Asset/Photo_Mathilde_Martine_PAISLEY.png" 
+                         onerror="this.src='https://projettechacademy.github.io/Juridique/Asset/Photo_Mathilde_Martine_PAISLEY.jpg';" 
+                         alt="Profil" class="nav-profile-img">
+                </a>
             </div>
 
-            <!-- Footer -->
-            <footer class="dashboard-footer">
-                <p class="footer-note">
-                    <i class="fas fa-info-circle"></i> 
-                    "Studi peut faire appel à des prestataires externes pour lesquels il conclut un contrat de prestation."
-                </p>
-            </footer>
+            <a href="https://projettechacademy.github.io/CV_MMPA-CV-Mathilde-Martine-PAISLEY/" target="_blank" class="btn-portfolio-cosmic">
+                <span>📄</span> Mon portfolio
+            </a>
         </div>
-    </main>
-
-    <!-- Back to Top -->
-    <div id="backToTop" role="button" tabindex="0" aria-label="Remonter">
-        <i class="fas fa-arrow-up"></i>
     </div>
 
-    <!-- ========================================
-         JAVASCRIPT
-         ======================================== -->
-    <script>
-        // Modules par spécialité
-        const modulesData = {
-            general: [
-                { name: "Introduction au droit", hours: "20h" },
-                { name: "Droit constitutionnel", hours: "25h" },
-                { name: "Droit civil", hours: "30h" },
-                { name: "Procédure civile", hours: "20h" }
-            ],
-            social: [
-                { name: "Contrat de travail", hours: "25h" },
-                { name: "Rupture du contrat", hours: "20h" },
-                { name: "Représentation du personnel", hours: "15h" },
-                { name: "Protection sociale", hours: "20h" }
-            ],
-            fiscal: [
-                { name: "Fiscalité des entreprises", hours: "30h" },
-                { name: "TVA", hours: "20h" },
-                { name: "Impôt sur le revenu", hours: "25h" },
-                { name: "Contrôle fiscal", hours: "15h" }
-            ],
-            immobilier: [
-                { name: "Droit de la construction", hours: "25h" },
-                { name: "Copropriété", hours: "20h" },
-                { name: "Bail commercial", hours: "20h" },
-                { name: "Urbanisme", hours: "15h" }
-            ]
-        };
+    <!-- MAIN CONTENT -->
+    <main class="flex-grow container mx-auto px-4 py-8 space-y-10">
 
-        // Gestion spécialité
-        document.getElementById('specialtySelect').addEventListener('change', function() {
-            const specialty = this.value;
-            const modulesList = document.getElementById('modulesList');
+        <!-- Titre de la page (ajouté pour indiquer où l'on se trouve) -->
+        <div class="text-center">
+            <h1 class="text-4xl font-bold brand-font text-brand-blue mb-4">
+                🪪 COCKPIT ELITE : Mon Passeport Juriste
+            </h1>
+        </div>
 
-            if (!specialty) {
-                modulesList.innerHTML = '<p style="text-align: center; color: #6b7280; padding: 20px;">Sélectionnez une spécialité pour voir les modules</p>';
-                return;
-            }
+        <!-- Welcome -->
+        <div class="text-center">
+            <h2 class="text-3xl font-bold brand-font text-brand-blue mb-2">
+                Bienvenue, Maître <span id="displayFullName" class="text-cta">Juriste</span> ! 👩‍⚖️
+            </h2>
+            <p id="welcomeTagline" class="text-gray-500 italic text-lg"></p>
+        </div>
 
-            const modules = modulesData[specialty];
-            modulesList.innerHTML = modules.map((module, index) => `
-                <div class="module-item">
-                    <input type="checkbox" class="module-checkbox" id="module-${index}" aria-label="${module.name}">
-                    <label for="module-${index}" class="module-name">${module.name}</label>
-                    <span class="module-hours">${module.hours}</span>
+        <!-- DASHBOARD GRID -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            
+            <!-- 1. MON PROFIL (Config) -->
+            <div class="dashboard-card border-t-4 border-t-brand-blue">
+                <div class="card-header">
+                    <div class="card-icon"><i class="fa-solid fa-id-card"></i></div>
+                    <h3 class="font-bold text-lg text-brand-blue">Mon Profil</h3>
                 </div>
-            `).join('');
+                <div class="space-y-4 flex-grow">
+                    <div class="grid grid-cols-2 gap-3">
+                        <div>
+                            <label class="input-label">Prénom</label>
+                            <input type="text" id="userName" placeholder="Votre Prénom" class="styled-input" onchange="saveUserData()">
+                        </div>
+                        <div>
+                            <label class="input-label">Nom</label>
+                            <input type="text" id="userSurname" placeholder="Votre Nom" class="styled-input" onchange="saveUserData()">
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label class="input-label text-cta">🎓 Spécialité (Programme)</label>
+                        <select id="userSpecialization" class="styled-select font-bold" onchange="saveUserData()">
+                            <option value="social">⚖️ Droit Social</option>
+                            <option value="affaires">💼 Droit des Affaires</option>
+                            <option value="entreprise">🏢 Juriste d'Entreprise</option>
+                        </select>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-3">
+                        <div>
+                            <label class="input-label">Promo</label>
+                            <select id="promoSelect" class="styled-select" onchange="saveUserData()">
+                                <!-- Généré en JS -->
+                            </select>
+                        </div>
+                        <div>
+                            <label class="input-label">Session</label>
+                            <select id="sessionNb" class="styled-select" onchange="saveUserData()">
+                                <option value="1">Session 1</option>
+                                <option value="2">Session 2</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. MON CALENDRIER -->
+            <div class="dashboard-card border-t-4 border-t-cta">
+                <div class="card-header">
+                    <div class="card-icon"><i class="fa-regular fa-calendar-alt"></i></div>
+                    <h3 class="font-bold text-lg text-brand-blue">Calendrier Formation</h3>
+                </div>
+                <div class="space-y-4">
+                    <div>
+                        <label class="input-label">Début de formation</label>
+                        <input type="date" id="startDate" class="styled-input" onchange="saveUserData()">
+                    </div>
+                    <div>
+                        <label class="input-label">Fin de formation</label>
+                        <input type="date" id="endDate" class="styled-input" onchange="saveUserData()">
+                    </div>
+                    <div class="bg-gray-50 p-3 rounded-lg text-sm space-y-2 border border-gray-200 mt-2">
+                        <div class="flex justify-between">
+                            <span class="text-gray-500"><i class="fas fa-briefcase text-cta mr-1"></i> Stage conseillé</span>
+                            <span class="font-bold text-brand-blue">8 semaines</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-500"><i class="fas fa-graduation-cap text-cta mr-1"></i> Examens</span>
+                            <span class="font-bold text-brand-blue">Juin & Décembre</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. DEADLINE & CHRONO -->
+            <div id="timerCard" class="dashboard-card border-t-4 border-t-alert">
+                <div class="card-header">
+                    <div class="card-icon text-alert"><i class="fa-solid fa-hourglass-half"></i></div>
+                    <h3 class="font-bold text-lg text-alert">Deadline Évaluations</h3>
+                </div>
+                <div class="space-y-4 flex flex-col h-full justify-between">
+                    <div>
+                        <label class="input-label">Date limite de dépôt</label>
+                        <input type="date" id="evalDeadline" class="styled-input border-alert/30 text-alert font-bold" onchange="saveUserData()">
+                    </div>
+
+                    <div id="countdownDisplay" class="hidden grid grid-cols-4 gap-2 text-center mt-2">
+                        <div class="bg-brand-blue text-white p-2 rounded-lg">
+                            <div class="text-xl font-bold" id="cd-days">00</div>
+                            <div class="text-[9px] uppercase opacity-70">Jours</div>
+                        </div>
+                        <div class="bg-brand-blue text-white p-2 rounded-lg">
+                            <div class="text-xl font-bold" id="cd-hours">00</div>
+                            <div class="text-[9px] uppercase opacity-70">Hrs</div>
+                        </div>
+                        <div class="bg-brand-blue text-white p-2 rounded-lg">
+                            <div class="text-xl font-bold" id="cd-min">00</div>
+                            <div class="text-[9px] uppercase opacity-70">Min</div>
+                        </div>
+                        <div class="bg-brand-blue text-white p-2 rounded-lg">
+                            <div class="text-xl font-bold" id="cd-sec">00</div>
+                            <div class="text-[9px] uppercase opacity-70">Sec</div>
+                        </div>
+                    </div>
+                    <p id="countdownPlaceholder" class="text-center text-sm text-gray-400 italic py-4">
+                        Sélectionnez une date pour activer le compte à rebours.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- PROGRAMME ACADÉMIQUE -->
+        <section>
+            <div class="flex items-center gap-3 mb-6 border-b-2 border-cta pb-2">
+                <h3 class="text-2xl font-bold text-brand-blue brand-font">Programme Académique</h3>
+                <span class="text-sm bg-white border border-cta text-brand-blue px-3 py-1 rounded-full font-bold shadow-sm" id="programLabel">Spécialité...</span>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="programContainer">
+                <!-- Injecté via JS -->
+            </div>
+        </section>
+
+        <!-- ÉQUIPE PÉDAGOGIQUE -->
+        <section class="bg-white p-8 rounded-2xl shadow-sm border border-gray-200">
+            <h3 class="text-xl font-bold text-center text-brand-blue mb-8">
+                <i class="fa-solid fa-chalkboard-teacher text-cta mr-2"></i> Équipe Pédagogique
+            </h3>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="text-center group">
+                    <div class="w-20 h-20 mx-auto rounded-full bg-ivory flex items-center justify-center text-3xl mb-3 border-2 border-brand-blue shadow-md group-hover:scale-110 transition-transform">👩‍⚖️</div>
+                    <h4 class="font-bold text-brand-blue">Eva PHILIPPE</h4>
+                    <span class="text-xs bg-cta text-white px-2 py-1 rounded full font-bold uppercase tracking-wide">Référente</span>
+                    <p class="text-xs text-gray-500 mt-2">CAPA Avocat - 10 ans d'exp.</p>
+                </div>
+                <div class="text-center group">
+                    <div class="w-20 h-20 mx-auto rounded-full bg-ivory flex items-center justify-center text-3xl mb-3 border-2 border-gray-200 shadow-sm group-hover:border-cta transition-colors">📊</div>
+                    <h4 class="font-bold text-brand-blue">Caroline DEBRUMEZ</h4>
+                    <span class="text-xs text-gray-400 font-bold uppercase tracking-wide">Fiscalité</span>
+                    <p class="text-xs text-gray-500 mt-2">DESS Fiscalité - 10 ans d'exp.</p>
+                </div>
+                <div class="text-center group">
+                    <div class="w-20 h-20 mx-auto rounded-full bg-ivory flex items-center justify-center text-3xl mb-3 border-2 border-gray-200 shadow-sm group-hover:border-cta transition-colors">🏗️</div>
+                    <h4 class="font-bold text-brand-blue">Bénédicte BOBIN</h4>
+                    <span class="text-xs text-gray-400 font-bold uppercase tracking-wide">Immobilier</span>
+                    <p class="text-xs text-gray-500 mt-2">Master 2 Immo - 7 ans d'exp.</p>
+                </div>
+                <div class="text-center group">
+                    <div class="w-20 h-20 mx-auto rounded-full bg-ivory flex items-center justify-center text-3xl mb-3 border-2 border-gray-200 shadow-sm group-hover:border-cta transition-colors">💼</div>
+                    <h4 class="font-bold text-brand-blue">Christèle LECOINTE</h4>
+                    <span class="text-xs text-gray-400 font-bold uppercase tracking-wide">Social</span>
+                    <p class="text-xs text-gray-500 mt-2">DESS Relations - 10 ans d'exp.</p>
+                </div>
+            </div>
+            <p class="text-center text-[10px] text-gray-400 mt-8 italic">"Studi peut faire appel à des prestataires externes pour lesquels il conclut un contrat de prestation."</p>
+        </section>
+
+    </main>
+
+    <!-- FOOTER UNIVERSEL -->
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                
+                <!-- Identité -->
+                <div class="footer-identity">
+                    <img src="https://projettechacademy.github.io/Juridique/Asset/Logo_MMPA.jpeg" alt="Logo MMPA" class="footer-logo-img">
+                    <div class="footer-info-compact">
+                        <div class="footer-name">Mathilde Martine PAISLEY</div>
+                        <div class="footer-contact-stack">
+                            <a href="mailto:Mathilde.martine.paisley@gmail.com" target="_blank" class="footer-link">📧 Mathilde.martine.paisley@gmail.com</a>
+                            <a href="tel:+33685900887" class="footer-link">📲 06 85 90 08 87</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dock Navigation -->
+                <div class="footer-dock-col">
+                    <div class="dock-group">
+                        <div class="dock-label">Navigation & Réseaux</div>
+                        <div class="icon-dock">
+                            <!-- Navigation (Target blank pour tous) -->
+                            <a href="https://projettechacademy.github.io/Juridique/index.html" target="_blank" class="icon-btn" data-tooltip="Start/Accueil"><span class="brand-nav">🏠</span></a>
+                            <a href="https://projettechacademy.github.io/Juridique/00_Autres/Mon_Espace_Juriste_Tableau_de_bord_personnel.html" target="_blank" class="icon-btn" data-tooltip="Mon Espace"><span class="brand-nav">📊</span></a>
+                            <a href="https://projettechacademy.github.io/Juridique/00_Autres/Lexique_Latin_Juridique.html" target="_blank" class="icon-btn" data-tooltip="Lexique Latin"><span class="brand-nav">📜</span></a>
+                            <a href="https://projettechacademy.github.io/Juridique/00_Autres/formation_live_juriste.html" target="_blank" class="icon-btn" data-tooltip="Planning Live"><span class="brand-nav">📅</span></a>
+                            <a href="https://projettechacademy.github.io/Juridique/00_Autres/A_propos_de_moi.html" target="_blank" class="icon-btn" data-tooltip="À propos de moi"><span class="brand-nav">👤</span></a>
+                            
+                            <!-- Séparateur -->
+                            <div class="dock-separator"></div>
+
+                            <!-- Réseaux (Target blank pour tous) -->
+                            <a href="https://chat.whatsapp.com/IoMXFl4o2otExYKCPVj22b" target="_blank" class="icon-btn" data-tooltip="WhatsApp"><i class="fab fa-whatsapp brand-whatsapp"></i></a>
+                            <a href="https://discord.gg/qwNPV8QzFt" target="_blank" class="icon-btn" data-tooltip="Discord"><i class="fab fa-discord brand-discord"></i></a>
+                            <a href="https://www.linkedin.com/in/mathilde-martine-paisley-1a4422382/" target="_blank" class="icon-btn" data-tooltip="LinkedIn"><i class="fab fa-linkedin brand-linkedin"></i></a>
+                            <a href="https://www.instagram.com/enervyx/" target="_blank" class="icon-btn" data-tooltip="Instagram @enervyx"><i class="fab fa-instagram brand-instagram"></i></a>
+                            <a href="https://www.tiktok.com/@enervyx/" target="_blank" class="icon-btn" data-tooltip="TikTok @enervyx"><i class="fab fa-tiktok brand-tiktok"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="footer-container">
+                <p>© 2025 Tous droits réservés – Création : 2025 – Dernière mise à jour : Novembre 2025</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bouton Retour Haut -->
+    <div id="backToTop" onclick="window.scrollTo(0,0)"><i class="fas fa-arrow-up"></i></div>
+
+    <script>
+        // Init Icons
+        lucide.createIcons();
+
+        // Back to top scroll
+        window.addEventListener('scroll', () => {
+            const btn = document.getElementById('backToTop');
+            if (window.scrollY > 300) btn.classList.add('show'); else btn.classList.remove('show');
         });
 
-        // Compte à rebours
+        // Génération des Promos
+        function initPromoSelect() {
+            const select = document.getElementById('promoSelect');
+            select.innerHTML = '';
+            const months = ['Juin', 'Décembre'];
+            const startYear = 2026;
+            const endYear = 2030;
+
+            for (let year = startYear; year <= endYear; year++) {
+                months.forEach(month => {
+                    const opt = document.createElement('option');
+                    const val = `${month} ${year}`;
+                    opt.value = val;
+                    opt.text = `Promo ${val}`;
+                    select.appendChild(opt);
+                });
+            }
+        }
+        initPromoSelect();
+
+        // --- DATA PROGRAMMES ---
+        const programsData = {
+            social: {
+                label: "Droit Social ⚖️",
+                tagline: "Prête à conquérir le Droit Social ? 🚀",
+                blocks: [
+                    { title: "Fondamentaux", color: "b-intro", hours: "~173h", items: ["Droit Social & Organisation", "Propriété Intellectuelle", "Droit des Sociétés", "Concurrence & IA"] },
+                    { title: "Pilotage RH", color: "b-strat", hours: "180h", items: ["Veille Sociale & Audit", "Compliance & Conformité", "Politique Rémunération", "Transformation RH"] },
+                    { title: "Accompagnement", color: "b-ops", hours: "165h", items: ["Conseil Juridique", "Contrats & Ruptures", "Relations Collectives", "Diagnostic RH"] },
+                    { title: "Contentieux", color: "b-litige", hours: "85h", items: ["Risques Prud'homaux", "Gestion de Crise", "Contentieux URSSAF", "Exécution Décisions"] }
+                ]
+            },
+            affaires: {
+                label: "Droit des Affaires 💼",
+                tagline: "Prête à conquérir le Business ? 💼",
+                blocks: [
+                    { title: "Fondamentaux", color: "b-intro", hours: "~173h", items: ["Droit des Obligations", "Baux Commerciaux", "Fiscalité des Affaires", "Procédures Collectives"] },
+                    { title: "Stratégie Business", color: "b-strat", hours: "180h", items: ["Veille & Audit d'Acquisition", "Compliance & Sapin II", "RGPD & Data", "Management Juridique"] },
+                    { title: "Contrats & Ops", color: "b-ops", hours: "165h", items: ["Négociation Contractuelle", "Fusions-Acquisitions", "Propriété Industrielle", "Ingénierie Sociétaire"] },
+                    { title: "Litiges Affaires", color: "b-litige", hours: "85h", items: ["Contentieux Commercial", "Arbitrage & Médiation", "Droit Pénal des Affaires", "Recouvrement"] }
+                ]
+            },
+            entreprise: {
+                label: "Juriste d'Entreprise 🏢",
+                tagline: "Prête à piloter l'Entreprise ? 🏢",
+                blocks: [
+                    { title: "Fondamentaux", color: "b-intro", hours: "~173h", items: ["Droit Civil & Commercial", "Financement Entreprise", "Droit des Sociétés", "Propriété Intellectuelle"] },
+                    { title: "Pilotage Global", color: "b-strat", hours: "180h", items: ["Veille Stratégique", "Politiques Conformité", "Digitalisation Juridique", "Gestion des Risques"] },
+                    { title: "Business Partner", color: "b-ops", hours: "165h", items: ["Conseil Direction", "Techniques Contractuelles", "Gestion Budgétaire", "RSE & Éthique"] },
+                    { title: "Gestion Crise", color: "b-litige", hours: "85h", items: ["Précontentieux", "Stratégie Judiciaire", "Médiation", "Suivi Exécution"] }
+                ]
+            }
+        };
+
+        // --- LOCAL STORAGE & LOGIC ---
+        function saveUserData() {
+            const data = {
+                name: document.getElementById('userName').value,
+                surname: document.getElementById('userSurname').value,
+                specialization: document.getElementById('userSpecialization').value,
+                promo: document.getElementById('promoSelect').value,
+                session: document.getElementById('sessionNb').value,
+                startDate: document.getElementById('startDate').value,
+                endDate: document.getElementById('endDate').value,
+                evalDeadline: document.getElementById('evalDeadline').value
+            };
+            localStorage.setItem('juristEliteData_V13', JSON.stringify(data));
+            updateUI(data);
+        }
+
+        function loadUserData() {
+            const storedData = localStorage.getItem('juristEliteData_V13');
+            let data = storedData ? JSON.parse(storedData) : { specialization: 'social', promo: 'Juin 2027' };
+
+            document.getElementById('userName').value = data.name || "";
+            document.getElementById('userSurname').value = data.surname || "";
+            document.getElementById('userSpecialization').value = data.specialization || "social";
+            document.getElementById('promoSelect').value = data.promo || "Juin 2027";
+            document.getElementById('sessionNb').value = data.session || "1";
+            document.getElementById('startDate').value = data.startDate || "";
+            document.getElementById('endDate').value = data.endDate || "";
+            document.getElementById('evalDeadline').value = data.evalDeadline || "";
+            
+            updateUI(data);
+        }
+
+        function updateUI(data) {
+            // Update Welcome
+            const fullName = `${data.name || ''} ${data.surname || ''}`.trim();
+            document.getElementById('displayFullName').innerText = fullName || "Juriste";
+
+            // Update Program
+            const spec = data.specialization || 'social';
+            const program = programsData[spec];
+            document.getElementById('welcomeTagline').innerText = program.tagline;
+            document.getElementById('programLabel').innerText = program.label;
+
+            const container = document.getElementById('programContainer');
+            container.innerHTML = '';
+            program.blocks.forEach((block, idx) => {
+                const html = `
+                <div class="prog-block ${block.color}">
+                    <div class="flex justify-between items-start mb-3">
+                        <h4 class="font-bold text-lg text-brand-blue">${idx}️⃣ ${block.title}</h4>
+                        <span class="bg-gray-100 text-xs font-bold px-2 py-1 rounded text-gray-600">${block.hours}</span>
+                    </div>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        ${block.items.map(item => `<li><i class="fa-solid fa-check text-green-500 mr-2"></i>${item}</li>`).join('')}
+                    </ul>
+                </div>`;
+                container.innerHTML += html;
+            });
+
+            // Update Countdown
+            updateCountdown(data.evalDeadline);
+        }
+
         let countdownInterval;
+        function updateCountdown(deadlineDate) {
+            const displayEl = document.getElementById('countdownDisplay');
+            const placeholderEl = document.getElementById('countdownPlaceholder');
+            const timerCard = document.getElementById('timerCard');
 
-        document.getElementById('deadlineDate').addEventListener('change', function() {
-            const selectedDate = new Date(this.value);
-            const now = new Date();
-
-            if (selectedDate <= now) {
-                document.getElementById('countdownMessage').innerHTML = '⚠️ La date sélectionnée est dans le passé !';
-                document.getElementById('countdownDisplay').style.display = 'none';
-                document.getElementById('countdownMessage').style.display = 'block';
-                if (countdownInterval) clearInterval(countdownInterval);
+            if (!deadlineDate) {
+                displayEl.classList.add('hidden');
+                placeholderEl.classList.remove('hidden');
+                timerCard.classList.remove('timer-active');
                 return;
             }
 
-            document.getElementById('countdownDisplay').style.display = 'grid';
-            document.getElementById('countdownMessage').style.display = 'none';
-
+            placeholderEl.classList.add('hidden');
+            displayEl.classList.remove('hidden');
             if (countdownInterval) clearInterval(countdownInterval);
 
-            function updateCountdown() {
-                const now = new Date();
-                const diff = selectedDate - now;
+            function calculate() {
+                const now = new Date().getTime();
+                const deadline = new Date(deadlineDate).getTime();
+                const distance = deadline - now;
 
-                if (diff <= 0) {
+                if (distance < 0) {
                     clearInterval(countdownInterval);
-                    document.getElementById('countdownMessage').innerHTML = '🎉 Deadline atteinte !';
-                    document.getElementById('countdownDisplay').style.display = 'none';
-                    document.getElementById('countdownMessage').style.display = 'block';
+                    timerCard.classList.remove('timer-active');
                     return;
                 }
 
-                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-                document.getElementById('days').textContent = String(days).padStart(2, '0');
-                document.getElementById('hours').textContent = String(hours).padStart(2, '0');
-                document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
-                document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+                document.getElementById('cd-days').innerText = days < 10 ? "0" + days : days;
+                document.getElementById('cd-hours').innerText = hours < 10 ? "0" + hours : hours;
+                document.getElementById('cd-min').innerText = minutes < 10 ? "0" + minutes : minutes;
+                document.getElementById('cd-sec').innerText = seconds < 10 ? "0" + seconds : seconds;
+
+                if (days < 7) timerCard.classList.add('timer-active');
+                else timerCard.classList.remove('timer-active');
             }
-
-            updateCountdown();
-            countdownInterval = setInterval(updateCountdown, 1000);
-        });
-
-        // Back to top
-        const backToTop = document.getElementById('backToTop');
-
-        window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 300) {
-                backToTop.classList.add('visible');
-            } else {
-                backToTop.classList.remove('visible');
-            }
-        });
-
-        backToTop.addEventListener('click', () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-
-        backToTop.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            }
-        });
+            calculate();
+            countdownInterval = setInterval(calculate, 1000);
+        }
     </script>
 </body>
 </html>
