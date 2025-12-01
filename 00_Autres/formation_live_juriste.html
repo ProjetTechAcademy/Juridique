@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr" class="scroll-smooth">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,294 +8,544 @@
     
     <title>Programme Live Juriste d'Entreprise & Droit Social</title>
     
-    <!-- FAVICON (Icône de l'onglet) -->
+    <!-- FAVICON -->
     <link rel="icon" type="image/png" href="https://projettechacademy.github.io/Juridique/Asset/Logo_juriste.png">
 
-    <!-- Tailwind CSS -->
+    <!-- Tailwind CSS (Gardé en secours) -->
     <script src="https://cdn.tailwindcss.com"></script>
     
     <!-- FontAwesome & Fonts -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&family=Montserrat:wght@500;600;700&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
 
-    <!-- Configuration Tailwind -->
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: { sans: ['Outfit', 'sans-serif'], inter: ['Inter', 'sans-serif'] },
-                    colors: {
-                        brandBlue: '#0F2C48',
-                        brandGold: '#D9A526',
-                        brandIvory: '#F6F2E8',
-                        brandBronze: '#B4792A',
-                    }
-                }
-            }
-        }
-    </script>
-
     <style>
-        /* --- VARIABLES GLOBALES --- */
-        :root{
-            --cta: #D9A526;
-            --brand-blue: #0F2C48;
-            --ivory: #F6F2E8;
-            --bronze: #B4792A;
-            --h-bg: #0F2C48; --h-text: #fff; --h-accent: #D9A526; --h-bronze: #B4792A;
-            --f-bg: #0F2C48; --f-text: #F6F2E8; --f-accent: #D9A526;
+        /* ========================================
+           VARIABLES CSS
+           ======================================== */
+        :root {
+            --color-bg: #F6F2E8;
+            --color-primary: #0F2C48;
+            --color-accent: #D9A526; /* Jaune Moutarde / Doré */
+            --color-alert: #B4792A;  /* Bronze */
+            --color-text: #2c3e50;
+            --color-white: #ffffff;
         }
 
-        body { margin: 0; background-color: var(--ivory); color: var(--brand-blue); font-family: 'Outfit', sans-serif; }
-        
-        /* HEADER ANIMATION */
+        /* ========================================
+           RESET & BASE
+           ======================================== */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Animation "Pulse" (Le petit truc sympa !) */
         @keyframes cosmic-pulse {
-            0% { transform: scale(1); box-shadow: 0 5px 15px rgba(15, 44, 72, 0.3); }
-            50% { transform: scale(1.02); box-shadow: 0 15px 25px rgba(28, 181, 224, 0.4); }
-            100% { transform: scale(1); box-shadow: 0 5px 15px rgba(15, 44, 72, 0.3); }
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(217, 165, 38, 0.7); }
+            70% { transform: scale(1.02); box-shadow: 0 0 0 10px rgba(217, 165, 38, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(217, 165, 38, 0); }
         }
 
-        /* STYLES HEADER */
-        .top-bar { background-color: var(--h-bg); color: var(--h-text); padding: 15px 0; box-shadow: 0 4px 20px rgba(0,0,0,0.15); position: relative; z-index: 1000; font-family: 'Lato', sans-serif; }
-        .top-bar-container { max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
-        .top-bar-left { display: flex; align-items: center; gap: 15px; flex: 1; min-width: 320px; }
-        .logo-top-bar { width: 60px; height: 60px; border-radius: 50%; border: 2px solid var(--h-accent); object-fit: cover; flex-shrink: 0; background: #fff; }
+        /* ========================================
+           TOP BAR
+           ======================================== */
+        .top-bar {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            padding: 15px 0;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .container { max-width: 1400px; margin: 0 auto; padding: 0 20px; }
+
+        .top-bar-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .top-bar-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .logo-top-bar {
+            width: 55px; height: 55px;
+            border-radius: 50%;
+            border: 2px solid var(--color-accent);
+            object-fit: cover;
+            background: white;
+        }
+
         .identity-stack { display: flex; flex-direction: column; justify-content: center; }
-        .club-title-main { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; letter-spacing: 0.5px; color: #ffffff; line-height: 1.1; margin-bottom: 3px; }
-        .club-subtitle { font-family: 'Lato', sans-serif; font-size: 0.7rem; color: var(--h-accent); font-weight: 600; opacity: 0.95; line-height: 1.2; }
-        .top-bar-center { display: flex; gap: 12px; align-items: center; }
-        .header-icon-btn { position: relative; width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, #0F2C48 0%, #1CB5E0 100%); border: 1px solid rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; text-decoration: none; transition: all 0.3s ease; color: white; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
-        .header-icon-btn:hover { transform: translateY(3px) scale(1.1); background: linear-gradient(135deg, #163e63 0%, #20c3f0 100%); box-shadow: 0 6px 15px rgba(28, 181, 224, 0.4); }
-        .nav-mmpa-img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 2px solid var(--h-accent); }
-        .nav-profile-img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 2px solid #fff; }
-        .header-icon-btn::after { content: attr(data-tooltip); position: absolute; top: 130%; left: 50%; transform: translateX(-50%) translateY(-10px); background-color: #fff; color: var(--h-bg); padding: 4px 10px; border-radius: 20px; font-size: 0.7rem; font-weight: 700; white-space: nowrap; opacity: 0; visibility: hidden; transition: all 0.3s ease; box-shadow: 0 4px 10px rgba(0,0,0,0.2); pointer-events: none; z-index: 100; }
+        
+        .name-top-bar {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem; font-weight: 700;
+            color: var(--color-white); line-height: 1.2;
+        }
+        
+        /* Modification ici : Tout le sous-titre sur une ligne, même style */
+        .club-subtitle { 
+            font-size: 0.85rem; 
+            color: var(--color-accent); 
+            font-weight: 700; 
+            margin-top: 2px;
+        }
+
+        .top-bar-center { display: flex; gap: 15px; align-items: center; }
+
+        /* Onglets Or/Bronze */
+        .header-icon-btn {
+            position: relative;
+            width: 42px; height: 42px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #D9A526 0%, #B4792A 100%);
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.2rem; transition: all 0.3s ease;
+            cursor: pointer; color: white; text-decoration: none;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        .header-icon-btn:hover {
+            transform: translateY(-3px) scale(1.1);
+            background: linear-gradient(135deg, #FFD700 0%, #D9A526 100%);
+            box-shadow: 0 0 15px rgba(217, 165, 38, 0.6);
+            border-color: #fff;
+        }
+        .nav-profile-img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: none; }
+        .header-icon-btn::after {
+            content: attr(data-tooltip);
+            position: absolute; top: 130%; left: 50%;
+            transform: translateX(-50%) translateY(-10px);
+            background-color: var(--color-white); color: var(--color-primary);
+            padding: 5px 12px; border-radius: 20px;
+            font-size: 0.75rem; font-weight: 700; white-space: nowrap;
+            opacity: 0; visibility: hidden; transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2); pointer-events: none; z-index: 100;
+        }
         .header-icon-btn:hover::after { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
-        .btn-portfolio-cosmic { padding: 8px 20px; border-radius: 50px; font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 0.9rem; background: linear-gradient(135deg, #0F2C48 0%, #1CB5E0 100%); color: white !important; text-decoration: none; border: 1px solid rgba(255,255,255,0.2); display: inline-flex; align-items: center; gap: 8px; animation: cosmic-pulse 4s ease-in-out infinite; }
-        .btn-portfolio-cosmic:hover { background: linear-gradient(135deg, #163e63 0%, #20c3f0 100%); }
 
-        @media (max-width: 950px) {
-            .top-bar-container { justify-content: center; gap: 15px; }
-            .top-bar-left { width: 100%; justify-content: center; text-align: center; }
-            .identity-stack { align-items: center; }
-            .top-bar-center { width: 100%; justify-content: center; margin: 5px 0; }
+        /* Bouton Portfolio Pulse */
+        .btn-portfolio-cosmic {
+            padding: 10px 25px; border-radius: 50px;
+            font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 0.95rem;
+            background: linear-gradient(135deg, #D9A526 0%, #B4792A 100%);
+            color: white; border: 1px solid rgba(255,255,255,0.4);
+            cursor: pointer; display: inline-flex; align-items: center; gap: 8px;
+            transition: all 0.3s ease; text-decoration: none;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            animation: cosmic-pulse 2s infinite;
+        }
+        .btn-portfolio-cosmic:hover {
+            background: linear-gradient(135deg, #F1C40F 0%, #D9A526 100%);
+            transform: translateY(-2px);
+            color: white;
         }
 
-        /* STYLES CONTENU */
-        .type-badge { font-size: 0.75rem; padding: 0.25rem 0.6rem; border-radius: 4px; font-weight: 600; white-space: nowrap; letter-spacing: 0.025em; }
-        .table-container::-webkit-scrollbar { width: 8px; height: 8px; }
-        .table-container::-webkit-scrollbar-track { background: #f1f1f1; }
-        .table-container::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
-        .table-container::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
-        
-        .brand-blue-text { color: #0F2C48; }
-        .brand-blue-bg { background-color: #0F2C48; }
-        .brand-yellow-text { color: #D9A526; }
-        .brand-yellow-bg { background-color: #D9A526; }
-        .brand-bronze-text { color: #B4792A; }
-        .brand-bronze-bg { background-color: #B4792A; }
-        
-        .filter-btn-active {
-            background-color: #0F2C48 !important;
-            color: white !important;
-            border-color: #0F2C48 !important;
-            box-shadow: 0 2px 8px rgba(15, 44, 72, 0.4);
+        /* ========================================
+           MAIN CONTENT
+           ======================================== */
+        main { flex: 1; padding: 40px 0; }
+
+        .page-header { text-align: center; margin-bottom: 40px; }
+        .page-title {
+            font-family: 'Playfair Display', serif; font-size: 2.5rem;
+            color: var(--color-primary); margin-bottom: 10px;
+            display: flex; align-items: center; justify-content: center; gap: 15px;
+        }
+        .page-subtitle { font-size: 1.1rem; color: var(--color-alert); margin-bottom: 20px; }
+
+        .notice-access {
+            background: #e0f2fe; color: #0c4a6e;
+            padding: 15px 25px; border-radius: 8px;
+            display: inline-flex; align-items: center; gap: 10px;
+            font-size: 0.95rem; border-left: 5px solid #0284c7;
+            max-width: 800px; text-align: left;
+            line-height: 1.4;
         }
 
-        /* Accordion Styles */
-        .month-header-row { cursor: pointer; transition: filter 0.2s; }
-        .month-header-row:hover { filter: brightness(0.98); } /* Légère variation pour l'interaction sur fond clair */
+        .filters-section {
+            background: white; padding: 25px;
+            border-radius: 12px 12px 0 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1); margin-bottom: 0;
+        }
+        .filters-grid { display: grid; grid-template-columns: 1fr; gap: 20px; margin-bottom: 20px; }
+        .filter-group-search { position: relative; }
+        .filter-group-search i { position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: #9ca3af; }
+        .filter-group-search input {
+            width: 100%; padding: 12px 15px 12px 45px;
+            border: 2px solid #e5e7eb; border-radius: 50px;
+            font-size: 0.95rem; transition: all 0.3s ease; background: white;
+        }
+        .filter-group-search input:focus { outline: none; border-color: var(--color-accent); box-shadow: 0 0 0 3px rgba(217, 165, 38, 0.1); }
+        
+        #filter-container { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 15px; }
+
+        /* Stats & Progress */
+        .stats-bar {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 15px 20px; background: linear-gradient(135deg, var(--color-primary), #1a3b5c);
+            color: white; border-radius: 0; flex-wrap: wrap; gap: 15px;
+        }
+        .stat-item { display: flex; align-items: center; gap: 8px; font-size: 0.9rem; }
+        .stat-value { font-weight: 700; font-size: 1.2rem; color: var(--color-accent); }
+
+        .progress-container {
+            flex-grow: 1; max-width: 300px; margin: 0 20px;
+            display: flex; flex-direction: column; gap: 5px;
+        }
+        .progress-track { background: rgba(255,255,255,0.2); height: 8px; border-radius: 4px; overflow: hidden; }
+        .progress-fill { background: var(--color-accent); height: 100%; border-radius: 4px; transition: width 0.5s ease; }
+
+        /* Table */
+        .table-container {
+            background: white; border-radius: 0 0 12px 12px;
+            overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+        thead { background: var(--color-primary); color: white; }
+        th {
+            padding: 16px; text-align: left; font-weight: 600; font-size: 0.85rem;
+            text-transform: uppercase; letter-spacing: 0.5px;
+            border-right: 1px solid rgba(255,255,255,0.1);
+        }
+        th:last-child { border-right: none; }
+        th.sortable { cursor: pointer; user-select: none; transition: background 0.3s ease; }
+        th.sortable:hover { background: #1a3b5c; }
+
+        tbody tr { border-bottom: 1px solid #e5e7eb; transition: background 0.2s ease; }
+        tbody tr:hover { background: #f9fafb; }
+        tbody tr.row-seen { opacity: 0.6; background: #f8fafc; }
+
+        td { padding: 14px 16px; border-right: 1px solid #e5e7eb; vertical-align: middle; }
+        td:last-child { border-right: none; }
+
+        .checkbox-cell { text-align: center; }
+        .checkbox-custom { width: 20px; height: 20px; cursor: pointer; accent-color: var(--color-accent); }
+
+        .type-badge {
+            display: inline-block; padding: 4px 12px; border-radius: 20px;
+            font-size: 0.75rem; font-weight: 600; text-transform: uppercase; white-space: nowrap;
+        }
+        .type-cours { background: #dbeafe; color: #1e40af; }
+        .type-atelier { background: #d1fae5; color: #065f46; }
+        .type-exam { background: #fef3c7; color: #92400e; }
+        .type-methode { background: #f3e8ff; color: #6b21a8; }
+        .type-live { background: #fee2e2; color: #991b1b; }
+        .type-accompagnement { background: #fce7f3; color: #831843; }
+        .type-default { background: #f1f5f9; color: #475569; }
+
+        .btn-action {
+            display: inline-flex; align-items: center; justify-content: center;
+            width: 32px; height: 32px; border-radius: 50%;
+            border: 1px solid var(--color-accent); color: var(--color-accent);
+            text-decoration: none; transition: all 0.3s ease;
+        }
+        .btn-action:hover {
+            background: var(--color-accent); color: white; transform: scale(1.1);
+            box-shadow: 0 2px 5px rgba(217, 165, 38, 0.4);
+        }
+        .btn-disabled { border-color: #cbd5e1; color: #cbd5e1; cursor: not-allowed; }
+        .btn-disabled:hover { background: transparent; color: #cbd5e1; transform: none; box-shadow: none; }
+
+        .participant-count {
+            display: inline-flex; align-items: center; justify-content: center;
+            padding: 2px 8px; border-radius: 12px;
+            background: var(--color-bg); border: 1px solid rgba(180, 121, 42, 0.2);
+            font-size: 0.75rem; font-weight: 700; color: var(--color-alert);
+        }
+
+        .empty-state { text-align: center; padding: 60px 20px; color: #6b7280; }
+        .empty-state i { font-size: 3rem; margin-bottom: 20px; opacity: 0.3; color: var(--color-accent); }
+
+        /* Month Separators - Couleur "Novembre" */
+        .month-header-row td { padding: 0; border: none; }
+        .month-header-content {
+            background: var(--color-bg); /* Le crème que tu aimais */
+            color: var(--color-alert); /* Bronze */
+            font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
+            padding: 12px 20px; display: flex; justify-content: space-between; align-items: center;
+            border-left: 4px solid var(--color-accent); /* Liseré doré */
+            cursor: pointer; transition: background 0.3s;
+        }
+        .month-header-content:hover { background: #ece8de; }
         .chevron-icon { transition: transform 0.3s ease; }
         .rotate-180 { transform: rotate(180deg); }
 
-        /* --- RESPONSIVE CARD VIEW (MOBILE) --- */
+        /* Filter Buttons */
+        .btn-filter {
+            padding: 6px 14px; border-radius: 20px; border: 1px solid #e2e8f0;
+            background: white; color: var(--color-text); font-size: 0.8rem;
+            font-weight: 600; cursor: pointer; transition: all 0.2s;
+        }
+        .btn-filter:hover { background: #f8fafc; border-color: #cbd5e1; }
+        .btn-filter.active {
+            background: var(--color-primary); color: white;
+            border-color: var(--color-primary); box-shadow: 0 4px 6px rgba(15, 44, 72, 0.2);
+        }
+
+        /* ========================================
+           FOOTER
+           ======================================== */
+        .main-footer {
+            background-color: var(--color-primary); color: var(--color-bg);
+            padding: 50px 0 20px; margin-top: auto;
+        }
+        .footer-content {
+            display: flex; justify-content: space-between; align-items: flex-start;
+            flex-wrap: wrap; gap: 30px; margin-bottom: 30px;
+        }
+        .footer-identity { display: flex; align-items: center; gap: 15px; }
+        .footer-logo-img {
+            width: 60px; height: 60px; border-radius: 8px;
+            border: 2px solid var(--color-accent); object-fit: cover; background: white;
+        }
+        .footer-info-col { display: flex; flex-direction: column; }
+        .footer-name {
+            color: var(--color-accent); font-family: 'Playfair Display', serif;
+            font-weight: 700; font-size: 1.2rem; margin-bottom: 5px;
+        }
+        .footer-contact-stack {
+            font-size: 0.9rem; opacity: 0.8;
+            display: flex; flex-direction: column; gap: 4px;
+        }
+        .footer-link { color: inherit; text-decoration: none; transition: color 0.3s ease; }
+        .footer-link:hover { color: var(--color-accent); }
+
+        .dock-group { display: flex; flex-direction: column; align-items: flex-end; gap: 10px; }
+        .dock-label {
+            font-family: 'Montserrat', sans-serif; font-size: 0.8rem;
+            text-transform: uppercase; color: var(--color-accent); opacity: 0.8;
+        }
+        .icon-dock {
+            display: flex; gap: 12px; align-items: center;
+            flex-wrap: wrap; justify-content: flex-end;
+        }
+        .icon-btn {
+            width: 40px; height: 40px; border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            display: flex; align-items: center; justify-content: center;
+            transition: all 0.3s ease; border: 1px solid rgba(255,255,255,0.2);
+            color: white; text-decoration: none; font-size: 1.1rem; position: relative;
+        }
+        .icon-btn:hover {
+            background: white; color: var(--color-primary);
+            transform: translateY(-3px); border-color: white;
+        }
+        
+        .brand-whatsapp { color: #25D366; } .icon-btn:hover .brand-whatsapp { color: #25D366; }
+        .brand-discord { color: #5865F2; } .icon-btn:hover .brand-discord { color: #5865F2; }
+        .brand-linkedin { color: #0077b5; } .icon-btn:hover .brand-linkedin { color: #0077b5; }
+        .brand-instagram { color: #E1306C; } .icon-btn:hover .brand-instagram { color: #E1306C; }
+        .brand-tiktok { color: #00f2ea; } .icon-btn:hover .brand-tiktok { color: #000; }
+
+        .icon-btn::after {
+            content: attr(data-tooltip); position: absolute; bottom: 125%; left: 50%;
+            transform: translateX(-50%); background: white; color: var(--color-primary);
+            padding: 4px 8px; border-radius: 4px; font-size: 0.7rem; white-space: nowrap;
+            opacity: 0; visibility: hidden; transition: 0.2s; pointer-events: none; font-weight: bold;
+        }
+        .icon-btn:hover::after { opacity: 1; visibility: visible; }
+
+        .footer-bottom {
+            text-align: center; padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.85rem; opacity: 0.6;
+        }
+
+        /* Back To Top - Style Premium */
+        #backToTop {
+            position: fixed; bottom: 30px; right: 30px;
+            width: 50px; height: 50px;
+            background: linear-gradient(135deg, #D9A526, #B4792A);
+            color: white; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; opacity: 0; visibility: hidden;
+            transition: all 0.3s ease; box-shadow: 0 4px 12px rgba(0,0,0,0.3); z-index: 1000;
+        }
+        #backToTop.visible { opacity: 1; visibility: visible; }
+        #backToTop:hover { transform: translateY(-5px) scale(1.1); box-shadow: 0 6px 16px rgba(217, 165, 38, 0.5); }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .page-title { font-size: 1.8rem; flex-direction: column; }
+            .stats-bar { flex-direction: column; align-items: flex-start; }
+            .progress-container { width: 100%; max-width: none; margin: 10px 0; }
+            .table-container { overflow-x: auto; }
+            table { min-width: 800px; }
+            .top-bar-content { flex-direction: column; text-align: center; }
+            .top-bar-left { justify-content: center; }
+            .footer-content { flex-direction: column; align-items: center; text-align: center; }
+            .dock-group, .icon-dock { align-items: center; justify-content: center; }
+            .notice-access { flex-direction: column; align-items: flex-start; }
+        }
+        
         @media (max-width: 768px) {
             .table-container table, .table-container thead, .table-container tbody, .table-container th, .table-container td, .table-container tr { display: block; }
             .table-container thead tr { position: absolute; top: -9999px; left: -9999px; }
-            .table-container tr.month-header-row td { display: block; width: 100%; text-align: left; margin-bottom: 10px; padding: 0 !important; }
-            /* Cacher les lignes fermées sur mobile */
-            .table-container tr.hidden { display: none !important; }
-            
-            .table-container tr:not(.month-header-row):not(.spacer-row) { border: 1px solid #e2e8f0; border-radius: 12px; margin-bottom: 1rem; background: white; padding: 1rem; position: relative; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
-            
-            .table-container td { border: none; border-bottom: 1px solid #f1f5f9; position: relative; padding-left: 0; padding-right: 0; padding-top: 8px; padding-bottom: 8px; display: flex; justify-content: space-between; align-items: center; text-align: right; }
+            .month-header-row td { display: block; width: 100%; }
+            .table-container tr.event-row { 
+                border: 1px solid #e2e8f0; border-radius: 12px; margin-bottom: 1rem; 
+                background: white; padding: 1rem; position: relative; box-shadow: 0 2px 5px rgba(0,0,0,0.05); 
+            }
+            .table-container td { 
+                border: none; border-bottom: 1px solid #f1f5f9; position: relative; padding: 8px 0;
+                display: flex; justify-content: space-between; align-items: center; text-align: right; 
+            }
             .table-container td:last-child { border-bottom: 0; }
-            
-            .mobile-hide-header { display: none; }
-            
             .td-checkbox { position: absolute; top: 1rem; right: 1rem; z-index: 10; border: none !important; width: auto !important; padding: 0 !important; }
-            .td-date { font-size: 1.1rem; color: #0F2C48; font-weight: 800; border: none !important; padding-bottom: 0 !important; justify-content: flex-start !important; }
-            .td-time { font-size: 0.8rem; color: #64748b; font-weight: 600; justify-content: flex-start !important; padding-top: 0 !important; border: none !important; margin-bottom: 10px; }
-            .td-type { justify-content: flex-start !important; border: none !important; padding-bottom: 5px !important; }
-            .td-title { font-size: 1rem; text-align: left !important; display: block !important; padding-top: 5px !important; }
+            .td-date { font-size: 1.1rem; color: var(--color-primary); font-weight: 800; border: none !important; justify-content: flex-start !important; }
+            .td-time { font-size: 0.8rem; color: #64748b; font-weight: 600; justify-content: flex-start !important; border: none !important; margin-bottom: 5px; }
+            .td-type { justify-content: flex-start !important; border: none !important; }
+            .td-title { font-size: 1rem; text-align: left !important; display: block !important; margin-top: 5px; }
             .td-desc { display: block !important; text-align: left !important; font-size: 0.85rem; color: #64748b; margin-top: 5px; }
-            .td-actions { justify-content: center !important; margin-top: 10px; }
+            .td-actions { justify-content: flex-end !important; margin-top: 10px; }
+            .mobile-hide-header { display: none; }
         }
-
-        /* STYLES FOOTER */
-        .main-footer { background-color: var(--f-bg); color: var(--f-text); padding-top: 50px; font-family: 'Lato', sans-serif; font-size: 0.95rem; position: relative; width: 100%; margin-top: auto; }
-        .footer-container { max-width: 1100px; margin: 0 auto; padding: 0 25px; }
-        .footer-content { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 30px; padding-bottom: 30px; align-items: flex-start; }
-        .footer-identity { display: flex; flex-direction: row; align-items: center; gap: 20px; min-width: 300px; }
-        .footer-logo-img { width: 60px; height: 60px; border-radius: 8px; border: 2px solid var(--f-accent); background: #fff; object-fit: cover; }
-        .footer-info-compact { display: flex; flex-direction: column; }
-        .footer-name { color: var(--f-accent); font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; line-height: 1.2; margin-bottom: 5px; margin-top:0; }
-        .footer-contact-stack { display: flex; flex-direction: column; gap: 5px; font-size: 0.85rem; opacity: 0.8; }
-        .footer-link { text-decoration: none; color: inherit; transition: color 0.3s; display: inline-block; }
-        .footer-link:hover { color: var(--f-accent); transform: translateX(2px); }
-        .footer-dock-col { display: flex; flex-direction: column; align-items: flex-end; gap: 10px; margin-left: auto; }
-        .dock-group { display: flex; flex-direction: column; align-items: flex-end; gap: 5px; }
-        .dock-label { font-family: 'Montserrat', sans-serif; font-size: 0.8rem; text-transform: uppercase; color: var(--f-accent); opacity: 0.7; }
-        .icon-dock { display: flex; gap: 15px; flex-wrap: wrap; justify-content: flex-end; align-items: center; }
-        .icon-btn { position: relative; width: 45px; height: 45px; border-radius: 50%; background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(217, 165, 38, 0.3); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; text-decoration: none; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); cursor: pointer; color: #fff; }
-        .icon-btn:hover { transform: translateY(-5px) scale(1.1); background: #fff; border-color: #fff; box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3); }
-        .brand-whatsapp { color: #25D366 !important; } .icon-btn:hover .brand-whatsapp { color: #25D366 !important; }
-        .brand-discord { color: #5865F2 !important; } .icon-btn:hover .brand-discord { color: #5865F2 !important; }
-        .brand-linkedin { color: #0077b5 !important; } .icon-btn:hover .brand-linkedin { color: #0077b5 !important; }
-        .brand-instagram { color: #E1306C !important; } .icon-btn:hover .brand-instagram { color: #E1306C !important; }
-        .brand-tiktok { color: #00f2ea !important; text-shadow: 2px 2px 0px #ff0050; } .icon-btn:hover .brand-tiktok { color: #000 !important; text-shadow: none; } 
-        .brand-nav { color: var(--f-accent) !important; } .icon-btn:hover .brand-nav { color: var(--f-bg) !important; }
-        .icon-btn::after { content: attr(data-tooltip); position: absolute; bottom: 120%; left: 50%; transform: translateX(-50%) translateY(10px); background-color: #fff; color: var(--f-bg); padding: 5px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; white-space: nowrap; opacity: 0; visibility: hidden; transition: all 0.3s ease; box-shadow: 0 4px 10px rgba(0,0,0,0.2); pointer-events: none; z-index: 100; }
-        .icon-btn::before { content: ''; position: absolute; bottom: 110%; left: 50%; transform: translateX(-50%) translateY(10px); border-width: 6px; border-style: solid; border-color: #ffffff transparent transparent transparent; opacity: 0; visibility: hidden; transition: all 0.3s ease; z-index: 100; }
-        .icon-btn:hover::after, .icon-btn:hover::before { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
-        .dock-separator { width: 1px; height: 30px; background-color: rgba(255,255,255,0.2); margin: 0 10px; }
-        .footer-bottom { text-align: center; padding: 15px 0; font-size: 0.8rem; color: rgba(255,255,255,0.4); background-color: rgba(0,0,0,0.2); border-top: 1px solid rgba(255,255,255,0.05); width: 100%; }
-        #backToTop { position: fixed; bottom: 30px; right: 30px; background-color: var(--f-accent); color: var(--f-bg); width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.2); opacity: 0; pointer-events: none; transition: all 0.3s ease; z-index: 100; }
-        #backToTop.show { opacity: 1; pointer-events: all; }
-        #backToTop:hover { transform: translateY(-5px); background-color: #fff; }
-        @media (max-width: 768px) { .footer-content { flex-direction: column; align-items: center; text-align: center; } .footer-identity { flex-direction: column; text-align: center; } .footer-dock-col { align-items: center; width: 100%; gap: 30px; margin-left: 0; } .icon-dock { justify-content: center; flex-wrap: wrap; } .dock-group { align-items: center; } .dock-separator { display: none; } }
     </style>
 </head>
-<body class="bg-white text-slate-800">
+<body>
 
-    <!-- === A. HEADER === -->
+    <!-- === HEADER === -->
     <div class="top-bar">
-        <div class="top-bar-container">
-            <div class="top-bar-left">
-                <img src="https://projettechacademy.github.io/Juridique/Asset/Logo_juriste.png" onerror="this.src='https://projettechacademy.github.io/Juridique/Asset/Logo_juriste.jpg';" alt="Logo Club" class="logo-top-bar">
-                <div class="identity-stack">
-                    <span class="club-title-main">The Jurist Elite Club By Studi</span>
-                    <span class="club-subtitle">La Villa des Juristes Brisés 💔 sur l’Île de L’INSTRUCTION ! 🏝</span>
+        <div class="container">
+            <div class="top-bar-content">
+                <div class="top-bar-left">
+                    <img src="https://projettechacademy.github.io/Juridique/Asset/Logo_juriste.png" onerror="this.src='https://projettechacademy.github.io/Juridique/Asset/Logo_juriste.jpg';" alt="Logo Club" class="logo-top-bar">
+                    <div class="identity-stack">
+                        <span class="name-top-bar">💫The Jurist Elite Club By Studi ✨</span>
+                        <span class="club-subtitle">La Villa des Juristes Brisés 💔 sur l’Île de  L’INSTRUCTION !🏝</span>
+                    </div>
                 </div>
-            </div>
-            
-            <div class="top-bar-center">
-                <a href="https://projettechacademy.github.io/Juridique/index.html" target="_blank" class="header-icon-btn" aria-label="Start/Accueil" data-tooltip="Start/Accueil" style="padding: 0; overflow: hidden; border: none;">
-                    <img src="https://projettechacademy.github.io/Juridique/Asset/Logo_MMPA.jpeg" alt="MMPA" class="nav-mmpa-img">
-                </a>
-                <a href="https://projettechacademy.github.io/Juridique/00_Autres/Mon_Espace_Juriste_Tableau_de_bord_personnel.html" target="_blank" class="header-icon-btn" aria-label="Mon Espace" data-tooltip="Mon Espace">📊</a>
-                <a href="https://projettechacademy.github.io/Juridique/00_Autres/Lexique_Latin_Juridique.html" target="_blank" class="header-icon-btn" aria-label="Lexique Latin" data-tooltip="Lexique Latin">📜</a>
-                <a href="https://projettechacademy.github.io/Juridique/00_Autres/formation_live_juriste.html" target="_blank" class="header-icon-btn" aria-label="Planning Live" data-tooltip="Planning Live">📅</a>
-                <a href="https://projettechacademy.github.io/Juridique/00_Autres/A_propos_de_moi.html" target="_blank" class="header-icon-btn" aria-label="À propos de moi" data-tooltip="À propos de moi" style="padding: 0; overflow: hidden; border: 2px solid #D9A526;">
-                    <img src="https://projettechacademy.github.io/Juridique/Asset/Photo_Mathilde_Martine_PAISLEY.png" onerror="this.src='https://projettechacademy.github.io/Juridique/Asset/Photo_Mathilde_Martine_PAISLEY.jpg';" alt="Profil" class="nav-profile-img">
-                </a>
-            </div>
+                
+                <div class="top-bar-center">
+                    <a href="https://projettechacademy.github.io/Juridique/index.html" target="_blank" class="header-icon-btn" aria-label="Start/Accueil" data-tooltip="Accueil" style="padding: 0; overflow: hidden; border: none;">
+                        <img src="https://projettechacademy.github.io/Juridique/Asset/Logo_MMPA.jpeg" alt="MMPA" class="nav-profile-img">
+                    </a>
+                    <a href="https://projettechacademy.github.io/Juridique/00_Autres/Mon_Espace_Juriste_Tableau_de_bord_personnel.html" target="_blank" class="header-icon-btn" aria-label="Mon Espace" data-tooltip="Mon Espace">📊</a>
+                    <a href="https://projettechacademy.github.io/Juridique/00_Autres/Lexique_Latin_Juridique.html" target="_blank" class="header-icon-btn" aria-label="Lexique Latin" data-tooltip="Lexique">📜</a>
+                    <a href="https://projettechacademy.github.io/Juridique/00_Autres/formation_live_juriste.html" target="_blank" class="header-icon-btn" aria-label="Planning Live" data-tooltip="Planning">📅</a>
+                    <a href="https://projettechacademy.github.io/Juridique/00_Autres/A_propos_de_moi.html" target="_blank" class="header-icon-btn" aria-label="À propos de moi" data-tooltip="Profil" style="padding: 0; overflow: hidden; border: 2px solid #D9A526;">
+                        <img src="https://projettechacademy.github.io/Juridique/Asset/Photo_Mathilde_Martine_PAISLEY.png" onerror="this.src='https://projettechacademy.github.io/Juridique/Asset/Photo_Mathilde_Martine_PAISLEY.jpg';" alt="Profil" class="nav-profile-img">
+                    </a>
+                </div>
 
-            <a href="https://projettechacademy.github.io/CV_MMPA-CV-Mathilde-Martine-PAISLEY/" target="_blank" class="btn-portfolio-cosmic">
-                <span>📄</span> Mon portfolio
-            </a>
+                <a href="https://projettechacademy.github.io/CV_MMPA-CV-Mathilde-Martine-PAISLEY/" target="_blank" class="btn-portfolio-cosmic">
+                    <span>📄</span> Mon portfolio
+                </a>
+            </div>
         </div>
     </div>
 
-    <!-- === D. CONTENU PRINCIPAL === -->
-    <div class="max-w-7xl mx-auto p-4 md:p-8">
-        <!-- Header du Planning -->
-        <div class="mb-8">
-            <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b-2 border-[#0F2C48] pb-6">
+    <!-- === MAIN CONTENT === -->
+    <main class="container">
+        
+        <!-- Page Header -->
+        <div class="page-header">
+            <h1 class="page-title">
+                <i class="fa-solid fa-scale-balanced" style="color: var(--color-accent);"></i>
+                Programme Live Juriste
+            </h1>
+            
+            <div class="notice-access">
+                <i class="fa-solid fa-lock text-xl" style="color: #0284c7;"></i>
                 <div>
-                    <h1 class="text-3xl md:text-4xl font-bold brand-blue-text flex items-center gap-3">
-                        <i class="fa-solid fa-scale-balanced brand-yellow-text"></i>
-                        Programme Live Juriste
-                    </h1>
-                    <p class="brand-bronze-text font-medium mt-3 text-lg">
-                        Organisé par <span class="font-bold">EVA PHILIPPE</span> sur la plateforme <span class="font-bold text-[#D9A526]">STUDI</span>
-                    </p>
-                </div>
-                
-                <div class="flex gap-3">
-                    <div class="brand-ivory-bg p-4 rounded-lg shadow-sm border border-[#0F2C48]/10 flex flex-col items-center min-w-[120px]">
-                        <span class="text-xs brand-blue-text uppercase font-bold tracking-widest mb-1">Total Lives</span>
-                        <span class="text-3xl font-bold brand-bronze-text" id="total-count">0</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Notice Access -->
-            <div class="mt-6 bg-blue-50 border-l-4 border-[#0F2C48] p-4 rounded-r shadow-sm flex items-start gap-4">
-                <div class="text-[#0F2C48] text-xl mt-0.5"><i class="fa-solid fa-lock"></i></div>
-                <div>
-                    <h3 class="font-bold text-[#0F2C48] text-sm uppercase tracking-wide">Accès Réservé</h3>
-                    <p class="text-slate-600 text-sm mt-1">
-                        L'accès aux cours vidéo live nécessite un <strong>compte apprenant actif</strong> sur la plateforme Studi.
-                    </p>
+                    <strong>Accès Réservé :</strong> L'accès aux cours vidéo live nécessite d'être connecté à un <strong>compte apprenant actif</strong> sur la plateforme Studi. Les liens ne fonctionneront pas sans authentification préalable.
                 </div>
             </div>
         </div>
 
-        <!-- Progress Bar -->
-        <div class="brand-ivory-bg p-6 rounded-lg shadow-md border-l-4 border-[#D9A526] mb-8">
-            <div class="flex justify-between items-center mb-3">
-                <h2 class="text-lg font-bold brand-blue-text flex items-center gap-2">
-                    <i class="fa-solid fa-list-check brand-yellow-text"></i> Progression
-                </h2>
-                <span id="progress-text" class="text-lg font-bold brand-blue-text">0%</span>
-            </div>
-            <div class="w-full bg-white rounded-full h-4 overflow-hidden border border-slate-200">
-                <div id="progress-bar" class="brand-yellow-bg h-4 rounded-full transition-all duration-500 ease-out shadow-sm" style="width: 0%"></div>
-            </div>
-            <p class="text-xs text-slate-500 mt-2 italic text-right">Cochez les cases "Vu" pour mettre à jour.</p>
-        </div>
-
-        <!-- Controls -->
-        <div class="brand-ivory-bg p-4 rounded-lg shadow-sm border border-slate-200 mb-6 flex flex-col gap-4 items-center">
-            <div class="relative w-full max-w-3xl">
-                <i class="fa-solid fa-search absolute left-3 top-1/2 transform -translate-y-1/2 brand-blue-text text-slate-400"></i>
-                <input type="text" id="searchInput" aria-label="Rechercher" placeholder="Rechercher un cours, un live, un sujet..." 
-                       class="w-full pl-10 pr-4 py-2 bg-white border border-slate-300 rounded-full focus:ring-2 focus:ring-[#D9A526] focus:border-[#D9A526] outline-none transition-all placeholder-slate-400 text-slate-700 text-sm shadow-sm"
-                       oninput="renderTable(getCurrentFilteredEvents())">
+        <!-- Filters & Stats Section -->
+        <div class="filters-section">
+            <div class="filters-grid">
+                <div class="filter-group-search">
+                    <i class="fa-solid fa-search"></i>
+                    <input type="text" id="searchInput" placeholder="Rechercher un cours, un sujet, une date..." oninput="renderTable(getCurrentFilteredEvents())">
+                </div>
             </div>
             
-            <div class="flex flex-wrap gap-2 justify-center w-full" role="group" aria-label="Filtres par type de cours" id="filter-container">
+            <div id="filter-container">
                 <!-- Boutons générés par JS -->
             </div>
         </div>
 
-        <!-- Table -->
-        <div class="bg-white rounded-t-lg shadow-lg border border-slate-200 overflow-hidden">
-            <div class="table-container overflow-x-auto">
-                <table class="w-full text-left border-collapse">
-                    <thead>
-                        <tr class="brand-blue-bg text-white text-sm uppercase tracking-wider">
-                            <th class="p-4 font-semibold w-16 text-center border-r border-white/10">Vu</th>
-                            <th class="p-4 font-semibold cursor-pointer hover:bg-[#1a3b5c] transition-colors group border-r border-white/10" onclick="sortTable('dateRaw')">Date <i class="fa-solid fa-sort ml-1 opacity-70"></i></th>
-                            <th class="p-4 font-semibold border-r border-white/10">Horaire</th>
-                            <th class="p-4 font-semibold cursor-pointer hover:bg-[#1a3b5c] transition-colors group border-r border-white/10" onclick="sortTable('type')">Type <i class="fa-solid fa-sort ml-1 opacity-70"></i></th>
-                            <th class="p-4 font-semibold w-1/3 cursor-pointer hover:bg-[#1a3b5c] transition-colors group" onclick="sortTable('title')">Intitulé <i class="fa-solid fa-sort ml-1 opacity-70"></i></th>
-                            <th class="p-4 font-semibold hidden md:table-cell">Description</th>
-                            <th class="p-4 font-semibold text-center cursor-pointer hover:bg-[#1a3b5c] transition-colors group" onclick="sortTable('participants')"><i class="fa-solid fa-users"></i></th>
-                            <th class="p-4 font-semibold text-center">Accès</th>
-                        </tr>
-                    </thead>
-                    <tbody id="tableBody" class="text-sm divide-y divide-slate-200">
-                        <!-- Rows générés par JS -->
-                    </tbody>
-                </table>
+        <!-- Stats Bar -->
+        <div class="stats-bar">
+            <div class="stat-item">
+                <span>Total Lives:</span>
+                <span class="stat-value" id="total-count">0</span>
             </div>
-            <div id="noResults" class="hidden p-12 text-center text-slate-500 brand-ivory-bg">
-                <i class="fa-solid fa-folder-open text-5xl mb-4 text-[#D9A526]"></i>
-                <p class="text-lg">Aucun événement trouvé.</p>
+            
+            <div class="progress-container">
+                <div style="display: flex; justify-content: space-between; font-size: 0.75rem; margin-bottom: 2px;">
+                    <span>Progression</span>
+                    <span id="progress-text" style="color: var(--color-accent); font-weight: bold;">0%</span>
+                </div>
+                <div class="progress-track">
+                    <div id="progress-bar" class="progress-fill" style="width: 0%"></div>
+                </div>
+            </div>
+            
+            <div class="stat-item">
+                <i class="fa-solid fa-check-circle"></i>
+                <span style="font-size: 0.8rem; opacity: 0.8;">Cochez pour suivre</span>
+            </div>
+        </div>
+
+        <!-- Table -->
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th class="checkbox-cell">Vu</th>
+                        <th class="sortable" onclick="sortTable('dateRaw')">Date</th>
+                        <th>Horaire</th>
+                        <th class="sortable" onclick="sortTable('type')">Type</th>
+                        <th class="sortable" style="width: 35%;" onclick="sortTable('title')">Intitulé</th>
+                        <th class="mobile-hide-header">Description</th>
+                        <th class="checkbox-cell sortable" onclick="sortTable('participants')"><i class="fa-solid fa-users"></i></th>
+                        <th class="checkbox-cell">Accès</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody">
+                    <!-- Rows générés par JS -->
+                </tbody>
+            </table>
+            
+            <div id="noResults" class="empty-state hidden" style="display: none;">
+                <i class="fa-solid fa-folder-open"></i>
+                <p>Aucun événement trouvé pour cette recherche.</p>
             </div>
         </div>
         
-        <div class="mt-6 text-center text-xs text-slate-400 font-mono">Dernière mise à jour : 30/11/2025</div>
-    </div>
+        <div style="text-align: center; margin-top: 20px; font-size: 0.8rem; opacity: 0.6; font-family: monospace;">
+            Dernière mise à jour : 30/11/2025
+        </div>
+
+    </main>
 
     <!-- === FOOTER === -->
     <footer class="main-footer">
-        <div class="footer-container">
+        <div class="container">
             <div class="footer-content">
                 <div class="footer-identity">
                     <img src="https://projettechacademy.github.io/Juridique/Asset/Logo_MMPA.jpeg" alt="Logo MMPA" class="footer-logo-img">
-                    <div class="footer-info-compact">
+                    <div class="footer-info-col">
                         <div class="footer-name">Mathilde Martine PAISLEY</div>
                         <div class="footer-contact-stack">
                             <a href="mailto:Mathilde.martine.paisley@gmail.com" class="footer-link">📧 Mathilde.martine.paisley@gmail.com</a>
@@ -303,40 +553,37 @@
                         </div>
                     </div>
                 </div>
-                <div class="footer-dock-col">
-                    <div class="dock-group">
-                        <div class="dock-label">Navigation & Réseaux</div>
-                        <div class="icon-dock">
-                            <a href="https://projettechacademy.github.io/Juridique/index.html" target="_blank" class="icon-btn" aria-label="Accueil" data-tooltip="Start/Accueil"><span class="brand-nav">🏠</span></a>
-                            <a href="https://projettechacademy.github.io/Juridique/00_Autres/Mon_Espace_Juriste_Tableau_de_bord_personnel.html" target="_blank" class="icon-btn" aria-label="Mon Espace" data-tooltip="Mon Espace"><span class="brand-nav">📊</span></a>
-                            <a href="https://projettechacademy.github.io/Juridique/00_Autres/Lexique_Latin_Juridique.html" target="_blank" class="icon-btn" aria-label="Lexique" data-tooltip="Lexique Latin"><span class="brand-nav">📜</span></a>
-                            <a href="https://projettechacademy.github.io/Juridique/00_Autres/formation_live_juriste.html" target="_blank" class="icon-btn" aria-label="Planning" data-tooltip="Planning Live"><span class="brand-nav">📅</span></a>
-                            <a href="https://projettechacademy.github.io/Juridique/00_Autres/A_propos_de_moi.html" target="_blank" class="icon-btn" aria-label="Profil" data-tooltip="À propos de moi"><span class="brand-nav">👤</span></a>
-                            <div class="dock-separator"></div>
-                            <a href="https://chat.whatsapp.com/IoMXFl4o2otExYKCPVj22b" target="_blank" class="icon-btn" aria-label="WhatsApp" data-tooltip="WhatsApp"><i class="fab fa-whatsapp brand-whatsapp"></i></a>
-                            <a href="https://discord.gg/qwNPV8QzFt" target="_blank" class="icon-btn" aria-label="Discord" data-tooltip="Discord"><i class="fab fa-discord brand-discord"></i></a>
-                            <a href="https://www.linkedin.com/in/mathilde-martine-paisley-1a4422382/" target="_blank" class="icon-btn" aria-label="LinkedIn" data-tooltip="LinkedIn"><i class="fab fa-linkedin brand-linkedin"></i></a>
-                            <a href="https://www.instagram.com/enervyx/" target="_blank" class="icon-btn" aria-label="Instagram" data-tooltip="Instagram @enervyx"><i class="fab fa-instagram brand-instagram"></i></a>
-                            <a href="https://www.tiktok.com/@enervyx/" target="_blank" class="icon-btn" aria-label="TikTok" data-tooltip="TikTok @enervyx"><i class="fab fa-tiktok brand-tiktok"></i></a>
-                        </div>
+                
+                <div class="dock-group">
+                    <div class="dock-label">Navigation & Réseaux</div>
+                    <div class="icon-dock">
+                        <a href="https://projettechacademy.github.io/Juridique/index.html" target="_blank" class="icon-btn" data-tooltip="Accueil">🏠</a>
+                        <a href="https://projettechacademy.github.io/Juridique/00_Autres/Mon_Espace_Juriste_Tableau_de_bord_personnel.html" target="_blank" class="icon-btn" data-tooltip="Mon Espace">📊</a>
+                        <a href="https://projettechacademy.github.io/Juridique/00_Autres/Lexique_Latin_Juridique.html" target="_blank" class="icon-btn" data-tooltip="Lexique">📜</a>
+                        <a href="https://chat.whatsapp.com/IoMXFl4o2otExYKCPVj22b" target="_blank" class="icon-btn" data-tooltip="WhatsApp"><i class="fab fa-whatsapp brand-whatsapp"></i></a>
+                        <a href="https://discord.gg/qwNPV8QzFt" target="_blank" class="icon-btn" data-tooltip="Discord"><i class="fab fa-discord brand-discord"></i></a>
+                        <a href="https://www.linkedin.com/in/mathilde-martine-paisley-1a4422382/" target="_blank" class="icon-btn" data-tooltip="LinkedIn"><i class="fab fa-linkedin brand-linkedin"></i></a>
+                        <a href="https://www.instagram.com/enervyx/" target="_blank" class="icon-btn" data-tooltip="Instagram"><i class="fab fa-instagram brand-instagram"></i></a>
+                        <a href="https://www.tiktok.com/@enervyx/" target="_blank" class="icon-btn" data-tooltip="TikTok"><i class="fab fa-tiktok brand-tiktok"></i></a>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="footer-bottom">
-            <div class="footer-container"><p>© 2025 Tous droits réservés – Création : 2025 – Dernière mise à jour : Novembre 2025</p></div>
+            
+            <div class="footer-bottom">
+                <p>© 2025 Tous droits réservés – Création : 2025 – Dernière mise à jour : Novembre 2025</p>
+            </div>
         </div>
     </footer>
 
     <div id="backToTop" onclick="window.scrollTo(0,0)"><i class="fas fa-arrow-up"></i></div>
+    
     <script>
+        // Back To Top Logic
         window.addEventListener('scroll', () => {
             const btn = document.getElementById('backToTop');
-            if (window.scrollY > 300) btn.classList.add('show'); else btn.classList.remove('show');
+            if (window.scrollY > 300) btn.classList.add('visible'); else btn.classList.remove('visible');
         });
-    </script>
 
-    <script>
         // --- DONNÉES ---
         const rawData = [
             { link: "https://app.comptalia.com/v3/events/98331/stream?type=0", date: "01/12/2025", time: "15:00 - 16:00", type: "Cours", title: "Career Coaching - Masterclass Pro : Droit - Droit du numérique et protection données", desc: "De quelle façon naviguer dans le droit digital ? RGPD évolutions, contrats numériques et propriété intellectuelle. Sécurisez vos activités digitales !", count: 38 },
@@ -409,33 +656,33 @@
             };
         });
 
-        // Tri par défaut : Plus récent en haut
+        // Tri par défaut
         events.sort((a, b) => b.dateRaw - a.dateRaw);
 
         let currentSort = { column: 'dateRaw', direction: 'desc' };
         let currentTypeFilter = 'all';
 
-        const typeColors = {
-            'Cours': 'bg-blue-100 text-blue-800 border-blue-200',
-            'Travaux Dirigés': 'bg-emerald-100 text-emerald-800 border-emerald-200',
-            'Objectif Examens': 'bg-amber-100 text-amber-800 border-amber-200',
-            'Méthodologie': 'bg-purple-50 text-purple-800 border-purple-200',
-            'Accompagnement pédagogique': 'bg-pink-50 text-pink-800 border-pink-200',
-            'Live': 'bg-red-50 text-red-800 border-red-200',
-            'default': 'bg-slate-50 text-slate-800 border-slate-200'
+        // Mapping Data Type -> CSS Class
+        const typeMapping = {
+            'Cours': 'type-cours',
+            'Travaux Dirigés': 'type-atelier',
+            'Objectif Examens': 'type-exam',
+            'Méthodologie': 'type-methode',
+            'Accompagnement pédagogique': 'type-accompagnement',
+            'Live': 'type-live',
         };
 
         const filterCategories = [
-            { id: 'all', label: 'Tout', class: 'border-slate-300 bg-white hover:bg-slate-50 brand-blue-text' },
-            { id: 'Cours', label: 'Cours', class: 'border-blue-200 bg-blue-50 hover:bg-blue-100 text-[#0F2C48]' },
-            { id: 'Travaux Dirigés', label: 'Travaux Dirigés', class: 'border-emerald-200 bg-emerald-50 hover:bg-emerald-100 text-emerald-800' },
-            { id: 'Objectif Examens', label: 'Objectif Examens', class: 'border-amber-200 bg-amber-50 hover:bg-amber-100 brand-bronze-text' },
-            { id: 'Méthodologie', label: 'Méthodologie', class: 'border-purple-200 bg-purple-50 hover:bg-purple-100 text-purple-800' },
-            { id: 'Live', label: 'Live', class: 'border-red-200 bg-red-50 hover:bg-red-100 text-red-800' },
-            { id: 'Accompagnement pédagogique', label: 'Accompagnement Pédago.', class: 'border-pink-200 bg-pink-50 hover:bg-pink-100 text-pink-800' }
+            { id: 'all', label: 'Tout' },
+            { id: 'Cours', label: 'Cours' },
+            { id: 'Travaux Dirigés', label: 'Travaux Dirigés' },
+            { id: 'Objectif Examens', label: 'Objectif Examens' },
+            { id: 'Méthodologie', label: 'Méthodologie' },
+            { id: 'Live', label: 'Live' },
+            { id: 'Accompagnement pédagogique', label: 'Accompagnement Pédago.' }
         ];
 
-        function getBadgeClass(type) { return typeColors[type] || typeColors['default']; }
+        function getBadgeClass(type) { return typeMapping[type] || 'type-default'; }
 
         const tableBody = document.getElementById('tableBody');
         const totalCountEl = document.getElementById('total-count');
@@ -462,7 +709,7 @@
             const seenCount = events.filter(e => e.seen).length;
             const percentage = total === 0 ? 0 : Math.round((seenCount / total) * 100);
             progressBar.style.width = `${percentage}%`;
-            progressText.textContent = `${percentage}% (${seenCount}/${total})`;
+            progressText.textContent = `${percentage}%`;
         }
 
         function renderFilterButtons() {
@@ -471,9 +718,8 @@
                 const count = cat.id === 'all' ? events.length : events.filter(e => e.type === cat.id).length;
                 const btn = document.createElement('button');
                 const isActive = currentTypeFilter === cat.id;
-                const activeClass = isActive ? 'filter-btn-active font-bold scale-105 ring-2 ring-offset-2 ring-[#0F2C48]' : 'font-semibold';
-                btn.className = `px-3 py-1.5 text-xs rounded-full border transition-all shadow-sm ${cat.class} ${activeClass}`;
-                btn.innerHTML = `${cat.label} <span class="opacity-70 ml-1 text-[10px]">(${count})</span>`;
+                btn.className = `btn-filter ${isActive ? 'active' : ''}`;
+                btn.innerHTML = `${cat.label} (${count})`;
                 btn.onclick = () => filterByType(cat.id);
                 filterContainer.appendChild(btn);
             });
@@ -494,7 +740,6 @@
              });
         }
 
-        // Fonction pour l'accordéon
         function toggleMonth(groupId, headerElement) {
             const rows = document.querySelectorAll(`[data-group="${groupId}"]`);
             const icon = headerElement.querySelector('.chevron-icon');
@@ -510,10 +755,14 @@
 
         function renderTable(data) {
             tableBody.innerHTML = '';
-            if (data.length === 0) { noResults.classList.remove('hidden'); } 
-            else { noResults.classList.add('hidden'); }
+            if (data.length === 0) { 
+                noResults.style.display = 'block'; 
+                noResults.classList.remove('hidden'); // Tailwind override just in case
+            } else { 
+                noResults.style.display = 'none'; 
+                noResults.classList.add('hidden');
+            }
 
-            // Vérifier si un filtre est actif (recherche ou catégorie)
             const isFiltered = searchInput.value.length > 0 || currentTypeFilter !== 'all';
 
             let lastMonthYear = '';
@@ -523,57 +772,36 @@
                 const eventMonthYear = event.dateRaw.toLocaleDateString('fr-FR', { month: 'long', year: 'numeric' });
                 const eventMonthYearCapitalized = eventMonthYear.charAt(0).toUpperCase() + eventMonthYear.slice(1);
                 
-                // Création d'un ID unique pour le groupe (ex: month-0, month-1...)
-                // On utilise le compteur pour identifier chaque nouveau groupe de mois
                 if (eventMonthYearCapitalized !== lastMonthYear) {
                     monthGroupCounter++;
                     lastMonthYear = eventMonthYearCapitalized;
-                    
                     const groupId = `month-${monthGroupCounter}`;
                     
-                    // --- AJOUT SPACER ROW (sauf pour le premier groupe) ---
-                    if (monthGroupCounter > 1) {
-                        const spacerRow = document.createElement('tr');
-                        spacerRow.className = 'spacer-row';
-                        spacerRow.innerHTML = '<td colspan="8" class="h-6 bg-transparent border-0 p-0"></td>';
-                        tableBody.appendChild(spacerRow);
-                    }
-
                     const separatorRow = document.createElement('tr');
-                    
-                    // Logique d'affichage par défaut :
-                    // Si filtré -> Tout ouvert
-                    // Sinon -> Premier mois ouvert, les autres fermés
                     const isGroupOpen = isFiltered || monthGroupCounter === 1;
                     const chevronRotation = isGroupOpen ? 'rotate-180' : '';
 
-                    separatorRow.className = 'month-header-row cursor-pointer group';
+                    separatorRow.className = 'month-header-row';
                     separatorRow.onclick = function() { toggleMonth(groupId, this); };
                     
-                    // --- STYLE PLEINE LARGEUR AVEC COULEURS ORIGINALES ---
                     separatorRow.innerHTML = `
-                        <td colspan="8" class="p-0 border-0">
-                            <div class="bg-[#F6F2E8] text-[#B4792A] font-bold text-sm uppercase tracking-widest py-3 px-6 shadow-sm flex justify-between items-center transition-colors hover:bg-[#ece8de] border-l-4 border-[#D9A526]">
-                                <span class="flex items-center gap-3">
-                                    <i class="fa-regular fa-calendar-days text-[#D9A526]"></i> 
-                                    ${eventMonthYearCapitalized}
-                                </span>
-                                <i class="fa-solid fa-chevron-down chevron-icon ${chevronRotation} text-[#B4792A] transition-transform duration-300"></i>
+                        <td colspan="8">
+                            <div class="month-header-content">
+                                <span><i class="fa-regular fa-calendar-days" style="margin-right:8px"></i> ${eventMonthYearCapitalized}</span>
+                                <i class="fa-solid fa-chevron-down chevron-icon ${chevronRotation}"></i>
                             </div>
                         </td>
                     `;
                     tableBody.appendChild(separatorRow);
                 }
 
-                // LIGNE EVENEMENT
                 const groupId = `month-${monthGroupCounter}`;
                 const isRowVisible = isFiltered || monthGroupCounter === 1;
                 const hiddenClass = isRowVisible ? '' : 'hidden';
 
                 const row = document.createElement('tr');
-                const isEven = index % 2 === 0;
-                const rowBg = event.seen ? 'bg-slate-50' : (isEven ? 'bg-white' : 'bg-[#fcfbf7]');
-                row.className = `event-row ${hiddenClass} hover:bg-[#F6F2E8] transition-colors border-b border-slate-100 last:border-0 ${rowBg} ${event.seen ? 'opacity-60' : ''}`;
+                const rowClass = event.seen ? 'row-seen' : '';
+                row.className = `event-row ${hiddenClass} ${rowClass}`;
                 row.setAttribute('data-group', groupId);
                 
                 const badgeClass = getBadgeClass(event.type);
@@ -582,41 +810,39 @@
                 const yearDisplay = event.dateRaw.getFullYear();
                 
                 const linkButton = event.link 
-                    ? `<a href="${event.link}" target="_blank" aria-label="Voir le live : ${event.title}" class="inline-flex items-center justify-center w-8 h-8 rounded-full border border-[#D9A526] text-[#D9A526] hover:bg-[#D9A526] hover:text-white transition-all shadow-sm" title="Accéder au live"><i class="fa-solid fa-play ml-0.5"></i></a>`
-                    : `<span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-slate-100 text-slate-300 cursor-not-allowed"><i class="fa-solid fa-ban"></i></span>`;
+                    ? `<a href="${event.link}" target="_blank" class="btn-action" title="Accéder au live"><i class="fa-solid fa-play"></i></a>`
+                    : `<span class="btn-action btn-disabled"><i class="fa-solid fa-ban"></i></span>`;
 
                 const checkedAttr = event.seen ? 'checked' : '';
 
                 row.innerHTML = `
-                    <td class="p-4 text-center td-checkbox">
-                        <div class="flex justify-center">
-                             <input type="checkbox" aria-label="Marquer comme vu : ${event.title}"
-                                class="w-5 h-5 appearance-none border-2 border-[#D9A526] rounded-sm bg-white checked:bg-[#D9A526] checked:border-[#D9A526] cursor-pointer transition-all relative"
-                                style="background-image: url(&quot;data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e&quot;); background-size: 100% 100%; background-repeat: no-repeat; background-position: center;"
-                                onchange="toggleSeen('${event.id}')" 
-                                ${checkedAttr}>
+                    <td class="checkbox-cell td-checkbox">
+                         <input type="checkbox" class="checkbox-custom"
+                            onchange="toggleSeen('${event.id}')" 
+                            ${checkedAttr}>
+                    </td>
+                    <td class="td-date">
+                        <div style="font-weight: 700; color: var(--color-primary); text-transform: capitalize;">${dateDisplay}</div>
+                        <div style="font-size: 0.75rem; color: #9ca3af;" class="mobile-hide-header">${yearDisplay}</div>
+                    </td>
+                    <td class="td-time">
+                        <span style="font-family: monospace; font-size: 0.85rem; color: #64748b;">${event.time}</span>
+                    </td>
+                    <td class="td-type">
+                        <span class="type-badge ${badgeClass}">${event.type}</span>
+                    </td>
+                    <td class="td-title">
+                        <span style="font-weight: 600; color: #334155;">${event.title}</span>
+                    </td>
+                    <td class="mobile-hide-header td-desc">
+                        <div style="font-size: 0.85rem; color: #64748b; max-width: 300px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" title="${event.desc}">
+                            ${event.desc}
                         </div>
                     </td>
-                    <td class="p-4 whitespace-nowrap td-date">
-                        <div class="font-bold brand-blue-text capitalize">${dateDisplay}</div>
-                        <div class="text-xs text-slate-400 font-mono mobile-hide-header">${yearDisplay}</div>
+                    <td class="checkbox-cell mobile-hide-header">
+                        <span class="participant-count">${event.count}</span>
                     </td>
-                    <td class="p-4 whitespace-nowrap text-slate-600 font-mono text-xs font-semibold td-time">
-                        ${event.time}
-                    </td>
-                    <td class="p-4 td-type">
-                        <span class="type-badge border ${badgeClass}">${event.type}</span>
-                    </td>
-                    <td class="p-4 font-bold text-slate-700 td-title">
-                        ${event.title}
-                    </td>
-                    <td class="p-4 hidden md:table-cell text-slate-500 text-sm max-w-xs truncate td-desc" title="${event.desc}">
-                        ${event.desc}
-                    </td>
-                    <td class="p-4 text-center mobile-hide-header">
-                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-bold bg-[#F6F2E8] brand-bronze-text border border-[#B4792A]/20">${event.count}</span>
-                    </td>
-                    <td class="p-4 text-center td-actions">
+                    <td class="checkbox-cell td-actions">
                         ${linkButton}
                     </td>
                 `;
@@ -637,6 +863,15 @@
                 if (valA > valB) return currentSort.direction === 'asc' ? 1 : -1;
                 return 0;
             });
+            // Update UI sort indicators would go here in a full framework, simpler here to just re-render
+            const headers = document.querySelectorAll('th.sortable');
+            headers.forEach(h => {
+                h.classList.remove('sorted-asc', 'sorted-desc');
+                if (h.innerText.toLowerCase().includes(column === 'dateRaw' ? 'date' : column)) {
+                    h.classList.add(currentSort.direction === 'asc' ? 'sorted-asc' : 'sorted-desc');
+                }
+            });
+
             renderTable(getCurrentFilteredEvents());
         }
 
