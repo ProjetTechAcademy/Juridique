@@ -33,7 +33,7 @@
             padding-top: 80px; 
         }
 
-        /* --- HEADER (Copie Conforme) --- */
+        /* --- HEADER (Copie Conforme Cosmic Premium) --- */
         .top-bar {
             background: linear-gradient(135deg, #B4792A 0%, #F2C94C 50%, #B4792A 100%);
             color: #0F2C48; padding: 15px 0;
@@ -50,13 +50,34 @@
         .club-subtitle { font-family: 'Lato', sans-serif; font-size: 0.75rem; color: #ffffff; font-weight: 700; }
         .top-bar-center { display: flex; gap: 12px; align-items: center; }
         
-        /* Boutons Header */
+        /* BOUTONS NAVIGATION (Style Cosmic Premium - Doré/Bronze) */
         .header-icon-btn {
-            width: 40px; height: 40px; border-radius: 50%; background: #0F2C48; border: 1px solid rgba(255,255,255,0.3);
-            display: flex; align-items: center; justify-content: center; font-size: 1.1rem; text-decoration: none; color: #D9A526; transition: 0.3s;
+            width: 40px; height: 40px; border-radius: 50%; 
+            background: linear-gradient(135deg, #D9A526 0%, #B4792A 100%); /* Modifié ici */
+            border: 1px solid rgba(255,255,255,0.3);
+            display: flex; align-items: center; justify-content: center; font-size: 1.1rem; text-decoration: none; color: white; transition: 0.3s;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
-        .header-icon-btn:hover { transform: scale(1.1); background: #163b5e; color: #fff; }
-        .nav-img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 2px solid #D9A526; }
+        .header-icon-btn:hover { 
+            transform: translateY(-3px) scale(1.1); 
+            background: linear-gradient(135deg, #FFD700 0%, #D9A526 100%);
+            box-shadow: 0 0 15px rgba(217, 165, 38, 0.6);
+        }
+        .nav-img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 2px solid #fff; }
+
+        /* BOUTON PORTFOLIO ANIMÉ */
+        @keyframes cosmic-pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(217, 165, 38, 0.7); }
+            70% { transform: scale(1.02); box-shadow: 0 0 0 10px rgba(217, 165, 38, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(217, 165, 38, 0); }
+        }
+        .btn-portfolio-cosmic {
+            padding: 8px 20px; border-radius: 50px; font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 0.9rem;
+            background: linear-gradient(135deg, #0F2C48 0%, #1a3b5c 100%);
+            color: #D9A526 !important; text-decoration: none; 
+            border: 1px solid rgba(255,255,255,0.2); display: inline-flex; align-items: center; gap: 8px; animation: cosmic-pulse 2s infinite;
+        }
+        .btn-portfolio-cosmic:hover { background: #163b5e; color: #fff !important; transform: translateY(-2px); }
 
         /* --- ZONE CONTENU --- */
         .main-wrapper {
@@ -129,10 +150,16 @@
             </div>
             <div class="top-bar-center">
                 <a href="index.html" class="header-icon-btn" title="Retour Accueil"><i class="fa-solid fa-home"></i></a>
-                <a href="https://projettechacademy.github.io/Juridique/00_Autres/Mon_Espace_Juriste_Tableau_de_bord_personnel.html" target="_blank" class="header-icon-btn">📊</a>
-                <a href="https://projettechacademy.github.io/Juridique/00_Autres/Lexique_Latin_Juridique.html" target="_blank" class="header-icon-btn">📜</a>
-                <a href="https://projettechacademy.github.io/Juridique/00_Autres/A_propos_de_moi.html" target="_blank" class="header-icon-btn"><img src="https://projettechacademy.github.io/Juridique/Asset/Photo_Mathilde_Martine_PAISLEY.png" onerror="this.src='https://projettechacademy.github.io/Juridique/Asset/Photo_Mathilde_Martine_PAISLEY.jpg';" class="nav-img"></a>
+                <a href="https://projettechacademy.github.io/Juridique/00_Autres/Mon_Espace_Juriste_Tableau_de_bord_personnel.html" target="_blank" class="header-icon-btn" title="Mon Espace">📊</a>
+                <a href="https://projettechacademy.github.io/Juridique/00_Autres/Lexique_Latin_Juridique.html" target="_blank" class="header-icon-btn" title="Lexique">📜</a>
+                
+                <a href="https://projettechacademy.github.io/Juridique/00_Autres/Atelier_de_Competence.html" target="_blank" class="header-icon-btn" title="Atelier">🛠️</a>
+
+                <a href="https://projettechacademy.github.io/Juridique/00_Autres/formation_live_juriste.html" target="_blank" class="header-icon-btn" title="Planning">📅</a>
+                <a href="https://projettechacademy.github.io/Juridique/00_Autres/A_propos_de_moi.html" target="_blank" class="header-icon-btn" title="Profil"><img src="https://projettechacademy.github.io/Juridique/Asset/Photo_Mathilde_Martine_PAISLEY.png" onerror="this.src='https://projettechacademy.github.io/Juridique/Asset/Photo_Mathilde_Martine_PAISLEY.jpg';" class="nav-img"></a>
             </div>
+            
+            <a href="https://projettechacademy.github.io/CV_MMPA-CV-Mathilde-Martine-PAISLEY/" target="_blank" class="btn-portfolio-cosmic"><span>📄</span> Mon portfolio</a>
         </div>
     </div>
 

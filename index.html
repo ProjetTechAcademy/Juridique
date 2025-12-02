@@ -79,15 +79,24 @@
     
     .top-bar-center { display: flex; gap: 12px; align-items: center; }
 
+    /* MISE A JOUR CSS : BOUTONS DORÉS (COSMIC PREMIUM) */
     .header-icon-btn {
-        position: relative; width: 40px; height: 40px; border-radius: 50%; background: #0F2C48;
+        position: relative; width: 40px; height: 40px; border-radius: 50%;
+        background: linear-gradient(135deg, #D9A526 0%, #B4792A 100%); /* Or vers Bronze */
         border: 1px solid rgba(255,255,255,0.3); display: flex; align-items: center; justify-content: center;
-        font-size: 1.1rem; text-decoration: none; transition: all 0.3s ease; color: #D9A526;
+        font-size: 1.1rem; text-decoration: none; transition: all 0.3s ease; color: white;
         box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
-    .header-icon-btn:hover { transform: translateY(3px) scale(1.1); background: #163b5e; color: #fff; }
-    .nav-mmpa-img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 2px solid #D9A526; }
-    .nav-profile-img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 2px solid #D9A526; }
+    .header-icon-btn:hover { 
+        transform: translateY(-3px) scale(1.1); 
+        background: linear-gradient(135deg, #FFD700 0%, #D9A526 100%); /* Or clair au survol */
+        color: white;
+        box-shadow: 0 0 15px rgba(217, 165, 38, 0.6);
+    }
+    
+    .nav-mmpa-img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 2px solid #fff; }
+    .nav-profile-img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 2px solid #fff; }
+    
     .header-icon-btn::after {
         content: attr(data-tooltip); position: absolute; top: 130%; left: 50%; transform: translateX(-50%) translateY(-10px);
         background-color: #0F2C48; color: #D9A526; padding: 4px 10px; border-radius: 20px;
@@ -96,9 +105,11 @@
     }
     .header-icon-btn:hover::after { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
 
+    /* Bouton Portfolio mis à jour pour matcher */
     .btn-portfolio-cosmic {
         padding: 8px 20px; border-radius: 50px; font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 0.9rem;
-        background: #0F2C48; color: #D9A526 !important; text-decoration: none; 
+        background: linear-gradient(135deg, #0F2C48 0%, #1a3b5c 100%); /* Reste sombre pour contraste ou doré selon préférence, ici sombre pour ressortir sur le header gold */
+        color: #D9A526 !important; text-decoration: none; 
         border: 1px solid rgba(255,255,255,0.2); display: inline-flex; align-items: center; gap: 8px; animation: cosmic-pulse 4s ease-in-out infinite;
     }
     .btn-portfolio-cosmic:hover { background: #163b5e; color: #fff !important; }
@@ -315,6 +326,7 @@
             <a href="index.html" class="header-icon-btn" data-tooltip="Start/Accueil"><img src="https://projettechacademy.github.io/Juridique/Asset/Logo_MMPA.jpeg" alt="MMPA" class="nav-mmpa-img"></a>
             <a href="https://projettechacademy.github.io/Juridique/00_Autres/Mon_Espace_Juriste_Tableau_de_bord_personnel.html" target="_blank" class="header-icon-btn" data-tooltip="Mon Espace">📊</a>
             <a href="https://projettechacademy.github.io/Juridique/00_Autres/Lexique_Latin_Juridique.html" target="_blank" class="header-icon-btn" data-tooltip="Lexique Latin">📜</a>
+            <a href="https://projettechacademy.github.io/Juridique/00_Autres/Atelier_de_Competence.html" target="_blank" class="header-icon-btn" data-tooltip="Atelier">🛠️</a>
             <a href="https://projettechacademy.github.io/Juridique/00_Autres/formation_live_juriste.html" target="_blank" class="header-icon-btn" data-tooltip="Planning Live">📅</a>
             <a href="https://projettechacademy.github.io/Juridique/00_Autres/A_propos_de_moi.html" target="_blank" class="header-icon-btn" data-tooltip="À propos de moi"><img src="https://projettechacademy.github.io/Juridique/Asset/Photo_Mathilde_Martine_PAISLEY.png" onerror="this.src='https://projettechacademy.github.io/Juridique/Asset/Photo_Mathilde_Martine_PAISLEY.jpg';" alt="Profil" class="nav-profile-img"></a>
         </div>
