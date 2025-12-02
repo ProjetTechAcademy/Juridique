@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="description" content="Découvrez Mathilde Martine PAISLEY : Experte Paie, SIRH & Droit Social, fondatrice du Jurist Elite Club.">
+    <meta name="author" content="Mathilde Martine PAISLEY">
+    
+    <title>Mathilde Martine PAISLEY - À propos de moi</title>
+
+    <link rel="icon" type="image/jpeg" href="https://projettechacademy.github.io/Juridique/Asset/Logo_MMPA.jpeg">
+
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&family=Montserrat:wght@500;600;700&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        /* ========================================
+           VARIABLES CSS (COSMIC PREMIUM)
+           ======================================== */
+        :root {
+            --color-bg: #F6F2E8;       /* Ivoire */
+            --color-primary: #0F2C48;  /* Bleu Nuit */
+            --color-accent: #D9A526;   /* Jaune Doré */
+            --color-alert: #B4792A;    /* Bronze */
+            --color-text: #2c3e50;
+            --color-white: #ffffff;
+        }
+
+        /* ========================================
+           RESET & BASE
+           ======================================== */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.8;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        h1, h2, h3, h4 { 
+            font-family: 'Playfair Display', serif; 
+            color: var(--color-primary); 
+            font-weight: 700;
+        }
+        
+        p { text-align: justify; margin-bottom: 1.5rem; }
+        a { text-decoration: none; color: inherit; transition: all 0.3s ease; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 25px; }
+        
+        /* Animation "Pulse" */
+        @keyframes cosmic-pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(217, 165, 38, 0.7); }
+            70% { transform: scale(1.02); box-shadow: 0 0 0 10px rgba(217, 165, 38, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(217, 165, 38, 0); }
+        }
+
+        /* ========================================
+           TOP BAR
+           ======================================== */
+        .top-bar {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            padding: 15px 0;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .top-bar-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .top-bar-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .logo-top-bar {
+            width: 55px; height: 55px;
+            border-radius: 50%;
+            border: 2px solid var(--color-accent);
+            object-fit: cover;
+            background: white;
+        }
+
+        .identity-stack { display: flex; flex-direction: column; justify-content: center; }
+        
+        .name-top-bar {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem; font-weight: 700;
+            color: var(--color-white); line-height: 1.2;
+        }
+        
+        .club-subtitle { 
+            font-size: 0.85rem; 
+            color: var(--color-accent); 
+            font-weight: 700; 
+            margin-top: 2px;
+        }
+
+        .top-bar-center { display: flex; gap: 15px; align-items: center; }
+
+        /* Onglets Or/Bronze */
+        .header-icon-btn {
+            position: relative;
+            width: 42px; height: 42px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #D9A526 0%, #B4792A 100%);
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.2rem; transition: all 0.3s ease;
+            cursor: pointer; color: white; text-decoration: none;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        .header-icon-btn:hover {
+            transform: translateY(-3px) scale(1.1);
+            background: linear-gradient(135deg, #FFD700 0%, #D9A526 100%);
+            box-shadow: 0 0 15px rgba(217, 165, 38, 0.6);
+            border-color: #fff;
+        }
+        
+        .header-icon-btn::after {
+            content: attr(data-tooltip);
+            position: absolute; top: 130%; left: 50%;
+            transform: translateX(-50%) translateY(-10px);
+            background-color: var(--color-white); color: var(--color-primary);
+            padding: 5px 12px; border-radius: 20px;
+            font-size: 0.75rem; font-weight: 700; white-space: nowrap;
+            opacity: 0; visibility: hidden; transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2); pointer-events: none; z-index: 100;
+        }
+        .header-icon-btn:hover::after { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+
+        /* Bouton Portfolio Pulse */
+        .btn-portfolio-cosmic {
+            padding: 10px 25px; border-radius: 50px;
+            font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 0.95rem;
+            background: linear-gradient(135deg, #D9A526 0%, #B4792A 100%);
+            color: white; border: 1px solid rgba(255,255,255,0.4);
+            cursor: pointer; display: inline-flex; align-items: center; gap: 8px;
+            transition: all 0.3s ease; text-decoration: none;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            animation: cosmic-pulse 2s infinite;
+        }
+        .btn-portfolio-cosmic:hover {
+            background: linear-gradient(135deg, #F1C40F 0%, #D9A526 100%);
+            transform: translateY(-2px); color: white;
+        }
+
+        /* ========================================
+           CONTENU PRINCIPAL
+           ======================================== */
+        main { flex: 1; }
+        section { padding: 60px 0; }
+
+        .page-slogan-container { text-align: center; margin-bottom: 50px; }
+        .page-slogan {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            color: var(--color-alert);
+            font-weight: 700;
+            display: inline-block;
+            position: relative;
+            padding-bottom: 15px;
+            max-width: 900px;
+            line-height: 1.3;
+        }
+        .page-slogan::after {
+            content: ''; position: absolute; bottom: 0; left: 50%;
+            transform: translateX(-50%); width: 80px; height: 3px;
+            background-color: var(--color-accent);
+        }
+
+        /* Grille Histoire */
+        .story-grid { 
+            display: grid; grid-template-columns: 3fr 1.5fr; gap: 50px; align-items: start; 
+        }
+        
+        .bio-narrative { font-size: 1.05rem; color: #4a5568; }
+        
+        .discreet-photo-wrapper { 
+            float: left; margin: 5px 30px 15px 0; 
+            shape-outside: circle(50%); 
+        }
+        .discreet-photo { 
+            width: 160px; height: 160px; border-radius: 50%; object-fit: cover; 
+            border: 4px solid white; box-shadow: 0 8px 20px rgba(15, 44, 72, 0.15); 
+        }
+        .highlight { color: var(--color-alert); font-weight: 700; }
+
+        /* Carte Identité */
+        .identity-card {
+            background: white; padding: 30px; border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05); 
+            border-top: 5px solid var(--color-accent);
+            position: sticky; top: 120px;
+        }
+        .identity-card h3 { margin-bottom: 20px; text-align: center; color: var(--color-primary); }
+        .id-list { list-style: none; padding: 0; }
+        .id-list li { 
+            margin-bottom: 12px; display: flex; align-items: center; 
+            font-weight: 500; font-size: 1rem; color: var(--color-text);
+        }
+        .emoji-icon { margin-right: 15px; font-size: 1.3rem; min-width: 30px; text-align: center; }
+
+        /* ========================================
+           TIMELINE / PARCOURS
+           ======================================== */
+        .narrative-section { background-color: white; border-top: 1px solid #e2e8f0; border-bottom: 1px solid #e2e8f0; }
+        
+        .section-header { text-align: center; margin-bottom: 50px; }
+        .section-header h2 { font-size: 2.5rem; margin-bottom: 10px; }
+        .subtitle { font-family: 'Montserrat', sans-serif; color: var(--color-alert); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; font-size: 0.9rem; }
+
+        .chapter-container { 
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); 
+            gap: 30px; margin: 0 auto; 
+        }
+        
+        .chapter-card { 
+            background: var(--color-bg); padding: 30px; border-radius: 12px; 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05); 
+            transition: transform 0.3s ease, box-shadow 0.3s ease; 
+            border-left: 4px solid var(--color-primary); 
+            display: flex; flex-direction: column;
+        }
+        
+        .chapter-card:hover { 
+            transform: translateY(-5px); 
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1); 
+            border-left-color: var(--color-accent); 
+        }
+        
+        .chapter-header { 
+            display: flex; align-items: center; justify-content: space-between;
+            margin-bottom: 15px; padding-bottom: 15px; 
+            border-bottom: 1px solid rgba(0,0,0,0.05); 
+        }
+        
+        .chapter-title-group { display: flex; align-items: center; gap: 15px; }
+        .chapter-icon { font-size: 1.8rem; }
+        .chapter-card h3 { font-size: 1.2rem; margin: 0; line-height: 1.2; }
+        
+        .chapter-date { 
+            background: var(--color-alert); color: white; /* Changement de couleur : Bronze/Alert */
+            padding: 4px 12px; border-radius: 20px; 
+            font-size: 0.85rem; font-weight: 700; 
+            white-space: nowrap;
+        }
+        
+        .chapter-card p { font-size: 0.95rem; margin: 0; color: #555; text-align: left; }
+
+        /* ========================================
+           SECTION VILLA (CTA)
+           ======================================== */
+        .villa-wrapper { 
+            padding: 20px; 
+        }
+        
+        .villa-section { 
+            background: linear-gradient(135deg, var(--color-primary), #1a3b5c);
+            color: var(--color-white); text-align: center; 
+            border-radius: 20px; padding: 60px 30px; 
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2); 
+            border: 2px solid var(--color-accent); 
+            max-width: 900px; margin: 0 auto;
+        }
+        
+        .villa-section h2 { color: var(--color-white); font-size: 2rem; margin-bottom: 20px; }
+        .villa-intro { font-size: 1.1rem; max-width: 700px; margin: 0 auto 30px; opacity: 0.9; text-align: center; }
+        
+        .cta-container { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+        
+        .btn-peps { 
+            padding: 12px 30px; border-radius: 50px; 
+            font-family: 'Montserrat', sans-serif; font-weight: 700; 
+            text-transform: uppercase; font-size: 0.9rem; 
+            transition: all 0.3s ease; display: flex; align-items: center; gap: 10px; 
+            border: none; cursor: pointer; text-decoration: none;
+        }
+        
+        .btn-whatsapp { background: #25D366; color: white; box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3); }
+        .btn-discord { background: #5865F2; color: white; box-shadow: 0 4px 10px rgba(88, 101, 242, 0.3); }
+        
+        .btn-peps:hover { transform: translateY(-3px); filter: brightness(1.1); }
+
+        /* ========================================
+           FOOTER (IDENTIQUE PLANNING)
+           ======================================== */
+        .main-footer {
+            background-color: var(--color-primary); color: var(--color-bg);
+            padding: 50px 0 20px; margin-top: auto;
+        }
+        .footer-content {
+            display: flex; justify-content: space-between; align-items: flex-start;
+            flex-wrap: wrap; gap: 30px; margin-bottom: 30px;
+        }
+        .footer-identity { display: flex; align-items: center; gap: 15px; }
+        .footer-logo-img {
+            width: 60px; height: 60px; border-radius: 8px;
+            border: 2px solid var(--color-accent); object-fit: cover; background: white;
+        }
+        .footer-info-col { display: flex; flex-direction: column; }
+        .footer-name {
+            color: var(--color-accent); font-family: 'Playfair Display', serif;
+            font-weight: 700; font-size: 1.2rem; margin-bottom: 5px;
+        }
+        .footer-contact-stack {
+            font-size: 0.9rem; opacity: 0.8;
+            display: flex; flex-direction: column; gap: 4px;
+        }
+        .footer-link { color: inherit; text-decoration: none; transition: color 0.3s ease; }
+        .footer-link:hover { color: var(--color-accent); }
+
+        .dock-group { display: flex; flex-direction: column; align-items: flex-end; gap: 10px; }
+        .dock-label {
+            font-family: 'Montserrat', sans-serif; font-size: 0.8rem;
+            text-transform: uppercase; color: var(--color-accent); opacity: 0.8;
+        }
+        .icon-dock {
+            display: flex; gap: 12px; align-items: center;
+            flex-wrap: wrap; justify-content: flex-end;
+        }
+        .icon-btn {
+            width: 40px; height: 40px; border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            display: flex; align-items: center; justify-content: center;
+            transition: all 0.3s ease; border: 1px solid rgba(255,255,255,0.2);
+            color: white; text-decoration: none; font-size: 1.1rem; position: relative;
+        }
+        .icon-btn:hover {
+            background: white; color: var(--color-primary);
+            transform: translateY(-3px); border-color: white;
+        }
+        
+        .brand-whatsapp { color: #25D366; } .icon-btn:hover .brand-whatsapp { color: #25D366; }
+        .brand-discord { color: #5865F2; } .icon-btn:hover .brand-discord { color: #5865F2; }
+        .brand-linkedin { color: #0077b5; } .icon-btn:hover .brand-linkedin { color: #0077b5; }
+        .brand-instagram { color: #E1306C; } .icon-btn:hover .brand-instagram { color: #E1306C; }
+        .brand-tiktok { color: #00f2ea; } .icon-btn:hover .brand-tiktok { color: #000; }
+
+        .icon-btn::after {
+            content: attr(data-tooltip); position: absolute; bottom: 125%; left: 50%;
+            transform: translateX(-50%); background: white; color: var(--color-primary);
+            padding: 4px 8px; border-radius: 4px; font-size: 0.7rem; white-space: nowrap;
+            opacity: 0; visibility: hidden; transition: 0.2s; pointer-events: none; font-weight: bold;
+        }
+        .icon-btn:hover::after { opacity: 1; visibility: visible; }
+
+        .footer-bottom {
+            text-align: center; padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.85rem; opacity: 0.6;
+        }
+
+        /* Back To Top - Style Premium */
+        #backToTop {
+            position: fixed; bottom: 30px; right: 30px;
+            width: 50px; height: 50px;
+            background: linear-gradient(135deg, #D9A526, #B4792A);
+            color: white; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; opacity: 0; visibility: hidden;
+            transition: all 0.3s ease; box-shadow: 0 4px 12px rgba(0,0,0,0.3); z-index: 1000;
+        }
+        #backToTop.visible { opacity: 1; visibility: visible; }
+        #backToTop:hover { transform: translateY(-5px) scale(1.1); box-shadow: 0 6px 16px rgba(217, 165, 38, 0.5); }
+
+        /* Animation d'apparition */
+        .fade-up { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+        .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .story-grid { grid-template-columns: 1fr; }
+            .identity-card { position: static; margin-top: 30px; }
+            .chapter-container { grid-template-columns: 1fr; }
+            .top-bar-content, .footer-content { flex-direction: column; text-align: center; }
+            .top-bar-left, .dock-group, .icon-dock { justify-content: center; align-items: center; }
+            .discreet-photo-wrapper { float: none; display: block; margin: 0 auto 20px; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-content">
+                <div class="top-bar-left">
+                    <img src="https://projettechacademy.github.io/Juridique/Asset/Logo_juriste.png" onerror="this.src='https://projettechacademy.github.io/Juridique/Asset/Logo_juriste.jpg';" alt="Logo Club" class="logo-top-bar">
+                    <div class="identity-stack">
+                        <span class="name-top-bar">💫The Jurist Elite Club By Studi ✨</span>
+                        <span class="club-subtitle">La Villa des Juristes Brisés 💔 sur l’Île de  L’INSTRUCTION !🏝</span>
+                    </div>
+                </div>
+                
+                <div class="top-bar-center">
+                    <a href="https://projettechacademy.github.io/Juridique/index.html" target="_blank" class="header-icon-btn" aria-label="Start/Accueil" data-tooltip="Accueil">
+                        🏠
+                    </a>
+                    <a href="https://projettechacademy.github.io/Juridique/00_Autres/Mon_Espace_Juriste_Tableau_de_bord_personnel.html" target="_blank" class="header-icon-btn" aria-label="Mon Espace" data-tooltip="Mon Espace">📊</a>
+                    <a href="https://projettechacademy.github.io/Juridique/00_Autres/Lexique_Latin_Juridique.html" target="_blank" class="header-icon-btn" aria-label="Lexique Latin" data-tooltip="Lexique">📜</a>
+                    
+                    <a href="https://projettechacademy.github.io/Juridique/00_Autres/Atelier_de_Competence.html" target="_blank" class="header-icon-btn" aria-label="Atelier" data-tooltip="Atelier">🛠️</a>
+
+                    <a href="https://projettechacademy.github.io/Juridique/00_Autres/formation_live_juriste.html" target="_blank" class="header-icon-btn" aria-label="Planning Live" data-tooltip="Planning">📅</a>
+                    <a href="https://projettechacademy.github.io/Juridique/00_Autres/A_propos_de_moi.html" target="_blank" class="header-icon-btn" aria-label="À propos de moi" data-tooltip="Profil">
+                        👤
+                    </a>
+                </div>
+
+                <a href="https://projettechacademy.github.io/CV_MMPA-CV-Mathilde-Martine-PAISLEY/" target="_blank" class="btn-portfolio-cosmic">
+                    <span>📄</span> Mon portfolio
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <main>
+        <section id="mon-histoire">
+            <div class="container">
+                <div class="page-slogan-container fade-up">
+                    <div class="page-slogan">20 ans d'Expertise Paie & SIRH... en route vers le Droit Social.</div>
+                </div>
+
+                <div class="story-grid fade-up">
+                    <div class="bio-narrative">
+                        <div class="discreet-photo-wrapper">
+                            <img src="https://projettechacademy.github.io/Juridique/Asset/Photo_Mathilde_Martine_PAISLEY.jpg" alt="Photo de Mathilde Martine PAISLEY" class="discreet-photo">
+                        </div>
+
+                        <p>Bonjour ! Je suis <strong>Mathilde Martine</strong>. Je suis née à Paris dans le 13ème arrondissement en 1974, mais aujourd'hui, c'est dans les <span class="highlight">Hauts-de-Seine (92)</span> que j'ai posé mes valises : j'y réside fièrement.</p>
+
+                        <p>Cependant, mes racines vibrent ailleurs. Mes deux parents sont nés en <span class="highlight">Guadeloupe</span>, cette île magnifique qui coule dans mes veines. Ma famille est une véritable richesse culturelle : un mélange d'influences indiennes, métropolitaines et caribéennes. Nous ne sommes pas simplement "métissés", nous sommes une mosaïque vivante, riche d'une diversité qui fait ma force et mon ouverture d'esprit au quotidien.</p>
+
+                        <p>Mon histoire professionnelle, elle, est le fruit de plus de <span class="highlight">20 ans de terrain</span>. Experte Paie, RH, Consultante... j'ai exploré toutes les facettes de l'entreprise. Mais ma soif d'apprendre est insatiable. C'est pourquoi je me suis lancée ce défi un peu fou du MBA Juriste d'Entreprise. Je ne suis pas encore juriste, je suis une <span class="highlight">apprenante</span>, tout comme vous.</p>
+
+                        <p>Ma personnalité ? Un livre ouvert. Franche, directe, avec un humour noir que j'assume (et qui préserve ma jeunesse !). Je ne supporte pas l'humiliation ni les cris. Ce que j'aime ? Les gens volontaires, l'échange, et surtout faire des cookies – les meilleurs du monde, paraît-il !</p>
+                    </div>
+
+                    <aside class="identity-card fade-up">
+                        <h3>En Bref</h3>
+                        <ul class="id-list">
+                            <li><span class="emoji-icon">📍</span> Hauts-de-Seine (92)</li>
+                            <li><span class="emoji-icon">🌴</span> Origines Guadeloupéennes</li>
+                            <li><span class="emoji-icon">💼</span> 20+ ans d'expérience RH/Paie</li>
+                            <li><span class="emoji-icon">🎓</span> MBA Juriste en cours</li>
+                            <li><span class="emoji-icon">🍪</span> Passionnée de pâtisserie</li>
+                            <li><span class="emoji-icon">💛</span> Humour noir assumé</li>
+                        </ul>
+                    </aside>
+                </div>
+            </div>
+        </section>
+
+        <section class="villa-wrapper">
+            <div class="container">
+                <div class="villa-section fade-up">
+                    <h2>🎓 Rejoignez le Jurist Elite Club</h2>
+                    <p class="villa-intro">
+                        Une communauté d'entraide, de partage et de pépites juridiques. Que vous soyez étudiant, professionnel ou simplement curieux, vous êtes les bienvenus !
+                    </p>
+                    <div class="cta-container">
+                        <a href="https://chat.whatsapp.com/IoMXFl4o2otExYKCPVj22b" target="_blank" class="btn-peps btn-whatsapp">
+                            <i class="fab fa-whatsapp"></i> WhatsApp
+                        </a>
+                        <a href="https://discord.gg/qwNPV8QzFt" target="_blank" class="btn-peps btn-discord">
+                            <i class="fab fa-discord"></i> Discord
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="narrative-section">
+            <div class="container">
+                <div class="section-header fade-up">
+                    <h2>Mes Formations</h2>
+                </div>
+
+                <div class="chapter-container">
+                    <article class="chapter-card fade-up">
+                        <div class="chapter-header">
+                            <div class="chapter-title-group">
+                                <div class="chapter-icon">⚖️</div>
+                                <h3>MBA Juriste d'entreprise en Droit Social</h3>
+                            </div>
+                            <div class="chapter-date">2026 - 2027</div>
+                        </div>
+                        <p><strong>STUDI (RNCP NIVEAU 7).</strong> Pilotage de la fonction juridique, droit social, sécurité sociale et relations collectives.</p>
+                    </article>
+
+                    <article class="chapter-card fade-up">
+                        <div class="chapter-header">
+                            <div class="chapter-title-group">
+                                <div class="chapter-icon">🎓</div>
+                                <h3>Gestion de la Paie et Conformité Sociale</h3>
+                            </div>
+                            <div class="chapter-date">2025 - 2026</div>
+                        </div>
+                        <p><strong>STUDI (RNCP 37275 – NIVEAU 5).</strong> Production de la paie, déclarations sociales, gestion administrative et conformité réglementaire. (En cours – Certification en attente de soutenance)</p>
+                    </article>
+
+                    <article class="chapter-card fade-up">
+                        <div class="chapter-header">
+                            <div class="chapter-title-group">
+                                <div class="chapter-icon">💻</div>
+                                <h3>Transformation Digitale et Management de l’Innovation</h3>
+                            </div>
+                            <div class="chapter-date">2024 - 2025</div>
+                        </div>
+                        <p><strong>DIGITAL CAMPUS (RNCP 36129 – NIVEAU 7).</strong> Pilotage de projets digitaux et accompagnement du changement dans les environnements RH. (Diplôme obtenu – Juin 2025)</p>
+                    </article>
+
+                    <article class="chapter-card fade-up">
+                        <div class="chapter-header">
+                            <div class="chapter-title-group">
+                                <div class="chapter-icon">🤝</div>
+                                <h3>Manager en Ressources Humaines</h3>
+                            </div>
+                            <div class="chapter-date">2022 - 2023</div>
+                        </div>
+                        <p><strong>ESGRH – GROUPE ESG (RNCP 35210 – NIVEAU 7).</strong> Management stratégique des RH, conduite du changement et transformation organisationnelle. (Diplôme obtenu – Juin 2024)</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-identity">
+                    <img src="https://projettechacademy.github.io/Juridique/Asset/Logo_MMPA.jpeg" alt="Logo MMPA" class="footer-logo-img">
+                    <div class="footer-info-col">
+                        <div class="footer-name">Mathilde Martine PAISLEY</div>
+                        <div class="footer-contact-stack">
+                            <a href="mailto:Mathilde.martine.paisley@gmail.com" class="footer-link">📧 Mathilde.martine.paisley@gmail.com</a>
+                            <a href="tel:+33685900887" class="footer-link">📲 06 85 90 08 87</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="dock-group">
+                    <div class="dock-label">Navigation & Réseaux</div>
+                    <div class="icon-dock">
+                        <a href="https://projettechacademy.github.io/Juridique/index.html" target="_blank" class="icon-btn" data-tooltip="Accueil">🏠</a>
+                        <a href="https://projettechacademy.github.io/Juridique/00_Autres/Mon_Espace_Juriste_Tableau_de_bord_personnel.html" target="_blank" class="icon-btn" data-tooltip="Mon Espace">📊</a>
+                        <a href="https://projettechacademy.github.io/Juridique/00_Autres/Lexique_Latin_Juridique.html" target="_blank" class="icon-btn" data-tooltip="Lexique">📜</a>
+                        <a href="https://chat.whatsapp.com/IoMXFl4o2otExYKCPVj22b" target="_blank" class="icon-btn" data-tooltip="WhatsApp"><i class="fab fa-whatsapp brand-whatsapp"></i></a>
+                        <a href="https://discord.gg/qwNPV8QzFt" target="_blank" class="icon-btn" data-tooltip="Discord"><i class="fab fa-discord brand-discord"></i></a>
+                        <a href="https://www.linkedin.com/in/mathilde-martine-paisley-1a4422382/" target="_blank" class="icon-btn" data-tooltip="LinkedIn"><i class="fab fa-linkedin brand-linkedin"></i></a>
+                        <a href="https://www.instagram.com/enervyx/" target="_blank" class="icon-btn" data-tooltip="Instagram"><i class="fab fa-instagram brand-instagram"></i></a>
+                        <a href="https://www.tiktok.com/@enervyx/" target="_blank" class="icon-btn" data-tooltip="TikTok"><i class="fab fa-tiktok brand-tiktok"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© 2025 Tous droits réservés – Création : 2025 – Dernière mise à jour : Novembre 2025</p>
+            </div>
+        </div>
+    </footer>
+
+    <div id="backToTop" onclick="window.scrollTo(0,0)"><i class="fas fa-arrow-up"></i></div>
+
+    <script>
+        // Back To Top & Animation Scroll
+        const backToTop = document.getElementById('backToTop');
+        const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) backToTop.classList.add('visible');
+            else backToTop.classList.remove('visible');
+        });
+    </script>
+</body>
+</html>
