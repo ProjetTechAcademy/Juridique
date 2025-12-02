@@ -4,19 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- SEO -->
     <meta name="description" content="Lexique Latin Juridique - Les expressions latines indispensables pour exceller en droit">
     <meta name="author" content="Mathilde Martine PAISLEY">
     
     <title>Lexique Latin Juridique</title>
 
-    <!-- FAVICON -->
     <link rel="icon" type="image/jpeg" href="https://projettechacademy.github.io/Juridique/Asset/Logo_MMPA.jpeg">
 
-    <!-- FONTS -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&family=Montserrat:wght@500;600;700&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
     
-    <!-- ICONS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <style>
@@ -416,7 +412,6 @@
 </head>
 <body>
 
-    <!-- === HEADER === -->
     <div class="top-bar">
         <div class="container">
             <div class="top-bar-content">
@@ -434,6 +429,9 @@
                     </a>
                     <a href="https://projettechacademy.github.io/Juridique/00_Autres/Mon_Espace_Juriste_Tableau_de_bord_personnel.html" target="_blank" class="header-icon-btn" aria-label="Mon Espace" data-tooltip="Mon Espace">📊</a>
                     <a href="https://projettechacademy.github.io/Juridique/00_Autres/Lexique_Latin_Juridique.html" target="_blank" class="header-icon-btn" aria-label="Lexique Latin" data-tooltip="Lexique">📜</a>
+                    
+                    <a href="https://projettechacademy.github.io/Juridique/00_Autres/Atelier_de_Competence.html" target="_blank" class="header-icon-btn" aria-label="Atelier" data-tooltip="Atelier">🛠️</a>
+
                     <a href="https://projettechacademy.github.io/Juridique/00_Autres/formation_live_juriste.html" target="_blank" class="header-icon-btn" aria-label="Planning Live" data-tooltip="Planning">📅</a>
                     <a href="https://projettechacademy.github.io/Juridique/00_Autres/A_propos_de_moi.html" target="_blank" class="header-icon-btn" aria-label="À propos de moi" data-tooltip="Profil">
                         👤
@@ -447,10 +445,8 @@
         </div>
     </div>
 
-    <!-- === MAIN CONTENT === -->
     <main id="main-content">
         <div class="container">
-            <!-- Page Header -->
             <div class="page-header">
                 <h1 class="page-title">
                     <i class="fas fa-scroll" style="color: var(--color-accent); margin-right: 10px;"></i>
@@ -459,7 +455,6 @@
                 <p class="page-subtitle">Les expressions latines indispensables pour exceller en droit</p>
             </div>
 
-            <!-- Controls -->
             <section class="controls-section">
                 <div class="search-bar">
                     <input type="text" 
@@ -468,7 +463,6 @@
                            placeholder="🔍 Rechercher un terme latin, une traduction ou une définition..."
                            aria-label="Rechercher dans le lexique">
                     
-                    <!-- Toggle Mode Révision (Recto/Verso) -->
                     <div class="toggle-container" title="Masquer les réponses pour s'entraîner">
                         <label class="toggle-label" for="revisionToggle">Mode Révision</label>
                         <label class="toggle-switch">
@@ -498,10 +492,8 @@
                 </div>
             </section>
 
-            <!-- Cards Grid -->
             <div id="cardsGrid" class="cards-grid">
-                <!-- Généré dynamiquement par JS -->
-            </div>
+                </div>
 
             <div id="emptyState" class="empty-state" style="display: none;">
                 <i class="fas fa-search"></i>
@@ -511,7 +503,6 @@
         </div>
     </main>
 
-    <!-- === FOOTER === -->
     <footer class="main-footer">
         <div class="container">
             <div class="footer-content">
@@ -549,9 +540,6 @@
 
     <div id="backToTop" onclick="window.scrollTo(0,0)"><i class="fas fa-arrow-up"></i></div>
 
-    <!-- ========================================
-         JAVASCRIPT
-         ======================================== -->
     <script>
         // Fonction de sécurité pour échapper le HTML
         function escapeHtml(unsafe) {
