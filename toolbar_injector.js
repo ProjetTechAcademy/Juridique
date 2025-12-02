@@ -1,5 +1,5 @@
 // ======================================================================
-// 🔧 MOTEUR DE LA BARRE D'OUTILS (MMPA🌹) - VERSION ÉPURÉE
+// 🔧 MOTEUR DE LA BARRE D'OUTILS (MMPA🌹) - VERSION CORRIGÉE (NO GAP)
 // ======================================================================
 (function() {
     
@@ -7,19 +7,17 @@
     const params = new URLSearchParams(window.location.search);
     let fileName = params.get('id');
 
-    // Sécurité : Si pas d'ID dans l'url, on regarde le nom du fichier
     if (!fileName) {
         fileName = window.location.pathname.split('/').pop().replace('.html', '');
     }
 
-    // Titre lisible
     const titleReadable = fileName ? fileName.replace(/_/g, ' ') : "Cours sans titre";
     
     // 2. CONNEXION BASE DE DONNÉES
     const globalDB = window.dbRessources || {};
     const resources = globalDB[fileName] || {};
 
-    // 3. Fonction Calendrier (Google Agenda)
+    // 3. Fonction Calendrier
     const addToCalendar = () => {
         const baseUrl = "https://calendar.google.com/calendar/render";
         const action = "TEMPLATE";
@@ -29,7 +27,7 @@
         window.open(calendarLink, '_blank');
     };
 
-    // 4. Fonction Validation (Check)
+    // 4. Fonction Validation
     const toggleCheck = (btn) => {
         const key = `status_${fileName}_done`;
         const isDone = localStorage.getItem(key) === 'true';
@@ -49,9 +47,9 @@
 
     // 5. Création de la barre
     const toolbar = document.createElement('div');
+    // Note : Hauteur calculée environ 60px (10+10 padding + 36 icon + 4 border)
     toolbar.style.cssText = "position:fixed; top:0; left:0; right:0; background:#fff; border-bottom:4px solid #D9A526; padding:10px 20px; display:flex; justify-content:space-between; align-items:center; z-index:10000; box-shadow:0 4px 20px rgba(0,0,0,0.1); font-family:sans-serif; flex-wrap:wrap; gap:10px;";
     
-    // Générateur de boutons
     const getBtn = (type, icon, title, color, customAction = null) => {
         const link = resources[type];
         const onclick = customAction ? customAction : (link ? `window.open('${link}', '_blank')` : `alert('Ressource ${title} non disponible.')`);
@@ -64,13 +62,11 @@
                 </button>`;
     };
 
-    // État du bouton check
     const isChecked = localStorage.getItem(`status_${fileName}_done`) === 'true';
     const checkBg = isChecked ? '#10b981' : 'white';
     const checkColor = isChecked ? 'white' : '#cbd5e1';
     const checkBorder = isChecked ? '#10b981' : '#e2e8f0';
 
-    // --- LE CONTENU DE LA BARRE (C'est ici qu'on a fait le ménage) ---
     toolbar.innerHTML = `
         <div style="font-weight:bold; color:#0F2C48; font-size:14px; display:flex; align-items:center;">
             <i class="fa-solid fa-graduation-cap" style="color:#D9A526; margin-right:8px;"></i>
@@ -102,7 +98,6 @@
         </div>
     `;
 
-    // Injecter FontAwesome si absent
     if (!document.querySelector('link[href*="font-awesome"]')) {
         const fa = document.createElement('link');
         fa.rel = 'stylesheet';
@@ -110,10 +105,9 @@
         document.head.appendChild(fa);
     }
 
-    document.body.style.marginTop = "80px"; 
+    // ON A SUPPRIMÉ LE MARGIN-TOP DU BODY ICI POUR ÉVITER LE DOUBLE ESPACE
     document.body.appendChild(toolbar);
 
-    // Événements
     document.getElementById('btn-alarm-toolbar').addEventListener('click', addToCalendar);
     document.getElementById('btn-check-toolbar').addEventListener('click', function() { toggleCheck(this); });
 

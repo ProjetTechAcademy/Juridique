@@ -29,8 +29,8 @@
             color: var(--brand-blue); 
             margin: 0;
             display: flex; flex-direction: column; min-height: 100vh;
-            /* Attention : le padding-top compense la barre d'outils injectée + le header */
-            padding-top: 80px; 
+            /* CORRECTION : Espace exact pour la barre d'outils (60px) */
+            padding-top: 60px; 
         }
 
         /* --- HEADER (Copie Conforme Cosmic Premium) --- */
@@ -39,7 +39,7 @@
             color: #0F2C48; padding: 15px 0;
             box-shadow: 0 4px 20px rgba(0,0,0,0.2);
             font-family: 'Lato', sans-serif; border-bottom: 4px solid var(--brand-blue);
-            /* Important : Position sticky pour rester sous la barre d'outils */
+            /* CORRECTION : Colle parfaitement sous la barre d'outils */
             position: sticky; top: 60px; z-index: 900; 
         }
         .top-bar-container { max-width: 1400px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
@@ -53,7 +53,7 @@
         /* BOUTONS NAVIGATION (Style Cosmic Premium - Doré/Bronze) */
         .header-icon-btn {
             width: 40px; height: 40px; border-radius: 50%; 
-            background: linear-gradient(135deg, #D9A526 0%, #B4792A 100%); /* Modifié ici */
+            background: linear-gradient(135deg, #D9A526 0%, #B4792A 100%);
             border: 1px solid rgba(255,255,255,0.3);
             display: flex; align-items: center; justify-content: center; font-size: 1.1rem; text-decoration: none; color: white; transition: 0.3s;
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
