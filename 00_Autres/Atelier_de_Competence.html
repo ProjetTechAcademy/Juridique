@@ -312,14 +312,14 @@
     <script>
         // --- DATA 1 : SYLLOGISMES (30 CAS) ---
         const dbSyllogismes = [
-            { cat: "Social", title: "Abandon de Poste", context: "Absence injustifiée depuis 8 jours. Le patron veut le considérer comme démissionnaire.", majeure: "L'abandon n'est pas une démission. Il faut mettre en demeure.", mineure: "Aucune mise en demeure n'a été faite.", conclusion: "Interdiction de considérer le salarié démissionnaire. LRAR obligatoire.", advice: "Ne suspendez pas la paie avant la preuve de l'absence injustifiée." },
+            { cat: "Social", title: "Abandon de Poste", context: "Absence injustifiée depuis 15 jours. Silence radio.", majeure: "L'abandon après mise en demeure vaut présomption de démission.", mineure: "Mise en demeure restée sans réponse.", conclusion: "Salarié considéré démissionnaire (Pas de chômage).", advice: "Respectez scrupuleusement le délai de 15j dans la lettre." },
             { cat: "Social", title: "Insulte Facebook", context: "Salarié insulte son N+1 sur un groupe privé.", majeure: "Correspondance privée protégée sauf si publique.", mineure: "Le groupe est fermé et restreint.", conclusion: "Pas de sanction possible (Vie privée).", advice: "Si un 'ami' montre le message, la preuve peut devenir recevable." },
             { cat: "Affaires", title: "Rupture Brutale", context: "Arrêt des commandes brutal avec fournisseur de 10 ans.", majeure: "Rupture relation établie nécessite préavis écrit.", mineure: "0 préavis pour 10 ans.", conclusion: "Dommages et intérêts dus (marge brute sur 10-12 mois).", advice: "Envoyez un courrier recommandé donnant 12 mois de préavis." },
             { cat: "Social", title: "Vol Minime", context: "Caissière (20 ans d'anc.) vole 2€.", majeure: "Sanction proportionnée à la faute.", mineure: "Préjudice infime, carrière exemplaire.", conclusion: "Licenciement faute grave disproportionné.", advice: "Mise à pied disciplinaire de 3 jours max." },
             { cat: "Social", title: "Ivresse Travail", context: "Cariste sentant l'alcool.", majeure: "Obligation de sécurité.", mineure: "Poste à risque.", conclusion: "Mise à pied conservatoire immédiate + Alcootest.", advice: "Faites constater par un témoin tiers." },
             { cat: "Affaires", title: "Concurrence Déloyale", context: "Ex-salarié part avec fichier client.", majeure: "Fichier client = propriété entreprise.", mineure: "Preuve de transfert.", conclusion: "Action référé + Plainte pénale.", advice: "Clause de confidentialité renforcée." },
             { cat: "Social", title: "Refus Mutation", context: "Refus site à 20km. Clause mobilité.", majeure: "Refus fautif si clause valide.", mineure: "Clause couvre le département.", conclusion: "Licenciement possible.", advice: "Vérifiez le délai de prévenance." },
-            { cat: "Social", title: "Preuve illicite", context: "Caméra cachée filme vol.", majeure: "Preuve loyale obligatoire.", mineure: "Aucune info préalable.", conclusion: "Licenciement annulé au civil.", advice: "Déclarez vos caméras et informez les salariés." },
+            { cat: "Social", title: "Preuve 'Déloyale'", context: "Caméra cachée filme un vol grave.", majeure: "Preuve déloyale recevable si indispensable et proportionnée.", mineure: "Seul moyen de prouver le vol.", conclusion: "Licenciement validé (Revirement jurisprudence).", advice: "Attention, le juge vérifie la proportionnalité stricte." },
             { cat: "Social", title: "Grossesse et Essai", context: "Rupture essai après annonce grossesse.", majeure: "Interdit (Discrimination).", mineure: "Rupture lendemain annonce.", conclusion: "Rupture nulle. Réintégration.", advice: "Ne jamais rompre après annonce." },
             { cat: "Affaires", title: "Caution Gérant", context: "Société ne paie pas, banque appelle caution.", majeure: "Caution engagée sur biens propres.", mineure: "Caution solidaire.", conclusion: "Gérant paie sur son patrimoine.", advice: "Négociez un échéancier." },
             { cat: "Social", title: "Harcèlement Moral", context: "Manager critique violemment en public.", majeure: "Agissements répétés dégradants.", mineure: "Faits avérés.", conclusion: "Sanction manager + Protection victime.", advice: "Enquête interne obligatoire." },
@@ -346,7 +346,7 @@
 
         // --- DATA 2 : LEXIQUE COMPLET (100+ MOTS) ---
         const dbLexique = [
-            { m: "Abandon de poste", d: "Absence injustifiée et prolongée du salarié à son poste.", c: "Ne vaut pas démission. Nécessite mise en demeure préalable." },
+            { m: "Abandon de poste", d: "Absence injustifiée. Si le salarié ne reprend pas le travail après mise en demeure.", c: "Vaut désormais présomption de démission (privation assurance chômage)." },
             { m: "Abrogation", d: "Suppression pour l'avenir d'un acte ou d'une loi.", c: "La loi cesse de s'appliquer, mais reste valable pour le passé." },
             { m: "Abus de confiance", d: "Détournement de fonds ou de biens remis à titre précaire.", c: "Délit pénal (ex: usage perso CB entreprise)." },
             { m: "Accident du travail", d: "Accident survenu par le fait ou à l'occasion du travail.", c: "Présomption d'imputabilité. Déclaration employeur sous 48h." },
@@ -355,7 +355,7 @@
             { m: "Acte authentique", d: "Acte notarié ou d'huissier.", c: "Force probante supérieure et force exécutoire." },
             { m: "Action en justice", d: "Droit de saisir le juge.", c: "Attention aux délais de prescription qui éteignent ce droit." },
             { m: "Astreinte", d: "Période de disponibilité hors lieu de travail.", c: "Donne lieu à compensation ($ ou repos). Intervention = Travail effectif." },
-            { m: "Attestation Pôle Emploi", d: "Document obligatoire de fin de contrat (France Travail).", c: "Erreur ou retard bloque l'indemnisation chômage." },
+            { m: "Attestation France Travail", d: "Document obligatoire de fin de contrat (ex-Pôle Emploi).", c: "Erreur ou retard bloque l'indemnisation chômage." },
             { m: "Audit Social", d: "Diagnostic de la conformité RH.", c: "Outil clé du juriste pour identifier les risques pénaux/financiers." },
             { m: "Avance", d: "Prêt d'argent sur travail non encore fait.", c: "Remboursement limité par la quotité saisissable (1/10ème)." },
             { m: "Avenant", d: "Modification écrite du contrat.", c: "Obligatoire pour toucher aux éléments essentiels (salaire, durée)." },
@@ -380,7 +380,7 @@
             { m: "Coefficient", d: "Niveau hiérarchique dans la grille conventionnelle.", c: "Détermine le salaire minimum à respecter." },
             { m: "Concurrence déloyale", d: "Faute commerciale (dénigrement, confusion).", c: "Le débauchage massif de salariés en est une forme." },
             { m: "Confidentialité (Clause)", d: "Secret des affaires.", c: "Valable même sans contrepartie financière." },
-            { m: "Congés payés", d: "Droit au repos (5 semaines min.).", c: "L'employeur décide des dates (pouvoir de direction)." },
+            { m: "Congés payés", d: "Droit au repos. Acquisition maintenue même en maladie (Loi 2024).", c: "Limite de report de 15 mois. 4 semaines max si maladie non pro." },
             { m: "Contrat intuitu personae", d: "Lié à la personne même.", c: "Pas de remplacement possible (le salarié ne peut envoyer un ami)." },
             { m: "Contrat synallagmatique", d: "Obligations réciproques (Travail vs Salaire).", c: "Permet l'exception d'inexécution." },
             { m: "Contrat de travail", d: "Convention : prestation, rémunération, subordination.", c: "Le lien de subordination est le critère décisif." },
@@ -477,7 +477,7 @@
             { t: "Licenciement Éco", c: "Procedure", d: "Suppression de poste pour motif non personnel.", s: ["Motif éco réel", "Critères d'ordre (toute l'entreprise)", "Recherche reclassement", "CSP"], p: "L'application des critères d'ordre des licenciements est obligatoire et source de nombreux contentieux." },
             { t: "Télétravail", c: "Gestion", d: "Organisation du travail à distance.", s: ["Accord ou Charte", "Clause de réversibilité", "Éligibilité des postes", "Indemnisation frais"], p: "Le refus de télétravail à un travailleur handicapé ou aidant doit être motivé par des raisons objectives." },
             { t: "Sanction Simple", c: "Procedure", d: "Avertissement ou Blâme (sans impact contrat).", s: ["Faute avérée et prouvée", "Pas d'entretien préalable (sauf si RI le prévoit)", "Notification écrite motivée"], p: "Vérifiez votre Règlement Intérieur. Si l'entretien y est prévu, vous devez le faire même pour un avertissement." },
-            { t: "Abandon de Poste", c: "Danger", d: "Absence injustifiée.", s: ["Ne rien faire (attente)", "Mise en demeure reprise", "Constat absence", "Procédure disciplinaire"], p: "Ne considérez jamais le salarié comme démissionnaire sans appliquer la procédure spécifique de présomption." },
+            { t: "Abandon de Poste", c: "Gestion", d: "Absence injustifiée prolongée.", s: ["Constat absence", "Mise en demeure (LRAR) de reprendre", "Attente délai fixée (min 15j)", "Constat démission présumée"], p: "Ne licenciez plus pour faute grave (sauf exception). La présomption de démission est la voie royale désormais." },
             { t: "Grossesse", c: "Sante", d: "Protection de la maternité.", s: ["Déclaration", "Visites médicales", "Aménagement poste", "Protection absolue licenciement (congé)"], p: "Interdiction absolue de licencier pendant le congé mat, même pour faute grave (sauf fermeture entreprise)." },
             { t: "Forfait Jours", c: "Gestion", d: "Temps de travail en jours.", s: ["Accord collectif", "Convention individuelle", "Entretien annuel charge travail", "Suivi jours"], p: "Si l'entretien annuel sur la charge de travail n'est pas fait, le forfait tombe (paiement heures sup)." },
             { t: "Usage d'Entreprise", c: "Gestion", d: "Avantage non écrit (Général, Constant, Fixe).", s: ["Identifier l'usage", "Informer CSE", "Informer salariés (individuel)", "Délai prévenance"], p: "Pour supprimer une prime d'usage, il faut respecter la procédure de dénonciation stricte." },
@@ -499,7 +499,7 @@
             { t: "Mise à Pied Disc.", c: "Procedure", d: "Suspension salaire pour sanction.", s: ["Faute", "Entretien préalable", "Notification durée fixe", "Exécution"], p: "Ne peut pas être à durée indéterminée (sinon c'est une mise à pied conservatoire)." },
             { t: "Avertissement", c: "Procedure", d: "Sanction légère écrite.", s: ["Faute constatée", "Pas d'entretien (sauf RI)", "Lettre motivée", "Versée au dossier"], p: "Un mail de reproches peut être considéré comme un avertissement et épuiser le pouvoir disciplinaire." },
             { t: "Saisie Salaire", c: "Gestion", d: "Retenue sur paie pour dette.", s: ["Notification greffe", "Calcul quotité saisissable", "Versement régisseur", "Information salarié"], p: "Ne jamais verser la totalité du salaire au créancier. Il faut laisser le RSA (SBI)." },
-            { t: "Solde Tout Compte", c: "Gestion", d: "Paiement final.", s: ["Calcul CP, Prorata, Primes", "Reçu pour solde", "Certificat travail", "Attestation Pôle Emploi"], p: "L'effet libératoire du reçu ne joue que pour les sommes précisément listées dessus." },
+            { t: "Solde Tout Compte", c: "Gestion", d: "Paiement final.", s: ["Calcul CP, Prorata, Primes", "Reçu pour solde", "Certificat travail", "Attestation France Travail"], p: "L'effet libératoire du reçu ne joue que pour les sommes précisément listées dessus." },
             { t: "Alcool / Drogue", c: "Danger", d: "Salarié sous emprise.", s: ["Retrait immédiat (Sécurité)", "Constat (Témoins)", "Entretien", "Sanction si trouble ou danger"], p: "L'alcootest n'est possible que si prévu au RI et pour les postes à risque." },
             { t: "Agression / Violence", c: "Danger", d: "Bagarre ou menace.", s: ["Séparer/Protéger", "Mise à pied conservatoire", "Enquête", "Licenciement faute grave"], p: "Tolérance zéro. L'employeur est responsable de la sécurité des autres salariés." },
             { t: "Vol Entreprise", c: "Danger", d: "Soustraction frauduleuse.", s: ["Preuves licites", "Entretien", "Sanction proportionnée", "Plainte éventuelle"], p: "Attention à la proportionnalité : on ne licencie pas pour un stylo (sauf récidive ou préjudice image)." },
