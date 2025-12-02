@@ -3,536 +3,334 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lexique Latin Juridique - Expert MBA</title>
     
-    <meta name="description" content="Lexique Latin Juridique - Les expressions latines indispensables pour exceller en droit">
-    <meta name="author" content="Mathilde Martine PAISLEY">
-    
-    <title>Lexique Latin Juridique</title>
+    <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/e/e0/Balance_of_Justice_SVG.svg" type="image/svg+xml">
 
-    <link rel="icon" type="image/jpeg" href="https://projettechacademy.github.io/Juridique/Asset/Logo_MMPA.jpeg">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&family=Montserrat:wght@500;600;700&family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&family=Montserrat:wght@500;600;700&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
     <style>
-        /* ========================================
-           VARIABLES CSS (COSMIC PREMIUM)
-           ======================================== */
+        /* === CHARTE GRAPHIQUE COSMIC PREMIUM === */
         :root {
-            --color-bg: #F6F2E8;       /* Ivoire */
-            --color-primary: #0F2C48;  /* Bleu Nuit */
-            --color-accent: #D9A526;   /* Jaune Doré */
-            --color-alert: #B4792A;    /* Bronze */
-            --color-text: #2c3e50;
-            --color-white: #ffffff;
+            --cta: #D9A526;       /* Or */
+            --brand-blue: #0F2C48; /* Bleu Nuit */
+            --ivory: #F6F2E8;     
+            --bronze: #B4792A;    
             
-            /* Couleurs spécifiques Lexique (Feedback) */
-            --color-success: #10b981;
-            --color-warning: #f59e0b;
-            --color-error: #ef4444;
+            /* Couleurs Lexique Expert */
+            --bg-context: #e0f2fe; --border-context: #0284c7; --text-context: #075985;
+            --bg-advice: #fffbeb; --border-advice: #d97706; --text-advice: #92400e;
+            --bg-danger: #fef2f2; --border-danger: #dc2626; --text-danger: #991b1b;
         }
 
-        /* ========================================
-           RESET & BASE
-           ======================================== */
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        html { scroll-behavior: smooth; }
-        
-        body {
-            font-family: 'Lato', sans-serif;
-            background-color: var(--color-bg);
-            color: var(--color-text);
-            line-height: 1.8;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
+        body { 
+            margin: 0; 
+            background-color: var(--ivory); 
+            color: var(--brand-blue); 
+            font-family: 'Outfit', sans-serif; 
+            display: flex; flex-direction: column; min-height: 100vh;
         }
 
-        h1, h2, h3, h4 { 
-            font-family: 'Playfair Display', serif; 
-            color: var(--color-primary); 
-            font-weight: 700;
-        }
-        
-        p { margin-bottom: 1rem; }
-        a { text-decoration: none; color: inherit; transition: all 0.3s ease; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 25px; }
-        
-        /* Animation "Pulse" */
-        @keyframes cosmic-pulse {
-            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(217, 165, 38, 0.7); }
-            70% { transform: scale(1.02); box-shadow: 0 0 0 10px rgba(217, 165, 38, 0); }
-            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(217, 165, 38, 0); }
-        }
-
-        /* ========================================
-           TOP BAR (COSMIC STYLE)
-           ======================================== */
+        /* === HEADER === */
         .top-bar {
-            background-color: var(--color-primary);
-            color: var(--color-white);
+            background-color: var(--brand-blue);
             padding: 15px 0;
             box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-            position: sticky;
-            top: 0;
-            z-index: 100;
+            position: sticky; top: 0; z-index: 10000;
+            border-bottom: 4px solid var(--cta);
+        }
+        
+        .top-bar-container {
+            max-width: 1400px; margin: 0 auto; padding: 0 20px;
+            display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px;
         }
 
-        .top-bar-content {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-
-        .top-bar-left {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            flex: 1;
-            min-width: 300px;
-        }
-
-        .logo-top-bar {
-            width: 55px; height: 55px;
-            border-radius: 50%;
-            border: 2px solid var(--color-accent);
-            object-fit: cover;
-            background: white;
-        }
-
+        .top-bar-left { display: flex; align-items: center; gap: 15px; flex: 1; min-width: 320px; }
+        .logo-top-bar { width: 60px; height: 60px; border-radius: 50%; border: 2px solid var(--cta); object-fit: cover; background: white; }
         .identity-stack { display: flex; flex-direction: column; justify-content: center; }
-        
-        .name-top-bar {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.4rem; font-weight: 700;
-            color: var(--color-white); line-height: 1.2;
-        }
-        
-        .club-subtitle { 
-            font-size: 0.85rem; 
-            color: var(--color-accent); 
-            font-weight: 700; 
-            margin-top: 2px;
-        }
+        .club-title-main { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; color: #ffffff; line-height: 1.1; margin-bottom: 3px; }
+        .club-subtitle { font-family: 'Lato', sans-serif; font-size: 0.75rem; color: var(--cta); font-weight: 600; }
 
-        .top-bar-center { display: flex; gap: 15px; align-items: center; }
-
-        /* Onglets Or/Bronze */
+        .top-bar-center { display: flex; gap: 12px; align-items: center; }
+        
+        /* Boutons Header (Gold) */
         .header-icon-btn {
-            position: relative;
-            width: 42px; height: 42px;
-            border-radius: 50%;
+            position: relative; width: 40px; height: 40px; border-radius: 50%;
             background: linear-gradient(135deg, #D9A526 0%, #B4792A 100%);
-            border: 2px solid rgba(255, 255, 255, 0.8);
-            display: flex; align-items: center; justify-content: center;
-            font-size: 1.2rem; transition: all 0.3s ease;
-            cursor: pointer; color: white; text-decoration: none;
+            border: 1px solid rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center;
+            font-size: 1.1rem; text-decoration: none; transition: all 0.3s ease; color: white;
             box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
-        .header-icon-btn:hover {
-            transform: translateY(-3px) scale(1.1);
+        .header-icon-btn:hover { 
+            transform: translateY(-3px) scale(1.1); 
             background: linear-gradient(135deg, #FFD700 0%, #D9A526 100%);
-            box-shadow: 0 0 15px rgba(217, 165, 38, 0.6);
-            border-color: #fff;
+            box-shadow: 0 6px 15px rgba(217, 165, 38, 0.4); 
         }
         
+        .nav-profile-img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 2px solid #fff; }
+        
         .header-icon-btn::after {
-            content: attr(data-tooltip);
-            position: absolute; top: 130%; left: 50%;
-            transform: translateX(-50%) translateY(-10px);
-            background-color: var(--color-white); color: var(--color-primary);
-            padding: 5px 12px; border-radius: 20px;
-            font-size: 0.75rem; font-weight: 700; white-space: nowrap;
-            opacity: 0; visibility: hidden; transition: all 0.3s ease;
+            content: attr(data-tooltip); position: absolute; top: 130%; left: 50%; transform: translateX(-50%) translateY(-10px);
+            background-color: #fff; color: var(--brand-blue); padding: 4px 10px; border-radius: 20px;
+            font-size: 0.7rem; font-weight: 700; white-space: nowrap; opacity: 0; visibility: hidden; transition: all 0.3s ease;
             box-shadow: 0 4px 10px rgba(0,0,0,0.2); pointer-events: none; z-index: 100;
         }
         .header-icon-btn:hover::after { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
 
-        .nav-profile-img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: none; }
-
-        /* Bouton Portfolio Pulse */
+        /* Bouton Portfolio */
+        @keyframes cosmic-pulse { 0% { transform: scale(1); } 50% { transform: scale(1.02); } 100% { transform: scale(1); } }
         .btn-portfolio-cosmic {
-            padding: 10px 25px; border-radius: 50px;
-            font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 0.95rem;
-            background: linear-gradient(135deg, #D9A526 0%, #B4792A 100%);
-            color: white; border: 1px solid rgba(255,255,255,0.4);
-            cursor: pointer; display: inline-flex; align-items: center; gap: 8px;
-            transition: all 0.3s ease; text-decoration: none;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            animation: cosmic-pulse 2s infinite;
+            padding: 8px 20px; border-radius: 50px; font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 0.9rem;
+            background: linear-gradient(135deg, #D9A526 0%, #B4792A 100%); color: white !important; text-decoration: none; 
+            border: 1px solid rgba(255,255,255,0.2); display: inline-flex; align-items: center; gap: 8px; animation: cosmic-pulse 2s infinite;
         }
-        .btn-portfolio-cosmic:hover {
-            background: linear-gradient(135deg, #F1C40F 0%, #D9A526 100%);
-            transform: translateY(-2px); color: white;
-        }
+        .btn-portfolio-cosmic:hover { background: linear-gradient(135deg, #F1C40F 0%, #D9A526 100%); transform: translateY(-2px); }
 
-        /* ========================================
-           CONTENU PRINCIPAL
-           ======================================== */
-        main { flex: 1; padding: 40px 0; }
+        /* === MAIN === */
+        main { flex-grow: 1; max-width: 1200px; margin: 0 auto; padding: 40px 20px; width: 100%; }
+        
+        .page-title { text-align: center; font-family: 'Playfair Display', serif; font-size: 2.5rem; color: var(--brand-blue); margin-bottom: 10px; }
+        .page-intro { text-align: center; color: var(--bronze); margin-bottom: 40px; font-weight: 600; }
 
-        /* Page Header Style Cosmic */
-        .page-header { text-align: center; margin-bottom: 40px; }
-        .page-title {
-            font-family: 'Playfair Display', serif; font-size: 2.5rem;
-            color: var(--color-primary); margin-bottom: 10px;
-            display: flex; align-items: center; justify-content: center; gap: 15px;
-        }
-        .page-subtitle { font-size: 1.1rem; color: var(--color-alert); margin-bottom: 20px; font-weight: 600; }
+        .controls-section { background: white; padding: 20px; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); margin-bottom: 30px; border-top: 4px solid var(--cta); }
+        .search-input { width: 100%; padding: 15px 25px; border-radius: 50px; border: 2px solid #e5e7eb; font-size: 1.1rem; outline: none; transition: 0.3s; margin-bottom: 15px; }
+        .search-input:focus { border-color: var(--cta); box-shadow: 0 0 0 4px rgba(217, 165, 38, 0.1); }
+        
+        .filters-container { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
+        .filter-btn { padding: 6px 18px; border-radius: 50px; border: 2px solid var(--brand-blue); background: transparent; color: var(--brand-blue); font-weight: 700; cursor: pointer; transition: 0.3s; font-size: 0.9rem; }
+        .filter-btn:hover, .filter-btn.active { background: var(--brand-blue); color: white; }
 
-        /* Controls Section */
-        .controls-section {
-            background: white; padding: 25px; border-radius: 16px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08); margin-bottom: 30px;
-            border-top: 4px solid var(--color-accent);
-        }
+        /* CARTES */
+        .cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); gap: 30px; }
 
-        .search-bar { display: flex; gap: 15px; margin-bottom: 20px; align-items: center; }
-        .search-input {
-            flex: 1; padding: 12px 20px; border: 2px solid #e5e7eb;
-            border-radius: 50px; font-size: 1rem; transition: all 0.3s ease;
-        }
-        .search-input:focus {
-            outline: none; border-color: var(--color-accent);
-            box-shadow: 0 0 0 3px rgba(217, 165, 38, 0.1);
-        }
-
-        /* Toggle Mode Révision */
-        .toggle-container {
-            display: flex; align-items: center; gap: 10px; 
-            background: #f1f5f9; padding: 8px 16px; border-radius: 50px;
-            border: 1px solid #e2e8f0;
-        }
-        .toggle-switch {
-            position: relative; width: 50px; height: 26px;
-        }
-        .toggle-switch input { opacity: 0; width: 0; height: 0; }
-        .slider {
-            position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0;
-            background-color: #ccc; transition: .4s; border-radius: 34px;
-        }
-        .slider:before {
-            position: absolute; content: ""; height: 20px; width: 20px; left: 3px; bottom: 3px;
-            background-color: white; transition: .4s; border-radius: 50%;
-        }
-        input:checked + .slider { background-color: var(--color-accent); }
-        input:checked + .slider:before { transform: translateX(24px); }
-        .toggle-label { font-weight: 700; font-size: 0.9rem; color: var(--color-primary); cursor: pointer; user-select: none; }
-
-        /* Stats Bar Style Cosmic */
-        .stats-bar {
-            display: flex; justify-content: space-around; padding: 20px;
-            background: linear-gradient(135deg, var(--color-primary), #1a3b5c);
-            border-radius: 12px; flex-wrap: wrap; gap: 15px; color: white;
-        }
-        .stat-item { text-align: center; }
-        .stat-value {
-            display: block; font-size: 2rem; font-weight: 700;
-            color: var(--color-accent);
-        }
-        .stat-label { font-size: 0.85rem; opacity: 0.9; }
-
-        /* Cards Grid */
-        .cards-grid {
-            display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 25px;
-        }
-
-        .term-card {
-            background: white; border-radius: 16px; padding: 25px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08); transition: all 0.3s ease;
-            border-left: 5px solid var(--color-accent); cursor: pointer;
-            position: relative; overflow: hidden;
+        .expert-card {
+            background: white; border-radius: 16px; overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: all 0.3s ease;
+            border: 1px solid rgba(0,0,0,0.05); position: relative;
             display: flex; flex-direction: column;
         }
-        .term-card:hover { transform: translateY(-5px); box-shadow: 0 12px 30px rgba(0,0,0,0.12); }
+        .expert-card:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(0,0,0,0.1); border-color: var(--cta); }
 
-        /* Mode Révision : Flou sur les réponses */
-        .revision-mode .term-translation,
-        .revision-mode .term-definition,
-        .revision-mode .term-example {
-            filter: blur(8px);
-            user-select: none;
-            transition: filter 0.3s ease;
-        }
-        .revision-mode .term-card:hover .term-translation,
-        .revision-mode .term-card:hover .term-definition,
-        .revision-mode .term-card:hover .term-example {
-            filter: blur(0);
-        }
-
-        .term-header {
-            display: flex; justify-content: space-between; align-items: start; margin-bottom: 15px;
-        }
-        .term-title-group { display: flex; align-items: center; gap: 10px; }
-        .audio-btn {
-            background: none; border: 2px solid var(--color-accent); color: var(--color-accent);
+        .card-top { padding: 20px 20px 10px 20px; border-bottom: 1px solid #f1f5f9; position: relative; }
+        .card-number { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 0.8rem; color: #cbd5e1; position: absolute; top: 15px; left: 15px; }
+        .badges-group { position: absolute; top: 15px; right: 15px; display: flex; gap: 5px; }
+        .badge-circle {
             width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            cursor: pointer; transition: all 0.2s; font-size: 0.9rem;
+            font-size: 0.7rem; font-weight: 800; color: white; border: 2px solid white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); cursor: help;
         }
-        .audio-btn:hover { background: var(--color-accent); color: white; }
-        
-        .term-latin {
-            font-family: 'Playfair Display', serif; font-size: 1.4rem;
-            color: var(--color-primary); font-weight: 700; font-style: italic;
-        }
-        .term-category {
-            padding: 4px 12px; background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
-            color: white; border-radius: 20px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase;
-        }
+        .bg-je { background-color: #0369a1; }
+        .bg-ds { background-color: #be185d; }
+        .bg-da { background-color: #b45309; }
 
-        .term-translation {
-            font-size: 1rem; color: var(--color-alert); font-weight: 600;
-            margin-bottom: 15px; display: block;
+        .latin-title-row { margin-top: 25px; display: flex; align-items: center; gap: 8px; justify-content: center; text-align: center; }
+        .latin-term { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 900; font-style: italic; color: var(--brand-blue); }
+        .pronounce-btn {
+            background: #f0f9ff; border: 1px solid #bae6fd; color: #0284c7; cursor: pointer;
+            font-size: 1rem; transition: 0.2s; display: flex; align-items: center; justify-content: center;
+            width: 28px; height: 28px; border-radius: 50%;
         }
-        .term-definition { color: var(--color-text); line-height: 1.6; margin-bottom: 12px; }
-        .term-example {
-            padding: 12px; background: #f9fafb; border-left: 3px solid var(--color-accent);
-            border-radius: 8px; font-style: italic; color: #6b7280; font-size: 0.9rem; margin-top: auto;
-        }
+        .pronounce-btn:hover { background-color: #0284c7; color: white; transform: scale(1.1); }
 
-        /* Buttons Actions */
-        .term-actions {
-            display: flex; gap: 10px; margin-top: 15px;
-            padding-top: 15px; border-top: 1px solid #e5e7eb;
-        }
-        .action-btn {
-            flex: 1; padding: 8px; border: none; border-radius: 50px;
-            cursor: pointer; font-weight: 600; font-size: 0.85rem;
-            transition: all 0.3s ease; display: flex; align-items: center;
-            justify-content: center; gap: 5px;
-        }
-        .btn-forgot { background: #fee2e2; color: #991b1b; }
-        .btn-forgot:hover { background: #fecaca; transform: scale(1.05); }
-        
-        .btn-pass { background: #fef3c7; color: #92400e; }
-        .btn-pass:hover { background: #fde68a; transform: scale(1.05); }
-        
-        .btn-knew { background: #d1fae5; color: #065f46; }
-        .btn-knew:hover { background: #a7f3d0; transform: scale(1.05); }
+        .translation { text-align: center; color: #64748b; font-weight: 600; font-size: 1rem; margin-top: 8px; margin-bottom: 8px; }
+        .definition-box { padding: 15px 20px; text-align: justify; color: var(--color-text); font-size: 0.95rem; line-height: 1.6; }
 
-        /* Empty State */
-        .empty-state { text-align: center; padding: 60px 20px; color: #6b7280; }
-        .empty-state i { font-size: 4rem; margin-bottom: 20px; opacity: 0.3; color: var(--color-accent); }
+        .expert-toggle {
+            width: 100%; padding: 12px; background: #f8fafc; border: none; border-top: 1px solid #e2e8f0;
+            color: var(--brand-blue); font-weight: 700; font-size: 0.9rem; cursor: pointer;
+            display: flex; justify-content: center; align-items: center; gap: 8px; transition: 0.3s;
+        }
+        .expert-toggle:hover { background: #f1f5f9; color: var(--cta); }
+        .chevron { transition: transform 0.3s; }
+        .expert-toggle.active .chevron { transform: rotate(180deg); }
 
-        /* ========================================
-           FOOTER (COSMIC STYLE)
-           ======================================== */
+        .expert-content { max-height: 0; overflow: hidden; transition: max-height 0.5s ease-out; background: #fff; padding: 0 20px; }
+        .expert-content.open { max-height: 1000px; padding-bottom: 20px; }
+
+        .expert-block { margin-top: 15px; padding: 12px; border-radius: 8px; font-size: 0.9rem; line-height: 1.5; border-left: 4px solid transparent; text-align: left; }
+        .b-context { background: var(--bg-context); border-color: var(--border-context); color: var(--text-context); }
+        .b-advice { background: var(--bg-advice); border-color: var(--border-advice); color: var(--text-advice); }
+        .b-danger { background: var(--bg-danger); border-color: var(--border-danger); color: var(--text-danger); }
+        .block-title { font-weight: 800; font-size: 0.7rem; text-transform: uppercase; margin-bottom: 4px; display: block; letter-spacing: 0.5px; }
+
+        .card-bottom-actions { margin-top: auto; padding: 10px 20px; background: #fdfbf7; border-top: 1px dashed #e2e8f0; display: flex; justify-content: flex-end; align-items: center; }
+        .btn-read-all {
+            background: white; border: 1px solid var(--cta); color: var(--bronze);
+            padding: 5px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 700;
+            cursor: pointer; display: flex; align-items: center; gap: 6px; transition: 0.2s;
+        }
+        .btn-read-all:hover { background: var(--cta); color: white; }
+
+        /* === FOOTER COMPLET RESTITUÉ === */
         .main-footer {
-            background-color: var(--color-primary); color: var(--color-bg);
-            padding: 50px 0 20px; margin-top: auto;
+            background-color: var(--brand-blue); color: #F6F2E8;
+            padding-top: 50px; font-family: 'Lato', sans-serif; font-size: 0.95rem;
+            width: 100%; margin-top: auto;
         }
-        .footer-content {
-            display: flex; justify-content: space-between; align-items: flex-start;
-            flex-wrap: wrap; gap: 30px; margin-bottom: 30px;
-        }
-        .footer-identity { display: flex; align-items: center; gap: 15px; }
-        .footer-logo-img {
-            width: 60px; height: 60px; border-radius: 8px;
-            border: 2px solid var(--color-accent); object-fit: cover; background: white;
-        }
-        .footer-info-col { display: flex; flex-direction: column; }
-        .footer-name {
-            color: var(--color-accent); font-family: 'Playfair Display', serif;
-            font-weight: 700; font-size: 1.2rem; margin-bottom: 5px;
-        }
-        .footer-contact-stack {
-            font-size: 0.9rem; opacity: 0.8;
-            display: flex; flex-direction: column; gap: 4px;
-        }
-        .footer-link { color: inherit; text-decoration: none; transition: color 0.3s ease; }
-        .footer-link:hover { color: var(--color-accent); }
-
-        .dock-group { display: flex; flex-direction: column; align-items: flex-end; gap: 10px; }
-        .dock-label {
-            font-family: 'Montserrat', sans-serif; font-size: 0.8rem;
-            text-transform: uppercase; color: var(--color-accent); opacity: 0.8;
-        }
-        .icon-dock {
-            display: flex; gap: 12px; align-items: center;
-            flex-wrap: wrap; justify-content: flex-end;
-        }
-        .icon-btn {
-            width: 40px; height: 40px; border-radius: 50%;
-            background: rgba(255,255,255,0.1);
-            display: flex; align-items: center; justify-content: center;
-            transition: all 0.3s ease; border: 1px solid rgba(255,255,255,0.2);
-            color: white; text-decoration: none; font-size: 1.1rem; position: relative;
-        }
-        .icon-btn:hover {
-            background: white; color: var(--color-primary);
-            transform: translateY(-3px); border-color: white;
-        }
+        .footer-container { max-width: 1100px; margin: 0 auto; padding: 0 25px; }
+        .footer-content { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 30px; padding-bottom: 30px; align-items: flex-start; }
         
-        .brand-whatsapp { color: #25D366; } .icon-btn:hover .brand-whatsapp { color: #25D366; }
-        .brand-discord { color: #5865F2; } .icon-btn:hover .brand-discord { color: #5865F2; }
-        .brand-linkedin { color: #0077b5; } .icon-btn:hover .brand-linkedin { color: #0077b5; }
-        .brand-instagram { color: #E1306C; } .icon-btn:hover .brand-instagram { color: #E1306C; }
-        .brand-tiktok { color: #00f2ea; } .icon-btn:hover .brand-tiktok { color: #000; }
+        .footer-identity { display: flex; flex-direction: row; align-items: center; gap: 20px; min-width: 300px; }
+        .footer-logo-img { width: 60px; height: 60px; border-radius: 8px; border: 2px solid var(--cta); background: #fff; object-fit: cover; }
+        .footer-info-compact { display: flex; flex-direction: column; text-align: left; }
+        .footer-name { color: var(--cta); font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; line-height: 1.2; margin-bottom: 5px; margin-top:0; }
+        .footer-contact-stack { display: flex; flex-direction: column; gap: 5px; font-size: 0.85rem; opacity: 0.8; }
+        .footer-link { text-decoration: none; color: inherit; transition: color 0.3s; display: inline-block; }
+        .footer-link:hover { color: var(--cta); }
+
+        .footer-dock-col { display: flex; flex-direction: column; align-items: flex-end; gap: 10px; margin-left: auto; }
+        .dock-group { display: flex; flex-direction: column; align-items: flex-end; gap: 5px; }
+        .dock-label { font-family: 'Montserrat', sans-serif; font-size: 0.8rem; text-transform: uppercase; color: var(--cta); opacity: 0.7; }
+        .icon-dock { display: flex; gap: 15px; flex-wrap: wrap; justify-content: flex-end; align-items: center; }
+
+        .icon-btn { 
+            position: relative; width: 45px; height: 45px; border-radius: 50%; 
+            background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(217, 165, 38, 0.3); 
+            display: flex; align-items: center; justify-content: center; 
+            font-size: 1.3rem; text-decoration: none; 
+            transition: all 0.3s; cursor: pointer; color: #fff; 
+        }
+        .icon-btn:hover { transform: translateY(-5px) scale(1.1); background: #fff; border-color: #fff; }
+
+        /* Couleurs Marques */
+        .brand-whatsapp { color: #25D366 !important; } .icon-btn:hover .brand-whatsapp { color: #25D366 !important; }
+        .brand-discord { color: #5865F2 !important; } .icon-btn:hover .brand-discord { color: #5865F2 !important; }
+        .brand-linkedin { color: #0077b5 !important; } .icon-btn:hover .brand-linkedin { color: #0077b5 !important; }
+        .brand-instagram { color: #E1306C !important; } .icon-btn:hover .brand-instagram { color: #E1306C !important; }
+        .brand-tiktok { color: #00f2ea !important; text-shadow: 2px 2px 0px #ff0050; } .icon-btn:hover .brand-tiktok { color: #000 !important; text-shadow: none; } 
+        .brand-nav { color: var(--cta) !important; } .icon-btn:hover .brand-nav { color: var(--brand-blue) !important; }
 
         .icon-btn::after {
-            content: attr(data-tooltip); position: absolute; bottom: 125%; left: 50%;
-            transform: translateX(-50%); background: white; color: var(--color-primary);
-            padding: 4px 8px; border-radius: 4px; font-size: 0.7rem; white-space: nowrap;
-            opacity: 0; visibility: hidden; transition: 0.2s; pointer-events: none; font-weight: bold;
+            content: attr(data-tooltip); position: absolute; bottom: 120%; left: 50%; transform: translateX(-50%) translateY(10px);
+            background-color: #fff; color: var(--brand-blue); padding: 5px 12px; border-radius: 20px;
+            font-size: 0.75rem; font-weight: 700; white-space: nowrap; opacity: 0; visibility: hidden; transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2); pointer-events: none; z-index: 100;
         }
-        .icon-btn:hover::after { opacity: 1; visibility: visible; }
+        .icon-btn:hover::after { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
 
-        .footer-bottom {
-            text-align: center; padding-top: 20px;
-            border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.85rem; opacity: 0.6;
+        .dock-separator { width: 1px; height: 30px; background-color: rgba(255,255,255,0.2); margin: 0 10px; }
+        .footer-bottom { 
+            text-align: center; padding: 15px 0; font-size: 0.8rem; 
+            color: rgba(255,255,255,0.4); background-color: rgba(0,0,0,0.2); 
+            border-top: 1px solid rgba(255,255,255,0.05); width: 100%;
         }
 
-        /* Back To Top - Style Premium */
+        /* BACK TO TOP (COSMIC PREMIUM) */
         #backToTop {
-            position: fixed; bottom: 30px; right: 30px;
-            width: 50px; height: 50px;
-            background: linear-gradient(135deg, #D9A526, #B4792A);
-            color: white; border-radius: 50%;
+            position: fixed; bottom: 30px; right: 30px; 
+            background: linear-gradient(135deg, #D9A526 0%, #B4792A 100%);
+            color: white; width: 50px; height: 50px; border-radius: 50%; 
             display: flex; align-items: center; justify-content: center;
-            cursor: pointer; opacity: 0; visibility: hidden;
-            transition: all 0.3s ease; box-shadow: 0 4px 12px rgba(0,0,0,0.3); z-index: 1000;
+            font-size: 1.2rem; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.2); opacity: 0; pointer-events: none;
+            transition: all 0.3s ease; z-index: 1000; border: 1px solid rgba(255,255,255,0.3);
         }
-        #backToTop.visible { opacity: 1; visibility: visible; }
-        #backToTop:hover { transform: translateY(-5px) scale(1.1); box-shadow: 0 6px 16px rgba(217, 165, 38, 0.5); }
+        #backToTop.show { opacity: 1; pointer-events: all; }
+        #backToTop:hover { transform: translateY(-5px); background: linear-gradient(135deg, #FFD700 0%, #D9A526 100%); }
 
-        /* Responsive */
-        @media (max-width: 900px) {
-            .top-bar-content { flex-direction: column; text-align: center; }
-            .top-bar-left { justify-content: center; }
+        @media (max-width: 768px) {
             .footer-content { flex-direction: column; align-items: center; text-align: center; }
-            .dock-group, .icon-dock { align-items: center; justify-content: center; }
-            .cards-grid { grid-template-columns: 1fr; }
-            .search-bar { flex-direction: column; }
+            .footer-identity { flex-direction: column; text-align: center; }
+            .footer-dock-col { align-items: center; width: 100%; gap: 30px; margin-left: 0; }
+            .icon-dock { justify-content: center; flex-wrap: wrap; }
+            .dock-group { align-items: center; }
+            .dock-separator { display: none; }
         }
     </style>
 </head>
 <body>
 
     <div class="top-bar">
-        <div class="container">
-            <div class="top-bar-content">
-                <div class="top-bar-left">
-                    <img src="https://projettechacademy.github.io/Juridique/Asset/Logo_juriste.png" onerror="this.src='https://projettechacademy.github.io/Juridique/Asset/Logo_juriste.jpg';" alt="Logo Club" class="logo-top-bar">
-                    <div class="identity-stack">
-                        <span class="name-top-bar">💫The Jurist Elite Club By Studi ✨</span>
-                        <span class="club-subtitle">La Villa des Juristes Brisés 💔 sur l’Île de  L’INSTRUCTION !🏝</span>
-                    </div>
+        <div class="top-bar-container">
+            <div class="top-bar-left">
+                <img src="https://projettechacademy.github.io/Juridique/Asset/Logo_juriste.png" 
+                     onerror="this.src='https://projettechacademy.github.io/Juridique/Asset/Logo_juriste.jpg';" 
+                     alt="Logo Club" class="logo-top-bar">
+                <div class="identity-stack">
+                    <span class="club-title-main">💫 The Jurist Elite Club By Studi ✨</span>
+                    <span class="club-subtitle">La Villa des Juristes Brisés 💔 sur l’Île de L’INSTRUCTION ! 🏝</span>
                 </div>
-                
-                <div class="top-bar-center">
-                    <a href="https://projettechacademy.github.io/Juridique/index.html" target="_blank" class="header-icon-btn" aria-label="Start/Accueil" data-tooltip="Accueil">
-                        🏠
-                    </a>
-                    <a href="https://projettechacademy.github.io/Juridique/00_Autres/Mon_Espace_Juriste_Tableau_de_bord_personnel.html" target="_blank" class="header-icon-btn" aria-label="Mon Espace" data-tooltip="Mon Espace">📊</a>
-                    <a href="https://projettechacademy.github.io/Juridique/00_Autres/Lexique_Latin_Juridique.html" target="_blank" class="header-icon-btn" aria-label="Lexique Latin" data-tooltip="Lexique">📜</a>
-                    
-                    <a href="https://projettechacademy.github.io/Juridique/00_Autres/Atelier_de_Competence.html" target="_blank" class="header-icon-btn" aria-label="Atelier" data-tooltip="Atelier">🛠️</a>
-
-                    <a href="https://projettechacademy.github.io/Juridique/00_Autres/formation_live_juriste.html" target="_blank" class="header-icon-btn" aria-label="Planning Live" data-tooltip="Planning">📅</a>
-                    <a href="https://projettechacademy.github.io/Juridique/00_Autres/A_propos_de_moi.html" target="_blank" class="header-icon-btn" aria-label="À propos de moi" data-tooltip="Profil">
-                        👤
-                    </a>
-                </div>
-
-                <a href="https://projettechacademy.github.io/CV_MMPA-CV-Mathilde-Martine-PAISLEY/" target="_blank" class="btn-portfolio-cosmic">
-                    <span>📄</span> Mon portfolio
+            </div>
+            
+            <div class="top-bar-center">
+                <a href="https://projettechacademy.github.io/Juridique/index.html" target="_blank" class="header-icon-btn" aria-label="Start/Accueil" data-tooltip="Accueil" style="padding: 0; overflow: hidden; border: none;">
+                    <img src="https://projettechacademy.github.io/Juridique/Asset/Logo_MMPA.jpeg" alt="MMPA" class="nav-profile-img" style="width: 100%; height: 100%; object-fit: cover;">
+                </a>
+                <a href="https://projettechacademy.github.io/Juridique/00_Autres/Mon_Espace_Juriste_Tableau_de_bord_personnel.html" target="_blank" class="header-icon-btn" aria-label="Mon Espace" data-tooltip="Mon Espace">📊</a>
+                <a href="https://projettechacademy.github.io/Juridique/00_Autres/Lexique_Latin_Juridique.html" target="_blank" class="header-icon-btn" aria-label="Lexique Latin" data-tooltip="Lexique">📜</a>
+                <a href="https://projettechacademy.github.io/Juridique/00_Autres/Atelier_de_Competence.html" target="_blank" class="header-icon-btn" aria-label="Atelier" data-tooltip="Atelier">🛠️</a>
+                <a href="https://projettechacademy.github.io/Juridique/00_Autres/formation_live_juriste.html" target="_blank" class="header-icon-btn" aria-label="Planning Live" data-tooltip="Planning">📅</a>
+                <a href="https://projettechacademy.github.io/Juridique/00_Autres/A_propos_de_moi.html" target="_blank" class="header-icon-btn" aria-label="À propos de moi" data-tooltip="Profil" style="padding: 0; overflow: hidden; border: 2px solid #D9A526;">
+                    <img src="https://projettechacademy.github.io/Juridique/Asset/Photo_Mathilde_Martine_PAISLEY.png" onerror="this.src='https://projettechacademy.github.io/Juridique/Asset/Photo_Mathilde_Martine_PAISLEY.jpg';" alt="Profil" class="nav-profile-img" style="width: 100%; height: 100%; object-fit: cover;">
                 </a>
             </div>
+
+            <a href="https://projettechacademy.github.io/CV_MMPA-CV-Mathilde-Martine-PAISLEY/" target="_blank" class="btn-portfolio-cosmic">
+                <span>📄</span> Mon portfolio
+            </a>
         </div>
     </div>
 
-    <main id="main-content">
-        <div class="container">
-            <div class="page-header">
-                <h1 class="page-title">
-                    <i class="fas fa-scroll" style="color: var(--color-accent); margin-right: 10px;"></i>
-                    Lexique Latin Juridique
-                </h1>
-                <p class="page-subtitle">Les expressions latines indispensables pour exceller en droit</p>
+    <main>
+        <div class="page-title" style="margin-top: 20px;">Lexique Latin Juridique</div>
+        <p class="page-intro">Expertise MBA - 140 Expressions Incontournables</p>
+
+        <section class="controls-section">
+            <input type="text" id="searchInput" class="search-input" placeholder="🔍 Rechercher (ex: Intuitu, Preuve, Contrat...)">
+            <div class="filters-container">
+                <button class="filter-btn active" onclick="filterTerms('all')">TOUT</button>
+                <button class="filter-btn" onclick="filterTerms('DS')">Droit Social (DS)</button>
+                <button class="filter-btn" onclick="filterTerms('DA')">Affaires (DA)</button>
+                <button class="filter-btn" onclick="filterTerms('JE')">Juriste Ent. (JE)</button>
             </div>
+        </section>
 
-            <section class="controls-section">
-                <div class="search-bar">
-                    <input type="text" 
-                           id="searchInput" 
-                           class="search-input" 
-                           placeholder="🔍 Rechercher un terme latin, une traduction ou une définition..."
-                           aria-label="Rechercher dans le lexique">
-                    
-                    <div class="toggle-container" title="Masquer les réponses pour s'entraîner">
-                        <label class="toggle-label" for="revisionToggle">Mode Révision</label>
-                        <label class="toggle-switch">
-                            <input type="checkbox" id="revisionToggle">
-                            <span class="slider"></span>
-                        </label>
-                    </div>
-                </div>
-
-                <div class="stats-bar">
-                    <div class="stat-item">
-                        <span class="stat-value" id="totalTerms">0</span>
-                        <span class="stat-label">termes</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-value" id="knewCount">0</span>
-                        <span class="stat-label">Sus</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-value" id="passCount">0</span>
-                        <span class="stat-label">Passés</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-value" id="forgotCount">0</span>
-                        <span class="stat-label">Oubliés</span>
-                    </div>
-                </div>
-            </section>
-
-            <div id="cardsGrid" class="cards-grid">
-                </div>
-
-            <div id="emptyState" class="empty-state" style="display: none;">
-                <i class="fas fa-search"></i>
-                <h3>Aucun résultat</h3>
-                <p>Essayez un autre terme de recherche</p>
+        <div id="dictionary-grid" class="cards-grid">
             </div>
-        </div>
     </main>
 
     <footer class="main-footer">
-        <div class="container">
+        <div class="footer-container">
             <div class="footer-content">
+                
                 <div class="footer-identity">
                     <img src="https://projettechacademy.github.io/Juridique/Asset/Logo_MMPA.jpeg" alt="Logo MMPA" class="footer-logo-img">
-                    <div class="footer-info-col">
+                    <div class="footer-info-compact">
                         <div class="footer-name">Mathilde Martine PAISLEY</div>
                         <div class="footer-contact-stack">
-                            <a href="mailto:Mathilde.martine.paisley@gmail.com" class="footer-link">📧 Mathilde.martine.paisley@gmail.com</a>
+                            <a href="mailto:Mathilde.martine.paisley@gmail.com" target="_blank" class="footer-link">📧 Mathilde.martine.paisley@gmail.com</a>
                             <a href="tel:+33685900887" class="footer-link">📲 06 85 90 08 87</a>
                         </div>
                     </div>
                 </div>
-                
-                <div class="dock-group">
-                    <div class="dock-label">Navigation & Réseaux</div>
-                    <div class="icon-dock">
-                        <a href="https://projettechacademy.github.io/Juridique/index.html" target="_blank" class="icon-btn" data-tooltip="Accueil">🏠</a>
-                        <a href="https://projettechacademy.github.io/Juridique/00_Autres/Mon_Espace_Juriste_Tableau_de_bord_personnel.html" target="_blank" class="icon-btn" data-tooltip="Mon Espace">📊</a>
-                        <a href="https://projettechacademy.github.io/Juridique/00_Autres/Lexique_Latin_Juridique.html" target="_blank" class="icon-btn" data-tooltip="Lexique">📜</a>
-                        <a href="https://chat.whatsapp.com/IoMXFl4o2otExYKCPVj22b" target="_blank" class="icon-btn" data-tooltip="WhatsApp"><i class="fab fa-whatsapp brand-whatsapp"></i></a>
-                        <a href="https://discord.gg/qwNPV8QzFt" target="_blank" class="icon-btn" data-tooltip="Discord"><i class="fab fa-discord brand-discord"></i></a>
-                        <a href="https://www.linkedin.com/in/mathilde-martine-paisley-1a4422382/" target="_blank" class="icon-btn" data-tooltip="LinkedIn"><i class="fab fa-linkedin brand-linkedin"></i></a>
-                        <a href="https://www.instagram.com/enervyx/" target="_blank" class="icon-btn" data-tooltip="Instagram"><i class="fab fa-instagram brand-instagram"></i></a>
-                        <a href="https://www.tiktok.com/@enervyx/" target="_blank" class="icon-btn" data-tooltip="TikTok"><i class="fab fa-tiktok brand-tiktok"></i></a>
+
+                <div class="footer-dock-col">
+                    <div class="dock-group">
+                        <div class="dock-label">Navigation & Réseaux</div>
+                        <div class="icon-dock">
+                            <a href="https://projettechacademy.github.io/Juridique/index.html" target="_blank" class="icon-btn" data-tooltip="Start/Accueil"><span class="brand-nav">🏠</span></a>
+                            <a href="https://projettechacademy.github.io/Juridique/00_Autres/Mon_Espace_Juriste_Tableau_de_bord_personnel.html" target="_blank" class="icon-btn" data-tooltip="Mon Espace"><span class="brand-nav">📊</span></a>
+                            <a href="https://projettechacademy.github.io/Juridique/00_Autres/Lexique_Latin_Juridique.html" target="_blank" class="icon-btn" data-tooltip="Lexique Latin"><span class="brand-nav">📜</span></a>
+                            <a href="https://projettechacademy.github.io/Juridique/00_Autres/formation_live_juriste.html" target="_blank" class="icon-btn" data-tooltip="Planning Live"><span class="brand-nav">📅</span></a>
+                            <a href="https://projettechacademy.github.io/Juridique/00_Autres/A_propos_de_moi.html" target="_blank" class="icon-btn" data-tooltip="À propos de moi"><span class="brand-nav">👤</span></a>
+                            
+                            <div class="dock-separator"></div>
+
+                            <a href="https://chat.whatsapp.com/IoMXFl4o2otExYKCPVj22b" target="_blank" class="icon-btn" data-tooltip="WhatsApp"><i class="fab fa-whatsapp brand-whatsapp"></i></a>
+                            <a href="https://discord.gg/qwNPV8QzFt" target="_blank" class="icon-btn" data-tooltip="Discord"><i class="fab fa-discord brand-discord"></i></a>
+                            <a href="https://www.linkedin.com/in/mathilde-martine-paisley-1a4422382/" target="_blank" class="icon-btn" data-tooltip="LinkedIn"><i class="fab fa-linkedin brand-linkedin"></i></a>
+                            <a href="https://www.instagram.com/enervyx/" target="_blank" class="icon-btn" data-tooltip="Instagram @enervyx"><i class="fab fa-instagram brand-instagram"></i></a>
+                            <a href="https://www.tiktok.com/@enervyx/" target="_blank" class="icon-btn" data-tooltip="TikTok @enervyx"><i class="fab fa-tiktok brand-tiktok"></i></a>
+                        </div>
                     </div>
                 </div>
+
             </div>
-            
-            <div class="footer-bottom">
+        </div>
+
+        <div class="footer-bottom">
+            <div class="footer-container">
                 <p>© 2025 Tous droits réservés – Création : 2025 – Dernière mise à jour : Novembre 2025</p>
             </div>
         </div>
@@ -541,260 +339,301 @@
     <div id="backToTop" onclick="window.scrollTo(0,0)"><i class="fas fa-arrow-up"></i></div>
 
     <script>
-        // Fonction de sécurité pour échapper le HTML
-        function escapeHtml(unsafe) {
-            if (unsafe === null || unsafe === undefined) return '';
-            return String(unsafe)
-                .replace(/&/g, '&amp;')
-                .replace(/</g, '&lt;')
-                .replace(/>/g, '&gt;')
-                .replace(/"/g, '&quot;')
-                .replace(/'/g, '&#039;');
-        }
-
-        // Données du lexique (Liste enrichie à ~80 termes)
-        const lexiqueData = [
-            // --- Droit du Travail / Contrat ---
-            { latin: "Ab initio", translation: "Dès le début", category: "Contrat", definition: "Désigne ce qui est valable ou nul dès le commencement.", example: "Le contrat est nul ab initio." },
-            { latin: "Accessorium sequitur principale", translation: "L'accessoire suit le principal", category: "Contrat", definition: "Règle selon laquelle l'élément accessoire subit le même sort juridique que l'élément principal.", example: "La prime (accessoire) suit le sort du salaire (principal)." },
-            { latin: "Addendum", translation: "Chose à ajouter", category: "Contrat", definition: "Document ajouté à un acte pour le compléter ou le modifier.", example: "Un addendum au contrat de travail." },
-            { latin: "Bona fide", translation: "De bonne foi", category: "Civil", definition: "Agir avec honnêteté et sincérité.", example: "Un acheteur bona fide." },
-            { latin: "Consensus", translation: "Accord", category: "Général", definition: "Accord entre plusieurs parties.", example: "Un consensus a été trouvé." },
-            { latin: "Contra legem", translation: "Contre la loi", category: "Principe", definition: "Décision ou acte contraire à la loi.", example: "Une coutume contra legem." },
-            { latin: "De facto", translation: "De fait", category: "Statut", definition: "Situation réelle mais non officielle.", example: "Un dirigeant de facto." },
-            { latin: "De jure", translation: "De droit", category: "Statut", definition: "Situation reconnue par la loi.", example: "Un monopole de jure." },
-            { latin: "Inter partes", translation: "Entre les parties", category: "Contrat", definition: "Effet limité aux contractants.", example: "Effet obligatoire inter partes." },
-            { latin: "Intuitu personae", translation: "En considération de la personne", category: "Contrat", definition: "Contrat conclu pour les qualités spécifiques d'une personne.", example: "Un contrat de travail est intuitu personae." },
-            { latin: "Ipso facto", translation: "Par le fait même", category: "Conséquence", definition: "Conséquence automatique d'un fait.", example: "La démission entraîne ipso facto la fin du contrat." },
-            { latin: "Mutatis mutandis", translation: "En changeant ce qui doit l'être", category: "Comparaison", definition: "Appliquer une règle en adaptant les détails.", example: "La règle s'applique mutatis mutandis." },
-            { latin: "Pacta sunt servanda", translation: "Les conventions doivent être respectées", category: "Contrat", definition: "Force obligatoire des contrats.", example: "Principe fondamental : pacta sunt servanda." },
-            { latin: "Pro rata", translation: "En proportion", category: "Calcul", definition: "Proportionnellement à.", example: "Paiement pro rata temporis." },
-            { latin: "Sine qua non", translation: "Sans quoi non", category: "Condition", definition: "Condition indispensable.", example: "Une condition sine qua non." },
-            { latin: "Sui generis", translation: "De son propre genre", category: "Statut", definition: "Unique en son genre, spécifique.", example: "Un statut sui generis." },
-
-            // --- Procédure / Contentieux ---
-            { latin: "Actus reus", translation: "L'acte coupable", category: "Pénal", definition: "L'élément matériel de l'infraction.", example: "L'accusation doit prouver l'actus reus." },
-            { latin: "Ad hoc", translation: "Pour cela", category: "Procédure", definition: "Mesure prise spécialement pour une situation donnée.", example: "Un juge ad hoc a été nommé." },
-            { latin: "Ad litem", translation: "Pour le procès", category: "Procédure", definition: "Désigne un mandat donné spécifiquement pour une action en justice.", example: "Un tuteur ad litem." },
-            { latin: "Actori incumbit probatio", translation: "La charge de la preuve incombe au demandeur", category: "Preuve", definition: "C'est à celui qui allègue un fait de le prouver.", example: "Aux prud'hommes, actori incumbit probatio." },
-            { latin: "Alibi", translation: "Ailleurs", category: "Pénal", definition: "Preuve qu'une personne était ailleurs au moment des faits.", example: "Il a fourni un alibi solide." },
-            { latin: "Amicus curiae", translation: "Ami de la cour", category: "Procédure", definition: "Personne ou organisme qui intervient pour éclairer le tribunal.", example: "L'ONG est intervenue comme amicus curiae." },
-            { latin: "Animus", translation: "Intention", category: "Général", definition: "L'élément moral ou l'intention derrière un acte.", example: "L'animus necandi (intention de tuer)." },
-            { latin: "Corpus delicti", translation: "Le corps du délit", category: "Pénal", definition: "L'ensemble des éléments matériels prouvant le crime.", example: "Sans corpus delicti, pas de condamnation." },
-            { latin: "De novo", translation: "À nouveau", category: "Procédure", definition: "Recommencer une procédure depuis le début.", example: "Un procès de novo." },
-            { latin: "Erga omnes", translation: "À l'égard de tous", category: "Portée", definition: "Droit ou décision opposable à tout le monde.", example: "Un arrêt avec effet erga omnes." },
-            { latin: "Ex aequo et bono", translation: "En équité", category: "Jugement", definition: "Jugement rendu selon l'équité et non la stricte loi.", example: "L'arbitre a statué ex aequo et bono." },
-            { latin: "Ex officio", translation: "D'office", category: "Procédure", definition: "En vertu de sa fonction, sans demande particulière.", example: "Le juge a soulevé le point ex officio." },
-            { latin: "Ex parte", translation: "D'une seule partie", category: "Procédure", definition: "Procédure où une seule partie est présente.", example: "Une ordonnance ex parte." },
-            { latin: "Ex post facto", translation: "Après coup", category: "Loi", definition: "Loi rétroactive.", example: "Interdiction des lois ex post facto en pénal." },
-            { latin: "Habeas corpus", translation: "Que tu aies le corps", category: "Liberté", definition: "Droit fondamental contre la détention arbitraire.", example: "Le recours en habeas corpus." },
-            { latin: "In absentia", translation: "En l'absence", category: "Procédure", definition: "Jugement rendu en l'absence de l'accusé.", example: "Condamné in absentia." },
-            { latin: "In camera", translation: "En chambre", category: "Procédure", definition: "Audience à huis clos.", example: "L'audience s'est tenue in camera." },
-            { latin: "In dubio pro reo", translation: "Le doute profite à l'accusé", category: "Pénal", definition: "En cas de doute, la décision doit être favorable à l'accusé.", example: "Acquittement prononcé in dubio pro reo." },
-            { latin: "In limine litis", translation: "Au seuil du procès", category: "Procédure", definition: "Avant tout débat au fond.", example: "Exception soulevée in limine litis." },
-            { latin: "Locus standi", translation: "Droit d'agir", category: "Procédure", definition: "Qualité pour agir en justice.", example: "Le requérant n'a pas de locus standi." },
-            { latin: "Modus operandi", translation: "Mode opératoire", category: "Pénal", definition: "Manière de procéder d'un criminel.", example: "Le modus operandi est identique." },
-            { latin: "Nemo auditur", translation: "Nul ne peut...", category: "Principe", definition: "Nemo auditur propriam turpitudinem allegans : Nul ne peut se prévaloir de sa propre turpitude.", example: "Invoqué pour refuser une demande immorale." },
-            { latin: "Non bis in idem", translation: "Pas deux fois pour la même chose", category: "Pénal", definition: "On ne peut être jugé deux fois pour les mêmes faits.", example: "Principe non bis in idem." },
-            { latin: "Nullum crimen sine lege", translation: "Pas de crime sans loi", category: "Pénal", definition: "Légalité des délits et des peines.", example: "Respect du principe nullum crimen." },
-            { latin: "Onus probandi", translation: "Charge de la preuve", category: "Preuve", definition: "La charge de la preuve incombe au demandeur.", example: "L'onus probandi pèse sur l'accusation." },
-            { latin: "Res judicata", translation: "Chose jugée", category: "Procédure", definition: "Autorité de la chose jugée.", example: "L'affaire a autorité de res judicata." },
-
-            // --- Stratégie / Général ---
-            { latin: "Ad valorem", translation: "Selon la valeur", category: "Fiscal", definition: "Taxation proportionnelle à la valeur du bien.", example: "Droits de douane ad valorem." },
-            { latin: "Affectio societatis", translation: "La volonté de s'associer", category: "Société", definition: "L'élément intentionnel indispensable à la formation du contrat de société.", example: "Disparition de l'affectio societatis." },
-            { latin: "A posteriori", translation: "En partant de ce qui vient après", category: "Logique", definition: "Raisonnement basé sur l'expérience ou les faits observés.", example: "Une analyse a posteriori." },
-            { latin: "A priori", translation: "En partant de ce qui est avant", category: "Logique", definition: "Raisonnement théorique, avant expérience.", example: "Un jugement a priori." },
-            { latin: "Alias", translation: "Autrement dit", category: "Identité", definition: "Nom d'emprunt ou pseudonyme.", example: "Jean Dupont, alias 'Le Renard'." },
-            { latin: "Casus belli", translation: "Cas de guerre", category: "International", definition: "Acte justifiant une déclaration de guerre.", example: "Cette violation de frontière est un casus belli." },
-            { latin: "Caveat emptor", translation: "Que l'acheteur soit vigilant", category: "Commerce", definition: "Principe selon lequel l'acheteur doit vérifier le bien.", example: "En l'absence de garantie, caveat emptor s'applique." },
-            { latin: "Compos mentis", translation: "Sain d'esprit", category: "Civil", definition: "Avoir la capacité mentale de prendre des décisions.", example: "Le testateur était non compos mentis." },
-            { latin: "De minimis", translation: "Choses minimes", category: "Principe", definition: "Le droit ne s'occupe pas des détails insignifiants.", example: "De minimis non curat praetor." },
-            { latin: "Dura lex sed lex", translation: "La loi est dure mais c'est la loi", category: "Principe", definition: "La loi doit être respectée même si elle semble sévère.", example: "La sanction est lourde, mais dura lex sed lex." },
-            { latin: "Erratum", translation: "Erreur", category: "Général", definition: "Correction d'une erreur dans un texte.", example: "Voir l'erratum en annexe." },
-            { latin: "Ex cathedra", translation: "De la chaire", category: "Autorité", definition: "Parler avec autorité officielle.", example: "Une déclaration ex cathedra." },
-            { latin: "Ibidem", translation: "Au même endroit", category: "Renvoi", definition: "Référence à la même source citée précédemment.", example: "Voir jurisprudence citée, ibidem." },
-            { latin: "Id est", translation: "C'est-à-dire", category: "Général", definition: "Utilisé pour clarifier ou expliquer.", example: "Le demandeur, id est M. Dupont." },
-            { latin: "In fine", translation: "À la fin", category: "Renvoi", definition: "À la fin d'un paragraphe ou d'un texte.", example: "Article 12, in fine." },
-            { latin: "In situ", translation: "Sur place", category: "Général", definition: "Dans son milieu naturel ou d'origine.", example: "Constatations faites in situ." },
-            { latin: "Intra vires", translation: "Dans les pouvoirs", category: "Compétence", definition: "Acte accompli dans les limites des pouvoirs conférés.", example: "Une décision intra vires du conseil." },
-            { latin: "Jus cogens", translation: "Droit impératif", category: "International", definition: "Norme impérative à laquelle on ne peut déroger.", example: "L'interdiction de la torture est du jus cogens." },
-            { latin: "Jus sanguinis", translation: "Droit du sang", category: "Nationalité", definition: "Nationalité transmise par les parents.", example: "Le pays applique le jus sanguinis." },
-            { latin: "Jus soli", translation: "Droit du sol", category: "Nationalité", definition: "Nationalité acquise par le lieu de naissance.", example: "Le jus soli est appliqué aux USA." },
-            { latin: "Mea culpa", translation: "Ma faute", category: "Responsabilité", definition: "Aveu de sa propre erreur.", example: "Il a fait son mea culpa." },
-            { latin: "Modus vivendi", translation: "Mode de vie", category: "Accord", definition: "Arrangement provisoire entre parties en conflit.", example: "Ils ont trouvé un modus vivendi." },
-            { latin: "Per capita", translation: "Par tête", category: "Succession", definition: "Partage égal par personne.", example: "Distribution per capita." },
-            { latin: "Persona non grata", translation: "Personne indésirable", category: "Diplomatie", definition: "Personne dont la présence n'est pas acceptée.", example: "Déclaré persona non grata." },
-            { latin: "Pro bono", translation: "Pour le bien public", category: "Avocat", definition: "Travail juridique effectué gratuitement.", example: "Défense assurée pro bono." },
-            { latin: "Quid pro quo", translation: "Quoi pour quoi", category: "Échange", definition: "Échange de bons procédés, donnant-donnant.", example: "Un accord de type quid pro quo." },
-            { latin: "Status quo", translation: "État actuel", category: "Situation", definition: "L'état des choses tel qu'il est.", example: "Maintenir le status quo." },
-            { latin: "Terra nullius", translation: "Terre de personne", category: "Propriété", definition: "Territoire n'appartenant à aucun État.", example: "L'Antarctique n'est pas terra nullius." },
-            { latin: "Ultra vires", translation: "Au-delà des pouvoirs", category: "Compétence", definition: "Agir au-delà de sa compétence légale.", example: "Une décision ultra vires est nulle." },
-            { latin: "Veto", translation: "J'interdis", category: "Pouvoir", definition: "Pouvoir de bloquer une décision.", example: "Mettre son veto." },
-            { latin: "Vice versa", translation: "Inversement", category: "Logique", definition: "Et réciproquement.", example: "L'employeur paie, et vice versa." },
-            { latin: "Vox populi", translation: "Voix du peuple", category: "Politique", definition: "L'opinion publique.", example: "Écouter la vox populi." }
+        // --- BASE DE DONNÉES EXPERT (140 TERMES) ---
+        const lexiqueDB = [
+            { l: "A non domino", t: "Par celui qui n'est pas le maître", g: ["DA"], d: "Acquisition d'un bien auprès d'une personne qui n'en est pas propriétaire.", c: "Vente d'un bien par un tiers.", a: "L'acquéreur de bonne foi peut être protégé.", v: "Risque de revendication du vrai propriétaire." },
+            { l: "Ab initio", t: "Dès le début", g: ["DA", "JE"], d: "Rétroactivité totale : l'acte est censé n'avoir jamais existé.", c: "Annulation d'un contrat.", a: "Préférez la nullité relative.", v: "Conséquences fiscales des restitutions." },
+            { l: "Abusus", t: "Droit de disposer", g: ["DA", "JE"], d: "Droit de vendre ou détruire un bien.", c: "Démembrement.", a: "Le nu-propriétaire a l'abusus.", v: "L'usufruitier ne peut pas vendre." },
+            { l: "Accessorium sequitur principale", t: "L'accessoire suit le principal", g: ["DS", "JE"], d: "L'élément secondaire suit le sort du principal.", c: "Clause de non-concurrence.", a: "Les primes suivent le salaire.", v: "Si le contrat est nul, la clause aussi." },
+            { l: "Actio personalis moritur cum persona", t: "L'action s'éteint avec la personne", g: ["JE"], d: "Fin des poursuites pénales au décès.", c: "Décès du dirigeant.", a: "L'action civile continue contre héritiers.", v: "Extinction de l'action publique." },
+            { l: "Actori incumbit probatio", t: "La charge de la preuve incombe au demandeur", g: ["DS", "JE"], d: "Celui qui réclame doit prouver.", c: "Prud'hommes.", a: "Préparez les preuves avant.", v: "Exception : Heures sup (partagé)." },
+            { l: "Actus reus", t: "L'acte coupable", g: ["JE"], d: "Élément matériel de l'infraction.", c: "Pénal des affaires.", a: "Tracez vos délégations.", v: "Responsabilité sans intention possible." },
+            { l: "Ad hoc", t: "Pour cela", g: ["JE", "DA"], d: "Mandat pour mission précise.", c: "Mandataire ad hoc.", a: "Limitez le mandat.", v: "Pas de pouvoir général." },
+            { l: "Ad hominem", t: "Vers l'homme", g: ["JE"], d: "Attaque personnelle.", c: "Débat.", a: "Restez factuel.", v: "Risque de diffamation." },
+            { l: "Ad infinitum", t: "À l'infini", g: ["JE"], d: "Sans limite.", c: "Renouvellement.", a: "Évitez les engagements perpétuels.", v: "Prohibé en droit français." },
+            { l: "Ad litem", t: "Pour le procès", g: ["DA", "JE"], d: "Mandat de représentation en justice.", c: "Avocat.", a: "Vérifiez le mandat adverse.", v: "Le pouvoir doit être spécial." },
+            { l: "Ad nutum", t: "Révocable à tout moment", g: ["DA"], d: "Révocation sans motif.", c: "Mandataires sociaux.", a: "Prévoyez un parachute doré.", v: "Révocation injurieuse possible." },
+            { l: "Ad probationem", t: "Pour la preuve", g: ["DS", "DA"], d: "Formalité de preuve.", c: "Contrat commercial.", a: "L'écrit sécurise.", v: "Pas de nullité sans écrit." },
+            { l: "Ad turpia", t: "Pour cause immorale", g: ["DA"], d: "Nemo auditur... Contrat immoral.", c: "Contrat illicite.", a: "Pas de restitution si cause immorale.", v: "Le juge refuse d'entendre." },
+            { l: "Ad valorem", t: "Selon la valeur", g: ["DA"], d: "Taxe proportionnelle.", c: "Douanes.", a: "Calculez les marges.", v: "Risque de redressement." },
+            { l: "Ad validitatem", t: "Pour la validité", g: ["DS", "JE"], d: "Forme indispensable.", c: "CDD, Rupture.", a: "Check-list RH.", v: "CDD sans écrit = CDI." },
+            { l: "Affectio societatis", t: "Volonté de s'associer", g: ["DA"], d: "Intention de collaborer.", c: "Conflit associés.", a: "Clauses de sortie (Shotgun).", v: "Dissolution si disparition." },
+            { l: "Alias", t: "Pseudonyme", g: ["JE"], d: "Autre nom.", c: "Identité.", a: "Vérifiez l'identité réelle.", v: "Usurpation." },
+            { l: "Alibi", t: "Ailleurs", g: ["JE", "DS"], d: "Preuve de présence ailleurs.", c: "Enquête.", a: "Vérifiez badgeages.", v: "Faux alibi = Faute grave." },
+            { l: "Amicus curiae", t: "Ami de la cour", g: ["DA"], d: "Tiers expert.", c: "Procès complexe.", a: "Rôle consultatif.", v: "Influence médiatique." },
+            { l: "Animus", t: "Intention", g: ["JE"], d: "Élément intentionnel.", c: "Animus domini.", a: "Prouver l'intention.", v: "Distinguer de l'erreur." },
+            { l: "Audi alteram partem", t: "Entendre l'autre partie", g: ["DS", "JE"], d: "Contradictoire.", c: "Entretien préalable.", a: "Ne jamais sanctionner sans entendre.", v: "Nullité procédure." },
+            { l: "Audita altera parte", t: "L'autre partie entendue", g: ["JE"], d: "Similaire à Audi alteram.", c: "Arbitrage.", a: "Respect des droits défense.", v: "Principe fondamental." },
+            { l: "Bona fide", t: "De bonne foi", g: ["DS", "JE"], d: "Loyauté.", c: "Exécution contrat.", a: "Documentez la bonne foi.", v: "Mauvaise foi = Dommages." },
+            { l: "Bonus pater familias", t: "Bon père de famille", g: ["DA", "JE"], d: "Prudence standard.", c: "Responsabilité.", a: "Agir raisonnablement.", v: "Standard d'appréciation." },
+            { l: "Casus belli", t: "Cas de guerre", g: ["DA"], d: "Acte de rupture.", c: "Conflit commercial.", a: "Mesurez vos écrits.", v: "Déclenche le contentieux." },
+            { l: "Caveat emptor", t: "Acheteur vigilant", g: ["DA"], d: "L'acheteur doit vérifier.", c: "M&A.", a: "Due Diligence.", v: "Pas pour vices cachés." },
+            { l: "Compétence liée", t: "Pas de choix", g: ["JE"], d: "L'autorité doit agir ainsi.", c: "Administratif.", a: "Pas de marge de manœuvre.", v: "Décision automatique." },
+            { l: "Compos mentis", t: "Sain d'esprit", g: ["JE", "DS"], d: "Capacité mentale.", c: "Démission.", a: "Délai de rétractation.", v: "Requalification si émotion." },
+            { l: "Conditio sine qua non", t: "Condition indispensable", g: ["DA"], d: "Condition absolue.", c: "Suspensive.", a: "Point bloquant.", v: "Contrat caduc si échec." },
+            { l: "Consensus ad idem", t: "Accord total", g: ["DA"], d: "Rencontre volontés.", c: "Contrat.", a: "Accord prix/chose.", v: "Malentendu = Vice." },
+            { l: "Contra legem", t: "Contre la loi", g: ["JE", "DS"], d: "Clause illégale.", c: "Contrat travail.", a: "Supprimer clause.", v: "Réputée non écrite." },
+            { l: "Corpus delicti", t: "Corps du délit", g: ["JE"], d: "Preuve matérielle.", c: "Vol.", a: "Sécuriser preuves.", v: "Pas de corps, pas de crime." },
+            { l: "Cui bono ?", t: "À qui profite ?", g: ["JE"], d: "Bénéficiaire.", c: "Enquête.", a: "Intérêt caché.", v: "Indice." },
+            { l: "Damnum emergens", t: "Perte subie", g: ["DA"], d: "Perte réelle.", c: "Indemnisation.", a: "Prouver la perte.", v: "Factures requises." },
+            { l: "Damnum infectum", t: "Dommage menaçant", g: ["DA"], d: "Risque futur.", c: "Prévention.", a: "Agir avant le dommage.", v: "Mesures conservatoires." },
+            { l: "De cujus", t: "Le défunt", g: ["DA"], d: "Celui dont on hérite.", c: "Succession.", a: "Transmission entreprise.", v: "Terme notarial." },
+            { l: "De facto", t: "De fait", g: ["DA", "DS"], d: "Situation réelle.", c: "Gérant de fait.", a: "Attention délégations.", v: "Responsabilité lourde." },
+            { l: "De in rem verso", t: "Enrichissement sans cause", g: ["DA"], d: "Action en restitution.", c: "Paiement indu.", a: "Rembourser l'avantage.", v: "Subsidiaire." },
+            { l: "De jure", t: "De droit", g: ["DA"], d: "Officiel.", c: "Kbis.", a: "Signature officielle.", v: "Engage la société." },
+            { l: "De minimis", t: "Insignifiant", g: ["JE"], d: "Bagatelles.", c: "Sanction.", a: "Ne pas judiciariser.", v: "Risque procédurier." },
+            { l: "De plano", t: "Manifestement", g: ["JE"], d: "Sans difficulté.", c: "Rejet.", a: "Irrecevable.", v: "Argument écrit." },
+            { l: "Do ut des", t: "Donnant-donnant", g: ["DA"], d: "Échange.", c: "Négociation.", a: "Contrepartie.", v: "Équilibre." },
+            { l: "Dolus", t: "Dol", g: ["DA", "DS"], d: "Tromperie.", c: "CV faux.", a: "Mensonge déterminant.", v: "Nullité contrat." },
+            { l: "Dura lex sed lex", t: "La loi est dure", g: ["JE"], d: "Application stricte.", c: "Règle.", a: "Autorité.", v: "Braque les gens." },
+            { l: "Electa una via", t: "Une voie choisie", g: ["JE"], d: "Non cumul des procédures.", c: "Civil/Pénal.", a: "Choisir sa stratégie.", v: "Irrecevabilité." },
+            { l: "Erga omnes", t: "À l'égard de tous", g: ["DA"], d: "Opposable.", c: "Publicité.", a: "Publier statuts.", v: "Défaut = Inopposable." },
+            { l: "Erratum", t: "Erreur", g: ["JE"], d: "Correction.", c: "Paie.", a: "Régulariser.", v: "Répétition = Faute." },
+            { l: "Error communis", t: "Erreur commune", g: ["DA"], d: "L'apparence crée le droit.", c: "Mandat apparent.", a: "Protéger le tiers.", v: "Bonne foi requise." },
+            { l: "Ex aequo et bono", t: "En équité", g: ["DA"], d: "Amiable compositeur.", c: "Arbitrage.", a: "Souplesse.", v: "Imprévisible." },
+            { l: "Ex ante", t: "Au préalable", g: ["DA"], d: "Analyse avant.", c: "Concentration.", a: "Valider montage.", v: "Opposé Ex post." },
+            { l: "Ex officio", t: "D'office", g: ["DS", "JE"], d: "Automatique.", c: "Juge.", a: "Moyen ordre public.", v: "Requalification." },
+            { l: "Ex post", t: "Après coup", g: ["JE"], d: "Rétrospectif.", c: "Audit.", a: "Leçons.", v: "Trop tard." },
+            { l: "Ex post facto", t: "Rétroactif", g: ["JE"], d: "Loi rétroactive.", c: "Pénal.", a: "Interdit pénal.", v: "Dates lois." },
+            { l: "Exceptio non adimpleti", t: "Exception inexécution", g: ["DA"], d: "Je ne paie pas.", c: "Fournisseur.", a: "Gravité requise.", v: "Risqué." },
+            { l: "Fraus omnia corrumpit", t: "La fraude corrompt tout", g: ["JE", "DS"], d: "La fraude annule tout.", c: "Arrêt maladie bidon.", a: "Preuve fraude.", v: "Annulation totale." },
+            { l: "Fructus", t: "Fruits", g: ["DA"], d: "Revenus.", c: "Usufruit.", a: "Impôts.", v: "Pas vendre." },
+            { l: "Habeas corpus", t: "Corps", g: ["JE"], d: "Liberté.", c: "Fondamental.", a: "État de droit.", v: "Symbole." },
+            { l: "Ibidem", t: "Même endroit", g: ["JE"], d: "Référence.", c: "Note.", a: "Gain place.", v: "Pas Idem." },
+            { l: "Id est", t: "C'est-à-dire", g: ["JE"], d: "Explication.", c: "Note.", a: "Clarté.", v: "i.e." },
+            { l: "In absentia", t: "En l'absence", g: ["JE"], d: "Jugement défaut.", c: "Pénal.", a: "Opposition.", v: "Fuite." },
+            { l: "In abstracto", t: "Dans l'abstrait", g: ["DA"], d: "Standard moyen.", c: "Bon père famille.", a: "Comparaison.", v: "Pas perso." },
+            { l: "In bonis", t: "Solvable", g: ["DA"], d: "Pas en faillite.", c: "Fournisseur.", a: "Vérifier solvabilité.", v: "Cessation paiements." },
+            { l: "In concreto", t: "Concrètement", g: ["JE"], d: "Selon les faits.", c: "Faute.", a: "Situation réelle.", v: "Pas théorique." },
+            { l: "In dubio pro reo", t: "Doute profite accusé", g: ["DS"], d: "Pas preuve = Pas sanction.", c: "Licenciement.", a: "Preuve solide.", v: "Doute = Salarié." },
+            { l: "In extenso", t: "Intégralement", g: ["JE"], d: "Tout le texte.", c: "Citation.", a: "Précision.", v: "Tronqué." },
+            { l: "In favorem", t: "En faveur", g: ["DS"], d: "Plus favorable.", c: "Conflit normes.", a: "Faveur salarié.", v: "Principe clé." },
+            { l: "In fine", t: "À la fin", g: ["DA"], d: "Dernière ligne.", c: "Contrat.", a: "Lire tout.", v: "Pièges finaux." },
+            { l: "In limine litis", t: "Seuil procès", g: ["DA"], d: "Avant débat.", c: "Procédure.", a: "Incompétence.", v: "Forclusion." },
+            { l: "In personam", t: "Personnel", g: ["DA"], d: "Droit créance.", c: "Dette.", a: "Contre personne.", v: "Pas sur chose." },
+            { l: "In situ", t: "Sur place", g: ["DS"], d: "Terrain.", c: "Constat.", a: "Preuve forte.", v: "Enquête." },
+            { l: "In solidum", t: "Solidaire", g: ["DA"], d: "Tout payer.", c: "Co-emploi.", a: "Recours.", v: "Risque mère." },
+            { l: "Inter partes", t: "Entre parties", g: ["DA"], d: "Relatif.", c: "Contrat.", a: "Pas tiers.", v: "Opposé Erga." },
+            { l: "Intra muros", t: "Dans les murs", g: ["JE"], d: "En interne.", c: "Confidentialité.", a: "Pas diffusion.", v: "Secret." },
+            { l: "Intra vires", t: "Dans pouvoirs", g: ["DA"], d: "Légal.", c: "Mandat.", a: "Vérifier.", v: "Ultra vires." },
+            { l: "Intuitu personae", t: "Lié personne", g: ["DS"], d: "Qualités perso.", c: "Travail.", a: "Pas remplacement.", v: "Décès." },
+            { l: "Ipso facto", t: "Automatique", g: ["DA"], d: "Conséquence.", c: "Résolution.", a: "Sans juge.", v: "Immédiat." },
+            { l: "Ipso jure", t: "De plein droit", g: ["JE"], d: "Par la loi.", c: "Fin mandat.", a: "Sans courrier.", v: "Immédiat." },
+            { l: "Jus ad bellum", t: "Droit à la guerre", g: ["JE"], d: "Droit conflit.", c: "Culture.", a: "Légitime défense.", v: "ONU." },
+            { l: "Jus cogens", t: "Impératif", g: ["JE"], d: "Ordre public.", c: "Esclavage.", a: "Indérogeable.", v: "Nullité." },
+            { l: "Jus soli", t: "Droit sol", g: ["JE"], d: "Nationalité.", c: "Étrangers.", a: "Critère.", v: "Sanguinis." },
+            { l: "Lex fori", t: "Loi tribunal", g: ["DA"], d: "Procédure locale.", c: "Conflit.", a: "Procédure.", v: "Fond." },
+            { l: "Lex mercatoria", t: "Loi marchands", g: ["DA"], d: "Usages.", c: "Commerce int.", a: "Souplesse.", v: "Arbitrage." },
+            { l: "Lis pendens", t: "Litige pendant", g: ["JE"], d: "Affaire en cours.", c: "Double saisie.", a: "Dessaisissement.", v: "Connexité." },
+            { l: "Locus regit actum", t: "Lieu régit acte", g: ["DA"], d: "Forme locale.", c: "Contrat int.", a: "Respect forme.", v: "Validité." },
+            { l: "Locus standi", t: "Qualité à agir", g: ["JE"], d: "Droit d'action.", c: "Recevabilité.", a: "Intérêt.", v: "Rejet." },
+            { l: "Lucrum cessans", t: "Gain manqué", g: ["DA"], d: "Manque à gagner.", c: "Indemnité.", a: "Marge.", v: "Preuve." },
+            { l: "Malum in se", t: "Mal en soi", g: ["JE"], d: "Naturellement mauvais.", c: "Crime.", a: "Moral.", v: "Universel." },
+            { l: "Mens rea", t: "Intention", g: ["JE"], d: "Esprit criminel.", c: "Pénal.", a: "Volonté.", v: "Négligence." },
+            { l: "Modus operandi", t: "Mode opératoire", g: ["JE"], d: "Méthode.", c: "Fraude.", a: "Schéma.", v: "Prévention." },
+            { l: "Modus vivendi", t: "Compromis", g: ["DS"], d: "Accord provisoire.", c: "Grève.", a: "Reprise.", v: "Temporaire." },
+            { l: "Mutatis mutandis", t: "Adaptation", g: ["JE"], d: "Changer détails.", c: "Duplication.", a: "Adapter.", v: "Copier-coller." },
+            { l: "Nemo auditur", t: "Nul profit faute", g: ["DS"], d: "Turpitude.", c: "Fraude.", a: "Défense.", v: "Obligations." },
+            { l: "Nemo censetur", t: "Nul n'ignore loi", g: ["JE"], d: "Fiction.", c: "Défense.", a: "Connaître.", v: "Veille." },
+            { l: "Nemo dat", t: "Nul ne donne", g: ["DA"], d: "Pas de titre.", c: "Vente.", a: "Propriété.", v: "Vol." },
+            { l: "Nemo judex", t: "Nul juge et partie", g: ["DS"], d: "Impartialité.", c: "Enquête.", a: "Externaliser.", v: "Conflit." },
+            { l: "Non bis in idem", t: "Pas deux fois", g: ["DS"], d: "Double sanction.", c: "Discipline.", a: "Une faute.", v: "Avertissement." },
+            { l: "Non aedificandi", t: "Non bâtir", g: ["DA"], d: "Servitude.", c: "Immo.", a: "Vérifier.", v: "Construction." },
+            { l: "Nudum pactum", t: "Pacte nu", g: ["DA"], d: "Sans cause.", c: "Anglo.", a: "Contrepartie.", v: "Nullité." },
+            { l: "Nulla poena", t: "Pas peine sans loi", g: ["JE"], d: "Légalité.", c: "RI.", a: "Prévisible.", v: "Arbitraire." },
+            { l: "Nullum crimen", t: "Pas crime sans loi", g: ["JE"], d: "Légalité.", c: "RI.", a: "Texte.", v: "Sanction." },
+            { l: "Obiter dictum", t: "En passant", g: ["JE"], d: "Commentaire.", c: "Arrêt.", a: "Secondaire.", v: "Pas autorité." },
+            { l: "Onus probandi", t: "Charge preuve", g: ["DS"], d: "Demandeur prouve.", c: "Preuve.", a: "Dossier.", v: "Partage." },
+            { l: "Opinio juris", t: "Conviction", g: ["JE"], d: "Coutume.", c: "Usage.", a: "Obligatoire.", v: "Répétition." },
+            { l: "Pacta sunt servanda", t: "Respect contrats", g: ["DA"], d: "Force.", c: "Contrat.", a: "Loi.", v: "Imprévision." },
+            { l: "Pari passu", t: "Égalité", g: ["DA"], d: "Même rang.", c: "Créanciers.", a: "Pas préférence.", v: "Faillite." },
+            { l: "Pars pro toto", t: "Partie pour tout", g: ["JE"], d: "Synecdoque.", c: "Nom.", a: "Confusion.", v: "Précision." },
+            { l: "Pater familias", t: "Bon père", g: ["DA"], d: "Prudent.", c: "Resp.", a: "Diligence.", v: "Standard." },
+            { l: "Penitus extranei", t: "Tiers absolus", g: ["DA"], d: "Étrangers.", c: "Relatif.", a: "Pas lié.", v: "Inopposable." },
+            { l: "Per capita", t: "Par tête", g: ["JE"], d: "Individu.", c: "Partage.", a: "Égal.", v: "Proportion." },
+            { l: "Persona non grata", t: "Indésirable", g: ["JE"], d: "Refus.", c: "Accès.", a: "Sécurité.", v: "Discrimination." },
+            { l: "Post mortem", t: "Après mort", g: ["DA"], d: "Succession.", c: "Transmission.", a: "Pacte.", v: "Anticiper." },
+            { l: "Praeter legem", t: "Côté loi", g: ["JE"], d: "Complète.", c: "Usage.", a: "Source.", v: "Contradiction." },
+            { l: "Pretium doloris", t: "Prix douleur", g: ["DS"], d: "Souffrance.", c: "AT.", a: "Faute inexc.", v: "Coût." },
+            { l: "Prima facie", t: "Premier abord", g: ["JE"], d: "Apparent.", c: "Preuve.", a: "Apparence.", v: "Renversement." },
+            { l: "Primum non nocere", t: "Pas nuire", g: ["DS"], d: "Prévention.", c: "Santé.", a: "Sécurité.", v: "RPS." },
+            { l: "Pro bono", t: "Gratuit", g: ["JE"], d: "Mécénat.", c: "Avocat.", a: "Image.", v: "Prêt MO." },
+            { l: "Pro domo", t: "Pour soi", g: ["JE"], d: "Subjectif.", c: "Plaidoirie.", a: "Recul.", v: "Crédibilité." },
+            { l: "Pro rata", t: "Proportionnel", g: ["DS"], d: "Temps.", c: "Calcul.", a: "Formule.", v: "Rappel." },
+            { l: "Pro tempore", t: "Temporaire", g: ["JE"], d: "Pour le temps.", c: "Mandat.", a: "Durée.", v: "Fin." },
+            { l: "Quantum meruit", t: "Mérité", g: ["DA"], d: "Valeur.", c: "Sans devis.", a: "Juste prix.", v: "Litige." },
+            { l: "Quid pro quo", t: "Échange", g: ["DA"], d: "Contrepartie.", c: "Négo.", a: "Donnant.", v: "Erreur." },
+            { l: "Ratio decidendi", t: "Raison", g: ["JE"], d: "Motif.", c: "Arrêt.", a: "Autorité.", v: "Dictum." },
+            { l: "Ratio legis", t: "Esprit loi", g: ["JE"], d: "But.", c: "Sens.", a: "Intention.", v: "Flou." },
+            { l: "Ratione loci", t: "Lieu", g: ["DA"], d: "Territoire.", c: "Compétence.", a: "Clause.", v: "Siège." },
+            { l: "Ratione materiae", t: "Matière", g: ["JE"], d: "Nature.", c: "Compétence.", a: "Ordre public.", v: "Absolue." },
+            { l: "Rebus sic stantibus", t: "État", g: ["DA"], d: "Imprévision.", c: "Contrat.", a: "Renégo.", v: "1195." },
+            { l: "Res communis", t: "Chose commune", g: ["DA"], d: "À tous.", c: "Air/Eau.", a: "Pas prop.", v: "Usage." },
+            { l: "Res derelictae", t: "Abandonné", g: ["DA"], d: "Déchet.", c: "Propriété.", a: "Occupation.", v: "Environnement." },
+            { l: "Res inter alios", t: "Relatif", g: ["DA"], d: "Tiers.", c: "Contrat.", a: "Pas effet.", v: "Opposable." },
+            { l: "Res judicata", t: "Chose jugée", g: ["JE"], d: "Définitif.", c: "Recours.", a: "Clos.", v: "Appel." },
+            { l: "Res nullius", t: "Sans maître", g: ["DA"], d: "Libre.", c: "Occupation.", a: "Premier.", v: "Données." },
+            { l: "Res perit domino", t: "Risque maître", g: ["DA"], d: "Perte.", c: "Transport.", a: "Incoterm.", v: "Transfert." },
+            { l: "Res publica", t: "Public", g: ["JE"], d: "État.", c: "Intérêt.", a: "Service.", v: "Privé." },
+            { l: "Sine die", t: "Sans date", g: ["JE"], d: "Report.", c: "Réunion.", a: "Oubli.", v: "Indéfini." },
+            { l: "Sine qua non", t: "Indispensable", g: ["JE"], d: "Condition.", c: "Clause.", a: "Absolu.", v: "Caduc." },
+            { l: "Solvens", t: "Payeur", g: ["DA"], d: "Débiteur.", c: "Paiement.", a: "Accipiens.", v: "Erreur." },
+            { l: "Stare decisis", t: "Précédent", g: ["DA"], d: "Jurisprudence.", c: "Common Law.", a: "Stabilité.", v: "France." },
+            { l: "Status quo", t: "État actuel", g: ["JE"], d: "Immobile.", c: "Stratégie.", a: "Maintien.", v: "Risque." },
+            { l: "Stricto sensu", t: "Strict", g: ["JE"], d: "Littéral.", c: "Clause.", a: "Restrictif.", v: "Large." },
+            { l: "Sub judice", t: "En cours", g: ["JE"], d: "Non jugé.", c: "Com.", a: "Secret.", v: "Pression." },
+            { l: "Sub rosa", t: "Secret", g: ["DA"], d: "Confidentiel.", c: "NDA.", a: "Discrétion.", v: "Fuite." },
+            { l: "Sui generis", t: "Spécifique", g: ["DS"], d: "Unique.", c: "Statut.", a: "Hybride.", v: "Règles." },
+            { l: "Sui juris", t: "Capable", g: ["JE"], d: "Pleine capacité.", c: "Contrat.", a: "Majeur.", v: "Tutelle." },
+            { l: "Terminus a quo", t: "Point départ", g: ["JE"], d: "Début délai.", c: "Préavis.", a: "Date.", v: "Calcul." },
+            { l: "Ultra petita", t: "Au-delà", g: ["JE"], d: "Trop donné.", c: "Juge.", a: "Appel.", v: "Interdit." },
+            { l: "Ultra vires", t: "Hors pouvoir", g: ["DA"], d: "Illégal.", c: "Dirigeant.", a: "Objet.", v: "Engage." },
+            { l: "Usus", t: "Usage", g: ["DA"], d: "User.", c: "Propriété.", a: "Habiter.", v: "Abusus." },
+            { l: "Ut singuli", t: "Individuel", g: ["DA"], d: "Action.", c: "Associé.", a: "Faute.", v: "Société." },
+            { l: "Verba volant", t: "Écrits restent", g: ["DS"], d: "Preuve.", c: "RH.", a: "Écrit.", v: "Oral." },
+            { l: "Veto", t: "Opposition", g: ["DA"], d: "Blocage.", c: "Pacte.", a: "Stratégie.", v: "Paralysie." },
+            { l: "Vice versa", t: "Inverse", g: ["JE"], d: "Réciproque.", c: "Clause.", a: "Symétrie.", v: "Sens." },
+            { l: "Vigiles", t: "Veilleurs", g: ["JE"], d: "Police.", c: "Sécurité.", a: "Contrôle.", v: "Abus." },
+            { l: "Vox populi", t: "Opinion", g: ["JE"], d: "Rumeur.", c: "Climat.", a: "Indice.", v: "Preuve." }
         ];
 
-        // LocalStorage
-        const STORAGE_KEY = 'lexique_progress_v1';
-        let progressState = {};
+        // --- MOTEUR JS ---
 
-        try {
-            progressState = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
-        } catch (e) {
-            console.warn('Erreur localStorage', e);
-            progressState = {};
-        }
+        function renderDictionary(filter = 'all', searchQuery = '') {
+            const grid = document.getElementById('dictionary-grid');
+            grid.innerHTML = '';
 
-        // Préparer les termes
-        let terms = lexiqueData.map((term, index) => ({
-            ...term,
-            id: `term-${index}`,
-            status: progressState[`term-${index}`] || null
-        }));
+            const sortedData = lexiqueDB.sort((a, b) => a.l.localeCompare(b.l));
 
-        let filteredTerms = [...terms];
-
-        // Mode Révision (Flashcards)
-        const revisionToggle = document.getElementById('revisionToggle');
-        const cardsGrid = document.getElementById('cardsGrid');
-
-        revisionToggle.addEventListener('change', () => {
-            if (revisionToggle.checked) {
-                cardsGrid.classList.add('revision-mode');
-            } else {
-                cardsGrid.classList.remove('revision-mode');
-            }
-        });
-
-        // Synthèse Vocale (Audio)
-        function speakLatin(text) {
-            if ('speechSynthesis' in window) {
-                const utterance = new SpeechSynthesisUtterance(text);
-                // On essaie de trouver une voix qui pourrait correspondre, 
-                // mais par défaut on laisse le navigateur gérer.
-                // On peut tenter 'it-IT' pour une prononciation proche du latin ecclésiastique
-                // ou laisser en 'fr-FR' pour une prononciation "à la française".
-                utterance.lang = 'it-IT'; 
-                utterance.rate = 0.9; // Un peu plus lent pour bien articuler
-                window.speechSynthesis.speak(utterance);
-            } else {
-                alert("Votre navigateur ne supporte pas la synthèse vocale.");
-            }
-        }
-
-        // Rendu des cartes
-        function renderCards() {
-            const grid = document.getElementById('cardsGrid');
-            const emptyState = document.getElementById('emptyState');
-
-            if (filteredTerms.length === 0) {
-                grid.innerHTML = '';
-                emptyState.style.display = 'block';
-                updateStats();
-                return;
-            }
-
-            emptyState.style.display = 'none';
-
-            grid.innerHTML = filteredTerms.map(term => `
-                <article class="term-card" data-id="${escapeHtml(term.id)}">
-                    <div class="term-header">
-                        <div class="term-title-group">
-                            <button class="audio-btn" onclick="speakLatin('${escapeHtml(term.latin.replace(/'/g, "\\'"))}')" aria-label="Écouter">
-                                <i class="fas fa-volume-up"></i>
-                            </button>
-                            <div class="term-latin">${escapeHtml(term.latin)}</div>
-                        </div>
-                        <span class="term-category">${escapeHtml(term.category)}</span>
-                    </div>
-                    <span class="term-translation">${escapeHtml(term.translation)}</span>
-                    <p class="term-definition">${escapeHtml(term.definition)}</p>
-                    <div class="term-example">
-                        <i class="fas fa-quote-left"></i> ${escapeHtml(term.example)}
-                    </div>
-                    <div class="term-actions">
-                        <button class="action-btn btn-forgot" onclick="setStatus('${escapeHtml(term.id)}', 'forgot')" aria-label="Marquer comme oublié">
-                            <i class="fas fa-times"></i> Oublié
-                        </button>
-                        <button class="action-btn btn-pass" onclick="setStatus('${escapeHtml(term.id)}', 'pass')" aria-label="Passer">
-                            <i class="fas fa-forward"></i> Passer
-                        </button>
-                        <button class="action-btn btn-knew" onclick="setStatus('${escapeHtml(term.id)}', 'knew')" aria-label="Marquer comme su">
-                            <i class="fas fa-check"></i> Su
-                        </button>
-                    </div>
-                </article>
-            `).join('');
-
-            updateStats();
-        }
-
-        // Mettre à jour statut
-        function setStatus(termId, status) {
-            const term = terms.find(t => t.id === termId);
-            if (term) {
-                term.status = status;
-                progressState[termId] = status;
-                try {
-                    localStorage.setItem(STORAGE_KEY, JSON.stringify(progressState));
-                } catch (e) {
-                    console.warn('Erreur sauvegarde localStorage', e);
-                }
-                renderCards();
-            }
-        }
-
-        // Mise à jour statistiques
-        function updateStats() {
-            const total = filteredTerms.length;
-            const knew = terms.filter(t => t.status === 'knew').length;
-            const pass = terms.filter(t => t.status === 'pass').length;
-            const forgot = terms.filter(t => t.status === 'forgot').length;
-
-            document.getElementById('totalTerms').textContent = terms.length;
-            document.getElementById('knewCount').textContent = knew;
-            document.getElementById('passCount').textContent = pass;
-            document.getElementById('forgotCount').textContent = forgot;
-        }
-
-        // Recherche
-        document.getElementById('searchInput').addEventListener('input', (e) => {
-            const search = e.target.value.toLowerCase();
-
-            if (!search) {
-                filteredTerms = [...terms];
-                renderCards();
-                return;
-            }
-
-            filteredTerms = terms.filter(term => {
-                return term.latin.toLowerCase().includes(search) ||
-                       term.translation.toLowerCase().includes(search) ||
-                       term.definition.toLowerCase().includes(search) ||
-                       term.example.toLowerCase().includes(search);
+            const filteredData = sortedData.filter(item => {
+                const matchTag = filter === 'all' || item.g.includes(filter);
+                const query = searchQuery.toLowerCase();
+                const matchSearch = item.l.toLowerCase().includes(query) || 
+                                    item.t.toLowerCase().includes(query) || 
+                                    item.d.toLowerCase().includes(query);
+                return matchTag && matchSearch;
             });
 
-            renderCards();
-        });
-
-        // Back to top
-        const backToTop = document.getElementById('backToTop');
-
-        window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 300) {
-                backToTop.classList.add('visible');
-            } else {
-                backToTop.classList.remove('visible');
+            if (filteredData.length === 0) {
+                grid.innerHTML = '<div style="grid-column:1/-1; text-align:center; padding:40px; color:#888;">Aucun terme trouvé.</div>';
+                return;
             }
+
+            filteredData.forEach((item, index) => {
+                const num = (index + 1).toString().padStart(3, '0');
+                
+                let badgesHtml = '';
+                item.g.forEach(tag => {
+                    let bgClass = 'bg-je';
+                    if (tag === 'DS') bgClass = 'bg-ds';
+                    if (tag === 'DA') bgClass = 'bg-da';
+                    badgesHtml += `<div class="badge-circle ${bgClass}" title="${tag}">${tag}</div>`;
+                });
+
+                const card = `
+                    <div class="expert-card">
+                        <div class="card-top">
+                            <span class="card-number">${num}</span>
+                            <div class="badges-group">${badgesHtml}</div>
+                            
+                            <div class="latin-title-row">
+                                <div class="latin-term">${item.l}</div>
+                                <button class="pronounce-btn" onclick="speakText('${item.l.replace(/'/g, "\\'")}')" title="Prononciation Latine">
+                                    <i class="fas fa-volume-up"></i>
+                                </button>
+                            </div>
+                            <div class="translation">${item.t}</div>
+                        </div>
+
+                        <div class="definition-box">
+                            ${item.d}
+                        </div>
+
+                        <button class="expert-toggle" onclick="toggleExpert(this)">
+                            <span>Déployer l'Expertise</span>
+                            <i class="fas fa-chevron-down chevron"></i>
+                        </button>
+
+                        <div class="expert-content">
+                            <div class="expert-block b-context">
+                                <span class="block-title">🟦 Quand l'utiliser ?</span>
+                                ${item.c}
+                            </div>
+                            <div class="expert-block b-advice">
+                                <span class="block-title">🟨 Conseil Pro</span>
+                                ${item.a}
+                            </div>
+                            <div class="expert-block b-danger">
+                                <span class="block-title">🟥 Zone de Vigilance</span>
+                                ${item.v}
+                            </div>
+                        </div>
+
+                        <div class="card-bottom-actions">
+                            <button class="btn-read-all" onclick="speakFullCard('${item.l.replace(/'/g, "\\'")}', '${item.t.replace(/'/g, "\\'")}', '${item.d.replace(/'/g, "\\'")}', '${item.a.replace(/'/g, "\\'")}', '${item.v.replace(/'/g, "\\'")}')" title="Lecture complète pour accessibilité">
+                                <i class="fas fa-bullhorn"></i> Lire la fiche
+                            </button>
+                        </div>
+                    </div>
+                `;
+                grid.innerHTML += card;
+            });
+        }
+
+        function toggleExpert(btn) {
+            btn.classList.toggle('active');
+            const content = btn.nextElementSibling;
+            content.classList.toggle('open');
+            const span = btn.querySelector('span');
+            span.textContent = content.classList.contains('open') ? "Masquer l'Expertise" : "Déployer l'Expertise";
+        }
+
+        function filterTerms(tag) {
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            renderDictionary(tag, document.getElementById('searchInput').value);
+        }
+
+        document.getElementById('searchInput').addEventListener('input', (e) => {
+            const activeBtn = document.querySelector('.filter-btn.active');
+            let activeTag = 'all';
+            if (activeBtn.innerText.includes('Social')) activeTag = 'DS';
+            if (activeBtn.innerText.includes('Affaires')) activeTag = 'DA';
+            if (activeBtn.innerText.includes('Juriste')) activeTag = 'JE';
+            renderDictionary(activeTag, e.target.value);
         });
 
-        backToTop.addEventListener('click', () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
+        // Audio 1 : Prononciation (Italien pour le latin)
+        function speakText(text) {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'it-IT'; 
+                utterance.rate = 0.8;
+                window.speechSynthesis.speak(utterance);
+            }
+        }
 
-        // Init
-        renderCards();
+        // Audio 2 : Lecture Complète (Français)
+        function speakFullCard(latin, trans, def, advice, danger) {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const fullText = `Terme : ${latin}. Traduction : ${trans}. Définition : ${def}. Conseil Pro : ${advice}. Point de vigilance : ${danger}`;
+                const utterance = new SpeechSynthesisUtterance(fullText);
+                utterance.lang = 'fr-FR';
+                utterance.rate = 1;
+                window.speechSynthesis.speak(utterance);
+            }
+        }
+
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) backToTop.classList.add('visible');
+            else backToTop.classList.remove('visible');
+        });
+        backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+        renderDictionary();
     </script>
 </body>
 </html>
