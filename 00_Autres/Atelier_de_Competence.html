@@ -81,7 +81,7 @@
         .tab-btn {
             font-family: 'Montserrat', sans-serif; color: var(--brand-blue); border-bottom: 4px solid transparent;
             opacity: 0.7; transition: all 0.3s; padding: 20px 30px; font-size: 0.9rem; font-weight: 600; text-transform: uppercase;
-            display: flex; align-items: center; gap: 10px;
+            display: flex; align-items: center; gap: 10px; flex-shrink: 0;
         }
         .tab-btn:hover { opacity: 1; background-color: #f8fafc; color: var(--cta); }
         .tab-btn.active { opacity: 1; border-bottom: 4px solid var(--cta); background-color: white; color: var(--brand-blue); font-weight: 800; }
@@ -98,7 +98,7 @@
         .intro-title { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--brand-blue); margin-bottom: 10px; }
 
         /* --- 1. SYLLOGISMES --- */
-        .cases-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(550px, 1fr)); gap: 30px; } /* Agrandi un peu la largeur min */
+        .cases-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(550px, 1fr)); gap: 30px; }
         .case-card { background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid rgba(0,0,0,0.05); display: flex; flex-direction: column; transition: transform 0.3s; }
         .case-card:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(0,0,0,0.1); }
         .case-header { padding: 20px; background: #fcfbfc; border-bottom: 1px solid #f1f5f9; display: flex; justify-content: space-between; align-items: center; }
@@ -116,7 +116,6 @@
         .case-solution { max-height: 0; overflow: hidden; transition: max-height 0.6s ease-out; opacity: 0; }
         .case-solution.open { max-height: 1000px; opacity: 1; margin-top: 25px; }
         
-        /* Modif des steps pour l'espacement */
         .syllogism-step { margin-bottom: 20px; padding: 15px; border-radius: 10px; font-size: 0.95rem; text-align: justify; line-height: 1.6; display: flex; flex-direction: column; gap: 8px; }
         .step-label { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; display: inline-block; padding-bottom: 2px; border-bottom: 1px solid rgba(0,0,0,0.1); width: fit-content; }
         
@@ -154,6 +153,14 @@
         .reflexe-step { display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start; }
         .step-num { background: #f3f4f6; color: var(--brand-blue); font-weight: 800; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 0.8rem; margin-top: 2px; }
         .reflexe-warning { margin-top: 15px; padding: 10px; background: #fef2f2; border-left: 3px solid #ef4444; color: #b91c1c; font-size: 0.85rem; font-weight: 600; line-height: 1.4; }
+
+        /* --- 4. DALLOZ (GRID) --- */
+        .dalloz-search-container { background: var(--bg-fact); padding: 20px; border-radius: 12px; margin-bottom: 30px; display: flex; gap: 15px; align-items: center; border: 1px solid var(--border-fact); }
+        .dalloz-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 15px; }
+        .dalloz-card { background: white; padding: 15px; border-radius: 8px; border: 1px solid #e2e8f0; display: flex; flex-direction: column; gap: 5px; transition: 0.2s; }
+        .dalloz-card:hover { border-color: #b91c1c; box-shadow: 0 4px 10px rgba(185, 28, 28, 0.1); transform: translateY(-2px); }
+        .dalloz-abbr { font-family: 'Playfair Display', serif; font-weight: 700; color: #b91c1c; font-size: 1.1rem; }
+        .dalloz-full { font-size: 0.9rem; color: #334155; line-height: 1.4; }
 
         /* Boutons Audio */
         .btn-audio-small { width: 28px; height: 28px; border-radius: 50%; background: rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; color: white; cursor: pointer; transition: 0.2s; z-index: 10; }
@@ -226,19 +233,23 @@
     <div class="nav-tabs-container">
         <div class="container" style="display: flex; justify-content: center; overflow-x: auto;">
             <button onclick="switchTab('syllogismes')" class="tab-btn active">
-                <i class="fas fa-gavel"></i> 30 Cas Pratiques (Syllogismes)
+                <i class="fas fa-gavel"></i> 30 Cas Pratiques
             </button>
             <button onclick="switchTab('lexique')" class="tab-btn">
-                <i class="fas fa-book"></i> Lexique Français Expert (+100)
+                <i class="fas fa-book"></i> Lexique Expert
             </button>
             <button onclick="switchTab('reflexes')" class="tab-btn">
-                <i class="fas fa-shield-alt"></i> Fiches Réflexes (+40)
+                <i class="fas fa-shield-alt"></i> Fiches Réflexes
+            </button>
+            <button onclick="switchTab('abbrev')" class="tab-btn">
+                <i class="fas fa-book-open"></i> Abréviations Juridiques
             </button>
         </div>
     </div>
 
     <main class="container">
 
+        <!-- ONGLET 1 : SYLLOGISMES -->
         <div id="syllogismes" class="tab-content active">
             <div class="intro-box">
                 <h2 class="intro-title">L'Art du Syllogisme Juridique</h2>
@@ -252,6 +263,7 @@
             <div id="cases-container" class="cases-grid"></div>
         </div>
 
+        <!-- ONGLET 2 : LEXIQUE -->
         <div id="lexique" class="tab-content">
             <div class="intro-box">
                 <div class="flex justify-between items-center flex-wrap gap-4">
@@ -266,13 +278,72 @@
                 </div>
         </div>
 
+        <!-- ONGLET 3 : FICHES RÉFLEXES (AVEC LÉGENDE COULEURS) -->
         <div id="reflexes" class="tab-content">
             <div class="intro-box">
-                <h2 class="intro-title">Fiches Réflexes Opérationnelles</h2>
-                <p class="text-gray-600">Plus de 40 checklists de sécurité pour agir sans faute au quotidien.</p>
-            </div>
-            <div id="reflexes-container" class="reflexe-grid">
+                <div class="mb-6">
+                    <h2 class="intro-title">Fiches Réflexes Opérationnelles</h2>
+                    <h3 class="font-bold text-[#0F2C48] text-lg mb-2"><i class="fas fa-info-circle mr-2 text-[#D9A526]"></i>C'est quoi une Fiche Réflexe ?</h3>
+                    <p class="text-gray-700 text-sm leading-relaxed mb-4">
+                        C'est votre <strong>"Checklist de Copilote"</strong> ✈️. Contrairement à un cours (fait pour apprendre), la fiche réflexe s'utilise <strong>dans l'action</strong>. Elle garantit que vous ne loupez aucune étape critique, surtout en situation de stress.
+                    </p>
                 </div>
+
+                <!-- Légende des Codes Couleurs -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 border-t border-gray-200 pt-5">
+                    
+                    <!-- Code ROUGE -->
+                    <div class="flex items-start gap-3 p-3 rounded-lg bg-red-50 border border-red-100">
+                        <div class="w-10 h-10 rounded-full flex-shrink-0 flex items-center justify-center text-white text-lg font-bold shadow-sm" style="background: linear-gradient(135deg, #ef4444, #b91c1c);">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                        <div>
+                            <strong class="text-[#b91c1c] text-sm uppercase tracking-wide">Danger & Urgence</strong>
+                            <p class="text-xs text-gray-700 mt-1">Situations à haut risque pénal, financier ou de sécurité. <br><strong>Action immédiate requise.</strong></p>
+                        </div>
+                    </div>
+
+                    <!-- Code BLEU -->
+                    <div class="flex items-start gap-3 p-3 rounded-lg bg-blue-50 border border-blue-100">
+                        <div class="w-10 h-10 rounded-full flex-shrink-0 flex items-center justify-center text-white text-lg font-bold shadow-sm" style="background: linear-gradient(135deg, #3b82f6, #1d4ed8);">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <div>
+                            <strong class="text-[#1d4ed8] text-sm uppercase tracking-wide">Procédure Stricte</strong>
+                            <p class="text-xs text-gray-700 mt-1">Chronologie et formalisme impératifs. <br><strong>Respect des délais clé.</strong></p>
+                        </div>
+                    </div>
+
+                    <!-- Code VERT -->
+                    <div class="flex items-start gap-3 p-3 rounded-lg bg-emerald-50 border border-emerald-100">
+                        <div class="w-10 h-10 rounded-full flex-shrink-0 flex items-center justify-center text-white text-lg font-bold shadow-sm" style="background: linear-gradient(135deg, #10b981, #047857);">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <div>
+                            <strong class="text-[#047857] text-sm uppercase tracking-wide">Gestion RH</strong>
+                            <p class="text-xs text-gray-700 mt-1">Administration quotidienne et conformité. <br><strong>Bonnes pratiques.</strong></p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div id="reflexes-container" class="reflexe-grid"></div>
+        </div>
+
+        <!-- ONGLET 4 : ABRÉVIATIONS JURIDIQUES (RENOMMÉ) -->
+        <div id="abbrev" class="tab-content">
+            <div class="intro-box">
+                <h2 class="intro-title">Déchiffrer les Codes & Jurisprudence</h2>
+                <p class="text-gray-600 mb-4">Pour naviguer dans vos Codes (Civil, Travail, etc.), vous devez maîtriser les abréviations officielles. C'est la clé pour trouver rapidement la jurisprudence.</p>
+                
+                <div class="dalloz-search-container">
+                    <i class="fas fa-search text-gray-400"></i>
+                    <input type="text" id="abbrevSearch" placeholder="Ex: AJDA, Cass., JCP..." class="bg-transparent w-full outline-none text-gray-700 font-semibold">
+                </div>
+            </div>
+            <div id="abbrev-container" class="dalloz-grid">
+                <!-- Contenu généré par JS -->
+            </div>
         </div>
 
     </main>
@@ -317,7 +388,7 @@
     <div id="backToTop" onclick="window.scrollTo(0,0)"><i class="fas fa-arrow-up"></i></div>
 
     <script>
-        // --- DATA 1 : SYLLOGISMES (30 CAS) - REFAITS ET DÉTAILLÉS ---
+        // --- DATA 1 : SYLLOGISMES (30 CAS) - MISE EN PAGE AÉRÉE ---
         const dbSyllogismes = [
             { cat: "Social", title: "Abandon de Poste", context: "Absence injustifiée depuis 15 jours. Silence radio du salarié.", majeure: "Depuis la Loi 'Marché du Travail' (2023), l'abandon de poste peut conduire à une présomption de démission si le salarié ne reprend pas le travail après mise en demeure.", mineure: "La mise en demeure a été envoyée et le délai (minimum 15 jours) est expiré sans réponse.", conclusion: "Le salarié est présumé démissionnaire. Il perd donc le bénéfice de l'assurance chômage.", advice: "Ne licenciez plus pour faute grave sur ce motif pour éviter de payer le chômage indûment." },
             { cat: "Social", title: "Insulte Facebook", context: "Salarié insulte son N+1 sur un groupe privé (10 personnes).", majeure: "Les propos tenus dans une correspondance privée (groupe fermé et restreint) sont protégés par le secret des correspondances, sauf s'ils deviennent publics.", mineure: "Le groupe est fermé, accessible uniquement à quelques 'amis' agréés.", conclusion: "Aucune sanction possible. Il s'agit d'un fait relevant de la vie privée.", advice: "La preuve devient recevable seulement si un membre du groupe vous la transmet spontanément." },
@@ -470,7 +541,8 @@
             { m: "Vice du consentement", d: "Erreur, Dol, Violence.", c: "Entraîne la nullité du contrat." }
         ];
 
-        // --- 3. DATA : FICHES RÉFLEXES (+40 FICHES) ---
+        // --- 4. DATA : FICHES RÉFLEXES (RESTAURÉE) ---
+        // Légende : c (Couleur: Danger, Proc, Gestion), t (Titre), d (Description), s (Steps), p (Piège)
         const dbReflexes = [
             { t: "Gérer une Faute Grave", c: "Danger", d: "Manquement rendant impossible le maintien du salarié.", s: ["Agir sous 2 mois (Prescription)", "Mise à pied conservatoire si danger", "Convoquer à entretien (min 5j)", "Notifier (2j min / 1 mois max)"], p: "Attention au 'Non bis in idem' : Si vous avez déjà envoyé un mail de reproche, vous ne pouvez plus licencier !" },
             { t: "Gérer une Inaptitude", c: "Sante", d: "Incapacité médicale au poste constatée par le Médecin du Travail.", s: ["Constat médical (Avis)", "Recherche Reclassement (Obligatoire)", "Consultation CSE", "Licenciement si impossible"], p: "Le licenciement est nul si l'obligation de reclassement n'est pas respectée loyalement et par écrit." },
@@ -516,21 +588,245 @@
             { t: "Clause Non-Conc.", c: "Gestion", d: "Protection savoir-faire.", s: ["Limitation temps/espace", "Intérêt légitime", "Indemnité financière", "Levée dans les délais"], p: "Si vous oubliez de lever la clause au départ du salarié, vous devez payer l'indemnité." }
         ];
 
+        // --- 5. DATA : ABRÉVIATIONS JURIDIQUES ---
+        const dbAbrev = [
+            { a: "A", f: "Arrêt du Conseil d'État publié au Lebon" },
+            { a: "a.", f: "Autres" },
+            { a: "Aff.", f: "Affaire (devant la CJCE/CJUE)" },
+            { a: "AJ", f: "Actualité jurisprudentielle du Recueil Dalloz" },
+            { a: "AJDA", f: "Actualité juridique de droit administratif" },
+            { a: "al.", f: "Alinéa" },
+            { a: "ALD", f: "Actualité législative Dalloz" },
+            { a: "ANI", f: "Accord national interprofessionnel" },
+            { a: "Archives Phil. dr.", f: "Archives de Philosophie du droit" },
+            { a: "Arr.", f: "Arrêté" },
+            { a: "Arr. min.", f: "Arrêté ministériel" },
+            { a: "Art. / art.", f: "Article" },
+            { a: "Ass.", f: "Assemblée" },
+            { a: "Ass. plén.", f: "Assemblée plénière de la Cour de cassation" },
+            { a: "B", f: "Arrêt publié au Bulletin civil ou au Bulletin criminel" },
+            { a: "BHSS", f: "Bulletin d'histoire de la sécurité sociale" },
+            { a: "BIBL.", f: "Bibliographie" },
+            { a: "BIBL. GEN.", f: "Bibliographie générale" },
+            { a: "BICC", f: "Bulletin d'information de la Cour de cassation" },
+            { a: "BJT", f: "Bulletin Joly Travail" },
+            { a: "BLD", f: "Bulletin législatif Dalloz" },
+            { a: "BOMT", f: "Bulletin officiel du ministère du Travail" },
+            { a: "BOSS", f: "Bulletin officiel de la Sécurité sociale" },
+            { a: "BS Lefebvre", f: "Bulletin social Francis Lefebvre" },
+            { a: "Bull.", f: "Bulletin des arrêts de la Cour de cassation" },
+            { a: "Bull. civ.", f: "Bulletin des arrêts des chambres civiles de la Cour de cassation" },
+            { a: "Bull. crim.", f: "Bulletin des arrêts de la chambre criminelle de la Cour de cassation" },
+            { a: "C.", f: "Code" },
+            { a: "c/", f: "Contre (dans le nom d'un arrêt)" },
+            { a: "CA", f: "Cour d'appel" },
+            { a: "CAA", f: "Cour administrative d'appel" },
+            { a: "Cah. Cons. const.", f: "Cahiers du Conseil constitutionnel" },
+            { a: "Cah. dr. entr.", f: "Cahiers de droit de l'entreprise" },
+            { a: "Cah. prud'h.", f: "Cahiers prud'homaux" },
+            { a: "CASF", f: "Code de l'action sociale et des familles" },
+            { a: "Cass.", f: "Cour de cassation" },
+            { a: "C. assur.", f: "Code des assurances" },
+            { a: "CCH", f: "Code de la construction et de l'habitation" },
+            { a: "C. civ.", f: "Code civil" },
+            { a: "C. com.", f: "Code de commerce" },
+            { a: "C. const.", f: "Code constitutionnel et des droits fondamentaux" },
+            { a: "CE", f: "Conseil d'État" },
+            { a: "CEDH", f: "Cour européenne des droits de l'homme" },
+            { a: "CEDS", f: "Comité européen des droits sociaux" },
+            { a: "C. élect.", f: "Code électoral" },
+            { a: "C. envir.", f: "Code de l'environnement" },
+            { a: "CESEDA", f: "Code de l'entrée et du séjour des étrangers et du droit d'asile" },
+            { a: "CGFP", f: "Code général de la fonction publique" },
+            { a: "CGCT", f: "Code général des collectivités territoriales" },
+            { a: "CGI", f: "Code général des impôts" },
+            { a: "ch.", f: "Chambre" },
+            { a: "chap.", f: "Chapitre" },
+            { a: "Ch. mixte", f: "Chambre mixte de la Cour de cassation" },
+            { a: "Ch. réun.", f: "Chambres réunies de la Cour de cassation" },
+            { a: "Chron.", f: "Chronique (Article de doctrine)" },
+            { a: "Circ.", f: "Circulaire" },
+            { a: "Civ.", f: "Chambre civile de la Cour de cassation" },
+            { a: "CJA", f: "Code de justice administrative" },
+            { a: "CJCE", f: "Cour de justice des Communautés européennes (1957-2009)" },
+            { a: "CJUE", f: "Cour de justice de l'Union européenne (depuis 2009)" },
+            { a: "CHSCT", f: "Comité d'hygiène, de sécurité et des conditions de travail" },
+            { a: "C. mon. fin.", f: "Code monétaire et financier" },
+            { a: "C. mut.", f: "Code de la mutualité" },
+            { a: "COJ", f: "Code de l'organisation judiciaire" },
+            { a: "Com.", f: "Chambre commerciale de la Cour de cassation" },
+            { a: "Comm.", f: "Commentaire" },
+            { a: "Comp.", f: "Comparer" },
+            { a: "concl.", f: "Conclusions" },
+            { a: "conf.", f: "Solution conforme" },
+            { a: "Cons. const.", f: "Conseil constitutionnel" },
+            { a: "Cons. prud'h.", f: "Conseil de prud'hommes" },
+            { a: "Const.", f: "Constitution" },
+            { a: "Const. OIT", f: "Constitution de l'organisation internationale de travail" },
+            { a: "Contra", f: "Solution contraire" },
+            { a: "Conv.", f: "Convention" },
+            { a: "Conv. EDH", f: "Convention européenne de sauvegarde des droits de l'homme" },
+            { a: "Conv. OIT", f: "Convention de l'organisation internationale de travail" },
+            { a: "C. pén.", f: "Code pénal" },
+            { a: "C. pénit.", f: "Code pénitentiaire" },
+            { a: "CPI", f: "Code de la propriété intellectuelle" },
+            { a: "C. pr. civ.", f: "Code de procédure civile" },
+            { a: "C. pr. exéc.", f: "Code des procédures civiles d'exécution" },
+            { a: "C. pr. pén.", f: "Code de procédure pénale" },
+            { a: "Crim.", f: "Chambre criminelle de la Cour de cassation" },
+            { a: "CRPA", f: "Code des relations entre le public et l'administration" },
+            { a: "C. rur.", f: "Code rural et de la pêche maritime" },
+            { a: "CSB", f: "Cahiers sociaux du barreau de Paris" },
+            { a: "C. sociétés", f: "Code des sociétés" },
+            { a: "CSP", f: "Code de la santé publique" },
+            { a: "CSS", f: "Code de la sécurité sociale" },
+            { a: "C. tourisme", f: "Code du tourisme" },
+            { a: "C. transp.", f: "Code des transports" },
+            { a: "C. trav.", f: "Code du travail" },
+            { a: "C. urb.", f: "Code de l'urbanisme" },
+            { a: "D.", f: "Recueil Dalloz" },
+            { a: "D. actu.", f: "Dalloz actualité" },
+            { a: "D. Affaires", f: "Dalloz Affaires (de 1995 à 1999)" },
+            { a: "Décis.", f: "Décision" },
+            { a: "Décr.", f: "Décret" },
+            { a: "Décr.-L.", f: "Décret-loi" },
+            { a: "Defrénois", f: "Répertoire du notariat Defrénois" },
+            { a: "DH", f: "Recueil hebdomadaire de jurisprudence Dalloz" },
+            { a: "Dir.", f: "Directive européenne" },
+            { a: "Doctr.", f: "Doctrine" },
+            { a: "DP", f: "Recueil périodique Dalloz (avant 1941)" },
+            { a: "DREETS", f: "Direction régionale de l'économie, de l'emploi, du travail..." },
+            { a: "Dr. ouvrier", f: "Le droit ouvrier" },
+            { a: "Dr. soc.", f: "Droit social" },
+            { a: "Dr. trav.", f: "Droit du travail et de la sécurité sociale" },
+            { a: "EJSS", f: "European Journal of Social Security" },
+            { a: "eod.", f: "Au même endroit" },
+            { a: "esp.", f: "Espèce" },
+            { a: "GADT", f: "Les Grands arrêts du droit du travail" },
+            { a: "Gaz. Pal.", f: "Gazette du Palais" },
+            { a: "ibid.", f: "Au même endroit" },
+            { a: "Inf. chef d'entrepr.", f: "L'informateur du chef d'entreprise" },
+            { a: "Instr.", f: "Instruction" },
+            { a: "IR", f: "Informations rapides du Recueil Dalloz" },
+            { a: "J.", f: "Jurisprudence" },
+            { a: "JCP", f: "Juris-Classeur périodique (Semaine Juridique)" },
+            { a: "JCP CI", f: "JCP édition Commerce et industrie" },
+            { a: "JCP E", f: "JCP édition Entreprise" },
+            { a: "JCP N", f: "JCP édition Notariale" },
+            { a: "JCP S", f: "JCP édition Sociale" },
+            { a: "JDI", f: "Journal de droit international (Clunet)" },
+            { a: "JO", f: "Journal officiel" },
+            { a: "JOCE", f: "Journal officiel des Communautés européennes" },
+            { a: "JOUE", f: "Journal officiel de l'Union européenne" },
+            { a: "JSL", f: "Jurisprudence sociale Lamy" },
+            { a: "JS UIMM", f: "Jurisprudence sociale de l'UIMM" },
+            { a: "L.", f: "Loi" },
+            { a: "Lebon", f: "Recueil des décisions du Conseil d'État" },
+            { a: "Lebon T.", f: "Recueil des décisions du Conseil d'État (Tables)" },
+            { a: "Liaisons soc.", f: "Liaisons sociales" },
+            { a: "Liv.", f: "Livre" },
+            { a: "loc. cit.", f: "A l'endroit précité" },
+            { a: "LPA", f: "Les Petites Affiches" },
+            { a: "LSP", f: "Lien social et politique" },
+            { a: "Mod.", f: "Modifié" },
+            { a: "n°", f: "Numéro" },
+            { a: "NCPC", f: "Nouveau code de procédure civile" },
+            { a: "Ndlr", f: "Note de la rédaction" },
+            { a: "nouv.", f: "Nouveau" },
+            { a: "obs.", f: "Observations" },
+            { a: "op. cit.", f: "Opus cité" },
+            { a: "Ord.", f: "Ordonnance" },
+            { a: "P", f: "Arrêt publié au Bulletin civil ou criminel" },
+            { a: "p.", f: "Page" },
+            { a: "Pan.", f: "Panorama" },
+            { a: "pén.", f: "Pénalités" },
+            { a: "préc.", f: "Précité" },
+            { a: "QPC", f: "Question prioritaire de constitutionnalité" },
+            { a: "Quest. prud'h.", f: "Questions prud'homales" },
+            { a: "Quot. jur.", f: "Quotidien juridique" },
+            { a: "Rapp.", f: "Rapport" },
+            { a: "Rappr.", f: "Rapprocher" },
+            { a: "RCA", f: "Responsabilité civile et assurances" },
+            { a: "RDC", f: "Revue des contrats" },
+            { a: "RD publ.", f: "Revue de droit public et de la science politique" },
+            { a: "RDSS", f: "Revue de droit sanitaire et social" },
+            { a: "RDT", f: "Revue de droit du travail" },
+            { a: "Rec.", f: "Recueil des décisions de la CJCE" },
+            { a: "Rect.", f: "Rectificatif" },
+            { a: "réf.", f: "Référé" },
+            { a: "REGARDS EN3S", f: "Revue de l'École nationale supérieure de sécu sociale" },
+            { a: "Règl.", f: "Règlement" },
+            { a: "RÉP. PR. CIV.", f: "Répertoire de procédure civile" },
+            { a: "RÉP. TRAV.", f: "Répertoire de droit du travail" },
+            { a: "réquis.", f: "Réquisitions" },
+            { a: "Rev. adm.", f: "Revue administrative" },
+            { a: "Rev. arb.", f: "Revue de l'arbitrage" },
+            { a: "Rev. crit. DIP", f: "Revue critique de droit international privé" },
+            { a: "Rev. huiss.", f: "Revue des huissiers de justice" },
+            { a: "Rev. sociétés", f: "Revue des sociétés" },
+            { a: "Rev. trav.", f: "Revue du travail" },
+            { a: "RF aff. soc.", f: "Revue française des affaires sociales" },
+            { a: "RF compt.", f: "Revue française de comptabilité" },
+            { a: "RFDA", f: "Revue française de droit administratif" },
+            { a: "RGDA", f: "Revue générale du droit des assurances" },
+            { a: "RJ com.", f: "Revue de jurisprudence commerciale" },
+            { a: "RJS", f: "Revue de jurisprudence sociale" },
+            { a: "RPC", f: "Revue des procédures collectives" },
+            { a: "RPDS", f: "Revue pratique de droit social" },
+            { a: "RRJ", f: "Revue de recherche juridique et de droit prospectif" },
+            { a: "RSC", f: "Revue de science criminelle et de droit pénal comparé" },
+            { a: "RTD civ.", f: "Revue trimestrielle de droit civil" },
+            { a: "RTD com.", f: "Revue trimestrielle de droit commercial" },
+            { a: "RTD eur.", f: "Revue trimestrielle de droit européen" },
+            { a: "S.", f: "Recueil Sirey" },
+            { a: "s.", f: "et suivants" },
+            { a: "Sect.", f: "Section" },
+            { a: "Soc.", f: "Chambre sociale de la Cour de cassation" },
+            { a: "sol. impl.", f: "Solution implicite" },
+            { a: "Somm.", f: "Sommaires" },
+            { a: "ss.", f: "Sous" },
+            { a: "SSL", f: "Semaine sociale Lamy" },
+            { a: "suppl.", f: "Supplément" },
+            { a: "t.", f: "Tome" },
+            { a: "T.", f: "Tables" },
+            { a: "TA", f: "Tribunal administratif" },
+            { a: "T. civ.", f: "Tribunal, chambre civile" },
+            { a: "T. com.", f: "Tribunal de commerce" },
+            { a: "T. confl.", f: "Tribunal des conflits" },
+            { a: "T. corr.", f: "Tribunal, chambre correctionnelle" },
+            { a: "TFUE", f: "Traité sur le fonctionnement de l'UE" },
+            { a: "TGI", f: "Tribunal de grande instance" },
+            { a: "TI", f: "Tribunal d'instance" },
+            { a: "Tit.", f: "Titre" },
+            { a: "TJ", f: "Tribunal judiciaire" },
+            { a: "TPICE", f: "Tribunal de première instance des Communautés européennes" },
+            { a: "TPS", f: "Travail et protection sociale" },
+            { a: "Trib. UE", f: "Tribunal de l'Union européenne" },
+            { a: "TUE", f: "Traité sur l'Union européenne" },
+            { a: "UES", f: "Unité économique et sociale" },
+            { a: "V.", f: "Voir" },
+            { a: "v°, vis", f: "Mot, mots" }
+        ];
+
         // --- MOTEUR JS ---
         window.onload = function() {
             renderSyllogisms('all');
             renderLexique(dbLexique);
             renderReflexes(dbReflexes);
+            renderDalloz(dbAbrev);
         };
 
         function switchTab(id) {
             document.querySelectorAll('.tab-content').forEach(e => e.classList.remove('active'));
             document.querySelectorAll('.tab-btn').forEach(e => e.classList.remove('active'));
             document.getElementById(id).classList.add('active');
+            
+            // Logique pour activer le bon bouton (un peu manuel mais robuste)
             const btns = document.querySelectorAll('.tab-btn');
             if(id === 'syllogismes') btns[0].classList.add('active');
             if(id === 'lexique') btns[1].classList.add('active');
             if(id === 'reflexes') btns[2].classList.add('active');
+            if(id === 'abbrev') btns[3].classList.add('active');
         }
 
         function filterCases(cat) { renderSyllogisms(cat); }
@@ -664,6 +960,29 @@
                 container.innerHTML += html;
             });
         }
+
+        // --- RENDER ABRÉVIATIONS (NEW) ---
+        function renderDalloz(data) {
+            const container = document.getElementById('abbrev-container');
+            container.innerHTML = '';
+            // Tri alphabétique
+            data.sort((a,b) => a.a.localeCompare(b.a));
+
+            data.forEach(item => {
+                const html = `
+                <div class="dalloz-card">
+                    <div class="dalloz-abbr">${item.a}</div>
+                    <div class="dalloz-full">${item.f}</div>
+                </div>`;
+                container.innerHTML += html;
+            });
+        }
+
+        document.getElementById('abbrevSearch').addEventListener('keyup', (e) => {
+            const val = e.target.value.toLowerCase();
+            const filtered = dbAbrev.filter(i => i.a.toLowerCase().includes(val) || i.f.toLowerCase().includes(val));
+            renderDalloz(filtered);
+        });
         
         function speakText(text) {
             if ('speechSynthesis' in window) {
