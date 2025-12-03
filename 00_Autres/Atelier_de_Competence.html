@@ -97,7 +97,21 @@
         }
         .intro-title { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--brand-blue); margin-bottom: 10px; }
 
-        /* --- 1. SYLLOGISMES --- */
+        /* --- 1. ACCUEIL (FUN & DÉTENDU) --- */
+        .welcome-hero { text-align: center; margin-bottom: 40px; }
+        .welcome-emoji { font-size: 3rem; margin-bottom: 10px; display: block; animation: bounce 2s infinite; }
+        @keyframes bounce { 0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 40% {transform: translateY(-10px);} 60% {transform: translateY(-5px);} }
+        .welcome-text { font-size: 1.1rem; color: #475569; max-width: 800px; margin: 0 auto; line-height: 1.6; }
+        
+        .qq-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 30px; text-align: left; }
+        .qq-card { background: #f8fafc; padding: 20px; border-radius: 12px; border: 1px solid #e2e8f0; transition: 0.3s; }
+        .qq-card:hover { transform: translateY(-5px); border-color: var(--cta); background: white; box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+        .qq-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+        .qq-icon { font-size: 1.5rem; color: var(--cta); }
+        .qq-question { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 1rem; color: var(--brand-blue); text-transform: uppercase; }
+        .qq-answer { color: #64748b; font-size: 0.9rem; }
+
+        /* --- SYLLOGISMES --- */
         .cases-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(550px, 1fr)); gap: 30px; }
         .case-card { background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid rgba(0,0,0,0.05); display: flex; flex-direction: column; transition: transform 0.3s; }
         .case-card:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(0,0,0,0.1); }
@@ -161,6 +175,29 @@
         .dalloz-card:hover { border-color: #b91c1c; box-shadow: 0 4px 10px rgba(185, 28, 28, 0.1); transform: translateY(-2px); }
         .dalloz-abbr { font-family: 'Playfair Display', serif; font-weight: 700; color: #b91c1c; font-size: 1.1rem; }
         .dalloz-full { font-size: 0.9rem; color: #334155; line-height: 1.4; }
+
+        /* --- 5. COMPÉTENCES (GUIDES) --- */
+        .matiere-section { margin-bottom: 50px; background: #fff; padding: 30px; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.03); border: 1px solid #f1f5f9; }
+        .matiere-header { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; margin-bottom: 20px; border-bottom: 2px solid #f1f5f9; padding-bottom: 15px; gap: 20px; }
+        .matiere-title-main { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--brand-blue); display: flex; align-items: center; gap: 15px; }
+        
+        /* Badges de filière */
+        .filiere-badge { padding: 8px 20px; border-radius: 50px; font-family: 'Montserrat', sans-serif; font-size: 0.85rem; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; color: white !important; transition: transform 0.2s; }
+        .filiere-badge:hover { transform: scale(1.05); }
+        .bg-social-gradient { background: linear-gradient(135deg, #d946ef 0%, #c026d3 100%); /* Fuchsia */ box-shadow: 0 4px 15px rgba(192, 38, 211, 0.3); }
+        .bg-affaires-gradient { background: linear-gradient(135deg, #D9A526 0%, #B4792A 100%); /* Or */ box-shadow: 0 4px 15px rgba(217, 165, 38, 0.3); }
+        .bg-socle-gradient { background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%); /* Bleu */ box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3); }
+
+        .matiere-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+        .matiere-card { background: #fcfcfc; padding: 20px; border-radius: 12px; border: 1px solid #e2e8f0; transition: 0.3s; }
+        .matiere-card:hover { border-color: var(--cta); transform: translateY(-3px); background: white; }
+        .matiere-name { font-family: 'Montserrat', sans-serif; font-weight: 800; color: var(--brand-blue); font-size: 1rem; margin-bottom: 8px; display: block; }
+        .matiere-desc { font-size: 0.9rem; color: #475569; line-height: 1.5; margin-bottom: 15px; }
+        
+        .dalloz-rec { background: #fee2e2; border-left: 4px solid #ef4444; padding: 12px; margin-top: 20px; border-radius: 0 8px 8px 0; }
+        .dalloz-rec-title { color: #b91c1c; font-weight: 800; font-size: 0.85rem; display: flex; align-items: center; gap: 5px; margin-bottom: 5px; text-transform: uppercase; }
+        .dalloz-link { display: inline-block; color: #991b1b; text-decoration: none; font-size: 0.85rem; font-weight: 600; border-bottom: 1px dotted #991b1b; transition: 0.2s; margin-right: 10px; }
+        .dalloz-link:hover { color: #ef4444; border-bottom-style: solid; }
 
         /* Boutons Audio */
         .btn-audio-small { width: 28px; height: 28px; border-radius: 50%; background: rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; color: white; cursor: pointer; transition: 0.2s; z-index: 10; }
@@ -232,7 +269,11 @@
 
     <div class="nav-tabs-container">
         <div class="container" style="display: flex; justify-content: center; overflow-x: auto;">
-            <button onclick="switchTab('syllogismes')" class="tab-btn active">
+            <!-- Onglet 1 : Accueil (PREMIER & ACTIF) -->
+            <button onclick="switchTab('accueil')" class="tab-btn active">
+                <i class="fas fa-home"></i> Accueil & Méthode
+            </button>
+            <button onclick="switchTab('syllogismes')" class="tab-btn">
                 <i class="fas fa-gavel"></i> 30 Cas Pratiques
             </button>
             <button onclick="switchTab('lexique')" class="tab-btn">
@@ -242,15 +283,64 @@
                 <i class="fas fa-shield-alt"></i> Fiches Réflexes
             </button>
             <button onclick="switchTab('abbrev')" class="tab-btn">
-                <i class="fas fa-book-open"></i> Abréviations Juridiques
+                <i class="fas fa-book-open"></i> Abréviations
+            </button>
+            <!-- Onglet 6 : Guides Compétences (NOUVEAU NOM) -->
+            <button onclick="switchTab('competences')" class="tab-btn">
+                <i class="fas fa-graduation-cap"></i> Guides Compétences
             </button>
         </div>
     </div>
 
     <main class="container">
 
-        <!-- ONGLET 1 : SYLLOGISMES -->
-        <div id="syllogismes" class="tab-content active">
+        <!-- ONGLET 1 : ACCUEIL & MÉTHODE (FUN) -->
+        <div id="accueil" class="tab-content active">
+            <div class="intro-box">
+                <div class="welcome-hero">
+                    <span class="welcome-emoji">👋😎</span>
+                    <h2 class="intro-title">Salut la Team Juriste !</h2>
+                    <p class="welcome-text">
+                        Bienvenue dans ta <strong>Boîte à Outils Secrète</strong>. Ici, pas de cravate trop serrée ni de latin pompeux juste pour faire joli. <br><br>
+                        Je suis une apprenante comme toi, et j'ai créé cet espace pour qu'on puisse <strong>monter en compétence ensemble</strong> sans se prendre la tête. On a le droit de rire, de se tromper, et surtout de réussir !
+                    </p>
+                    <div style="margin-top: 20px;">
+                        <a href="https://discord.gg/qwNPV8QzFt" target="_blank" class="px-6 py-3 bg-[#5865F2] text-white font-bold rounded-lg hover:bg-[#4752c4] transition shadow-md inline-flex items-center gap-2">
+                            <i class="fab fa-discord"></i> Rejoins le Discord pour suggérer des idées !
+                        </a>
+                    </div>
+                </div>
+                
+                <h3 class="font-bold text-[#0F2C48] text-xl mb-4 text-center">👇 Comment ça marche ce truc ? 👇</h3>
+                <div class="qq-grid">
+                    <div class="qq-card">
+                        <div class="qq-header"><i class="fas fa-gavel qq-icon"></i> <span class="qq-question">Cas Pratiques</span></div>
+                        <span class="qq-answer">Entraîne-toi au <strong>syllogisme</strong>. C'est comme la muscu, mais pour le cerveau. 🧠</span>
+                    </div>
+                    <div class="qq-card">
+                        <div class="qq-header"><i class="fas fa-book qq-icon"></i> <span class="qq-question">Lexique</span></div>
+                        <span class="qq-answer">Les mots compliqués traduits en français courant. Pour briller en société (ou pas). ✨</span>
+                    </div>
+                    <div class="qq-card">
+                        <div class="qq-header"><i class="fas fa-shield-alt qq-icon"></i> <span class="qq-question">Fiches Réflexes</span></div>
+                        <span class="qq-answer">Tes <strong>Checklists de survie</strong>. À sortir quand c'est la panique à bord. 🚨</span>
+                    </div>
+                    <div class="qq-card">
+                        <div class="qq-header"><i class="fas fa-graduation-cap qq-icon"></i> <span class="qq-question">Guides Compétences</span></div>
+                        <span class="qq-answer">Tes plans de carrière. Choisis ta voie (Social, Affaires...) et fonce ! 🚀</span>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-10">
+                    <button onclick="switchTab('competences')" class="px-8 py-4 bg-[#D9A526] text-white font-bold rounded-full shadow-lg hover:bg-[#B4792A] transition transform hover:scale-105">
+                        Voir les programmes de formation <i class="fas fa-arrow-right ml-2"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ONGLET 2 : SYLLOGISMES -->
+        <div id="syllogismes" class="tab-content">
             <div class="intro-box">
                 <h2 class="intro-title">L'Art du Syllogisme Juridique</h2>
                 <p class="text-gray-600">Entraînez-vous à la méthode de l'expert. Ne regardez pas la solution tout de suite : lisez les faits, qualifiez juridiquement, et tranchez.</p>
@@ -263,7 +353,7 @@
             <div id="cases-container" class="cases-grid"></div>
         </div>
 
-        <!-- ONGLET 2 : LEXIQUE -->
+        <!-- ONGLET 3 : LEXIQUE -->
         <div id="lexique" class="tab-content">
             <div class="intro-box">
                 <div class="flex justify-between items-center flex-wrap gap-4">
@@ -278,20 +368,19 @@
                 </div>
         </div>
 
-        <!-- ONGLET 3 : FICHES RÉFLEXES (AVEC LÉGENDE COULEURS) -->
+        <!-- ONGLET 4 : FICHES RÉFLEXES -->
         <div id="reflexes" class="tab-content">
             <div class="intro-box">
                 <div class="mb-6">
                     <h2 class="intro-title">Fiches Réflexes Opérationnelles</h2>
                     <h3 class="font-bold text-[#0F2C48] text-lg mb-2"><i class="fas fa-info-circle mr-2 text-[#D9A526]"></i>C'est quoi une Fiche Réflexe ?</h3>
                     <p class="text-gray-700 text-sm leading-relaxed mb-4">
-                        C'est votre <strong>"Checklist de Copilote"</strong> ✈️. Contrairement à un cours (fait pour apprendre), la fiche réflexe s'utilise <strong>dans l'action</strong>. Elle garantit que vous ne loupez aucune étape critique, surtout en situation de stress.
+                        C'est votre <strong>"Checklist de Copilote"</strong> ✈️. Contrairement à un cours, la fiche réflexe s'utilise <strong>dans l'action</strong>. Elle garantit que vous ne loupez aucune étape critique.
                     </p>
                 </div>
 
                 <!-- Légende des Codes Couleurs -->
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4 border-t border-gray-200 pt-5">
-                    
                     <!-- Code ROUGE -->
                     <div class="flex items-start gap-3 p-3 rounded-lg bg-red-50 border border-red-100">
                         <div class="w-10 h-10 rounded-full flex-shrink-0 flex items-center justify-center text-white text-lg font-bold shadow-sm" style="background: linear-gradient(135deg, #ef4444, #b91c1c);">
@@ -299,10 +388,9 @@
                         </div>
                         <div>
                             <strong class="text-[#b91c1c] text-sm uppercase tracking-wide">Danger & Urgence</strong>
-                            <p class="text-xs text-gray-700 mt-1">Situations à haut risque pénal, financier ou de sécurité. <br><strong>Action immédiate requise.</strong></p>
+                            <p class="text-xs text-gray-700 mt-1">Situations à haut risque pénal/financier. <br><strong>Action immédiate.</strong></p>
                         </div>
                     </div>
-
                     <!-- Code BLEU -->
                     <div class="flex items-start gap-3 p-3 rounded-lg bg-blue-50 border border-blue-100">
                         <div class="w-10 h-10 rounded-full flex-shrink-0 flex items-center justify-center text-white text-lg font-bold shadow-sm" style="background: linear-gradient(135deg, #3b82f6, #1d4ed8);">
@@ -310,10 +398,9 @@
                         </div>
                         <div>
                             <strong class="text-[#1d4ed8] text-sm uppercase tracking-wide">Procédure Stricte</strong>
-                            <p class="text-xs text-gray-700 mt-1">Chronologie et formalisme impératifs. <br><strong>Respect des délais clé.</strong></p>
+                            <p class="text-xs text-gray-700 mt-1">Chronologie et formalisme impératifs. <br><strong>Respect des délais.</strong></p>
                         </div>
                     </div>
-
                     <!-- Code VERT -->
                     <div class="flex items-start gap-3 p-3 rounded-lg bg-emerald-50 border border-emerald-100">
                         <div class="w-10 h-10 rounded-full flex-shrink-0 flex items-center justify-center text-white text-lg font-bold shadow-sm" style="background: linear-gradient(135deg, #10b981, #047857);">
@@ -321,29 +408,34 @@
                         </div>
                         <div>
                             <strong class="text-[#047857] text-sm uppercase tracking-wide">Gestion RH</strong>
-                            <p class="text-xs text-gray-700 mt-1">Administration quotidienne et conformité. <br><strong>Bonnes pratiques.</strong></p>
+                            <p class="text-xs text-gray-700 mt-1">Administration quotidienne. <br><strong>Bonnes pratiques.</strong></p>
                         </div>
                     </div>
-
                 </div>
             </div>
             <div id="reflexes-container" class="reflexe-grid"></div>
         </div>
 
-        <!-- ONGLET 4 : ABRÉVIATIONS JURIDIQUES (RENOMMÉ) -->
+        <!-- ONGLET 5 : ABRÉVIATIONS JURIDIQUES -->
         <div id="abbrev" class="tab-content">
             <div class="intro-box">
                 <h2 class="intro-title">Déchiffrer les Codes & Jurisprudence</h2>
-                <p class="text-gray-600 mb-4">Pour naviguer dans vos Codes (Civil, Travail, etc.), vous devez maîtriser les abréviations officielles. C'est la clé pour trouver rapidement la jurisprudence.</p>
-                
+                <p class="text-gray-600 mb-4">Pour naviguer dans vos Codes (Civil, Travail, etc.), vous devez maîtriser les abréviations officielles.</p>
                 <div class="dalloz-search-container">
                     <i class="fas fa-search text-gray-400"></i>
                     <input type="text" id="abbrevSearch" placeholder="Ex: AJDA, Cass., JCP..." class="bg-transparent w-full outline-none text-gray-700 font-semibold">
                 </div>
             </div>
-            <div id="abbrev-container" class="dalloz-grid">
-                <!-- Contenu généré par JS -->
+            <div id="abbrev-container" class="dalloz-grid"></div>
+        </div>
+
+        <!-- ONGLET 6 : GUIDES COMPÉTENCES (NOUVEAU) -->
+        <div id="competences" class="tab-content">
+            <div class="intro-box">
+                <h2 class="intro-title">Guides de Montée en Compétences</h2>
+                <p class="text-gray-600 mb-4">Que vous soyez futur Juriste Social, d'Affaires ou Généraliste, voici les briques de compétences indispensables et les ressources recommandées pour exceller.</p>
             </div>
+            <div id="competences-container"></div>
         </div>
 
     </main>
@@ -380,7 +472,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>© 2025 Tous droits réservés – Création : 2025 – Dernière mise à jour : Novembre 2025</p>
+                <p>© 2025 Tous droits réservés – Création : 2025 – Dernière mise à jour : Décembre 2025</p>
             </div>
         </div>
     </footer>
@@ -388,7 +480,7 @@
     <div id="backToTop" onclick="window.scrollTo(0,0)"><i class="fas fa-arrow-up"></i></div>
 
     <script>
-        // --- DATA 1 : SYLLOGISMES (30 CAS) - MISE EN PAGE AÉRÉE ---
+        // --- DATA 1 : SYLLOGISMES ---
         const dbSyllogismes = [
             { cat: "Social", title: "Abandon de Poste", context: "Absence injustifiée depuis 15 jours. Silence radio du salarié.", majeure: "Depuis la Loi 'Marché du Travail' (2023), l'abandon de poste peut conduire à une présomption de démission si le salarié ne reprend pas le travail après mise en demeure.", mineure: "La mise en demeure a été envoyée et le délai (minimum 15 jours) est expiré sans réponse.", conclusion: "Le salarié est présumé démissionnaire. Il perd donc le bénéfice de l'assurance chômage.", advice: "Ne licenciez plus pour faute grave sur ce motif pour éviter de payer le chômage indûment." },
             { cat: "Social", title: "Insulte Facebook", context: "Salarié insulte son N+1 sur un groupe privé (10 personnes).", majeure: "Les propos tenus dans une correspondance privée (groupe fermé et restreint) sont protégés par le secret des correspondances, sauf s'ils deviennent publics.", mineure: "Le groupe est fermé, accessible uniquement à quelques 'amis' agréés.", conclusion: "Aucune sanction possible. Il s'agit d'un fait relevant de la vie privée.", advice: "La preuve devient recevable seulement si un membre du groupe vous la transmet spontanément." },
@@ -808,12 +900,48 @@
             { a: "v°, vis", f: "Mot, mots" }
         ];
 
+        // --- 6. DATA : COMPÉTENCES MÉTIER (MISE À JOUR V3) ---
+        const dbCompetences = [
+            {
+                category: "Juriste en Droit Social & RH",
+                badgeColor: "bg-social-gradient", // Fuchsia
+                pdfUrl: "https://drive.google.com/file/d/1Wbw-YZxA-BwSL4g1ElsSTnr37_U8eYaC/view?usp=drive_link",
+                subjects: [
+                    { t: "Relations Individuelles de Travail", d: "Du recrutement à la rupture : contrats, clauses, pouvoir disciplinaire et licenciements.", books: [{n: "Code du Travail 2025", u: "https://www.boutique-dalloz.fr/code-du-travail-2025-p.html"}, {n: "Mémento Social", u: "#"}] },
+                    { t: "Relations Collectives (CSE & Syndicats)", d: "Négociation d'accords, élections pro, gestion des élus et du dialogue social.", books: [{n: "Les Grands Arrêts Droit Travail", u: "#"}, {n: "Guide du CSE", u: "#"}] },
+                    { t: "Droit de la Protection Sociale", d: "Comprendre l'URSSAF, la Prévoyance, la Retraite et les risques AT/MP.", books: [{n: "Code de la Sécurité Sociale", u: "#"}] }
+                ]
+            },
+            {
+                category: "Juriste en Droit des Affaires",
+                badgeColor: "bg-affaires-gradient", // Or
+                pdfUrl: "https://drive.google.com/file/d/1e4r7RbmFU4xreo64xso2nQB040NkUkJb/view?usp=drive_link",
+                subjects: [
+                    { t: "Droit des Sociétés", d: "Secrétariat juridique, vie des parts sociales, fusions et acquisitions (M&A).", books: [{n: "Code des Sociétés", u: "#"}, {n: "Mémento Sociétés Commerciales", u: "#"}] },
+                    { t: "Droit Commercial & Contrats", d: "Baux commerciaux, fonds de commerce, CGV, distribution et concurrence.", books: [{n: "Code de Commerce 2025", u: "#"}, {n: "Technique Contractuelle", u: "#"}] },
+                    { t: "Droit Fiscal des Affaires", d: "TVA, IS (Impôt Sociétés), CET et stratégie fiscale de l'entreprise.", books: [{n: "Précis de Droit Fiscal", u: "#"}, {n: "Mémento Fiscal", u: "#"}] }
+                ]
+            },
+            {
+                category: "Juriste Généraliste (Socle Commun)",
+                badgeColor: "bg-socle-gradient", // Bleu
+                pdfUrl: "https://drive.google.com/file/d/1u5UGQUihD1yIwDLXoJxeoqihsSWPKgAs/view?usp=drive_link",
+                subjects: [
+                    { t: "Droit des Obligations", d: "La base absolue : Contrats (Consentement, Nullité) et Responsabilité Civile.", books: [{n: "Code Civil 2025 (La Bible)", u: "https://www.boutique-dalloz.fr/code-civil-2025-p.html"}] },
+                    { t: "Procédure Civile", d: "Savoir agir en justice, gérer les délais et exécuter les décisions.", books: [{n: "Code de Procédure Civile", u: "#"}] },
+                    { t: "Droit des Biens & Immobilier", d: "Propriété, usufruit, servitudes et baux d'habitation.", books: [{n: "Code de la Construction", u: "#"}] },
+                    { t: "RGPD & Data", d: "Protection des données personnelles : une compétence transverse indispensable aujourd'hui.", books: [{n: "Code de la Protection des Données", u: "#"}] }
+                ]
+            }
+        ];
+
         // --- MOTEUR JS ---
         window.onload = function() {
             renderSyllogisms('all');
             renderLexique(dbLexique);
             renderReflexes(dbReflexes);
             renderDalloz(dbAbrev);
+            renderCompetences(dbCompetences);
         };
 
         function switchTab(id) {
@@ -821,12 +949,13 @@
             document.querySelectorAll('.tab-btn').forEach(e => e.classList.remove('active'));
             document.getElementById(id).classList.add('active');
             
-            // Logique pour activer le bon bouton (un peu manuel mais robuste)
             const btns = document.querySelectorAll('.tab-btn');
-            if(id === 'syllogismes') btns[0].classList.add('active');
-            if(id === 'lexique') btns[1].classList.add('active');
-            if(id === 'reflexes') btns[2].classList.add('active');
-            if(id === 'abbrev') btns[3].classList.add('active');
+            if(id === 'accueil') btns[0].classList.add('active');
+            if(id === 'syllogismes') btns[1].classList.add('active');
+            if(id === 'lexique') btns[2].classList.add('active');
+            if(id === 'reflexes') btns[3].classList.add('active');
+            if(id === 'abbrev') btns[4].classList.add('active');
+            if(id === 'competences') btns[5].classList.add('active');
         }
 
         function filterCases(cat) { renderSyllogisms(cat); }
@@ -890,7 +1019,6 @@
             btn.classList.toggle('active');
         }
 
-        // MOTEUR LEXIQUE NOUVEAU DESIGN (CARTES)
         function renderLexique(data) {
             const container = document.getElementById('lexique-container');
             container.innerHTML = '';
@@ -961,11 +1089,9 @@
             });
         }
 
-        // --- RENDER ABRÉVIATIONS (NEW) ---
         function renderDalloz(data) {
             const container = document.getElementById('abbrev-container');
             container.innerHTML = '';
-            // Tri alphabétique
             data.sort((a,b) => a.a.localeCompare(b.a));
 
             data.forEach(item => {
@@ -983,6 +1109,48 @@
             const filtered = dbAbrev.filter(i => i.a.toLowerCase().includes(val) || i.f.toLowerCase().includes(val));
             renderDalloz(filtered);
         });
+
+        // --- RENDER COMPÉTENCES (V3 AVEC LIENS PDF ET DALLOZ) ---
+        function renderCompetences(data) {
+            const container = document.getElementById('competences-container');
+            container.innerHTML = '';
+            
+            data.forEach(category => {
+                // Construction de la liste des livres (Dalloz Links)
+                const getBooksHtml = (books) => {
+                    if(!books || books.length === 0) return '';
+                    return books.map(b => `<a href="${b.u}" target="_blank" class="dalloz-link"><i class="fas fa-book-open mr-1"></i>${b.n}</a>`).join('');
+                };
+
+                let subjectsHtml = category.subjects.map(sub => `
+                    <div class="matiere-card">
+                        <span class="matiere-name">${sub.t}</span>
+                        <p class="matiere-desc">${sub.d}</p>
+                        
+                        <div class="dalloz-rec">
+                            <div class="dalloz-rec-title"><i class="fas fa-shopping-cart"></i> Bibliothèque Idéale</div>
+                            ${getBooksHtml(sub.books)}
+                        </div>
+                    </div>
+                `).join('');
+
+                const sectionHtml = `
+                <div class="matiere-section">
+                    <div class="matiere-header">
+                        <div class="matiere-title-main">
+                            <i class="fas fa-compass"></i> ${category.category}
+                        </div>
+                        <a href="${category.pdfUrl}" target="_blank" class="filiere-badge ${category.badgeColor}">
+                            <i class="fas fa-file-pdf"></i> TÉLÉCHARGER LA FICHE FORMATION
+                        </a>
+                    </div>
+                    <div class="matiere-list">
+                        ${subjectsHtml}
+                    </div>
+                </div>`;
+                container.innerHTML += sectionHtml;
+            });
+        }
         
         function speakText(text) {
             if ('speechSynthesis' in window) {
