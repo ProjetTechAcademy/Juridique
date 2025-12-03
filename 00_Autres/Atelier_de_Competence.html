@@ -181,11 +181,12 @@
         .matiere-header { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; margin-bottom: 20px; border-bottom: 2px solid #f1f5f9; padding-bottom: 15px; gap: 20px; }
         .matiere-title-main { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--brand-blue); display: flex; align-items: center; gap: 15px; }
         
+        /* Badges de filière */
         .filiere-badge { padding: 8px 20px; border-radius: 50px; font-family: 'Montserrat', sans-serif; font-size: 0.85rem; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; color: white !important; transition: transform 0.2s; }
         .filiere-badge:hover { transform: scale(1.05); }
-        .bg-social-gradient { background: linear-gradient(135deg, #d946ef 0%, #c026d3 100%); box-shadow: 0 4px 15px rgba(192, 38, 211, 0.3); }
-        .bg-affaires-gradient { background: linear-gradient(135deg, #D9A526 0%, #B4792A 100%); box-shadow: 0 4px 15px rgba(217, 165, 38, 0.3); }
-        .bg-socle-gradient { background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%); box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3); }
+        .bg-social-gradient { background: linear-gradient(135deg, #d946ef 0%, #c026d3 100%); /* Fuchsia */ box-shadow: 0 4px 15px rgba(192, 38, 211, 0.3); }
+        .bg-affaires-gradient { background: linear-gradient(135deg, #D9A526 0%, #B4792A 100%); /* Or */ box-shadow: 0 4px 15px rgba(217, 165, 38, 0.3); }
+        .bg-socle-gradient { background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%); /* Bleu */ box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3); }
 
         .matiere-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
         .matiere-card { background: #fcfcfc; padding: 20px; border-radius: 12px; border: 1px solid #e2e8f0; transition: 0.3s; }
@@ -198,7 +199,7 @@
         .dalloz-link { display: inline-block; color: #991b1b; text-decoration: none; font-size: 0.85rem; font-weight: 600; border-bottom: 1px dotted #991b1b; transition: 0.2s; margin-right: 10px; }
         .dalloz-link:hover { color: #ef4444; border-bottom-style: solid; }
 
-        /* --- 7. FLASHCARDS (NOUVEAU) --- */
+        /* --- 7. FLASHCARDS (STYLE JEU) --- */
         .flashcard-game-container { display: flex; flex-direction: column; align-items: center; padding: 20px 0; min-height: 500px; }
         .flashcard-scene { width: 600px; height: 350px; margin-bottom: 30px; perspective: 1000px; max-width: 100%; }
         .flashcard-obj { width: 100%; height: 100%; transition: transform 0.6s; transform-style: preserve-3d; cursor: pointer; position: relative; border-radius: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.1); }
@@ -209,7 +210,7 @@
         .card-face-back { background: linear-gradient(135deg, #0F2C48 0%, #1e293b 100%); color: white; transform: rotateY(180deg); }
         
         .card-category { position: absolute; top: 20px; left: 50%; transform: translateX(-50%); background: #f1f5f9; padding: 5px 15px; border-radius: 50px; font-size: 0.75rem; font-weight: 800; color: #64748b; letter-spacing: 1px; text-transform: uppercase; }
-        .card-question { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 700; color: var(--brand-blue); line-height: 1.3; }
+        .card-question { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 700; color: var(--brand-blue); line-height: 1.3; padding: 0 20px; }
         .card-hint { margin-top: 15px; font-size: 0.9rem; color: #94a3b8; font-style: italic; }
         
         .card-answer-title { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 0.9rem; color: var(--cta); text-transform: uppercase; margin-bottom: 15px; display: block; }
@@ -224,7 +225,13 @@
         .btn-next:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(217, 165, 38, 0.4); }
         .btn-shuffle { background: var(--brand-blue); color: white; }
         
-        /* Boutons Audio */
+        /* Boutons Audio Flashcards (Style Spécifique) */
+        .btn-fc-audio { position: absolute; bottom: 20px; right: 20px; width: 45px; height: 45px; border-radius: 50%; background: rgba(0,0,0,0.05); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: 0.2s; border: none; color: var(--brand-blue); z-index: 20; font-size: 1.2rem; }
+        .btn-fc-audio:hover { background: var(--cta); color: white; transform: scale(1.1); }
+        .card-face-back .btn-fc-audio { background: rgba(255,255,255,0.2); color: white; }
+        .card-face-back .btn-fc-audio:hover { background: white; color: var(--brand-blue); }
+
+        /* Boutons Audio Généraux */
         .btn-audio-small { width: 28px; height: 28px; border-radius: 50%; background: rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; color: white; cursor: pointer; transition: 0.2s; z-index: 10; }
         .btn-audio-small:hover { background: rgba(255,255,255,0.4); transform: scale(1.1); }
         .btn-audio-dark { width: 30px; height: 30px; border-radius: 50%; border: 1px solid #cbd5e1; color: var(--brand-blue); display: flex; align-items: center; justify-content: center; cursor: pointer; z-index:10; }
@@ -481,12 +488,16 @@
                             <span class="card-category" id="fc-cat">Catégorie</span>
                             <div class="card-question" id="fc-question">Question ?</div>
                             <div class="card-hint">Cliquez pour retourner</div>
+                            <!-- Audio Button Front -->
+                            <button onclick="event.stopPropagation(); readFrontCard()" class="btn-fc-audio" aria-label="Lire la question"><i class="fas fa-volume-up"></i></button>
                         </div>
                         <!-- BACK -->
                         <div class="card-face card-face-back">
                             <span class="card-answer-title">La Réponse de l'Expert</span>
                             <div class="card-answer-text" id="fc-answer">Réponse</div>
                             <div id="fc-trap" class="card-trap">Piège : ...</div>
+                            <!-- Audio Button Back -->
+                            <button onclick="event.stopPropagation(); readBackCard()" class="btn-fc-audio" aria-label="Lire la réponse"><i class="fas fa-volume-up"></i></button>
                         </div>
                     </div>
                 </div>
@@ -996,7 +1007,7 @@
             }
         ];
 
-        // --- 7. MOTEUR FLASHCARDS (NOUVEAU) ---
+        // --- 7. MOTEUR FLASHCARDS (ACCESSIBILITÉ RENFORCÉE) ---
         let currentCardIndex = 0;
         let flashcardsData = [];
         let isFlipped = false;
@@ -1089,6 +1100,19 @@
             shuffleArray(flashcardsData);
             currentCardIndex = 0;
             renderFlashcard();
+        }
+        
+        // --- NOUVELLES FONCTIONS DE LECTURE (TTS) ---
+        function readFrontCard() {
+            const card = flashcardsData[currentCardIndex];
+            const textToRead = `Catégorie : ${card.cat}. Question : ${card.q}. ${card.hint}`;
+            speakText(textToRead);
+        }
+
+        function readBackCard() {
+            const card = flashcardsData[currentCardIndex];
+            const textToRead = `Réponse : ${card.a}. Attention au piège : ${card.trap}`;
+            speakText(textToRead);
         }
 
 
@@ -1224,6 +1248,10 @@
                 if(item.c === 'Danger') headerClass = 'bg-danger-header';
                 if(item.c === 'Gestion') headerClass = 'bg-gestion-header';
                 
+                // Concaténer les étapes pour la lecture TTS
+                const stepsText = item.s.join('. Étape suivante : ');
+                const fullTextToSpeak = `${item.t}. ${item.d}. Procédure : ${stepsText}. Attention : ${item.p}`;
+                
                 let steps = item.s.map((s, i) => `<div class="reflexe-step"><div class="step-num">${i+1}</div><div class="text-sm text-gray-700">${s}</div></div>`).join('');
                 
                 const html = `
@@ -1234,7 +1262,7 @@
                             <span>${item.t}</span>
                         </div>
                         <div class="flex gap-2">
-                             <button onclick="speakText('${item.d.replace(/'/g, "\\'")}. Piège : ${item.p.replace(/'/g, "\\'")}')" class="btn-audio-small"><i class="fas fa-volume-up"></i></button>
+                             <button onclick="speakText('${fullTextToSpeak.replace(/'/g, "\\'")}')" class="btn-audio-small" aria-label="Lire la fiche"><i class="fas fa-volume-up"></i></button>
                         </div>
                     </div>
                     <div class="reflexe-body">
@@ -1315,10 +1343,16 @@
         
         function speakText(text) {
             if ('speechSynthesis' in window) {
+                // Annuler toute lecture en cours pour éviter les chevauchements
                 window.speechSynthesis.cancel();
-                const utterance = new SpeechSynthesisUtterance(text);
-                utterance.lang = 'fr-FR';
-                window.speechSynthesis.speak(utterance);
+                
+                // Petit délai pour assurer la prise en compte de l'annulation
+                setTimeout(() => {
+                    const utterance = new SpeechSynthesisUtterance(text);
+                    utterance.lang = 'fr-FR';
+                    utterance.rate = 0.9; // Vitesse légèrement ralentie pour la clarté
+                    window.speechSynthesis.speak(utterance);
+                }, 100);
             }
         }
         
