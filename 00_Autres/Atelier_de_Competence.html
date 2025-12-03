@@ -81,7 +81,7 @@
         .tab-btn {
             font-family: 'Montserrat', sans-serif; color: var(--brand-blue); border-bottom: 4px solid transparent;
             opacity: 0.7; transition: all 0.3s; padding: 20px 30px; font-size: 0.9rem; font-weight: 600; text-transform: uppercase;
-            display: flex; align-items: center; gap: 10px; flex-shrink: 0;
+            display: flex; align-items: center; gap: 10px; flex-shrink: 0; cursor: pointer;
         }
         .tab-btn:hover { opacity: 1; background-color: #f8fafc; color: var(--cta); }
         .tab-btn.active { opacity: 1; border-bottom: 4px solid var(--cta); background-color: white; color: var(--brand-blue); font-weight: 800; }
@@ -181,12 +181,11 @@
         .matiere-header { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; margin-bottom: 20px; border-bottom: 2px solid #f1f5f9; padding-bottom: 15px; gap: 20px; }
         .matiere-title-main { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--brand-blue); display: flex; align-items: center; gap: 15px; }
         
-        /* Badges de filière */
         .filiere-badge { padding: 8px 20px; border-radius: 50px; font-family: 'Montserrat', sans-serif; font-size: 0.85rem; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; color: white !important; transition: transform 0.2s; }
         .filiere-badge:hover { transform: scale(1.05); }
-        .bg-social-gradient { background: linear-gradient(135deg, #d946ef 0%, #c026d3 100%); /* Fuchsia */ box-shadow: 0 4px 15px rgba(192, 38, 211, 0.3); }
-        .bg-affaires-gradient { background: linear-gradient(135deg, #D9A526 0%, #B4792A 100%); /* Or */ box-shadow: 0 4px 15px rgba(217, 165, 38, 0.3); }
-        .bg-socle-gradient { background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%); /* Bleu */ box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3); }
+        .bg-social-gradient { background: linear-gradient(135deg, #d946ef 0%, #c026d3 100%); box-shadow: 0 4px 15px rgba(192, 38, 211, 0.3); }
+        .bg-affaires-gradient { background: linear-gradient(135deg, #D9A526 0%, #B4792A 100%); box-shadow: 0 4px 15px rgba(217, 165, 38, 0.3); }
+        .bg-socle-gradient { background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%); box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3); }
 
         .matiere-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
         .matiere-card { background: #fcfcfc; padding: 20px; border-radius: 12px; border: 1px solid #e2e8f0; transition: 0.3s; }
@@ -199,6 +198,32 @@
         .dalloz-link { display: inline-block; color: #991b1b; text-decoration: none; font-size: 0.85rem; font-weight: 600; border-bottom: 1px dotted #991b1b; transition: 0.2s; margin-right: 10px; }
         .dalloz-link:hover { color: #ef4444; border-bottom-style: solid; }
 
+        /* --- 7. FLASHCARDS (NOUVEAU) --- */
+        .flashcard-game-container { display: flex; flex-direction: column; align-items: center; padding: 20px 0; min-height: 500px; }
+        .flashcard-scene { width: 600px; height: 350px; margin-bottom: 30px; perspective: 1000px; max-width: 100%; }
+        .flashcard-obj { width: 100%; height: 100%; transition: transform 0.6s; transform-style: preserve-3d; cursor: pointer; position: relative; border-radius: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.1); }
+        .flashcard-obj.is-flipped { transform: rotateY(180deg); }
+        
+        .card-face { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 20px; padding: 40px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; overflow: hidden; }
+        .card-face-front { background: white; border: 2px solid #e2e8f0; }
+        .card-face-back { background: linear-gradient(135deg, #0F2C48 0%, #1e293b 100%); color: white; transform: rotateY(180deg); }
+        
+        .card-category { position: absolute; top: 20px; left: 50%; transform: translateX(-50%); background: #f1f5f9; padding: 5px 15px; border-radius: 50px; font-size: 0.75rem; font-weight: 800; color: #64748b; letter-spacing: 1px; text-transform: uppercase; }
+        .card-question { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 700; color: var(--brand-blue); line-height: 1.3; }
+        .card-hint { margin-top: 15px; font-size: 0.9rem; color: #94a3b8; font-style: italic; }
+        
+        .card-answer-title { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 0.9rem; color: var(--cta); text-transform: uppercase; margin-bottom: 15px; display: block; }
+        .card-answer-text { font-size: 1.1rem; line-height: 1.6; margin-bottom: 20px; }
+        .card-trap { background: rgba(239, 68, 68, 0.2); padding: 10px 20px; border-radius: 8px; border: 1px solid rgba(239, 68, 68, 0.4); color: #fca5a5; font-size: 0.9rem; font-weight: 600; }
+        
+        .flashcard-controls { display: flex; gap: 20px; }
+        .btn-game { padding: 12px 30px; border-radius: 50px; font-weight: 700; border: none; cursor: pointer; transition: 0.2s; font-size: 1rem; display: flex; align-items: center; gap: 10px; }
+        .btn-prev { background: #e2e8f0; color: #475569; }
+        .btn-prev:hover { background: #cbd5e1; }
+        .btn-next { background: var(--cta); color: var(--brand-blue); box-shadow: 0 4px 15px rgba(217, 165, 38, 0.3); }
+        .btn-next:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(217, 165, 38, 0.4); }
+        .btn-shuffle { background: var(--brand-blue); color: white; }
+        
         /* Boutons Audio */
         .btn-audio-small { width: 28px; height: 28px; border-radius: 50%; background: rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; color: white; cursor: pointer; transition: 0.2s; z-index: 10; }
         .btn-audio-small:hover { background: rgba(255,255,255,0.4); transform: scale(1.1); }
@@ -285,9 +310,12 @@
             <button onclick="switchTab('abbrev')" class="tab-btn">
                 <i class="fas fa-book-open"></i> Abréviations
             </button>
-            <!-- Onglet 6 : Guides Compétences (NOUVEAU NOM) -->
             <button onclick="switchTab('competences')" class="tab-btn">
                 <i class="fas fa-graduation-cap"></i> Guides Compétences
+            </button>
+            <!-- Onglet 7 : Flashcards (NOUVEAU) -->
+            <button onclick="switchTab('flashcards')" class="tab-btn">
+                <i class="fas fa-gamepad"></i> Flashcards Quizz
             </button>
         </div>
     </div>
@@ -326,8 +354,8 @@
                         <span class="qq-answer">Tes <strong>Checklists de survie</strong>. À sortir quand c'est la panique à bord. 🚨</span>
                     </div>
                     <div class="qq-card">
-                        <div class="qq-header"><i class="fas fa-graduation-cap qq-icon"></i> <span class="qq-question">Guides Compétences</span></div>
-                        <span class="qq-answer">Tes plans de carrière. Choisis ta voie (Social, Affaires...) et fonce ! 🚀</span>
+                        <div class="qq-header"><i class="fas fa-gamepad qq-icon"></i> <span class="qq-question">Flashcards</span></div>
+                        <span class="qq-answer">Mode jeu activé ! Révise en mode aléatoire pour tester tes réflexes. 🎲</span>
                     </div>
                 </div>
                 
@@ -429,13 +457,46 @@
             <div id="abbrev-container" class="dalloz-grid"></div>
         </div>
 
-        <!-- ONGLET 6 : GUIDES COMPÉTENCES (NOUVEAU) -->
+        <!-- ONGLET 6 : GUIDES COMPÉTENCES -->
         <div id="competences" class="tab-content">
             <div class="intro-box">
                 <h2 class="intro-title">Guides de Montée en Compétences</h2>
                 <p class="text-gray-600 mb-4">Que vous soyez futur Juriste Social, d'Affaires ou Généraliste, voici les briques de compétences indispensables et les ressources recommandées pour exceller.</p>
             </div>
             <div id="competences-container"></div>
+        </div>
+
+        <!-- ONGLET 7 : FLASHCARDS (NOUVEAU) -->
+        <div id="flashcards" class="tab-content">
+            <div class="intro-box">
+                <h2 class="intro-title">Flashcards Quizz <span class="text-sm bg-[#D9A526] text-white px-2 py-1 rounded ml-2">Bêta</span></h2>
+                <p class="text-gray-600 mb-4">Entraînez-vous en mode aléatoire sur tout le contenu de l'appli (Lexique, Abréviations, Réflexes). Cliquez sur la carte pour voir la réponse.</p>
+            </div>
+            
+            <div class="flashcard-game-container">
+                <div class="flashcard-scene">
+                    <div class="flashcard-obj" onclick="flipCard()">
+                        <!-- FRONT -->
+                        <div class="card-face card-face-front">
+                            <span class="card-category" id="fc-cat">Catégorie</span>
+                            <div class="card-question" id="fc-question">Question ?</div>
+                            <div class="card-hint">Cliquez pour retourner</div>
+                        </div>
+                        <!-- BACK -->
+                        <div class="card-face card-face-back">
+                            <span class="card-answer-title">La Réponse de l'Expert</span>
+                            <div class="card-answer-text" id="fc-answer">Réponse</div>
+                            <div id="fc-trap" class="card-trap">Piège : ...</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flashcard-controls">
+                    <button onclick="prevCard()" class="btn-game btn-prev"><i class="fas fa-arrow-left"></i> Précédent</button>
+                    <button onclick="randomCard()" class="btn-game btn-shuffle"><i class="fas fa-random"></i> Mélanger</button>
+                    <button onclick="nextCard()" class="btn-game btn-next">Suivant <i class="fas fa-arrow-right"></i></button>
+                </div>
+            </div>
         </div>
 
     </main>
@@ -935,13 +996,112 @@
             }
         ];
 
-        // --- MOTEUR JS ---
+        // --- 7. MOTEUR FLASHCARDS (NOUVEAU) ---
+        let currentCardIndex = 0;
+        let flashcardsData = [];
+        let isFlipped = false;
+
+        function initFlashcards() {
+            // Agrégation intelligente des données pour le jeu
+            flashcardsData = [];
+            
+            // 1. Lexique (Terme -> Def)
+            dbLexique.forEach(i => {
+                flashcardsData.push({
+                    cat: "Lexique",
+                    q: i.m,
+                    a: i.d,
+                    trap: i.c,
+                    hint: "Définition ?"
+                });
+            });
+
+            // 2. Abréviations (Abréviation -> Full)
+            dbAbrev.forEach(i => {
+                flashcardsData.push({
+                    cat: "Abréviation",
+                    q: i.a,
+                    a: i.f,
+                    trap: "Attention à l'orthographe exacte !",
+                    hint: "Signification ?"
+                });
+            });
+
+            // 3. Réflexes (Titre -> Description + Piège)
+            dbReflexes.forEach(i => {
+                flashcardsData.push({
+                    cat: "Fiche Réflexe",
+                    q: i.t,
+                    a: i.d,
+                    trap: i.p,
+                    hint: "C'est quoi ?"
+                });
+            });
+
+            // Mélange initial
+            shuffleArray(flashcardsData);
+            renderFlashcard();
+        }
+
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+        }
+
+        function renderFlashcard() {
+            if (flashcardsData.length === 0) return;
+            
+            const card = flashcardsData[currentCardIndex];
+            
+            // Reset Flip
+            const cardObj = document.querySelector('.flashcard-obj');
+            cardObj.classList.remove('is-flipped');
+            isFlipped = false;
+
+            // Update Content (avec petit délai pour cacher le changement si flip en cours)
+            setTimeout(() => {
+                document.getElementById('fc-cat').textContent = card.cat;
+                document.getElementById('fc-question').textContent = card.q;
+                document.getElementById('fc-answer').textContent = card.a;
+                document.getElementById('fc-trap').textContent = "⚠️ " + card.trap;
+            }, 200);
+        }
+
+        function flipCard() {
+            const cardObj = document.querySelector('.flashcard-obj');
+            cardObj.classList.toggle('is-flipped');
+            isFlipped = !isFlipped;
+        }
+
+        function nextCard() {
+            currentCardIndex = (currentCardIndex + 1) % flashcardsData.length;
+            renderFlashcard();
+        }
+
+        function prevCard() {
+            currentCardIndex = (currentCardIndex - 1 + flashcardsData.length) % flashcardsData.length;
+            renderFlashcard();
+        }
+
+        function randomCard() {
+            shuffleArray(flashcardsData);
+            currentCardIndex = 0;
+            renderFlashcard();
+        }
+
+
+        // --- MOTEUR JS GLOBAL ---
         window.onload = function() {
             renderSyllogisms('all');
             renderLexique(dbLexique);
             renderReflexes(dbReflexes);
             renderDalloz(dbAbrev);
             renderCompetences(dbCompetences);
+            
+            // Init Flashcards
+            initFlashcards();
         };
 
         function switchTab(id) {
@@ -956,6 +1116,7 @@
             if(id === 'reflexes') btns[3].classList.add('active');
             if(id === 'abbrev') btns[4].classList.add('active');
             if(id === 'competences') btns[5].classList.add('active');
+            if(id === 'flashcards') btns[6].classList.add('active');
         }
 
         function filterCases(cat) { renderSyllogisms(cat); }
