@@ -20,10 +20,11 @@
             --ivory: #F6F2E8;     
             --bronze: #B4792A;    
             
-            /* Couleurs Lexique Expert */
-            --bg-context: #e0f2fe; --border-context: #0284c7; --text-context: #075985;
-            --bg-advice: #fffbeb; --border-advice: #d97706; --text-advice: #92400e;
-            --bg-danger: #fef2f2; --border-danger: #dc2626; --text-danger: #991b1b;
+            /* Couleurs Lexique Expert - 4 BLOCS */
+            --bg-context: #e0f2fe; --border-context: #0284c7; --text-context: #075985; /* Bleu - Contexte */
+            --bg-advice: #fffbeb; --border-advice: #d97706; --text-advice: #92400e;   /* Jaune - Conseil */
+            --bg-danger: #fef2f2; --border-danger: #dc2626; --text-danger: #991b1b;   /* Rouge - Vigilance */
+            --bg-example: #f0fdf4; --border-example: #16a34a; --text-example: #166534; /* Vert - Exemple */
         }
 
         body { 
@@ -147,12 +148,16 @@
         .expert-toggle.active .chevron { transform: rotate(180deg); }
 
         .expert-content { max-height: 0; overflow: hidden; transition: max-height 0.5s ease-out; background: #fff; padding: 0 20px; }
-        .expert-content.open { max-height: 1000px; padding-bottom: 20px; }
+        .expert-content.open { max-height: 1500px; padding-bottom: 20px; }
 
+        /* BLOCS COULEURS */
         .expert-block { margin-top: 15px; padding: 12px; border-radius: 8px; font-size: 0.9rem; line-height: 1.5; border-left: 4px solid transparent; text-align: left; }
+        
         .b-context { background: var(--bg-context); border-color: var(--border-context); color: var(--text-context); }
         .b-advice { background: var(--bg-advice); border-color: var(--border-advice); color: var(--text-advice); }
         .b-danger { background: var(--bg-danger); border-color: var(--border-danger); color: var(--text-danger); }
+        .b-example { background: var(--bg-example); border-color: var(--border-example); color: var(--text-example); } 
+
         .block-title { font-weight: 800; font-size: 0.7rem; text-transform: uppercase; margin-bottom: 4px; display: block; letter-spacing: 0.5px; }
 
         .card-bottom-actions { margin-top: auto; padding: 10px 20px; background: #fdfbf7; border-top: 1px dashed #e2e8f0; display: flex; justify-content: flex-end; align-items: center; }
@@ -331,7 +336,7 @@
 
         <div class="footer-bottom">
             <div class="footer-container">
-                <p>© 2025 Tous droits réservés – Création : 2025 – Dernière mise à jour : Novembre 2025</p>
+                <p>© 2025 Tous droits réservés – Création : 2025 – Dernière mise à jour : Décembre 2025</p>
             </div>
         </div>
     </footer>
@@ -339,162 +344,885 @@
     <div id="backToTop" onclick="window.scrollTo(0,0)"><i class="fas fa-arrow-up"></i></div>
 
     <script>
-        // --- BASE DE DONNÉES EXPERT (140 TERMES) ---
+        // --- BASE DE DONNÉES EXPERT ---
+        // l=latin, t=traduction, d=définition, c=contexte(bleu), cp=conseil(jaune), v=vigilance(rouge), e=exemple(vert), g=tags
         const lexiqueDB = [
-            { l: "A non domino", t: "Par celui qui n'est pas le maître", g: ["DA"], d: "Acquisition d'un bien auprès d'une personne qui n'en est pas propriétaire.", c: "Vente d'un bien par un tiers.", a: "L'acquéreur de bonne foi peut être protégé.", v: "Risque de revendication du vrai propriétaire." },
-            { l: "Ab initio", t: "Dès le début", g: ["DA", "JE"], d: "Rétroactivité totale : l'acte est censé n'avoir jamais existé.", c: "Annulation d'un contrat.", a: "Préférez la nullité relative.", v: "Conséquences fiscales des restitutions." },
-            { l: "Abusus", t: "Droit de disposer", g: ["DA", "JE"], d: "Droit de vendre ou détruire un bien.", c: "Démembrement.", a: "Le nu-propriétaire a l'abusus.", v: "L'usufruitier ne peut pas vendre." },
-            { l: "Accessorium sequitur principale", t: "L'accessoire suit le principal", g: ["DS", "JE"], d: "L'élément secondaire suit le sort du principal.", c: "Clause de non-concurrence.", a: "Les primes suivent le salaire.", v: "Si le contrat est nul, la clause aussi." },
-            { l: "Actio personalis moritur cum persona", t: "L'action s'éteint avec la personne", g: ["JE"], d: "Fin des poursuites pénales au décès.", c: "Décès du dirigeant.", a: "L'action civile continue contre héritiers.", v: "Extinction de l'action publique." },
-            { l: "Actori incumbit probatio", t: "La charge de la preuve incombe au demandeur", g: ["DS", "JE"], d: "Celui qui réclame doit prouver.", c: "Prud'hommes.", a: "Préparez les preuves avant.", v: "Exception : Heures sup (partagé)." },
-            { l: "Actus reus", t: "L'acte coupable", g: ["JE"], d: "Élément matériel de l'infraction.", c: "Pénal des affaires.", a: "Tracez vos délégations.", v: "Responsabilité sans intention possible." },
-            { l: "Ad hoc", t: "Pour cela", g: ["JE", "DA"], d: "Mandat pour mission précise.", c: "Mandataire ad hoc.", a: "Limitez le mandat.", v: "Pas de pouvoir général." },
-            { l: "Ad hominem", t: "Vers l'homme", g: ["JE"], d: "Attaque personnelle.", c: "Débat.", a: "Restez factuel.", v: "Risque de diffamation." },
-            { l: "Ad infinitum", t: "À l'infini", g: ["JE"], d: "Sans limite.", c: "Renouvellement.", a: "Évitez les engagements perpétuels.", v: "Prohibé en droit français." },
-            { l: "Ad litem", t: "Pour le procès", g: ["DA", "JE"], d: "Mandat de représentation en justice.", c: "Avocat.", a: "Vérifiez le mandat adverse.", v: "Le pouvoir doit être spécial." },
-            { l: "Ad nutum", t: "Révocable à tout moment", g: ["DA"], d: "Révocation sans motif.", c: "Mandataires sociaux.", a: "Prévoyez un parachute doré.", v: "Révocation injurieuse possible." },
-            { l: "Ad probationem", t: "Pour la preuve", g: ["DS", "DA"], d: "Formalité de preuve.", c: "Contrat commercial.", a: "L'écrit sécurise.", v: "Pas de nullité sans écrit." },
-            { l: "Ad turpia", t: "Pour cause immorale", g: ["DA"], d: "Nemo auditur... Contrat immoral.", c: "Contrat illicite.", a: "Pas de restitution si cause immorale.", v: "Le juge refuse d'entendre." },
-            { l: "Ad valorem", t: "Selon la valeur", g: ["DA"], d: "Taxe proportionnelle.", c: "Douanes.", a: "Calculez les marges.", v: "Risque de redressement." },
-            { l: "Ad validitatem", t: "Pour la validité", g: ["DS", "JE"], d: "Forme indispensable.", c: "CDD, Rupture.", a: "Check-list RH.", v: "CDD sans écrit = CDI." },
-            { l: "Affectio societatis", t: "Volonté de s'associer", g: ["DA"], d: "Intention de collaborer.", c: "Conflit associés.", a: "Clauses de sortie (Shotgun).", v: "Dissolution si disparition." },
-            { l: "Alias", t: "Pseudonyme", g: ["JE"], d: "Autre nom.", c: "Identité.", a: "Vérifiez l'identité réelle.", v: "Usurpation." },
-            { l: "Alibi", t: "Ailleurs", g: ["JE", "DS"], d: "Preuve de présence ailleurs.", c: "Enquête.", a: "Vérifiez badgeages.", v: "Faux alibi = Faute grave." },
-            { l: "Amicus curiae", t: "Ami de la cour", g: ["DA"], d: "Tiers expert.", c: "Procès complexe.", a: "Rôle consultatif.", v: "Influence médiatique." },
-            { l: "Animus", t: "Intention", g: ["JE"], d: "Élément intentionnel.", c: "Animus domini.", a: "Prouver l'intention.", v: "Distinguer de l'erreur." },
-            { l: "Audi alteram partem", t: "Entendre l'autre partie", g: ["DS", "JE"], d: "Contradictoire.", c: "Entretien préalable.", a: "Ne jamais sanctionner sans entendre.", v: "Nullité procédure." },
-            { l: "Audita altera parte", t: "L'autre partie entendue", g: ["JE"], d: "Similaire à Audi alteram.", c: "Arbitrage.", a: "Respect des droits défense.", v: "Principe fondamental." },
-            { l: "Bona fide", t: "De bonne foi", g: ["DS", "JE"], d: "Loyauté.", c: "Exécution contrat.", a: "Documentez la bonne foi.", v: "Mauvaise foi = Dommages." },
-            { l: "Bonus pater familias", t: "Bon père de famille", g: ["DA", "JE"], d: "Prudence standard.", c: "Responsabilité.", a: "Agir raisonnablement.", v: "Standard d'appréciation." },
-            { l: "Casus belli", t: "Cas de guerre", g: ["DA"], d: "Acte de rupture.", c: "Conflit commercial.", a: "Mesurez vos écrits.", v: "Déclenche le contentieux." },
-            { l: "Caveat emptor", t: "Acheteur vigilant", g: ["DA"], d: "L'acheteur doit vérifier.", c: "M&A.", a: "Due Diligence.", v: "Pas pour vices cachés." },
-            { l: "Compétence liée", t: "Pas de choix", g: ["JE"], d: "L'autorité doit agir ainsi.", c: "Administratif.", a: "Pas de marge de manœuvre.", v: "Décision automatique." },
-            { l: "Compos mentis", t: "Sain d'esprit", g: ["JE", "DS"], d: "Capacité mentale.", c: "Démission.", a: "Délai de rétractation.", v: "Requalification si émotion." },
-            { l: "Conditio sine qua non", t: "Condition indispensable", g: ["DA"], d: "Condition absolue.", c: "Suspensive.", a: "Point bloquant.", v: "Contrat caduc si échec." },
-            { l: "Consensus ad idem", t: "Accord total", g: ["DA"], d: "Rencontre volontés.", c: "Contrat.", a: "Accord prix/chose.", v: "Malentendu = Vice." },
-            { l: "Contra legem", t: "Contre la loi", g: ["JE", "DS"], d: "Clause illégale.", c: "Contrat travail.", a: "Supprimer clause.", v: "Réputée non écrite." },
-            { l: "Corpus delicti", t: "Corps du délit", g: ["JE"], d: "Preuve matérielle.", c: "Vol.", a: "Sécuriser preuves.", v: "Pas de corps, pas de crime." },
-            { l: "Cui bono ?", t: "À qui profite ?", g: ["JE"], d: "Bénéficiaire.", c: "Enquête.", a: "Intérêt caché.", v: "Indice." },
-            { l: "Damnum emergens", t: "Perte subie", g: ["DA"], d: "Perte réelle.", c: "Indemnisation.", a: "Prouver la perte.", v: "Factures requises." },
-            { l: "Damnum infectum", t: "Dommage menaçant", g: ["DA"], d: "Risque futur.", c: "Prévention.", a: "Agir avant le dommage.", v: "Mesures conservatoires." },
-            { l: "De cujus", t: "Le défunt", g: ["DA"], d: "Celui dont on hérite.", c: "Succession.", a: "Transmission entreprise.", v: "Terme notarial." },
-            { l: "De facto", t: "De fait", g: ["DA", "DS"], d: "Situation réelle.", c: "Gérant de fait.", a: "Attention délégations.", v: "Responsabilité lourde." },
-            { l: "De in rem verso", t: "Enrichissement sans cause", g: ["DA"], d: "Action en restitution.", c: "Paiement indu.", a: "Rembourser l'avantage.", v: "Subsidiaire." },
-            { l: "De jure", t: "De droit", g: ["DA"], d: "Officiel.", c: "Kbis.", a: "Signature officielle.", v: "Engage la société." },
-            { l: "De minimis", t: "Insignifiant", g: ["JE"], d: "Bagatelles.", c: "Sanction.", a: "Ne pas judiciariser.", v: "Risque procédurier." },
-            { l: "De plano", t: "Manifestement", g: ["JE"], d: "Sans difficulté.", c: "Rejet.", a: "Irrecevable.", v: "Argument écrit." },
-            { l: "Do ut des", t: "Donnant-donnant", g: ["DA"], d: "Échange.", c: "Négociation.", a: "Contrepartie.", v: "Équilibre." },
-            { l: "Dolus", t: "Dol", g: ["DA", "DS"], d: "Tromperie.", c: "CV faux.", a: "Mensonge déterminant.", v: "Nullité contrat." },
-            { l: "Dura lex sed lex", t: "La loi est dure", g: ["JE"], d: "Application stricte.", c: "Règle.", a: "Autorité.", v: "Braque les gens." },
-            { l: "Electa una via", t: "Une voie choisie", g: ["JE"], d: "Non cumul des procédures.", c: "Civil/Pénal.", a: "Choisir sa stratégie.", v: "Irrecevabilité." },
-            { l: "Erga omnes", t: "À l'égard de tous", g: ["DA"], d: "Opposable.", c: "Publicité.", a: "Publier statuts.", v: "Défaut = Inopposable." },
-            { l: "Erratum", t: "Erreur", g: ["JE"], d: "Correction.", c: "Paie.", a: "Régulariser.", v: "Répétition = Faute." },
-            { l: "Error communis", t: "Erreur commune", g: ["DA"], d: "L'apparence crée le droit.", c: "Mandat apparent.", a: "Protéger le tiers.", v: "Bonne foi requise." },
-            { l: "Ex aequo et bono", t: "En équité", g: ["DA"], d: "Amiable compositeur.", c: "Arbitrage.", a: "Souplesse.", v: "Imprévisible." },
-            { l: "Ex ante", t: "Au préalable", g: ["DA"], d: "Analyse avant.", c: "Concentration.", a: "Valider montage.", v: "Opposé Ex post." },
-            { l: "Ex officio", t: "D'office", g: ["DS", "JE"], d: "Automatique.", c: "Juge.", a: "Moyen ordre public.", v: "Requalification." },
-            { l: "Ex post", t: "Après coup", g: ["JE"], d: "Rétrospectif.", c: "Audit.", a: "Leçons.", v: "Trop tard." },
-            { l: "Ex post facto", t: "Rétroactif", g: ["JE"], d: "Loi rétroactive.", c: "Pénal.", a: "Interdit pénal.", v: "Dates lois." },
-            { l: "Exceptio non adimpleti", t: "Exception inexécution", g: ["DA"], d: "Je ne paie pas.", c: "Fournisseur.", a: "Gravité requise.", v: "Risqué." },
-            { l: "Fraus omnia corrumpit", t: "La fraude corrompt tout", g: ["JE", "DS"], d: "La fraude annule tout.", c: "Arrêt maladie bidon.", a: "Preuve fraude.", v: "Annulation totale." },
-            { l: "Fructus", t: "Fruits", g: ["DA"], d: "Revenus.", c: "Usufruit.", a: "Impôts.", v: "Pas vendre." },
-            { l: "Habeas corpus", t: "Corps", g: ["JE"], d: "Liberté.", c: "Fondamental.", a: "État de droit.", v: "Symbole." },
-            { l: "Ibidem", t: "Même endroit", g: ["JE"], d: "Référence.", c: "Note.", a: "Gain place.", v: "Pas Idem." },
-            { l: "Id est", t: "C'est-à-dire", g: ["JE"], d: "Explication.", c: "Note.", a: "Clarté.", v: "i.e." },
-            { l: "In absentia", t: "En l'absence", g: ["JE"], d: "Jugement défaut.", c: "Pénal.", a: "Opposition.", v: "Fuite." },
-            { l: "In abstracto", t: "Dans l'abstrait", g: ["DA"], d: "Standard moyen.", c: "Bon père famille.", a: "Comparaison.", v: "Pas perso." },
-            { l: "In bonis", t: "Solvable", g: ["DA"], d: "Pas en faillite.", c: "Fournisseur.", a: "Vérifier solvabilité.", v: "Cessation paiements." },
-            { l: "In concreto", t: "Concrètement", g: ["JE"], d: "Selon les faits.", c: "Faute.", a: "Situation réelle.", v: "Pas théorique." },
-            { l: "In dubio pro reo", t: "Doute profite accusé", g: ["DS"], d: "Pas preuve = Pas sanction.", c: "Licenciement.", a: "Preuve solide.", v: "Doute = Salarié." },
-            { l: "In extenso", t: "Intégralement", g: ["JE"], d: "Tout le texte.", c: "Citation.", a: "Précision.", v: "Tronqué." },
-            { l: "In favorem", t: "En faveur", g: ["DS"], d: "Plus favorable.", c: "Conflit normes.", a: "Faveur salarié.", v: "Principe clé." },
-            { l: "In fine", t: "À la fin", g: ["DA"], d: "Dernière ligne.", c: "Contrat.", a: "Lire tout.", v: "Pièges finaux." },
-            { l: "In limine litis", t: "Seuil procès", g: ["DA"], d: "Avant débat.", c: "Procédure.", a: "Incompétence.", v: "Forclusion." },
-            { l: "In personam", t: "Personnel", g: ["DA"], d: "Droit créance.", c: "Dette.", a: "Contre personne.", v: "Pas sur chose." },
-            { l: "In situ", t: "Sur place", g: ["DS"], d: "Terrain.", c: "Constat.", a: "Preuve forte.", v: "Enquête." },
-            { l: "In solidum", t: "Solidaire", g: ["DA"], d: "Tout payer.", c: "Co-emploi.", a: "Recours.", v: "Risque mère." },
-            { l: "Inter partes", t: "Entre parties", g: ["DA"], d: "Relatif.", c: "Contrat.", a: "Pas tiers.", v: "Opposé Erga." },
-            { l: "Intra muros", t: "Dans les murs", g: ["JE"], d: "En interne.", c: "Confidentialité.", a: "Pas diffusion.", v: "Secret." },
-            { l: "Intra vires", t: "Dans pouvoirs", g: ["DA"], d: "Légal.", c: "Mandat.", a: "Vérifier.", v: "Ultra vires." },
-            { l: "Intuitu personae", t: "Lié personne", g: ["DS"], d: "Qualités perso.", c: "Travail.", a: "Pas remplacement.", v: "Décès." },
-            { l: "Ipso facto", t: "Automatique", g: ["DA"], d: "Conséquence.", c: "Résolution.", a: "Sans juge.", v: "Immédiat." },
-            { l: "Ipso jure", t: "De plein droit", g: ["JE"], d: "Par la loi.", c: "Fin mandat.", a: "Sans courrier.", v: "Immédiat." },
-            { l: "Jus ad bellum", t: "Droit à la guerre", g: ["JE"], d: "Droit conflit.", c: "Culture.", a: "Légitime défense.", v: "ONU." },
-            { l: "Jus cogens", t: "Impératif", g: ["JE"], d: "Ordre public.", c: "Esclavage.", a: "Indérogeable.", v: "Nullité." },
-            { l: "Jus soli", t: "Droit sol", g: ["JE"], d: "Nationalité.", c: "Étrangers.", a: "Critère.", v: "Sanguinis." },
-            { l: "Lex fori", t: "Loi tribunal", g: ["DA"], d: "Procédure locale.", c: "Conflit.", a: "Procédure.", v: "Fond." },
-            { l: "Lex mercatoria", t: "Loi marchands", g: ["DA"], d: "Usages.", c: "Commerce int.", a: "Souplesse.", v: "Arbitrage." },
-            { l: "Lis pendens", t: "Litige pendant", g: ["JE"], d: "Affaire en cours.", c: "Double saisie.", a: "Dessaisissement.", v: "Connexité." },
-            { l: "Locus regit actum", t: "Lieu régit acte", g: ["DA"], d: "Forme locale.", c: "Contrat int.", a: "Respect forme.", v: "Validité." },
-            { l: "Locus standi", t: "Qualité à agir", g: ["JE"], d: "Droit d'action.", c: "Recevabilité.", a: "Intérêt.", v: "Rejet." },
-            { l: "Lucrum cessans", t: "Gain manqué", g: ["DA"], d: "Manque à gagner.", c: "Indemnité.", a: "Marge.", v: "Preuve." },
-            { l: "Malum in se", t: "Mal en soi", g: ["JE"], d: "Naturellement mauvais.", c: "Crime.", a: "Moral.", v: "Universel." },
-            { l: "Mens rea", t: "Intention", g: ["JE"], d: "Esprit criminel.", c: "Pénal.", a: "Volonté.", v: "Négligence." },
-            { l: "Modus operandi", t: "Mode opératoire", g: ["JE"], d: "Méthode.", c: "Fraude.", a: "Schéma.", v: "Prévention." },
-            { l: "Modus vivendi", t: "Compromis", g: ["DS"], d: "Accord provisoire.", c: "Grève.", a: "Reprise.", v: "Temporaire." },
-            { l: "Mutatis mutandis", t: "Adaptation", g: ["JE"], d: "Changer détails.", c: "Duplication.", a: "Adapter.", v: "Copier-coller." },
-            { l: "Nemo auditur", t: "Nul profit faute", g: ["DS"], d: "Turpitude.", c: "Fraude.", a: "Défense.", v: "Obligations." },
-            { l: "Nemo censetur", t: "Nul n'ignore loi", g: ["JE"], d: "Fiction.", c: "Défense.", a: "Connaître.", v: "Veille." },
-            { l: "Nemo dat", t: "Nul ne donne", g: ["DA"], d: "Pas de titre.", c: "Vente.", a: "Propriété.", v: "Vol." },
-            { l: "Nemo judex", t: "Nul juge et partie", g: ["DS"], d: "Impartialité.", c: "Enquête.", a: "Externaliser.", v: "Conflit." },
-            { l: "Non bis in idem", t: "Pas deux fois", g: ["DS"], d: "Double sanction.", c: "Discipline.", a: "Une faute.", v: "Avertissement." },
-            { l: "Non aedificandi", t: "Non bâtir", g: ["DA"], d: "Servitude.", c: "Immo.", a: "Vérifier.", v: "Construction." },
-            { l: "Nudum pactum", t: "Pacte nu", g: ["DA"], d: "Sans cause.", c: "Anglo.", a: "Contrepartie.", v: "Nullité." },
-            { l: "Nulla poena", t: "Pas peine sans loi", g: ["JE"], d: "Légalité.", c: "RI.", a: "Prévisible.", v: "Arbitraire." },
-            { l: "Nullum crimen", t: "Pas crime sans loi", g: ["JE"], d: "Légalité.", c: "RI.", a: "Texte.", v: "Sanction." },
-            { l: "Obiter dictum", t: "En passant", g: ["JE"], d: "Commentaire.", c: "Arrêt.", a: "Secondaire.", v: "Pas autorité." },
-            { l: "Onus probandi", t: "Charge preuve", g: ["DS"], d: "Demandeur prouve.", c: "Preuve.", a: "Dossier.", v: "Partage." },
-            { l: "Opinio juris", t: "Conviction", g: ["JE"], d: "Coutume.", c: "Usage.", a: "Obligatoire.", v: "Répétition." },
-            { l: "Pacta sunt servanda", t: "Respect contrats", g: ["DA"], d: "Force.", c: "Contrat.", a: "Loi.", v: "Imprévision." },
-            { l: "Pari passu", t: "Égalité", g: ["DA"], d: "Même rang.", c: "Créanciers.", a: "Pas préférence.", v: "Faillite." },
-            { l: "Pars pro toto", t: "Partie pour tout", g: ["JE"], d: "Synecdoque.", c: "Nom.", a: "Confusion.", v: "Précision." },
-            { l: "Pater familias", t: "Bon père", g: ["DA"], d: "Prudent.", c: "Resp.", a: "Diligence.", v: "Standard." },
-            { l: "Penitus extranei", t: "Tiers absolus", g: ["DA"], d: "Étrangers.", c: "Relatif.", a: "Pas lié.", v: "Inopposable." },
-            { l: "Per capita", t: "Par tête", g: ["JE"], d: "Individu.", c: "Partage.", a: "Égal.", v: "Proportion." },
-            { l: "Persona non grata", t: "Indésirable", g: ["JE"], d: "Refus.", c: "Accès.", a: "Sécurité.", v: "Discrimination." },
-            { l: "Post mortem", t: "Après mort", g: ["DA"], d: "Succession.", c: "Transmission.", a: "Pacte.", v: "Anticiper." },
-            { l: "Praeter legem", t: "Côté loi", g: ["JE"], d: "Complète.", c: "Usage.", a: "Source.", v: "Contradiction." },
-            { l: "Pretium doloris", t: "Prix douleur", g: ["DS"], d: "Souffrance.", c: "AT.", a: "Faute inexc.", v: "Coût." },
-            { l: "Prima facie", t: "Premier abord", g: ["JE"], d: "Apparent.", c: "Preuve.", a: "Apparence.", v: "Renversement." },
-            { l: "Primum non nocere", t: "Pas nuire", g: ["DS"], d: "Prévention.", c: "Santé.", a: "Sécurité.", v: "RPS." },
-            { l: "Pro bono", t: "Gratuit", g: ["JE"], d: "Mécénat.", c: "Avocat.", a: "Image.", v: "Prêt MO." },
-            { l: "Pro domo", t: "Pour soi", g: ["JE"], d: "Subjectif.", c: "Plaidoirie.", a: "Recul.", v: "Crédibilité." },
-            { l: "Pro rata", t: "Proportionnel", g: ["DS"], d: "Temps.", c: "Calcul.", a: "Formule.", v: "Rappel." },
-            { l: "Pro tempore", t: "Temporaire", g: ["JE"], d: "Pour le temps.", c: "Mandat.", a: "Durée.", v: "Fin." },
-            { l: "Quantum meruit", t: "Mérité", g: ["DA"], d: "Valeur.", c: "Sans devis.", a: "Juste prix.", v: "Litige." },
-            { l: "Quid pro quo", t: "Échange", g: ["DA"], d: "Contrepartie.", c: "Négo.", a: "Donnant.", v: "Erreur." },
-            { l: "Ratio decidendi", t: "Raison", g: ["JE"], d: "Motif.", c: "Arrêt.", a: "Autorité.", v: "Dictum." },
-            { l: "Ratio legis", t: "Esprit loi", g: ["JE"], d: "But.", c: "Sens.", a: "Intention.", v: "Flou." },
-            { l: "Ratione loci", t: "Lieu", g: ["DA"], d: "Territoire.", c: "Compétence.", a: "Clause.", v: "Siège." },
-            { l: "Ratione materiae", t: "Matière", g: ["JE"], d: "Nature.", c: "Compétence.", a: "Ordre public.", v: "Absolue." },
-            { l: "Rebus sic stantibus", t: "État", g: ["DA"], d: "Imprévision.", c: "Contrat.", a: "Renégo.", v: "1195." },
-            { l: "Res communis", t: "Chose commune", g: ["DA"], d: "À tous.", c: "Air/Eau.", a: "Pas prop.", v: "Usage." },
-            { l: "Res derelictae", t: "Abandonné", g: ["DA"], d: "Déchet.", c: "Propriété.", a: "Occupation.", v: "Environnement." },
-            { l: "Res inter alios", t: "Relatif", g: ["DA"], d: "Tiers.", c: "Contrat.", a: "Pas effet.", v: "Opposable." },
-            { l: "Res judicata", t: "Chose jugée", g: ["JE"], d: "Définitif.", c: "Recours.", a: "Clos.", v: "Appel." },
-            { l: "Res nullius", t: "Sans maître", g: ["DA"], d: "Libre.", c: "Occupation.", a: "Premier.", v: "Données." },
-            { l: "Res perit domino", t: "Risque maître", g: ["DA"], d: "Perte.", c: "Transport.", a: "Incoterm.", v: "Transfert." },
-            { l: "Res publica", t: "Public", g: ["JE"], d: "État.", c: "Intérêt.", a: "Service.", v: "Privé." },
-            { l: "Sine die", t: "Sans date", g: ["JE"], d: "Report.", c: "Réunion.", a: "Oubli.", v: "Indéfini." },
-            { l: "Sine qua non", t: "Indispensable", g: ["JE"], d: "Condition.", c: "Clause.", a: "Absolu.", v: "Caduc." },
-            { l: "Solvens", t: "Payeur", g: ["DA"], d: "Débiteur.", c: "Paiement.", a: "Accipiens.", v: "Erreur." },
-            { l: "Stare decisis", t: "Précédent", g: ["DA"], d: "Jurisprudence.", c: "Common Law.", a: "Stabilité.", v: "France." },
-            { l: "Status quo", t: "État actuel", g: ["JE"], d: "Immobile.", c: "Stratégie.", a: "Maintien.", v: "Risque." },
-            { l: "Stricto sensu", t: "Strict", g: ["JE"], d: "Littéral.", c: "Clause.", a: "Restrictif.", v: "Large." },
-            { l: "Sub judice", t: "En cours", g: ["JE"], d: "Non jugé.", c: "Com.", a: "Secret.", v: "Pression." },
-            { l: "Sub rosa", t: "Secret", g: ["DA"], d: "Confidentiel.", c: "NDA.", a: "Discrétion.", v: "Fuite." },
-            { l: "Sui generis", t: "Spécifique", g: ["DS"], d: "Unique.", c: "Statut.", a: "Hybride.", v: "Règles." },
-            { l: "Sui juris", t: "Capable", g: ["JE"], d: "Pleine capacité.", c: "Contrat.", a: "Majeur.", v: "Tutelle." },
-            { l: "Terminus a quo", t: "Point départ", g: ["JE"], d: "Début délai.", c: "Préavis.", a: "Date.", v: "Calcul." },
-            { l: "Ultra petita", t: "Au-delà", g: ["JE"], d: "Trop donné.", c: "Juge.", a: "Appel.", v: "Interdit." },
-            { l: "Ultra vires", t: "Hors pouvoir", g: ["DA"], d: "Illégal.", c: "Dirigeant.", a: "Objet.", v: "Engage." },
-            { l: "Usus", t: "Usage", g: ["DA"], d: "User.", c: "Propriété.", a: "Habiter.", v: "Abusus." },
-            { l: "Ut singuli", t: "Individuel", g: ["DA"], d: "Action.", c: "Associé.", a: "Faute.", v: "Société." },
-            { l: "Verba volant", t: "Écrits restent", g: ["DS"], d: "Preuve.", c: "RH.", a: "Écrit.", v: "Oral." },
-            { l: "Veto", t: "Opposition", g: ["DA"], d: "Blocage.", c: "Pacte.", a: "Stratégie.", v: "Paralysie." },
-            { l: "Vice versa", t: "Inverse", g: ["JE"], d: "Réciproque.", c: "Clause.", a: "Symétrie.", v: "Sens." },
-            { l: "Vigiles", t: "Veilleurs", g: ["JE"], d: "Police.", c: "Sécurité.", a: "Contrôle.", v: "Abus." },
-            { l: "Vox populi", t: "Opinion", g: ["JE"], d: "Rumeur.", c: "Climat.", a: "Indice.", v: "Preuve." }
+            // --- NOUVEAUX TERMES ---
+            { 
+                l: "A contrario", t: "Par le contraire", d: "Argumentation déduisant d'une situation non prévue l'application de la règle inverse.", c: "Droit général & Droit du Travail", g: ["DS", "JE"],
+                e: "La loi prévoit X pour les CDI. A contrario, pour les CDD, c'est la règle Y qui s'applique.",
+                cp: "Utilisez ce raisonnement pour défendre une exclusion non écrite mais logique.",
+                v: "Ne fonctionne pas si la liste de la loi est purement indicative."
+            },
+            { 
+                l: "A fortiori", t: "À plus forte raison", d: "Argumentation qui étend une règle à un cas non prévu par la loi, car les raisons de l'appliquer sont encore plus évidentes.", c: "Droit général & Droit du Travail", g: ["DS", "JE"],
+                e: "Si la faute simple justifie une sanction, a fortiori la faute grave justifie un licenciement.",
+                cp: "Argument puissant pour justifier une sanction lourde en comparaison d'une légère.",
+                v: "Assurez-vous que la logique de gradation est incontestable."
+            },
+            { 
+                l: "Ab absurdo", t: "Par l'absurde", d: "Raisonnement consistant à démontrer la fausseté d'une proposition en montrant que sa conséquence est absurde.", c: "Droit général", g: ["JE"],
+                e: "Le raisonnement d'une partie aboutirait à ce que l'employeur paie le salarié qui n'a jamais travaillé.",
+                cp: "Efficace en plaidoirie pour ridiculiser la position adverse.",
+                v: "Attention à ne pas paraître arrogant face au juge."
+            },
+            { 
+                l: "Ab initio", t: "Dès le commencement", d: "Se dit d'un acte qui prend effet depuis son origine.", c: "Droit des contrats & Social", g: ["DA", "DS"],
+                e: "Si une condition essentielle manque, le contrat est nul ab initio (comme s'il n'avait jamais existé).",
+                cp: "Rétroactivité totale : l'acte est censé n'avoir jamais existé. Préférez la nullité relative si possible.",
+                v: "Conséquences fiscales et restitutions complexes en cas d'annulation rétroactive."
+            },
+            { 
+                l: "Ab irato", t: "Sous le coup de la colère", d: "Qualification d'un acte accompli sous l'emportement.", c: "Droit du Travail (Licenciement)", g: ["DS"],
+                e: "Une sanction prononcée ab irato risque d'être annulée car l'employeur n'a pas respecté le temps de réflexion.",
+                cp: "Attendez toujours 48h (délai légal min souvent) avant de notifier une sanction.",
+                v: "Un licenciement verbal ab irato est sans cause réelle et sérieuse."
+            },
+            { 
+                l: "Abusus non tollit usum", t: "L'abus n'empêche pas l'usage", d: "Le fait qu'un droit soit abusé ne signifie pas que ce droit n'existe pas.", c: "Droit général", g: ["JE"],
+                e: "Le fait que certains employeurs abusent de la période d'essai ne supprime pas le droit d'en insérer une.",
+                cp: "Rappelez ce principe face à un CSE qui veut supprimer un droit par peur des abus.",
+                v: "L'abus de droit reste sanctionnable (théorie de l'abus de droit)."
+            },
+            { 
+                l: "Accessorium sequitur principale", t: "L'accessoire suit le principal", d: "Le sort juridique d'un accessoire est lié à celui de l'élément principal.", c: "Droit des obligations & Travail", g: ["DS", "JE"],
+                e: "L'annulation du contrat de travail (principal) entraîne l'annulation de la clause de non-concurrence.",
+                cp: "Vérifiez bien ce qui est accessoire (primes) et ce qui est principal (salaire de base).",
+                v: "Certaines clauses survivent à la rupture (confidentialité)."
+            },
+            { 
+                l: "Actio personalis moritur cum persona", t: "L'action personnelle meurt avec la personne", d: "Principe selon lequel une action en justice s'éteint avec le décès de la personne concernée.", c: "Procédure civile & Social", g: ["JE"],
+                e: "Le décès du salarié met fin au contrat et, généralement, aux actions personnelles (sauf exceptions).",
+                cp: "Anticipez la transmission des actions patrimoniales aux ayants droit.",
+                v: "L'action publique s'éteint, mais l'action civile peut continuer contre les héritiers."
+            },
+            { 
+                l: "Actori incumbit probatio", t: "La preuve incombe au demandeur", d: "C'est à celui qui allègue un fait de le prouver.", c: "Procédure civile & Prud'hommes", g: ["DS", "JE"],
+                e: "C'est au salarié qui réclame des heures supplémentaires de prouver l'existence de ces heures.",
+                cp: "Préparez toujours vos preuves (mails, témoignages) avant d'aller au contentieux.",
+                v: "Exception : Heures sup (partagé)."
+            },
+            { 
+                l: "Actor sequitur forum rei", t: "Le demandeur suit le tribunal du défendeur", d: "Le litige doit être porté devant le tribunal du défendeur (principe de compétence territoriale).", c: "Procédure civile", g: ["JE"],
+                e: "Sauf en matière prud'homale où la règle est assouplie, l'action doit être menée dans la juridiction du défendeur.",
+                cp: "Vérifiez la clause attributive de juridiction dans les contrats B2B.",
+                v: "En droit du travail, le salarié peut souvent choisir le lieu de travail."
+            },
+            { 
+                l: "Actus reus / Mens rea", t: "L'acte coupable / L'esprit coupable", d: "Les deux éléments constitutifs de l'infraction pénale.", c: "Droit pénal du travail", g: ["JE", "DS"],
+                e: "Pour prouver un vol, il faut l'acte de prendre (actus reus) et l'intention de voler (mens rea).",
+                cp: "Tracez vos délégations de pouvoirs pour transférer la responsabilité pénale.",
+                v: "La responsabilité pénale peut être engagée même sans intention directe (négligence)."
+            },
+            { 
+                l: "Ad cautelam", t: "Par précaution", d: "Par mesure de prudence.", c: "Pratique juridique", g: ["JE", "DS"],
+                e: "Le syndicat adresse un courrier de contestation ad cautelam pour préserver ses droits.",
+                cp: "Utilisez cette mention pour ne pas reconnaître implicitement une faute.",
+                v: "Cela ne remplace pas une action en justice dans les délais."
+            },
+            { 
+                l: "Ad hoc", t: "Pour cela", d: "Spécialement désigné pour une fonction.", c: "Droit des sociétés & Social", g: ["DA", "JE"],
+                e: "Un administrateur est nommé ad hoc pour représenter l'enfant d'un salarié décédé.",
+                cp: "Limitez strictement le mandat ad hoc à sa mission précise.",
+                v: "Pas de pouvoir général."
+            },
+            { 
+                l: "Ad impossibilia nemo tenetur", t: "À l'impossible nul n'est tenu", d: "On ne peut être contraint à exécuter une obligation impossible.", c: "Force majeure", g: ["JE", "DS"],
+                e: "Si une catastrophe naturelle rend le travail impossible, le salarié n'est pas tenu de l'exécuter.",
+                cp: "Vérifiez toujours les critères de la force majeure (imprévisible, irrésistible, extérieur).",
+                v: "La difficulté financière n'est jamais un cas de force majeure."
+            },
+            { 
+                l: "Ad litem", t: "Pour le procès", d: "Relatif uniquement à l'instance en cours.", c: "Procédure", g: ["JE"],
+                e: "Un mandataire ad litem est désigné pour représenter une partie pendant la procédure.",
+                cp: "Vérifiez le pouvoir (mandat) de l'avocat adverse.",
+                v: "Le pouvoir doit être spécial."
+            },
+            { 
+                l: "Ad nutum", t: "Au gré de", d: "Révoqué sans qu'un motif soit exigé.", c: "Droit des sociétés", g: ["DA"],
+                e: "Le mandat du président d'une SAS est souvent révocable ad nutum par les associés.",
+                cp: "Négociez un 'parachute doré' contractuel pour compenser la précarité.",
+                v: "Attention à la révocation injurieuse."
+            },
+            { 
+                l: "Ad probationem / Ad validitatem", t: "Preuve / Validité", d: "Distinction entre forme pour prouver et forme pour valider.", c: "Droit des contrats", g: ["DA", "JE"],
+                e: "Un CDD doit être écrit ad validitatem (sinon requalifié en CDI).",
+                cp: "Considérez toujours l'écrit comme obligatoire pour sécuriser la relation.",
+                v: "CDD sans écrit = CDI."
+            },
+            { 
+                l: "Æquum est ut cujus participavit lucrum...", t: "Qui a le gain a la perte", d: "Principe de l'équité en matière d'association.", c: "Droit des sociétés", g: ["DA"],
+                e: "Principe de mutualisation des risques ou des bénéfices entre associés.",
+                cp: "Vérifiez les clauses léonines qui exonèrent totalement un associé des pertes.",
+                v: "Une clause excluant un associé des pertes est nulle."
+            },
+            { 
+                l: "Affectio societatis", t: "Volonté de s'associer", d: "Volonté de collaborer à l'œuvre commune.", c: "Droit des sociétés", g: ["DA"],
+                e: "Si l'affectio societatis disparaît (mésentente grave), la société peut être dissoute.",
+                cp: "Prévoyez des clauses de sortie (Shotgun, Buy or Sell) dans le pacte d'associés.",
+                v: "Dissolution si disparition."
+            },
+            { 
+                l: "Affirmanti incumbit probatio", t: "La preuve incombe à celui qui affirme", d: "Variante d'Actori incumbit probatio.", c: "Procédure", g: ["JE"],
+                e: "Si l'employeur affirme une faute grave, il doit la prouver.",
+                cp: "Ne lancez jamais une procédure disciplinaire sur de simples rumeurs.",
+                v: "Le doute profite au salarié en matière disciplinaire."
+            },
+            { 
+                l: "Aliud est celare, aliud tacere", t: "Cacher est une chose, se taire en est une autre", d: "Distinction entre réticence dolosive et simple silence.", c: "Droit des contrats", g: ["DA"],
+                e: "Se taire sur un défaut mineur est toléré, mais dissimuler activement est un dol.",
+                cp: "Soyez transparent sur les éléments déterminants du consentement.",
+                v: "Le devoir d'information s'est renforcé."
+            },
+            { 
+                l: "Amicus curiæ", t: "Ami de la Cour", d: "Tiers qui présente un avis éclairé au tribunal.", c: "Procédure", g: ["JE"],
+                e: "Une association dépose un mémoire amicus curiæ devant la Cour de cassation.",
+                cp: "Utilisez les avis d'experts pour influencer des décisions complexes.",
+                v: "L'amicus curiæ n'est pas partie au procès."
+            },
+            { 
+                l: "Argumentum a silentio", t: "Argument tiré du silence", d: "Tirer une conclusion du silence d'un texte.", c: "Interprétation", g: ["JE"],
+                e: "La loi ne dit rien sur ce point, on présume donc que c'est permis.",
+                cp: "Méfiez-vous de cette interprétation, le silence ne vaut pas toujours acceptation.",
+                v: "Le silence vaut parfois rejet."
+            },
+            { 
+                l: "Audi alteram partem", t: "Que l'autre partie soit entendue", d: "Principe du contradictoire.", c: "Droits de la défense", g: ["DS", "JE"],
+                e: "L'entretien préalable au licenciement est l'application de ce principe.",
+                cp: "Ne jamais sanctionner sans avoir recueilli les explications du salarié.",
+                v: "Nullité procédure si non respecté."
+            },
+            { 
+                l: "Bona fide", t: "De bonne foi", d: "Agir honnêtement, en croyant être dans son droit.", c: "Contrats", g: ["DA", "DS"],
+                e: "L'exécution du contrat de travail impose aux deux parties d'agir bona fide.",
+                cp: "Documentez toujours votre bonne foi (courriers, relances).",
+                v: "Mauvaise foi = Dommages."
+            },
+            { 
+                l: "Bonus dolus", t: "Le bon dol", d: "Petite exagération tolérée.", c: "Vente / Recrutement", g: ["DA", "DS"],
+                e: "Un CV qui embellit légèrement une expérience est un bonus dolus.",
+                cp: "Tolérez une légère marge de vantardise commerciale.",
+                v: "Si l'exagération porte sur une compétence clé manquante, c'est un dol (nullité)."
+            },
+            { 
+                l: "Casus belli", t: "Cas de guerre", d: "Fait qui justifie une hostilité.", c: "Conflit", g: ["JE"],
+                e: "Une faute lourde (concurrence déloyale) est un casus belli pour l'employeur.",
+                cp: "Identifiez les 'lignes rouges' à ne pas franchir dans la négo.",
+                v: "Déclenche le contentieux."
+            },
+            { 
+                l: "Casus fortuitus", t: "Cas fortuit", d: "Événement imprévisible.", c: "Responsabilité", g: ["JE"],
+                e: "Un accident imprévisible exonère l'employeur de sa responsabilité.",
+                cp: "Prévoyez des plans de continuité d'activité (PCA) pour limiter l'impact.",
+                v: "La jurisprudence est très stricte sur l'imprévisibilité."
+            },
+            { 
+                l: "Caveat emptor", t: "Que l'acheteur soit vigilant", d: "L'acheteur doit s'informer.", c: "Droit commercial", g: ["DA"],
+                e: "L'acheteur professionnel ne peut pas se plaindre d'un défaut visible.",
+                cp: "Faites toujours des audits (Due Diligence) avant une acquisition.",
+                v: "Pas pour vices cachés."
+            },
+            { 
+                l: "Certiorari", t: "Être informé", d: "Recours pour réexamen (Common Law).", c: "Droit comparé", g: ["JE"],
+                e: "Équivalent au pouvoir de la Cour de cassation de vérifier la légalité.",
+                cp: "Utile pour comprendre les procédures anglo-saxonnes.",
+                v: "N'existe pas en tant que tel en droit français."
+            },
+            { 
+                l: "Cessante causa legis, cessat lex", t: "La loi cesse avec sa cause", d: "La loi s'éteint si sa raison d'être disparaît.", c: "Théorie du droit", g: ["JE"],
+                e: "Une loi d'urgence sanitaire cesse d'être applicable à la fin de l'épidémie.",
+                cp: "Vérifiez toujours si les textes d'exception sont encore en vigueur.",
+                v: "Certaines lois temporaires sont pérennisées."
+            },
+            { 
+                l: "Cogito ergo sum", t: "Je pense, donc je suis", d: "Principe d'existence par la pensée.", c: "Philosophie", g: ["JE"],
+                e: "Utilisé pour souligner la volonté et la capacité juridique de la personne.",
+                cp: "Fondement de la capacité juridique des personnes physiques.",
+                v: "Ne s'applique pas aux personnes morales."
+            },
+            { 
+                l: "Communio est mater rixarum", t: "Communauté = Querelles", d: "L'indivision crée des conflits.", c: "Biens & Sociétés", g: ["DA"],
+                e: "Les conflits entre associés à 50/50 bloquent souvent l'entreprise.",
+                cp: "Évitez l'indivision ou la répartition 50/50 sans mécanisme de blocage.",
+                v: "En cas de blocage, le juge peut dissoudre la société."
+            },
+            { 
+                l: "Confer (Cf.)", t: "Réfère-toi à", d: "Renvoi bibliographique.", c: "Rédaction", g: ["JE"],
+                e: "Voir l'article 123 du Code du travail (Cf. Article 123).",
+                cp: "Utilisez-le pour alléger vos notes juridiques.",
+                v: "Vérifiez que la référence citée est toujours à jour."
+            },
+            { 
+                l: "Consuetudo est optima legum...", t: "Coutume = Meilleure interprète", d: "L'usage éclaire le sens de la règle.", c: "Sources du droit", g: ["DS", "JE"],
+                e: "Un usage constant de prime de fin d'année devient obligatoire.",
+                cp: "Dénoncez formellement un usage si vous voulez y mettre fin.",
+                v: "Un usage ne peut pas aller contre une loi d'ordre public."
+            },
+            { 
+                l: "Contra factum non datur argumentum", t: "Contre un fait, pas d'argument", d: "On ne conteste pas l'évidence.", c: "Preuve", g: ["JE"],
+                e: "Si l'huissier constate l'abandon de poste, inutile d'argumenter le contraire.",
+                cp: "Faites établir des constats d'huissier pour figer les faits.",
+                v: "Le fait est incontestable, mais sa qualification juridique se discute."
+            },
+            { 
+                l: "Contra legem", t: "Contre la loi", d: "Acte violant la loi.", c: "Légalité", g: ["DS", "JE"],
+                e: "Une clause payant sous le SMIC est contra legem.",
+                cp: "Supprimez immédiatement toute clause contra legem de vos contrats.",
+                v: "Réputée non écrite."
+            },
+            { 
+                l: "Contra non valentem...", t: "Pas de prescription si empêché", d: "Suspension du délai si impossibilité d'agir.", c: "Prescription", g: ["DS", "JE"],
+                e: "Un salarié dans le coma ne voit pas son délai de recours courir.",
+                cp: "Vérifiez l'état de santé ou la force majeure avant d'invoquer la prescription.",
+                v: "L'ignorance du droit n'est pas une impossibilité d'agir."
+            },
+            { 
+                l: "Corpus delicti", t: "Corps du délit", d: "Élément matériel de l'infraction.", c: "Pénal", g: ["JE"],
+                e: "L'objet volé retrouvé dans le sac est le corpus delicti.",
+                cp: "Sécurisez la chaîne de preuve (scellés, constats).",
+                v: "Pas de corps, pas de crime."
+            },
+            { 
+                l: "Cui bono ?", t: "À qui profite le crime ?", d: "Recherche du mobile.", c: "Enquête", g: ["JE"],
+                e: "Utile en enquête interne pour identifier l'auteur d'une fuite.",
+                cp: "Cherchez l'intérêt caché (financier, vengeance) derrière l'acte.",
+                v: "Ce n'est qu'un indice."
+            },
+            { 
+                l: "Culpa levis / Culpa lata", t: "Faute légère / Faute lourde", d: "Degrés de gravité de la faute.", c: "Responsabilité", g: ["JE"],
+                e: "Négligence (levis) vs Intention de nuire (lata).",
+                cp: "La faute lourde exige la preuve de l'intention de nuire à l'employeur.",
+                v: "La faute grave n'est pas forcément une faute lourde."
+            },
+            { 
+                l: "Cum ex causa", t: "Avec juste cause", d: "Acte justifié.", c: "Général", g: ["DS"],
+                e: "Le licenciement doit être cum ex causa (réelle et sérieuse).",
+                cp: "Motivez toujours précisément vos décisions de rupture.",
+                v: "L'absence de cause expose à des dommages et intérêts."
+            },
+            { 
+                l: "Curia novit iura", t: "La Cour connaît le droit", d: "Le juge applique le droit d'office.", c: "Procédure", g: ["JE"],
+                e: "Si vous visez le mauvais article, le juge peut corriger (reliquat).",
+                cp: "Facilitez le travail du juge en citant les bons textes.",
+                v: "Le juge ne peut pas inventer les faits."
+            },
+            { 
+                l: "Da mihi factum, dabo tibi jus", t: "Donne le fait, je donne le droit", d: "Répartition des rôles juge/parties.", c: "Procédure", g: ["JE", "DS"],
+                e: "Concentrez-vous sur la preuve des faits (heures, harcèlement).",
+                cp: "Structurez vos dossiers : Faits -> Preuves -> Demandes.",
+                v: "Si les faits sont mal prouvés, le droit ne vous sauvera pas."
+            },
+            { 
+                l: "Damnum emergens", t: "Perte subie", d: "Appauvrissement immédiat.", c: "Responsabilité", g: ["DA", "DS"],
+                e: "Salaires perdus après un licenciement abusif.",
+                cp: "Gardez toutes les factures et justificatifs de perte.",
+                v: "Factures requises."
+            },
+            { 
+                l: "De commodo et incommodo", t: "Avantages et inconvénients", d: "Étude d'impact.", c: "Gestion", g: ["JE"],
+                e: "L'étude d'impact d'un PSE pèse le pour et le contre.",
+                cp: "Faites cette analyse avant tout projet de réorganisation.",
+                v: "Obligatoire dans certaines procédures."
+            },
+            { 
+                l: "De cujus", t: "Le défunt", d: "Celui dont on hérite.", c: "Succession", g: ["JE"],
+                e: "Terme technique pour désigner le salarié décédé lors de la liquidation.",
+                cp: "Identifiez rapidement les ayants droit pour verser le solde de tout compte.",
+                v: "Terme notarial."
+            },
+            { 
+                l: "De facto / De jure", t: "De fait / De droit", d: "Réalité vs Légalité.", c: "Situation juridique", g: ["DA", "DS"],
+                e: "Un salarié dirigeant de fait (de facto) sans être mandataire social (de jure).",
+                cp: "Attention à la gestion de fait qui engage la responsabilité personnelle.",
+                v: "Responsabilité lourde."
+            },
+            { 
+                l: "De in rem verso", t: "Enrichissement sans cause", d: "Action en restitution.", c: "Obligations", g: ["DA", "DS"],
+                e: "Salarié demandant paiement pour un travail hors contrat qui a enrichi l'entreprise.",
+                cp: "Ne laissez jamais quelqu'un travailler sans contrat.",
+                v: "Action subsidiaire."
+            },
+            { 
+                l: "De lege ferenda / De lege lata", t: "Loi future / Loi actuelle", d: "Droit souhaité vs Droit posé.", c: "Doctrine", g: ["JE"],
+                e: "Le juriste critique la loi actuelle (lata) et propose une réforme (ferenda).",
+                cp: "En entreprise, appliquez la loi lata, mais anticipez la ferenda.",
+                v: "Ne basez pas une stratégie sur une loi pas encore votée."
+            },
+            { 
+                l: "De minimis non curat prætor", t: "Le juge ignore les bagatelles", d: "Le droit ignore l'insignifiant.", c: "Procédure", g: ["JE"],
+                e: "Un juge rejettera une demande de 1€ sans enjeu symbolique.",
+                cp: "Ne saisissez pas la justice pour des principes sans préjudice réel.",
+                v: "Risque procédurier."
+            },
+            { 
+                l: "Dies a quo / Dies ad quem", t: "Jour de début / Jour de fin", d: "Bornes d'un délai.", c: "Délais", g: ["JE", "DS"],
+                e: "Délai de contestation : du jour de réception (a quo) au dernier jour (ad quem).",
+                cp: "Attention au mode de calcul (jours ouvrés vs calendaires).",
+                v: "Forclusion possible."
+            },
+            { 
+                l: "Dura lex, sed lex", t: "La loi est dure, mais c'est la loi", d: "Rigueur de l'application.", c: "Application", g: ["JE", "DS"],
+                e: "Même si la règle paraît injuste, elle s'applique.",
+                cp: "Argument pour justifier une décision impopulaire mais légale.",
+                v: "Braque les gens."
+            },
+            { 
+                l: "Electa una via...", t: "Une voie choisie...", d: "Non-cumul des procédures.", c: "Procédure", g: ["DS", "JE"],
+                e: "Si le salarié choisit le pénal, il bloque souvent le civil (Le criminel tient le civil en l'état).",
+                cp: "Bien choisir sa juridiction dès le départ est stratégique.",
+                v: "Irrecevabilité."
+            },
+            { 
+                l: "Erga omnes", t: "À l'égard de tous", d: "Opposabilité absolue.", c: "Général", g: ["DA", "JE"],
+                e: "La publication des statuts rend la société opposable erga omnes.",
+                cp: "Effectuez toujours les publicités légales pour vous protéger.",
+                v: "Défaut = Inopposable."
+            },
+            { 
+                l: "Error communis facit jus", t: "L'erreur commune fait le droit", d: "Théorie de l'apparence.", c: "Civil", g: ["DS", "DA"],
+                e: "Tout le monde croyait que X était le patron : ses actes engagent la boîte.",
+                cp: "Méfiez-vous des mandataires apparents.",
+                v: "Bonne foi requise."
+            },
+            { 
+                l: "Exceptio non adimpleti contractus", t: "Exception d'inexécution", d: "Je ne fais pas si tu ne fais pas.", c: "Contrats", g: ["DS", "DA"],
+                e: "Le droit de retrait : je ne travaille pas car tu ne me protèges pas.",
+                cp: "N'utilisez ce droit que si le manquement adverse est grave.",
+                v: "Risque de licenciement pour abandon de poste."
+            },
+            { 
+                l: "Ex aequo et bono", t: "En équité", d: "Juger selon l'équité.", c: "Arbitrage", g: ["DA"],
+                e: "L'arbitre tranche le litige commercial selon ce qui est juste, pas juste la loi.",
+                cp: "Clause utile dans les contrats internationaux complexes.",
+                v: "Imprévisible."
+            },
+            { 
+                l: "Ex nunc / Ex tunc", t: "Dès maintenant / Depuis l'origine", d: "Effet immédiat vs Rétroactif.", c: "Jugements", g: ["DA", "DS"],
+                e: "Résiliation (Ex nunc, pour le futur) vs Annulation (Ex tunc, rétroactif).",
+                cp: "Préférez la résiliation pour les contrats à exécution successive (travail).",
+                v: "L'annulation d'un contrat de travail impose de rembourser les salaires (théoriquement)."
+            },
+            { 
+                l: "Ex parte", t: "D'une seule partie", d: "Procédure non contradictoire.", c: "Procédure", g: ["JE"],
+                e: "Ordonnance sur requête pour saisir des preuves par surprise.",
+                cp: "Outil puissant pour obtenir des preuves avant destruction.",
+                v: "L'ordonnance peut être rétractée."
+            },
+            { 
+                l: "Functus officio", t: "Ayant rempli sa fonction", d: "Dessaisissement du juge.", c: "Procédure", g: ["JE"],
+                e: "Une fois le jugement rendu, le juge ne peut plus changer d'avis.",
+                cp: "Seule une voie de recours (appel) peut changer la décision.",
+                v: "Sauf erreur matérielle."
+            },
+            { 
+                l: "Habeas corpus", t: "Que tu aies le corps", d: "Liberté individuelle.", c: "Libertés", g: ["JE"],
+                e: "Garantie contre la détention arbitraire (ou séquestration par un employeur).",
+                cp: "Fondement de la protection de la liberté physique.",
+                v: "Symbole."
+            },
+            { 
+                l: "Homo homini lupus est", t: "L'homme est un loup pour l'homme", d: "Pessimisme anthropologique.", c: "Philosophie", g: ["JE"],
+                e: "Justifie la nécessité de règles strictes (Code du travail) pour protéger le faible.",
+                cp: "Le droit du travail est un droit de protection contre l'abus de pouvoir.",
+                v: "Vision un peu sombre des RH modernes !"
+            },
+            { 
+                l: "In abstracto / In concreto", t: "Abstrait / Concret", d: "Théorique vs Pratique.", c: "Interprétation", g: ["JE", "DS"],
+                e: "Faute appréciée in concreto (selon l'âge et l'expérience du salarié).",
+                cp: "Contextualisez toujours la faute pour la minimiser ou l'aggraver.",
+                v: "Pas théorique."
+            },
+            { 
+                l: "In limine litis", t: "Au seuil du procès", d: "Avant tout débat au fond.", c: "Procédure", g: ["DS", "JE"],
+                e: "Soulever l'incompétence du tribunal dès le début de l'audience.",
+                cp: "Ne concluez jamais au fond avant de soulever les exceptions de procédure.",
+                v: "Forclusion."
+            },
+            { 
+                l: "In solidum", t: "Solidairement", d: "Tous tenus pour le tout.", c: "Responsabilité", g: ["DA", "DS"],
+                e: "Société mère et filiale condamnées in solidum à payer le salarié.",
+                cp: "En tant que créancier, poursuivez le débiteur le plus solvable.",
+                v: "Risque mère."
+            },
+            { 
+                l: "Instrumentum / Negotium", t: "L'écrit / L'accord", d: "Le support vs Le contenu.", c: "Contrats", g: ["DA", "DS"],
+                e: "La lettre de licenciement (instrumentum) matérialise la rupture (negotium).",
+                cp: "Soignez l'instrumentum, car il sert de preuve au negotium.",
+                v: "En droit du travail, l'écrit est souvent une condition de validité."
+            },
+            { 
+                l: "Intuitu personæ", t: "En considération de la personne", d: "La personne est essentielle.", c: "Contrats", g: ["DS"],
+                e: "Le contrat de travail est intuitu personæ : on embauche CE salarié précis.",
+                cp: "Le salarié ne peut pas se faire remplacer par un ami.",
+                v: "Décès."
+            },
+            { 
+                l: "Ipso facto", t: "Par le fait même", d: "Conséquence automatique.", c: "Effets", g: ["DA", "DS"],
+                e: "La fin du CDD arrive ipso facto à l'échéance du terme.",
+                cp: "Pas besoin de lettre pour confirmer ce qui est automatique.",
+                v: "Immédiat."
+            },
+            { 
+                l: "Ipso jure", t: "De plein droit", d: "Par l'effet de la loi.", c: "Effets", g: ["JE"],
+                e: "La démission ne se présume pas ipso jure, elle doit être claire.",
+                cp: "Certains mandats cessent de plein droit à un âge donné.",
+                v: "Immédiat."
+            },
+            { 
+                l: "Is fecit cui prodest", t: "Profite à qui ?", d: "Chercher le bénéficiaire.", c: "Enquête", g: ["JE"],
+                e: "Pour trouver le saboteur, cherchez qui récupère son poste.",
+                cp: "Technique d'enquêteur pour orienter les soupçons.",
+                v: "Ce n'est qu'une présomption simple."
+            },
+            { 
+                l: "Iter criminis", t: "Chemin du crime", d: "Étapes de l'infraction.", c: "Pénal", g: ["JE"],
+                e: "Analyse de la préméditation dans une faute lourde.",
+                cp: "Prouver la préparation de l'acte aggrave la sanction.",
+                v: "La simple pensée n'est pas punissable."
+            },
+            { 
+                l: "Jura novit curia", t: "La cour connaît le droit", d: "Le juge connaît la loi.", c: "Procédure", g: ["JE"],
+                e: "Inutile de reciter tout le Code civil, le juge le connaît.",
+                cp: "Concentrez-vous sur l'application du droit aux faits.",
+                v: "Ne soyez pas pédant avec le juge."
+            },
+            { 
+                l: "Jus ad rem / Jus in re", t: "Droit à la chose / sur la chose", d: "Créance vs Propriété.", c: "Biens", g: ["DA", "DS"],
+                e: "Droit aux stocks options (ad rem) vs Propriétaire des actions (in re).",
+                cp: "Sécurisez le passage de la créance à la propriété réelle.",
+                v: "En cas de faillite, le droit réel est plus fort."
+            },
+            { 
+                l: "Jus gentium", t: "Droit des gens", d: "Droit international.", c: "International", g: ["JE"],
+                e: "Les normes OIT (travail forcé) sont du jus gentium universel.",
+                cp: "Invoquez les conventions internationales pour contourner une loi nationale faible.",
+                v: "L'application directe dépend de la ratification."
+            },
+            { 
+                l: "Jus sanguinis / Jus soli", t: "Sang / Sol", d: "Nationalité.", c: "Nationalité", g: ["JE"],
+                e: "Critères pour déterminer la nationalité d'un salarié expatrié.",
+                cp: "Vérifiez les règles de nationalité pour les permis de travail.",
+                v: "Sujet politiquement sensible."
+            },
+            { 
+                l: "Jus scriptum / Jus non scriptum", t: "Écrit / Non écrit", d: "Loi vs Coutume.", c: "Sources", g: ["JE"],
+                e: "Le Code du travail (scriptum) vs Les usages d'entreprise (non scriptum).",
+                cp: "N'ignorez pas les sources non écrites, elles lient l'employeur.",
+                v: "La preuve du non écrit est plus difficile."
+            },
+            { 
+                l: "Lex fori", t: "Loi du tribunal", d: "Loi de procédure locale.", c: "Droit inter.", g: ["DA", "JE"],
+                e: "Un juge français applique la procédure française, même pour un contrat allemand.",
+                cp: "Maîtrisez la procédure du lieu où vous plaidez.",
+                v: "Fond vs Forme."
+            },
+            { 
+                l: "Lex specialis derogat legi generali", t: "Le spécial déroge au général", d: "La règle précise l'emporte.", c: "Normes", g: ["DS", "JE"],
+                e: "L'accord d'entreprise (spécial) prime souvent sur la loi (général).",
+                cp: "Vérifiez toujours s'il existe une règle spécifique avant d'appliquer le droit commun.",
+                v: "Attention au principe de faveur."
+            },
+            { 
+                l: "Locus regit actum", t: "Le lieu régit l'acte", d: "Validité de forme locale.", c: "Droit inter.", g: ["DS", "DA"],
+                e: "Un contrat signé en Chine doit respecter les formes chinoises.",
+                cp: "Vérifiez la conformité formelle locale pour éviter la nullité.",
+                v: "Validité."
+            },
+            { 
+                l: "Lucrum cessans", t: "Gain manqué", d: "Manque à gagner.", c: "Responsabilité", g: ["DS", "DA"],
+                e: "Perte de commissions futures suite à une rupture brutale.",
+                cp: "Chiffrez précisément les gains futurs perdus (historique N-1).",
+                v: "Preuve requise."
+            },
+            { 
+                l: "Mala fides", t: "Mauvaise foi", d: "Intention déloyale.", c: "Comportement", g: ["DS", "JE"],
+                e: "Salarié qui garde les codes d'accès après licenciement : mala fides.",
+                cp: "La mauvaise foi peut transformer une erreur en faute grave.",
+                v: "La bonne foi est présumée."
+            },
+            { 
+                l: "Mutatis mutandis", t: "En adaptant", d: "Transposition avec ajustements.", c: "Technique", g: ["DS", "JE"],
+                e: "Les règles du licenciement s'appliquent à la rupture anticipée, mutatis mutandis.",
+                cp: "Utilisez cette expression pour appliquer un raisonnement par analogie.",
+                v: "Copier-coller risqué."
+            },
+            { 
+                l: "Mutuus dissensus", t: "Consentement mutuel", d: "Accord pour rompre.", c: "Contrats", g: ["DS"],
+                e: "La rupture conventionnelle est la forme moderne du mutuus dissensus.",
+                cp: "Le moyen le plus sûr de rompre un contrat (moins de contentieux).",
+                v: "Consentement libre requis."
+            },
+            { 
+                l: "Ne bis in idem", t: "Pas deux fois pour le même fait", d: "Interdiction de la double sanction.", c: "Disciplinaire", g: ["DS", "JE"],
+                e: "Interdit de licencier un salarié pour une faute déjà sanctionnée par un avertissement.",
+                cp: "Vérifiez l'historique disciplinaire avant de sanctionner.",
+                v: "Avertissement = Sanction."
+            },
+            { 
+                l: "Necessitas cogit legem", t: "Nécessité fait loi", d: "État de nécessité.", c: "Pénal", g: ["JE"],
+                e: "Voler de la nourriture pour ne pas mourir de faim (Les Misérables).",
+                cp: "L'état de nécessité est une cause d'exonération pénale rare.",
+                v: "Nécessité économique ne justifie pas l'illégalité."
+            },
+            { 
+                l: "Nemo auditur...", t: "Nul ne peut se prévaloir de sa turpitude", d: "Pas de profit via sa faute.", c: "Général", g: ["JE", "DS"],
+                e: "Un salarié fraudeur ne peut pas réclamer des indemnités sur ses sommes volées.",
+                cp: "Argument de défense classique contre une partie malhonnête.",
+                v: "Obligations."
+            },
+            { 
+                l: "Nemo censetur ignorare legem", t: "Nul n'est censé ignorer la loi", d: "Fiction juridique.", c: "Général", g: ["JE", "DS"],
+                e: "L'employeur ne peut pas dire 'je ne savais pas' pour éviter l'amende.",
+                cp: "Mettez en place une veille juridique pour ne pas être pris en défaut.",
+                v: "Veille indispensable."
+            },
+            { 
+                l: "Nisi prius", t: "À moins que plus tôt", d: "Clause historique.", c: "Histoire", g: ["JE"],
+                e: "Terme procédural anglo-saxon ancien.",
+                cp: "Culture générale uniquement.",
+                v: "Inutile en pratique française actuelle."
+            },
+            { 
+                l: "Noli me tangere", t: "Ne me touche pas", d: "Inviolabilité du corps.", c: "Fondamental", g: ["JE", "DS"],
+                e: "Protection contre les fouilles corporelles abusives au travail.",
+                cp: "Respectez strictement les procédures de fouille (sécurité).",
+                v: "Droit constitutionnel."
+            },
+            { 
+                l: "Non est factum", t: "Ce n'est pas mon acte", d: "Déni d'écriture.", c: "Preuve", g: ["DA", "JE"],
+                e: "Le salarié nie avoir signé l'avenant (signature imitée).",
+                cp: "Recourez à une expertise graphologique en cas de doute.",
+                v: "Le faux est pénal."
+            },
+            { 
+                l: "Non liquet", t: "Ce n'est pas clair", d: "Refus de juger (interdit).", c: "Procédure", g: ["JE"],
+                e: "Le juge ne peut pas dire 'je ne sais pas', il doit trancher (art 4 Code Civil).",
+                cp: "Le déni de justice est interdit.",
+                v: "Le juge doit interpréter."
+            },
+            { 
+                l: "Novation", t: "Nouveau contrat", d: "Remplacement d'une obligation.", c: "Obligations", g: ["DA", "DS"],
+                e: "Transformer une dette de salaire en prêt entreprise = Novation.",
+                cp: "La novation ne se présume pas, il faut un écrit clair.",
+                v: "Éteint les garanties."
+            },
+            { 
+                l: "Nullum crimen, nulla poena sine lege", t: "Pas de crime sans loi", d: "Légalité des délits.", c: "Pénal", g: ["JE", "DS"],
+                e: "Impossible de sanctionner un fait qui n'est pas interdit par le règlement intérieur.",
+                cp: "Vérifiez que le RI liste bien les fautes et sanctions.",
+                v: "Pas de rétroactivité."
+            },
+            { 
+                l: "Obiter dictum", t: "Dit en passant", d: "Remarque accessoire du juge.", c: "Jurisprudence", g: ["JE"],
+                e: "Le juge donne son avis sur un point non jugé : c'est un obiter dictum.",
+                cp: "Utile pour anticiper les futurs revirements de jurisprudence.",
+                v: "Pas autorité."
+            },
+            { 
+                l: "Opere citato (op. cit.)", t: "Dans l'ouvrage cité", d: "Référence biblio.", c: "Recherche", g: ["JE"],
+                e: "Mazeaud, op. cit., p. 45.",
+                cp: "Évite de répéter le titre complet du livre.",
+                v: "Seulement si cité avant."
+            },
+            { 
+                l: "Pacta sunt servanda", t: "Les contrats doivent être servis", d: "Force obligatoire.", c: "Contrats", g: ["DA", "DS"],
+                e: "On ne revient pas sur sa signature unilatéralement.",
+                cp: "Le contrat est la loi des parties (art 1103 Code Civil).",
+                v: "Sauf imprévision."
+            },
+            { 
+                l: "Pater is est", t: "Le père est le mari", d: "Présomption de paternité.", c: "Famille", g: ["JE"],
+                e: "L'enfant né pendant le mariage est réputé être celui du mari.",
+                cp: "Adage de droit civil pur.",
+                v: "Peut être combattu par ADN."
+            },
+            { 
+                l: "Penitus extranei", t: "Totalement étrangers", d: "Tiers absolus.", c: "Contrats", g: ["DA", "JE"],
+                e: "Le salarié est penitus extranei au contrat fournisseur de l'entreprise.",
+                cp: "Le contrat ne crée pas d'obligations pour les tiers.",
+                v: "Inopposable."
+            },
+            { 
+                l: "Per capita / Per stirpes", t: "Par tête / Par souche", d: "Répartition.", c: "Succession", g: ["JE"],
+                e: "Partage égal entre individus (capita) ou par branche familiale (stirpes).",
+                cp: "Terminologie successorale.",
+                v: "Représentation."
+            },
+            { 
+                l: "Persona non grata", t: "Personne indésirable", d: "Refus d'accès.", c: "International", g: ["JE", "DS"],
+                e: "Un salarié violent devient persona non grata sur le site client.",
+                cp: "Si le client refuse le salarié, cela peut justifier un licenciement (cause réelle).",
+                v: "Attention discrimination."
+            },
+            { 
+                l: "Post mortem", t: "Après la mort", d: "Effet décès.", c: "Succession", g: ["JE"],
+                e: "Versement du capital décès post mortem.",
+                cp: "Prévoyez la gestion des droits post mortem (image, données).",
+                v: "Fin du mandat."
+            },
+            { 
+                l: "Prima facie", t: "À première vue", d: "Apparence de preuve.", c: "Preuve", g: ["DS", "JE"],
+                e: "Un arrêt maladie est une preuve prima facie de l'absence légitime.",
+                cp: "C'est une présomption simple qui peut être renversée.",
+                v: "Renversement possible."
+            },
+            { 
+                l: "Pro bono", t: "Pour le bien public", d: "Travail gratuit.", c: "Déontologie", g: ["JE"],
+                e: "Avocat défendant un salarié indigent pro bono.",
+                cp: "Valorise l'image RSE du cabinet ou de l'entreprise.",
+                v: "Prêt MO illicite."
+            },
+            { 
+                l: "Pro forma", t: "Pour la forme", d: "Formalité de façade.", c: "Admin", g: ["JE"],
+                e: "Facture pro forma pour la douane (pas de paiement attendu).",
+                cp: "Utile pour les démarches administratives préalables.",
+                v: "Ne vaut pas facture."
+            },
+            { 
+                l: "Pro rata temporis", t: "Au prorata du temps", d: "Calcul proportionnel.", c: "Calculs", g: ["DA", "DS"],
+                e: "Prime calculée pro rata temporis de la présence dans l'année.",
+                cp: "Précisez toujours la règle de calcul dans le contrat.",
+                v: "Attention aux calculs."
+            },
+            { 
+                l: "Quanti minoris", t: "Diminution du prix", d: "Réfaction.", c: "Vente", g: ["DA"],
+                e: "Garder la machine défectueuse mais demander une baisse de prix.",
+                cp: "Alternative à l'annulation de la vente (action rédhibitoire).",
+                v: "Vice caché."
+            },
+            { 
+                l: "Quantum", t: "Montant", d: "Combien ?", c: "Contentieux", g: ["JE", "DS"],
+                e: "Le principe de la dette est acquis, on discute maintenant du quantum.",
+                cp: "Distinguez bien le débat sur la responsabilité et celui sur le chiffre.",
+                v: "Demande indéterminée."
+            },
+            { 
+                l: "Quid pro quo", t: "Quoi pour quoi", d: "Contrepartie.", c: "Contrats", g: ["DA", "DS"],
+                e: "Pas de salaire sans travail : c'est le quid pro quo.",
+                cp: "Vérifiez l'équilibre des contreparties (cause du contrat).",
+                v: "Erreur possible."
+            },
+            { 
+                l: "Quod non est in actis...", t: "Ce qui n'est pas dans le dossier...", d: "Le juge ne voit que le dossier.", c: "Procédure", g: ["JE"],
+                e: "Si vous ne versez pas la pièce au débat, elle n'existe pas pour le juge.",
+                cp: "Tout doit être communiqué à la partie adverse (contradictoire).",
+                v: "Pas de connaissances personnelles."
+            },
+            { 
+                l: "Quorum", t: "Nombre requis", d: "Seuil de participants.", c: "Sociétés", g: ["DA", "DS"],
+                e: "Si le quorum du CSE n'est pas atteint, report de la réunion.",
+                cp: "Vérifiez les statuts ou le RI pour connaître le quorum.",
+                v: "Nullité si non respecté."
+            },
+            { 
+                l: "Ratio decidendi", t: "Raison de décider", d: "Motif déterminant.", c: "Jurisprudence", g: ["JE"],
+                e: "Le cœur du raisonnement juridique de l'arrêt.",
+                cp: "C'est ce qui fera jurisprudence (le précédent).",
+                v: "Dictum."
+            },
+            { 
+                l: "Reformatio in pejus", t: "Réforme en pire", d: "Aggravation en appel.", c: "Appel", g: ["JE"],
+                e: "Interdiction pour la Cour d'aggraver le sort de l'appelant seul.",
+                cp: "Si vous êtes le seul à faire appel, vous ne risquez pas pire (théoriquement).",
+                v: "Appel incident."
+            },
+            { 
+                l: "Res judicata", t: "Chose jugée", d: "Fin du débat.", c: "Procédure", g: ["JE"],
+                e: "On ne rejuge pas une affaire définitivement tranchée.",
+                cp: "Opposez l'autorité de la chose jugée pour bloquer une nouvelle demande.",
+                v: "Identité de cause/objet."
+            },
+            { 
+                l: "Res nullius", t: "Chose à personne", d: "Bien sans maître.", c: "Biens", g: ["DA"],
+                e: "Le gibier sauvage est res nullius jusqu'à sa capture.",
+                cp: "Le premier occupant devient propriétaire.",
+                v: "Données."
+            },
+            { 
+                l: "Res inter alios acta", t: "Chose faite entre autres", d: "Effet relatif.", c: "Contrats", g: ["DA", "DS"],
+                e: "Le contrat client n'engage pas le salarié (tiers).",
+                cp: "Un tiers ne peut pas être tenu par un contrat qu'il n'a pas signé.",
+                v: "Opposable."
+            },
+            { 
+                l: "Res ipsa loquitur", t: "La chose parle d'elle-même", d: "Preuve évidente.", c: "Preuve", g: ["DS", "JE"],
+                e: "Un échafaudage qui s'effondre prouve la négligence sans autre débat.",
+                cp: "Utilisez-le pour renverser la charge de la preuve en cas d'accident.",
+                v: "Présomption de fait."
+            },
+            { 
+                l: "Restitutio in integrum", t: "Remise en état", d: "Retour au départ.", c: "Contrats", g: ["DA", "DS"],
+                e: "Annulation du contrat : on rend les sous, on rend la marchandise.",
+                cp: "Complexe en droit du travail car on ne peut pas rendre le travail fourni.",
+                v: "Nullité avenir."
+            },
+            { 
+                l: "Stare decisis", t: "S'en tenir au décidé", d: "Précédent obligatoire.", c: "Common Law", g: ["JE"],
+                e: "Le juge anglais est lié par les décisions passées.",
+                cp: "En France, la jurisprudence est une source de droit, mais pas de loi.",
+                v: "France."
+            },
+            { 
+                l: "Statu quo", t: "État actuel", d: "On ne bouge pas.", c: "Négo", g: ["JE", "DS"],
+                e: "Maintenir le statu quo ante (situation d'avant) pendant les discussions.",
+                cp: "Gèle la situation pour apaiser les tensions.",
+                v: "Risque."
+            },
+            { 
+                l: "Sub judice", t: "Sous le juge", d: "Affaire en cours.", c: "Procédure", g: ["JE"],
+                e: "On ne commente pas une affaire sub judice pour ne pas influencer.",
+                cp: "Respectez le secret de l'instruction ou la sérénité des débats.",
+                v: "Pression."
+            },
+            { 
+                l: "Sui generis", t: "De son propre genre", d: "Unique, inclassable.", c: "Classification", g: ["DA", "JE"],
+                e: "Le contrat de 'portage salarial' était sui generis avant la loi.",
+                cp: "Utilisez ce terme quand aucune case légale ne correspond.",
+                v: "Règles floues."
+            },
+            { 
+                l: "Terra nullius", t: "Terre à personne", d: "Zone sans souveraineté.", c: "International", g: ["JE"],
+                e: "L'Antarctique (en partie).",
+                cp: "Concept de droit international public.",
+                v: "Inexistant."
+            },
+            { 
+                l: "Testis unus, testis nullus", t: "Un seul témoin, pas de témoin", d: "Preuve insuffisante.", c: "Preuve", g: ["JE", "DS"],
+                e: "Un licenciement basé sur un unique témoignage est fragile.",
+                cp: "Corroborez toujours un témoignage par des éléments matériels.",
+                v: "Appréciation libre."
+            },
+            { 
+                l: "Ubi societas ibi jus", t: "Où il y a société, il y a droit", d: "Le droit est partout.", c: "Théorie", g: ["JE"],
+                e: "Même une association de quartier a des statuts (du droit).",
+                cp: "Ne négligez jamais le cadre légal, même pour des petites structures.",
+                v: "Conflit."
+            },
+            { 
+                l: "Ultra petita", t: "Au-delà de la demande", d: "Juger trop.", c: "Procédure", g: ["JE"],
+                e: "Le juge donne 1000€ alors que le salarié n'en demandait que 500.",
+                cp: "Vérifiez que le juge n'a pas statué ultra petita (motif de cassation).",
+                v: "Interdit."
+            },
+            { 
+                l: "Usus / Fructus / Abusus", t: "Usage / Fruit / Abus", d: "Attributs de propriété.", c: "Biens", g: ["DA", "JE"],
+                e: "Usus (habiter), Fructus (louer), Abusus (vendre).",
+                cp: "Maîtrisez le démembrement de propriété (usufruit/nue-propriété).",
+                v: "Abusus."
+            },
+            { 
+                l: "Utile per inutile non vitiatur", t: "L'utile n'est pas vicié par l'inutile", d: "Validation partielle.", c: "Contrats", g: ["DA", "DS"],
+                e: "Une clause nulle n'annule pas tout le contrat (si elle n'est pas impulsive).",
+                cp: "Insérez une clause de divisibilité (séparabilité) dans vos contrats.",
+                v: "Impulsivité."
+            },
+            { 
+                l: "Utilitas publica...", t: "L'utilité publique prime", d: "Intérêt général.", c: "Public", g: ["JE"],
+                e: "L'expropriation pour construire une route prime sur la propriété privée.",
+                cp: "L'ordre public est une limite à la liberté contractuelle.",
+                v: "Intérêt public."
+            },
+            { 
+                l: "Vacatio legis", t: "Vacance de la loi", d: "Délai d'application.", c: "Loi", g: ["JE", "DS"],
+                e: "Délai entre la publication au JO et l'entrée en vigueur effective.",
+                cp: "Vérifiez les dates d'entrée en vigueur des ordonnances.",
+                v: "Immédiat."
+            },
+            { 
+                l: "Veni, vidi, vici", t: "Venu, vu, vaincu", d: "Succès éclair.", c: "Culture", g: ["JE"],
+                e: "Expression pour un dossier gagné rapidement et totalement.",
+                cp: "Bon pour le moral, mais rare en justice (c'est souvent long).",
+                v: "Humilité."
+            },
+
+            // --- RESTITUTION DES TERMES DE LA BASE ORIGINALE (NON PRÉSENTS DANS LA NOUVELLE LISTE) ---
+            { l: "A non domino", t: "Par celui qui n'est pas le maître", d: "Acquisition d'un bien auprès d'une personne qui n'en est pas propriétaire.", c: "Droit des Affaires", cp: "L'acquéreur de bonne foi peut être protégé.", v: "Risque de revendication du vrai propriétaire.", g: ["DA"], e: "Achat d'un bien volé sans le savoir : vente a non domino." },
+            { l: "Ad hominem", t: "Vers l'homme", d: "Attaque personnelle.", c: "Débat", cp: "Restez factuel dans vos écrits.", v: "Risque de diffamation.", g: ["JE"], e: "Attaquer l'avocat adverse personnellement est un argument ad hominem." },
+            { l: "Ad infinitum", t: "À l'infini", d: "Sans limite.", c: "Renouvellement", cp: "Évitez les engagements perpétuels.", v: "Prohibé en droit français.", g: ["JE"], e: "Un bail renouvelable ad infinitum est illégal." },
+            { l: "Ad turpia", t: "Pour cause immorale", d: "Nemo auditur... Contrat immoral.", c: "Contrat illicite", cp: "Pas de restitution si cause immorale.", v: "Le juge refuse d'entendre.", g: ["DA"], e: "Contrat portant sur des produits illicites." },
+            { l: "Ad valorem", t: "Selon la valeur", d: "Taxe proportionnelle.", c: "Douanes", cp: "Calculez les marges en fonction.", v: "Risque de redressement.", g: ["DA"], e: "Droits de douane calculés ad valorem." },
+            { l: "Alias", t: "Pseudonyme", d: "Autre nom.", c: "Identité", cp: "Vérifiez l'identité réelle.", v: "Usurpation.", g: ["JE"], e: "Utilisation d'un alias sur les réseaux sociaux." },
+            { l: "Alibi", t: "Ailleurs", d: "Preuve de présence ailleurs.", c: "Enquête", cp: "Vérifiez les badgeages.", v: "Faux alibi = Faute grave.", g: ["JE", "DS"], e: "Le badgeage prouve que le salarié était ailleurs." },
+            { l: "Animus", t: "Intention", d: "Élément intentionnel.", c: "Droit général", cp: "Prouver l'intention est clé.", v: "Distinguer de l'erreur.", g: ["JE"], e: "Animus domini : intention de se comporter comme propriétaire." },
+            { l: "Audita altera parte", t: "L'autre partie entendue", d: "Similaire à Audi alteram.", c: "Arbitrage", cp: "Respect des droits défense.", v: "Principe fondamental.", g: ["JE"], e: "Voir Audi alteram partem." },
+            { l: "Bonus pater familias", t: "Bon père de famille", d: "Prudence standard.", c: "Responsabilité", cp: "Agir raisonnablement.", v: "Standard d'appréciation.", g: ["DA", "JE"], e: "Le gérant doit gérer la société en bonus pater familias." },
+            { l: "Compétence liée", t: "Pas de choix", d: "L'autorité doit agir ainsi.", c: "Administratif", cp: "Pas de marge de manœuvre.", v: "Décision automatique.", g: ["JE"], e: "Si les conditions sont réunies, le maire a compétence liée pour délivrer le permis." },
+            { l: "Compos mentis", t: "Sain d'esprit", d: "Capacité mentale.", c: "Démission", cp: "Délai de rétractation.", v: "Requalification si émotion.", g: ["JE", "DS"], e: "La démission doit être donnée compos mentis." },
+            { l: "Conditio sine qua non", t: "Condition indispensable", d: "Condition absolue.", c: "Suspensive", cp: "Point bloquant.", v: "Contrat caduc si échec.", g: ["DA"], e: "L'obtention du prêt est une conditio sine qua non." },
+            { l: "Consensus ad idem", t: "Accord total", d: "Rencontre volontés.", c: "Contrat", cp: "Accord prix/chose.", v: "Malentendu = Vice.", g: ["DA"], e: "Pas de contrat sans consensus ad idem." },
+            { l: "Damnum infectum", t: "Dommage menaçant", d: "Risque futur.", c: "Prévention", cp: "Agir avant le dommage.", v: "Mesures conservatoires.", g: ["DA"], e: "Référé pour prévenir un damnum infectum." },
+            { l: "De minimis", t: "Insignifiant", d: "Bagatelles.", c: "Sanction", cp: "Ne pas judiciariser.", v: "Risque procédurier.", g: ["JE"], e: "Voir De minimis non curat praetor." },
+            { l: "De plano", t: "Manifestement", d: "Sans difficulté.", c: "Rejet", cp: "Irrecevable.", v: "Argument écrit.", g: ["JE"], e: "Rejet de plano de la demande." },
+            { l: "Do ut des", t: "Donnant-donnant", d: "Échange.", c: "Négociation", cp: "Contrepartie.", v: "Équilibre.", g: ["DA"], e: "Négociation commerciale : Do ut des." },
+            { l: "Dolus", t: "Dol", d: "Tromperie.", c: "Contrat", cp: "Mensonge déterminant.", v: "Nullité contrat.", g: ["DA", "DS"], e: "Voir Bonus dolus." },
+            { l: "Erratum", t: "Erreur", d: "Correction.", c: "Paie", cp: "Régulariser.", v: "Répétition = Faute.", g: ["JE"], e: "Bulletin de paie rectificatif suite à un erratum." },
+            { l: "Error communis", t: "Erreur commune", d: "L'apparence crée le droit.", c: "Mandat apparent", cp: "Protéger le tiers.", v: "Bonne foi requise.", g: ["DA"], e: "Voir Error communis facit jus." },
+            { l: "Ex ante", t: "Au préalable", d: "Analyse avant.", c: "Concentration", cp: "Valider montage.", v: "Opposé Ex post.", g: ["DA"], e: "Contrôle ex ante des concentrations." },
+            { l: "Ex officio", t: "D'office", d: "Automatique.", c: "Juge", cp: "Moyen ordre public.", v: "Requalification.", g: ["DS", "JE"], e: "Le juge soulève ex officio la nullité." },
+            { l: "Ex post", t: "Après coup", d: "Rétrospectif.", c: "Audit", cp: "Leçons.", v: "Trop tard.", g: ["JE"], e: "Évaluation ex post des politiques publiques." },
+            { l: "Ex post facto", t: "Rétroactif", d: "Loi rétroactive.", c: "Pénal", cp: "Interdit pénal.", v: "Dates lois.", g: ["JE"], e: "Loi pénale ex post facto interdite." },
+            { l: "Fraus omnia corrumpit", t: "La fraude corrompt tout", d: "La fraude annule tout.", c: "Arrêt maladie", cp: "Preuve fraude.", v: "Annulation totale.", g: ["JE", "DS"], e: "Un arrêt maladie de complaisance est nul (Fraus omnia corrumpit)." },
+            { l: "Fructus", t: "Fruits", d: "Revenus.", c: "Usufruit", cp: "Impôts.", v: "Pas vendre.", g: ["DA"], e: "Percevoir les dividendes (fructus)." },
+            { l: "Ibidem", t: "Même endroit", d: "Référence.", c: "Note", cp: "Gain place.", v: "Pas Idem.", g: ["JE"], e: "Voir note précédente." },
+            { l: "Id est", t: "C'est-à-dire", d: "Explication.", c: "Note", cp: "Clarté.", v: "i.e.", g: ["JE"], e: "Clarification d'un propos." },
+            { l: "In absentia", t: "En l'absence", d: "Jugement défaut.", c: "Pénal", cp: "Opposition.", v: "Fuite.", g: ["JE"], e: "Jugé in absentia." },
+            { l: "In bonis", t: "Solvable", d: "Pas en faillite.", c: "Fournisseur", cp: "Vérifier solvabilité.", v: "Cessation paiements.", g: ["DA"], e: "La société est encore in bonis." },
+            { l: "In dubio pro reo", t: "Doute profite accusé", d: "Pas preuve = Pas sanction.", c: "Licenciement", cp: "Preuve solide.", v: "Doute = Salarié.", g: ["DS"], e: "En cas de doute sur la faute, relaxe." },
+            { l: "In extenso", t: "Intégralement", d: "Tout le texte.", c: "Citation", cp: "Précision.", v: "Tronqué.", g: ["JE"], e: "Citer le contrat in extenso." },
+            { l: "In favorem", t: "En faveur", d: "Plus favorable.", c: "Conflit normes", cp: "Faveur salarié.", v: "Principe clé.", g: ["DS"], e: "Interprétation in favorem du salarié." },
+            { l: "In fine", t: "À la fin", d: "Dernière ligne.", c: "Contrat", cp: "Lire tout.", v: "Pièges finaux.", g: ["DA"], e: "Clause ajoutée in fine." },
+            { l: "In personam", t: "Personnel", d: "Droit créance.", c: "Dette", cp: "Contre personne.", v: "Pas sur chose.", g: ["DA"], e: "Action in personam contre le débiteur." },
+            { l: "In situ", t: "Sur place", d: "Terrain.", c: "Constat", cp: "Preuve forte.", v: "Enquête.", g: ["DS"], e: "Constat in situ des conditions de travail." },
+            { l: "Intra muros", t: "Dans les murs", d: "En interne.", c: "Confidentialité", cp: "Pas diffusion.", v: "Secret.", g: ["JE"], e: "Réunion intra muros." },
+            { l: "Intra vires", t: "Dans pouvoirs", d: "Légal.", c: "Mandat", cp: "Vérifier.", v: "Ultra vires.", g: ["DA"], e: "Acte accompli intra vires." },
+            { l: "Jus ad bellum", t: "Droit à la guerre", d: "Droit conflit.", c: "Culture", cp: "Légitime défense.", v: "ONU.", g: ["JE"], e: "Conditions pour déclarer la guerre." },
+            { l: "Jus cogens", t: "Impératif", d: "Ordre public.", c: "Esclavage", cp: "Indérogeable.", v: "Nullité.", g: ["JE"], e: "Interdiction de l'esclavage : jus cogens." },
+            { l: "Lex mercatoria", t: "Loi marchands", d: "Usages.", c: "Commerce int.", cp: "Souplesse.", v: "Arbitrage.", g: ["DA"], e: "Application de la lex mercatoria en arbitrage." },
+            { l: "Lis pendens", t: "Litige pendant", d: "Affaire en cours.", c: "Double saisie", cp: "Dessaisissement.", v: "Connexité.", g: ["JE"], e: "Exception de lis pendens." },
+            { l: "Locus standi", t: "Qualité à agir", d: "Droit d'action.", c: "Recevabilité", cp: "Intérêt.", v: "Rejet.", g: ["JE"], e: "Vérifier le locus standi du requérant." },
+            { l: "Malum in se", t: "Mal en soi", d: "Naturellement mauvais.", c: "Crime", cp: "Moral.", v: "Universel.", g: ["JE"], e: "Le meurtre est malum in se." },
+            { l: "Mens rea", t: "Intention", d: "Esprit criminel.", c: "Pénal", cp: "Volonté.", v: "Négligence.", g: ["JE"], e: "Voir Actus reus." },
+            { l: "Modus operandi", t: "Mode opératoire", d: "Méthode.", c: "Fraude", cp: "Schéma.", v: "Prévention.", g: ["JE"], e: "Analyser le modus operandi du fraudeur." },
+            { l: "Modus vivendi", t: "Compromis", d: "Accord provisoire.", c: "Grève", cp: "Reprise.", v: "Temporaire.", g: ["DS"], e: "Trouver un modus vivendi pour la fin de grève." },
+            { l: "Nemo dat", t: "Nul ne donne", d: "Pas de titre.", c: "Vente", cp: "Propriété.", v: "Vol.", g: ["DA"], e: "Nemo dat quod non habet (on ne donne pas ce qu'on n'a pas)." },
+            { l: "Nemo judex", t: "Nul juge et partie", d: "Impartialité.", c: "Enquête", cp: "Externaliser.", v: "Conflit.", g: ["DS"], e: "Nemo judex in causa sua." },
+            { l: "Non aedificandi", t: "Non bâtir", d: "Servitude.", c: "Immo", cp: "Vérifier.", v: "Construction.", g: ["DA"], e: "Zone non aedificandi." },
+            { l: "Nudum pactum", t: "Pacte nu", d: "Sans cause.", c: "Anglo", cp: "Contrepartie.", v: "Nullité.", g: ["DA"], e: "Promesse sans contrepartie." },
+            { l: "Nulla poena", t: "Pas peine sans loi", d: "Légalité.", c: "RI", cp: "Prévisible.", v: "Arbitraire.", g: ["JE"], e: "Voir Nullum crimen." },
+            { l: "Onus probandi", t: "Charge preuve", d: "Demandeur prouve.", c: "Preuve", cp: "Dossier.", v: "Partage.", g: ["DS"], e: "Voir Actori incumbit probatio." },
+            { l: "Opinio juris", t: "Conviction", d: "Coutume.", c: "Usage", cp: "Obligatoire.", v: "Répétition.", g: ["JE"], e: "Élément psychologique de la coutume." },
+            { l: "Pari passu", t: "Égalité", d: "Même rang.", c: "Créanciers", cp: "Pas préférence.", v: "Faillite.", g: ["DA"], e: "Remboursement pari passu." },
+            { l: "Pars pro toto", t: "Partie pour tout", d: "Synecdoque.", c: "Nom", cp: "Confusion.", v: "Précision.", g: ["JE"], e: "Désigner le tout par la partie." },
+            { l: "Pater familias", t: "Bon père", d: "Prudent.", c: "Resp.", cp: "Diligence.", v: "Standard.", g: ["DA"], e: "Voir Bonus pater familias." },
+            { l: "Praeter legem", t: "Côté loi", d: "Complète.", c: "Usage", cp: "Source.", v: "Contradiction.", g: ["JE"], e: "Usage praeter legem." },
+            { l: "Pretium doloris", t: "Prix douleur", d: "Souffrance.", c: "AT", cp: "Faute inexc.", v: "Coût.", g: ["DS"], e: "Indemnisation du pretium doloris." },
+            { l: "Primum non nocere", t: "Pas nuire", d: "Prévention.", c: "Santé", cp: "Sécurité.", v: "RPS.", g: ["DS"], e: "Principe de prévention : primum non nocere." },
+            { l: "Pro domo", t: "Pour soi", d: "Subjectif.", c: "Plaidoirie", cp: "Recul.", v: "Crédibilité.", g: ["JE"], e: "Plaider pro domo." },
+            { l: "Pro tempore", t: "Temporaire", d: "Pour le temps.", c: "Mandat", cp: "Durée.", v: "Fin.", g: ["JE"], e: "Président pro tempore." },
+            { l: "Quantum meruit", t: "Mérité", d: "Valeur.", c: "Sans devis", cp: "Juste prix.", v: "Litige.", g: ["DA"], e: "Paiement au quantum meruit." },
+            { l: "Ratio legis", t: "Esprit loi", d: "But.", c: "Sens", cp: "Intention.", v: "Flou.", g: ["JE"], e: "Interpréter selon la ratio legis." },
+            { l: "Ratione loci", t: "Lieu", d: "Territoire.", c: "Compétence", cp: "Clause.", v: "Siège.", g: ["DA"], e: "Compétence ratione loci." },
+            { l: "Ratione materiae", t: "Matière", d: "Nature.", c: "Compétence", cp: "Ordre public.", v: "Absolue.", g: ["JE"], e: "Compétence ratione materiae." },
+            { l: "Rebus sic stantibus", t: "État", d: "Imprévision.", c: "Contrat", cp: "Renégo.", v: "1195.", g: ["DA"], e: "Clause rebus sic stantibus." },
+            { l: "Res communis", t: "Chose commune", d: "À tous.", c: "Air/Eau", cp: "Pas prop.", v: "Usage.", g: ["DA"], e: "L'air est une res communis." },
+            { l: "Res derelictae", t: "Abandonné", d: "Déchet.", c: "Propriété", cp: "Occupation.", v: "Environnement.", g: ["DA"], e: "Chose abandonnée (res derelictae)." },
+            { l: "Res perit domino", t: "Risque maître", d: "Perte.", c: "Transport", cp: "Incoterm.", v: "Transfert.", g: ["DA"], e: "Les risques pèsent sur le propriétaire." },
+            { l: "Res publica", t: "Public", d: "État.", c: "Intérêt", cp: "Service.", v: "Privé.", g: ["JE"], e: "La chose publique." },
+            { l: "Sine die", t: "Sans date", d: "Report.", c: "Réunion", cp: "Oubli.", v: "Indéfini.", g: ["JE"], e: "Ajourné sine die." },
+            { l: "Sine qua non", t: "Indispensable", d: "Condition.", c: "Clause", cp: "Absolu.", v: "Caduc.", g: ["JE"], e: "Voir Conditio sine qua non." },
+            { l: "Solvens", t: "Payeur", d: "Débiteur.", c: "Paiement", cp: "Accipiens.", v: "Erreur.", g: ["DA"], e: "Le solvens paie l'accipiens." },
+            { l: "Stricto sensu", t: "Strict", d: "Littéral.", c: "Clause", cp: "Restrictif.", v: "Large.", g: ["JE"], e: "Interprétation stricto sensu." },
+            { l: "Sub rosa", t: "Secret", d: "Confidentiel.", c: "NDA", cp: "Discrétion.", v: "Fuite.", g: ["DA"], e: "Négociations sub rosa." },
+            { l: "Sui juris", t: "Capable", d: "Pleine capacité.", c: "Contrat", cp: "Majeur.", v: "Tutelle.", g: ["JE"], e: "Personne sui juris." },
+            { l: "Terminus a quo", t: "Point départ", d: "Début délai.", c: "Préavis", cp: "Date.", v: "Calcul.", g: ["JE"], e: "Terminus a quo du délai." },
+            { l: "Ultra vires", t: "Hors pouvoir", d: "Illégal.", c: "Dirigeant", cp: "Objet.", v: "Engage.", g: ["DA"], e: "Acte ultra vires." },
+            { l: "Usus", t: "Usage", d: "User.", c: "Propriété", cp: "Habiter.", v: "Abusus.", g: ["DA"], e: "Droit d'usus." },
+            { l: "Ut singuli", t: "Individuel", d: "Action.", c: "Associé", cp: "Faute.", v: "Société.", g: ["DA"], e: "Action sociale ut singuli." },
+            { l: "Verba volant", t: "Écrits restent", d: "Preuve.", c: "RH", cp: "Écrit.", v: "Oral.", g: ["DS"], e: "Verba volant, scripta manent." },
+            { l: "Veto", t: "Opposition", d: "Blocage.", c: "Pacte", cp: "Stratégie.", v: "Paralysie.", g: ["DA"], e: "Droit de veto." },
+            { l: "Vice versa", t: "Inverse", d: "Réciproque.", c: "Clause", cp: "Symétrie.", v: "Sens.", g: ["JE"], e: "Et vice versa." },
+            { l: "Vigiles", t: "Veilleurs", d: "Police.", c: "Sécurité", cp: "Contrôle.", v: "Abus.", g: ["JE"], e: "Vigiles : ancêtres de la police." },
+            { l: "Vox populi", t: "Opinion", d: "Rumeur.", c: "Climat", cp: "Indice.", v: "Preuve.", g: ["JE"], e: "Vox populi vox dei." }
         ];
 
         // --- MOTEUR JS ---
@@ -530,6 +1258,29 @@
                     badgesHtml += `<div class="badge-circle ${bgClass}" title="${tag}">${tag}</div>`;
                 });
 
+                // BLOCS SANS ETIQUETTE "PAÏA Pulse"
+                const contentBlocks = `
+                    <div class="expert-block b-context">
+                        <span class="block-title">🟦 Contexte Possible</span>
+                        ${item.c || "Général"}
+                    </div>
+                    
+                    <div class="expert-block b-advice">
+                        <span class="block-title">🟨 Conseil Pro</span>
+                        ${item.cp || "À définir selon le cas."}
+                    </div>
+                    
+                    <div class="expert-block b-danger">
+                        <span class="block-title">🟥 Zone de Vigilance</span>
+                        ${item.v || "Application stricte."}
+                    </div>
+                    
+                    <div class="expert-block b-example">
+                        <span class="block-title">🟩 Exemple / Contexte</span>
+                        ${item.e || "Voir définition pour application."}
+                    </div>
+                `;
+
                 const card = `
                     <div class="expert-card">
                         <div class="card-top">
@@ -555,22 +1306,11 @@
                         </button>
 
                         <div class="expert-content">
-                            <div class="expert-block b-context">
-                                <span class="block-title">🟦 Quand l'utiliser ?</span>
-                                ${item.c}
-                            </div>
-                            <div class="expert-block b-advice">
-                                <span class="block-title">🟨 Conseil Pro</span>
-                                ${item.a}
-                            </div>
-                            <div class="expert-block b-danger">
-                                <span class="block-title">🟥 Zone de Vigilance</span>
-                                ${item.v}
-                            </div>
+                            ${contentBlocks}
                         </div>
 
                         <div class="card-bottom-actions">
-                            <button class="btn-read-all" onclick="speakFullCard('${item.l.replace(/'/g, "\\'")}', '${item.t.replace(/'/g, "\\'")}', '${item.d.replace(/'/g, "\\'")}', '${item.a.replace(/'/g, "\\'")}', '${item.v.replace(/'/g, "\\'")}')" title="Lecture complète pour accessibilité">
+                            <button class="btn-read-all" onclick="speakFullCard('${item.l.replace(/'/g, "\\'")}', '${item.t.replace(/'/g, "\\'")}', '${item.d.replace(/'/g, "\\'")}', '${(item.e || "Voir contexte").replace(/'/g, "\\'")}')" title="Lecture complète pour accessibilité">
                                 <i class="fas fa-bullhorn"></i> Lire la fiche
                             </button>
                         </div>
@@ -603,7 +1343,6 @@
             renderDictionary(activeTag, e.target.value);
         });
 
-        // Audio 1 : Prononciation (Italien pour le latin)
         function speakText(text) {
             if ('speechSynthesis' in window) {
                 window.speechSynthesis.cancel();
@@ -614,11 +1353,10 @@
             }
         }
 
-        // Audio 2 : Lecture Complète (Français)
-        function speakFullCard(latin, trans, def, advice, danger) {
+        function speakFullCard(latin, trans, def, example) {
             if ('speechSynthesis' in window) {
                 window.speechSynthesis.cancel();
-                const fullText = `Terme : ${latin}. Traduction : ${trans}. Définition : ${def}. Conseil Pro : ${advice}. Point de vigilance : ${danger}`;
+                const fullText = `Terme : ${latin}. Traduction : ${trans}. Définition : ${def}. Exemple : ${example}`;
                 const utterance = new SpeechSynthesisUtterance(fullText);
                 utterance.lang = 'fr-FR';
                 utterance.rate = 1;
