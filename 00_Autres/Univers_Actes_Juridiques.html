@@ -1,0 +1,609 @@
+<!doctype html>
+<html lang="fr" class="scroll-smooth">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>💫 L'Univers des Actes Juridiques ✨ The Jurist Elite Club ⚖️</title>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&family=Montserrat:wght@500;600;700&family=Outfit:wght@300;400;600;800&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  
+  <script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                fontFamily: { sans: ['Outfit', 'sans-serif'] },
+                colors: {
+                    brandBlue: '#0F2C48',
+                    brandGold: '#D9A526',
+                    brandIvory: '#F6F2E8',
+                    brandBronze: '#B4792A',
+                },
+                animation: {
+                    fadeIn: 'fadeIn 0.4s ease-out forwards',
+                },
+                keyframes: {
+                    fadeIn: {
+                        '0%': { opacity: '0', transform: 'translateY(5px)' },
+                        '100%': { opacity: '1', transform: 'translateY(0)' },
+                    }
+                }
+            }
+        }
+    }
+  </script>
+
+  <style>
+    :root{
+      --cta: #D9A526;
+      --brand-blue: #0F2C48;
+      --ivory: #F6F2E8;
+      --bronze: #B4792A;
+      --footer-bg: #0F2C48; 
+      --footer-text: #F6F2E8; 
+      --footer-accent: #D9A526;
+      --h-bg: #D9A526; 
+      --h-text: #0F2C48; 
+      --h-accent: #ffffff;
+    }
+
+    body { margin: 0; background-color: var(--ivory); color: var(--brand-blue); min-height: 100vh; font-family: 'Outfit', sans-serif; display: flex; flex-direction: column; }
+    .wrap { max-width: 1400px; margin: 0 auto 60px auto; padding: 24px; width: 100%; flex: 1;}
+    
+    /* HEADER PREMIUM */
+    .top-bar {
+        background: linear-gradient(135deg, #B4792A 0%, #F2C94C 50%, #B4792A 100%);
+        color: var(--h-text);
+        padding: 15px 0;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        position: sticky; top: 0; left: 0; right: 0; z-index: 10000;
+        font-family: 'Lato', sans-serif; border-bottom: 4px solid var(--brand-blue);
+    }
+    
+    .top-bar-container { max-width: 1400px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
+    .top-bar-left { display: flex; align-items: center; gap: 15px; flex: 1; min-width: 320px; }
+    .logo-top-bar { width: 60px; height: 60px; border-radius: 50%; border: 2px solid var(--brand-blue); object-fit: cover; flex-shrink: 0; background: #fff; }
+    .identity-stack { display: flex; flex-direction: column; justify-content: center; }
+    .club-title-main { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 800; letter-spacing: 0.5px; color: #0F2C48; line-height: 1.2; margin-bottom: 3px; text-shadow: 0 1px 0 rgba(255,255,255,0.3); }
+    .club-subtitle { font-family: 'Lato', sans-serif; font-size: 0.75rem; color: #ffffff; font-weight: 700; opacity: 1; line-height: 1.2; text-shadow: 0 1px 2px rgba(0,0,0,0.1); }
+    .top-bar-center { display: flex; gap: 12px; align-items: center; }
+
+    .header-icon-btn {
+        position: relative; width: 40px; height: 40px; border-radius: 50%;
+        background: linear-gradient(135deg, #D9A526 0%, #B4792A 100%); 
+        border: 1px solid rgba(255,255,255,0.3); display: flex; align-items: center; justify-content: center;
+        font-size: 1.1rem; text-decoration: none; transition: all 0.3s ease; color: white;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .header-icon-btn:hover { 
+        transform: translateY(-3px) scale(1.1); 
+        background: linear-gradient(135deg, #FFD700 0%, #D9A526 100%); color: white;
+    }
+    .nav-mmpa-img, .nav-profile-img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 2px solid #fff; }
+    .btn-portfolio-cosmic {
+        padding: 8px 20px; border-radius: 50px; font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 0.9rem;
+        background: linear-gradient(135deg, #0F2C48 0%, #1a3b5c 100%); color: #D9A526 !important; text-decoration: none; 
+        border: 1px solid rgba(255,255,255,0.2); display: inline-flex; align-items: center; gap: 8px;
+    }
+    .btn-portfolio-cosmic:hover { background: #163b5e; color: #fff !important; }
+
+    /* --- NOUVEAU DESIGN CONTENU EXECUTIVE --- */
+    
+    .premium-tabs {
+        display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-bottom: 40px;
+        background: white; padding: 10px; border-radius: 60px; box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        max-width: fit-content; margin-left: auto; margin-right: auto;
+    }
+    .premium-tab-btn {
+        background: transparent; color: #64748b; 
+        border: none; padding: 10px 24px; border-radius: 40px; font-weight: 600; font-size: 0.95rem;
+        cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; gap: 8px;
+    }
+    .premium-tab-btn:hover { color: var(--brand-blue); background: #f1f5f9; }
+    .premium-tab-btn.active {
+        background: var(--brand-blue); color: #fff; box-shadow: 0 4px 15px rgba(15, 44, 72, 0.3);
+    }
+    .premium-tab-btn.active i { color: var(--brandGold); }
+
+    /* DESIGN FICHE "DOSSIER" */
+    .dossier-card {
+        background: white; border-radius: 12px; overflow: hidden;
+        border-left: 5px solid var(--brand-blue);
+        box-shadow: 0 2px 15px rgba(0,0,0,0.03); margin-bottom: 24px;
+        display: flex; flex-direction: column; md:flex-row;
+    }
+    /* Sur mobile on empile, sur desktop on met côte à côte */
+    @media (min-width: 768px) {
+        .dossier-card { flex-direction: row; }
+    }
+
+    .dossier-body { padding: 0; width: 100%; display: grid; grid-cols-1 md:grid-cols-2; }
+    
+    /* Colonne Gauche: Théorie / Définition */
+    .col-theory { 
+        padding: 30px; 
+        border-bottom: 1px solid #f1f5f9; 
+        display: flex; flex-direction: column; justify-content: flex-start;
+    }
+    @media (min-width: 768px) { 
+        .col-theory { border-right: 1px solid #f1f5f9; border-bottom: none; } 
+    }
+    
+    .dossier-header-item { display: flex; align-items: center; gap: 15px; margin-bottom: 15px; }
+    .dossier-icon {
+        width: 44px; height: 44px; background: var(--brand-blue); color: var(--brandGold);
+        border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0;
+    }
+    .dossier-title { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 1.4rem; color: var(--brand-blue); line-height: 1.2; }
+    .dossier-subtitle { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1.5px; color: #94a3b8; font-weight: 700; margin-bottom: 4px; }
+    
+    .text-content { font-size: 1rem; line-height: 1.6; color: #334155; margin-bottom: 20px; }
+    
+    /* Colonne Droite: Pratique / Action */
+    .col-practice { 
+        padding: 30px; 
+        background: #fcfcfc;
+        display: flex; flex-direction: column; gap: 20px; justify-content: center;
+    }
+
+    .action-box {
+        background: #f0f9ff; border: 1px solid #bae6fd; border-radius: 8px; padding: 20px;
+        position: relative; box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+    }
+    .action-title { color: #0369a1; font-weight: 700; font-size: 0.95rem; display: flex; align-items: center; gap: 10px; margin-bottom: 10px; border-bottom: 1px solid #e0f2fe; padding-bottom: 8px; }
+    .action-list { margin: 0; padding-left: 20px; color: #334155; font-size: 0.95rem; }
+    .action-list li { margin-bottom: 8px; }
+
+    .example-box {
+        background: #fdfce7; border: 1px solid #fef08a; border-radius: 8px; padding: 20px;
+    }
+    .example-title { color: #854d0e; font-weight: 700; font-size: 0.95rem; display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+    .example-text { font-style: italic; color: #4b5563; font-size: 0.95rem; border-left: 3px solid #eab308; padding-left: 15px; }
+
+    .alert-box {
+        background: #fff1f2; border-left: 4px solid #f43f5e; padding: 15px; border-radius: 4px;
+        color: #be123c; font-size: 0.9rem; font-weight: 600; display: flex; gap: 12px; align-items: flex-start;
+        margin-top: auto; /* Pousse vers le bas si espace dispo */
+    }
+
+    /* FOOTER */
+    .main-footer { background-color: var(--footer-bg); color: var(--footer-text); padding-top: 50px; font-family: 'Lato', sans-serif; font-size: 0.95rem; margin-top: auto; border-top: 4px solid var(--brandGold); }
+    .footer-container { max-width: 1400px; margin: 0 auto; padding: 0 25px; }
+    .footer-row { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding-bottom: 30px; }
+    .footer-left { display: flex; align-items: center; gap: 15px; }
+    .footer-logo-img { width: 50px; height: 50px; border-radius: 8px; border: 2px solid var(--footer-accent); background: #fff; object-fit: cover; }
+    .footer-info { display: flex; flex-direction: column; justify-content: center; }
+    .footer-name { color: var(--footer-accent); font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; margin: 0; line-height: 1.2; }
+    .footer-details { font-size: 0.8rem; opacity: 0.8; display: flex; gap: 15px; }
+    .footer-link { text-decoration: none; color: inherit; transition: 0.3s; display: inline-block; }
+    .footer-link:hover { color: var(--footer-accent); transform: translateX(2px); }
+    .footer-right { display: flex; align-items: center; gap: 15px; }
+    .icon-btn { position: relative; width: 40px; height: 40px; border-radius: 50%; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(217, 165, 38, 0.4); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; text-decoration: none; color: #fff; transition: all 0.3s; }
+    .icon-btn:hover { transform: translateY(-3px); background: #fff; border-color: #fff; box-shadow: 0 4px 10px rgba(217, 165, 38, 0.3); }
+    .logo-home-btn { padding: 0; overflow: hidden; border: 2px solid var(--footer-accent); background: white; }
+    .logo-home-btn img { width: 100%; height: 100%; object-fit: cover; }
+    .brand-whatsapp { color: #25D366 !important; } .icon-btn:hover .brand-whatsapp { color: #25D366 !important; }
+    .brand-discord { color: #5865F2 !important; } .icon-btn:hover .brand-discord { color: #5865F2 !important; }
+    .brand-linkedin { color: #0077b5 !important; } .icon-btn:hover .brand-linkedin { color: #0077b5 !important; }
+    .brand-instagram { color: #E1306C !important; } .icon-btn:hover .brand-instagram { color: #E1306C !important; }
+    .brand-tiktok { color: #00f2ea !important; text-shadow: 2px 2px 0px #ff0050; } .icon-btn:hover .brand-tiktok { color: #000 !important; text-shadow: none; } 
+    .brand-nav { color: var(--footer-accent) !important; } .icon-btn:hover .brand-nav { color: var(--footer-bg) !important; }
+    .footer-copyright { text-align: center; font-size: 0.75rem; color: rgba(255,255,255,0.3); margin-top: 15px; padding: 10px 0; border-top: 1px solid rgba(255,255,255,0.05); }
+  </style>
+</head>
+<body>
+
+  <div class="top-bar" id="mainHeader">
+    <div class="top-bar-container">
+        <div class="top-bar-left">
+            <img src="../Asset/Logo_juriste.png" onerror="this.src='../Asset/Logo_juriste.jpg';" alt="Logo Club" class="logo-top-bar">
+            <div class="identity-stack">
+                <span class="club-title-main">💫 The Jurist Elite Club By Studi ✨</span>
+                <span class="club-subtitle">La Villa des Juristes Brisés 💔 sur l’Île de L’INSTRUCTION ! 🏝</span>
+            </div>
+        </div>
+        <div class="top-bar-center">
+            <a href="../index.html" class="header-icon-btn" title="Start/Accueil"><img src="../Asset/Logo_MMPA.jpeg" alt="MMPA" class="nav-mmpa-img"></a>
+            <a href="Mon_Espace_Juriste_Tableau_de_bord_personnel.html" class="header-icon-btn" title="Mon Espace">📊</a>
+            <a href="Lexique_Latin_Juridique.html" class="header-icon-btn" title="Lexique Latin">📜</a>
+            <a href="Atelier_de_Competence.html" class="header-icon-btn" title="Atelier">🛠️</a>
+            <a href="formation_live_juriste.html" class="header-icon-btn" title="Planning Live">📅</a>
+            <a href="A_propos_de_moi.html" class="header-icon-btn" title="À propos de moi"><img src="../Asset/Photo_Mathilde_Martine_PAISLEY.png" onerror="this.src='../Asset/Photo_Mathilde_Martine_PAISLEY.jpg';" alt="Profil" class="nav-profile-img"></a>
+        </div>
+        <a href="https://projettechacademy.github.io/CV_MMPA-CV-Mathilde-Martine-PAISLEY/" target="_blank" class="btn-portfolio-cosmic"><span>📄</span> Mon portfolio</a>
+    </div>
+  </div>
+
+  <main class="wrap">
+    
+    <header class="mb-12 text-center pt-8">
+        <h1 id="section-title" class="text-4xl md:text-5xl font-extrabold font-[Playfair_Display] text-[#0F2C48] mb-4">
+            <i class="fa-solid fa-feather-pointed text-[#D9A526] mr-3"></i> L'Univers des Actes Juridiques
+        </h1>
+        <p id="section-desc" class="text-slate-600 max-w-3xl mx-auto text-lg font-medium">
+            Base de connaissance opérationnelle et montée en compétence stratégique.
+        </p>
+    </header>
+
+    <div class="premium-tabs">
+        <button onclick="switchTab('nonAvocat')" id="tab-nonAvocat" class="premium-tab-btn active">
+            <i class="fa-solid fa-user-tie"></i> Stratégie "Juriste d'Élite"
+        </button>
+        <button onclick="switchTab('fondamentaux')" id="tab-fondamentaux" class="premium-tab-btn">
+            <i class="fa-solid fa-book-open"></i> Les Fondamentaux
+        </button>
+        <button onclick="switchTab('avocat')" id="tab-avocat" class="premium-tab-btn">
+            <i class="fa-solid fa-gavel"></i> L'Avocat
+        </button>
+        <button onclick="switchTab('huissier')" id="tab-huissier" class="premium-tab-btn">
+            <i class="fa-solid fa-shield-halved"></i> L'Huissier
+        </button>
+        <button onclick="switchTab('notaire')" id="tab-notaire" class="premium-tab-btn">
+            <i class="fa-solid fa-signature"></i> Le Notaire
+        </button>
+        <button onclick="switchTab('magistrat')" id="tab-magistrat" class="premium-tab-btn">
+            <i class="fa-solid fa-scale-balanced"></i> Le Magistrat
+        </button>
+    </div>
+
+    <div id="content-area" class="min-h-[400px]">
+        <!-- Content injected via JS -->
+    </div>
+
+  </main>
+
+  <footer class="main-footer">
+    <div class="footer-container">
+        <div class="footer-row">
+            <div class="footer-left">
+                <img src="../Asset/Logo_MMPA.jpeg" alt="Logo" class="footer-logo-img">
+                <div class="footer-info">
+                    <h3 class="footer-name">Mathilde Martine PAISLEY</h3>
+                    <div class="footer-details">
+                        <span>📧 Mathilde.martine.paisley@gmail.com</span>
+                        <span>📲 06 85 90 08 87</span>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-right">
+                <a href="../index.html" class="icon-btn logo-home-btn" title="Accueil">
+                    <img src="../Asset/Logo_juriste.png" alt="Accueil" onerror="this.src='../Asset/Logo_juriste.jpg'">
+                </a>
+                <a href="Mon_Espace_Juriste_Tableau_de_bord_personnel.html" class="icon-btn" title="Mon Espace"><span class="brand-nav">📊</span></a>
+                <a href="Lexique_Latin_Juridique.html" class="icon-btn" title="Lexique"><span class="brand-nav">📜</span></a>
+                <a href="formation_live_juriste.html" class="icon-btn" title="Planning"><span class="brand-nav">📅</span></a>
+                <a href="A_propos_de_moi.html" class="icon-btn" title="Bio"><span class="brand-nav">👤</span></a>
+                <div class="dock-separator"></div>
+                <a href="https://chat.whatsapp.com/IoMXFl4o2otExYKCPVj22b" target="_blank" class="icon-btn" title="WhatsApp"><i class="fab fa-whatsapp brand-whatsapp"></i></a>
+                <a href="https://discord.gg/qwNPV8QzFt" target="_blank" class="icon-btn" title="Discord"><i class="fab fa-discord brand-discord"></i></a>
+                <a href="https://www.linkedin.com/in/mathilde-martine-paisley-1a4422382/" target="_blank" class="icon-btn" title="LinkedIn"><i class="fab fa-linkedin brand-linkedin"></i></a>
+                <a href="https://www.instagram.com/enervyx/" target="_blank" class="icon-btn" title="Instagram"><i class="fab fa-instagram brand-instagram"></i></a>
+                <a href="https://www.tiktok.com/@enervyx/" target="_blank" class="icon-btn" title="TikTok"><i class="fab fa-tiktok brand-tiktok"></i></a>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <p>💫 The Jurist Elite Club By Studi ✨ La Villa des Juristes Brisés 💔 sur l’Île de L’INSTRUCTION !🏝 | By Mathilde Martine PAISLEY | © 2025 Tous droits réservés</p>
+        </div>
+    </div>
+  </footer>
+
+  <script>
+    // --- DATA CONTENT EXPERT ---
+    const data = {
+        fondamentaux: {
+            title: "Les Piliers de la Rédaction Juridique",
+            desc: "Les règles immuables pour structurer tout écrit professionnel.",
+            content: [
+                {
+                    title: "Le Syllogisme Juridique",
+                    icon: "fa-brain",
+                    subtitle: "Logique Déductive",
+                    text: "Le raisonnement obligatoire du juriste :<br>1. <strong>Majeure :</strong> La Règle de droit (Article, Loi).<br>2. <strong>Mineure :</strong> Les Faits (L'histoire).<br>3. <strong>Conclusion :</strong> L'Application (La Décision).",
+                    alert: "Ne jamais commencer par la conclusion. Construis ta démonstration étape par étape.",
+                    action: null
+                },
+                {
+                    title: "L'Identité des Parties",
+                    icon: "fa-id-card",
+                    subtitle: "Ciblage & Validité",
+                    text: "Un acte est nul si l'identité est fausse.<br>• <strong>Physique :</strong> Nom, Prénom, Date/Lieu naissance, Nationalité, Domicile.<br>• <strong>Morale :</strong> Forme (SARL...), Dénomination, Siège, SIREN, Représentant.",
+                    alert: "Attention aux homonymes ! Vérifie toujours le K-bis ou la CNI.",
+                    action: null
+                },
+                {
+                    title: "Le Style & La Forme",
+                    icon: "fa-pen-nib",
+                    subtitle: "Crédibilité",
+                    text: "La clarté est reine.<br>• Phrases courtes (Sujet + Verbe + Complément).<br>• Vocabulaire précis (pas de 'à peu près').<br>• Orthographe irréprochable (crédibilité).",
+                    alert: "Une virgule mal placée peut changer le sens d'un contrat.",
+                    action: null
+                }
+            ]
+        },
+        nonAvocat: {
+            title: "Performance : Le Juriste d'Élite",
+            desc: "Plan d'action concret pour dépasser le niveau théorique et devenir opérationnel sans être avocat.",
+            content: [
+                {
+                    title: "Écrire comme un Sniper",
+                    icon: "fa-crosshairs",
+                    subtitle: "Technique Rédactionnelle",
+                    text: "Ce n'est pas une question d'écrire à la main. C'est l'art de découper un raisonnement et de tuer un argument adverse avec élégance. Le juriste moderne doit benchmarker le style : phrases courtes, transitions propres, citations chirurgicales.",
+                    alert: "Écrire trop long ou trop flou : le juge ne cherche pas de littérature, mais de la clarté.",
+                    action: {
+                        title: "🔥 Entraînement Immédiat",
+                        items: [
+                            "Lire des vraies décisions (Prud'hommes, Cassation Sociale) pour absorber la structure.",
+                            "Repérer les connecteurs logiques : 'Attendu que', 'En conséquence', 'Nonobstant'.",
+                            "S'entraîner à la synthèse : résumer 10 pages en 1 page sans perdre le sens."
+                        ]
+                    },
+                    example: "<strong>Exercice des 3 versions :</strong> Prends une situation réelle. Rédige les faits en version neutre, puis en version 'pro-salarié' (victimisation), puis en version 'pro-employeur' (justification). C'est ça, le vrai droit."
+                },
+                {
+                    title: "La Procédure Sociale",
+                    icon: "fa-folder-tree",
+                    subtitle: "Maîtrise du Terrain",
+                    text: "Tu n'as pas besoin d'être avocat pour maîtriser le terrain. Le juriste social qui connaît les délais par cœur est un dieu, celui qui ne les connaît pas est un cadavre. La procédure, c'est ce qui permet de gagner avant même de parler du fond.",
+                    alert: "Un délai raté = dossier perdu, peu importe si tu as raison sur le fond.",
+                    action: {
+                        title: "🔥 Actions Concrètes",
+                        items: [
+                            "Télécharger les fiches pratiques du Ministère de la Justice.",
+                            "Étudier des 'assignations-type' pour comprendre la structure obligatoire.",
+                            "Créer sa propre frise chronologique des délais (prescription, appel, pourvoi)."
+                        ]
+                    },
+                    example: null
+                },
+                {
+                    title: "L'Oralité Stratégique",
+                    icon: "fa-microphone-lines",
+                    subtitle: "Convaincre sans plaider",
+                    text: "Pas besoin de robe pour avoir de la prestance. L'objectif n'est pas de crier, mais d'occuper l'espace. Respiration lente, regard droit, débit posé. La voix est un instrument qui se travaille comme un muscle.",
+                    alert: "La précipitation. Parler vite trahit le stress. Le silence est une arme, utilise-le.",
+                    action: {
+                        title: "🔥 Routine Hebdomadaire",
+                        items: [
+                            "Théâtre d'improvisation (le top pour la répartie).",
+                            "Lecture à voix haute : 10 min/jour pour nettoyer l'articulation.",
+                            "Exercice du miroir : expose un sujet 3 min en te regardant dans les yeux."
+                        ]
+                    },
+                    example: null
+                },
+                {
+                    title: "Déontologie & Posture",
+                    icon: "fa-scale-balanced",
+                    subtitle: "Éthique Professionnelle",
+                    text: "La déontologie n'est pas que pour les avocats. Pour un juriste RH, c'est : rigueur absolue, confidentialité des données, et loyauté procédurale. On ne ment pas, on 'interprète' les faits sous leur meilleur jour juridique. C'est une nuance capitale.",
+                    alert: "Confondre loyauté et naïveté. Tu défends les intérêts de ton entreprise/client.",
+                    action: null,
+                    example: "<strong>Règle d'or :</strong> Ne jamais affirmer quelque chose que l'on sait faux, mais savoir taire ce qui nous dessert."
+                }
+            ]
+        },
+        avocat: {
+            title: "L'Avocat : Stratège & Défenseur",
+            desc: "Les actes spécifiques du barreau pour attaquer et convaincre.",
+            content: [
+                {
+                    title: "L'Assignation",
+                    icon: "fa-bolt",
+                    subtitle: "L'acte d'attaque",
+                    text: "Document qui déclenche le procès. Il convoque l'adversaire devant le tribunal. Il doit exposer les faits, les preuves et les demandes précises (le 'dispositif').",
+                    alert: "Attention à la prescription ! Une assignation hors délai est irrecevable (poubelle).",
+                    action: null
+                },
+                {
+                    title: "Les Conclusions",
+                    icon: "fa-file-lines",
+                    subtitle: "Le duel écrit",
+                    text: "L'argumentaire détaillé échangé entre avocats avant l'audience. Le juge ne statue QUE sur ce qui est écrit dans les conclusions (Art. 768 CPC). Si ce n'est pas écrit, ça n'existe pas.",
+                    alert: "Oublier une demande dans le dispositif final = oubli assuré par le juge.",
+                    action: null
+                },
+                {
+                    title: "L'Acte d'Avocat",
+                    icon: "fa-signature",
+                    subtitle: "Sécurité Renforcée",
+                    text: "Un acte sous seing privé contresigné par l'avocat. L'avocat garantit qu'il a conseillé les parties. Il a une force probante supérieure à un contrat classique.",
+                    alert: "L'avocat engage sa propre responsabilité civile s'il contresigne un acte déséquilibré.",
+                    action: null
+                }
+            ]
+        },
+        huissier: {
+            title: "Commissaire de Justice",
+            desc: "L'homme de terrain : preuve incontestable et exécution forçée.",
+            content: [
+                {
+                    title: "La Signification",
+                    icon: "fa-envelope-open-text",
+                    subtitle: "Remise Officielle",
+                    text: "La remise en main propre d'un acte (jugement, assignation). C'est la seule façon d'être sûr à 100% que la personne est informée juridiquement.",
+                    alert: "Hiérarchie stricte : 1. À personne > 2. À domicile > 3. Dépôt étude.",
+                    action: null
+                },
+                {
+                    title: "Le Constat",
+                    icon: "fa-camera",
+                    subtitle: "La photo juridique",
+                    text: "L'huissier décrit ce qu'il voit, entend ou sent à un instant T. C'est une preuve reine devant un tribunal. Impartialité totale requise.",
+                    alert: "L'huissier ne donne JAMAIS son avis ('c'est mal fait'). Il décrit objectivement ('le mur présente une fissure').",
+                    action: null
+                },
+                {
+                    title: "La Sommation",
+                    icon: "fa-bullhorn",
+                    subtitle: "L'ultimatum",
+                    text: "Un acte pour ordonner officiellement de faire (payer, agir) ou ne pas faire. C'est le dernier avertissement formel avant les poursuites judiciaires.",
+                    alert: "Sommation Interpellative : L'huissier pose des questions sur place. Le silence est noté !",
+                    action: null
+                }
+            ]
+        },
+        notaire: {
+            title: "Le Notaire : Officier Public",
+            desc: "Le gardien de l'authenticité et de la date certaine.",
+            content: [
+                {
+                    title: "L'Acte Authentique",
+                    icon: "fa-stamp",
+                    subtitle: "Force Exécutoire",
+                    text: "Un acte signé par le notaire qui a la même force qu'un jugement. On ne peut quasiment pas le contester (procédure complexe d'inscription de faux).",
+                    alert: "Obligatoire pour les ventes immobilières et les contrats de mariage.",
+                    action: null
+                },
+                {
+                    title: "Le Testament",
+                    icon: "fa-scroll",
+                    subtitle: "Dernières volontés",
+                    text: "Organise la transmission des biens. Peut être Authentique (dicté au notaire) ou Olographe (écrit à la main par le testateur).",
+                    alert: "Un testament olographe tapé à l'ordinateur est NUL. Il doit être manuscrit, daté et signé.",
+                    action: null
+                },
+                {
+                    title: "L'État Liquidatif",
+                    icon: "fa-calculator",
+                    subtitle: "Partage Patrimonial",
+                    text: "L'acte qui fait les comptes lors d'un divorce ou d'une succession pour partager le patrimoine équitablement entre les parties.",
+                    alert: "Pure mathématique juridique. La moindre erreur de calcul bloque tout le processus.",
+                    action: null
+                }
+            ]
+        },
+        magistrat: {
+            title: "Le Magistrat : L'Arbitre",
+            desc: "Celui qui tranche. Ses décisions s'imposent à tous.",
+            content: [
+                {
+                    title: "Le Jugement",
+                    icon: "fa-gavel",
+                    subtitle: "Première Instance",
+                    text: "Rendu par le Tribunal. Il tranche le litige. Il doit être motivé (expliqué) et contenir un dispositif (la décision finale).",
+                    alert: "Autorité de la 'chose jugée' une fois les délais d'appel passés.",
+                    action: null
+                },
+                {
+                    title: "L'Ordonnance",
+                    icon: "fa-scale-unbalanced",
+                    subtitle: "Décision Rapide",
+                    text: "Prise par un Juge Unique (ex: Référé). Souvent provisoire pour gérer l'urgence. Exécutoire immédiatement, même si appel.",
+                    alert: "En référé, on ne juge pas le fond du dossier, mais l'évidence ou l'urgence.",
+                    action: null
+                },
+                {
+                    title: "L'Arrêt",
+                    icon: "fa-landmark",
+                    subtitle: "Cours Supérieures",
+                    text: "Rendu par une Cour (Appel, Cassation). Un arrêt 'confirme' ou 'infirme' (annule/réforme) un jugement précédent.",
+                    alert: "On ne dit pas 'le tribunal a dit', mais 'la Cour a rendu un arrêt'. Vocabulaire précis exigé !",
+                    action: null
+                }
+            ]
+        }
+    };
+
+    function switchTab(key) {
+        // Gestion des boutons
+        document.querySelectorAll('.premium-tab-btn').forEach(btn => btn.classList.remove('active'));
+        const activeBtn = document.getElementById(`tab-${key}`);
+        if(activeBtn) activeBtn.classList.add('active');
+
+        const section = data[key];
+        
+        // Icone Titre
+        let titleIcon = '';
+        if(key === 'fondamentaux') titleIcon = 'fa-book-open';
+        else if(key === 'avocat') titleIcon = 'fa-gavel';
+        else if(key === 'huissier') titleIcon = 'fa-shield-halved';
+        else if(key === 'notaire') titleIcon = 'fa-signature';
+        else if(key === 'magistrat') titleIcon = 'fa-scale-balanced';
+        else if(key === 'nonAvocat') titleIcon = 'fa-user-tie';
+
+        document.getElementById('section-title').innerHTML = `<i class="fa-solid ${titleIcon} mr-3 text-[#D9A526]"></i> ${section.title}`;
+        document.getElementById('section-desc').innerHTML = section.desc;
+
+        // Contenu
+        const container = document.getElementById('content-area');
+        container.classList.remove('animate-fadeIn');
+        void container.offsetWidth; 
+        container.classList.add('animate-fadeIn');
+
+        let html = '';
+        
+        section.content.forEach(item => {
+            // Construction de la liste d'actions si elle existe
+            let actionHtml = '';
+            if (item.action) {
+                const listItems = item.action.items.map(li => `<li>${li}</li>`).join('');
+                actionHtml = `
+                    <div class="action-box">
+                        <div class="action-title"><i class="fa-solid fa-list-check"></i> ${item.action.title}</div>
+                        <ul class="action-list list-disc">${listItems}</ul>
+                    </div>
+                `;
+            }
+
+            // Construction de l'exemple si il existe
+            let exampleHtml = '';
+            if (item.example) {
+                exampleHtml = `
+                    <div class="example-box">
+                        <div class="example-title"><i class="fa-solid fa-lightbulb"></i> Application Pratique</div>
+                        <div class="example-text">${item.example}</div>
+                    </div>
+                `;
+            }
+
+            // Construction de l'alerte
+            let alertHtml = '';
+            if (item.alert) {
+                alertHtml = `
+                    <div class="alert-box mt-auto">
+                        <i class="fa-solid fa-triangle-exclamation mt-1"></i>
+                        <div>${item.alert}</div>
+                    </div>
+                `;
+            }
+
+            html += `
+                <div class="dossier-card">
+                    <div class="dossier-body">
+                        <!-- Colonne Théorie -->
+                        <div class="col-theory flex flex-col h-full">
+                            <div class="dossier-header-item">
+                                <div class="dossier-icon"><i class="fa-solid ${item.icon}"></i></div>
+                                <div>
+                                    <div class="dossier-subtitle">${item.subtitle}</div>
+                                    <h3 class="dossier-title">${item.title}</h3>
+                                </div>
+                            </div>
+                            <p class="text-content mb-6">${item.text}</p>
+                            ${alertHtml}
+                        </div>
+
+                        <!-- Colonne Pratique (s'affiche si Action ou Exemple dispo, sinon vide ou remplissage) -->
+                        <div class="col-practice justify-center">
+                             ${actionHtml}
+                             ${exampleHtml}
+                             ${(!actionHtml && !exampleHtml) ? '<div class="flex items-center justify-center h-full text-slate-300 italic text-sm text-center p-4">Concept fondamental pour votre base de connaissances.<br>Ne requiert pas d\'action immédiate, mais une assimilation par cœur.</div>' : ''}
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+
+        container.innerHTML = html;
+    }
+
+    // Init au chargement
+    document.addEventListener('DOMContentLoaded', () => {
+        switchTab('nonAvocat'); // Ouvre direct sur l'onglet intéressant
+    });
+  </script>
+
+</body>
+</html>
