@@ -28,15 +28,18 @@
   </script>
 
   <style>
-    /* --- NOUVEAU CSS (Design 2025) --- */
+    /* --- NOUVEAU CSS (Mise à jour Header/Footer) --- */
     :root {
         --brand-blue: #0F2C48;
         --brandGold: #D9A526;
         --ivory: #F6F2E8;
         --footer-bg: #0F2C48;
         --footer-text: #F6F2E8;
-        --header-height: 96px; 
+        
+        /* Variables de compatibilité */
         --cta: #D9A526;
+        --bronze: #B4792A;
+        --header-height: 96px; 
     }
 
     body { margin: 0; font-family: 'Outfit', sans-serif; background: var(--ivory); color: var(--brand-blue); display: flex; flex-direction: column; min-height: 100vh; }
@@ -111,7 +114,7 @@
     /* --- FOOTER --- */
     .main-footer { background: var(--footer-bg); color: var(--footer-text); padding: 40px 18px; margin-top: auto; border-top: 4px solid var(--brandGold); }
     .footer-container { max-width: 1400px; margin: 0 auto; display: flex; gap: 20px; align-items: center; justify-content: space-between; flex-wrap: wrap; }
-    .footer-left { display: flex; gap: 12px; align-items: center; }
+    .footer-left { display: flex; align-items: center; gap: 12px; }
     .footer-logo-img { width: 60px; height: 60px; border-radius: 8px; object-fit: cover; border: 2px solid var(--brandGold); background: #fff; }
     .footer-details { color: var(--footer-text); opacity: 0.95; }
 
@@ -356,7 +359,7 @@
 </head>
 <body>
 
-<!-- NOUVEAU HEADER -->
+<!-- HEADER (CORRIGÉ) -->
 <div class="top-bar" id="mainHeader">
     <div class="top-bar-container">
     <div class="top-left">
@@ -369,22 +372,22 @@
     </div>
     </div>
     <nav class="top-center" aria-label="Navigation principale">
-    <a class="header-icon-btn" href="https://www.google.com/search?q=https://projettechacademy.github.io/Juridique/A_propos_de_moi.html" title="A propos de moi" target="_blank">
+    <a class="header-icon-btn" href="https://projettechacademy.github.io/Juridique/A_propos_de_moi.html" title="A propos de moi" target="_blank">
     <img src="https://projettechacademy.github.io/Juridique/Asset/Photo_Mathilde_Martine_PAISLEY.jpg" alt="Mathilde Martine PAISLEY" style="width:100%;height:100%;border-radius:50%;object-fit:cover;border:2px solid #fff;" onerror="this.src='https://projettechacademy.github.io/Juridique/Asset/Photo_Mathilde_Martine_PAISLEY.jpeg'">
     </a>
     <a class="header-icon-btn" href="https://projettechacademy.github.io/Juridique/index.html" title="Start/Accueil" target="_blank">🏠</a>
-    <a class="header-icon-btn" href="https://www.google.com/search?q=https://projettechacademy.github.io/Juridique/Mon_Espace_Juriste_Tableau_de_bord_personnel.html" title="Mon Espace" target="_blank">📊</a>
-    <a class="header-icon-btn" href="https://www.google.com/search?q=https://projettechacademy.github.io/Juridique/formation_live_juriste.html" title="Planning Live" target="_blank">📅</a>
-    <a class="header-icon-btn" href="https://www.google.com/search?q=https://projettechacademy.github.io/Juridique/Lexique_Latin_Juridique.html" title="Lexique Latin" target="_blank">📜</a>
-    <a class="header-icon-btn" href="https://www.google.com/search?q=https://projettechacademy.github.io/Juridique/Atelier_de_Competence.html" title="Atelier de Compétence Élite" target="_blank">🛠️</a>
-    <a class="header-icon-btn" href="https://www.google.com/search?q=https://projettechacademy.github.io/Juridique/Fiche_RNCP_Juriste.html" title="RNCP" target="_blank">📚</a>
-    <a class="header-icon-btn" href="https://www.google.com/search?q=https://projettechacademy.github.io/Juridique/Univers_Actes_Juridiques.html" title="Rédaction Juridique" target="_blank">✍️</a>
-    <a class="header-icon-btn" href="https://www.google.com/search?q=https://projettechacademy.github.io/Juridique/Jurist_Elite_Panorama_IA.html" title="Panorama IA" target="_blank">🤖</a>
-    <a class="header-icon-btn" href="https://www.google.com/search?q=https://projettechacademy.github.io/Juridique/Acronymes.html" title="Acronymes" target="_blank">🔤</a>
+    <a class="header-icon-btn" href="https://projettechacademy.github.io/Juridique/Mon_Espace_Juriste_Tableau_de_bord_personnel.html" title="Mon Espace" target="_blank">📊</a>
+    <a class="header-icon-btn" href="https://projettechacademy.github.io/Juridique/formation_live_juriste.html" title="Planning Live" target="_blank">📅</a>
+    <a class="header-icon-btn" href="https://projettechacademy.github.io/Juridique/Lexique_Latin_Juridique.html" title="Lexique Latin" target="_blank">📜</a>
+    <a class="header-icon-btn" href="https://projettechacademy.github.io/Juridique/Atelier_de_Competence.html" title="Atelier de Compétence Élite" target="_blank">🛠️</a>
+    <a class="header-icon-btn" href="https://projettechacademy.github.io/Juridique/Fiche_RNCP_Juriste.html" title="RNCP" target="_blank">📚</a>
+    <a class="header-icon-btn" href="https://projettechacademy.github.io/Juridique/Univers_Actes_Juridiques.html" title="Rédaction Juridique" target="_blank">✍️</a>
+    <a class="header-icon-btn" href="https://projettechacademy.github.io/Juridique/Jurist_Elite_Panorama_IA.html" title="Panorama IA" target="_blank">🤖</a>
+    <a class="header-icon-btn" href="https://projettechacademy.github.io/Juridique/Acronymes.html" title="Acronymes" target="_blank">🔤</a>
     </nav>
     <div>
-    <a class="btn-portfolio-cosmic" href="https://www.google.com/search?q=https://projettechacademy.github.io/Juridique/Portfolio_Mathilde-Martine-PAISLEY.html" target="_blank" title="Mon Expertise / Projets">
-    <img src="https://projettechacademy.github.io/Juridique/Asset/Logo_MMPA.jpeg" alt="Logo" style="width:24px; height:24px; border-radius:50%; object-fit:cover; border:1px solid #fff;" onerror="this.src='https://www.google.com/search?q=https://projettechacademy.github.io/Juridique/Asset/Logo_MMPA.jpg'">
+    <a class="btn-portfolio-cosmic" href="https://projettechacademy.github.io/Juridique/Portfolio_Mathilde-Martine-PAISLEY.html" target="_blank" title="Mon Expertise / Projets">
+    <img src="https://projettechacademy.github.io/Juridique/Asset/Logo_MMPA.jpeg" alt="Logo" style="width:24px; height:24px; border-radius:50%; object-fit:cover; border:1px solid #fff;" onerror="this.src='https://projettechacademy.github.io/Juridique/Asset/Logo_MMPA.jpg'">
     Expert
     </a>
     </div>
@@ -545,7 +548,7 @@
     <div class="footer-container">
     <div class="footer-left">
     <a href="https://projettechacademy.github.io/Juridique/index.html" target="_blank">
-    <img class="footer-logo-img" src="https://projettechacademy.github.io/Juridique/Asset/Logo_MMPA.jpeg" alt="Logo MMPA" onerror="this.src='https://www.google.com/search?q=https://projettechacademy.github.io/Juridique/Asset/Logo_MMPA.jpg'">
+    <img class="footer-logo-img" src="https://projettechacademy.github.io/Juridique/Asset/Logo_MMPA.jpeg" alt="Logo MMPA" onerror="this.src='https://projettechacademy.github.io/Juridique/Asset/Logo_MMPA.jpg'">
     </a>
     <div class="footer-details">
     <div style="font-weight:700; font-size: 1.1rem;">Mathilde Martine PAISLEY</div>
@@ -556,17 +559,18 @@
     </div>
     <div class="footer-right">
     <div class="footer-links-row" aria-label="Liens utilitaires">
-                <a class="icon-btn" href="https://projettechacademy.github.io/Juridique/A_propos_de_moi.html" title="A propos de moi">👤</a>
-            <a class="icon-btn" href="https://projettechacademy.github.io/Juridique/index.html" title="Accueil">🏠</a>
-            <a class="icon-btn" href="https://projettechacademy.github.io/Juridique/Mon_Espace_Juriste_Tableau_de_bord_personnel.html" title="Mon Espace">📊</a>
-            <a class="icon-btn" href="https://projettechacademy.github.io/Juridique/formation_live_juriste.html" title="Planning">📅</a>
-            <a class="icon-btn" href="https://projettechacademy.github.io/Juridique/Lexique_Latin_Juridique.html" title="Lexique">📜</a>
-            <a class="icon-btn" href="https://projettechacademy.github.io/Juridique/Atelier_de_Competence.html" title="Atelier">🛠️</a>
-            <a class="icon-btn" href="https://projettechacademy.github.io/Juridique/Portfolio_Mathilde-Martine-PAISLEY.html" title="Portfolio">🎨</a>
-            <a class="icon-btn" href="https://projettechacademy.github.io/Juridique/Fiche_RNCP_Juriste.html" title="RNCP">📚</a>
-            <a class="icon-btn" href="https://projettechacademy.github.io/Juridique/Univers_Actes_Juridiques.html" title="Rédaction Juridique">✍️</a>
-            <a class="icon-btn" href="https://projettechacademy.github.io/Juridique/Jurist_Elite_Panorama_IA.html" title="Panorama IA">🤖</a>
-            <a class="icon-btn" href="https://projettechacademy.github.io/Juridique/Acronymes.html" title="Acronymes">🔤</a>      <div class="footer-divider"></div>
+    <a class="icon-btn" href="https://projettechacademy.github.io/Juridique/A_propos_de_moi.html" title="A propos de moi" target="_blank">👤</a>
+    <a class="icon-btn" href="https://projettechacademy.github.io/Juridique/index.html" title="Accueil" target="_blank">🏠</a>
+    <a class="icon-btn" href="https://projettechacademy.github.io/Juridique/Mon_Espace_Juriste_Tableau_de_bord_personnel.html" title="Mon Espace" target="_blank">📊</a>
+    <a class="icon-btn" href="https://projettechacademy.github.io/Juridique/formation_live_juriste.html" title="Planning" target="_blank">📅</a>
+    <a class="icon-btn" href="https://projettechacademy.github.io/Juridique/Lexique_Latin_Juridique.html" title="Lexique" target="_blank">📜</a>
+    <a class="icon-btn" href="https://projettechacademy.github.io/Juridique/Atelier_de_Competence.html" title="Atelier" target="_blank">🛠️</a>
+    <a class="icon-btn" href="https://projettechacademy.github.io/Juridique/Portfolio_Mathilde-Martine-PAISLEY.html" title="Portfolio" target="_blank">🎨</a>
+    <a class="icon-btn" href="https://projettechacademy.github.io/Juridique/Fiche_RNCP_Juriste.html" title="RNCP" target="_blank">📚</a>
+    <a class="icon-btn" href="https://projettechacademy.github.io/Juridique/Univers_Actes_Juridiques.html" title="Rédaction Juridique" target="_blank">✍️</a>
+    <a class="icon-btn" href="https://projettechacademy.github.io/Juridique/Jurist_Elite_Panorama_IA.html" title="Panorama IA" target="_blank">🤖</a>
+    <a class="icon-btn" href="https://projettechacademy.github.io/Juridique/Acronymes.html" title="Acronymes" target="_blank">🔤</a>
+            <div class="footer-divider"></div>
     
             <a class="icon-btn" href="https://chat.whatsapp.com/IoMXFl4o2otExYKCPVj22b" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp" style="color:#25D366;"></i></a>
             <a class="icon-btn" href="https://discord.gg/qwNPV8QzFt" target="_blank" title="Discord"><i class="fab fa-discord" style="color:#5865F2;"></i></a>
