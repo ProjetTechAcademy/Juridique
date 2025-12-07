@@ -1,0 +1,475 @@
+<!doctype html>
+<html lang="fr" class="scroll-smooth">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>💫 L'Observatoire des Géants de l'IA 2025 ✨ The Jurist Elite Club ⚖️</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&family=Montserrat:wght@500;600;700&family=Outfit:wght@300;400;600;800&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root { 
+        --brand-blue: #0F2C48; 
+        --brandGold: #D9A526; 
+        --ivory: #F6F2E8; 
+        --footer-bg: #0F2C48; 
+        --footer-text: #F6F2E8; 
+    }
+    
+    body { margin: 0; font-family: 'Outfit', sans-serif; background: var(--ivory); color: var(--brand-blue); display: flex; flex-direction: column; min-height: 100vh; }
+    
+    /* --- HEADER --- */
+    .top-bar { 
+        background: linear-gradient(135deg, #B4792A, #F2C94C); 
+        padding: 12px 20px; 
+        position: sticky; 
+        top: 0; 
+        z-index: 9999; 
+        border-bottom: 4px solid var(--brand-blue); 
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    
+    .top-bar-container { 
+        max-width: 1400px; 
+        margin: 0 auto; 
+        display: flex; 
+        align-items: center; 
+        justify-content: space-between; 
+        gap: 16px; 
+    }
+    
+    .top-left { display: flex; align-items: center; gap: 14px; }
+    
+    .logo-top { 
+        width: 64px; height: 64px; 
+        border-radius: 8px; object-fit: cover; 
+        border: 2px solid var(--brand-blue); 
+        background: #fff; 
+        transition: transform 0.3s ease;
+    }
+    .logo-top:hover { transform: scale(1.05); }
+
+    .identity-stack { display: flex; flex-direction: column; }
+    .club-title-main { font-family: 'Playfair Display', serif; font-weight: 800; color: var(--brand-blue); font-size: 1.1rem; }
+    .club-subtitle { color: #fff; font-weight: 700; font-size: 0.85rem; text-shadow: 0 1px 2px rgba(0,0,0,0.1); }
+    
+    .top-center { display: flex; gap: 10px; align-items: center; }
+    
+    .header-icon-btn { 
+        width: 44px; height: 44px; flex-shrink: 0;
+        border-radius: 50%; 
+        display: inline-flex; align-items: center; justify-content: center; 
+        text-decoration: none; 
+        background: linear-gradient(135deg, var(--brandGold), #B4792A); 
+        color: #fff; 
+        border: 1px solid rgba(255, 255, 255, 0.4); 
+        transition: all 0.2s ease;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        font-size: 1.2rem;
+        position: relative;
+    }
+    .header-icon-btn:hover { transform: translateY(-3px); box-shadow: 0 4px 8px rgba(0,0,0,0.2); background: var(--brand-blue); border-color: var(--brandGold); }
+    .header-icon-btn img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
+    
+    .btn-portfolio-cosmic { 
+        padding: 8px 18px; 
+        border-radius: 999px; 
+        background: var(--brand-blue); 
+        color: var(--brandGold); 
+        text-decoration: none; 
+        font-weight: 700; 
+        display: inline-flex; gap: 8px; align-items: center; 
+        transition: background 0.3s, color 0.3s;
+        white-space: nowrap;
+        box-shadow: 0 4px 10px rgba(15, 44, 72, 0.2);
+    }
+    .btn-portfolio-cosmic:hover { background: #fff; color: var(--brand-blue); transform: translateY(-2px); }
+
+    /* Main Content Placeholder */
+    .main-content { flex: 1; padding: 20px; max-width: 1400px; margin: 0 auto; width: 100%; }
+
+    /* --- PAGE SPECIFIC STYLES (OBSERVATOIRE) --- */
+    .intro-section { background: #fff; padding: 40px; border-radius: 16px; box-shadow: 0 8px 30px rgba(15,44,72,0.06); margin-bottom: 50px; text-align: center; border: 1px solid rgba(15, 44, 72, 0.05); }
+    .page-title { font-family: 'Playfair Display', serif; font-size: 2.5rem; color: var(--brand-blue); margin-bottom: 15px; }
+    .page-subtitle { font-size: 1.1rem; color: #555; max-width: 900px; margin: 0 auto; line-height: 1.6; }
+    .source-tag { display: inline-block; background: #eee; padding: 4px 12px; border-radius: 20px; font-size: 0.85rem; color: #666; margin-top: 15px; font-weight: 600; }
+
+    /* Section Divider */
+    .section-divider { display: flex; align-items: center; margin: 60px 0 30px 0; }
+    .divider-line { flex: 1; height: 2px; background: var(--brandGold); opacity: 0.3; }
+    .divider-title { padding: 0 20px; font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--brand-blue); font-weight: 700; }
+    .legal-badge { background: var(--brand-blue); color: var(--brandGold); padding: 5px 15px; border-radius: 50px; font-size: 0.9rem; vertical-align: middle; margin-left: 10px; }
+
+    /* Search Bar */
+    .search-container { max-width: 600px; margin: 0 auto 40px auto; position: relative; }
+    .search-input { width: 100%; padding: 15px 25px; border-radius: 50px; border: 2px solid var(--brandGold); font-family: 'Outfit', sans-serif; font-size: 1rem; outline: none; box-shadow: 0 4px 15px rgba(217, 165, 38, 0.1); }
+    .search-icon { position: absolute; right: 20px; top: 50%; transform: translateY(-50%); color: var(--brandGold); }
+
+    /* Grid Layout */
+    .ai-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 25px; }
+
+    /* AI Card */
+    .ai-card { background: white; border-radius: 16px; padding: 25px; position: relative; border: 1px solid rgba(15, 44, 72, 0.05); transition: all 0.3s ease; display: flex; flex-direction: column; justify-content: space-between; overflow: hidden; height: 100%; }
+    .ai-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(15, 44, 72, 0.1); border-color: var(--brandGold); }
+    
+    .rank-badge { position: absolute; top: 0; right: 0; background: linear-gradient(135deg, var(--brandGold), #B4792A); color: white; padding: 6px 14px; border-bottom-left-radius: 12px; font-weight: 800; font-size: 1rem; box-shadow: -2px 2px 10px rgba(0,0,0,0.1); }
+    .legal-card .rank-badge { background: var(--brand-blue); color: var(--brandGold); } /* Gold/Blue swap for legal */
+
+    .card-header { margin-bottom: 12px; padding-right: 40px; }
+    .ai-name { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; color: var(--brand-blue); margin: 0; line-height: 1.2; }
+    .ai-category { display: inline-block; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: #888; margin-top: 6px; letter-spacing: 0.5px; }
+    
+    .ai-desc { font-size: 0.95rem; color: #555; line-height: 1.5; margin-bottom: 20px; flex-grow: 1; }
+    
+    .card-actions { margin-top: auto; pt-4; border-top: 1px solid #f0f0f0; }
+    .visit-btn { display: block; width: 100%; text-align: center; background: rgba(15, 44, 72, 0.05); color: var(--brand-blue); padding: 10px; border-radius: 8px; text-decoration: none; font-weight: 600; transition: all 0.2s; font-size: 0.95rem; }
+    .visit-btn:hover { background: var(--brand-blue); color: var(--brandGold); }
+    .visit-btn i { margin-left: 8px; }
+
+    /* --- FOOTER --- */
+    .main-footer { background: var(--footer-bg); color: var(--footer-text); padding: 40px 18px; margin-top: auto; border-top: 4px solid var(--brandGold); }
+    .footer-container { max-width: 1400px; margin: 0 auto; display: flex; gap: 20px; align-items: center; justify-content: space-between; flex-wrap: wrap; }
+    .footer-left { display: flex; gap: 12px; align-items: center; }
+    .footer-logo-img { width: 60px; height: 60px; border-radius: 8px; object-fit: cover; border: 2px solid var(--brandGold); background: #fff; }
+    .footer-details { color: var(--footer-text); opacity: 0.95; }
+    
+    .footer-right { display: flex; flex-direction: column; align-items: flex-end; gap: 15px; }
+    .footer-links-row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
+    
+    .icon-btn { 
+        width: 44px; height: 44px; flex-shrink: 0;
+        border-radius: 50%; 
+        display: inline-flex; align-items: center; justify-content: center; 
+        background: rgba(255, 255, 255, 0.06); 
+        color: var(--footer-text); 
+        text-decoration: none; 
+        border: 1px solid rgba(217, 165, 38, 0.15); 
+        transition: all 0.2s;
+        font-size: 1.1rem;
+    }
+    .icon-btn:hover { background: var(--brandGold); color: var(--brand-blue); transform: scale(1.1); border-color: #fff; }
+    
+    /* LA SÉPARATION DEMANDÉE */
+    .footer-divider { 
+        width: 2px; 
+        height: 32px; 
+        background: rgba(255,255,255,0.3); 
+        margin: 0 12px; 
+        border-radius: 2px;
+    }
+
+    .copyright { width: 100%; text-align: center; color: rgba(255, 255, 255, 0.35); margin-top: 24px; font-size: 0.9rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; }
+
+    /* --- RESPONSIVE MOBILE --- */
+    @media (max-width: 1100px) {
+        .top-bar-container { flex-direction: column; gap: 15px; align-items: center; text-align: center; }
+        .top-left { flex-direction: column; text-align: center; }
+        
+        .top-center { 
+            width: 100%; 
+            overflow-x: auto; 
+            padding-bottom: 10px; 
+            justify-content: flex-start; 
+            padding-left: 5px; padding-right: 5px;
+            -webkit-overflow-scrolling: touch; 
+        }
+        .top-center::-webkit-scrollbar { height: 4px; }
+        .top-center::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.3); border-radius: 4px; }
+        
+        .footer-container { flex-direction: column; text-align: center; }
+        .footer-left { flex-direction: column; }
+        .footer-right { align-items: center; width: 100%; }
+        .footer-links-row { justify-content: center; width: 100%; overflow-x: auto; padding-bottom: 10px; }
+        .footer-divider { display: none; } 
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <div class="top-bar" id="mainHeader">
+    <div class="top-bar-container">
+      
+      <!-- Logo & Titre -->
+      <div class="top-left">
+        <a href="https://projettechacademy.github.io/Juridique/index.html" title="Start/Accueil" target="_blank">
+          <!-- Logo Juriste -->
+          <img class="logo-top" src="https://projettechacademy.github.io/Juridique/Asset/Logo_juriste.png" onerror="this.src='https://projettechacademy.github.io/Juridique/Asset/Logo_juriste.jpg'" alt="Logo Juriste">
+        </a>
+        <div class="identity-stack">
+          <div class="club-title-main">💫 The Jurist Elite Club By Studi ✨</div>
+          <div class="club-subtitle">La Villa des Juristes Brisés 💔 sur l’Île de L’INSTRUCTION ! 🏝</div>
+        </div>
+      </div>
+
+      <!-- Navigation Icônes -->
+      <nav class="top-center" aria-label="Navigation principale">
+        <!-- 1. A propos de moi -->
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Juridique/00_Autres/A_propos_de_moi.html" title="A propos de moi" target="_blank">
+          <img src="https://projettechacademy.github.io/Juridique/Asset/Photo_Mathilde_Martine_PAISLEY.jpg" 
+               alt="Mathilde Martine PAISLEY" 
+               style="width:100%;height:100%;border-radius:50%;object-fit:cover;border:2px solid #fff;" 
+               onerror="this.src='https://projettechacademy.github.io/Juridique/Asset/Photo_Mathilde_Martine_PAISLEY.jpeg'">
+        </a>
+        <!-- 2. Start/Accueil -->
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Juridique/index.html" title="Start/Accueil" target="_blank">🏠</a>
+        <!-- 3. Mon Espace -->
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Juridique/00_Autres/Mon_Espace_Juriste_Tableau_de_bord_personnel.html" title="Mon Espace" target="_blank">📊</a>
+        <!-- 4. Planning Live -->
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Juridique/00_Autres/formation_live_juriste.html" title="Planning Live" target="_blank">📅</a>
+        <!-- 5. Lexique Latin -->
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Juridique/00_Autres/Lexique_Latin_Juridique.html" title="Lexique Latin" target="_blank">📜</a>
+        <!-- 6. Atelier de Compétence Élite -->
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Juridique/00_Autres/Atelier_de_Competence.html" title="Atelier de Compétence Élite" target="_blank">🛠️</a>
+        <!-- 8. RNCP -->
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Juridique/00_Autres/Fiche_RNCP_Juriste.html" title="RNCP" target="_blank">📚</a>
+        <!-- 9. Rédaction Juridique -->
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Juridique/00_Autres/Univers_Actes_Juridiques.html" title="Rédaction Juridique" target="_blank">✍️</a>
+      </nav>
+
+      <!-- Bouton COURT & MAGIQUE avec Logo en mode Emoji -->
+      <div>
+        <a class="btn-portfolio-cosmic" href="https://projettechacademy.github.io/Juridique/00_Autres/Portfolio_Mathilde-Martine-PAISLEY.html" target="_blank" title="Mon Expertise / Projets">
+           <img src="https://projettechacademy.github.io/Juridique/Asset/Logo_MMPA.jpeg" alt="Logo" style="width:24px; height:24px; border-radius:50%; object-fit:cover; border:1px solid #fff;" onerror="this.src='https://projettechacademy.github.io/Juridique/Asset/Logo_MMPA.jpg'"> 
+           Expert
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ZONE DE CONTENU : OBSERVATOIRE IA -->
+  <main class="main-content">
+    
+    <!-- Introduction -->
+    <div class="intro-section">
+      <h1 class="page-title">L'Observatoire des Géants de l'IA (2025)</h1>
+      <p class="page-subtitle">
+        Voici le panorama complet des outils d'IA générative qui dominent le marché mondial en ce début d'année 2025.
+        Ce classement se base sur les données de trafic web analysées par le célèbre fonds de capital-risque <strong>Andreessen Horowitz (a16z)</strong>, un acteur majeur de la Silicon Valley qui finance l'innovation technologique.
+        <br><br>
+        Bien que ce classement "Grand Public" soit dominé par des assistants généralistes et des outils de divertissement, le juriste avisé doit connaître ces acteurs. Cependant, pour répondre à vos besoins spécifiques, j'ai ajouté une section spéciale <strong>"LegalTech"</strong> en bas de page. 😉
+      </p>
+      <div class="source-tag"><i class="fa-solid fa-chart-line"></i> Source : Données SimilarWeb / Analyse Andreessen Horowitz (Jan 2025)</div>
+    </div>
+
+    <!-- Search/Filter -->
+    <div class="search-container">
+      <input type="text" id="searchInput" class="search-input" placeholder="Rechercher une IA par nom, fonction (ex: juridique, vidéo, chat)...">
+      <i class="fa-solid fa-search search-icon"></i>
+    </div>
+
+    <!-- Main Global Grid -->
+    <div class="section-divider">
+      <div class="divider-line"></div>
+      <div class="divider-title">Le Classement Global "Consumer"</div>
+      <div class="divider-line"></div>
+    </div>
+    
+    <div class="ai-grid" id="aiGrid">
+      <!-- Generated via JS -->
+    </div>
+
+    <!-- Legal Grid (Added specifically) -->
+    <div class="section-divider" style="margin-top: 80px;">
+      <div class="divider-line" style="background:var(--brand-blue);"></div>
+      <div class="divider-title">La Sélection Juridique Spécialisée <span class="legal-badge">Pour les Pros</span></div>
+      <div class="divider-line" style="background:var(--brand-blue);"></div>
+    </div>
+    
+    <div class="ai-grid" id="legalGrid">
+      <!-- Generated via JS -->
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="main-footer" role="contentinfo">
+    <div class="footer-container">
+      <div class="footer-left">
+        <a href="https://projettechacademy.github.io/Juridique/index.html" target="_blank">
+          <!-- Logo MMPA -->
+          <img class="footer-logo-img" src="https://projettechacademy.github.io/Juridique/Asset/Logo_MMPA.jpeg" alt="Logo MMPA" onerror="this.src='https://projettechacademy.github.io/Juridique/Asset/Logo_MMPA.jpg'">
+        </a>
+        <div class="footer-details">
+          <div style="font-weight:700; font-size: 1.1rem;">Mathilde Martine PAISLEY</div>
+          <div style="opacity:0.95; margin-top:6px; font-size: 0.9rem;">
+              📧 Mathilde.martine.paisley@gmail.com <br class="md:hidden"> • 📲 06 85 90 08 87
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-right">
+        <div class="footer-links-row" aria-label="Liens utilitaires">
+            <!-- Navigation -->
+            <a class="icon-btn" href="https://projettechacademy.github.io/Juridique/00_Autres/A_propos_de_moi.html" title="A propos de moi" target="_blank">👤</a>
+            <a class="icon-btn" href="https://projettechacademy.github.io/Juridique/index.html" title="Accueil" target="_blank">🏠</a>
+            <a class="icon-btn" href="https://projettechacademy.github.io/Juridique/00_Autres/Mon_Espace_Juriste_Tableau_de_bord_personnel.html" title="Mon Espace" target="_blank">📊</a>
+            <a class="icon-btn" href="https://projettechacademy.github.io/Juridique/00_Autres/formation_live_juriste.html" title="Planning" target="_blank">📅</a>
+            <a class="icon-btn" href="https://projettechacademy.github.io/Juridique/00_Autres/Lexique_Latin_Juridique.html" title="Lexique" target="_blank">📜</a>
+            <a class="icon-btn" href="https://projettechacademy.github.io/Juridique/00_Autres/Atelier_de_Competence.html" title="Atelier" target="_blank">🛠️</a>
+            <!-- Le lien Portfolio reste ici car il n'y a pas de doublon en footer -->
+            <a class="icon-btn" href="https://projettechacademy.github.io/Juridique/00_Autres/Portfolio_Mathilde-Martine-PAISLEY.html" title="Portfolio" target="_blank">🎨</a>
+            <a class="icon-btn" href="https://projettechacademy.github.io/Juridique/00_Autres/Fiche_RNCP_Juriste.html" title="RNCP" target="_blank">📚</a>
+            <a class="icon-btn" href="https://projettechacademy.github.io/Juridique/00_Autres/Univers_Actes_Juridiques.html" title="Rédaction Juridique" target="_blank">✍️</a>
+            
+            <!-- SÉPARATEUR VISUEL -->
+            <div class="footer-divider"></div>
+
+            <!-- RÉSEAUX SOCIAUX -->
+            <a class="icon-btn" href="https://chat.whatsapp.com/IoMXFl4o2otExYKCPVj22b" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp" style="color:#25D366;"></i></a>
+            <a class="icon-btn" href="https://discord.gg/qwNPV8QzFt" target="_blank" title="Discord"><i class="fab fa-discord" style="color:#5865F2;"></i></a>
+            <a class="icon-btn" href="https://www.linkedin.com/in/mathilde-martine-paisley-1a4422382/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin" style="color:#0077b5;"></i></a>
+            <a class="icon-btn" href="https://www.instagram.com/enervyx/" target="_blank" title="Instagram"><i class="fab fa-instagram" style="color:#E1306C;"></i></a>
+            <a class="icon-btn" href="https://www.tiktok.com/@enervyx/" target="_blank" title="TikTok"><i class="fab fa-tiktok" style="color:#00f2ea;"></i></a>
+        </div>
+      </div>
+
+      <div class="copyright">
+        💫 The Jurist Elite Club By Studi ✨ La Villa des Juristes Brisés 💔 sur l’Île de L’INSTRUCTION !🏝 <br> 
+        By Mathilde Martine PAISLEY | © 2025 Tous droits réservés
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // --- DATA: GLOBAL TOOLS (Based on a16z image) ---
+    const aiTools = [
+      { rank: 1, name: "ChatGPT", url: "https://chatgpt.com", category: "Assistant", desc: "Le leader incontesté. Rédaction, analyse, code, et recherche web. (Freemium)" },
+      { rank: 2, name: "DeepSeek", url: "https://www.deepseek.com", category: "Assistant / Code", desc: "Modèle chinois très performant, rivalisant avec GPT-4 à moindre coût. (Gratuit/Pro)" },
+      { rank: 3, name: "Character.ai", url: "https://character.ai", category: "Divertissement", desc: "Dialoguez avec des personnages fictifs ou célèbres. Très immersif. (Freemium)" },
+      { rank: 4, name: "Perplexity", url: "https://www.perplexity.ai", category: "Moteur de Recherche", desc: "Alternative à Google : des réponses sourcées et précises en temps réel. (Freemium)" },
+      { rank: 5, name: "JanitorAI", url: "https://janitorai.com", category: "Roleplay", desc: "Chatbots de personnages sans filtre (souvent NSFW). (Freemium)" },
+      { rank: 6, name: "Claude", url: "https://claude.ai", category: "Assistant / Rédaction", desc: "L'IA la plus 'humaine' et littéraire. Excellente pour l'analyse de longs documents. (Freemium)" },
+      { rank: 7, name: "QuillBot", url: "https://quillbot.com", category: "Écriture", desc: "Outil de paraphrase, résumé et correction grammaticale. (Freemium)" },
+      { rank: 8, name: "Suno", url: "https://suno.com", category: "Musique", desc: "Créez des chansons complètes (paroles + voix + musique) en quelques secondes. (Freemium)" },
+      { rank: 9, name: "SpicyChat.ai", url: "https://spicychat.ai", category: "Roleplay", desc: "Chatbot de personnages orienté divertissement adulte. (Freemium)" },
+      { rank: 10, name: "Doubao", url: "https://www.doubao.com", category: "Assistant (Chine)", desc: "L'IA grand public de ByteDance (TikTok), ultra-populaire en Chine." },
+      { rank: 11, name: "Kimi", url: "https://kimi.moonshot.cn", category: "Assistant (Chine)", desc: "Capable de traiter des quantités massives de texte (context window géante)." },
+      { rank: 12, name: "Hailuo AI", url: "https://hailuoai.com", category: "Vidéo", desc: "Génération de vidéos réalistes, concurrent montant de Sora." },
+      { rank: 13, name: "Hugging Face", url: "https://huggingface.co", category: "Développement", desc: "La plateforme de référence pour l'IA open-source (modèles, datasets)." },
+      { rank: 14, name: "Poe", url: "https://poe.com", category: "Agrégateur", desc: "Accédez à tous les modèles (GPT, Claude, Mistral) via une seule interface. (Freemium)" },
+      { rank: 15, name: "Adot", url: "https://www.adot.ai", category: "Moteur de Recherche", desc: "Moteur de recherche IA mobile (populaire en Asie)." },
+      { rank: 16, name: "Eden AI", url: "https://www.edenai.co", category: "API / Dev", desc: "Agrégateur d'API pour développeurs (permet de combiner plusieurs IA)." },
+      { rank: 17, name: "PolyBuzz", url: "https://polybuzz.ai", category: "Création", desc: "Outil de création de contenu viral." },
+      { rank: 18, name: "SeaArt.ai", url: "https://www.seaart.ai", category: "Image", desc: "Génération d'images artistiques et outils d'édition puissants." },
+      { rank: 19, name: "Liner", url: "https://getliner.com", category: "Productivité", desc: "Surligneur web intelligent et assistant de recherche pour étudiants/pros." },
+      { rank: 20, name: "Kling AI", url: "https://klingai.com", category: "Vidéo", desc: "Génération vidéo de haute qualité (similaire à Sora/Hailuo)." },
+      { rank: 21, name: "Civitai", url: "https://civitai.com", category: "Image / Art", desc: "La communauté pour partager des modèles 'Stable Diffusion' (souvent artistiques)." },
+      { rank: 22, name: "ElevenLabs", url: "https://elevenlabs.io", category: "Audio / Voix", desc: "Le meilleur synthétiseur vocal (Text-to-Speech) du marché. Bluffant de réalisme." },
+      { rank: 23, name: "Sora", url: "https://openai.com/sora", category: "Vidéo", desc: "Le générateur vidéo d'OpenAI (accès encore restreint/bêta)." },
+      { rank: 24, name: "Crushon AI", url: "https://crushon.ai", category: "Roleplay", desc: "Chatbots de personnages sans filtre." },
+      { rank: 25, name: "Blackbox AI", url: "https://www.blackbox.ai", category: "Code", desc: "Assistant spécialisé pour les développeurs et la programmation." },
+      { rank: 26, name: "DeepAI", url: "https://deepai.org", category: "Image / Chat", desc: "Outils créatifs simples et accessibles pour générer de l'art." },
+      { rank: 27, name: "Gamma", url: "https://gamma.app", category: "Présentation", desc: "Génère des présentations PowerPoint, docs et sites web en une phrase. (Top productivité)" },
+      { rank: 28, name: "Leonardo.ai", url: "https://leonardo.ai", category: "Image", desc: "Génération d'assets graphiques de haute qualité (jeux vidéo, design)." },
+      { rank: 29, name: "Cutout.pro", url: "https://www.cutout.pro", category: "Photo", desc: "Outils de retouche photo automatisés (détourage, amélioration)." },
+      { rank: 30, name: "Brainly", url: "https://brainly.com", category: "Éducation", desc: "Aide aux devoirs collaborative boostée par l'IA." },
+      { rank: 31, name: "Photoroom", url: "https://www.photoroom.com", category: "Photo / E-com", desc: "Créez des photos produits pro (suppression fond) depuis votre téléphone." },
+      { rank: 32, name: "Moescape AI", url: "https://moescape.ai", category: "Anime / Chat", desc: "Plateforme sociale pour fans d'anime et IA." },
+      { rank: 33, name: "Midjourney", url: "https://www.midjourney.com", category: "Image", desc: "La référence artistique pour la génération d'images (via Discord ou Web)." },
+      { rank: 34, name: "Candy.ai", url: "https://candy.ai", category: "Compagnon", desc: "Petite amie virtuelle par IA (Divertissement)." },
+      { rank: 35, name: "Zeemo", url: "https://zeemo.ai", category: "Vidéo / Sous-titres", desc: "Sous-titrage automatique et édition vidéo rapide pour réseaux sociaux." },
+      { rank: 36, name: "VEED", url: "https://www.veed.io", category: "Vidéo", desc: "Éditeur vidéo en ligne complet avec outils IA (sous-titres, avatars)." },
+      { rank: 37, name: "Invideo AI", url: "https://invideo.io", category: "Vidéo", desc: "Créez des vidéos YouTube/Tiktok complètes à partir d'un prompt texte." },
+      { rank: 38, name: "Pixelcut", url: "https://www.pixelcut.ai", category: "Design", desc: "Outils de design graphique IA pour les vendeurs en ligne." },
+      { rank: 39, name: "Talkie", url: "https://www.talkie-ai.com", category: "Chatbot", desc: "Discutez avec des personnages IA inspirés de la pop culture." },
+      { rank: 40, name: "PixAI", url: "https://pixai.art", category: "Image / Anime", desc: "Générateur d'art spécialisé dans le style Anime/Manga." },
+      { rank: 41, name: "Monica", url: "https://monica.im", category: "Assistant Web", desc: "Extension navigateur tout-en-un (résumé, écriture, chat) partout sur le web." },
+      { rank: 42, name: "Cursor", url: "https://www.cursor.com", category: "Code", desc: "L'éditeur de code qui révolutionne le dev. VS Code dopé à l'IA." },
+      { rank: 43, name: "Ideogram", url: "https://ideogram.ai", category: "Image", desc: "Excellent pour générer des images contenant du texte lisible (logos, typos)." },
+      { rank: 44, name: "CHUB", url: "https://chub.ai", category: "Roleplay", desc: "Communauté de personnages pour interfaces de chat." },
+      { rank: 45, name: "Clipchamp", url: "https://clipchamp.com", category: "Vidéo", desc: "L'éditeur vidéo officiel de Microsoft, simple et efficace." },
+      { rank: 46, name: "Meta AI", url: "https://www.meta.ai", category: "Assistant", desc: "L'assistant de Facebook/Instagram/WhatsApp. Génération d'images rapide." },
+      { rank: 47, name: "StudyX", url: "https://studyx.ai", category: "Éducation", desc: "Outil d'aide académique tout-en-un pour étudiants." },
+      { rank: 48, name: "Bolt", url: "https://bolt.new", category: "Code / Web", desc: "Développement web instantané dans le navigateur. De l'idée à l'app." },
+      { rank: 49, name: "PicWish", url: "https://picwish.com", category: "Photo", desc: "Traitement d'image (suppression flou, objets, fonds)." },
+      { rank: 50, name: "Joyland", url: "https://www.joyland.ai", category: "Compagnon", desc: "Plateforme de personnages virtuels pour le divertissement." }
+    ];
+
+    // --- DATA: LEGAL TOOLS (Curated Selection) ---
+    const legalTools = [
+      { rank: "Top", name: "Doctrine", url: "https://www.doctrine.fr", category: "Intelligence Juridique", desc: "L'outil français incontournable. Centralise jurisprudence, lois et commentaires avec une recherche sémantique puissante." },
+      { rank: "Top", name: "GenIA-L", url: "https://www.lefebvre-dalloz.fr", category: "Assistant Juridique", desc: "L'IA de Lefebvre Dalloz. Fiabilité maximale grâce à la base documentaire de l'éditeur juridique de référence." },
+      { rank: "Top", name: "Harvey", url: "https://www.harvey.ai", category: "Avocats / Enterprise", desc: "Le partenaire des grands cabinets (Allen & Overy). Une IA sur-mesure pour l'analyse contractuelle complexe." },
+      { rank: "Top", name: "Jimini", url: "https://www.jimini.ai", category: "Copilote", desc: "Le copilote IA français pour avocats : automatise la recherche et la rédaction de premières ébauches." },
+      { rank: "Top", name: "Predictice", url: "https://www.predictice.com", category: "Justice Prédictive", desc: "Calculez vos chances de succès et le montant des indemnités grâce à l'analyse de millions de décisions." },
+      { rank: "Top", name: "Jus Mundi", url: "https://jusmundi.com", category: "Droit International", desc: "Le moteur de recherche mondial pour le droit international et l'arbitrage. Indispensable pour l'export." },
+      { rank: "Top", name: "Lexis+ AI", url: "https://www.lexisnexis.fr", category: "Recherche", desc: "L'IA générative couplée à la base de données LexisNexis. Résumés, rédaction et analyse sécurisée." },
+      { rank: "Student", name: "JurisAsk", url: "https://jurislogic.fr/jurisask-ia/", category: "Étudiants", desc: "L'assistant conçu spécifiquement pour les étudiants en droit (méthodologie, fiches d'arrêt)." }
+    ];
+
+    const gridContainer = document.getElementById('aiGrid');
+    const legalContainer = document.getElementById('legalGrid');
+    const searchInput = document.getElementById('searchInput');
+
+    // Function to render a grid
+    function renderGrid(tools, container, isLegal = false) {
+      container.innerHTML = '';
+      
+      if(tools.length === 0) {
+        container.innerHTML = '<div style="grid-column: 1/-1; text-align:center; padding:20px; color:#888;">Aucun résultat trouvé...</div>';
+        return;
+      }
+
+      tools.forEach(tool => {
+        // Simple domain cleaner
+        let domain = tool.url.replace('https://', '').replace('http://', '').replace('www.', '').replace(/\/$/, '');
+        if(domain.indexOf('/') > 0) domain = domain.substring(0, domain.indexOf('/')); // Keep only root domain mostly
+
+        const card = document.createElement('div');
+        card.className = isLegal ? 'ai-card legal-card' : 'ai-card';
+        
+        // Badge text
+        let badgeText = isLegal ? '<i class="fa-solid fa-scale-balanced"></i>' : `#${tool.rank}`;
+
+        card.innerHTML = `
+          <div class="rank-badge">${badgeText}</div>
+          <div class="card-header">
+            <h3 class="ai-name">${tool.name}</h3>
+            <span class="ai-category">${tool.category}</span>
+          </div>
+          <div class="ai-desc">${tool.desc}</div>
+          <div class="card-actions">
+            <a href="${tool.url}" target="_blank" rel="noopener noreferrer" class="visit-btn">
+              Visiter <span style="font-size:0.8em; opacity:0.7;">(${domain})</span> <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    // Initial Render
+    renderGrid(aiTools, gridContainer);
+    renderGrid(legalTools, legalContainer, true);
+
+    // Filter Logic
+    searchInput.addEventListener('input', (e) => {
+      const term = e.target.value.toLowerCase();
+      
+      // Filter Global Tools
+      const filteredGlobal = aiTools.filter(tool => 
+        tool.name.toLowerCase().includes(term) || 
+        tool.category.toLowerCase().includes(term) ||
+        tool.desc.toLowerCase().includes(term)
+      );
+      renderGrid(filteredGlobal, gridContainer);
+
+      // Filter Legal Tools
+      const filteredLegal = legalTools.filter(tool => 
+        tool.name.toLowerCase().includes(term) || 
+        tool.category.toLowerCase().includes(term) ||
+        tool.desc.toLowerCase().includes(term)
+      );
+      renderGrid(filteredLegal, legalContainer, true);
+    });
+
+  </script>
+
+</body>
+</html>

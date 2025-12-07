@@ -1,0 +1,1368 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atelier de Compétence Juridique - Niveau Expert MBA</title>
+    
+    <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/e/e0/Balance_of_Justice_SVG.svg" type="image/svg+xml">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&family=Montserrat:wght@500;600;700&family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        /* === CHARTE GRAPHIQUE COSMIC PREMIUM === */
+        :root {
+            --cta: #D9A526;       /* Or */
+            --brand-blue: #0F2C48; /* Bleu Nuit */
+            --ivory: #F6F2E8;     
+            --bronze: #B4792A;
+            
+            /* Couleurs spécifiques */
+            --bg-rule: #fffbeb; --border-rule: #d97706; --text-rule: #92400e;
+            --bg-fact: #eff6ff; --border-fact: #2563eb; --text-fact: #1e40af;
+            --bg-solution: #f0fdf4; --border-solution: #16a34a; --text-solution: #166534;
+        }
+
+        body { 
+            margin: 0; background-color: var(--ivory); color: var(--brand-blue); 
+            font-family: 'Outfit', sans-serif; display: flex; flex-direction: column; min-height: 100vh;
+        }
+
+        /* --- HEADER --- */
+        .top-bar {
+            background-color: var(--brand-blue); padding: 15px 0;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15); position: sticky; top: 0; z-index: 10000;
+            border-bottom: 4px solid var(--cta);
+        }
+        .top-bar-container {
+            max-width: 1400px; margin: 0 auto; padding: 0 20px;
+            display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px;
+        }
+        .top-bar-left { display: flex; align-items: center; gap: 15px; flex: 1; min-width: 320px; }
+        .logo-top-bar { width: 60px; height: 60px; border-radius: 50%; border: 2px solid var(--cta); object-fit: cover; background: white; }
+        .identity-stack { display: flex; flex-direction: column; justify-content: center; }
+        .club-title-main { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; color: #ffffff; line-height: 1.1; margin-bottom: 3px; }
+        .club-subtitle { font-family: 'Lato', sans-serif; font-size: 0.75rem; color: var(--cta); font-weight: 600; }
+        .top-bar-center { display: flex; gap: 12px; align-items: center; }
+
+        .header-icon-btn {
+            position: relative; width: 40px; height: 40px; border-radius: 50%;
+            background: linear-gradient(135deg, #D9A526 0%, #B4792A 100%);
+            border: 1px solid rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center;
+            font-size: 1.1rem; text-decoration: none; transition: all 0.3s ease; color: white;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        .header-icon-btn:hover { transform: translateY(-3px) scale(1.1); background: linear-gradient(135deg, #FFD700 0%, #D9A526 100%); box-shadow: 0 6px 15px rgba(217, 165, 38, 0.4); }
+        .nav-profile-img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 2px solid #fff; }
+        
+        .header-icon-btn::after {
+            content: attr(data-tooltip); position: absolute; top: 130%; left: 50%; transform: translateX(-50%) translateY(-10px);
+            background-color: #fff; color: var(--brand-blue); padding: 4px 10px; border-radius: 20px;
+            font-size: 0.7rem; font-weight: 700; white-space: nowrap; opacity: 0; visibility: hidden; transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2); pointer-events: none; z-index: 100;
+        }
+        .header-icon-btn:hover::after { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+
+        @keyframes cosmic-pulse { 0% { transform: scale(1); } 50% { transform: scale(1.02); } 100% { transform: scale(1); } }
+        .btn-portfolio-cosmic {
+            padding: 8px 20px; border-radius: 50px; font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 0.9rem;
+            background: linear-gradient(135deg, #D9A526 0%, #B4792A 100%); color: white !important; text-decoration: none; 
+            border: 1px solid rgba(255,255,255,0.2); display: inline-flex; align-items: center; gap: 8px; animation: cosmic-pulse 2s infinite;
+        }
+        .btn-portfolio-cosmic:hover { background: linear-gradient(135deg, #F1C40F 0%, #D9A526 100%); transform: translateY(-2px); }
+
+        /* --- NAVIGATION INTERNE --- */
+        .nav-tabs-container {
+            background: white; box-shadow: 0 4px 15px rgba(0,0,0,0.05); z-index: 40; 
+            position: sticky; top: 95px; 
+        }
+        .tab-btn {
+            font-family: 'Montserrat', sans-serif; color: var(--brand-blue); border-bottom: 4px solid transparent;
+            opacity: 0.7; transition: all 0.3s; padding: 20px 30px; font-size: 0.9rem; font-weight: 600; text-transform: uppercase;
+            display: flex; align-items: center; gap: 10px; flex-shrink: 0; cursor: pointer;
+        }
+        .tab-btn:hover { opacity: 1; background-color: #f8fafc; color: var(--cta); }
+        .tab-btn.active { opacity: 1; border-bottom: 4px solid var(--cta); background-color: white; color: var(--brand-blue); font-weight: 800; }
+
+        /* --- CONTENU --- */
+        .tab-content { display: none; animation: fadeIn 0.4s ease-out; padding: 40px 0; }
+        .tab-content.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .intro-box {
+            background: white; padding: 30px; border-radius: 16px; margin-bottom: 40px;
+            border-left: 6px solid var(--cta); box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+        .intro-title { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--brand-blue); margin-bottom: 10px; }
+
+        /* --- 1. ACCUEIL (FUN & DÉTENDU) --- */
+        .welcome-hero { text-align: center; margin-bottom: 40px; }
+        .welcome-emoji { font-size: 3rem; margin-bottom: 10px; display: block; animation: bounce 2s infinite; }
+        @keyframes bounce { 0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 40% {transform: translateY(-10px);} 60% {transform: translateY(-5px);} }
+        .welcome-text { font-size: 1.1rem; color: #475569; max-width: 800px; margin: 0 auto; line-height: 1.6; }
+        
+        .qq-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 30px; text-align: left; }
+        .qq-card { background: #f8fafc; padding: 20px; border-radius: 12px; border: 1px solid #e2e8f0; transition: 0.3s; }
+        .qq-card:hover { transform: translateY(-5px); border-color: var(--cta); background: white; box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+        .qq-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+        .qq-icon { font-size: 1.5rem; color: var(--cta); }
+        .qq-question { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 1rem; color: var(--brand-blue); text-transform: uppercase; }
+        .qq-answer { color: #64748b; font-size: 0.9rem; }
+
+        /* --- SYLLOGISMES --- */
+        .cases-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(550px, 1fr)); gap: 30px; }
+        .case-card { background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid rgba(0,0,0,0.05); display: flex; flex-direction: column; transition: transform 0.3s; }
+        .case-card:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(0,0,0,0.1); }
+        .case-header { padding: 20px; background: #fcfbfc; border-bottom: 1px solid #f1f5f9; display: flex; justify-content: space-between; align-items: center; }
+        .badge-circle { width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 800; color: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .bg-social { background-color: #be185d; } .bg-affaires { background-color: #b45309; } .bg-divers { background-color: #0369a1; }
+        .case-number { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 1.2rem; color: var(--cta); }
+        .case-body { padding: 25px; flex-grow: 1; }
+        .case-title { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; color: var(--brand-blue); margin-bottom: 15px; }
+        .case-context { background: #f8fafc; padding: 15px; border-radius: 8px; border-left: 4px solid #94a3b8; font-style: italic; color: #475569; font-size: 0.95rem; margin-bottom: 20px; line-height: 1.5; }
+        
+        .reveal-btn { width: 100%; padding: 12px; background: var(--brand-blue); color: white; border: none; border-radius: 50px; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; transition: 0.3s; margin-top: auto; }
+        .reveal-btn:hover { background-color: var(--cta); transform: scale(1.02); }
+        .reveal-btn.active { background-color: #e2e8f0; color: var(--brand-blue); }
+        
+        .case-solution { max-height: 0; overflow: hidden; transition: max-height 0.6s ease-out; opacity: 0; }
+        .case-solution.open { max-height: 1000px; opacity: 1; margin-top: 25px; }
+        
+        .syllogism-step { margin-bottom: 20px; padding: 15px; border-radius: 10px; font-size: 0.95rem; text-align: justify; line-height: 1.6; display: flex; flex-direction: column; gap: 8px; }
+        .step-label { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; display: inline-block; padding-bottom: 2px; border-bottom: 1px solid rgba(0,0,0,0.1); width: fit-content; }
+        
+        .step-majeure { background: var(--bg-rule); border: 1px solid var(--border-rule); color: var(--text-rule); }
+        .step-mineure { background: var(--bg-fact); border: 1px solid var(--border-fact); color: var(--text-fact); }
+        .step-conclusion { background: var(--bg-solution); border: 1px solid var(--border-solution); color: var(--text-solution); font-weight: 700; }
+        
+        .strategic-tip { margin-top: 20px; padding: 15px; background: #fff7ed; border: 1px dashed #f97316; border-radius: 8px; color: #9a3412; font-size: 0.9rem; display: flex; gap: 12px; align-items: start; line-height: 1.5; }
+
+        /* --- 2. LEXIQUE (CARTES) --- */
+        .lexique-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+        .lexique-card { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.03); border: 1px solid #e5e7eb; transition: all 0.3s ease; cursor: pointer; position: relative; }
+        .lexique-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); border-color: var(--cta); }
+        .lexique-header { padding: 15px 20px; background: #fdfbf7; border-bottom: 1px solid #f1f5f9; display: flex; justify-content: space-between; align-items: center; }
+        .lexique-term { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 1.1rem; color: var(--brand-blue); }
+        .lexique-num { font-size: 0.7rem; font-weight: 800; color: #ccc; font-family: 'Montserrat', sans-serif; }
+        .lexique-body { padding: 0 20px; max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out; }
+        .lexique-card.open .lexique-body { max-height: 500px; padding-bottom: 20px; padding-top: 15px; }
+        .lexique-def { font-size: 0.95rem; color: #374151; margin-bottom: 15px; line-height: 1.5; }
+        .lexique-context { background: #fff7ed; border-left: 3px solid #f97316; padding: 10px; font-size: 0.85rem; color: #9a3412; border-radius: 0 4px 4px 0; }
+        .lexique-arrow { transition: transform 0.3s; color: var(--cta); }
+        .lexique-card.open .lexique-arrow { transform: rotate(180deg); }
+
+        /* --- 3. FICHES RÉFLEXES (GRID) --- */
+        .reflexe-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); gap: 30px; }
+        .reflexe-card { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); transition: 0.3s; border: 1px solid #e5e7eb; }
+        .reflexe-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
+        .reflexe-header { padding: 20px; color: white; font-weight: 700; font-family: 'Playfair Display', serif; font-size: 1.1rem; display: flex; justify-content: space-between; align-items: center; }
+        .bg-danger-header { background: linear-gradient(135deg, #ef4444, #b91c1c); }
+        .bg-proc-header { background: linear-gradient(135deg, #3b82f6, #1d4ed8); }
+        .bg-gestion-header { background: linear-gradient(135deg, #10b981, #047857); }
+        .reflexe-body { padding: 20px; }
+        .reflexe-def-box { background: #f3f4f6; padding: 12px; border-radius: 8px; font-size: 0.9rem; color: #374151; margin-bottom: 15px; border-left: 4px solid var(--brand-blue); line-height: 1.5; }
+        .reflexe-def-title { font-weight: 800; font-size: 0.75rem; text-transform: uppercase; color: var(--brand-blue); display: block; margin-bottom: 5px; }
+        .reflexe-step { display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start; }
+        .step-num { background: #f3f4f6; color: var(--brand-blue); font-weight: 800; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 0.8rem; margin-top: 2px; }
+        .reflexe-warning { margin-top: 15px; padding: 10px; background: #fef2f2; border-left: 3px solid #ef4444; color: #b91c1c; font-size: 0.85rem; font-weight: 600; line-height: 1.4; }
+
+        /* --- 4. DALLOZ (GRID) --- */
+        .dalloz-search-container { background: var(--bg-fact); padding: 20px; border-radius: 12px; margin-bottom: 30px; display: flex; gap: 15px; align-items: center; border: 1px solid var(--border-fact); }
+        .dalloz-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 15px; }
+        .dalloz-card { background: white; padding: 15px; border-radius: 8px; border: 1px solid #e2e8f0; display: flex; flex-direction: column; gap: 5px; transition: 0.2s; }
+        .dalloz-card:hover { border-color: #b91c1c; box-shadow: 0 4px 10px rgba(185, 28, 28, 0.1); transform: translateY(-2px); }
+        .dalloz-abbr { font-family: 'Playfair Display', serif; font-weight: 700; color: #b91c1c; font-size: 1.1rem; }
+        .dalloz-full { font-size: 0.9rem; color: #334155; line-height: 1.4; }
+
+        /* --- 5. COMPÉTENCES (GUIDES) --- */
+        .matiere-section { margin-bottom: 50px; background: #fff; padding: 30px; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.03); border: 1px solid #f1f5f9; }
+        .matiere-header { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; margin-bottom: 20px; border-bottom: 2px solid #f1f5f9; padding-bottom: 15px; gap: 20px; }
+        .matiere-title-main { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--brand-blue); display: flex; align-items: center; gap: 15px; }
+        
+        /* Badges de filière */
+        .filiere-badge { padding: 8px 20px; border-radius: 50px; font-family: 'Montserrat', sans-serif; font-size: 0.85rem; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; color: white !important; transition: transform 0.2s; }
+        .filiere-badge:hover { transform: scale(1.05); }
+        .bg-social-gradient { background: linear-gradient(135deg, #d946ef 0%, #c026d3 100%); /* Fuchsia */ box-shadow: 0 4px 15px rgba(192, 38, 211, 0.3); }
+        .bg-affaires-gradient { background: linear-gradient(135deg, #D9A526 0%, #B4792A 100%); /* Or */ box-shadow: 0 4px 15px rgba(217, 165, 38, 0.3); }
+        .bg-socle-gradient { background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%); /* Bleu */ box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3); }
+
+        .matiere-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+        .matiere-card { background: #fcfcfc; padding: 20px; border-radius: 12px; border: 1px solid #e2e8f0; transition: 0.3s; }
+        .matiere-card:hover { border-color: var(--cta); transform: translateY(-3px); background: white; }
+        .matiere-name { font-family: 'Montserrat', sans-serif; font-weight: 800; color: var(--brand-blue); font-size: 1rem; margin-bottom: 8px; display: block; }
+        .matiere-desc { font-size: 0.9rem; color: #475569; line-height: 1.5; margin-bottom: 15px; }
+        
+        .dalloz-rec { background: #fee2e2; border-left: 4px solid #ef4444; padding: 12px; margin-top: 20px; border-radius: 0 8px 8px 0; }
+        .dalloz-rec-title { color: #b91c1c; font-weight: 800; font-size: 0.85rem; display: flex; align-items: center; gap: 5px; margin-bottom: 5px; text-transform: uppercase; }
+        .dalloz-link { display: inline-block; color: #991b1b; text-decoration: none; font-size: 0.85rem; font-weight: 600; border-bottom: 1px dotted #991b1b; transition: 0.2s; margin-right: 10px; }
+        .dalloz-link:hover { color: #ef4444; border-bottom-style: solid; }
+
+        /* --- 7. FLASHCARDS (STYLE JEU) --- */
+        .flashcard-game-container { display: flex; flex-direction: column; align-items: center; padding: 20px 0; min-height: 500px; }
+        .flashcard-scene { width: 600px; height: 350px; margin-bottom: 30px; perspective: 1000px; max-width: 100%; }
+        .flashcard-obj { width: 100%; height: 100%; transition: transform 0.6s; transform-style: preserve-3d; cursor: pointer; position: relative; border-radius: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.1); }
+        .flashcard-obj.is-flipped { transform: rotateY(180deg); }
+        
+        .card-face { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 20px; padding: 40px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; overflow: hidden; }
+        .card-face-front { background: white; border: 2px solid #e2e8f0; }
+        .card-face-back { background: linear-gradient(135deg, #0F2C48 0%, #1e293b 100%); color: white; transform: rotateY(180deg); }
+        
+        .card-category { position: absolute; top: 20px; left: 50%; transform: translateX(-50%); background: #f1f5f9; padding: 5px 15px; border-radius: 50px; font-size: 0.75rem; font-weight: 800; color: #64748b; letter-spacing: 1px; text-transform: uppercase; }
+        .card-question { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 700; color: var(--brand-blue); line-height: 1.3; padding: 0 20px; }
+        .card-hint { margin-top: 15px; font-size: 0.9rem; color: #94a3b8; font-style: italic; }
+        
+        .card-answer-title { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 0.9rem; color: var(--cta); text-transform: uppercase; margin-bottom: 15px; display: block; }
+        .card-answer-text { font-size: 1.1rem; line-height: 1.6; margin-bottom: 20px; }
+        .card-trap { background: rgba(239, 68, 68, 0.2); padding: 10px 20px; border-radius: 8px; border: 1px solid rgba(239, 68, 68, 0.4); color: #fca5a5; font-size: 0.9rem; font-weight: 600; }
+        
+        .flashcard-controls { display: flex; gap: 20px; }
+        .btn-game { padding: 12px 30px; border-radius: 50px; font-weight: 700; border: none; cursor: pointer; transition: 0.2s; font-size: 1rem; display: flex; align-items: center; gap: 10px; }
+        .btn-prev { background: #e2e8f0; color: #475569; }
+        .btn-prev:hover { background: #cbd5e1; }
+        .btn-next { background: var(--cta); color: var(--brand-blue); box-shadow: 0 4px 15px rgba(217, 165, 38, 0.3); }
+        .btn-next:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(217, 165, 38, 0.4); }
+        .btn-shuffle { background: var(--brand-blue); color: white; }
+        
+        /* Boutons Audio Flashcards (Style Spécifique) */
+        .btn-fc-audio { position: absolute; bottom: 20px; right: 20px; width: 45px; height: 45px; border-radius: 50%; background: rgba(0,0,0,0.05); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: 0.2s; border: none; color: var(--brand-blue); z-index: 20; font-size: 1.2rem; }
+        .btn-fc-audio:hover { background: var(--cta); color: white; transform: scale(1.1); }
+        .card-face-back .btn-fc-audio { background: rgba(255,255,255,0.2); color: white; }
+        .card-face-back .btn-fc-audio:hover { background: white; color: var(--brand-blue); }
+
+        /* Boutons Audio Généraux */
+        .btn-audio-small { width: 28px; height: 28px; border-radius: 50%; background: rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; color: white; cursor: pointer; transition: 0.2s; z-index: 10; }
+        .btn-audio-small:hover { background: rgba(255,255,255,0.4); transform: scale(1.1); }
+        .btn-audio-dark { width: 30px; height: 30px; border-radius: 50%; border: 1px solid #cbd5e1; color: var(--brand-blue); display: flex; align-items: center; justify-content: center; cursor: pointer; z-index:10; }
+        .btn-audio-dark:hover { background: var(--brand-blue); color: white; }
+
+        /* FOOTER */
+        .main-footer { background-color: var(--brand-blue); color: #F6F2E8; padding-top: 50px; font-family: 'Lato', sans-serif; font-size: 0.95rem; width: 100%; margin-top: auto; }
+        .footer-container { max-width: 1400px; margin: 0 auto; padding: 0 25px; }
+        .footer-content { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 30px; padding-bottom: 30px; align-items: flex-start; }
+        .footer-identity { display: flex; flex-direction: row; align-items: center; gap: 20px; min-width: 300px; }
+        .footer-logo-img { width: 60px; height: 60px; border-radius: 8px; border: 2px solid var(--cta); background: #fff; object-fit: cover; }
+        .footer-info-compact { display: flex; flex-direction: column; text-align: left; }
+        .footer-name { color: var(--cta); font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; margin: 0; line-height: 1.2; }
+        .footer-contact-stack { display: flex; flex-direction: column; gap: 5px; font-size: 0.85rem; opacity: 0.8; }
+        .footer-link { text-decoration: none; color: inherit; transition: color 0.3s; display: inline-block; }
+        .footer-link:hover { color: var(--cta); }
+        .footer-dock-col { display: flex; flex-direction: column; align-items: flex-end; gap: 10px; margin-left: auto; }
+        .dock-group { display: flex; flex-direction: column; align-items: flex-end; gap: 5px; }
+        .dock-label { font-family: 'Montserrat', sans-serif; font-size: 0.8rem; text-transform: uppercase; color: var(--cta); opacity: 0.7; }
+        .icon-dock { display: flex; gap: 15px; flex-wrap: wrap; justify-content: flex-end; align-items: center; }
+        .icon-btn { position: relative; width: 45px; height: 45px; border-radius: 50%; background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(217, 165, 38, 0.3); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; text-decoration: none; transition: all 0.3s; cursor: pointer; color: #fff; }
+        .icon-btn:hover { transform: translateY(-5px) scale(1.1); background: #fff; border-color: #fff; }
+        .brand-whatsapp { color: #25D366 !important; } .icon-btn:hover .brand-whatsapp { color: #25D366 !important; }
+        .brand-discord { color: #5865F2 !important; } .icon-btn:hover .brand-discord { color: #5865F2 !important; }
+        .brand-linkedin { color: #0077b5 !important; } .icon-btn:hover .brand-linkedin { color: #0077b5 !important; }
+        .brand-instagram { color: #E1306C !important; } .icon-btn:hover .brand-instagram { color: #E1306C !important; }
+        .brand-tiktok { color: #00f2ea !important; text-shadow: 2px 2px 0px #ff0050; } .icon-btn:hover .brand-tiktok { color: #000 !important; text-shadow: none; } 
+        .brand-nav { color: var(--cta) !important; } .icon-btn:hover .brand-nav { color: var(--brand-blue) !important; }
+        .dock-separator { width: 1px; height: 30px; background-color: rgba(255,255,255,0.2); margin: 0 10px; }
+        .footer-bottom { text-align: center; padding: 15px 0; font-size: 0.8rem; color: rgba(255,255,255,0.4); background-color: rgba(0,0,0,0.2); border-top: 1px solid rgba(255,255,255,0.05); width: 100%; }
+        
+        #backToTop { position: fixed; bottom: 30px; right: 30px; background: var(--cta); color: var(--brand-blue); width: 50px; height: 50px; border-radius: 50%; display: flex; justify-content: center; align-items: center; cursor: pointer; opacity: 0; transition: 0.3s; z-index: 1000; }
+        #backToTop.visible { opacity: 1; }
+
+        @media (max-width: 900px) {
+            .cases-grid, .reflexe-grid, .lexique-grid { grid-template-columns: 1fr; }
+            .footer-content { flex-direction: column; align-items: center; text-align: center; }
+            .footer-dock-col { align-items: center; width: 100%; margin-left: 0; }
+            .icon-dock { justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <div class="top-bar-container">
+            <div class="top-bar-left">
+                <img src="https://projettechacademy.github.io/Juridique/Asset/Logo_juriste.png" alt="Logo Club" class="logo-top-bar">
+                <div class="identity-stack">
+                    <span class="club-title-main">💫 The Jurist Elite Club By Studi ✨</span>
+                    <span class="club-subtitle">La Villa des Juristes Brisés 💔 sur l’Île de L’INSTRUCTION ! 🏝</span>
+                </div>
+            </div>
+            
+            <div class="top-bar-center">
+                <a href="https://projettechacademy.github.io/Juridique/index.html" target="_blank" class="header-icon-btn" aria-label="Accueil" data-tooltip="Accueil">🏠</a>
+                <a href="https://projettechacademy.github.io/Juridique/00_Autres/Mon_Espace_Juriste_Tableau_de_bord_personnel.html" target="_blank" class="header-icon-btn" aria-label="Mon Espace" data-tooltip="Mon Espace">📊</a>
+                <a href="https://projettechacademy.github.io/Juridique/00_Autres/Lexique_Latin_Juridique.html" target="_blank" class="header-icon-btn" aria-label="Lexique Latin" data-tooltip="Lexique">📜</a>
+                <a href="#" class="header-icon-btn" aria-label="Atelier" data-tooltip="Atelier" style="background: white; color: var(--brand-blue); border: 2px solid var(--cta); transform: scale(1.1);">🛠️</a>
+                <a href="https://projettechacademy.github.io/Juridique/00_Autres/formation_live_juriste.html" target="_blank" class="header-icon-btn" aria-label="Planning Live" data-tooltip="Planning">📅</a>
+                <a href="https://projettechacademy.github.io/Juridique/00_Autres/A_propos_de_moi.html" target="_blank" class="header-icon-btn" aria-label="À propos de moi" data-tooltip="Profil">👤</a>
+            </div>
+
+            <a href="https://projettechacademy.github.io/CV_MMPA-CV-Mathilde-Martine-PAISLEY/" target="_blank" class="btn-portfolio-cosmic"><span>📄</span> Mon portfolio</a>
+        </div>
+    </div>
+
+    <div class="nav-tabs-container">
+        <div class="container" style="display: flex; justify-content: center; overflow-x: auto;">
+            <!-- Onglet 1 : Accueil (PREMIER & ACTIF) -->
+            <button onclick="switchTab('accueil')" class="tab-btn active">
+                <i class="fas fa-home"></i> Accueil & Méthode
+            </button>
+            <button onclick="switchTab('syllogismes')" class="tab-btn">
+                <i class="fas fa-gavel"></i> 30 Cas Pratiques
+            </button>
+            <button onclick="switchTab('lexique')" class="tab-btn">
+                <i class="fas fa-book"></i> Lexique Expert
+            </button>
+            <button onclick="switchTab('reflexes')" class="tab-btn">
+                <i class="fas fa-shield-alt"></i> Fiches Réflexes
+            </button>
+            <button onclick="switchTab('abbrev')" class="tab-btn">
+                <i class="fas fa-book-open"></i> Abréviations
+            </button>
+            <button onclick="switchTab('competences')" class="tab-btn">
+                <i class="fas fa-graduation-cap"></i> Guides Compétences
+            </button>
+            <!-- Onglet 7 : Flashcards (NOUVEAU) -->
+            <button onclick="switchTab('flashcards')" class="tab-btn">
+                <i class="fas fa-gamepad"></i> Flashcards Quizz
+            </button>
+        </div>
+    </div>
+
+    <main class="container">
+
+        <!-- ONGLET 1 : ACCUEIL & MÉTHODE (FUN) -->
+        <div id="accueil" class="tab-content active">
+            <div class="intro-box">
+                <div class="welcome-hero">
+                    <span class="welcome-emoji">👋😎</span>
+                    <h2 class="intro-title">Salut la Team Juriste !</h2>
+                    <p class="welcome-text">
+                        Bienvenue dans ta <strong>Boîte à Outils Secrète</strong>. Ici, pas de cravate trop serrée ni de latin pompeux juste pour faire joli. <br><br>
+                        Je suis une apprenante comme toi, et j'ai créé cet espace pour qu'on puisse <strong>monter en compétence ensemble</strong> sans se prendre la tête. On a le droit de rire, de se tromper, et surtout de réussir !
+                    </p>
+                    <div style="margin-top: 20px;">
+                        <a href="https://discord.gg/qwNPV8QzFt" target="_blank" class="px-6 py-3 bg-[#5865F2] text-white font-bold rounded-lg hover:bg-[#4752c4] transition shadow-md inline-flex items-center gap-2">
+                            <i class="fab fa-discord"></i> Rejoins le Discord pour suggérer des idées !
+                        </a>
+                    </div>
+                </div>
+                
+                <h3 class="font-bold text-[#0F2C48] text-xl mb-4 text-center">👇 Comment ça marche ce truc ? 👇</h3>
+                <div class="qq-grid">
+                    <div class="qq-card">
+                        <div class="qq-header"><i class="fas fa-gavel qq-icon"></i> <span class="qq-question">Cas Pratiques</span></div>
+                        <span class="qq-answer">Entraîne-toi au <strong>syllogisme</strong>. C'est comme la muscu, mais pour le cerveau. 🧠</span>
+                    </div>
+                    <div class="qq-card">
+                        <div class="qq-header"><i class="fas fa-book qq-icon"></i> <span class="qq-question">Lexique</span></div>
+                        <span class="qq-answer">Les mots compliqués traduits en français courant. Pour briller en société (ou pas). ✨</span>
+                    </div>
+                    <div class="qq-card">
+                        <div class="qq-header"><i class="fas fa-shield-alt qq-icon"></i> <span class="qq-question">Fiches Réflexes</span></div>
+                        <span class="qq-answer">Tes <strong>Checklists de survie</strong>. À sortir quand c'est la panique à bord. 🚨</span>
+                    </div>
+                    <div class="qq-card">
+                        <div class="qq-header"><i class="fas fa-gamepad qq-icon"></i> <span class="qq-question">Flashcards</span></div>
+                        <span class="qq-answer">Mode jeu activé ! Révise en mode aléatoire pour tester tes réflexes. 🎲</span>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-10">
+                    <button onclick="switchTab('competences')" class="px-8 py-4 bg-[#D9A526] text-white font-bold rounded-full shadow-lg hover:bg-[#B4792A] transition transform hover:scale-105">
+                        Voir les programmes de formation <i class="fas fa-arrow-right ml-2"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ONGLET 2 : SYLLOGISMES -->
+        <div id="syllogismes" class="tab-content">
+            <div class="intro-box">
+                <h2 class="intro-title">L'Art du Syllogisme Juridique</h2>
+                <p class="text-gray-600">Entraînez-vous à la méthode de l'expert. Ne regardez pas la solution tout de suite : lisez les faits, qualifiez juridiquement, et tranchez.</p>
+                <div class="flex flex-wrap gap-2 mt-4 justify-center">
+                    <button onclick="filterCases('all')" class="px-4 py-2 bg-[#0F2C48] text-white rounded-full text-xs font-bold">TOUT</button>
+                    <button onclick="filterCases('Social')" class="px-4 py-2 bg-white border border-gray-300 rounded-full text-xs font-bold text-[#be185d]">SOCIAL</button>
+                    <button onclick="filterCases('Affaires')" class="px-4 py-2 bg-white border border-gray-300 rounded-full text-xs font-bold text-[#b45309]">AFFAIRES</button>
+                </div>
+            </div>
+            <div id="cases-container" class="cases-grid"></div>
+        </div>
+
+        <!-- ONGLET 3 : LEXIQUE -->
+        <div id="lexique" class="tab-content">
+            <div class="intro-box">
+                <div class="flex justify-between items-center flex-wrap gap-4">
+                    <div>
+                        <h2 class="intro-title">Le Vocabulaire de l'Expert (Français)</h2>
+                        <p class="text-sm opacity-80">Plus de 100 termes techniques indispensables. Cliquez pour voir le piège.</p>
+                    </div>
+                    <input type="text" id="lexiqueSearch" placeholder="Rechercher un terme..." class="p-3 border rounded-lg w-full md:w-1/3">
+                </div>
+            </div>
+            <div id="lexique-container" class="lexique-grid">
+                </div>
+        </div>
+
+        <!-- ONGLET 4 : FICHES RÉFLEXES -->
+        <div id="reflexes" class="tab-content">
+            <div class="intro-box">
+                <div class="mb-6">
+                    <h2 class="intro-title">Fiches Réflexes Opérationnelles</h2>
+                    <h3 class="font-bold text-[#0F2C48] text-lg mb-2"><i class="fas fa-info-circle mr-2 text-[#D9A526]"></i>C'est quoi une Fiche Réflexe ?</h3>
+                    <p class="text-gray-700 text-sm leading-relaxed mb-4">
+                        C'est votre <strong>"Checklist de Copilote"</strong> ✈️. Contrairement à un cours, la fiche réflexe s'utilise <strong>dans l'action</strong>. Elle garantit que vous ne loupez aucune étape critique.
+                    </p>
+                </div>
+
+                <!-- Légende des Codes Couleurs -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 border-t border-gray-200 pt-5">
+                    <!-- Code ROUGE -->
+                    <div class="flex items-start gap-3 p-3 rounded-lg bg-red-50 border border-red-100">
+                        <div class="w-10 h-10 rounded-full flex-shrink-0 flex items-center justify-center text-white text-lg font-bold shadow-sm" style="background: linear-gradient(135deg, #ef4444, #b91c1c);">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                        <div>
+                            <strong class="text-[#b91c1c] text-sm uppercase tracking-wide">Danger & Urgence</strong>
+                            <p class="text-xs text-gray-700 mt-1">Situations à haut risque pénal/financier. <br><strong>Action immédiate.</strong></p>
+                        </div>
+                    </div>
+                    <!-- Code BLEU -->
+                    <div class="flex items-start gap-3 p-3 rounded-lg bg-blue-50 border border-blue-100">
+                        <div class="w-10 h-10 rounded-full flex-shrink-0 flex items-center justify-center text-white text-lg font-bold shadow-sm" style="background: linear-gradient(135deg, #3b82f6, #1d4ed8);">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <div>
+                            <strong class="text-[#1d4ed8] text-sm uppercase tracking-wide">Procédure Stricte</strong>
+                            <p class="text-xs text-gray-700 mt-1">Chronologie et formalisme impératifs. <br><strong>Respect des délais.</strong></p>
+                        </div>
+                    </div>
+                    <!-- Code VERT -->
+                    <div class="flex items-start gap-3 p-3 rounded-lg bg-emerald-50 border border-emerald-100">
+                        <div class="w-10 h-10 rounded-full flex-shrink-0 flex items-center justify-center text-white text-lg font-bold shadow-sm" style="background: linear-gradient(135deg, #10b981, #047857);">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <div>
+                            <strong class="text-[#047857] text-sm uppercase tracking-wide">Gestion RH</strong>
+                            <p class="text-xs text-gray-700 mt-1">Administration quotidienne. <br><strong>Bonnes pratiques.</strong></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="reflexes-container" class="reflexe-grid"></div>
+        </div>
+
+        <!-- ONGLET 5 : ABRÉVIATIONS JURIDIQUES -->
+        <div id="abbrev" class="tab-content">
+            <div class="intro-box">
+                <h2 class="intro-title">Déchiffrer les Codes & Jurisprudence</h2>
+                <p class="text-gray-600 mb-4">Pour naviguer dans vos Codes (Civil, Travail, etc.), vous devez maîtriser les abréviations officielles.</p>
+                <div class="dalloz-search-container">
+                    <i class="fas fa-search text-gray-400"></i>
+                    <input type="text" id="abbrevSearch" placeholder="Ex: AJDA, Cass., JCP..." class="bg-transparent w-full outline-none text-gray-700 font-semibold">
+                </div>
+            </div>
+            <div id="abbrev-container" class="dalloz-grid"></div>
+        </div>
+
+        <!-- ONGLET 6 : GUIDES COMPÉTENCES -->
+        <div id="competences" class="tab-content">
+            <div class="intro-box">
+                <h2 class="intro-title">Guides de Montée en Compétences</h2>
+                <p class="text-gray-600 mb-4">Que vous soyez futur Juriste Social, d'Affaires ou Généraliste, voici les briques de compétences indispensables et les ressources recommandées pour exceller.</p>
+            </div>
+            <div id="competences-container"></div>
+        </div>
+
+        <!-- ONGLET 7 : FLASHCARDS (NOUVEAU) -->
+        <div id="flashcards" class="tab-content">
+            <div class="intro-box">
+                <h2 class="intro-title">Flashcards Quizz <span class="text-sm bg-[#D9A526] text-white px-2 py-1 rounded ml-2">Bêta</span></h2>
+                <p class="text-gray-600 mb-4">Entraînez-vous en mode aléatoire sur tout le contenu de l'appli (Lexique, Abréviations, Réflexes). Cliquez sur la carte pour voir la réponse.</p>
+            </div>
+            
+            <div class="flashcard-game-container">
+                <div class="flashcard-scene">
+                    <div class="flashcard-obj" onclick="flipCard()">
+                        <!-- FRONT -->
+                        <div class="card-face card-face-front">
+                            <span class="card-category" id="fc-cat">Catégorie</span>
+                            <div class="card-question" id="fc-question">Question ?</div>
+                            <div class="card-hint">Cliquez pour retourner</div>
+                            <!-- Audio Button Front -->
+                            <button onclick="event.stopPropagation(); readFrontCard()" class="btn-fc-audio" aria-label="Lire la question"><i class="fas fa-volume-up"></i></button>
+                        </div>
+                        <!-- BACK -->
+                        <div class="card-face card-face-back">
+                            <span class="card-answer-title">La Réponse de l'Expert</span>
+                            <div class="card-answer-text" id="fc-answer">Réponse</div>
+                            <div id="fc-trap" class="card-trap">Piège : ...</div>
+                            <!-- Audio Button Back -->
+                            <button onclick="event.stopPropagation(); readBackCard()" class="btn-fc-audio" aria-label="Lire la réponse"><i class="fas fa-volume-up"></i></button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flashcard-controls">
+                    <button onclick="prevCard()" class="btn-game btn-prev"><i class="fas fa-arrow-left"></i> Précédent</button>
+                    <button onclick="randomCard()" class="btn-game btn-shuffle"><i class="fas fa-random"></i> Mélanger</button>
+                    <button onclick="nextCard()" class="btn-game btn-next">Suivant <i class="fas fa-arrow-right"></i></button>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-identity">
+                    <img src="https://projettechacademy.github.io/Juridique/Asset/Logo_MMPA.jpeg" alt="Logo MMPA" class="footer-logo-img">
+                    <div class="footer-info-compact">
+                        <div class="footer-name">Mathilde Martine PAISLEY</div>
+                        <div class="footer-contact-stack">
+                            <a href="mailto:Mathilde.martine.paisley@gmail.com" target="_blank" class="footer-link">📧 Mathilde.martine.paisley@gmail.com</a>
+                            <a href="tel:+33685900887" class="footer-link">📲 06 85 90 08 87</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-dock-col">
+                    <div class="dock-group">
+                        <div class="dock-label">Navigation & Réseaux</div>
+                        <div class="icon-dock">
+                            <a href="https://projettechacademy.github.io/Juridique/index.html" target="_blank" class="icon-btn" data-tooltip="Accueil"><span class="brand-nav">🏠</span></a>
+                            <a href="https://projettechacademy.github.io/Juridique/00_Autres/Mon_Espace_Juriste_Tableau_de_bord_personnel.html" target="_blank" class="icon-btn" data-tooltip="Mon Espace"><span class="brand-nav">📊</span></a>
+                            <a href="https://projettechacademy.github.io/Juridique/00_Autres/Lexique_Latin_Juridique.html" target="_blank" class="icon-btn" data-tooltip="Lexique"><span class="brand-nav">📜</span></a>
+                            <a href="https://projettechacademy.github.io/Juridique/00_Autres/formation_live_juriste.html" target="_blank" class="icon-btn" data-tooltip="Planning"><span class="brand-nav">📅</span></a>
+                            <div class="dock-separator"></div>
+                            <a href="https://chat.whatsapp.com/IoMXFl4o2otExYKCPVj22b" target="_blank" class="icon-btn"><i class="fab fa-whatsapp brand-whatsapp"></i></a>
+                            <a href="https://discord.gg/qwNPV8QzFt" target="_blank" class="icon-btn"><i class="fab fa-discord brand-discord"></i></a>
+                            <a href="https://www.linkedin.com/in/mathilde-martine-paisley-1a4422382/" target="_blank" class="icon-btn"><i class="fab fa-linkedin brand-linkedin"></i></a>
+                            <a href="https://www.instagram.com/enervyx/" target="_blank" class="icon-btn"><i class="fab fa-instagram brand-instagram"></i></a>
+                            <a href="https://www.tiktok.com/@enervyx/" target="_blank" class="icon-btn"><i class="fab fa-tiktok brand-tiktok"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 Tous droits réservés – Création : 2025 – Dernière mise à jour : Décembre 2025</p>
+            </div>
+        </div>
+    </footer>
+
+    <div id="backToTop" onclick="window.scrollTo(0,0)"><i class="fas fa-arrow-up"></i></div>
+
+    <script>
+        // --- DATA 1 : SYLLOGISMES ---
+        const dbSyllogismes = [
+            { cat: "Social", title: "Abandon de Poste", context: "Absence injustifiée depuis 15 jours. Silence radio du salarié.", majeure: "Depuis la Loi 'Marché du Travail' (2023), l'abandon de poste peut conduire à une présomption de démission si le salarié ne reprend pas le travail après mise en demeure.", mineure: "La mise en demeure a été envoyée et le délai (minimum 15 jours) est expiré sans réponse.", conclusion: "Le salarié est présumé démissionnaire. Il perd donc le bénéfice de l'assurance chômage.", advice: "Ne licenciez plus pour faute grave sur ce motif pour éviter de payer le chômage indûment." },
+            { cat: "Social", title: "Insulte Facebook", context: "Salarié insulte son N+1 sur un groupe privé (10 personnes).", majeure: "Les propos tenus dans une correspondance privée (groupe fermé et restreint) sont protégés par le secret des correspondances, sauf s'ils deviennent publics.", mineure: "Le groupe est fermé, accessible uniquement à quelques 'amis' agréés.", conclusion: "Aucune sanction possible. Il s'agit d'un fait relevant de la vie privée.", advice: "La preuve devient recevable seulement si un membre du groupe vous la transmet spontanément." },
+            { cat: "Affaires", title: "Rupture Brutale", context: "Arrêt des commandes du jour au lendemain avec un fournisseur historique (10 ans).", majeure: "Toute rupture d'une relation commerciale établie nécessite un préavis écrit tenant compte de la durée de la relation (L.442-1 II Code commerce).", mineure: "Aucun préavis n'a été respecté pour une relation de 10 ans.", conclusion: "Rupture brutale caractérisée. L'entreprise doit payer la marge brute qu'aurait réalisée le partenaire pendant le préavis manqué.", advice: "Pour 10 ans, comptez environ 12 mois de préavis écrit." },
+            { cat: "Social", title: "Vol Minime", context: "Caissière (20 ans d'ancienneté) vole un bon d'achat de 2€.", majeure: "La sanction doit être proportionnée à la faute, en tenant compte de l'ancienneté et du dossier disciplinaire.", mineure: "Le préjudice est dérisoire et la salariée a une carrière exemplaire.", conclusion: "Le licenciement pour faute grave serait jugé disproportionné.", advice: "Optez pour une mise à pied disciplinaire de 3 jours, suffisante pour marquer le coup." },
+            { cat: "Social", title: "Ivresse Travail", context: "Un cariste titube et sent l'alcool sur un poste dangereux.", majeure: "L'employeur a une obligation de sécurité de résultat. Il peut contrôler l'alcoolémie si le règlement intérieur le prévoit pour les postes à risque.", mineure: "Le poste de cariste est un poste de sécurité. L'état d'ébriété crée un danger imminent.", conclusion: "Mise à pied conservatoire immédiate, suivie d'un licenciement pour faute grave.", advice: "Faites constater l'état par un témoin tiers neutre en attendant le test." },
+            { cat: "Affaires", title: "Concurrence Déloyale", context: "Un ex-commercial utilise le fichier client de l'entreprise.", majeure: "Le fichier client est un actif immatériel appartenant à l'entreprise. Son utilisation par un tiers est un vol et un acte de concurrence déloyale.", mineure: "La preuve du transfert de données et du démarchage est rapportée.", conclusion: "Action en référé possible pour interdiction sous astreinte + dommages et intérêts.", advice: "Insérez toujours une clause de confidentialité post-contractuelle renforcée." },
+            { cat: "Social", title: "Refus Mutation", context: "Refus d'aller sur un site à 20km. Clause de mobilité signée.", majeure: "Le refus d'application d'une clause de mobilité valide (zone géographique précise) est une insubordination.", mineure: "La clause couvre le département. Le nouveau lieu est dans la zone.", conclusion: "Le refus est fautif et justifie un licenciement (sauf atteinte excessive à la vie privée).", advice: "Vérifiez que le délai de prévenance a bien été respecté avant de sanctionner." },
+            { cat: "Social", title: "Preuve 'Déloyale'", context: "Une caméra cachée (non déclarée) filme un vol grave.", majeure: "Revirement de jurisprudence (Cass. 2023) : Une preuve déloyale peut être admise si elle est indispensable à l'exercice du droit à la preuve et proportionnée au but poursuivi.", mineure: "C'était le seul moyen de prouver des vols répétés indétectables autrement.", conclusion: "La preuve est recevable et le licenciement validé par le juge.", advice: "Attention, le juge vérifie strictement la proportionnalité. À utiliser en dernier recours." },
+            { cat: "Social", title: "Grossesse et Essai", context: "Rupture de la période d'essai le lendemain de l'annonce de la grossesse.", majeure: "Il est interdit de prendre en compte l'état de grossesse pour rompre le contrat (Discrimination).", mineure: "La concomitance entre l'annonce et la rupture laisse présumer un motif discriminatoire.", conclusion: "La rupture est nulle. La salariée peut demander sa réintégration ou des dommages punitifs.", advice: "Ne jamais rompre un essai juste après une telle annonce, même pour un motif réel." },
+            { cat: "Affaires", title: "Caution Gérant", context: "La société ne paie pas, la banque appelle la caution personnelle du gérant.", majeure: "Le cautionnement solidaire engage le patrimoine personnel du garant si le débiteur principal est défaillant.", mineure: "La société est en défaut de paiement.", conclusion: "Le gérant doit payer la dette sur ses biens propres (maison, comptes).", advice: "Tentez de négocier un échéancier ou vérifiez le formalisme de l'acte de caution (souvent vicié)." },
+            { cat: "Social", title: "Harcèlement Moral", context: "Un manager humilie publiquement et critique violemment un salarié.", majeure: "Le harcèlement moral se caractérise par des agissements répétés ayant pour effet une dégradation des conditions de travail.", mineure: "Les faits sont répétés, publics et portent atteinte à la dignité.", conclusion: "Faute grave du manager. L'employeur doit le sanctionner et protéger la victime.", advice: "Déclenchez une enquête interne immédiate dès le premier signalement." },
+            { cat: "Social", title: "Tenue Vestimentaire", context: "Un conseiller bancaire vient en bermuda.", majeure: "La liberté de se vêtir n'est pas fondamentale. L'employeur peut imposer une tenue si justifié par la tâche et proportionné (contact client).", mineure: "Le salarié est en contact permanent avec la clientèle (image de marque).", conclusion: "L'employeur est en droit d'exiger une tenue correcte et de sanctionner le refus.", advice: "Procédez par étapes : rappel oral, puis mise en demeure écrite." },
+            { cat: "Social", title: "Inaptitude", context: "Licenciement pour inaptitude sans recherche de reclassement.", majeure: "Le licenciement pour inaptitude n'est possible que si le reclassement est impossible ou refusé (sauf dispense expresse du médecin).", mineure: "Aucune recherche de poste compatible n'a été effectuée.", conclusion: "Le licenciement est sans cause réelle et sérieuse.", advice: "Tracez par écrit toutes vos recherches, même si elles sont infructueuses." },
+            { cat: "Social", title: "Faux Diplôme", context: "Découverte d'un faux diplôme 2 ans après l'embauche.", majeure: "Le mensonge sur le CV n'est une faute que s'il a été déterminant pour l'embauche et que le salarié n'a pas les compétences.", mineure: "Le salarié donne satisfaction depuis 2 ans, la compétence est donc acquise.", conclusion: "Le licenciement n'est pas possible car il n'y a pas d'incompétence avérée.", advice: "Vérifiez systématiquement les originaux des diplômes lors de l'onboarding." },
+            { cat: "Social", title: "Vie Privée", context: "Retrait de permis pour alcoolémie le week-end (VRP).", majeure: "Un fait de la vie privée ne peut justifier un licenciement disciplinaire. Seul le trouble objectif au fonctionnement de l'entreprise peut être invoqué.", mineure: "Le salarié ne peut plus exercer son métier (VRP) sans permis.", conclusion: "Licenciement possible pour trouble objectif (impossibilité d'exécuter le contrat), mais pas pour faute.", advice: "Vérifiez si une clause du contrat impose la détention du permis valide." },
+            { cat: "Social", title: "Droit de Grève", context: "Un salarié seul cesse le travail pour protester.", majeure: "La grève est un mouvement nécessairement collectif et concerté (sauf mot d'ordre national).", mineure: "Le salarié est seul dans l'entreprise à s'arrêter, sans appel national.", conclusion: "Ce n'est pas une grève mais une absence injustifiée ou un abandon de poste.", advice: "Vérifiez toujours s'il existe un préavis de grève national couvrant votre secteur." },
+            { cat: "Social", title: "Accident Trajet", context: "Accident en allant chercher du pain avant de rentrer.", majeure: "Le trajet est protégé s'il s'agit du parcours normal. Un détour bref pour les nécessités de la vie courante est toléré.", mineure: "Le détour par la boulangerie est minime et régulier.", conclusion: "L'accident est qualifié d'accident de trajet (pris en charge CPAM).", advice: "Faites la déclaration, mais vous pouvez émettre des réserves si le détour était important." },
+            { cat: "Affaires", title: "Abus de Bien Social", context: "Le gérant paie ses vacances avec la carte de la société.", majeure: "L'usage des biens de la société à des fins personnelles et contraires à l'intérêt social constitue un délit pénal.", mineure: "La dépense est purement privée et appauvrit l'entreprise.", conclusion: "Qualification pénale d'Abus de Biens Sociaux (ABS).", advice: "Le remboursement immédiat est impératif pour espérer une clémence des juges." },
+            { cat: "Affaires", title: "Conflit Intérêts", context: "Contrat signé avec la société de l'épouse sans prévenir les associés.", majeure: "Toute convention entre la société et un dirigeant (ou proche) est une convention réglementée soumise à approbation.", mineure: "La convention n'a été ni déclarée ni approuvée par l'AG.", conclusion: "Nullité du contrat si préjudiciable à la société. Responsabilité du dirigeant.", advice: "La transparence totale est la seule protection : déclarez tout aux commissaires aux comptes." },
+            { cat: "Social", title: "Clause Dédit", context: "Démission 6 mois après une formation coûteuse.", majeure: "La clause de dédit-formation permet le remboursement des frais si elle est précise, signée avant la formation, et prévoit une dégressivité.", mineure: "La clause respecte tous les critères de validité.", conclusion: "Le salarié doit rembourser les frais au prorata du temps passé.", advice: "Appliquez strictement la dégressivité prévue (ex: 50% après 6 mois)." },
+            { cat: "Social", title: "Heures Sup", context: "Le salarié refuse de faire des HS demandées la veille.", majeure: "L'employeur peut imposer des heures supplémentaires (pouvoir de direction), sous réserve d'un délai de prévenance suffisant.", mineure: "Prévenir la veille pour le lendemain peut être considéré comme abusif selon les contraintes familiales.", conclusion: "Le refus du salarié peut être légitime.", advice: "Anticipez les demandes d'au moins 3 à 7 jours pour éviter tout litige." },
+            { cat: "Social", title: "Bagarre", context: "Échange de coups entre deux salariés sur le lieu de travail.", majeure: "La violence physique sur le lieu de travail constitue un trouble caractérisé et une violation de l'obligation de sécurité.", mineure: "Les coups sont avérés, peu importe 'qui a commencé' dans un premier temps.", conclusion: "Licenciement pour faute grave quasi systématique pour les belligérants.", advice: "Mise à pied conservatoire immédiate obligatoire pour sécuriser les lieux." },
+            { cat: "Affaires", title: "Impayé Client", context: "Le client ne paie pas malgré la date d'échéance passée.", majeure: "Une créance certaine, liquide et exigible peut faire l'objet d'un recouvrement forcé.", mineure: "Le délai de paiement contractuel est dépassé.", conclusion: "Dépôt d'une requête en injonction de payer au Tribunal de Commerce.", advice: "Une mise en demeure préalable par LRAR est indispensable pour faire courir les intérêts." },
+            { cat: "Social", title: "Lanceur Alerte", context: "Licenciement après avoir dénoncé une fraude comptable.", majeure: "Le statut de lanceur d'alerte (Loi Sapin 2) protège contre toute sanction le salarié qui signale de bonne foi un délit.", mineure: "Le lien entre la dénonciation et le licenciement est évident.", conclusion: "Le licenciement est nul. Réintégration obligatoire ou indemnités très lourdes.", advice: "Mettez en place une procédure de recueil des alertes pour traiter le sujet en interne." },
+            { cat: "Social", title: "Liberté Expression", context: "Critique de la direction à la machine à café.", majeure: "Le salarié jouit de sa liberté d'expression tant qu'il ne tombe pas dans l'injure, la diffamation ou l'excès.", mineure: "Les propos sont critiques mais restent mesurés et en interne.", conclusion: "Aucune sanction possible. C'est l'exercice normal de la liberté d'expression.", advice: "La tolérance est requise. Ne sanctionnez que les propos publics ou outranciers." },
+            { cat: "Social", title: "Télétravail", context: "Refus de télétravail sans motif à un comptable.", majeure: "Si le poste est éligible, le refus de télétravail doit être motivé par des raisons objectives (service, matériel).", mineure: "Le poste est parfaitement télétravaillable et aucune raison n'est donnée.", conclusion: "Le refus est abusif et peut être contesté.", advice: "Définissez une Charte Télétravail claire pour encadrer les critères d'éligibilité." },
+            { cat: "Affaires", title: "Vice Caché", context: "Machine industrielle en panne lourde 1 mois après achat.", majeure: "Le vendeur doit garantie des défauts cachés qui rendent la chose impropre à l'usage.", mineure: "L'expertise prouve que le défaut (défaut de conception) existait avant la vente.", conclusion: "Action en résolution de la vente (remboursement) ou réduction du prix.", advice: "L'action doit être intentée dans les 2 ans de la découverte du vice. Faites vite une expertise." },
+            { cat: "Social", title: "Retard Répété", context: "5 retards de 15 min en un mois.", majeure: "Le respect des horaires est une obligation contractuelle. La répétition constitue une faute, même pour de courtes durées.", mineure: "La réitération désorganise le service.", conclusion: "Sanction disciplinaire justifiée (Avertissement).", advice: "Notez factuellement chaque retard (date/heure) avant de sanctionner." },
+            { cat: "Social", title: "Insubordination", context: "Refus d'exécuter une tâche prévue au contrat.", majeure: "Le refus d'exécuter une tâche relevant de sa qualification et du contrat est une faute grave (insubordination).", mineure: "L'ordre était légal et entrait dans ses fonctions.", conclusion: "Licenciement pour faute grave possible.", advice: "Confirmez l'ordre par écrit et demandez une explication avant de lancer la procédure." },
+            { cat: "Social", title: "Connexion Soir", context: "Le manager envoie des mails à 23h et exige des réponses.", majeure: "Le salarié a un Droit à la Déconnexion. Il n'est pas tenu de répondre hors temps de travail.", mineure: "L'exigence de réponse immédiate caractérise un non-respect du temps de repos.", conclusion: "Risque de rappel d'heures supplémentaires et de dommages pour harcèlement.", advice: "Programmez vos serveurs pour bloquer l'envoi de mails entre 20h et 7h." }
+        ];
+
+        // --- DATA 2 : LEXIQUE COMPLET (100+ MOTS) ---
+        const dbLexique = [
+            { m: "Abandon de poste", d: "Absence injustifiée. Si le salarié ne reprend pas le travail après mise en demeure.", c: "Vaut désormais présomption de démission (privation assurance chômage)." },
+            { m: "Abrogation", d: "Suppression pour l'avenir d'un acte ou d'une loi.", c: "La loi cesse de s'appliquer, mais reste valable pour le passé." },
+            { m: "Abus de confiance", d: "Détournement de fonds ou de biens remis à titre précaire.", c: "Délit pénal (ex: usage perso CB entreprise)." },
+            { m: "Accident du travail", d: "Accident survenu par le fait ou à l'occasion du travail.", c: "Présomption d'imputabilité. Déclaration employeur sous 48h." },
+            { m: "Accord d'entreprise", d: "Texte négocié entre employeur et syndicats (ou CSE).", c: "Prime souvent sur l'accord de branche (sauf verrous)." },
+            { m: "Acompte", d: "Paiement partiel sur travail déjà fait.", c: "Droit du salarié. Différent de l'avance." },
+            { m: "Acte authentique", d: "Acte notarié ou d'huissier.", c: "Force probante supérieure et force exécutoire." },
+            { m: "Action en justice", d: "Droit de saisir le juge.", c: "Attention aux délais de prescription qui éteignent ce droit." },
+            { m: "Astreinte", d: "Période de disponibilité hors lieu de travail.", c: "Donne lieu à compensation ($ ou repos). Intervention = Travail effectif." },
+            { m: "Attestation France Travail", d: "Document obligatoire de fin de contrat (ex-Pôle Emploi).", c: "Erreur ou retard bloque l'indemnisation chômage." },
+            { m: "Audit Social", d: "Diagnostic de la conformité RH.", c: "Outil clé du juriste pour identifier les risques pénaux/financiers." },
+            { m: "Avance", d: "Prêt d'argent sur travail non encore fait.", c: "Remboursement limité par la quotité saisissable (1/10ème)." },
+            { m: "Avenant", d: "Modification écrite du contrat.", c: "Obligatoire pour toucher aux éléments essentiels (salaire, durée)." },
+            { m: "Ayant droit", d: "Bénéficiaire via un assuré principal.", c: "Notion clé pour la Mutuelle/Prévoyance d'entreprise." },
+            { m: "Bail Commercial", d: "Location pour activité commerciale/artisanale.", c: "Propriété commerciale (Droit au renouvellement ou indemnité)." },
+            { m: "Bilan Social", d: "Données sociales chiffrées annuelles.", c: "Obligatoire si > 300 salariés." },
+            { m: "Branche (Accord de)", d: "Accord au niveau du secteur d'activité.", c: "Fixe les minima salariaux et garanties socles." },
+            { m: "Caducité", d: "Perte d'effet d'un acte valable.", c: "Ex: Offre de contrat non acceptée dans les délais." },
+            { m: "Carence (Délai)", d: "Temps d'attente entre deux contrats courts.", c: "Non-respect = Requalification en CDI." },
+            { m: "Cassation", d: "Juge du droit (Cour suprême).", c: "Ne rejuge pas les faits, casse si la loi est mal appliquée." },
+            { m: "Cause réelle et sérieuse", d: "Motif de licenciement : Objectif, exact et grave.", c: "Sans elle, le licenciement est injustifié (indemnités Barème Macron)." },
+            { m: "Cautionnement", d: "Garantie personnelle d'une dette.", c: "Risque majeur pour le patrimoine perso du dirigeant." },
+            { m: "Cessation des paiements", d: "Faillite (Actif dispo < Passif exigible).", c: "Délai impératif de 45 jours pour déposer le bilan." },
+            { m: "Charge de la preuve", d: "Obligation de prouver les faits.", c: "Souvent partagée aux Prud'hommes (ex: Heures Sup)." },
+            { m: "Chômage partiel (APLD)", d: "Activité réduite remboursée par l'État.", c: "Le contrat est suspendu, pas rompu. Fraude très surveillée." },
+            { m: "Clause de dédit-formation", d: "Remboursement formation si départ précoce.", c: "Valable seulement si frais réels > obligation légale." },
+            { m: "Clause de non-concurrence", d: "Interdiction post-contrat de travailler pour concurrent.", c: "NULLE sans indemnité financière compensatrice." },
+            { m: "Clause léonine", d: "Déséquilibre total (tout le profit pour un seul).", c: "Réputée non écrite (inexistante)." },
+            { m: "Clause mobilité", d: "Acceptation anticipée du changement de lieu.", c: "Doit définir une zone géographique précise sinon inopposable." },
+            { m: "Clause pénale", d: "Dommages-intérêts fixés à l'avance (contrat comm.).", c: "Le juge peut la réduire si excessive." },
+            { m: "Co-emploi", d: "Confusion entre deux sociétés (Mère/Fille).", c: "Permet au salarié d'attaquer la société Mère." },
+            { m: "Coefficient", d: "Niveau hiérarchique dans la grille conventionnelle.", c: "Détermine le salaire minimum à respecter." },
+            { m: "Concurrence déloyale", d: "Faute commerciale (dénigrement, confusion).", c: "Le débauchage massif de salariés en est une forme." },
+            { m: "Confidentialité (Clause)", d: "Secret des affaires.", c: "Valable même sans contrepartie financière." },
+            { m: "Congés payés", d: "Droit au repos. Acquisition maintenue même en maladie (Loi 2024).", c: "Limite de report de 15 mois. 4 semaines max si maladie non pro." },
+            { m: "Contrat intuitu personae", d: "Lié à la personne même.", c: "Pas de remplacement possible (le salarié ne peut envoyer un ami)." },
+            { m: "Contrat synallagmatique", d: "Obligations réciproques (Travail vs Salaire).", c: "Permet l'exception d'inexécution." },
+            { m: "Contrat de travail", d: "Convention : prestation, rémunération, subordination.", c: "Le lien de subordination est le critère décisif." },
+            { m: "Convention Collective", d: "Accord de branche.", c: "Complète la loi (souvent plus favorable). Mention obligatoire sur fiche de paie." },
+            { m: "CSE (Comité Social Éco)", d: "Représentants du personnel (fusion CE/DP/CHSCT).", c: "Obligatoire dès 11 salariés." },
+            { m: "Délégation de pouvoir", d: "Transfert de responsabilité pénale à un salarié.", c: "Le salarié doit avoir la compétence, l'autorité et les moyens." },
+            { m: "Délit d'entrave", d: "Gêner le fonctionnement des IRP (CSE).", c: "Risque pénal (prison/amende) pour le dirigeant/RH." },
+            { m: "Démission", d: "Départ volontaire du salarié.", c: "Doit être claire et non équivoque (attention aux démissions sous pression)." },
+            { m: "Dépôt de bilan", d: "Déclaration cessation paiements.", c: "Se fait au Tribunal de Commerce." },
+            { m: "Droit de grève", d: "Cessation collective et concertée.", c: "Droit constitutionnel. Protection absolue contre le licenciement (sauf faute lourde)." },
+            { m: "Droit de retrait", d: "Arrêt travail pour danger grave et imminent.", c: "Pas de sanction ni retenue salaire si motif raisonnable." },
+            { m: "DUERP", d: "Document Unique d'Évaluation des Risques.", c: "Absence = Faute inexcusable en cas d'accident." },
+            { m: "Effet relatif", d: "Le contrat ne lie que les parties.", c: "Les tiers ne sont pas engagés." },
+            { m: "Escroquerie", d: "Tromperie pour obtenir de l'argent.", c: "Délit pénal (manœuvres frauduleuses)." },
+            { m: "Exception d'inexécution", d: "Pas payer si travail pas fait (et inversement).", c: "Dangereux pour le salarié (risque abandon de poste)." },
+            { m: "Faute Grave", d: "Rupture immédiate du contrat.", c: "Privation préavis et indemnité de licenciement." },
+            { m: "Faute Lourde", d: "Intention de nuire à l'employeur.", c: "Seul cas permettant d'engager la resp. financière du salarié." },
+            { m: "Fonds de commerce", d: "Outil de travail commercial (Clientèle, nom, bail).", c: "L'élément clé est la clientèle." },
+            { m: "Force majeure", d: "Imprévisible, irrésistible, extérieur.", c: "Seule cause d'exonération totale de responsabilité." },
+            { m: "Forfait Jours", d: "Temps de travail en jours (Cadres autonomes).", c: "Piège : nécessite un suivi de la charge de travail (sinon nullité)." },
+            { m: "Gérant de fait", d: "Dirigeant réel sans titre officiel.", c: "Encourt les mêmes risques pénaux que le dirigeant de droit." },
+            { m: "Harcèlement Moral", d: "Dégradation conditions travail par actes répétés.", c: "Obligation de sécurité de l'employeur. Licenciement dénonciateur = Nul." },
+            { m: "Heures Sup", d: "Heures > 35h hebdo.", c: "Majorées ou récupérées. Preuve partagée." },
+            { m: "Imprévision", d: "Changement contexte rendant contrat onéreux.", c: "Renégociation possible en commercial (pas en social).." },
+            { m: "Inaptitude", d: "Incapacité médicale au poste (Médecin Travail).", c: "Obligation de reclassement avant licenciement." },
+            { m: "Indemnité d'éviction", d: "Somme due au locataire commercial si fin de bail.", c: "Souvent très chère (perte du fonds)." },
+            { m: "Injonction de payer", d: "Recouvrement rapide facture impayée.", c: "Procédure simple si créance non contestée." },
+            { m: "Intéressement", d: "Prime résultats (Facultatif).", c: "Aléatoire et collectif." },
+            { m: "Jour ouvrable / ouvré", d: "Ouvrable (Lun-Sam) vs Ouvré (Lun-Ven).", c: "Piège classique du décompte des congés (30j vs 25j)." },
+            { m: "Jurisprudence", d: "Décisions des juges.", c: "Source de droit (interprétation)." },
+            { m: "Lanceur d'alerte", d: "Signalement désintéressé d'un délit.", c: "Statut protégé (Loi Sapin 2). Licenciement interdit." },
+            { m: "Licenciement Éco", d: "Motif non inhérent à la personne (Difficultés, mutation).", c: "Suppression de poste. Priorité de réembauche 1 an." },
+            { m: "Lien de subordination", d: "Autorité employeur / Obéissance salarié.", c: "Critère du contrat de travail (vs Freelance)." },
+            { m: "Liquidation judiciaire", d: "Fin entreprise (Vente actifs).", c: "Entraîne licenciement de tous les salariés." },
+            { m: "Lock-out", d: "Fermeture entreprise par patron (Grève).", c: "Interdit sauf exception (sécurité impossible)." },
+            { m: "Mandataire social", d: "Dirigeant (Président, Gérant).", c: "Pas salarié (pas de chômage, pas de Code du travail)." },
+            { m: "Médiation", d: "Accord amiable avec tiers.", c: "Confidentiel. Suspend les délais." },
+            { m: "Mise à pied", d: "Suspension du contrat (sans salaire).", c: "Disciplinaire (sanction) ou Conservatoire (attente licenciement)." },
+            { m: "Mise en demeure", d: "Avertissement formel (recommandé).", c: "Fait courir les intérêts. Préalable à l'action." },
+            { m: "Nantissement", d: "Garantie sur fonds de commerce.", c: "Le débiteur garde le bien mais la banque a un privilège dessus." },
+            { m: "NAO", d: "Négociation Annuelle Obligatoire.", c: "Obligatoire si Délégué Syndical." },
+            { m: "Nullité", d: "Annulation rétroactive.", c: "L'acte est censé n'avoir jamais existé (ex: licenciement discriminatoire)." },
+            { m: "Obligation de moyen", d: "Faire de son mieux (Médecin, Avocat).", c: "Resp. engagée seulement si faute prouvée." },
+            { m: "Obligation de résultat", d: "Réussite obligatoire (Sécurité, Paiement salaire).", c: "Resp. automatique si résultat absent." },
+            { m: "Ordre public", d: "Règles impératives indérogeables.", c: "On ne peut pas y renoncer par contrat." },
+            { m: "Participation", d: "Partage des profits.", c: "Obligatoire > 50 salariés." },
+            { m: "Période d'essai", d: "Test réciproque. Rupture libre.", c: "Renouvellement possible seulement si accord écrit du salarié." },
+            { m: "Personne morale", d: "Société (entité juridique).", c: "Distincte des associés. A son propre patrimoine." },
+            { m: "Préavis", d: "Délai de départ.", c: "Salaire dû même si dispensé par l'employeur." },
+            { m: "Prescription", d: "Fin du délai pour agir.", c: "Salaires = 3 ans. Exécution = 2 ans. Harcèlement = 5 ans." },
+            { m: "Prise d'acte", d: "Rupture aux torts de l'employeur.", c: "Risqué : Soit licenciement injustifié, soit démission (pas de chômage)." },
+            { m: "Privilège", d: "Priorité de paiement.", c: "Salaires = Super-privilège en cas de faillite." },
+            { m: "Prud'hommes", d: "Juge du travail (Individuel).", c: "Paritaire (Salariés/Patrons). Conciliation obligatoire." },
+            { m: "PSE (Plan Social)", d: "Gros licenciement éco (>10 sur 30j, boite >50).", c: "Mesures de reclassement obligatoires (validation DREETS)." },
+            { m: "Quitus", d: "Validation gestion dirigeant par AG.", c: "N'empêche pas poursuites si fautes dissimulées." },
+            { m: "Reçu pour solde", d: "Inventaire fin de contrat.", c: "6 mois pour contester (dénonciation)." },
+            { m: "Redressement judiciaire", d: "Procédure collective (Sauvegarde).", c: "Gel des dettes pour tenter de sauver l'activité." },
+            { m: "Référé", d: "Procédure d'urgence (Juge unique).", c: "Pour mesures évidentes ou provisions." },
+            { m: "Règlement Intérieur", d: "Règles vie, hygiène, discipline.", c: "Unilatéral employeur. Contrôlé par l'Inspection du Travail." },
+            { m: "Rescrit social", d: "Question officielle à l'URSSAF.", c: "La réponse lie l'administration (Sécurité juridique)." },
+            { m: "Résiliation", d: "Fin pour l'avenir (Bail, Travail).", c: "Pas de restitution des salaires versés." },
+            { m: "Résolution", d: "Annulation rétroactive (Vente).", c: "Remise en état (remboursement)." },
+            { m: "RGPD", d: "Protection Données Personnelles.", c: "Enjeu RH majeur. Sanctions lourdes." },
+            { m: "RSE", d: "Responsabilité Sociétale Entreprise.", c: "De plus en plus contraignant juridiquement (Devoir de vigilance)." },
+            { m: "Rupture Conventionnelle", d: "Divorce amiable CDI.", c: "Droit au chômage. Délai rétractation 15j." },
+            { m: "Saisie sur salaire", d: "Prise directe sur paie (Huissier).", c: "Fraction insaisissable (RSA) laissée au salarié." },
+            { m: "Siège social", d: "Domicile juridique.", c: "Détermine la nationalité et le tribunal compétent." },
+            { m: "Solde de tout compte", d: "Paiement final au départ.", c: "Doit être versé le jour de la sortie physique." },
+            { m: "Subrogation", d: "Employeur avance les IJSS.", c: "Évite au salarié d'attendre le paiement de la Sécu." },
+            { m: "Tacite reconduction", d: "Renouvellement automatique.", c: "Interdit pour les CDD ! (Requalification CDI)." },
+            { m: "Télétravail", d: "Travail à distance (TIC).", c: "Accident à domicile = Accident du travail présumé." },
+            { m: "Titre exécutoire", d: "Jugement ou acte notarié.", c: "Permet de forcer l'exécution (Saisie). Une facture ne suffit pas." },
+            { m: "Transaction", d: "Accord écrit pour finir un litige.", c: "Concessions réciproques obligatoires. Après rupture du contrat." },
+            { m: "Tribunal Commerce", d: "Juge des affaires (Élus).", c: "Compétent pour faillites et litiges entre commerçants." },
+            { m: "UES (Unité Éco. Sociale)", d: "Entité regroupant plusieurs sociétés.", c: "Pour mettre en place un CSE commun." },
+            { m: "Usage d'entreprise", d: "Avantage constant, fixe, général.", c: "Obligatoire tant que non dénoncé régulièrement." },
+            { m: "Usufruit", d: "Droit de jouissance (loyers/dividendes).", c: "Distinct de la nue-propriété (Vente)." },
+            { m: "Veille juridique", d: "Surveillance des lois.", c: "Mission clé du juriste pour anticiper les risques." },
+            { m: "Vice caché", d: "Défaut non apparent (Vente).", c: "Garantie légale de 2 ans." },
+            { m: "Vice du consentement", d: "Erreur, Dol, Violence.", c: "Entraîne la nullité du contrat." }
+        ];
+
+        // --- 4. DATA : FICHES RÉFLEXES (RESTAURÉE) ---
+        // Légende : c (Couleur: Danger, Proc, Gestion), t (Titre), d (Description), s (Steps), p (Piège)
+        const dbReflexes = [
+            { t: "Gérer une Faute Grave", c: "Danger", d: "Manquement rendant impossible le maintien du salarié.", s: ["Agir sous 2 mois (Prescription)", "Mise à pied conservatoire si danger", "Convoquer à entretien (min 5j)", "Notifier (2j min / 1 mois max)"], p: "Attention au 'Non bis in idem' : Si vous avez déjà envoyé un mail de reproche, vous ne pouvez plus licencier !" },
+            { t: "Gérer une Inaptitude", c: "Sante", d: "Incapacité médicale au poste constatée par le Médecin du Travail.", s: ["Constat médical (Avis)", "Recherche Reclassement (Obligatoire)", "Consultation CSE", "Licenciement si impossible"], p: "Le licenciement est nul si l'obligation de reclassement n'est pas respectée loyalement et par écrit." },
+            { t: "Rupture Conventionnelle", c: "Procedure", d: "Mode de rupture amiable du CDI.", s: ["Entretien(s) préparatoire(s)", "Signature Cerfa (Délai rétractation 15j)", "Envoi DREETS", "Homologation (15j)"], p: "Interdite si le consentement est vicié (harcèlement) ou si le salarié est déclaré inapte." },
+            { t: "Harcèlement Moral", c: "Danger", d: "Agissements répétés dégradant les conditions de travail.", s: ["Enquête interne immédiate", "Audition séparée des témoins", "Rapport écrit", "Mesures conservatoires/Sanctions"], p: "L'inertie de l'employeur est une faute inexcusable. Vous devez agir dès le premier signalement." },
+            { t: "Accident du Travail", c: "Sante", d: "Accident survenu par le fait ou à l'occasion du travail.", s: ["Délivrer feuille de soins", "Déclaration CPAM (48h)", "Émettre réserves motivées si doute", "Analyse des causes (CSE)"], p: "Toute réserve sur le caractère professionnel doit être motivée juridiquement, sinon elle est rejetée." },
+            { t: "Élections CSE", c: "Procedure", d: "Mise en place des représentants du personnel.", s: ["Calcul effectifs (11 ETP)", "Invitation Syndicats (PAP)", "Listes électorales", "Organisation Scrutin"], p: "Délit d'entrave (pénal) si vous ne les organisez pas alors que les seuils sont atteints." },
+            { t: "Embauche CDD", c: "Gestion", d: "Contrat d'exception pour tâche temporaire.", s: ["Motif légal (Accroissement, Remplacement)", "Terme précis ou durée min", "Délai de carence", "Signature sous 48h"], p: "Absence de signature sous 48h ou motif erroné = Requalification automatique en CDI." },
+            { t: "Droit de Retrait", c: "Danger", d: "Retrait du salarié face à un danger grave et imminent.", s: ["Analyse du danger", "Pas de retenue salaire si justifié", "Enquête CSE immédiate", "Mise en sécurité"], p: "Ne sanctionnez jamais un droit de retrait, même si vous le jugez abusif (laissez le juge trancher)." },
+            { t: "Contrôle URSSAF", c: "Gestion", d: "Vérification de la conformité des cotisations.", s: ["Avis de passage", "Préparer les documents", "Accueillir l'inspecteur", "Répondre aux observations (30j)"], p: "La 'Charte du cotisant contrôlé' doit impérativement vous être remise au début, sinon la procédure est nulle." },
+            { t: "Licenciement Éco", c: "Procedure", d: "Suppression de poste pour motif non personnel.", s: ["Motif éco réel", "Critères d'ordre (toute l'entreprise)", "Recherche reclassement", "CSP"], p: "L'application des critères d'ordre des licenciements est obligatoire et source de nombreux contentieux." },
+            { t: "Télétravail", c: "Gestion", d: "Organisation du travail à distance.", s: ["Accord ou Charte", "Clause de réversibilité", "Éligibilité des postes", "Indemnisation frais"], p: "Le refus de télétravail à un travailleur handicapé ou aidant doit être motivé par des raisons objectives." },
+            { t: "Sanction Simple", c: "Procedure", d: "Avertissement ou Blâme (sans impact contrat).", s: ["Faute avérée et prouvée", "Pas d'entretien préalable (sauf si RI le prévoit)", "Notification écrite motivée"], p: "Vérifiez votre Règlement Intérieur. Si l'entretien y est prévu, vous devez le faire même pour un avertissement." },
+            { t: "Abandon de Poste", c: "Gestion", d: "Absence injustifiée prolongée.", s: ["Constat absence", "Mise en demeure (LRAR) de reprendre", "Attente délai fixée (min 15j)", "Constat démission présumée"], p: "Ne licenciez plus pour faute grave (sauf exception). La présomption de démission est la voie royale désormais." },
+            { t: "Grossesse", c: "Sante", d: "Protection de la maternité.", s: ["Déclaration", "Visites médicales", "Aménagement poste", "Protection absolue licenciement (congé)"], p: "Interdiction absolue de licencier pendant le congé mat, même pour faute grave (sauf fermeture entreprise)." },
+            { t: "Forfait Jours", c: "Gestion", d: "Temps de travail en jours.", s: ["Accord collectif", "Convention individuelle", "Entretien annuel charge travail", "Suivi jours"], p: "Si l'entretien annuel sur la charge de travail n'est pas fait, le forfait tombe (paiement heures sup)." },
+            { t: "Usage d'Entreprise", c: "Gestion", d: "Avantage non écrit (Général, Constant, Fixe).", s: ["Identifier l'usage", "Informer CSE", "Informer salariés (individuel)", "Délai prévenance"], p: "Pour supprimer une prime d'usage, il faut respecter la procédure de dénonciation stricte." },
+            { t: "Heures Délégation", c: "Gestion", d: "Temps alloué aux élus.", s: ["Paiement comme temps travail", "Bons de délégation (info)", "Pas de contrôle a priori", "Liberté déplacement"], p: "Ne jamais demander la justification de l'utilisation des heures avant de les payer (Délit d'entrave)." },
+            { t: "Entretien Annuel", c: "Gestion", d: "Évaluation performance.", s: ["Convocation", "Grille évaluation", "Échange contradictoire", "Signature (facultative)"], p: "Ne pas confondre avec l'entretien professionnel (tous les 2 ans) qui est centré sur la formation." },
+            { t: "Dénonciation", c: "Danger", d: "Faits délictueux internes.", s: ["Recueil alerte", "Confidentialité", "Enquête", "Protection lanceur alerte"], p: "Aucune sanction ne peut être prise contre un lanceur d'alerte de bonne foi (Nullité)." },
+            { t: "Clause Mobilité", c: "Gestion", d: "Changement lieu travail.", s: ["Clause contractuelle", "Zone précise", "Délai prévenance raisonnable", "Bonne foi"], p: "Si la mutation entraîne une baisse de rémunération ou un changement d'horaire, l'accord du salarié est requis." },
+            { t: "Gestion Congés Payés", c: "Gestion", d: "Organisation des départs en vacances.", s: ["Fixer période (1er mai - 31 oct)", "Informer salariés (2 mois avant)", "Ordre des départs", "Respecter 12 jours continus"], p: "L'employeur doit prouver qu'il a mis le salarié en mesure de prendre ses congés, sinon il doit les payer." },
+            { t: "Gestion Maladie", c: "Sante", d: "Absence pour raison de santé.", s: ["Réception arrêt (48h)", "Attestation salaire (CPAM)", "Maintien salaire (Subrogation)", "Visite reprise (si > 30j)"], p: "Ne jamais laisser un salarié reprendre le travail après une longue maladie sans la visite de reprise du médecin du travail." },
+            { t: "Gestion Temps Partiel", c: "Gestion", d: "Durée inférieure à la durée légale.", s: ["Contrat écrit (Mentions obligatoires)", "Répartition horaires", "Heures complémentaires (max 1/10)", "Priorité emploi temps plein"], p: "Absence d'écrit ou d'horaires précis = Présomption de temps plein (Rappel de salaire)." },
+            { t: "Embauche Étranger", c: "Gestion", d: "Recrutement hors UE.", s: ["Vérifier titre séjour (Préfecture)", "Déclaration préalable", "Taxe OFII", "Inscription registre"], p: "L'emploi d'un étranger sans titre est un délit pénal (Travail dissimulé)." },
+            { t: "Affichage Obligatoire", c: "Gestion", d: "Information légale sur site.", s: ["Inspecteur travail", "Médecine travail", "Consignes incendie", "Égalité H/F", "Harcèlement", "Horaires"], p: "Le défaut d'affichage est une contravention par salarié concerné." },
+            { t: "Entretien Professionnel", c: "Gestion", d: "Bilan parcours tous les 2 ans.", s: ["Convocation distincte de l'EAE", "Bilan formation", "Projet pro", "Compte rendu écrit"], p: "Si pas fait tous les 6 ans + pas de formation = Abondement correctif CPF (3000€)." },
+            { t: "Démission", c: "Gestion", d: "Départ volontaire.", s: ["Réception lettre", "Accuser réception", "Calcul préavis", "Documents fin contrat"], p: "Ne jamais 'forcer' une démission. Elle serait requalifiée en licenciement abusif." },
+            { t: "Retraite", c: "Gestion", d: "Départ ou Mise à la retraite.", s: ["Demande salarié ou Initiative employeur (conditions âge)", "Préavis", "Indemnité départ", "Documents"], p: "Mettre à la retraite d'office avant 70 ans sans accord du salarié est nul (Discrimination âge)." },
+            { t: "Dénonciation Usage", c: "Gestion", d: "Supprimer un avantage non écrit.", s: ["Information CSE", "Information individuelle chaque salarié", "Délai prévenance suffisant"], p: "Si la procédure n'est pas respectée à la lettre, l'usage continue de s'appliquer." },
+            { t: "BDESE", c: "Gestion", d: "Base de Données Éco Sociale.", s: ["Mise à jour régulière", "Accès IRP", "Contenu légal (Investissement, Social, Égalité...)"], p: "L'absence de BDESE est un délit d'entrave au fonctionnement du CSE." },
+            { t: "Index Égalité", c: "Gestion", d: "Mesure écarts salaires H/F.", s: ["Calcul indicateurs", "Publication site web (1er mars)", "Transmission ministère", "Mesures correctives si < 75"], p: "Pénalité financière jusqu'à 1% de la masse salariale si non publication ou note insuffisante." },
+            { t: "Mise à Pied Disc.", c: "Procedure", d: "Suspension salaire pour sanction.", s: ["Faute", "Entretien préalable", "Notification durée fixe", "Exécution"], p: "Ne peut pas être à durée indéterminée (sinon c'est une mise à pied conservatoire)." },
+            { t: "Avertissement", c: "Procedure", d: "Sanction légère écrite.", s: ["Faute constatée", "Pas d'entretien (sauf RI)", "Lettre motivée", "Versée au dossier"], p: "Un mail de reproches peut être considéré comme un avertissement et épuiser le pouvoir disciplinaire." },
+            { t: "Saisie Salaire", c: "Gestion", d: "Retenue sur paie pour dette.", s: ["Notification greffe", "Calcul quotité saisissable", "Versement régisseur", "Information salarié"], p: "Ne jamais verser la totalité du salaire au créancier. Il faut laisser le RSA (SBI)." },
+            { t: "Solde Tout Compte", c: "Gestion", d: "Paiement final.", s: ["Calcul CP, Prorata, Primes", "Reçu pour solde", "Certificat travail", "Attestation France Travail"], p: "L'effet libératoire du reçu ne joue que pour les sommes précisément listées dessus." },
+            { t: "Alcool / Drogue", c: "Danger", d: "Salarié sous emprise.", s: ["Retrait immédiat (Sécurité)", "Constat (Témoins)", "Entretien", "Sanction si trouble ou danger"], p: "L'alcootest n'est possible que si prévu au RI et pour les postes à risque." },
+            { t: "Agression / Violence", c: "Danger", d: "Bagarre ou menace.", s: ["Séparer/Protéger", "Mise à pied conservatoire", "Enquête", "Licenciement faute grave"], p: "Tolérance zéro. L'employeur est responsable de la sécurité des autres salariés." },
+            { t: "Vol Entreprise", c: "Danger", d: "Soustraction frauduleuse.", s: ["Preuves licites", "Entretien", "Sanction proportionnée", "Plainte éventuelle"], p: "Attention à la proportionnalité : on ne licencie pas pour un stylo (sauf récidive ou préjudice image)." },
+            { t: "Accident Trajet", c: "Sante", d: "Entre domicile et travail.", s: ["Déclaration 48h", "Vérifier horaire/itinéraire", "Pas de protection licenciement (sauf convention)"], p: "Un détour pour un motif personnel (ex: courses non essentielles) rompt le lien de travail." },
+            { t: "Travail Dissimulé", c: "Danger", d: "Travail au noir.", s: ["Déclaration DPAE", "Bulletins de paie", "Paiement heures sup", "Vigilance sous-traitants"], p: "Risque pénal, URSSAF (redressement forfaitaire) et 6 mois de salaire pour le salarié." },
+            { t: "Prêt Main d'Oeuvre", c: "Gestion", d: "Mise à disposition personnel.", s: ["But non lucratif (facturation coût réel)", "Accord salarié", "Convention mise à disposition"], p: "Si but lucratif = Délit de marchandage ou prêt illicite de main d'œuvre." },
+            { t: "Clause Non-Conc.", c: "Gestion", d: "Protection savoir-faire.", s: ["Limitation temps/espace", "Intérêt légitime", "Indemnité financière", "Levée dans les délais"], p: "Si vous oubliez de lever la clause au départ du salarié, vous devez payer l'indemnité." }
+        ];
+
+        // --- 5. DATA : ABRÉVIATIONS JURIDIQUES ---
+        const dbAbrev = [
+            { a: "A", f: "Arrêt du Conseil d'État publié au Lebon" },
+            { a: "a.", f: "Autres" },
+            { a: "Aff.", f: "Affaire (devant la CJCE/CJUE)" },
+            { a: "AJ", f: "Actualité jurisprudentielle du Recueil Dalloz" },
+            { a: "AJDA", f: "Actualité juridique de droit administratif" },
+            { a: "al.", f: "Alinéa" },
+            { a: "ALD", f: "Actualité législative Dalloz" },
+            { a: "ANI", f: "Accord national interprofessionnel" },
+            { a: "Archives Phil. dr.", f: "Archives de Philosophie du droit" },
+            { a: "Arr.", f: "Arrêté" },
+            { a: "Arr. min.", f: "Arrêté ministériel" },
+            { a: "Art. / art.", f: "Article" },
+            { a: "Ass.", f: "Assemblée" },
+            { a: "Ass. plén.", f: "Assemblée plénière de la Cour de cassation" },
+            { a: "B", f: "Arrêt publié au Bulletin civil ou au Bulletin criminel" },
+            { a: "BHSS", f: "Bulletin d'histoire de la sécurité sociale" },
+            { a: "BIBL.", f: "Bibliographie" },
+            { a: "BIBL. GEN.", f: "Bibliographie générale" },
+            { a: "BICC", f: "Bulletin d'information de la Cour de cassation" },
+            { a: "BJT", f: "Bulletin Joly Travail" },
+            { a: "BLD", f: "Bulletin législatif Dalloz" },
+            { a: "BOMT", f: "Bulletin officiel du ministère du Travail" },
+            { a: "BOSS", f: "Bulletin officiel de la Sécurité sociale" },
+            { a: "BS Lefebvre", f: "Bulletin social Francis Lefebvre" },
+            { a: "Bull.", f: "Bulletin des arrêts de la Cour de cassation" },
+            { a: "Bull. civ.", f: "Bulletin des arrêts des chambres civiles de la Cour de cassation" },
+            { a: "Bull. crim.", f: "Bulletin des arrêts de la chambre criminelle de la Cour de cassation" },
+            { a: "C.", f: "Code" },
+            { a: "c/", f: "Contre (dans le nom d'un arrêt)" },
+            { a: "CA", f: "Cour d'appel" },
+            { a: "CAA", f: "Cour administrative d'appel" },
+            { a: "Cah. Cons. const.", f: "Cahiers du Conseil constitutionnel" },
+            { a: "Cah. dr. entr.", f: "Cahiers de droit de l'entreprise" },
+            { a: "Cah. prud'h.", f: "Cahiers prud'homaux" },
+            { a: "CASF", f: "Code de l'action sociale et des familles" },
+            { a: "Cass.", f: "Cour de cassation" },
+            { a: "C. assur.", f: "Code des assurances" },
+            { a: "CCH", f: "Code de la construction et de l'habitation" },
+            { a: "C. civ.", f: "Code civil" },
+            { a: "C. com.", f: "Code de commerce" },
+            { a: "C. const.", f: "Code constitutionnel et des droits fondamentaux" },
+            { a: "CE", f: "Conseil d'État" },
+            { a: "CEDH", f: "Cour européenne des droits de l'homme" },
+            { a: "CEDS", f: "Comité européen des droits sociaux" },
+            { a: "C. élect.", f: "Code électoral" },
+            { a: "C. envir.", f: "Code de l'environnement" },
+            { a: "CESEDA", f: "Code de l'entrée et du séjour des étrangers et du droit d'asile" },
+            { a: "CGFP", f: "Code général de la fonction publique" },
+            { a: "CGCT", f: "Code général des collectivités territoriales" },
+            { a: "CGI", f: "Code général des impôts" },
+            { a: "ch.", f: "Chambre" },
+            { a: "chap.", f: "Chapitre" },
+            { a: "Ch. mixte", f: "Chambre mixte de la Cour de cassation" },
+            { a: "Ch. réun.", f: "Chambres réunies de la Cour de cassation" },
+            { a: "Chron.", f: "Chronique (Article de doctrine)" },
+            { a: "Circ.", f: "Circulaire" },
+            { a: "Civ.", f: "Chambre civile de la Cour de cassation" },
+            { a: "CJA", f: "Code de justice administrative" },
+            { a: "CJCE", f: "Cour de justice des Communautés européennes (1957-2009)" },
+            { a: "CJUE", f: "Cour de justice de l'Union européenne (depuis 2009)" },
+            { a: "CHSCT", f: "Comité d'hygiène, de sécurité et des conditions de travail" },
+            { a: "C. mon. fin.", f: "Code monétaire et financier" },
+            { a: "C. mut.", f: "Code de la mutualité" },
+            { a: "COJ", f: "Code de l'organisation judiciaire" },
+            { a: "Com.", f: "Chambre commerciale de la Cour de cassation" },
+            { a: "Comm.", f: "Commentaire" },
+            { a: "Comp.", f: "Comparer" },
+            { a: "concl.", f: "Conclusions" },
+            { a: "conf.", f: "Solution conforme" },
+            { a: "Cons. const.", f: "Conseil constitutionnel" },
+            { a: "Cons. prud'h.", f: "Conseil de prud'hommes" },
+            { a: "Const.", f: "Constitution" },
+            { a: "Const. OIT", f: "Constitution de l'organisation internationale de travail" },
+            { a: "Contra", f: "Solution contraire" },
+            { a: "Conv.", f: "Convention" },
+            { a: "Conv. EDH", f: "Convention européenne de sauvegarde des droits de l'homme" },
+            { a: "Conv. OIT", f: "Convention de l'organisation internationale de travail" },
+            { a: "C. pén.", f: "Code pénal" },
+            { a: "C. pénit.", f: "Code pénitentiaire" },
+            { a: "CPI", f: "Code de la propriété intellectuelle" },
+            { a: "C. pr. civ.", f: "Code de procédure civile" },
+            { a: "C. pr. exéc.", f: "Code des procédures civiles d'exécution" },
+            { a: "C. pr. pén.", f: "Code de procédure pénale" },
+            { a: "Crim.", f: "Chambre criminelle de la Cour de cassation" },
+            { a: "CRPA", f: "Code des relations entre le public et l'administration" },
+            { a: "C. rur.", f: "Code rural et de la pêche maritime" },
+            { a: "CSB", f: "Cahiers sociaux du barreau de Paris" },
+            { a: "C. sociétés", f: "Code des sociétés" },
+            { a: "CSP", f: "Code de la santé publique" },
+            { a: "CSS", f: "Code de la sécurité sociale" },
+            { a: "C. tourisme", f: "Code du tourisme" },
+            { a: "C. transp.", f: "Code des transports" },
+            { a: "C. trav.", f: "Code du travail" },
+            { a: "C. urb.", f: "Code de l'urbanisme" },
+            { a: "D.", f: "Recueil Dalloz" },
+            { a: "D. actu.", f: "Dalloz actualité" },
+            { a: "D. Affaires", f: "Dalloz Affaires (de 1995 à 1999)" },
+            { a: "Décis.", f: "Décision" },
+            { a: "Décr.", f: "Décret" },
+            { a: "Décr.-L.", f: "Décret-loi" },
+            { a: "Defrénois", f: "Répertoire du notariat Defrénois" },
+            { a: "DH", f: "Recueil hebdomadaire de jurisprudence Dalloz" },
+            { a: "Dir.", f: "Directive européenne" },
+            { a: "Doctr.", f: "Doctrine" },
+            { a: "DP", f: "Recueil périodique Dalloz (avant 1941)" },
+            { a: "DREETS", f: "Direction régionale de l'économie, de l'emploi, du travail..." },
+            { a: "Dr. ouvrier", f: "Le droit ouvrier" },
+            { a: "Dr. soc.", f: "Droit social" },
+            { a: "Dr. trav.", f: "Droit du travail et de la sécurité sociale" },
+            { a: "EJSS", f: "European Journal of Social Security" },
+            { a: "eod.", f: "Au même endroit" },
+            { a: "esp.", f: "Espèce" },
+            { a: "GADT", f: "Les Grands arrêts du droit du travail" },
+            { a: "Gaz. Pal.", f: "Gazette du Palais" },
+            { a: "ibid.", f: "Au même endroit" },
+            { a: "Inf. chef d'entrepr.", f: "L'informateur du chef d'entreprise" },
+            { a: "Instr.", f: "Instruction" },
+            { a: "IR", f: "Informations rapides du Recueil Dalloz" },
+            { a: "J.", f: "Jurisprudence" },
+            { a: "JCP", f: "Juris-Classeur périodique (Semaine Juridique)" },
+            { a: "JCP CI", f: "JCP édition Commerce et industrie" },
+            { a: "JCP E", f: "JCP édition Entreprise" },
+            { a: "JCP N", f: "JCP édition Notariale" },
+            { a: "JCP S", f: "JCP édition Sociale" },
+            { a: "JDI", f: "Journal de droit international (Clunet)" },
+            { a: "JO", f: "Journal officiel" },
+            { a: "JOCE", f: "Journal officiel des Communautés européennes" },
+            { a: "JOUE", f: "Journal officiel de l'Union européenne" },
+            { a: "JSL", f: "Jurisprudence sociale Lamy" },
+            { a: "JS UIMM", f: "Jurisprudence sociale de l'UIMM" },
+            { a: "L.", f: "Loi" },
+            { a: "Lebon", f: "Recueil des décisions du Conseil d'État" },
+            { a: "Lebon T.", f: "Recueil des décisions du Conseil d'État (Tables)" },
+            { a: "Liaisons soc.", f: "Liaisons sociales" },
+            { a: "Liv.", f: "Livre" },
+            { a: "loc. cit.", f: "A l'endroit précité" },
+            { a: "LPA", f: "Les Petites Affiches" },
+            { a: "LSP", f: "Lien social et politique" },
+            { a: "Mod.", f: "Modifié" },
+            { a: "n°", f: "Numéro" },
+            { a: "NCPC", f: "Nouveau code de procédure civile" },
+            { a: "Ndlr", f: "Note de la rédaction" },
+            { a: "nouv.", f: "Nouveau" },
+            { a: "obs.", f: "Observations" },
+            { a: "op. cit.", f: "Opus cité" },
+            { a: "Ord.", f: "Ordonnance" },
+            { a: "P", f: "Arrêt publié au Bulletin civil ou criminel" },
+            { a: "p.", f: "Page" },
+            { a: "Pan.", f: "Panorama" },
+            { a: "pén.", f: "Pénalités" },
+            { a: "préc.", f: "Précité" },
+            { a: "QPC", f: "Question prioritaire de constitutionnalité" },
+            { a: "Quest. prud'h.", f: "Questions prud'homales" },
+            { a: "Quot. jur.", f: "Quotidien juridique" },
+            { a: "Rapp.", f: "Rapport" },
+            { a: "Rappr.", f: "Rapprocher" },
+            { a: "RCA", f: "Responsabilité civile et assurances" },
+            { a: "RDC", f: "Revue des contrats" },
+            { a: "RD publ.", f: "Revue de droit public et de la science politique" },
+            { a: "RDSS", f: "Revue de droit sanitaire et social" },
+            { a: "RDT", f: "Revue de droit du travail" },
+            { a: "Rec.", f: "Recueil des décisions de la CJCE" },
+            { a: "Rect.", f: "Rectificatif" },
+            { a: "réf.", f: "Référé" },
+            { a: "REGARDS EN3S", f: "Revue de l'École nationale supérieure de sécu sociale" },
+            { a: "Règl.", f: "Règlement" },
+            { a: "RÉP. PR. CIV.", f: "Répertoire de procédure civile" },
+            { a: "RÉP. TRAV.", f: "Répertoire de droit du travail" },
+            { a: "réquis.", f: "Réquisitions" },
+            { a: "Rev. adm.", f: "Revue administrative" },
+            { a: "Rev. arb.", f: "Revue de l'arbitrage" },
+            { a: "Rev. crit. DIP", f: "Revue critique de droit international privé" },
+            { a: "Rev. huiss.", f: "Revue des huissiers de justice" },
+            { a: "Rev. sociétés", f: "Revue des sociétés" },
+            { a: "Rev. trav.", f: "Revue du travail" },
+            { a: "RF aff. soc.", f: "Revue française des affaires sociales" },
+            { a: "RF compt.", f: "Revue française de comptabilité" },
+            { a: "RFDA", f: "Revue française de droit administratif" },
+            { a: "RGDA", f: "Revue générale du droit des assurances" },
+            { a: "RJ com.", f: "Revue de jurisprudence commerciale" },
+            { a: "RJS", f: "Revue de jurisprudence sociale" },
+            { a: "RPC", f: "Revue des procédures collectives" },
+            { a: "RPDS", f: "Revue pratique de droit social" },
+            { a: "RRJ", f: "Revue de recherche juridique et de droit prospectif" },
+            { a: "RSC", f: "Revue de science criminelle et de droit pénal comparé" },
+            { a: "RTD civ.", f: "Revue trimestrielle de droit civil" },
+            { a: "RTD com.", f: "Revue trimestrielle de droit commercial" },
+            { a: "RTD eur.", f: "Revue trimestrielle de droit européen" },
+            { a: "S.", f: "Recueil Sirey" },
+            { a: "s.", f: "et suivants" },
+            { a: "Sect.", f: "Section" },
+            { a: "Soc.", f: "Chambre sociale de la Cour de cassation" },
+            { a: "sol. impl.", f: "Solution implicite" },
+            { a: "Somm.", f: "Sommaires" },
+            { a: "ss.", f: "Sous" },
+            { a: "SSL", f: "Semaine sociale Lamy" },
+            { a: "suppl.", f: "Supplément" },
+            { a: "t.", f: "Tome" },
+            { a: "T.", f: "Tables" },
+            { a: "TA", f: "Tribunal administratif" },
+            { a: "T. civ.", f: "Tribunal, chambre civile" },
+            { a: "T. com.", f: "Tribunal de commerce" },
+            { a: "T. confl.", f: "Tribunal des conflits" },
+            { a: "T. corr.", f: "Tribunal, chambre correctionnelle" },
+            { a: "TFUE", f: "Traité sur le fonctionnement de l'UE" },
+            { a: "TGI", f: "Tribunal de grande instance" },
+            { a: "TI", f: "Tribunal d'instance" },
+            { a: "Tit.", f: "Titre" },
+            { a: "TJ", f: "Tribunal judiciaire" },
+            { a: "TPICE", f: "Tribunal de première instance des Communautés européennes" },
+            { a: "TPS", f: "Travail et protection sociale" },
+            { a: "Trib. UE", f: "Tribunal de l'Union européenne" },
+            { a: "TUE", f: "Traité sur l'Union européenne" },
+            { a: "UES", f: "Unité économique et sociale" },
+            { a: "V.", f: "Voir" },
+            { a: "v°, vis", f: "Mot, mots" }
+        ];
+
+        // --- 6. DATA : COMPÉTENCES MÉTIER (MISE À JOUR V3) ---
+        const dbCompetences = [
+            {
+                category: "Juriste en Droit Social & RH",
+                badgeColor: "bg-social-gradient", // Fuchsia
+                pdfUrl: "https://drive.google.com/file/d/1Wbw-YZxA-BwSL4g1ElsSTnr37_U8eYaC/view?usp=drive_link",
+                subjects: [
+                    { t: "Relations Individuelles de Travail", d: "Du recrutement à la rupture : contrats, clauses, pouvoir disciplinaire et licenciements.", books: [{n: "Code du Travail 2025", u: "https://www.boutique-dalloz.fr/code-du-travail-2025-p.html"}, {n: "Mémento Social", u: "#"}] },
+                    { t: "Relations Collectives (CSE & Syndicats)", d: "Négociation d'accords, élections pro, gestion des élus et du dialogue social.", books: [{n: "Les Grands Arrêts Droit Travail", u: "#"}, {n: "Guide du CSE", u: "#"}] },
+                    { t: "Droit de la Protection Sociale", d: "Comprendre l'URSSAF, la Prévoyance, la Retraite et les risques AT/MP.", books: [{n: "Code de la Sécurité Sociale", u: "#"}] }
+                ]
+            },
+            {
+                category: "Juriste en Droit des Affaires",
+                badgeColor: "bg-affaires-gradient", // Or
+                pdfUrl: "https://drive.google.com/file/d/1e4r7RbmFU4xreo64xso2nQB040NkUkJb/view?usp=drive_link",
+                subjects: [
+                    { t: "Droit des Sociétés", d: "Secrétariat juridique, vie des parts sociales, fusions et acquisitions (M&A).", books: [{n: "Code des Sociétés", u: "#"}, {n: "Mémento Sociétés Commerciales", u: "#"}] },
+                    { t: "Droit Commercial & Contrats", d: "Baux commerciaux, fonds de commerce, CGV, distribution et concurrence.", books: [{n: "Code de Commerce 2025", u: "#"}, {n: "Technique Contractuelle", u: "#"}] },
+                    { t: "Droit Fiscal des Affaires", d: "TVA, IS (Impôt Sociétés), CET et stratégie fiscale de l'entreprise.", books: [{n: "Précis de Droit Fiscal", u: "#"}, {n: "Mémento Fiscal", u: "#"}] }
+                ]
+            },
+            {
+                category: "Juriste Généraliste (Socle Commun)",
+                badgeColor: "bg-socle-gradient", // Bleu
+                pdfUrl: "https://drive.google.com/file/d/1u5UGQUihD1yIwDLXoJxeoqihsSWPKgAs/view?usp=drive_link",
+                subjects: [
+                    { t: "Droit des Obligations", d: "La base absolue : Contrats (Consentement, Nullité) et Responsabilité Civile.", books: [{n: "Code Civil 2025 (La Bible)", u: "https://www.boutique-dalloz.fr/code-civil-2025-p.html"}] },
+                    { t: "Procédure Civile", d: "Savoir agir en justice, gérer les délais et exécuter les décisions.", books: [{n: "Code de Procédure Civile", u: "#"}] },
+                    { t: "Droit des Biens & Immobilier", d: "Propriété, usufruit, servitudes et baux d'habitation.", books: [{n: "Code de la Construction", u: "#"}] },
+                    { t: "RGPD & Data", d: "Protection des données personnelles : une compétence transverse indispensable aujourd'hui.", books: [{n: "Code de la Protection des Données", u: "#"}] }
+                ]
+            }
+        ];
+
+        // --- 7. MOTEUR FLASHCARDS (ACCESSIBILITÉ RENFORCÉE) ---
+        let currentCardIndex = 0;
+        let flashcardsData = [];
+        let isFlipped = false;
+
+        function initFlashcards() {
+            // Agrégation intelligente des données pour le jeu
+            flashcardsData = [];
+            
+            // 1. Lexique (Terme -> Def)
+            dbLexique.forEach(i => {
+                flashcardsData.push({
+                    cat: "Lexique",
+                    q: i.m,
+                    a: i.d,
+                    trap: i.c,
+                    hint: "Définition ?"
+                });
+            });
+
+            // 2. Abréviations (Abréviation -> Full)
+            dbAbrev.forEach(i => {
+                flashcardsData.push({
+                    cat: "Abréviation",
+                    q: i.a,
+                    a: i.f,
+                    trap: "Attention à l'orthographe exacte !",
+                    hint: "Signification ?"
+                });
+            });
+
+            // 3. Réflexes (Titre -> Description + Piège)
+            dbReflexes.forEach(i => {
+                flashcardsData.push({
+                    cat: "Fiche Réflexe",
+                    q: i.t,
+                    a: i.d,
+                    trap: i.p,
+                    hint: "C'est quoi ?"
+                });
+            });
+
+            // Mélange initial
+            shuffleArray(flashcardsData);
+            renderFlashcard();
+        }
+
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+        }
+
+        function renderFlashcard() {
+            if (flashcardsData.length === 0) return;
+            
+            const card = flashcardsData[currentCardIndex];
+            
+            // Reset Flip
+            const cardObj = document.querySelector('.flashcard-obj');
+            cardObj.classList.remove('is-flipped');
+            isFlipped = false;
+
+            // Update Content (avec petit délai pour cacher le changement si flip en cours)
+            setTimeout(() => {
+                document.getElementById('fc-cat').textContent = card.cat;
+                document.getElementById('fc-question').textContent = card.q;
+                document.getElementById('fc-answer').textContent = card.a;
+                document.getElementById('fc-trap').textContent = "⚠️ " + card.trap;
+            }, 200);
+        }
+
+        function flipCard() {
+            const cardObj = document.querySelector('.flashcard-obj');
+            cardObj.classList.toggle('is-flipped');
+            isFlipped = !isFlipped;
+        }
+
+        function nextCard() {
+            currentCardIndex = (currentCardIndex + 1) % flashcardsData.length;
+            renderFlashcard();
+        }
+
+        function prevCard() {
+            currentCardIndex = (currentCardIndex - 1 + flashcardsData.length) % flashcardsData.length;
+            renderFlashcard();
+        }
+
+        function randomCard() {
+            shuffleArray(flashcardsData);
+            currentCardIndex = 0;
+            renderFlashcard();
+        }
+        
+        // --- NOUVELLES FONCTIONS DE LECTURE (TTS) ---
+        function readFrontCard() {
+            const card = flashcardsData[currentCardIndex];
+            const textToRead = `Catégorie : ${card.cat}. Question : ${card.q}. ${card.hint}`;
+            speakText(textToRead);
+        }
+
+        function readBackCard() {
+            const card = flashcardsData[currentCardIndex];
+            const textToRead = `Réponse : ${card.a}. Attention au piège : ${card.trap}`;
+            speakText(textToRead);
+        }
+
+
+        // --- MOTEUR JS GLOBAL ---
+        window.onload = function() {
+            renderSyllogisms('all');
+            renderLexique(dbLexique);
+            renderReflexes(dbReflexes);
+            renderDalloz(dbAbrev);
+            renderCompetences(dbCompetences);
+            
+            // Init Flashcards
+            initFlashcards();
+        };
+
+        function switchTab(id) {
+            document.querySelectorAll('.tab-content').forEach(e => e.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(e => e.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+            
+            const btns = document.querySelectorAll('.tab-btn');
+            if(id === 'accueil') btns[0].classList.add('active');
+            if(id === 'syllogismes') btns[1].classList.add('active');
+            if(id === 'lexique') btns[2].classList.add('active');
+            if(id === 'reflexes') btns[3].classList.add('active');
+            if(id === 'abbrev') btns[4].classList.add('active');
+            if(id === 'competences') btns[5].classList.add('active');
+            if(id === 'flashcards') btns[6].classList.add('active');
+        }
+
+        function filterCases(cat) { renderSyllogisms(cat); }
+
+        function renderSyllogisms(filter) {
+            const container = document.getElementById('cases-container');
+            container.innerHTML = '';
+            const filtered = dbSyllogismes.filter(i => filter === 'all' || i.cat === filter);
+            
+            filtered.forEach((item, idx) => {
+                let badge = 'bg-social';
+                if(item.cat === 'Affaires') badge = 'bg-affaires';
+                
+                const html = `
+                <div class="case-card">
+                    <div class="case-header">
+                        <div class="flex items-center gap-3">
+                            <div class="badge-circle ${badge}">${item.cat.substring(0,2).toUpperCase()}</div>
+                            <h3 class="case-title mb-0">${item.title}</h3>
+                        </div>
+                        <span class="case-number">#${idx+1}</span>
+                    </div>
+                    <div class="case-body flex flex-col h-full">
+                        <div class="case-context"><i class="fas fa-search mr-2"></i> ${item.context}</div>
+                        
+                        <button class="reveal-btn mt-auto" onclick="toggleSolution(this)">
+                            <span><i class="fas fa-gavel"></i> Délibérer</span>
+                        </button>
+                        
+                        <div class="case-solution">
+                            <div class="syllogism-step step-majeure">
+                                <span class="step-label">MAJEURE (Règle de Droit) :</span>
+                                <p>${item.majeure}</p>
+                            </div>
+                            <div class="syllogism-step step-mineure">
+                                <span class="step-label">MINEURE (Faits) :</span>
+                                <p>${item.mineure}</p>
+                            </div>
+                            <div class="syllogism-step step-conclusion">
+                                <span class="step-label">CONCLUSION :</span>
+                                <p>${item.conclusion}</p>
+                            </div>
+                            <div class="strategic-tip">
+                                <i class="fas fa-lightbulb text-lg mt-1"></i>
+                                <div><strong>Conseil de l'expert :</strong> ${item.advice}</div>
+                            </div>
+                            <div style="text-align:right; margin-top:10px;">
+                                <button onclick="speakText('${item.conclusion.replace(/'/g, "\\'")}')" class="btn-audio-dark" title="Écouter"><i class="fas fa-volume-up"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>`;
+                container.innerHTML += html;
+            });
+        }
+
+        function toggleSolution(btn) {
+            const content = btn.nextElementSibling;
+            content.classList.toggle('open');
+            btn.innerHTML = content.classList.contains('open') ? '<span><i class="fas fa-eye-slash"></i> Masquer</span>' : '<span><i class="fas fa-gavel"></i> Délibérer</span>';
+            btn.classList.toggle('active');
+        }
+
+        function renderLexique(data) {
+            const container = document.getElementById('lexique-container');
+            container.innerHTML = '';
+            data.sort((a,b) => a.m.localeCompare(b.m));
+            data.forEach((i, idx) => {
+                const html = `
+                <div class="lexique-card" onclick="toggleLexique(this)">
+                    <div class="lexique-header">
+                        <div class="flex items-center gap-2">
+                            <span class="lexique-num">#${idx+1}</span>
+                            <div class="lexique-term">${i.m}</div>
+                        </div>
+                        <i class="fas fa-chevron-down lexique-arrow"></i>
+                    </div>
+                    <div class="lexique-body">
+                         <div class="lexique-def"><strong>Définition :</strong> ${i.d}</div>
+                         <div class="lexique-context"><i class="fas fa-exclamation-triangle mr-1"></i> <strong>Piège / Contexte :</strong> ${i.c}</div>
+                         <div style="margin-top:15px; text-align:right;">
+                             <button onclick="event.stopPropagation(); speakText('${i.m.replace(/'/g, "\\'")}. Définition : ${i.d.replace(/'/g, "\\'")}. Piège : ${i.c.replace(/'/g, "\\'")}')" class="btn-audio-dark" title="Tout lire"><i class="fas fa-volume-up"></i></button>
+                         </div>
+                    </div>
+                </div>`;
+                container.innerHTML += html;
+            });
+        }
+        
+        function toggleLexique(card) {
+            card.classList.toggle('open');
+        }
+
+        document.getElementById('lexiqueSearch').addEventListener('keyup', (e) => {
+            const val = e.target.value.toLowerCase();
+            const filtered = dbLexique.filter(i => i.m.toLowerCase().includes(val));
+            renderLexique(filtered);
+        });
+
+        function renderReflexes(data) {
+            const container = document.getElementById('reflexes-container');
+            container.innerHTML = '';
+            data.forEach((item, idx) => {
+                let headerClass = 'bg-proc-header';
+                if(item.c === 'Danger') headerClass = 'bg-danger-header';
+                if(item.c === 'Gestion') headerClass = 'bg-gestion-header';
+                
+                // Concaténer les étapes pour la lecture TTS
+                const stepsText = item.s.join('. Étape suivante : ');
+                const fullTextToSpeak = `${item.t}. ${item.d}. Procédure : ${stepsText}. Attention : ${item.p}`;
+                
+                let steps = item.s.map((s, i) => `<div class="reflexe-step"><div class="step-num">${i+1}</div><div class="text-sm text-gray-700">${s}</div></div>`).join('');
+                
+                const html = `
+                <div class="reflexe-card">
+                    <div class="reflexe-header ${headerClass}">
+                        <div class="flex items-center gap-2">
+                            <span class="text-sm opacity-70">#${idx+1}</span>
+                            <span>${item.t}</span>
+                        </div>
+                        <div class="flex gap-2">
+                             <button onclick="speakText('${fullTextToSpeak.replace(/'/g, "\\'")}')" class="btn-audio-small" aria-label="Lire la fiche"><i class="fas fa-volume-up"></i></button>
+                        </div>
+                    </div>
+                    <div class="reflexe-body">
+                        <div class="reflexe-def-box">
+                            <span class="reflexe-def-title">💡 C'est quoi & À quoi ça sert ?</span>
+                            ${item.d}
+                        </div>
+                        ${steps}
+                        <div class="reflexe-warning"><i class="fas fa-exclamation-circle mr-2"></i>${item.p}</div>
+                    </div>
+                </div>`;
+                container.innerHTML += html;
+            });
+        }
+
+        function renderDalloz(data) {
+            const container = document.getElementById('abbrev-container');
+            container.innerHTML = '';
+            data.sort((a,b) => a.a.localeCompare(b.a));
+
+            data.forEach(item => {
+                const html = `
+                <div class="dalloz-card">
+                    <div class="dalloz-abbr">${item.a}</div>
+                    <div class="dalloz-full">${item.f}</div>
+                </div>`;
+                container.innerHTML += html;
+            });
+        }
+
+        document.getElementById('abbrevSearch').addEventListener('keyup', (e) => {
+            const val = e.target.value.toLowerCase();
+            const filtered = dbAbrev.filter(i => i.a.toLowerCase().includes(val) || i.f.toLowerCase().includes(val));
+            renderDalloz(filtered);
+        });
+
+        // --- RENDER COMPÉTENCES (V3 AVEC LIENS PDF ET DALLOZ) ---
+        function renderCompetences(data) {
+            const container = document.getElementById('competences-container');
+            container.innerHTML = '';
+            
+            data.forEach(category => {
+                // Construction de la liste des livres (Dalloz Links)
+                const getBooksHtml = (books) => {
+                    if(!books || books.length === 0) return '';
+                    return books.map(b => `<a href="${b.u}" target="_blank" class="dalloz-link"><i class="fas fa-book-open mr-1"></i>${b.n}</a>`).join('');
+                };
+
+                let subjectsHtml = category.subjects.map(sub => `
+                    <div class="matiere-card">
+                        <span class="matiere-name">${sub.t}</span>
+                        <p class="matiere-desc">${sub.d}</p>
+                        
+                        <div class="dalloz-rec">
+                            <div class="dalloz-rec-title"><i class="fas fa-shopping-cart"></i> Bibliothèque Idéale</div>
+                            ${getBooksHtml(sub.books)}
+                        </div>
+                    </div>
+                `).join('');
+
+                const sectionHtml = `
+                <div class="matiere-section">
+                    <div class="matiere-header">
+                        <div class="matiere-title-main">
+                            <i class="fas fa-compass"></i> ${category.category}
+                        </div>
+                        <a href="${category.pdfUrl}" target="_blank" class="filiere-badge ${category.badgeColor}">
+                            <i class="fas fa-file-pdf"></i> TÉLÉCHARGER LA FICHE FORMATION
+                        </a>
+                    </div>
+                    <div class="matiere-list">
+                        ${subjectsHtml}
+                    </div>
+                </div>`;
+                container.innerHTML += sectionHtml;
+            });
+        }
+        
+        function speakText(text) {
+            if ('speechSynthesis' in window) {
+                // Annuler toute lecture en cours pour éviter les chevauchements
+                window.speechSynthesis.cancel();
+                
+                // Petit délai pour assurer la prise en compte de l'annulation
+                setTimeout(() => {
+                    const utterance = new SpeechSynthesisUtterance(text);
+                    utterance.lang = 'fr-FR';
+                    utterance.rate = 0.9; // Vitesse légèrement ralentie pour la clarté
+                    window.speechSynthesis.speak(utterance);
+                }, 100);
+            }
+        }
+        
+        // Back to top logic
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) document.getElementById('backToTop').classList.add('visible');
+            else document.getElementById('backToTop').classList.remove('visible');
+        });
+        document.getElementById('backToTop').addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    </script>
+</body>
+</html>

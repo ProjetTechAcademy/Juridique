@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lexique Latin Juridique - Expert MBA (260)</title>
+    
+    <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/e/e0/Balance_of_Justice_SVG.svg" type="image/svg+xml">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&family=Montserrat:wght@500;600;700&family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* === CHARTE GRAPHIQUE COSMIC PREMIUM === */
+        :root {
+            --cta: #D9A526;       /* Or */
+            --brand-blue: #0F2C48; /* Bleu Nuit */
+            --ivory: #F6F2E8;     
+            --bronze: #B4792A;    
+            
+            /* Couleurs Lexique Expert */
+            --bg-vulg: #f3e8ff;    --border-vulg: #9333ea;    --text-vulg: #6b21a8;    /* Violet */
+            --bg-context: #e0f2fe; --border-context: #0284c7; --text-context: #075985; /* Bleu */
+            --bg-advice: #fffbeb; --border-advice: #d97706; --text-advice: #92400e;   /* Jaune */
+            --bg-danger: #fef2f2; --border-danger: #dc2626; --text-danger: #991b1b;   /* Rouge */
+            --bg-example: #f0fdf4; --border-example: #16a34a; --text-example: #166534; /* Vert */
+            --bg-case: #fff7ed;    --border-case: #ea580c;    --text-case: #9a3412;    /* Orange */
+        }
+
+        body { 
+            margin: 0; 
+            background-color: var(--ivory); 
+            color: var(--brand-blue); 
+            font-family: 'Outfit', sans-serif; 
+            display: flex; flex-direction: column; min-height: 100vh;
+        }
+
+        /* === HEADER === */
+        .top-bar {
+            background-color: var(--brand-blue);
+            padding: 15px 0;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            position: sticky; top: 0; z-index: 10000;
+            border-bottom: 4px solid var(--cta);
+        }
+        
+        .top-bar-container {
+            max-width: 1400px; margin: 0 auto; padding: 0 20px;
+            display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px;
+        }
+
+        .top-bar-left { display: flex; align-items: center; gap: 15px; flex: 1; min-width: 320px; }
+        .logo-top-bar { width: 60px; height: 60px; border-radius: 50%; border: 2px solid var(--cta); object-fit: cover; background: white; }
+        .identity-stack { display: flex; flex-direction: column; justify-content: center; }
+        .club-title-main { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; color: #ffffff; line-height: 1.1; margin-bottom: 3px; }
+        .club-subtitle { font-family: 'Lato', sans-serif; font-size: 0.75rem; color: var(--cta); font-weight: 600; }
+
+        .top-bar-center { display: flex; gap: 12px; align-items: center; }
+        
+        /* Boutons Header */
+        .header-icon-btn {
+            position: relative; width: 40px; height: 40px; border-radius: 50%;
+            background: linear-gradient(135deg, #D9A526 0%, #B4792A 100%);
+            border: 1px solid rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center;
+            font-size: 1.1rem; text-decoration: none; transition: all 0.3s ease; color: white;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        .header-icon-btn:hover { 
+            transform: translateY(-3px) scale(1.1); 
+            background: linear-gradient(135deg, #FFD700 0%, #D9A526 100%);
+            box-shadow: 0 6px 15px rgba(217, 165, 38, 0.4); 
+        }
+        
+        .nav-profile-img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 2px solid #fff; }
+        
+        .header-icon-btn::after {
+            content: attr(data-tooltip); position: absolute; top: 130%; left: 50%; transform: translateX(-50%) translateY(-10px);
+            background-color: #fff; color: var(--brand-blue); padding: 4px 10px; border-radius: 20px;
+            font-size: 0.7rem; font-weight: 700; white-space: nowrap; opacity: 0; visibility: hidden; transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2); pointer-events: none; z-index: 100;
+        }
+        .header-icon-btn:hover::after { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+
+        .btn-portfolio-cosmic {
+            padding: 8px 20px; border-radius: 50px; font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 0.9rem;
+            background: linear-gradient(135deg, #D9A526 0%, #B4792A 100%); color: white !important; text-decoration: none; 
+            border: 1px solid rgba(255,255,255,0.2); display: inline-flex; align-items: center; gap: 8px; animation: cosmic-pulse 2s infinite;
+        }
+        .btn-portfolio-cosmic:hover { background: linear-gradient(135deg, #F1C40F 0%, #D9A526 100%); transform: translateY(-2px); }
+        @keyframes cosmic-pulse { 0% { transform: scale(1); } 50% { transform: scale(1.02); } 100% { transform: scale(1); } }
+
+        /* === MAIN === */
+        main { flex-grow: 1; max-width: 1200px; margin: 0 auto; padding: 40px 20px; width: 100%; }
+        
+        .page-title { text-align: center; font-family: 'Playfair Display', serif; font-size: 2.5rem; color: var(--brand-blue); margin-bottom: 10px; }
+        .page-intro { text-align: center; color: var(--bronze); margin-bottom: 40px; font-weight: 600; }
+
+        .controls-section { background: white; padding: 20px; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); margin-bottom: 30px; border-top: 4px solid var(--cta); }
+        .search-input { width: 100%; padding: 15px 25px; border-radius: 50px; border: 2px solid #e5e7eb; font-size: 1.1rem; outline: none; transition: 0.3s; margin-bottom: 15px; }
+        .search-input:focus { border-color: var(--cta); box-shadow: 0 0 0 4px rgba(217, 165, 38, 0.1); }
+        
+        .filters-container { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
+        .filter-btn { padding: 6px 18px; border-radius: 50px; border: 2px solid var(--brand-blue); background: transparent; color: var(--brand-blue); font-weight: 700; cursor: pointer; transition: 0.3s; font-size: 0.9rem; }
+        .filter-btn:hover, .filter-btn.active { background: var(--brand-blue); color: white; }
+
+        /* CARTES */
+        .cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); gap: 30px; }
+
+        .expert-card {
+            background: white; border-radius: 16px; overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: all 0.3s ease;
+            border: 1px solid rgba(0,0,0,0.05); position: relative;
+            display: flex; flex-direction: column;
+        }
+        .expert-card:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(0,0,0,0.1); border-color: var(--cta); }
+
+        .card-top { padding: 25px 20px; border-bottom: 1px solid #f1f5f9; position: relative; background: #fff; z-index: 2; }
+        .card-number { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 0.8rem; color: #cbd5e1; position: absolute; top: 15px; left: 15px; }
+        .badges-group { position: absolute; top: 15px; right: 15px; display: flex; gap: 5px; }
+        .badge-circle {
+            width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-size: 0.7rem; font-weight: 800; color: white; border: 2px solid white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); cursor: help;
+        }
+        .bg-je { background-color: #0369a1; }
+        .bg-ds { background-color: #be185d; }
+        .bg-da { background-color: #b45309; }
+
+        .latin-title-row { margin-top: 10px; display: flex; align-items: center; gap: 8px; justify-content: center; text-align: center; }
+        .latin-term { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 900; font-style: italic; color: var(--brand-blue); }
+        .pronounce-btn {
+            background: #f0f9ff; border: 1px solid #bae6fd; color: #0284c7; cursor: pointer;
+            font-size: 1rem; transition: 0.2s; display: flex; align-items: center; justify-content: center;
+            width: 28px; height: 28px; border-radius: 50%;
+        }
+        .pronounce-btn:hover { background-color: #0284c7; color: white; transform: scale(1.1); }
+
+        .translation { text-align: center; color: #64748b; font-weight: 600; font-size: 1.1rem; margin-top: 10px; margin-bottom: 5px; }
+        
+        .definition-container { 
+            background: #f8fafc; padding: 15px 20px; text-align: justify; 
+            border-bottom: 1px dashed #e2e8f0; border-left: 4px solid var(--cta);
+        }
+        .definition-text { font-weight: 600; color: var(--brand-blue); font-size: 1rem; line-height: 1.6; }
+
+        .expert-toggle {
+            width: 100%; padding: 15px; background: linear-gradient(to right, #f8fafc, #ffffff); border: none; border-top: 1px solid #e2e8f0;
+            color: var(--brand-blue); font-weight: 700; font-size: 0.9rem; cursor: pointer;
+            display: flex; justify-content: center; align-items: center; gap: 8px; transition: 0.3s;
+            text-transform: uppercase; letter-spacing: 1px;
+        }
+        .expert-toggle:hover { background: #f1f5f9; color: var(--cta); }
+        .chevron { transition: transform 0.3s; }
+        .expert-toggle.active .chevron { transform: rotate(180deg); }
+        .expert-toggle.active { background: var(--brand-blue); color: #fff; }
+
+        .expert-content { max-height: 0; overflow: hidden; transition: max-height 0.6s ease-out; background: #fff; padding: 0 20px; }
+        .expert-content.open { max-height: 4000px; padding-bottom: 20px; }
+
+        .expert-block { margin-top: 15px; padding: 15px; border-radius: 12px; font-size: 0.95rem; line-height: 1.6; border-left: 5px solid transparent; text-align: left; box-shadow: 0 2px 5px rgba(0,0,0,0.03); }
+        
+        .b-vulg { background: var(--bg-vulg); border-color: var(--border-vulg); color: var(--text-vulg); }
+        .b-context { background: var(--bg-context); border-color: var(--border-context); color: var(--text-context); }
+        .b-advice { background: var(--bg-advice); border-color: var(--border-advice); color: var(--text-advice); }
+        .b-danger { background: var(--bg-danger); border-color: var(--border-danger); color: var(--text-danger); }
+        .b-example { background: var(--bg-example); border-color: var(--border-example); color: var(--text-example); }
+        .b-case { background: var(--bg-case); border-color: var(--border-case); color: var(--text-case); }
+
+        .block-title { font-weight: 900; font-size: 0.75rem; text-transform: uppercase; margin-bottom: 6px; display: block; letter-spacing: 0.5px; display: flex; align-items: center; gap: 6px; }
+
+        .card-bottom-actions { margin-top: auto; padding: 15px 20px; background: #fdfbf7; border-top: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: center; }
+        
+        .btn-read-all {
+            background: white; border: 1px solid var(--cta); color: var(--bronze);
+            padding: 8px 16px; border-radius: 20px; font-size: 0.85rem; font-weight: 700;
+            cursor: pointer; display: flex; align-items: center; gap: 8px; transition: 0.2s;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1); flex-grow: 1; justify-content: center; margin-right: 10px;
+        }
+        .btn-read-all:hover { background: var(--cta); color: white; transform: translateY(-2px); }
+
+        .btn-pause {
+            width: 40px; height: 35px; border-radius: 20px; border: 1px solid #cbd5e1;
+            background: #f1f5f9; color: var(--brand-blue); display: flex; align-items: center; justify-content: center;
+            cursor: pointer; transition: 0.2s; font-size: 1rem;
+        }
+        .btn-pause:hover { background: var(--brand-blue); color: white; }
+        .btn-pause.playing { background: #fee2e2; color: #ef4444; border-color: #ef4444; }
+
+        /* === FOOTER === */
+        .main-footer {
+            background-color: var(--brand-blue); color: #F6F2E8;
+            padding-top: 50px; font-family: 'Lato', sans-serif; font-size: 0.95rem;
+            width: 100%; margin-top: auto;
+        }
+        .footer-container { max-width: 1100px; margin: 0 auto; padding: 0 25px; }
+        .footer-content { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 30px; padding-bottom: 30px; align-items: flex-start; }
+        
+        .footer-identity { display: flex; flex-direction: row; align-items: center; gap: 20px; min-width: 300px; }
+        .footer-logo-img { width: 60px; height: 60px; border-radius: 8px; border: 2px solid var(--cta); background: #fff; object-fit: cover; }
+        .footer-info-compact { display: flex; flex-direction: column; text-align: left; }
+        .footer-name { color: var(--cta); font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; line-height: 1.2; margin-bottom: 5px; margin-top:0; }
+        .footer-contact-stack { display: flex; flex-direction: column; gap: 5px; font-size: 0.85rem; opacity: 0.8; }
+        .footer-link { text-decoration: none; color: inherit; transition: color 0.3s; display: inline-block; }
+        .footer-link:hover { color: var(--cta); }
+
+        .footer-dock-col { display: flex; flex-direction: column; align-items: flex-end; gap: 10px; margin-left: auto; }
+        .dock-group { display: flex; flex-direction: column; align-items: flex-end; gap: 5px; }
+        .dock-label { font-family: 'Montserrat', sans-serif; font-size: 0.8rem; text-transform: uppercase; color: var(--cta); opacity: 0.7; }
+        .icon-dock { display: flex; gap: 15px; flex-wrap: wrap; justify-content: flex-end; align-items: center; }
+
+        .icon-btn { 
+            position: relative; width: 45px; height: 45px; border-radius: 50%; 
+            background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(217, 165, 38, 0.3); 
+            display: flex; align-items: center; justify-content: center; 
+            font-size: 1.3rem; text-decoration: none; 
+            transition: all 0.3s; cursor: pointer; color: #fff; 
+        }
+        .icon-btn:hover { transform: translateY(-5px) scale(1.1); background: #fff; border-color: #fff; }
+        .brand-whatsapp { color: #25D366 !important; } .icon-btn:hover .brand-whatsapp { color: #25D366 !important; }
+        .brand-discord { color: #5865F2 !important; } .icon-btn:hover .brand-discord { color: #5865F2 !important; }
+        .brand-linkedin { color: #0077b5 !important; } .icon-btn:hover .brand-linkedin { color: #0077b5 !important; }
+        .brand-instagram { color: #E1306C !important; } .icon-btn:hover .brand-instagram { color: #E1306C !important; }
+        .brand-tiktok { color: #00f2ea !important; text-shadow: 2px 2px 0px #ff0050; } .icon-btn:hover .brand-tiktok { color: #000 !important; text-shadow: none; } 
+        .brand-nav { color: var(--cta) !important; } .icon-btn:hover .brand-nav { color: var(--brand-blue) !important; }
+
+        .dock-separator { width: 1px; height: 30px; background-color: rgba(255,255,255,0.2); margin: 0 10px; }
+        .footer-bottom { 
+            text-align: center; padding: 15px 0; font-size: 0.8rem; 
+            color: rgba(255,255,255,0.4); background-color: rgba(0,0,0,0.2); 
+            border-top: 1px solid rgba(255,255,255,0.05); width: 100%;
+        }
+
+        #backToTop {
+            position: fixed; bottom: 30px; right: 30px; 
+            background: linear-gradient(135deg, #D9A526 0%, #B4792A 100%);
+            color: white; width: 50px; height: 50px; border-radius: 50%; 
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.2rem; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.2); opacity: 0; pointer-events: none;
+            transition: all 0.3s ease; z-index: 1000; border: 1px solid rgba(255,255,255,0.3);
+        }
+        #backToTop.show { opacity: 1; pointer-events: all; }
+        #backToTop:hover { transform: translateY(-5px); background: linear-gradient(135deg, #FFD700 0%, #D9A526 100%); }
+
+        @media (max-width: 768px) {
+            .footer-content { flex-direction: column; align-items: center; text-align: center; }
+            .footer-identity { flex-direction: column; text-align: center; }
+            .footer-dock-col { align-items: center; width: 100%; gap: 30px; margin-left: 0; }
+            .icon-dock { justify-content: center; flex-wrap: wrap; }
+            .dock-group { align-items: center; }
+            .dock-separator { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <div class="top-bar-container">
+            <div class="top-bar-left">
+                <img src="https://projettechacademy.github.io/Juridique/Asset/Logo_juriste.png" 
+                     onerror="this.src='https://projettechacademy.github.io/Juridique/Asset/Logo_juriste.jpg';" 
+                     alt="Logo Club" class="logo-top-bar">
+                <div class="identity-stack">
+                    <span class="club-title-main">💫 The Jurist Elite Club By Studi ✨</span>
+                    <span class="club-subtitle">La Villa des Juristes Brisés 💔 sur l’Île de L’INSTRUCTION ! 🏝</span>
+                </div>
+            </div>
+            
+            <div class="top-bar-center">
+                <a href="https://projettechacademy.github.io/Juridique/index.html" target="_blank" class="header-icon-btn" aria-label="Start/Accueil" data-tooltip="Accueil" style="padding: 0; overflow: hidden; border: none;">
+                    <img src="https://projettechacademy.github.io/Juridique/Asset/Logo_MMPA.jpeg" alt="MMPA" class="nav-profile-img" style="width: 100%; height: 100%; object-fit: cover;">
+                </a>
+                <a href="https://projettechacademy.github.io/Juridique/00_Autres/Mon_Espace_Juriste_Tableau_de_bord_personnel.html" target="_blank" class="header-icon-btn" aria-label="Mon Espace" data-tooltip="Mon Espace">📊</a>
+                <a href="https://projettechacademy.github.io/Juridique/00_Autres/Lexique_Latin_Juridique.html" target="_blank" class="header-icon-btn" aria-label="Lexique Latin" data-tooltip="Lexique">📜</a>
+                <a href="https://projettechacademy.github.io/Juridique/00_Autres/Atelier_de_Competence.html" target="_blank" class="header-icon-btn" aria-label="Atelier" data-tooltip="Atelier">🛠️</a>
+                <a href="https://projettechacademy.github.io/Juridique/00_Autres/formation_live_juriste.html" target="_blank" class="header-icon-btn" aria-label="Planning Live" data-tooltip="Planning">📅</a>
+                <a href="https://projettechacademy.github.io/Juridique/00_Autres/A_propos_de_moi.html" target="_blank" class="header-icon-btn" aria-label="À propos de moi" data-tooltip="Profil" style="padding: 0; overflow: hidden; border: 2px solid #D9A526;">
+                    <img src="https://projettechacademy.github.io/Juridique/Asset/Photo_Mathilde_Martine_PAISLEY.png" onerror="this.src='https://projettechacademy.github.io/Juridique/Asset/Photo_Mathilde_Martine_PAISLEY.jpg';" alt="Profil" class="nav-profile-img" style="width: 100%; height: 100%; object-fit: cover;">
+                </a>
+            </div>
+
+            <a href="https://projettechacademy.github.io/CV_MMPA-CV-Mathilde-Martine-PAISLEY/" target="_blank" class="btn-portfolio-cosmic">
+                <span>📄</span> Mon portfolio
+            </a>
+        </div>
+    </div>
+
+    <main>
+        <div class="page-title" style="margin-top: 20px;">Lexique Latin Juridique</div>
+        <p class="page-intro">Expertise MBA - 260 Expressions Incontournables (Phrases Complètes & Pédagogie 💜)</p>
+
+        <section class="controls-section">
+            <input type="text" id="searchInput" class="search-input" placeholder="🔍 Rechercher (ex: Intuitu, Preuve, Contrat...)">
+            <div class="filters-container">
+                <button class="filter-btn active" onclick="filterTerms('all')">TOUT</button>
+                <button class="filter-btn" onclick="filterTerms('DS')">Droit Social (DS)</button>
+                <button class="filter-btn" onclick="filterTerms('DA')">Affaires (DA)</button>
+                <button class="filter-btn" onclick="filterTerms('JE')">Juriste Ent. (JE)</button>
+            </div>
+        </section>
+
+        <div id="dictionary-grid" class="cards-grid">
+            </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                
+                <div class="footer-identity">
+                    <img src="https://projettechacademy.github.io/Juridique/Asset/Logo_MMPA.jpeg" alt="Logo MMPA" class="footer-logo-img">
+                    <div class="footer-info-compact">
+                        <div class="footer-name">Mathilde Martine PAISLEY</div>
+                        <div class="footer-contact-stack">
+                            <a href="mailto:Mathilde.martine.paisley@gmail.com" target="_blank" class="footer-link">📧 Mathilde.martine.paisley@gmail.com</a>
+                            <a href="tel:+33685900887" class="footer-link">📲 06 85 90 08 87</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer-dock-col">
+                    <div class="dock-group">
+                        <div class="dock-label">Navigation & Réseaux</div>
+                        <div class="icon-dock">
+                            <a href="https://projettechacademy.github.io/Juridique/index.html" target="_blank" class="icon-btn" data-tooltip="Start/Accueil"><span class="brand-nav">🏠</span></a>
+                            <a href="https://projettechacademy.github.io/Juridique/00_Autres/Mon_Espace_Juriste_Tableau_de_bord_personnel.html" target="_blank" class="icon-btn" data-tooltip="Mon Espace"><span class="brand-nav">📊</span></a>
+                            <a href="https://projettechacademy.github.io/Juridique/00_Autres/Lexique_Latin_Juridique.html" target="_blank" class="icon-btn" data-tooltip="Lexique Latin"><span class="brand-nav">📜</span></a>
+                            <a href="https://projettechacademy.github.io/Juridique/00_Autres/formation_live_juriste.html" target="_blank" class="icon-btn" data-tooltip="Planning Live"><span class="brand-nav">📅</span></a>
+                            <a href="https://projettechacademy.github.io/Juridique/00_Autres/A_propos_de_moi.html" target="_blank" class="icon-btn" data-tooltip="À propos de moi"><span class="brand-nav">👤</span></a>
+                            
+                            <div class="dock-separator"></div>
+
+                            <a href="https://chat.whatsapp.com/IoMXFl4o2otExYKCPVj22b" target="_blank" class="icon-btn" data-tooltip="WhatsApp"><i class="fab fa-whatsapp brand-whatsapp"></i></a>
+                            <a href="https://discord.gg/qwNPV8QzFt" target="_blank" class="icon-btn" data-tooltip="Discord"><i class="fab fa-discord brand-discord"></i></a>
+                            <a href="https://www.linkedin.com/in/mathilde-martine-paisley-1a4422382/" target="_blank" class="icon-btn" data-tooltip="LinkedIn"><i class="fab fa-linkedin brand-linkedin"></i></a>
+                            <a href="https://www.instagram.com/enervyx/" target="_blank" class="icon-btn" data-tooltip="Instagram @enervyx"><i class="fab fa-instagram brand-instagram"></i></a>
+                            <a href="https://www.tiktok.com/@enervyx/" target="_blank" class="icon-btn" data-tooltip="TikTok @enervyx"><i class="fab fa-tiktok brand-tiktok"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="footer-container">
+                <p>© 2025 Tous droits réservés – Création : 2025 – Dernière mise à jour : Décembre 2025</p>
+            </div>
+        </div>
+    </footer>
+
+    <div id="backToTop" onclick="window.scrollTo(0,0)"><i class="fas fa-arrow-up"></i></div>
+
+    <script>
+        // --- BASE DE DONNÉES EXPERT COMPLÈTE (260 TERMES) ---
+        const lexiqueDB = [
+            { l: "A contrario", t: "Par le contraire", d: "Raisonnement déduisant d'une règle explicite la règle inverse pour ce qui n'est pas mentionné.", c: "Cette technique est fréquemment utilisée en droit des contrats et en droit du travail pour interpréter le silence des textes.", g: ["DS", "JE"], vul: "C'est comme un panneau 'Interdit aux chiens'. A contrario, on peut en déduire que les chats et les autres animaux sont autorisés car ils ne sont pas mentionnés.", cp: "Utilisez cet argument pour défendre une liberté : si la loi ne l'interdit pas expressément, alors c'est permis.", v: "Ce raisonnement ne fonctionne pas si la liste de la loi est purement indicative (souvent signalée par le mot 'notamment').", e: "La loi liste précisément les motifs de recours au CDD. A contrario, toute situation qui n'est pas dans cette liste impose la conclusion d'un CDI.", j: "Ce principe d'interprétation stricte est souvent utilisé par la Cour de cassation pour limiter la portée des exceptions." },
+            { l: "A fortiori", t: "À plus forte raison", d: "Argument qui étend l'application d'une règle à un cas non prévu, car les raisons de l'appliquer sont encore plus évidentes et impérieuses.", c: "On le retrouve souvent en droit pénal et en droit disciplinaire pour justifier la gradation des sanctions.", g: ["DS", "JE"], vul: "Si tu es puni pour avoir volé un simple bonbon, 'à plus forte raison' tu seras puni pour avoir volé une voiture. Si c'est vrai pour le petit, c'est encore plus vrai pour le grand.", cp: "C'est l'argument idéal pour justifier une sanction lourde en la comparant à une faute légère qui a déjà été sanctionnée.", v: "Assurez-vous que la logique de gradation est incontestable : le cas 'plus fort' doit être indiscutablement supérieur au cas 'moins fort'.", e: "Si une simple insulte justifie un avertissement, a fortiori des violences physiques justifient un licenciement pour faute grave.", j: "Ce raisonnement s'appuie sur le principe de proportionnalité des sanctions en droit." },
+            { l: "A non domino", t: "Par celui qui n'est pas le maître", d: "Cela désigne l'acquisition d'un bien auprès d'une personne qui n'en était pas le véritable propriétaire légitime.", c: "C'est une situation classique en droit des biens et en droit des affaires lors de ventes frauduleuses.", g: ["DA"], vul: "C'est comme acheter la Tour Eiffel à un escroc dans la rue. Vous avez payé, mais le vendeur n'avait absolument pas le droit de vous la vendre.", cp: "Vérifiez toujours scrupuleusement la 'chaîne de propriété' lors d'achats importants comme un fonds de commerce ou un immeuble.", v: "Juridiquement, la vente de la chose d'autrui est nulle selon l'article 1599 du Code civil.", e: "Un escroc vend des stocks de marchandises qui appartiennent en réalité à son fournisseur (clause de réserve de propriété).", j: "L'article 2276 du Code civil protège parfois l'acheteur de bonne foi ('En fait de meubles, la possession vaut titre')." },
+            { l: "A pari", t: "Par raison égale", d: "Raisonnement par analogie qui consiste à appliquer à un cas non prévu la même règle qu'à un cas similaire prévu par la loi.", c: "Utilisé en droit civil pour combler les vides juridiques en s'appuyant sur la cohérence du système.", g: ["JE"], vul: "C'est la logique des jumeaux. Ce qui est valable pour l'un est valable pour l'autre car ils sont dans une situation identique.", cp: "N'hésitez pas à utiliser l'analogie pour proposer une solution lorsqu'il n'existe pas de texte précis pour votre cas.", v: "Attention, l'analogie est strictement interdite en droit pénal car on ne peut pas inventer des délits (interprétation stricte).", e: "Si le télétravailleur A a droit à des tickets restaurant, a pari le télétravailleur B doit y avoir droit aussi au nom de l'égalité.", j: "Ce raisonnement découle du principe général d'égalité de traitement devant la loi." },
+            { l: "A posteriori", t: "Après coup", d: "Désigne un raisonnement ou un contrôle qui est effectué après que l'événement se soit produit, basé sur les faits constatés.", c: "C'est le mode de fonctionnement classique de l'audit, du contrôle de gestion et du contentieux.", g: ["JE", "DA"], vul: "C'est faire le bilan du match une fois le coup de sifflet final retenti. On analyse ce qui s'est réellement passé.", cp: "En audit, le contrôle a posteriori est essentiel pour vérifier si les procédures internes ont bien été respectées.", v: "C'est souvent trop tard pour prévenir le risque ; on ne fait que constater les dégâts ou les irrégularités.", e: "Vérifier la conformité des notes de frais à la fin du mois est un contrôle a posteriori.", j: "Le contrôle de légalité des actes administratifs s'exerce parfois a posteriori." },
+            { l: "A priori", t: "Au premier abord", d: "Désigne une analyse faite avant toute expérience, basée sur des principes théoriques ou des hypothèses.", c: "Utilisé en analyse de risque et en droit pour les mesures préventives.", g: ["JE"], vul: "C'est juger le livre sur sa couverture. On se fait une idée de la situation avant même d'avoir vérifié les faits réels.", cp: "En gestion des risques, l'analyse a priori est cruciale pour mettre en place des barrières de sécurité avant l'accident.", v: "Méfiez-vous des préjugés ! En droit, on ne juge pas sur des a priori mais sur des preuves concrètes.", e: "On peut refuser de signer un contrat car on estime a priori que la situation politique du pays est trop risquée.", j: "La présomption d'innocence interdit de juger quelqu'un coupable a priori." },
+            { l: "Ab absurdo", t: "Par l'absurde", d: "Mode de raisonnement qui démontre la fausseté d'une proposition en prouvant que sa conséquence serait totalement illogique.", c: "Très efficace en plaidoirie ou en négociation pour démonter l'argumentation adverse.", g: ["JE"], vul: "C'est dire à l'autre : 'Si on suivait ton idée, on marcherait sur la tête !'. C'est prouver qu'il a tort en montrant que son idée mène à une impasse.", cp: "C'est une arme fatale dans un débat : poussez la logique de votre adversaire jusqu'au bout pour la faire exploser.", v: "Restez toujours courtois : ne traitez pas l'adversaire d'absurde, attaquez seulement son raisonnement.", e: "Si l'employeur devait payer les trajets domicile-travail, par raisonnement ab absurdo, il devrait aussi payer les vacances.", j: "Les juges utilisent cette méthode pour rejeter une interprétation littérale d'un texte qui mènerait à un non-sens." },
+            { l: "Ab initio", t: "Dès le commencement", d: "Se dit d'un acte (souvent une annulation) qui produit ses effets rétroactivement, comme s'il n'avait jamais existé.", c: "Fondamental en droit des contrats pour les nullités et en droit social.", g: ["DA", "DS"], vul: "C'est le bouton RESET géant. On efface tout, on rembobine la cassette jusqu'au début. L'acte n'a jamais existé juridiquement.", cp: "Si vous demandez l'annulation d'un contrat ab initio, préparez-vous à devoir organiser les restitutions (rembourser le prix, rendre le bien).", v: "L'annulation est très complexe en droit du travail car on ne peut pas rendre le travail déjà effectué par le salarié.", e: "Un contrat signé sous la menace d'une arme est nul ab initio. Il disparaît totalement de l'ordonnancement juridique.", j: "La Cour de cassation juge que l'annulation du contrat de travail vaut généralement pour l'avenir (sauf fraude)." },
+            { l: "Ab intestat", t: "Sans testament", d: "Désigne une succession qui est réglée par les règles légales car le défunt n'a pas laissé de testament.", c: "Terme spécifique au droit des successions et du patrimoine.", g: ["DA"], vul: "C'est mourir sans avoir laissé de papiers. Du coup, c'est la loi qui décide automatiquement qui hérite de quoi.", cp: "Conseillez toujours aux dirigeants de rédiger un testament pour protéger l'avenir de leur entreprise.", v: "Une succession ab intestat peut entraîner une dispersion des titres de la société nuisible à sa gestion.", e: "Si le dirigeant décède ab intestat, ses parts sociales reviennent automatiquement à ses enfants, même mineurs.", j: "Les règles de la dévolution légale s'appliquent strictement en l'absence de testament." },
+            { l: "Ab irato", t: "Sous le coup de la colère", d: "Qualifie un acte accompli lors d'une émotion violente ou d'un emportement, souvent considéré comme vicié.", c: "Fréquent en droit du travail pour contester des licenciements ou des démissions.", g: ["DS"], vul: "C'est le patron qui hurle 'T'es viré !' en claquant la porte. C'est l'émotion qui parle, pas la raison juridique.", cp: "Ne faites JAMAIS rien sous la colère. Appliquez toujours la règle des 24h ou 48h de réflexion avant d'agir.", v: "Un licenciement verbal prononcé ab irato est automatiquement jugé sans cause réelle et sérieuse.", e: "Une démission donnée ab irato peut être requalifiée en licenciement abusif si le salarié se rétracte rapidement.", j: "La jurisprudence considère que la démission doit résulter d'une volonté claire et non équivoque, ce qui exclut la colère." },
+            { l: "Abusus", t: "Droit de disposer", d: "C'est l'attribut principal du droit de propriété : le droit de vendre, de donner ou de détruire la chose.", c: "Notion clé en droit des biens, notamment lors des démembrements de propriété.", g: ["DA"], vul: "C'est le pouvoir ultime du propriétaire : 'Je peux le vendre ou le casser si je veux'. C'est ça l'Abusus.", cp: "En cas d'usufruit, rappelez-vous que l'usufruitier n'a PAS l'abusus (il ne peut pas vendre le bien seul).", v: "Ne confondez pas avec l'Usus (le droit d'utiliser) ou le Fructus (le droit de récolter les loyers).", e: "Le nu-propriétaire conserve l'abusus : il doit obligatoirement donner son accord pour vendre l'immeuble.", j: "Défini par l'article 544 du Code civil comme l'élément central de la propriété." },
+            { l: "Abusus non tollit usum", t: "L'abus n'empêche pas l'usage", d: "Signifie que l'abus d'un droit par certaines personnes ne justifie pas la suppression de ce droit pour tout le monde.", c: "Argument de philosophie du droit utile dans les négociations collectives.", g: ["JE"], vul: "Ce n'est pas parce que certains roulent trop vite qu'il faut interdire les voitures. On punit l'abus, on ne supprime pas l'outil.", cp: "C'est un argument utile face à un CSE qui voudrait supprimer un avantage par peur des dérives individuelles.", v: "Cela n'excuse pas l'abus. L'abus de droit reste une faute sanctionnable civilement.", e: "Le fait que certains employeurs abusent de la période d'essai ne rend pas la période d'essai illégale en soi.", j: "La théorie de l'abus de droit (Arrêt Clément-Bayard) sanctionne l'excès sans nier le droit lui-même." },
+            { l: "Accessio cedit principali", t: "L'accessoire cède au principal", d: "Règle selon laquelle la chose accessoire est absorbée juridiquement par la chose principale.", c: "Utilisé en droit des biens pour déterminer la propriété.", g: ["DA"], vul: "Le garage suit la maison. Si tu achètes la maison, tu achètes aussi le garage qui va avec.", cp: "Lorsque vous achetez un bien principal, vérifiez que tous les accessoires nécessaires sont bien inclus juridiquement.", v: "Faites attention aux clauses de réserve de propriété qui peuvent séparer juridiquement les biens.", e: "Lors de la vente d'un terrain, les arbres qui sont plantés dessus sont vendus avec (ils sont accessoires).", j: "Principe général du droit des biens régissant l'accession." },
+            { l: "Accessorium sequitur principale", t: "L'accessoire suit le principal", d: "Signifie que le sort juridique de l'élément accessoire est lié à celui de l'élément principal.", c: "Règle fondamentale en droit des obligations et des contrats.", g: ["DS", "DA"], vul: "C'est le wagon qui suit la locomotive. Si la locomotive déraille (nullité), le wagon déraille aussi obligatoirement.", cp: "Identifiez bien ce qui est principal (le contrat de travail) et ce qui est accessoire (la clause de non-concurrence).", v: "Certaines clauses sont dites autonomes (comme la clause d'arbitrage) et survivent à la mort du contrat principal.", e: "Si le contrat de vente est annulé, la garantie qui l'accompagnait (l'accessoire) tombe également.", j: "Principe constant en droit des obligations." },
+            { l: "Accipiens", t: "Celui qui reçoit", d: "Désigne la personne qui reçoit un paiement ou une prestation (par opposition au solvens qui paie).", c: "Terme technique utilisé en droit des obligations et en comptabilité.", g: ["DA"], vul: "C'est celui qui tend la main et encaisse l'argent. C'est le bénéficiaire du virement.", cp: "Vérifiez toujours que l'accipiens a bien qualité pour recevoir le paiement (mandat, pouvoir).", v: "Payer entre les mains d'un accipiens non autorisé ne vous libère pas de votre dette (qui paie mal paie deux fois).", e: "Le comptable de l'entreprise est l'accipiens légitime des fonds versés par les clients.", j: "Règles sur le paiement libératoire." },
+            { l: "Actio aestimatoria", t: "Action estimatoire", d: "Action permettant à l'acheteur de demander une réduction du prix en raison d'un vice caché, tout en gardant le bien.", c: "Très utilisé en droit de la vente et en droit commercial.", g: ["DA"], vul: "Je garde le produit même s'il est un peu cassé, mais je veux une grosse ristourne sur le prix.", cp: "C'est une excellente alternative à l'annulation de la vente si vous avez besoin du matériel malgré le défaut.", v: "Cette action suppose de prouver l'existence d'un vice caché antérieur à la vente.", e: "Une entreprise achète une machine qui a un défaut mineur. Elle la garde mais demande 30% de rabais.", j: "Article 1644 du Code civil sur la garantie des vices cachés." },
+            { l: "Actio personalis moritur cum persona", t: "L'action meurt avec la personne", d: "Principe selon lequel l'action en justice, notamment pénale, s'éteint au décès de la personne poursuivie.", c: "Fondamental en procédure pénale, mais avec des nuances au civil.", g: ["JE"], vul: "On ne juge pas les fantômes. Si l'accusé meurt avant le jugement, le procès pénal s'arrête net. Game over.", cp: "Attention, si l'action publique s'éteint, les victimes peuvent parfois continuer au civil contre les héritiers pour obtenir de l'argent.", v: "Ce principe ne s'applique qu'à l'action publique (prison/amende). La dette financière, elle, se transmet aux héritiers.", e: "Le décès du dirigeant poursuivi pour abus de biens sociaux éteint immédiatement l'action publique contre lui.", j: "Article 6 du Code de procédure pénale." },
+            { l: "Actori incumbit probatio", t: "La preuve incombe au demandeur", d: "Règle de procédure imposant à celui qui allègue un fait d'en apporter la preuve.", c: "C'est la base de toute stratégie contentieuse civile et sociale.", g: ["DS", "JE"], vul: "C'est celui qui dit qui y est ! Si tu accuses ou réclames quelque chose, c'est à toi de le prouver. Pas de preuve, pas de chocolat.", cp: "Avant d'attaquer, faites l'inventaire de vos munitions (preuves). Si vous n'avez pas de munitions, ne tirez pas.", v: "Il y a des exceptions : en matière de discrimination ou de harcèlement, la charge de la preuve est allégée et partagée.", e: "Le salarié qui réclame le paiement d'heures supplémentaires doit fournir un début de preuve (agenda, mails...).", j: "Article 1353 du Code civil : 'Celui qui réclame l'exécution d'une obligation doit la prouver'." },
+            { l: "Actor sequitur forum rei", t: "Le demandeur suit le tribunal du défendeur", d: "Règle de compétence territoriale : le procès doit avoir lieu devant le tribunal du domicile de celui qu'on attaque.", c: "Essentiel pour déterminer où assigner votre adversaire.", g: ["JE"], vul: "Si tu veux te battre, tu vas devoir jouer à l'extérieur, sur le terrain de ton adversaire.", cp: "Vérifiez toujours la compétence territoriale avant de saisir le tribunal, sinon vous risquez une exception d'incompétence.", v: "En droit du travail, c'est une exception : le salarié peut souvent choisir le tribunal de son lieu de travail.", e: "Une entreprise située à Paris qui veut attaquer un fournisseur de Lyon devra saisir le tribunal de commerce de Lyon.", j: "Code de procédure civile (règles de compétence territoriale)." },
+            { l: "Actus reus", t: "Acte coupable", d: "Désigne l'élément matériel de l'infraction, c'est-à-dire l'acte physique répréhensible.", c: "Premier pilier de la responsabilité pénale.", g: ["JE", "DS"], vul: "C'est le fait d'avoir la main dans le sac. C'est l'action concrète, le geste interdit.", cp: "Sans actus reus, il n'y a pas d'infraction, même s'il y avait une mauvaise intention.", v: "La tentative punissable commence dès le 'commencement d'exécution', même si l'acte n'est pas fini.", e: "Le fait de partir avec la caisse du magasin constitue l'actus reus du vol.", j: "Droit pénal général." },
+            { l: "Ad cautelam", t: "Par précaution", d: "Acte effectué pour réserver ses droits ou se protéger, sans pour autant reconnaître le bien-fondé de la demande adverse.", c: "Stratégie juridique courante dans les correspondances pré-contentieuses.", g: ["JE", "DS"], vul: "C'est mettre une ceinture ET des bretelles. On fait le truc 'au cas où', pour se couvrir, mais sans avouer qu'on a tort.", cp: "Utilisez la formule 'sous toutes réserves' ou 'ad cautelam' dans vos courriers sensibles pour ne pas vous engager.", v: "Attention, cela ne remplace pas une action en justice formelle si les délais de prescription courent.", e: "Une entreprise peut payer une amende administrative 'ad cautelam' en attendant la décision du tribunal qui conteste cette amende.", j: "Pratique courante validée par la procédure civile." },
+            { l: "Ad hoc", t: "Pour cela", d: "Désigne une personne ou une procédure spécialement conçue pour une mission précise et limitée dans le temps.", c: "Terme très fréquent en droit des sociétés et en arbitrage.", g: ["DA", "JE"], vul: "C'est le 'MacGyver' juridique. Une solution sur mesure, bricolée juste pour régler CE problème précis, et qui disparaît après.", cp: "Le mandat ad hoc est un excellent outil confidentiel pour tenter de sauver une entreprise en difficulté.", v: "Ne donnez jamais des pouvoirs permanents à un mandataire ad hoc, sa mission doit être strictement délimitée.", e: "Le juge nomme un administrateur ad hoc pour représenter les intérêts d'un mineur en conflit avec ses parents.", j: "Utilisé dans les procédures collectives (Mandat ad hoc)." },
+            { l: "Ad hominem", t: "Vers l'homme", d: "Désigne un argument qui vise à discréditer la personne de l'adversaire plutôt que de répondre à ses arguments de fond.", c: "Terme de rhétorique judiciaire et politique.", g: ["JE"], vul: "C'est le tacle à la gorge. Au lieu de critiquer l'idée, on critique le bonhomme ('T'es moche donc t'as tort').", cp: "À éviter absolument dans les écrits judiciaires. Les juges détestent les attaques personnelles et cela dessert votre cause.", v: "Une attaque ad hominem trop virulente peut frôler la diffamation ou l'injure publique.", e: "L'avocat qui attaque la moralité de la partie adverse au lieu de discuter des clauses du contrat fait une attaque ad hominem.", j: "Contraire aux règles déontologiques de l'avocat (principe de courtoisie)." },
+            { l: "Ad infinitum", t: "À l'infini", d: "Signifie sans fin, perpétuellement. Désigne souvent des engagements prohibés.", c: "Droit des contrats et droit de la propriété intellectuelle.", g: ["DA"], vul: "C'est l'histoire sans fin. Un engagement pour l'éternité, ce qui est interdit en droit français.", cp: "Méfiez-vous des contrats sans terme précis. En droit français, les engagements perpétuels sont interdits.", v: "Tout contrat à durée indéterminée (ad infinitum) peut être rompu à tout moment moyennant un préavis raisonnable.", e: "Un bail conclu ad infinitum sera requalifié par le juge et chaque partie pourra y mettre fin.", j: "Le Conseil Constitutionnel a consacré la prohibition des engagements perpétuels." },
+            { l: "Ad litem", t: "Pour le procès", d: "Mandat donné spécifiquement en vue de représenter une personne pour une action en justice déterminée.", c: "Procédure civile et représentation légale.", g: ["JE"], vul: "C'est le badge 'Joueur'. C'est le pouvoir spécial qu'on donne à l'avocat ou au tuteur juste pour le match au tribunal.", cp: "Vérifiez toujours que l'adversaire a bien qualité et pouvoir pour agir (un mandat ad litem régulier).", v: "Le mandat ad litem est temporaire : il s'éteint automatiquement avec la fin du procès.", e: "Un tuteur ad litem est désigné pour représenter les intérêts de l'incapable le temps du jugement uniquement.", j: "Règles de représentation en justice." },
+            { l: "Ad nutum", t: "Au gré de (un signe de tête)", d: "Désigne une révocation possible à tout moment, sans avoir à donner de motif et sans indemnité (sauf abus).", c: "Règle d'or pour les mandataires sociaux (PDG, gérants).", g: ["DA"], vul: "C'est le siège éjectable. Le patron peut appuyer sur le bouton et t'éjecter quand il veut, sans avoir à s'expliquer.", cp: "Si vous êtes dirigeant, négociez impérativement un 'parachute doré' contractuel pour compenser cette précarité statutaire.", v: "Attention, la révocation brutale, vexatoire ou injurieuse peut quand même donner lieu à des dommages-intérêts.", e: "Le PDG de SA ou le Président de SAS sont souvent révocables ad nutum par l'assemblée des actionnaires.", j: "Jurisprudence constante de la Chambre commerciale sur la libre révocabilité." },
+            { l: "Ad probationem", t: "Pour la preuve", d: "Désigne une formalité (souvent l'écrit) requise pour prouver l'existence de l'acte, mais pas pour sa validité juridique.", c: "Droit des contrats et de la preuve.", g: ["DA", "JE"], vul: "C'est la photo finish. La course est valide même sans photo, mais la photo sert à PROUVER qui a gagné.", cp: "Même si l'écrit n'est pas obligatoire pour la validité, faites-le toujours 'ad probationem' pour éviter les problèmes de preuve.", v: "Un contrat oral est valide (sauf exceptions), mais allez prouver son contenu devant un juge sans écrit...", e: "La transaction doit être rédigée par écrit ad probationem (pour prouver les concessions réciproques).", j: "Article 2044 du Code civil concernant la transaction." },
+            { l: "Ad validitatem", t: "Pour la validité", d: "Désigne une condition de forme essentielle : sans elle, l'acte est juridiquement nul et non avenu.", c: "Concerne les contrats solennels (CDD, mariage, hypothèque).", g: ["DA", "DS"], vul: "C'est la clé de contact. Sans la clé, la voiture ne démarre pas du tout. L'acte ne vaut rien, c'est du vent.", cp: "Identifiez les contrats solennels (comme le CDD ou la Rupture conventionnelle) qui exigent un écrit sous peine de nullité.", v: "Un CDD sans écrit n'est pas nul, il est requalifié en CDI (sanction encore plus lourde pour l'employeur).", e: "L'écrit dans le contrat à durée déterminée est requis ad validitatem.", j: "Dispositions du Code du travail sur le formalisme du CDD." },
+            { l: "Ad valorem", t: "Selon la valeur", d: "Désigne une taxe ou un droit calculé en pourcentage de la valeur du bien, et non sur sa quantité.", c: "Terme fréquent en droit fiscal et douanier.", g: ["DA"], vul: "Plus c'est cher, plus tu payes. C'est une taxe proportionnelle au prix de l'étiquette.", cp: "Calculez bien les droits de douane ad valorem pour ne pas rogner votre marge à l'importation.", v: "Attention aux sous-évaluations de valeur en douane, c'est une fraude fiscale sévèrement punie.", e: "Les droits de douane sont souvent des droits ad valorem (ex: 10% du prix de la marchandise).", j: "Code des douanes." },
+            { l: "Addendum", t: "Ce qu'il faut ajouter", d: "Document ajouté à un acte principal pour le compléter ou le modifier sans le refaire entièrement.", c: "Très utilisé en droit des contrats pour les mises à jour.", g: ["DA", "DS"], vul: "C'est la cerise sur le gâteau, ou plutôt le correctif qu'on colle à la fin. C'est un ajout officiel.", cp: "Plutôt que de refaire tout un contrat, faites un addendum (avenant) précis pour modifier un point.", v: "L'addendum doit être signé par toutes les parties, exactement comme le contrat initial.", e: "Un addendum au contrat de travail est signé pour acter une augmentation de salaire.", j: "Droit des contrats (avenants)." },
+            { l: "Affectio societatis", t: "Volonté de s'associer", d: "Désigne l'intention des associés de collaborer sur un pied d'égalité au succès de l'entreprise commune.", c: "Critère fondamental pour définir l'existence d'une société.", g: ["DA"], vul: "C'est l'esprit d'équipe, la 'bromance' des associés. On est ensemble pour gagner, pas juste pour mettre de l'argent.", cp: "En cas de conflit grave (mésentente), vous pouvez prouver la perte de l'affectio societatis pour demander la dissolution de la société.", v: "Ce n'est pas juste être d'accord, c'est participer activement aux risques et aux profits.", e: "Des associés qui ne se parlent plus et bloquent systématiquement les décisions ont perdu l'affectio societatis.", j: "Critère jurisprudentiel constant de définition de la société (avec les apports)." },
+            { l: "Alea jacta est", t: "Le sort en est jeté", d: "Expression signifiant que la décision est prise et qu'on s'en remet au hasard ou au risque.", c: "Utilisé juridiquement pour qualifier les contrats aléatoires.", g: ["JE"], vul: "Les dés sont jetés. On a parié, maintenant on attend de voir. Il y a une part de risque qu'on accepte.", cp: "Dans un contrat aléatoire, 'l'aléa chasse la lésion'. Vous ne pourrez pas vous plaindre d'avoir trop payé si vous avez accepté le risque.", v: "Pour être valable, l'aléa doit exister réellement au moment de la signature.", e: "La vente en viager est un contrat aléatoire : le prix final dépend de la durée de vie du vendeur.", j: "Régime des contrats aléatoires dans le Code civil." },
+            { l: "Alias", t: "Autrement", d: "Autre nom ou pseudonyme utilisé par une personne pour se désigner.", c: "Droit pénal et droit de la personnalité (nom d'artiste).", g: ["JE"], vul: "C'est le pseudo. 'Batman, alias Bruce Wayne'. C'est le nom de scène ou le nom de guerre.", cp: "Vérifiez toujours l'identité réelle (état civil) derrière l'alias dans les contrats ou les enquêtes.", v: "L'usage d'un faux nom pour tromper est un délit (usurpation d'identité).", e: "L'artiste signe le contrat sous son alias, mais le contrat doit mentionner son nom civil pour être valide.", j: "Protection du droit au nom et du pseudonyme." },
+            { l: "Alibi", t: "Ailleurs", d: "Moyen de défense tiré du fait qu'on se trouvait dans un autre lieu au moment précis de l'infraction.", c: "Terme central en droit pénal et en droit disciplinaire.", g: ["JE", "DS"], vul: "C'est la carte 'J'étais pas là !'. C'est la preuve physique qu'il est impossible que ce soit toi.", cp: "En disciplinaire, vérifiez les badgeages ou les logs informatiques pour confirmer ou infirmer un alibi.", v: "Un faux alibi est désastreux pour la crédibilité et peut constituer une faute grave en soi.", e: "Le salarié accusé de vol prouve qu'il était en clientèle à l'autre bout de la ville à ce moment-là (alibi).", j: "Preuve de la non-imputabilité des faits." },
+            { l: "Amicus curiae", t: "Ami de la cour", d: "Tiers (souvent expert ou association) invité à donner son avis au juge dans une affaire complexe, sans être partie au procès.", c: "Fréquent dans les grands procès internationaux ou à enjeux de société.", g: ["JE"], vul: "C'est l'expert neutre qui lève la main en classe pour dire : 'Moi je sais !' Il aide le juge à comprendre le contexte.", cp: "Les entreprises peuvent intervenir comme amicus curiae dans des procès à enjeux pour leur secteur d'activité.", v: "L'amicus curiae n'est pas partie au procès, il ne gagne ni ne perd, il conseille juste.", e: "Une ONG dépose des observations juridiques dans un procès climatique pour éclairer le tribunal.", j: "Pratique courante devant la CEDH ou la Cour Suprême US, plus rare en droit interne français." },
+            { l: "Animus", t: "Esprit / Intention", d: "Désigne l'élément intentionnel ou psychologique d'un comportement juridique (souvent opposé au Corpus, l'élément matériel).", c: "Notion clé en droit des biens (possession) et en droit pénal.", g: ["JE"], vul: "C'est ce qui se passe dans la tête. 'Je me prends pour le propriétaire'. C'est l'état d'esprit.", cp: "Pour prescrire un terrain (usucapion), il faut l'occuper physiquement (corpus) avec l'intention d'être propriétaire (animus).", v: "Le locataire a le corpus (il habite) mais pas l'animus (il sait qu'il n'est pas propriétaire), donc il ne prescrit pas.", e: "L'animus domini : c'est l'intention de se comporter en maître de la chose.", j: "Théorie de la possession en droit civil." },
+            { l: "Ante meridiem", t: "Avant midi", d: "Désigne les heures comprises entre minuit et midi.", c: "Terme administratif et international (AM).", g: ["JE"], vul: "C'est le matin. Tout ce qui se passe avant que le soleil ne soit tout en haut.", cp: "Soyez précis dans les contrats internationaux sur les heures limites (11:00 AM vs 11:00 PM).", v: "Une confusion AM/PM peut entraîner le rejet d'un appel d'offres pour dépôt tardif.", e: "La date limite de dépôt des dossiers est fixée à 11:00 ante meridiem (11h du matin).", j: "Décompte des délais." },
+            { l: "Audi alteram partem", t: "Entendre l'autre partie", d: "Principe fondamental du contradictoire : nul ne peut être jugé sans avoir été entendu ou appelé.", c: "Pilier des droits de la défense dans toutes les procédures.", g: ["DS", "JE"], vul: "C'est la règle du ping-pong. Si l'un tape, l'autre doit pouvoir renvoyer la balle. On n'écoute jamais qu'un seul camp.", cp: "En enquête harcèlement ou licenciement, auditionnez TOUJOURS la personne visée avant de conclure, sinon c'est nul.", v: "Violer ce principe entraîne la nullité immédiate de la procédure (licenciement, procès...).", e: "L'entretien préalable au licenciement est la traduction concrète et obligatoire de cet adage.", j: "Articles 14 à 17 du Code de procédure civile (Principe du contradictoire)." },
+            { l: "Bona fide", t: "De bonne foi", d: "Comportement loyal, honnête et sincère attendu dans les relations juridiques.", c: "Obligation transversale en droit des contrats.", g: ["DA", "DS"], vul: "C'est jouer franc jeu. Pas de coups bas, pas de cartes cachées dans la manche. On est réglo.", cp: "La bonne foi est présumée. C'est à celui qui allègue la mauvaise foi de la prouver.", v: "Depuis 2016, la bonne foi est une obligation d'ordre public : on ne peut pas l'écarter par contrat.", e: "Négocier un contrat sans aucune intention de le signer est contraire à la bonne foi.", j: "Article 1104 du Code civil : Les contrats doivent être négociés, formés et exécutés de bonne foi." },
+            { l: "Bona vacantia", t: "Biens vacants", d: "Biens qui n'ont pas ou plus de propriétaire (souvent récupérés par l'État).", c: "Droit des biens et des successions.", g: ["DA"], vul: "C'est le trésor perdu que personne ne réclame. S'il n'y a personne, c'est pour l'État.", cp: "Si vous trouvez un bien vacant, attention, vous ne devenez pas forcément propriétaire tout de suite.", v: "Les successions en déshérence (sans héritier) deviennent bona vacantia et vont à l'État.", e: "Un compte bancaire inactif depuis 30 ans dont le titulaire est introuvable devient bona vacantia.", j: "Droit de l'État sur les biens sans maître." },
+            { l: "Bonus dolus", t: "Le bon dol", d: "Petite exagération commerciale tolérée, qui ne vicie pas le consentement de l'acheteur.", c: "Droit de la consommation et de la publicité.", g: ["DA"], vul: "C'est le baratin du vendeur. 'Ma lessive lave plus blanc que blanc'. On sait que c'est du bluff, donc ça passe.", cp: "En marketing, vous avez le droit de 'vanter' le produit avec emphase, mais pas de mentir sur des faits précis.", v: "La limite est fine avec la publicité mensongère ou la pratique commerciale trompeuse.", e: "Un candidat qui dit être 'le meilleur vendeur du monde' fait un bonus dolus. S'il invente un diplôme, c'est un vrai dol.", j: "Jurisprudence sur les pratiques commerciales trompeuses." },
+            { l: "Bonus pater familias", t: "Bon père de famille", d: "Standard de comportement d'une personne raisonnable, prudente et diligente (remplacé par 'personne raisonnable').", c: "Ancien standard de la responsabilité civile.", g: ["JE", "DA"], vul: "C'est le mec normal, prudent, qui ne fait pas de folies. Le gendre idéal du droit civil.", cp: "On n'attend pas de vous d'être un héros, juste d'être prudent comme tout le monde devrait l'être.", v: "L'expression a été supprimée du Code civil pour égalité hommes/femmes, remplacée par 'soins raisonnables'.", e: "Un gérant doit gérer la société en bon père de famille (c'est-à-dire avec prudence).", j: "Standard d'appréciation de la faute de négligence." },
+            { l: "Carpe diem", t: "Cueille le jour", d: "Expression signifiant de profiter de l'instant présent (contexte juridique : respect des délais).", c: "Utilisé parfois pour souligner l'urgence des délais.", g: ["JE"], vul: "Ne remets pas à demain. Si tu as un délai, agis tout de suite avant qu'il ne soit trop tard.", cp: "En procédure, 'Carpe diem' signifie : ne dormez pas sur vos droits, agissez avant la prescription.", v: "Ce n'est pas un principe juridique formel, mais une maxime de bon sens pour les juristes.", e: "Il faut saisir l'opportunité de transiger maintenant avant que le procès ne s'enlise.", j: "Culture générale juridique." },
+            { l: "Casus belli", t: "Cas de guerre", d: "Acte ou événement de nature à déclencher un conflit ouvert ou une rupture des relations.", c: "Droit international et contentieux commercial.", g: ["JE"], vul: "C'est la déclaration de guerre. L'acte de trop. Après ça, on ne discute plus, on tire.", cp: "Identifiez les 'casus belli' de vos partenaires (ex: non-paiement, vol de IP) pour ne pas franchir la ligne rouge.", v: "En droit du travail, une faute lourde (concurrence, violence) est un casus belli justifiant la rupture immédiate.", e: "Le dépôt de bilan d'un fournisseur stratégique peut être un casus belli pour rompre les relations.", j: "Concept issu du droit de la guerre." },
+            { l: "Casus fortuitus", t: "Cas fortuit", d: "Événement imprévisible et indépendant de la volonté (proche de la force majeure).", c: "Cause d'exonération en responsabilité civile.", g: ["JE"], vul: "C'est la faute à pas de chance. La tuile qui te tombe dessus et que personne n'avait vue venir.", cp: "Invoquez le cas fortuit pour vous exonérer : on ne peut pas vous reprocher ce que vous ne pouviez pas prévoir.", v: "La jurisprudence est très stricte : une grève SNCF annoncée à l'avance n'est PAS un cas fortuit.", e: "Un malaise cardiaque soudain au volant est un cas fortuit qui peut exonérer le conducteur.", j: "Régime de la force majeure." },
+            { l: "Causa mortis", t: "À cause de la mort", d: "Acte juridique réalisé en prévision de la mort ou prenant effet au décès.", c: "Droit des successions.", g: ["JE"], vul: "C'est le cadeau d'adieu. Je te donne ça, mais c'est pour quand je ne serai plus là.", cp: "Les donations causa mortis sont très encadrées car elles ressemblent à des testaments déguisés.", v: "En principe, on ne peut pas donner de son vivant 'à cause de la mort', sauf par testament.", e: "Une donation au dernier vivant entre époux est une libéralité causa mortis.", j: "Droit des libéralités." },
+            { l: "Caveat emptor", t: "Que l'acheteur soit vigilant", d: "Principe selon lequel l'acheteur doit s'informer lui-même sur la chose vendue et ses défauts apparents.", c: "Principe dominant dans les pays de Common Law et en B2B.", g: ["DA"], vul: "Tant pis pour ta pomme ! Tu avais tes yeux pour regarder avant d'acheter. Pas de garantie pour les aveugles volontaires.", cp: "En B2B, faites vos Due Diligence (audits) avant d'acheter. Ne comptez pas sur le vendeur pour vous dire ses défauts.", v: "En droit français, le vendeur professionnel a une obligation d'information très forte qui limite ce principe.", e: "Acheter une voiture d'occasion sans l'essayer, c'est ignorer le caveat emptor.", j: "Droit de la consommation (protection de l'acheteur profane)." },
+            { l: "Certiorari", t: "Être informé", d: "Ordre d'une cour supérieure à une cour inférieure de lui transmettre le dossier pour révision.", c: "Procédure spécifique à la Common Law (US/UK).", g: ["JE"], vul: "C'est le 'Replay' de la Cour Suprême. 'Envoyez-moi la cassette, je veux revoir l'action'.", cp: "Terme spécifique au droit anglo-saxon. Utile si vous travaillez avec des juristes américains.", v: "N'existe pas en tant que tel en droit français (on parle de pourvoi en cassation).", e: "La Cour Suprême des USA accorde le certiorari pour juger une affaire constitutionnelle importante.", j: "Système judiciaire américain." },
+            { l: "Cessante causa legis, cessat lex", t: "La loi cesse là où cesse son motif", d: "Une règle ne s'applique plus quand sa raison d'être a disparu.", c: "Principe d'interprétation des lois.", g: ["JE"], vul: "Pas de fumée sans feu, mais pas de pompier sans feu non plus. Si le problème disparaît, la règle qui le gérait doit disparaître.", cp: "Argument fort pour contester l'application d'une règle obsolète ou inadaptée au contexte actuel.", v: "Attention, seule l'abrogation officielle supprime vraiment la loi, même si elle est inutile.", e: "Les lois d'exception (état d'urgence) cessent automatiquement quand la crise est finie.", j: "Adage d'interprétation téléologique." },
+            { l: "Cogito ergo sum", t: "Je pense donc je suis", d: "Principe philosophique de Descartes, fondant l'existence du sujet conscient.", c: "Fondement philosophique de la personnalité juridique.", g: ["JE"], vul: "Je réfléchis, donc j'existe. C'est la base de la conscience de soi et de la responsabilité.", cp: "Utilisé en théorie du droit pour définir la personne juridique comme un sujet conscient et volontaire.", v: "Les animaux ou les robots pensent-ils ? C'est le grand débat juridique actuel sur la personnalité.", e: "La capacité juridique suppose une conscience (cogito) : un comateux a la personnalité mais pas la capacité.", j: "Philosophie du droit." },
+            { l: "Communio est mater rixarum", t: "La communauté est mère de querelles", d: "Adage soulignant que la propriété collective (indivision) est source de conflits.", c: "Droit des biens et droit des sociétés.", g: ["DA"], vul: "Mettre tout en commun, c'est chercher les ennuis. L'indivision, c'est la guerre assurée.", cp: "Évitez l'indivision ou la répartition 50/50 dans une société sans pacte d'associés clair.", v: "Le Code civil pose le principe que 'nul n'est tenu de rester dans l'indivision' pour cette raison.", e: "Des héritiers en indivision sur une maison finissent souvent au tribunal pour la vendre.", j: "Article 815 du Code civil." },
+            { l: "Compétence liée", t: "Pouvoir contraint", d: "Situation où l'autorité administrative est obligée de prendre une décision précise si les conditions légales sont réunies.", c: "Droit administratif.", g: ["JE"], vul: "C'est le mode robot. Si A et B sont là, je DOIS faire C. Je n'ai pas le droit de réfléchir ou de dire non.", cp: "Si l'administration est en compétence liée, elle ne peut pas vous refuser un droit (permis, allocation) si vous remplissez les cases.", v: "Opposé au 'pouvoir discrétionnaire' où l'administration a le choix.", e: "Le maire a compétence liée pour délivrer un permis de construire si le dossier respecte parfaitement le PLU.", j: "Droit public administratif." },
+            { l: "Compos mentis", t: "Maître de son esprit", d: "État d'une personne saine d'esprit, capable juridiquement.", c: "Droit civil (capacité) et pénal (responsabilité).", g: ["DS"], vul: "Avoir toute sa tête. Être sain d'esprit. Ne pas être fou.", cp: "Vérifiez toujours que votre interlocuteur est compos mentis avant de lui faire signer un contrat important.", v: "L'acte signé par une personne 'non compos mentis' (sous tutelle ou délire) est annulable.", e: "Pour faire un testament valide, il faut être compos mentis au moment de la rédaction.", j: "Règles sur la capacité et le consentement." },
+            { l: "Conditio sine qua non", t: "Condition sans laquelle non", d: "Condition indispensable, cause nécessaire sans laquelle l'effet ne se serait pas produit.", c: "Droit de la responsabilité et causalité.", g: ["DA", "DS"], vul: "C'est l'ingrédient secret. Sans ça, la recette est ratée. C'est LE truc obligatoire.", cp: "Identifiez les 'deal breakers' dans une négo : les points sine qua non sur lesquels vous ne lâcherez rien.", v: "En responsabilité, c'est la cause sans laquelle le dommage ne se serait pas produit (équivalence des conditions).", e: "L'obtention du prêt bancaire est une condition sine qua non de l'achat de la maison.", j: "Théorie de la causalité en responsabilité civile." },
+            { l: "Confer", t: "Réfère-toi à", d: "Abréviation (Cf.) invitant le lecteur à se reporter à un autre passage ou document.", c: "Rédaction juridique et universitaire.", g: ["JE"], vul: "Va voir là-bas. Je ne répète pas, va lire l'autre page.", cp: "Utilisez 'Cf.' pour alléger vos écrits et faire des liens vers des preuves ou des articles de loi.", v: "Vérifiez toujours que la référence citée est exacte et toujours à jour.", e: "Voir l'article 123 du Code du travail (Cf. Art. 123) pour les détails.", j: "Terminologie de rédaction." },
+            { l: "Confessio est regina probationum", t: "L'aveu est la reine des preuves", d: "Ancien adage selon lequel l'aveu est la preuve la plus forte.", c: "Droit de la preuve (pénal et civil).", g: ["JE"], vul: "Faute avouée est à moitié pardonnée... ou totalement prouvée ! Si tu avoues, c'est fini.", cp: "En enquête, obtenir l'aveu reste le graal, mais attention à la manière de l'obtenir.", v: "Aujourd'hui, l'aveu n'est plus la reine absolue : un aveu forcé est nul et la preuve scientifique (ADN) est plus forte.", e: "Le voleur passe aux aveux pendant la garde à vue : l'affaire est quasiment bouclée.", j: "Évolution du droit de la preuve." },
+            { l: "Consensus ad idem", t: "Accord sur la même chose", d: "Rencontre des volontés sur les éléments essentiels du contrat.", c: "Formation des contrats.", g: ["DA"], vul: "On est sur la même longueur d'onde. On parle bien de la même chose au même prix.", cp: "Vérifiez qu'il n'y a pas de malentendu (erreur obstacle) sur l'objet du contrat avant de signer.", v: "S'il n'y a pas consensus ad idem (ex: je vends, tu crois louer), il n'y a pas de contrat du tout.", e: "L'accord sur la chose et sur le prix caractérise le consensus ad idem de la vente.", j: "Théorie du consentement." },
+            { l: "Contra bonos mores", t: "Contre les bonnes mœurs", d: "Acte juridique contraire à la morale sociale et donc nul.", c: "Ordre public et validité des contrats.", g: ["JE"], vul: "C'est sale. C'est immoral. La société ne veut pas de ça.", cp: "Toute clause contractuelle contra bonos mores est nulle de nullité absolue.", v: "La notion de 'bonnes mœurs' évolue avec le temps (ex: le concubinage n'est plus contraire aux bonnes mœurs).", e: "Un contrat portant sur l'achat d'organes humains est contra bonos mores.", j: "Article 6 du Code civil (Ordre public et bonnes mœurs)." },
+            { l: "Contra factum non datur argumentum", t: "Contre un fait, il n'y a pas d'argument", d: "On ne peut pas contester l'évidence d'un fait matériellement établi.", c: "Droit de la preuve.", g: ["JE"], vul: "Les faits sont têtus. Si la vidéo montre que tu l'as fait, inutile de faire de grands discours.", cp: "Faites établir des constats d'huissier : face à un fait constaté, la partie adverse aura du mal à argumenter.", v: "Le fait est incontestable, mais sa qualification juridique peut toujours se discuter.", e: "Si l'huissier constate l'abandon de poste, le salarié ne peut pas dire qu'il était là.", j: "Force probante des constats." },
+            { l: "Contra legem", t: "Contre la loi", d: "Qualifie un acte, une décision ou une coutume qui viole directement la loi.", c: "Hiérarchie des normes.", g: ["DS", "JE"], vul: "C'est illégal, point barre. Tu roules à contresens sur l'autoroute du droit.", cp: "Supprimez immédiatement toute clause contra legem de vos contrats, elle est nulle et dangereuse.", v: "Une coutume ne peut pas être contra legem, sauf rares exceptions tolérées.", e: "Une clause prévoyant une rémunération inférieure au SMIC est contra legem.", j: "Respect de la hiérarchie des normes." },
+            { l: "Contra proferentem", t: "Contre celui qui a écrit", d: "Règle d'interprétation selon laquelle un contrat ambigu s'interprète contre celui qui l'a rédigé.", c: "Protection de la partie faible (consommateur, salarié).", g: ["DA"], vul: "Si c'est flou, c'est pour ta pomme ! Celui qui a écrit le contrat paye les pots cassés s'il n'a pas été clair.", cp: "Rédacteurs de contrats : soyez hyper précis. Le moindre flou profitera à l'autre partie.", v: "Cette règle ne s'applique qu'en cas de doute persistant sur le sens d'une clause.", e: "Une clause d'assurance ambiguë sera interprétée en faveur de l'assuré et contre l'assureur.", j: "Article 1190 du Code civil." },
+            { l: "Corpus delicti", t: "Corps du délit", d: "L'objet ou la preuve matérielle de l'infraction.", c: "Pénal", g: ["JE"], vul: "C'est l'arme du crime, le butin, le cadavre. La preuve physique qu'il s'est passé un truc louche.", cp: "Sans corpus delicti, l'accusation est plus fragile (mais pas impossible).", v: "Ne pas confondre avec le corps humain.", e: "La drogue saisie dans la valise est le corpus delicti du trafic.", j: "Preuve pénale." },
+            { l: "Corpus juris", t: "Corps de droit", d: "Recueil complet de lois ou de textes juridiques.", c: "Histoire du droit et codification.", g: ["JE"], vul: "C'est la bible du droit. Le grand livre qui contient toutes les règles.", cp: "Le 'Corpus Juris Civilis' est la base du droit romain qui a inspiré notre Code civil.", v: "Aujourd'hui, on parle plutôt de Codes (Code civil, Code pénal) que de Corpus.", e: "Justinien a fait compiler tout le droit romain dans le Corpus Juris Civilis.", j: "Histoire du droit." },
+            { l: "Credo", t: "Je crois", d: "Ensemble de principes ou de convictions.", c: "Philosophie et éthique.", g: ["JE"], vul: "C'est ma religion, mes valeurs profondes. Ce en quoi je crois dur comme fer.", cp: "Une entreprise peut avoir un credo éthique (Code de conduite) qui s'impose aux salariés.", v: "Le credo religieux relève de la vie privée, mais le credo d'entreprise peut être contractuel.", e: "Le respect de l'environnement est le credo de cette start-up verte.", j: "Liberté de conscience." },
+            { l: "Cui bono ?", t: "À qui profite le crime ?", d: "Méthode d'enquête cherchant le mobile par l'intérêt.", c: "Enquête & Stratégie", g: ["JE"], vul: "Suis l'argent. Si tu veux savoir qui a fait le coup, regarde qui devient riche ou puissant grâce à ça.", cp: "En audit de fraude, demandez-vous toujours qui bénéficie de l'erreur comptable.", v: "Ce n'est qu'une présomption, pas une preuve.", e: "L'incendie de l'usine profite à qui ? Au concurrent ou à l'assuré escroc ?", j: "Technique d'investigation." },
+            { l: "Culpa lata", t: "Faute lourde", d: "Faute d'une extrême gravité, confinant au dol, montrant une inaptitude grossière.", c: "Responsabilité", g: ["JE"], vul: "C'est la giga-boulette impardonnable. Tellement énorme qu'on dirait que c'est fait exprès.", cp: "La 'culpa lata' est souvent assimilée au dol : elle empêche de jouer les clauses limitatives de responsabilité.", v: "En droit du travail, la faute lourde exige l'intention de nuire (encore plus fort).", e: "Laisser la porte du coffre-fort ouverte la nuit est une culpa lata.", j: "Responsabilité contractuelle." },
+            { l: "Curator ad litem", t: "Curateur pour le procès", d: "Personne désignée pour représenter un incapable spécifiquement pour une action en justice.", c: "Droit de la famille et des majeurs protégés.", g: ["JE"], vul: "C'est le tuteur du match. Il est là juste pour gérer le procès à la place de celui qui ne peut pas le faire.", cp: "Si un mineur a un conflit d'intérêts avec ses parents, le juge nomme un curateur ad litem.", v: "Sa mission est strictement limitée au procès en question.", e: "Un enfant veut porter plainte contre ses parents : on lui nomme un curateur ad litem.", j: "Protection des mineurs." },
+            { l: "Curriculum vitae", t: "Cours de la vie", d: "Document résumant l'état civil, la formation et l'expérience professionnelle.", c: "Droit du travail et recrutement.", g: ["DS"], vul: "C'est ton CV. Le résumé de ta vie pro en une page pour te vendre.", cp: "Mentir dans un CV peut justifier un licenciement si le mensonge a déterminé l'embauche.", v: "Un petit embellissement est un 'bonus dolus' toléré, mais un faux diplôme est une fraude grave.", e: "Le candidat envoie son curriculum vitae pour postuler au poste de juriste.", j: "Jurisprudence sur le CV trompeur." },
+            { l: "Damnum infectum", t: "Dommage imminent", d: "Dommage qui n'est pas encore arrivé mais qui menace de se produire.", c: "Droit de la responsabilité et mesures préventives.", g: ["JE"], vul: "C'est l'épée de Damoclès. La tuile n'est pas encore tombée, mais le fil est en train de craquer.", cp: "Agissez en référé pour prévenir un damnum infectum (mesures conservatoires).", v: "Le préjudice purement éventuel n'est pas réparable, mais le préjudice imminent justifie l'action.", e: "Le mur du voisin penche dangereusement : c'est un damnum infectum qu'il faut traiter.", j: "Prévention du dommage." },
+            { l: "De die in diem", t: "Au jour le jour", d: "Calcul ou exécution qui se fait quotidiennement.", c: "Droit financier et gestion.", g: ["DA"], vul: "Jour après jour. On compte les sous chaque soir. C'est du temps réel.", cp: "Les intérêts de retard se calculent souvent de die in diem (chaque jour compte).", v: "Précisez bien la méthode de calcul des intérêts dans vos contrats de prêt.", e: "Les intérêts moratoires courent de die in diem jusqu'au complet paiement.", j: "Calcul des intérêts." },
+            { l: "De facto", t: "De fait", d: "Situation existant dans la réalité, mais sans titre juridique officiel.", c: "Réalité juridique", g: ["DA", "DS"], vul: "C'est le système D. Ça existe 'pour de vrai' dans la vie, même si ce n'est pas écrit sur le papier.", cp: "Le droit rattrape souvent le fait (théorie de l'apparence). Attention aux dirigeants de fait !", v: "Le dirigeant de fait a les mêmes responsabilités (faillite) que le vrai patron, sans les avantages.", e: "Un couple non marié est un couple de facto (concubins).", j: "Gestion de fait." },
+            { l: "De jure", t: "De droit", d: "Situation fondée sur la loi ou un titre officiel.", c: "Légalité", g: ["DA", "DS"], vul: "C'est l'officiel, le tamponné, le légal. C'est écrit sur le Kbis ou le livret de famille.", cp: "L'idéal est que la situation de facto corresponde à la situation de jure.", v: "Parfois le droit est en retard sur les faits.", e: "Le gérant nommé dans les statuts est le dirigeant de jure.", j: "Opposé à De facto." },
+            { l: "De minimis non curat praetor", t: "Le juge ne s'occupe pas des bagatelles", d: "Le droit ignore les choses insignifiantes.", c: "Procédure", g: ["JE"], vul: "On ne dérange pas le juge pour une histoire de bonbons volés. La justice a autre chose à faire que de régler des micro-problèmes.", cp: "Ne saisissez pas la justice pour des préjudices symboliques ou ridicules (abus de procédure).", v: "Attention, le vol est pénal, même pour 1 euro. Le principe a des limites.", e: "Une erreur de 2 centimes dans la paie ne justifie pas un procès.", j: "Principe d'opportunité des poursuites." },
+            { l: "De novo", t: "À nouveau", d: "Reprendre une affaire depuis le début, comme si rien n'avait été jugé.", c: "Procédure d'appel.", g: ["JE"], vul: "On efface tout et on recommence. On rejoue le match à zéro.", cp: "L'appel a un effet dévolutif : la cour rejuge l'affaire de novo (en fait et en droit).", v: "Attention, on ne peut pas soumettre de nouvelles demandes en appel (sauf exceptions).", e: "La Cour d'appel juge le litige de novo, elle ne se contente pas de vérifier le premier jugement.", j: "Effet dévolutif de l'appel." },
+            { l: "Debellatio", t: "Vaincre par la guerre", d: "Anéantissement total d'un État ennemi par la guerre (disparition de la souveraineté).", c: "Droit international public.", g: ["JE"], vul: "C'est le K.O. total. L'État ennemi n'existe plus, il a été rayé de la carte.", cp: "Concept historique rare aujourd'hui avec le droit de l'ONU qui protège la souveraineté.", v: "L'annexion par la force est aujourd'hui illégale en droit international.", e: "La fin de l'Allemagne nazie en 1945 est un cas de debellatio.", j: "Droit de la guerre." },
+            { l: "Dictum", t: "Chose dite", d: "Affirmation ou opinion exprimée par un juge, qui n'a pas force de loi.", c: "Jurisprudence.", g: ["JE"], vul: "C'est ce qui est dit. Une parole, une opinion, mais pas forcément un ordre.", cp: "Distinguez le dictum (opinion) du jugement (décision obligatoire).", v: "L'obiter dictum est une remarque incidente, pas la raison principale de la décision.", e: "Le juge a glissé un dictum intéressant sur l'évolution future de la loi.", j: "Structure des arrêts." },
+            { l: "Doli capax", t: "Capable de dol", d: "Capacité de comprendre le mal, d'avoir une intention criminelle.", c: "Droit pénal des mineurs.", g: ["JE"], vul: "Il est assez grand pour savoir qu'il fait une bêtise. Il peut être puni.", cp: "C'est la question du discernement : un enfant très jeune est doli incapax (incapable de crime).", v: "L'âge de la responsabilité pénale varie, mais le discernement est la clé.", e: "Un enfant de 10 ans peut être jugé doli capax s'il a compris la gravité de son acte.", j: "Ordonnance de 1945 sur l'enfance délinquante." },
+            { l: "Dolus", t: "Dol / Ruse", d: "Manœuvre frauduleuse destinée à tromper autrui.", c: "Droit civil et pénal.", g: ["DA"], vul: "C'est l'arnaque. Le mensonge organisé pour te faire signer ou te voler.", cp: "Le dol vicie le consentement : si on vous a menti pour vous faire signer, le contrat est nul.", v: "Le dol ne se présume pas, il faut prouver l'intention de tromper.", e: "Maquiller le compteur kilométrique d'une voiture est un dol.", j: "Article 1137 du Code civil." },
+            { l: "Dominus", t: "Maître", d: "Propriétaire ou celui qui a le pouvoir de contrôle.", c: "Droit des biens et des sociétés.", g: ["DA"], vul: "C'est le boss. Le maître des lieux. Celui qui décide.", cp: "Le dominus litis est celui qui dirige le procès (le client, pas l'avocat).", v: "En droit romain, le dominus avait droit de vie et de mort, plus aujourd'hui !", e: "Le propriétaire est le dominus de son bien immobilier.", j: "Terminologie juridique classique." },
+            { l: "Dominus litis", t: "Maître du procès", d: "La personne pour qui le procès est fait et qui en assume les risques et la direction stratégique.", c: "Procédure civile.", g: ["JE"], vul: "C'est le client qui est le chef. L'avocat conseille, mais c'est le client qui décide s'il attaque ou s'il arrête.", cp: "Avocats, n'oubliez jamais que votre client est le dominus litis. Vous ne pouvez pas transiger sans son accord.", v: "Si le client donne des instructions absurdes, l'avocat peut se démettre du dossier.", e: "Le client décide d'accepter une transaction contre l'avis de son avocat car il est dominus litis.", j: "Déontologie de l'avocat." },
+            { l: "Dura lex, sed lex", t: "La loi est dure, mais c'est la loi", d: "La loi doit être appliquée même si elle paraît sévère ou injuste.", c: "Application de la loi", g: ["JE", "DS"], vul: "C'est la règle du jeu. Même si elle pique, on doit la respecter. Pas de pitié, c'est écrit.", cp: "Argument ultime quand on doit appliquer une règle impopulaire.", v: "L'équité permet parfois au juge d'adoucir la rigueur de la loi.", e: "Le délai de prescription est passé d'un jour ? Tant pis, l'action est morte. Dura lex.", j: "Sécurité juridique." },
+            { l: "Emptio venditio", t: "Achat-vente", d: "Contrat de vente consensuel par lequel une partie s'oblige à livrer une chose et l'autre à la payer.", c: "Base du droit commercial.", g: ["DA"], vul: "C'est le deal de base. Je te donne, tu me paies. Le commerce pur et dur.", cp: "C'est un contrat synallagmatique parfait : des obligations des deux côtés.", v: "Le transfert de propriété est souvent immédiat, même si on n'a pas encore payé.", e: "Signer un bon de commande scelle l'emptio venditio.", j: "Articles 1582 et suivants du Code civil." },
+            { l: "Erga omnes", t: "À l'égard de tous", d: "Effet absolu d'un acte ou d'une décision, opposable au monde entier.", c: "Droit des biens & Publicité", g: ["DA", "JE"], vul: "C'est le mégaphone. Ce que je dis ou fais compte pour tout le monde, pas juste pour mes potes. Tout le monde doit le respecter.", cp: "La publicité foncière ou au RCS rend vos droits opposables erga omnes.", v: "Le contrat, lui, n'a d'effet qu'entre les parties (effet relatif).", e: "Le droit de propriété est un droit erga omnes : personne ne peut toucher à ma voiture.", j: "Opposabilité aux tiers." },
+            { l: "Ergo", t: "Donc / Par conséquent", d: "Terme logique introduisant une conclusion.", c: "Raisonnement juridique.", g: ["JE"], vul: "Donc. Voilà pourquoi. C.Q.F.D.", cp: "Utilisez 'ergo' pour marquer la conclusion logique de votre démonstration juridique.", v: "Un 'ergo' mal placé peut révéler un sophisme (non sequitur).", e: "Tu as volé, ergo tu seras puni.", j: "Logique juridique." },
+            { l: "Erratum", t: "Erreur", d: "Mention signalant une erreur dans un texte publié et sa correction.", c: "Rédaction d'actes et édition.", g: ["JE"], vul: "Oups, je me suis trompé ! Voici la correction. On efface et on réécrit proprement.", cp: "Si vous faites une erreur dans un acte, publiez vite un erratum pour éviter la nullité ou le malentendu.", v: "Un erratum ne peut corriger qu'une erreur matérielle, pas changer le sens de l'accord après coup.", e: "Un erratum a été publié au Journal Officiel pour corriger une faute de frappe dans la loi.", j: "Rectification d'erreur matérielle." },
+            { l: "Et alii", t: "Et les autres", d: "Abréviation (et al.) pour désigner les autres auteurs ou personnes non citées.", c: "Références bibliographiques.", g: ["JE"], vul: "Et toute la bande. On ne va pas citer tout le monde, c'est trop long.", cp: "Utilisé dans les contrats ou les mémoires quand il y a une liste interminable de noms.", v: "Vérifiez qui se cache derrière le 'et alii', cela peut être important.", e: "L'étude juridique a été rédigée par Dupont, Durand et alii.", j: "Conventions de rédaction." },
+            { l: "Et cetera", t: "Et le reste", d: "Formule indiquant que la liste n'est pas exhaustive.", c: "Rédaction de listes.", g: ["JE"], vul: "Et tout le tralala. Et ainsi de suite. La liste continue mais j'arrête d'écrire.", cp: "Dans un contrat, 'etc.' est dangereux car il crée du flou. Préférez 'notamment' ou une liste fermée.", v: "Le flou profite souvent à la partie adverse (contra proferentem).", e: "Le locataire doit entretenir les sols, les murs, etc.", j: "Interprétation des contrats." },
+            { l: "Ex ante", t: "Au préalable", d: "Analyse ou contrôle effectué avant que l'événement ne se produise.", c: "Économie & Droit", g: ["JE", "DA"], vul: "C'est la boule de cristal. On regarde avant d'avoir mal. On prévoit, on anticipe.", cp: "L'analyse d'impact RGPD se fait ex ante (avant de lancer le traitement).", v: "Opposé à Ex post (après coup).", e: "Le contrôle des concentrations par l'Autorité de la concurrence est un contrôle ex ante.", j: "Régulation." },
+            { l: "Ex cathedra", t: "De la chaire", d: "Ton doctoral, autoritaire, qui n'admet pas la discussion (comme le Pape ou le Professeur).", c: "Doctrine et enseignement.", g: ["JE"], vul: "C'est la parole du chef. Je parle, vous écoutez, personne ne discute. C'est la vérité vraie.", cp: "Évitez le ton ex cathedra dans une négociation, cela braque l'interlocuteur.", v: "En droit, tout se discute, sauf l'autorité de la chose jugée.", e: "Le professeur a affirmé ex cathedra que cette loi était mauvaise.", j: "Liberté académique." },
+            { l: "Ex contractu", t: "Du contrat", d: "Responsabilité découlant de l'inexécution d'un contrat.", c: "Responsabilité civile.", g: ["DA"], vul: "C'est écrit dans le contrat ! Tu n'as pas fait ce qui était prévu, donc tu payes.", cp: "On ne peut pas cumuler responsabilité ex contractu et ex delicto. Si y'a un contrat, on applique le contrat.", v: "Le principe de non-cumul des responsabilités est strict en France.", e: "Le retard de livraison entraîne une responsabilité ex contractu du transporteur.", j: "Article 1231-1 du Code civil." },
+            { l: "Ex delicto", t: "Du délit", d: "Responsabilité découlant d'une faute hors contrat (accident, délit).", c: "Responsabilité civile.", g: ["JE"], vul: "Tu as cassé mon truc alors qu'on n'avait rien signé ensemble. C'est une faute civile pure.", cp: "C'est la responsabilité de base : 'Tout fait quelconque de l'homme qui cause à autrui un dommage...'.", v: "S'applique quand il n'y a aucun contrat entre la victime et l'auteur.", e: "Si vous renversez un piéton, votre responsabilité est ex delicto.", j: "Article 1240 du Code civil." },
+            { l: "Ex gratia", t: "Par faveur", d: "Acte accompli à titre gracieux, sans obligation légale.", c: "Droit social et commercial.", g: ["DS"], vul: "C'est le cadeau du patron. Je le fais parce que je suis sympa, pas parce que je dois le faire.", cp: "Précisez bien 'à titre exceptionnel et ex gratia' pour ne pas créer un usage obligatoire pour l'avenir.", v: "Si vous répétez le cadeau, il peut devenir un droit acquis par usage.", e: "L'employeur verse une prime ex gratia pour la naissance d'un enfant.", j: "Régime des usages d'entreprise." },
+            { l: "Ex libris", t: "Faisant partie des livres de", d: "Inscription marquant la propriété d'un livre.", c: "Droit de propriété intellectuelle et matérielle.", g: ["JE"], vul: "C'est mon livre. C'est tamponné 'Bibliothèque de Machin'. Pas touche.", cp: "Preuve de propriété simple et efficace pour les biens culturels.", v: "Ce n'est qu'une présomption de propriété.", e: "Le tampon 'Ex libris Cabinet Dupond' sur les codes civils du cabinet.", j: "Preuve de la propriété mobilière." },
+            { l: "Ex officio", t: "D'office", d: "En vertu de la fonction ou du devoir, sans demande des parties.", c: "Procédure et administration.", g: ["JE"], vul: "C'est automatique. Le chef ou le juge le fait tout seul, sans qu'on lui demande, parce que c'est son job.", cp: "Le juge peut soulever un moyen 'ex officio' (d'office) si c'est de l'ordre public.", v: "Le juge doit quand même respecter le contradictoire s'il soulève un point d'office.", e: "Le juge a requalifié le contrat ex officio car la loi l'imposait.", j: "Office du juge." },
+            { l: "Ex parte", t: "D'un seul côté", d: "Procédure menée à l'initiative d'une seule partie, sans la présence de l'autre (non contradictoire).", c: "Procédure civile (Ordonnance sur requête).", g: ["JE"], vul: "C'est l'attaque surprise. Je vais voir le juge tout seul pour obtenir un truc sans que mon adversaire le sache.", cp: "Utile pour obtenir une autorisation de saisie avant que le débiteur ne cache ses biens.", v: "C'est une exception au contradictoire, donc très encadré. L'autre partie pourra contester après.", e: "Une ordonnance ex parte a permis de saisir les ordinateurs pour prouver la concurrence déloyale.", j: "Article 493 du Code de procédure civile." },
+            { l: "Ex post", t: "Après coup", d: "Analyse ou contrôle effectué après la réalisation de l'événement.", c: "Économie & Droit", g: ["JE", "DA"], vul: "C'est l'autopsie. Le truc est mort, on regarde pourquoi. C'est l'analyse du passé.", cp: "L'évaluation des politiques publiques se fait souvent ex post.", v: "Trop tard pour changer le cours des choses, mais utile pour apprendre.", e: "Calculer le préjudice réel après l'accident est une évaluation ex post.", j: "Responsabilité." },
+            { l: "Ex post facto", t: "Après le fait", d: "Qui a un effet rétroactif (souvent interdit en pénal).", c: "Légalité des délits et des peines.", g: ["JE"], vul: "Retour vers le futur. On change les règles du jeu alors que le match est déjà fini.", cp: "En droit pénal, on ne peut pas punir quelqu'un avec une loi ex post facto (créée après l'acte).", v: "La rétroactivité est possible si la loi est plus douce (in mitius).", e: "Une loi punissant le fait de porter un chapeau rouge, votée aujourd'hui, ne peut pas punir ceux qui en portaient hier.", j: "Non-rétroactivité de la loi pénale." },
+            { l: "Ex silentio", t: "Du silence", d: "Argument tiré du silence d'un texte ou d'une personne.", c: "Interprétation.", g: ["JE"], vul: "Qui ne dit mot... ne consent pas forcément. C'est essayer de faire parler le silence.", cp: "C'est un argument risqué. Le silence est souvent... juste du silence.", v: "En droit, le silence ne vaut pas acceptation (sauf exceptions comme le silence de l'administration).", e: "Le texte ne dit pas que c'est interdit, donc ex silentio, c'est autorisé.", j: "Interprétation des contrats." },
+            { l: "Exceptio est strictissimae interpretationis", t: "L'exception est d'interprétation stricte", d: "Une règle d'exception ne doit pas être étendue au-delà de son texte.", c: "Interprétation juridique.", g: ["JE"], vul: "L'exception, c'est l'exception. On ne l'élargit pas. Si la porte est entrouverte, on ne l'ouvre pas en grand.", cp: "Si vous invoquez une exception à la loi, collez au texte. Pas d'analogie possible.", v: "Principe fondamental pour la sécurité juridique.", e: "Le travail le dimanche est une exception, on ne peut pas l'étendre aux jours fériés par simple analogie.", j: "Jurisprudence constante." },
+            { l: "Exempli gratia", t: "Par la grâce de l'exemple (Par exemple)", d: "Utilisé pour introduire un exemple (e.g.).", c: "Rédaction.", g: ["JE"], vul: "Genre... Comme par exemple... C'est pour illustrer.", cp: "Les exemples dans un contrat ne sont pas limitatifs (sauf mention contraire).", v: "Ne confondez pas avec 'id est' (c'est-à-dire).", e: "Les fruits, e.g. les pommes et les poires, sont autorisés.", j: "Rédaction." },
+            { l: "Exequatur", t: "Qu'il soit exécuté", d: "Procédure pour rendre exécutoire une décision étrangère en France.", c: "Droit international privé.", g: ["DA"], vul: "C'est le passeport du jugement. Le juge français met son tampon pour qu'un jugement américain soit valable ici.", cp: "Sans exequatur, votre jugement étranger ne vaut rien en France pour saisir des biens.", v: "Le juge ne rejoue pas le procès, il vérifie juste que ça ne choque pas l'ordre public français.", e: "Pour faire exécuter un divorce prononcé au Maroc, il faut l'exequatur en France.", j: "Code de procédure civile." },
+            { l: "Expressis verbis", t: "En termes exprès", d: "Explicitement, formulé clairement et nettement.", c: "Preuve et contrats.", g: ["DA"], vul: "C'est écrit noir sur blanc. C'est clair, net et précis. Pas de sous-entendu.", cp: "Pour les renonciations à un droit, il faut que ce soit expressis verbis. On ne renonce pas tacitement.", v: "Si ce n'est pas écrit expressément, le juge peut considérer que ce n'était pas voulu.", e: "Le salarié a renoncé expressis verbis à sa clause de non-concurrence.", j: "Preuve des obligations." },
+            { l: "Facsimile", t: "Fais pareil", d: "Reproduction exacte d'un écrit, d'une signature ou d'un dessin.", c: "Preuve documentaire.", g: ["JE"], vul: "C'est le fax, la photocopie, le clone du document.", cp: "Aujourd'hui, on parle de scan ou de copie numérique. Attention à la valeur de preuve.", v: "Un fac-similé n'est pas un original. En cas de contestation, il faut l'original.", e: "La signature en fac-similé (tampon) est parfois admise pour les actes de masse.", j: "Droit de la preuve numérique." },
+            { l: "Falsus procurator", t: "Faux représentant", d: "Personne qui agit au nom d'autrui sans en avoir le pouvoir.", c: "Droit des mandats.", g: ["DA"], vul: "L'imposteur. Il signe pour le chef alors qu'il n'a pas le droit.", cp: "L'acte signé par un falsus procurator est nul, sauf si le vrai chef le ratifie (valide) après coup.", v: "Le faux représentant engage sa propre responsabilité vis-à-vis des tiers trompés.", e: "Un commercial signe un gros contrat de vente sans avoir la délégation de signature : c'est un falsus procurator.", j: "Théorie du mandat apparent." },
+            { l: "Forum conveniens", t: "Tribunal approprié", d: "Doctrine permettant à un tribunal de décliner sa compétence s'il existe un autre tribunal plus approprié ailleurs.", c: "Droit international privé (surtout Common Law).", g: ["DA"], vul: "C'est le meilleur terrain pour le match. Le juge dit : 'Allez voir mon collègue, c'est plus pratique chez lui'.", cp: "Utilisé pour éviter le 'Forum Shopping' (choisir le juge le plus sympa).", v: "En droit français, on applique plutôt les règles strictes de compétence que l'opportunité.", e: "Un juge anglais renvoie l'affaire aux USA car tous les témoins sont là-bas (forum conveniens).", j: "Conflits de juridictions." },
+            { l: "Fraus omnia corrumpit", t: "La fraude corrompt tout", d: "Principe général selon lequel la fraude entraîne la nullité de l'acte, quelles que soient les règles respectées en apparence.", c: "Lutte contre la fraude.", g: ["JE"], vul: "Tricheur perdant. Si tu as triché, peu importe si tu as bien rempli les papiers, tout part à la poubelle.", cp: "C'est l'arme atomique du juge pour annuler les montages artificiels.", v: "Il faut prouver l'intention frauduleuse (la volonté de nuire ou de contourner la loi).", e: "Un mariage blanc (juste pour les papiers) est nul car fraus omnia corrumpit.", j: "Principe général du droit." },
+            { l: "Functus officio", t: "Ayant accompli sa fonction", d: "Dessaisissement de l'autorité qui a pris sa décision. Elle ne peut plus y revenir.", c: "Procédure juridictionnelle.", g: ["JE"], vul: "Job terminé. Le juge a rendu sa copie, il ne peut plus la raturer ou changer la note.", cp: "Une fois le jugement signé, le juge est functus officio. Seul l'appel peut changer la décision.", v: "Le juge peut seulement corriger les erreurs matérielles évidentes (fautes de frappe).", e: "Le tribunal a rendu son jugement, il est functus officio et ne peut plus entendre les parties.", j: "Code de procédure civile." },
+            { l: "Genus", t: "Genre", d: "Catégorie générale à laquelle appartient une chose (opposé à l'espèce).", c: "Classification juridique.", g: ["JE"], vul: "La famille. C'est la catégorie, pas l'individu. 'Un chien', pas 'Médor'.", cp: "Les choses de genre (blé, argent) sont interchangeables (fongibles).", v: "La propriété des choses de genre ne se transmet qu'au moment où on les compte ou pèse (individualisation).", e: "L'argent est un genus, ce billet précis est une espèce.", j: "Droit des biens." },
+            { l: "Habeas corpus", t: "Que tu aies le corps", d: "Garantie fondamentale contre la détention arbitraire sans jugement.", c: "Libertés publiques", g: ["JE"], vul: "Touche pas à mon corps ! L'État ne peut pas m'enfermer dans une cave sans me présenter à un juge.", cp: "Symbole de l'État de droit face à la tyrannie.", v: "Principe anglo-saxon (1679) mais universel aujourd'hui.", e: "Un avocat dépose un recours d'habeas corpus pour faire libérer un prisonnier détenu illégalement.", j: "Droits de l'homme." },
+            { l: "Honorarium", t: "Honoraire", d: "Rétribution versée à une profession libérale (avocat, médecin) pour ses services.", c: "Droit des professions libérales.", g: ["JE"], vul: "La facture de l'avocat. Ce n'est pas un salaire, c'est l'honneur d'être payé.", cp: "Les honoraires sont libres mais doivent être fixés par convention préalable.", v: "Ne confondez pas honoraire et salaire (il n'y a pas de lien de subordination).", e: "L'avocat envoie sa note d'honoraires au client après le procès.", j: "Déontologie." },
+            { l: "Ibidem", t: "Au même endroit", d: "Utilisé dans les notes pour renvoyer à la même référence que la précédente (Ibid.).", c: "Rédaction académique et juridique.", g: ["JE"], vul: "Idem. Pareil qu'au-dessus. Je ne réécris pas tout, c'est la même source.", cp: "Gain de place précieux dans les conclusions ou les mémoires.", v: "Si la référence précédente est loin, répétez-la pour ne pas perdre le lecteur.", e: "1. Code civil, art 12. 2. Ibidem (veut dire Code civil, art 12).", j: "Conventions typographiques." },
+            { l: "Id est", t: "C'est-à-dire", d: "Locution servant à expliciter ou définir ce qui vient d'être dit (i.e.).", c: "Langage soutenu.", g: ["JE"], vul: "En gros. Autrement dit. Je t'explique ce que je viens de dire.", cp: "Utilisez 'i.e.' pour clarifier une pensée complexe.", v: "Ne confondez pas avec 'e.g.' (par exemple).", e: "Le jour de repos hebdomadaire, i.e. le dimanche, est sacré.", j: "Langage juridique." },
+            { l: "Idem", t: "Le même", d: "Désigne la même chose, le même auteur ou la même idée.", c: "Langage courant et juridique.", g: ["JE"], vul: "Pareil. Kif-kif. La même chose.", cp: "Sert à éviter les répétitions lourdes.", v: "Attention aux ambiguïtés : 'idem' renvoie à quoi exactement ?", e: "Le demandeur réclame 1000€. Le défendeur propose idem (1000€).", j: "Terminologie." },
+            { l: "Imprimatur", t: "Qu'il soit imprimé", d: "Autorisation officielle de publier un ouvrage (souvent religieux ou censuré).", c: "Droit de la presse et édition.", g: ["JE"], vul: "Le 'Bon à tirer'. Le tampon officiel qui dit 'C'est bon, tu peux imprimer'.", cp: "Aujourd'hui, c'est l'accord final du client sur le BAT (Bon À Tirer) de l'imprimeur.", v: "Historiquement, c'était la censure de l'Église.", e: "Le directeur de la publication donne son imprimatur pour l'article.", j: "Droit de l'édition." },
+            { l: "In absentia", t: "En l'absence", d: "Jugement rendu alors que l'accusé ou la partie n'est pas présent.", c: "Procédure pénale (jugement par défaut).", g: ["JE"], vul: "Jugé dans son dos. Le procès a eu lieu, mais la chaise de l'accusé était vide.", cp: "Le jugement in absentia peut souvent être contesté (opposition) pour être rejugé.", v: "C'est dangereux car on ne s'est pas défendu.", e: "Le criminel en fuite a été condamné à 10 ans de prison in absentia.", j: "Code de procédure pénale." },
+            { l: "In camera", t: "Dans la chambre", d: "Audience tenue hors de la présence du public (huis clos).", c: "Procédure (surtout Common Law).", g: ["JE"], vul: "Portes fermées. Secret. Pas de public, pas de journalistes, juste les juges et les avocats.", cp: "Demandez le huis clos (in camera) pour protéger des secrets d'affaires ou la vie privée.", v: "La justice est publique par principe, le huis clos est l'exception.", e: "L'affaire de divorce des stars s'est jouée in camera pour éviter les paparazzi.", j: "Publicité des débats." },
+            { l: "In fine", t: "À la fin", d: "À la fin d'un texte, d'un chapitre ou d'un raisonnement.", c: "Référence juridique.", g: ["JE"], vul: "Tout à la fin. Au bout du bout. En conclusion.", cp: "Utilisé pour citer la dernière partie d'un article de loi.", v: "Le sens d'un article peut changer in fine (à la fin) avec une exception.", e: "L'article 1240 du Code civil précise in fine que le dommage doit être réparé.", j: "Interprétation des textes." },
+            { l: "In limine litis", t: "Au seuil du procès", d: "Moyen de procédure soulevé avant tout débat au fond.", c: "Procédure civile.", g: ["DS", "JE"], vul: "Avant le coup d'envoi. Si tu veux contester l'arbitre, c'est maintenant ou jamais.", cp: "Ne ratez pas le coche : une incompétence se soulève in limine litis, sinon c'est couvert.", v: "Si vous commencez à parler du dossier, c'est trop tard.", e: "L'avocat soulève la nullité de l'assignation in limine litis.", j: "Article 74 du Code de procédure civile." },
+            { l: "In memoriam", t: "En mémoire", d: "En souvenir de. Hommage posthume.", c: "Contexte funéraire ou commémoratif.", g: ["JE"], vul: "Pour ne pas oublier. Hommage au disparu.", cp: "Utilisé pour les legs ou fondations dédiés à la mémoire de quelqu'un.", v: "Respecter la volonté du défunt.", e: "Une bourse d'études créée in memoriam du fondateur de l'école.", j: "Droit des fondations." },
+            { l: "In re", t: "Dans l'affaire", d: "Expression désignant l'affaire ou l'objet du litige (souvent en Common Law).", c: "Intitulé des dossiers.", g: ["JE"], vul: "Au sujet de. Concernant l'affaire X.", cp: "Très utilisé dans les titres de dossiers ou de mails juridiques.", v: "Permet de classer les dossiers.", e: "Mail intitulé : In re : Acquisition Société Y.", j: "Pratique professionnelle." },
+            { l: "In situ", t: "Sur place", d: "Dans son lieu d'origine ou naturel.", c: "Constats et environnement.", g: ["DS"], vul: "Sur le terrain. En vrai. Pas dans un bureau, mais là où ça se passe.", cp: "Un constat in situ a beaucoup plus de force qu'une photo prise de loin.", v: "En droit du travail, observer le poste in situ est essentiel pour l'ergonomie.", e: "L'expert est venu vérifier les désordres in situ sur le chantier.", j: "Expertise judiciaire." },
+            { l: "In solidum", t: "Pour le tout", d: "Obligation solidaire où chacun est tenu de toute la dette.", c: "Responsabilité.", g: ["DA", "DS"], vul: "Tous pour un. Si vous êtes trois responsables, je peux demander tout l'argent à un seul.", cp: "Protège la victime contre l'insolvabilité d'un des auteurs.", v: "Celui qui paie doit se retourner contre les autres.", e: "Les co-auteurs d'un dommage sont condamnés in solidum.", j: "Responsabilité civile." },
+            { l: "In toto", t: "En tout", d: "Totalement, entièrement, sans exception.", c: "Acceptation ou rejet.", g: ["JE"], vul: "La totale. Tout le paquet. Sans rien laisser.", cp: "Accepter un contrat in toto signifie qu'on prend tout, même les clauses qui fâchent.", v: "Attention aux accords globaux qui empêchent de revenir sur les détails.", e: "Le projet de loi a été adopté in toto par le Parlement.", j: "Vote et accords." },
+            { l: "In vitro", t: "Dans le verre", d: "En laboratoire, artificiellement (éprouvette).", c: "Bioéthique.", g: ["JE"], vul: "Bébé éprouvette. Fait en labo, pas dans le corps.", cp: "Réglementé par les lois de bioéthique (PMA).", v: "Opposé à in vivo.", e: "La fécondation in vitro (FIV) est une technique médicale encadrée.", j: "Code de la santé publique." },
+            { l: "In vivo", t: "Dans le vivant", d: "En situation réelle, dans l'organisme vivant.", c: "Bioéthique et expérimentation.", g: ["JE"], vul: "En vrai. Dans la vraie vie. Sur le terrain vivant.", cp: "Les tests in vivo sont plus risqués et plus encadrés que in vitro.", v: "Protection des personnes se prêtant à la recherche.", e: "Le médicament a été testé in vivo sur des volontaires.", j: "Droit de la santé." },
+            { l: "Incognito", t: "Inconnu", d: "Sans se faire connaître, sous une fausse identité ou discrètement.", c: "Vie privée.", g: ["JE"], vul: "En mode fantôme. Avec des lunettes noires. Personne ne sait que c'est moi.", cp: "Le client mystère agit incognito pour tester les services.", v: "Agir incognito ne doit pas servir à frauder.", e: "L'inspecteur du travail peut parfois visiter l'entreprise incognito (sous conditions).", j: "Pouvoirs d'enquête." },
+            { l: "Index", t: "Indicateur", d: "Liste de sujets ou de noms interdits (historiquement).", c: "Censure et documentation.", g: ["JE"], vul: "La liste noire. Ou la table des matières. Ça dépend du contexte.", cp: "L'Index librorum prohibitorum était la liste des livres interdits par l'Église.", v: "Aujourd'hui, désigne surtout le répertoire ou la référence de prix (indexation).", e: "Le loyer est révisé selon l'index INSEE.", j: "Clauses d'indexation." },
+            { l: "Infra", t: "Ci-dessous", d: "Renvoi à une partie ultérieure du texte.", c: "Rédaction.", g: ["JE"], vul: "Voir plus bas. C'est écrit après.", cp: "Sert à annoncer un développement futur.", v: "Opposé à Supra (au-dessus).", e: "Comme nous le verrons infra au chapitre 3.", j: "Rédaction juridique." },
+            { l: "Interim", t: "Entre temps", d: "Période provisoire ou fonction exercée temporairement.", c: "Droit du travail.", g: ["DS"], vul: "Le remplaçant. Le bouche-trou (respectueux). C'est juste pour un moment.", cp: "Le contrat d'intérim est très strict : il faut un motif légal (remplacement, surcroît).", v: "Un intérim trop long peut être requalifié en CDI.", e: "Il assure l'intérim de la direction pendant la maladie du chef.", j: "Code du travail." },
+            { l: "Ipso facto", t: "Par le fait même", d: "Conséquence automatique d'un fait.", c: "Effets juridiques.", g: ["JE"], vul: "Effet domino. Ça tombe tout seul.", cp: "Pas besoin de procédure.", v: "Automatisme.", e: "La faillite entraîne ipso facto la perte du crédit.", j: "Effets de droit." },
+            { l: "Item", t: "De même", d: "Sert à introduire un nouvel article ou élément dans une liste.", c: "Énumération.", g: ["JE"], vul: "Et aussi... Autre truc... Point suivant.", cp: "Utilisé dans les inventaires ou les factures.", v: "Permet de bien distinguer chaque élément.", e: "Item : une table. Item : quatre chaises.", j: "Comptabilité." },
+            { l: "Junior", t: "Plus jeune", d: "Le fils ou le plus jeune (opposé à Senior).", c: "État civil et hiérarchie.", g: ["JE"], vul: "Le petit. Le débutant. Le fils.", cp: "Dans les cabinets, désigne le collaborateur débutant.", v: "Terme anglo-saxon courant.", e: "Avocat junior.", j: "Usage professionnel." },
+            { l: "Jurat", t: "Il jure", d: "Mention certifiant qu'un serment a été prêté.", c: "Actes notariés (anglo-saxon).", g: ["JE"], vul: "Il a juré. C'est signé la main sur le cœur.", cp: "Formule attestant l'authenticité.", v: "Rare en France.", e: "Affidavit avec jurat.", j: "Preuve." },
+            { l: "Jus cogens", t: "Droit impératif", d: "Norme impérative de droit international général.", c: "Droit international.", g: ["JE"], vul: "La super-loi mondiale. Interdiction de la torture, de l'esclavage. On ne discute pas.", cp: "Aucun traité ne peut violer le jus cogens, sinon il est nul.", v: "C'est le sommet de la pyramide des normes internationales.", e: "L'interdiction du génocide est une norme de jus cogens.", j: "Convention de Vienne." },
+            { l: "Jus fruendi", t: "Droit de percevoir les fruits", d: "Droit de récolter les revenus d'un bien (fructus).", c: "Droit des biens.", g: ["DA"], vul: "Le droit d'encaisser les loyers ou de manger les pommes du verger.", cp: "L'usufruitier a le jus fruendi.", v: "Ne donne pas le droit de vendre le bien.", e: "Le bailleur a le jus fruendi (loyers).", j: "Propriété." },
+            { l: "Jus utendi", t: "Droit d'user", d: "Droit d'utiliser la chose (usus).", c: "Droit des biens.", g: ["DA"], vul: "Le droit d'habiter la maison ou de conduire la voiture.", cp: "Le locataire a un droit personnel de jouissance proche de l'usus.", v: "Ne donne pas le droit de détruire.", e: "L'usufruitier a le jus utendi.", j: "Propriété." },
+            { l: "Jus abutendi", t: "Droit de disposer", d: "Droit de vendre ou détruire (abusus).", c: "Droit des biens.", g: ["DA"], vul: "Le droit de vendre.", cp: "Seul le nu-propriétaire ou le plein propriétaire l'a.", v: "Essentiel pour la vente.", e: "Vendre la maison.", j: "Propriété." },
+            { l: "Lapsus", t: "Glissement", d: "Erreur involontaire de parole ou d'écriture.", c: "Psychologie et témoignage.", g: ["JE"], vul: "Ma langue a fourché. Oups, j'ai dit un mot pour un autre.", cp: "Un lapsus dans un contrat (calami) peut être corrigé par interprétation.", v: "Peut révéler une intention cachée.", e: "Lapsus calami (faute de plume).", j: "Erreur matérielle." },
+            { l: "Lex", t: "Loi", d: "La règle de droit écrite.", c: "Fondement juridique.", g: ["JE"], vul: "La loi. Le règlement. Ce qui est écrit.", cp: "Dura lex sed lex.", v: "La loi s'impose à tous.", e: "Lex publica.", j: "Sources du droit." },
+            { l: "Locum tenens", t: "Tenant le lieu", d: "Remplaçant provisoire (locum).", c: "Professions médicales et juridiques.", g: ["DS"], vul: "Le remplaçant. Celui qui garde la boutique pendant que le chef est absent.", cp: "Le médecin remplaçant exerce en lieu et place du titulaire.", v: "Vérifiez le contrat de remplacement.", e: "Un avocat locum tenens pour une audience.", j: "Remplacement." },
+            { l: "Magna Carta", t: "Grande Charte", d: "Texte fondateur des libertés anglaises (1215).", c: "Histoire du droit.", g: ["JE"], vul: "L'ancêtre des droits de l'homme. Le roi accepte de ne plus faire n'importe quoi.", cp: "Symbole de la limitation du pouvoir arbitraire.", v: "Référence historique.", e: "L'Habeas Corpus découle de la Magna Carta.", j: "Droit constitutionnel." },
+            { l: "Major", t: "Plus grand", d: "Majeur, adulte ou supérieur.", c: "Capacité civile.", g: ["JE"], vul: "L'adulte. Celui qui peut voter et aller en prison.", cp: "La majorité est fixée à 18 ans en France.", v: "Opposé à minor.", e: "Il est devenu major.", j: "Capacité." },
+            { l: "Mandamus", t: "Nous ordonnons", d: "Ordre judiciaire enjoignant à une autorité d'accomplir un acte.", c: "Droit administratif (Common Law).", g: ["JE"], vul: "Fais ton boulot ! Le juge ordonne au fonctionnaire de faire ce qu'il doit faire.", cp: "Équivalent de l'injonction de faire en droit administratif français.", v: "Recours contre l'inertie de l'administration.", e: "Writ of mandamus pour forcer la délivrance d'un permis.", j: "Droit public." },
+            { l: "Mea culpa", t: "Ma faute", d: "Aveu de sa propre faute.", c: "Morale et stratégie judiciaire.", g: ["JE"], vul: "C'est ma faute, je m'excuse. J'ai merdé.", cp: "Faire son mea culpa peut parfois atténuer la sanction (bonne foi).", v: "C'est un aveu qui peut être retenu contre vous.", e: "L'entreprise a fait son mea culpa après le scandale.", j: "Aveu." },
+            { l: "Memorandum", t: "Ce qu'il faut retenir", d: "Note diplomatique ou juridique résumant une question.", c: "Relations internationales et affaires.", g: ["JE"], vul: "Le mémo. Le post-it géant pour ne pas oublier les points clés.", cp: "Le Mémorandum d'entente (MoU) fixe les grandes lignes d'un accord futur.", v: "Souvent non contraignant juridiquement (Gentlemen's agreement).", e: "Signer un mémorandum d'accord avant le contrat final.", j: "Accords précontractuels." },
+            { l: "Modus operandi", t: "Mode d'opérer", d: "Manière de procéder, méthode caractéristique d'un criminel.", c: "Police et criminologie.", g: ["JE"], vul: "La signature du crime. La technique habituelle. 'Il passe toujours par la cheminée'.", cp: "Permet de relier plusieurs affaires au même auteur.", v: "Utilisé aussi en gestion de projet pour définir une méthode.", e: "Le modus operandi du cambrioleur est toujours le même.", j: "Preuve par similarité." },
+            { l: "Modus vivendi", t: "Mode de vie", d: "Arrangement provisoire permettant de vivre ensemble malgré un désaccord.", c: "Relations internationales et conflits.", g: ["JE"], vul: "On fait la paix pour l'instant. On cohabite sans s'entretuer, en attendant mieux.", cp: "Solution d'attente lors d'un conflit social ou commercial.", v: "Ce n'est pas un traité de paix définitif.", e: "Trouver un modus vivendi avec les grévistes.", j: "Transaction." },
+            { l: "Ne exeat", t: "Qu'il ne sorte pas", d: "Interdiction de quitter le territoire.", c: "Procédure civile ou pénale.", g: ["JE"], vul: "Tu restes là. Interdiction de passer la frontière.", cp: "Mesure pour empêcher la fuite d'un débiteur ou d'un suspect.", v: "Atteinte à la liberté d'aller et venir, très encadrée.", e: "Le juge ordonne un ne exeat pour empêcher le père d'emmener l'enfant à l'étranger.", j: "Contrôle judiciaire." },
+            { l: "Nemo", t: "Personne", d: "Nul, personne.", c: "Adages.", g: ["JE"], vul: "Personne. Dégun.", cp: "Début de nombreux adages.", v: "Négatif.", e: "Nemo auditur.", j: "Latin." },
+            { l: "Nihil", t: "Rien", d: "Le néant.", c: "Adages.", g: ["JE"], vul: "Que dalle. Zéro.", cp: "Nihil obstat (rien ne s'oppose).", v: "Absence.", e: "Nihil.", j: "Latin." },
+            { l: "Nolo contendere", t: "Je ne veux pas contester", d: "Plaidoyer où l'accusé ne conteste pas les charges sans avouer (Pénal US).", c: "Procédure pénale américaine.", g: ["JE"], vul: "Je ne dis pas oui, je ne dis pas non, j'accepte la punition pour en finir.", cp: "Permet d'éviter un procès long et coûteux sans avouer formellement sa culpabilité.", v: "Équivaut à une condamnation.", e: "L'accusé plaide nolo contendere pour éviter le scandale.", j: "Plaider coupable." },
+            { l: "Non sequitur", t: "Il ne s'ensuit pas", d: "Conclusion qui ne découle pas logiquement des prémisses.", c: "Logique et rhétorique.", g: ["JE"], vul: "Ça n'a ni queue ni tête. Coq à l'âne. Ta conclusion n'a rien à voir avec ton argument.", cp: "Relevez les non sequitur dans l'argumentation adverse pour montrer leur incohérence.", v: "Sophisme courant.", e: "Il pleut, donc je suis riche. (Non sequitur).", j: "Raisonnement." },
+            { l: "Nota bene", t: "Note bien", d: "Remarque importante ajoutée à un texte (N.B.).", c: "Rédaction.", g: ["JE"], vul: "Attention ! Regarde bien ça. C'est important.", cp: "Utilisez le N.B. pour attirer l'attention sur un point crucial en bas de page.", v: "Ne pas en abuser.", e: "N.B. : La date limite est impérative.", j: "Rédaction." },
+            { l: "Nullius", t: "De personne", d: "Qui n'appartient à personne.", c: "Biens.", g: ["DA"], vul: "À personne.", cp: "Res nullius.", v: "Sans maître.", e: "Bien vacant.", j: "Propriété." },
+            { l: "Onus", t: "Fardeau", d: "Charge, obligation lourde.", c: "Preuve.", g: ["JE"], vul: "Le poids. Le sac à dos bien lourd.", cp: "Onus probandi (charge de la preuve).", v: "Responsabilité.", e: "L'onus de la preuve.", j: "Preuve." },
+            { l: "Opinio juris", t: "Conviction de droit", d: "Croyance qu'une pratique est obligatoire (élément de la coutume).", c: "Droit international et coutume.", g: ["JE"], vul: "On le fait parce qu'on croit que c'est la loi. C'est pas juste une habitude, c'est ressenti comme obligatoire.", cp: "Pour qu'une coutume existe, il faut la pratique (répétition) et l'opinio juris (croyance).", v: "Sans opinio juris, c'est juste un usage de politesse.", e: "Les états respectent les ambassadeurs par opinio juris.", j: "Source du droit." },
+            { l: "Opus", t: "Œuvre", d: "Travail, ouvrage.", c: "Droit d'auteur.", g: ["JE"], vul: "Le boulot. L'œuvre d'art. Le chef-d'œuvre.", cp: "Opus citatum (ouvrage cité).", v: "Création.", e: "Son magnum opus.", j: "Propriété intellectuelle." },
+            { l: "Pactum de non petendo", t: "Pacte de ne pas demander", d: "Accord par lequel un créancier s'engage à ne pas poursuivre son débiteur.", c: "Droit des contrats et contentieux.", g: ["DA"], vul: "Promis, je ne t'attaque pas. Je te laisse tranquille pour l'instant.", cp: "Utile dans les restructurations de dette pour laisser de l'air à l'entreprise.", v: "Ce n'est pas un effacement de dette, juste une promesse de ne pas réclamer tout de suite.", e: "La banque signe un pactum de non petendo pendant la négociation.", j: "Transaction." },
+            { l: "Pari passu", t: "D'un pas égal", d: "Clause garantissant un traitement égalitaire entre créanciers.", c: "Finance et droit bancaire.", g: ["DA"], vul: "Tout le monde sur la même ligne. Pas de chouchou. Si je paie l'un, je paie l'autre pareil.", cp: "Clause standard dans les prêts internationaux : aucun créancier ne passe avant les autres.", v: "Protège contre le traitement préférentiel.", e: "Les obligations sont remboursées pari passu.", j: "Droit des sûretés." },
+            { l: "Passim", t: "Partout", d: "Indique qu'un sujet est traité à plusieurs endroits d'un ouvrage.", c: "Référence bibliographique.", g: ["JE"], vul: "Un peu partout. C'est éparpillé dans tout le livre.", cp: "Utilisé quand l'idée revient tout le temps et qu'on ne peut pas citer une page précise.", v: "Moins précis qu'une page exacte.", e: "Voir les œuvres de Freud, passim.", j: "Recherche." },
+            { l: "Pater familias", t: "Père de famille", d: "Chef de famille romain, titulaire de la puissance paternelle.", c: "Histoire du droit.", g: ["JE"], vul: "Le patriarche. Le grand chef de la tribu à l'ancienne.", cp: "Ancêtre de l'autorité parentale, mais avec droit de vie et de mort !", v: "Notion historique.", e: "Le pater familias gérait le patrimoine.", j: "Droit romain." },
+            { l: "Per annum", t: "Par an", d: "Annuellement.", c: "Finance.", g: ["DA"], vul: "Par an. Chaque année.", cp: "Taux d'intérêt per annum.", v: "Annuel.", e: "10% per annum.", j: "Calculs." },
+            { l: "Per capita", t: "Par tête", d: "Répartition par individu et non par groupe.", c: "Succession et statistiques.", g: ["JE"], vul: "Chacun sa part. On compte les têtes et on divise.", cp: "PIB per capita (par habitant).", v: "Opposé à per stirpes (par souche) en succession.", e: "Héritage partagé per capita entre les enfants.", j: "Successions." },
+            { l: "Per curiam", t: "Par la cour", d: "Décision rendue par la cour en tant que corps, souvent anonyme.", c: "Jurisprudence (Common Law).", g: ["JE"], vul: "La Cour a parlé. C'est l'avis du groupe, pas d'un juge précis.", cp: "Décision qui fait autorité sans opinion dissidente signée.", v: "Anonymat.", e: "Opinion per curiam.", j: "Procédure." },
+            { l: "Per diem", t: "Par jour", d: "Indemnité journalière pour frais.", c: "Droit du travail.", g: ["DS"], vul: "L'argent de poche du jour. Le défraiement quotidien.", cp: "Utilisé pour les déplacements pro (repas, hôtel).", v: "Souvent forfaitaire.", e: "Recevoir un per diem de 50€ en mission.", j: "Frais professionnels." },
+            { l: "Per se", t: "En soi", d: "Intrinsèquement, par sa nature même.", c: "Raisonnement juridique.", g: ["JE"], vul: "Lui-même. De base. Sans avoir besoin d'autre chose.", cp: "Une pratique peut être illégale 'per se' (automatiquement) sans avoir à prouver ses effets.", v: "Opposé à l'analyse 'au cas par cas' (rule of reason).", e: "L'entente sur les prix est illégale per se.", j: "Droit de la concurrence." },
+            { l: "Persona", t: "Personne", d: "Sujet de droit, masque (théâtre).", c: "Droit des personnes.", g: ["JE"], vul: "L'individu. Le rôle. La personne juridique.", cp: "Persona non grata.", v: "Capacité.", e: "Personnalité juridique.", j: "Civil." },
+            { l: "Placebo", t: "Je plairai", d: "Substance sans principe actif.", c: "Droit de la santé.", g: ["JE"], vul: "Faux médicament. Poudre de perlimpinpin qui marche parce qu'on y croit.", cp: "Effet placebo.", v: "Test clinique.", e: "Groupe placebo.", j: "Santé." },
+            { l: "Post", t: "Après", d: "Postérieur à.", c: "Temps.", g: ["JE"], vul: "Après.", cp: "Post mortem.", v: "Ante.", e: "Post-scriptum.", j: "Chronologie." },
+            { l: "Post meridiem", t: "Après midi", d: "Après midi (PM).", c: "Temps.", g: ["JE"], vul: "L'après-midi. Le soir.", cp: "PM.", v: "AM.", e: "3 PM.", j: "Délais." },
+            { l: "Post mortem", t: "Après la mort", d: "Qui survient ou prend effet après le décès.", c: "Succession et médecine légale.", g: ["JE"], vul: "Outre-tombe. Une fois mort.", cp: "Autopsie post mortem.", v: "Volonté du défunt.", e: "Effets post mortem.", j: "Décès." },
+            { l: "Post scriptum", t: "Écrit après", d: "Ajout à une lettre après la signature (P.S.).", c: "Correspondance.", g: ["JE"], vul: "Ah, j'oubliais ! Le petit mot à la fin.", cp: "P.S.", v: "Oubli.", e: "P.S. : Rappelle-moi.", j: "Écrit." },
+            { l: "Pretium doloris", t: "Le prix de la douleur", d: "Indemnisation de la souffrance physique et morale.", c: "Réparation du préjudice corporel.", g: ["DS"], vul: "Le prix des larmes et des cris. L'argent pour compenser la souffrance.", cp: "Chiffré sur une échelle de 1 à 7 par les experts médicaux.", v: "Fait partie du déficit fonctionnel temporaire ou permanent.", e: "La victime de l'accident reçoit 5000€ au titre du pretium doloris.", j: "Nomenclature Dintilhac." },
+            { l: "Prima facie", t: "Au premier abord", d: "Preuve apparente suffisante tant qu'elle n'est pas contredite.", c: "Droit de la preuve.", g: ["JE"], vul: "À première vue. Ça a l'air vrai jusqu'à preuve du contraire.", cp: "Le certificat médical est une preuve prima facie de la maladie.", v: "C'est une présomption simple qui peut être renversée.", e: "Il y a une preuve prima facie de discrimination.", j: "Preuve." },
+            { l: "Pro bono", t: "Pour le bien public", d: "Travail effectué gratuitement pour l'intérêt général.", c: "Avocats.", g: ["JE"], vul: "Bénévolat pro.", cp: "Image de marque.", v: "Gratuit.", e: "Dossier pro bono.", j: "Déontologie." },
+            { l: "Pro forma", t: "Pour la forme", d: "Document établi pour respecter une forme, sans valeur définitive immédiate.", c: "Commerce et douane.", g: ["JE"], vul: "Pour de faux. Juste pour montrer. C'est un modèle.", cp: "Facture pro forma : devis qui ressemble à une facture pour la douane.", v: "Ne permet pas de réclamer le paiement.", e: "Envoyer une facture pro forma pour débloquer la marchandise.", j: "Commerce international." },
+            { l: "Pro rata", t: "Selon la part", d: "Proportionnellement.", c: "Calculs.", g: ["DA"], vul: "Au prorata. Chacun sa part selon ce qu'il a mis.", cp: "Prorata temporis (selon le temps).", v: "Calcul.", e: "Payer au prorata.", j: "Comptabilité." },
+            { l: "Pro tanto", t: "Pour autant", d: "À due concurrence, pour ce montant.", c: "Paiement partiel.", g: ["DA"], vul: "Pour cette somme-là. Ça couvre ça, mais pas le reste.", cp: "Accepter un paiement pro tanto ne vaut pas solde de tout compte.", v: "Réserve sur le reste.", e: "Paiement pro tanto de la dette.", j: "Obligations." },
+            { l: "Pro tempore", t: "Pour le temps", d: "Temporaire, pour le moment.", c: "Fonction.", g: ["JE"], vul: "Provisoire. En attendant.", cp: "Président pro tempore.", v: "Intérim.", e: "Maire pro tempore.", j: "Institutions." },
+            { l: "Prorogatio", t: "Prorogation", d: "Prolongation d'un mandat ou d'un délai au-delà du terme normal.", c: "Droit public et sociétés.", g: ["JE"], vul: "Les prolongations. Le match continue après le temps réglementaire.", cp: "La prorogatio permet la continuité du service public en attendant le successeur.", v: "Nécessite souvent un texte ou une décision.", e: "Prorogation du mandat des élus pendant la crise.", j: "Continuité." },
+            { l: "Proprio motu", t: "De son propre mouvement", d: "Spontanément, de sa propre initiative (sans être sollicité).", c: "Procédure.", g: ["JE"], vul: "Tout seul. Comme un grand. Personne ne lui a rien demandé.", cp: "Similaire à 'ex officio'. Le juge agit proprio motu.", v: "Pouvoir d'initiative.", e: "Le procureur se saisit proprio motu de l'affaire.", j: "Action publique." },
+            { l: "Quantum", t: "Combien", d: "Montant.", c: "Dommage.", g: ["JE"], vul: "L'addition.", cp: "Chiffrage.", v: "Principe.", e: "Quantum du dommage.", j: "Réparation." },
+            { l: "Quantum meruit", t: "Autant qu'il a mérité", d: "Paiement à la valeur du travail fourni en l'absence de prix fixé.", c: "Contrats (Common Law).", g: ["DS"], vul: "Le juste prix. Payé au mérite. Tu n'as pas de devis, on te paie ce que ça vaut.", cp: "Utilisé pour payer des travaux supplémentaires non devisés.", v: "Évaluation par le juge.", e: "L'entrepreneur est payé quantum meruit.", j: "Enrichissement sans cause." },
+            { l: "Quasi", t: "Presque", d: "Comme si.", c: "Fiction juridique.", g: ["JE"], vul: "Presque pareil. On fait semblant que c'est ça.", cp: "Quasi-contrat.", v: "Fiction.", e: "Quasi-usufruit.", j: "Civil." },
+            { l: "Qui facit per alium facit per se", t: "Qui fait par autrui fait par lui-même", d: "Le mandant est responsable des actes du mandataire.", c: "Responsabilité et mandat.", g: ["DA"], vul: "Le chef trinque pour son employé. Si tu donnes l'ordre, c'est comme si tu l'avais fait toi-même.", cp: "Fondement de la responsabilité du commettant du fait de ses préposés.", v: "Responsabilité indirecte.", e: "L'employeur est responsable de l'accident causé par son chauffeur.", j: "Article 1242 Code civil." },
+            { l: "Qui tacet consentire videtur", t: "Qui se tait semble consentir", d: "Le silence vaut acceptation (Adage souvent faux en droit français).", c: "Consentement.", g: ["DA"], vul: "Qui ne dit mot consent. (Attention, c'est souvent faux !).", cp: "En droit, le silence ne vaut PAS acceptation, sauf exception (relations d'affaires suivies).", v: "Ne comptez pas sur le silence pour valider un contrat.", e: "Le silence de la banque vaut acceptation (exception).", j: "Droit des contrats." },
+            { l: "Quid", t: "Quoi", d: "L'objet, le fond de l'affaire.", c: "Questionnement.", g: ["JE"], vul: "Quoi ? C'est quoi le truc ? Le sujet.", cp: "Quid de la clause ?", v: "Question.", e: "Et quid des frais ?", j: "Langage." },
+            { l: "Quid pro quo", t: "Quoi pour quoi", d: "Contrepartie, échange.", c: "Contrats.", g: ["DA"], vul: "Donnant-donnant. Pas gratuit.", cp: "Échange.", v: "Quiproquo (malentendu).", e: "Salaire contre travail.", j: "Contrats." },
+            { l: "Quo warranto", t: "Par quelle garantie", d: "Procédure contestant le droit d'une personne à exercer une fonction.", c: "Droit public (Common Law).", g: ["JE"], vul: "T'es qui toi ? Montre-moi ton badge. De quel droit tu fais ça ?", cp: "Recours pour vérifier la légitimité d'un officiel.", v: "Contrôle de légalité.", e: "Contester l'élection du maire par quo warranto.", j: "Contentieux électoral." },
+            { l: "Quod non est in actis non est in mundo", t: "Ce qui n'est pas dans les actes n'est pas dans le monde", d: "Le juge ne peut se baser que sur les pièces du dossier.", c: "Procédure.", g: ["JE"], vul: "Pas vu pas pris. Si c'est pas dans le dossier, ça n'existe pas. Le juge ne devine pas.", cp: "Versez TOUT au dossier. Ce qui n'est pas produit n'est pas jugé.", v: "Le juge ne peut pas utiliser ses connaissances personnelles.", e: "Faute de preuve versée, le fait est inexistant pour le tribunal.", j: "Charge de la preuve." },
+            { l: "Quorum", t: "D'eux (nombre de)", d: "Nombre minimum de membres présents pour qu'une assemblée puisse valablement délibérer.", c: "Droit des sociétés et assemblées.", g: ["DA", "DS"], vul: "Le minimum syndical. Si on n'est pas assez nombreux, on ne peut pas voter.", cp: "Vérifiez le quorum avant de commencer la réunion, sinon tout est nul.", v: "Le quorum se calcule sur les présents et représentés.", e: "L'AG ne peut pas voter faute de quorum.", j: "Droit des sociétés." },
+            { l: "Ratio decidendi", t: "Raison de la décision", d: "Le motif juridique déterminant du jugement.", c: "Jurisprudence.", g: ["JE"], vul: "Le pourquoi du comment. La raison clé qui a fait pencher la balance.", cp: "C'est la règle à retenir.", v: "Obiter dictum.", e: "La ratio est l'absence de cause réelle.", j: "Analyse d'arrêt." },
+            { l: "Ratio legis", t: "Raison de la loi", d: "L'esprit de la loi, l'intention du législateur.", c: "Interprétation.", g: ["JE"], vul: "Le but du jeu. Pourquoi ils ont écrit cette loi ?", cp: "Chercher l'intention pour comprendre un texte flou.", v: "Lettre vs Esprit.", e: "La ratio legis est la protection de l'enfant.", j: "Méthode d'interprétation." },
+            { l: "Re", t: "Affaire", d: "Au sujet de.", c: "Objet.", g: ["JE"], vul: "Sujet.", cp: "In re.", v: "Note.", e: "Re : Licenciement.", j: "Correspondance." },
+            { l: "Referendum", t: "Ce qu'il faut rapporter", d: "Vote direct des citoyens.", c: "Droit constitutionnel.", g: ["JE"], vul: "Le peuple décide. Oui ou Non.", cp: "Démocratie directe.", v: "Plébiscite.", e: "Référendum d'entreprise.", j: "Droit électoral." },
+            { l: "Reformatio in pejus", t: "Réforme en pire", d: "Interdiction pour la cour d'appel d'aggraver le sort de l'appelant sur son seul appel.", c: "Procédure d'appel.", g: ["JE"], vul: "Tu ne peux pas perdre plus en faisant appel si tu es le seul à le faire. C'est le filet de sécurité.", cp: "Si le parquet ou l'adversaire fait appel aussi (appel incident), alors tout est possible (risque d'aggravation).", v: "Règle protectrice de l'appelant unique.", e: "Le condamné fait appel, la cour ne peut pas augmenter sa peine (sauf appel du parquet).", j: "Code de procédure pénale." },
+            { l: "Requiem", t: "Repos", d: "Prière pour les morts.", c: "Religion.", g: ["JE"], vul: "Messe des morts.", cp: "Culture.", v: "Cérémonie.", e: "Requiem.", j: "Culte." },
+            { l: "Res", t: "Chose", d: "L'objet du droit, le bien.", c: "Droit des biens.", g: ["JE"], vul: "Le truc. L'objet. Le machin juridique.", cp: "Res nullius, res communis.", v: "Personne.", e: "Droit réel.", j: "Classification." },
+            { l: "Res communis", t: "Chose commune", d: "Chose qui appartient à tous et que personne ne peut s'approprier.", c: "Droit des biens et environnement.", g: ["JE"], vul: "C'est à tout le monde. L'air, l'eau, le soleil. Pas de barrière, pas de propriétaire.", cp: "On a le droit d'en user, mais pas de se l'accaparer.", v: "L'eau du robinet est appropriée, mais l'eau de la rivière est res communis.", e: "L'air ambiant est une res communis.", j: "Article 714 du Code civil." },
+            { l: "Res derelictae", t: "Chose abandonnée", d: "Bien dont le propriétaire s'est volontairement débarrassé.", c: "Droit des biens (déchets).", g: ["JE"], vul: "La poubelle. Le truc jeté dans la rue. C'est à celui qui le ramasse.", cp: "Celui qui récupère une res derelictae en devient propriétaire par occupation.", v: "Ne pas confondre avec une chose perdue (qui a encore un maître).", e: "Le vieux canapé sur le trottoir est une res derelictae.", j: "Mode d'acquisition." },
+            { l: "Res gestae", t: "Choses faites", d: "L'ensemble des faits et circonstances entourant un événement.", c: "Preuve et histoire.", g: ["JE"], vul: "Le contexte. Tout ce qui s'est passé autour. L'histoire complète.", cp: "Admissible comme preuve pour expliquer le contexte.", v: "Récit des faits.", e: "Les cris entendus font partie des res gestae.", j: "Preuve." },
+            { l: "Res inter alios acta", t: "Chose faite entre d'autres", d: "Le contrat ne nuit ni ne profite aux tiers.", c: "Effet relatif.", g: ["DA", "DS"], vul: "C'est pas mes oignons. Votre deal, c'est entre vous, moi je n'ai rien signé.", cp: "Principe de l'effet relatif des contrats.", v: "Opposabilité.", e: "Je ne suis pas tenu par le contrat de mon voisin.", j: "Art. 1199 Code civil." },
+            { l: "Res ipsa loquitur", t: "La chose parle d'elle-même", d: "La négligence est évidente au vu de l'accident.", c: "Responsabilité.", g: ["DS", "JE"], vul: "Ça se voit comme le nez au milieu de la figure. Pas besoin d'expert, c'est évident.", cp: "Présomption de faute.", v: "Preuve contraire.", e: "Un bistouri oublié dans le ventre.", j: "Faute." },
+            { l: "Res judicata", t: "Chose jugée", d: "Autorité de la décision définitive.", c: "Procédure.", g: ["JE"], vul: "C'est fini. On ne rejoue pas le match.", cp: "Fin de non-recevoir.", v: "Identité de cause.", e: "Affaire classée.", j: "Art. 1355 Code civil." },
+            { l: "Res nullius", t: "Chose de personne", d: "Sans maître, appropriable.", c: "Biens.", g: ["DA"], vul: "Premier arrivé, premier servi.", cp: "Occupation.", v: "Res communis.", e: "Gibier.", j: "Propriété." },
+            { l: "Res publica", t: "Chose publique", d: "L'État, la République, l'intérêt général.", c: "Droit public.", g: ["JE"], vul: "La République. Le bien commun. C'est à nous tous.", cp: "Géré par l'État.", v: "Privé.", e: "Service public.", j: "Constitution." },
+            { l: "Restitutio in integrum", t: "Remise en état complet", d: "Remise des choses dans leur état antérieur (nullité).", c: "Nullité des contrats.", g: ["DA", "DS"], vul: "Rembobinage. On rend tout et on revient au point de départ.", cp: "Remboursement réciproque.", v: "Impossible en contrats successifs.", e: "Rendre la voiture et récupérer le prix.", j: "Nullité." },
+            { l: "Rigor mortis", t: "Raideur de la mort", d: "Signe de décès.", c: "Médecine légale.", g: ["JE"], vul: "Raide mort.", cp: "Constat décès.", v: "Preuve.", e: "Heure du décès.", j: "Enquête." },
+            { l: "Salus populi suprema lex esto", t: "Le salut du peuple est la loi suprême", d: "L'intérêt général prime sur tout en cas de crise.", c: "État de nécessité et politique.", g: ["JE"], vul: "Sauver les meubles d'abord. En cas de catastrophe, la survie du groupe passe avant les petites règles.", cp: "Justifie les mesures d'exception (état d'urgence).", v: "Risque de dictature si abusé.", e: "Confinement sanitaire.", j: "Droit constitutionnel." },
+            { l: "Sanctum", t: "Saint / Lieu privé", d: "Lieu inviolable, bureau privé.", c: "Vie privée.", g: ["JE"], vul: "Ma grotte. Mon espace sacré où personne ne rentre.", cp: "Inviolabilité du domicile.", v: "Perquisition.", e: "Son sanctum sanctorum.", j: "Libertés." },
+            { l: "Senior", t: "Plus vieux", d: "Aîné ou supérieur en grade.", c: "Hiérarchie.", g: ["DS"], vul: "L'ancien. Le chef. Celui qui a de la bouteille.", cp: "Avocat senior.", v: "Junior.", e: "Consultant senior.", j: "Travail." },
+            { l: "Sic", t: "Ainsi", d: "Indique qu'on cite textuellement, même avec une erreur.", c: "Citation.", g: ["JE"], vul: "C'est écrit comme ça (même si c'est une faute). J'ai recopié bêtement.", cp: "Montre que l'erreur n'est pas la vôtre.", v: "Ironique.", e: "Il a dit 'je sont' (sic).", j: "Rédaction." },
+            { l: "Sine die", t: "Sans jour", d: "Renvoyé indéfiniment, sans date fixée.", c: "Procédure et réunions.", g: ["JE"], vul: "Aux calendes grecques. On verra plus tard. Pas de date prévue.", cp: "Ajourner sine die, c'est souvent enterrer le projet.", v: "Risque d'oubli.", e: "L'audience est renvoyée sine die.", j: "Procédure." },
+            { l: "Sine qua non", t: "Sans laquelle non", d: "Condition indispensable.", c: "Causalité.", g: ["JE"], vul: "Obligatoire. Pas de bras, pas de chocolat.", cp: "Conditio sine qua non.", v: "Nécessaire.", e: "Condition sine qua non.", j: "Logique." },
+            { l: "Solvens", t: "Celui qui paie", d: "Le débiteur qui effectue le paiement.", c: "Droit des obligations.", g: ["DA"], vul: "Le payeur. Celui qui sort le chéquier.", cp: "Le solvens doit être libéré de sa dette.", v: "Accipiens.", e: "Le solvens a payé la dette.", j: "Paiement." },
+            { l: "Specialia generalibus derogant", t: "Le spécial déroge au général", d: "La règle spéciale l'emporte sur la règle générale.", c: "Conflit de lois.", g: ["JE"], vul: "L'exception gagne contre la règle. Le panneau spécifique bat le code de la route général.", cp: "Lex specialis.", v: "Hiérarchie.", e: "Le droit du travail déroge au droit civil.", j: "Interprétation." },
+            { l: "Stare decisis", t: "S'en tenir aux décisions", d: "Règle du précédent obligatoire (Common Law).", c: "Jurisprudence.", g: ["JE"], vul: "On fait comme avant. Si c'était jugé comme ça hier, on juge pareil aujourd'hui.", cp: "Stabilité du droit.", v: "Pas en France (pas d'arrêts de règlement).", e: "Le juge est lié par le précédent.", j: "Common Law." },
+            { l: "Status", t: "État", d: "Position sociale ou juridique.", c: "Droit des personnes.", g: ["DS"], vul: "Le statut. La position. Qui tu es dans la société.", cp: "Statut cadre.", v: "Role.", e: "Status social.", j: "Social." },
+            { l: "Status quo", t: "État actuel", d: "Maintien de la situation existante.", c: "Stratégie.", g: ["JE"], vul: "On ne bouge pas. Pause. On fige tout.", cp: "Status quo ante (état d'avant).", v: "Immobilisme.", e: "Maintenir le status quo.", j: "Négo." },
+            { l: "Stet", t: "Qu'il reste", d: "Indication pour annuler une correction et garder le texte original.", c: "Édition et correction.", g: ["JE"], vul: "Laisse comme c'était. J'ai barré mais finalement c'est bon.", cp: "Utilisé en correction d'épreuves.", v: "Annule la rature.", e: "Mettre un 'stet' dans la marge.", j: "Écrit." },
+            { l: "Sub judice", t: "Sous le juge", d: "Affaire en cours de jugement, non encore tranchée.", c: "Procédure et presse.", g: ["JE"], vul: "C'est entre les mains de la justice. Pas de commentaires, le match n'est pas fini.", cp: "On ne commente pas une affaire sub judice pour ne pas faire pression.", v: "Secret de l'instruction.", e: "L'affaire est sub judice.", j: "Déontologie." },
+            { l: "Sub poena", t: "Sous peine", d: "Assignation à comparaître sous peine d'amende (Subpoena).", c: "Procédure (Common Law).", g: ["JE"], vul: "Convocation impérative. 'Viens ou tu vas le payer cher'.", cp: "Ordre du tribunal.", v: "Témoin.", e: "Recevoir un subpoena.", j: "US." },
+            { l: "Sub rosa", t: "Sous la rose", d: "En secret, confidentiellement.", c: "Information.", g: ["DA"], vul: "Motus et bouche cousue. C'est du off. Entre nous.", cp: "Symbole du secret.", v: "Discrétion.", e: "Négociation sub rosa.", j: "Secret." },
+            { l: "Sui generis", t: "De son propre genre", d: "Unique, qui constitue une classe à part.", c: "Qualification.", g: ["JE"], vul: "OVNI. Inclassable. C'est un truc unique.", cp: "Ni chair ni poisson.", v: "Requalification.", e: "Contrat sui generis.", j: "Droit." },
+            { l: "Sui juris", t: "De son propre droit", d: "Capable juridiquement, indépendant.", c: "Capacité.", g: ["JE"], vul: "Majeur et vacciné. Je ne dépends de personne.", cp: "Pleine capacité.", v: "Alieni juris.", e: "Être sui juris.", j: "Civil." },
+            { l: "Summa", t: "Somme", d: "Totalité ou résumé complet d'un savoir.", c: "Doctrine.", g: ["JE"], vul: "La bible du sujet. Le grand livre qui dit tout.", cp: "Summa Theologica.", v: "Synthèse.", e: "Une somme juridique.", j: "Histoire." },
+            { l: "Supra", t: "Au-dessus", d: "Voir plus haut dans le texte.", c: "Rédaction.", g: ["JE"], vul: "Voir plus haut. C'est écrit avant.", cp: "Rappel.", v: "Infra.", e: "Voir supra page 10.", j: "Rédaction." },
+            { l: "Syllabus", t: "Liste / Sommaire", d: "Résumé des points de droit ou programme.", c: "Enseignement et arrêts US.", g: ["JE"], vul: "Le programme. Le menu. Ce qu'on va étudier.", cp: "Le syllabus d'un cours de droit.", v: "Résumé.", e: "Lire le syllabus.", j: "Université." },
+            { l: "Tabula rasa", t: "Table rase", d: "Effacement complet, recommencer à zéro.", c: "Stratégie.", g: ["JE"], vul: "On efface tout et on recommence. Page blanche.", cp: "Faire table rase du passé.", v: "Radical.", e: "Repartir tabula rasa.", j: "Philosophie." },
+            { l: "Tempus", t: "Temps", d: "Le temps, le délai.", c: "Procédure.", g: ["JE"], vul: "Le chrono.", cp: "Tempus fugit.", v: "Délai.", e: "Tempus regit actum.", j: "Droit." },
+            { l: "Terra", t: "Terre", d: "Le sol, le territoire.", c: "Immobilier.", g: ["DA"], vul: "La terre.", cp: "Terra nullius.", v: "Sol.", e: "Droit du sol.", j: "Biens." },
+            { l: "Terra incognita", t: "Terre inconnue", d: "Domaine inexploré ou non réglementé.", c: "Innovation juridique.", g: ["DA"], vul: "La zone blanche. On ne sait pas ce qu'il y a là-bas. Pas de règles encore.", cp: "Le droit de l'IA est encore une terra incognita sur certains points.", v: "Vide juridique.", e: "Légiférer en terra incognita.", j: "Prospective." },
+            { l: "Terra nullius", t: "Terre de personne", d: "Territoire sans maître, susceptible d'occupation.", c: "Droit international.", g: ["JE"], vul: "Zone libre. Premier arrivé, premier chef.", cp: "Presque inexistant aujourd'hui.", v: "Souveraineté.", e: "L'Antarctique (partiellement).", j: "DIP." },
+            { l: "Testis unus, testis nullus", t: "Témoin unique, témoin nul", d: "Le témoignage d'une seule personne ne suffit pas comme preuve.", c: "Preuve.", g: ["JE", "DS"], vul: "Un seul avis, c'est pas un avis. Il faut recouper les infos.", cp: "Adage ancien, aujourd'hui le juge apprécie librement.", v: "Méfiance envers le témoin unique.", e: "Un licenciement sur un seul témoignage est fragile.", j: "Preuve." },
+            { l: "Ubi societas, ibi jus", t: "Là où il y a société, il y a droit", d: "Toute vie sociale engendre des règles juridiques.", c: "Théorie du droit.", g: ["JE"], vul: "Pas de groupe sans règles. Dès qu'on est deux, il faut une loi.", cp: "Le droit est inhérent à la société.", v: "Anarchie.", e: "Créer une asso, c'est créer du droit.", j: "Philo." },
+            { l: "Ultimatum", t: "Dernier", d: "Dernière proposition avant rupture ou action.", c: "Négociation.", g: ["JE"], vul: "Dernière chance. C'est ça ou rien. Après, je tape.", cp: "Ne posez un ultimatum que si vous êtes prêt à exécuter la menace.", v: "Impasse.", e: "Envoyer un ultimatum avant la grève.", j: "Conflit." },
+            { l: "Ultra", t: "Au-delà", d: "Plus loin, excès.", c: "Préfixe.", g: ["JE"], vul: "Trop. Plus loin.", cp: "Ultra petita.", v: "Excès.", e: "Ultra vires.", j: "Langue." },
+            { l: "Ultra petita", t: "Au-delà de la demande", d: "Le juge statue sur des choses non demandées.", c: "Procédure.", g: ["JE"], vul: "Le juge donne plus que ce qu'on lui demande. C'est interdit.", cp: "Motif de cassation.", v: "Cadre du litige.", e: "Arrêt ultra petita.", j: "Procédure." },
+            { l: "Ultra vires", t: "Au-delà des pouvoirs", d: "Acte accompli par une autorité ou une société en dehors de ses pouvoirs légaux.", c: "Droit des sociétés et administratif.", g: ["DA"], vul: "Hors piste. Tu as débordé de ton cadre. Tu n'avais pas le droit de faire ça.", cp: "Un acte ultra vires peut être nul.", v: "En droit des sociétés, la société est parfois engagée même ultra vires.", e: "Le maire a agi ultra vires en fermant ce commerce.", j: "Excès de pouvoir." },
+            { l: "Usus", t: "Usage", d: "Droit d'utiliser la chose.", c: "Biens.", g: ["DA", "JE"], vul: "Le droit de s'en servir. D'habiter, de conduire.", cp: "Démembrement.", v: "Fructus.", e: "L'usufruitier a l'usus.", j: "Propriété." },
+            { l: "Utilitas publica", t: "Utilité publique", d: "Intérêt général justifiant une action de l'État.", c: "Droit public.", g: ["JE"], vul: "Pour le bien de tous. Ça sert à tout le monde, donc ça passe avant ton intérêt perso.", cp: "Base de l'expropriation.", v: "Intérêt privé.", e: "Déclaration d'utilité publique (DUP).", j: "Admin." },
+            { l: "Utile per inutile non vitiatur", t: "L'utile n'est pas vicié par l'inutile", d: "Une clause nulle n'entraîne pas forcément la nullité de tout l'acte.", c: "Contrats.", g: ["DA", "DS"], vul: "On garde le bon, on jette le mauvais. On sauve les meubles.", cp: "Clause réputée non écrite.", v: "Si la clause est impulsive, tout tombe.", e: "La clause nulle est effacée, le contrat reste.", j: "Nullité partielle." },
+            { l: "Vacatio legis", t: "Vacance de la loi", d: "Période entre la publication d'une loi et son entrée en vigueur effective.", c: "Législation.", g: ["JE", "DS"], vul: "Le temps de latence. La loi est officielle mais elle dort encore. Préparez-vous.", cp: "Sert à laisser le temps aux citoyens de s'adapter.", v: "Parfois l'entrée en vigueur est immédiate.", e: "Une vacatio legis de 6 mois pour la réforme des retraites.", j: "Application de la loi." },
+            { l: "Vade mecum", t: "Viens avec moi", d: "Guide ou manuel que l'on garde sur soi pour consulter.", c: "Documentation.", g: ["JE"], vul: "Le guide de survie. Le pense-bête qu'on a toujours dans la poche.", cp: "Un vade-mecum de procédure.", v: "Manuel.", e: "Le vade-mecum du juriste.", j: "Pratique." },
+            { l: "Vale", t: "Porte-toi bien (Adieu)", d: "Formule de salutation finale.", c: "Lettre.", g: ["JE"], vul: "Salut. Adieu.", cp: "Fin de lettre.", v: "Ave.", e: "Vale.", j: "Latin." },
+            { l: "Veni, vidi, vici", t: "Je suis venu, j'ai vu, j'ai vaincu", d: "Victoire rapide et totale.", c: "Culture.", g: ["JE"], vul: "Efficacité max. Emballé c'est pesé.", cp: "Plaidoirie.", v: "Arrogance.", e: "Succès éclair.", j: "Histoire." },
+            { l: "Verba volant, scripta manent", t: "Les paroles s'envolent, les écrits restent", d: "Nécessité de la preuve écrite.", c: "Preuve.", g: ["DS"], vul: "Écris-le ! Si tu le dis juste, ça disparaît. Si tu l'écris, c'est gravé.", cp: "Faites toujours un écrit pour confirmer.", v: "Preuve.", e: "Confirmer un ordre par mail.", j: "Adage." },
+            { l: "Verbatim", t: "Mot à mot", d: "Reproduction exacte des paroles.", c: "Preuve et compte-rendu.", g: ["JE"], vul: "Mot pour mot. Texto. La transcription exacte.", cp: "Un verbatim d'entretien disciplinaire.", v: "Interprétation.", e: "Le verbatim de la réunion.", j: "Preuve." },
+            { l: "Versus", t: "Contre", d: "Opposé à (vs).", c: "Contentieux.", g: ["JE"], vul: "Contre. Le match. Kramer contre Kramer.", cp: "X vs Y.", v: "Comparaison.", e: "L'affaire Roe v. Wade.", j: "Procédure." },
+            { l: "Veto", t: "J'interdis", d: "Pouvoir de bloquer une décision unilatéralement.", c: "Droit constitutionnel et sociétés.", g: ["DA"], vul: "Je bloque tout. C'est non. Je mets mon véto.", cp: "Droit de veto des actionnaires minoritaires sur certaines décisions.", v: "Abus de minorité.", e: "Mettre son veto à la fusion.", j: "Vote." },
+            { l: "Via", t: "Par la voie de", d: "En passant par.", c: "Itinéraire.", g: ["JE"], vul: "En passant par.", cp: "Moyen.", v: "Chemin.", e: "Envoyer via huissier.", j: "Langage." },
+            { l: "Vice versa", t: "La position étant inversée", d: "Réciproquement, inversement.", c: "Logique.", g: ["JE"], vul: "Et l'inverse est vrai. C'est pareil dans l'autre sens.", cp: "Clause de réciprocité.", v: "Inverse.", e: "Le vendeur livre, vice versa l'acheteur paie.", j: "Logique." },
+            { l: "Vide", t: "Voir", d: "Renvoi à une référence (voir aussi).", c: "Rédaction.", g: ["JE"], vul: "Regarde ça.", cp: "Vide supra.", v: "Lien.", e: "Vide page 12.", j: "Rédaction." },
+            { l: "Videlicet", t: "Il est permis de voir (C'est-à-dire)", d: "À savoir, c'est-à-dire (viz.).", c: "Énumération.", g: ["JE"], vul: "C'est-à-dire. Voici la liste.", cp: "Viz.", v: "Précision.", e: "Les pays, viz. France et Italie.", j: "Rédaction." },
+            { l: "Vigilantibus non dormientibus jura subveniunt", t: "Le droit aide ceux qui veillent, pas ceux qui dorment", d: "La prescription sanctionne la négligence.", c: "Prescription.", g: ["JE"], vul: "Si tu dors, tu perds. Le droit ne protège pas les paresseux qui ne réclament pas.", cp: "Agissez avant les délais !", v: "Prescription.", e: "Action prescrite.", j: "Adage." },
+            { l: "Visa", t: "Chose vue", d: "Signature ou tampon attestant qu'un acte a été examiné.", c: "Administration.", g: ["JE"], vul: "Le tampon 'Vu'. C'est validé, j'ai regardé.", cp: "Le visa de conformité.", v: "Validation.", e: "Mettre son visa.", j: "Acte." },
+            { l: "Vis major", t: "Force majeure", d: "Force supérieure irrésistible.", c: "Responsabilité.", g: ["JE"], vul: "Plus fort que moi. C'est la tempête parfaite.", cp: "Exonération.", v: "Cas fortuit.", e: "Inondation.", j: "Force majeure." },
+            { l: "Vis-à-vis", t: "Face à face", d: "En face de, concernant.", c: "Relation.", g: ["JE"], vul: "En face. Concernant.", cp: "Responsabilité vis-à-vis des tiers.", v: "Regard.", e: "Dette vis-à-vis de l'État.", j: "Langage." },
+            { l: "Viva voce", t: "De vive voix", d: "Par voie orale.", c: "Preuve et examen.", g: ["JE"], vul: "À l'oral. En parlant.", cp: "Vote à main levée.", v: "Écrit.", e: "Examen viva voce.", j: "Oral." },
+            { l: "Volenti non fit injuria", t: "Celui qui consent ne subit pas de tort", d: "L'acceptation des risques exonère l'auteur du dommage.", c: "Responsabilité (sport).", g: ["DS"], vul: "Tu l'as cherché. Tu savais que c'était dangereux et tu y es allé quand même.", cp: "Théorie de l'acceptation des risques (boxe, rugby).", v: "Ne couvre pas la faute délibérée ou la triche.", e: "Le boxeur blessé ne peut pas porter plainte.", j: "Responsabilité sportive." },
+            { l: "Vox populi", t: "La voix du peuple", d: "Opinion publique, rumeur.", c: "Société.", g: ["JE"], vul: "Radio moquette. La rumeur. Ce que tout le monde dit.", cp: "Pas une preuve.", v: "Rumeur.", e: "Vox populi vox dei (faux en droit).", j: "Preuve." }
+        ];
+
+        // --- MOTEUR JS OPTIMISÉ (Tri + Audio + Pause + Filtrage) ---
+        let currentUtterance = null;
+        let isPaused = false;
+
+        function renderDictionary(filter = 'all', searchQuery = '') {
+            const grid = document.getElementById('dictionary-grid');
+            grid.innerHTML = '';
+            
+            // Tri alphabétique
+            const sortedData = lexiqueDB.sort((a, b) => a.l.localeCompare(b.l));
+
+            const filteredData = sortedData.filter(item => {
+                const tags = item.g || []; 
+                const matchTag = filter === 'all' || tags.includes(filter);
+                
+                const query = searchQuery.toLowerCase();
+                const matchSearch = (item.l || "").toLowerCase().includes(query) || 
+                                    (item.t || "").toLowerCase().includes(query) || 
+                                    (item.d || "").toLowerCase().includes(query);
+                return matchTag && matchSearch;
+            });
+
+            if (filteredData.length === 0) {
+                grid.innerHTML = '<div style="grid-column:1/-1; text-align:center; padding:40px; color:#888;">Aucun terme trouvé.</div>';
+                return;
+            }
+
+            filteredData.forEach((item, index) => {
+                const num = (index + 1).toString().padStart(3, '0');
+                
+                let badgesHtml = '';
+                if(item.g) {
+                    item.g.forEach(tag => {
+                        let bgClass = 'bg-je';
+                        if (tag === 'DS') bgClass = 'bg-ds';
+                        if (tag === 'DA') bgClass = 'bg-da';
+                        badgesHtml += `<div class="badge-circle ${bgClass}" title="${tag}">${tag}</div>`;
+                    });
+                }
+
+                const contentBlocks = `
+                    <div class="expert-block b-vulg">
+                        <span class="block-title">💜 Pour faire simple / En Bref</span>
+                        <span class="content-text">${item.vul || "Explication simplifiée à venir."}</span>
+                    </div>
+                    <div class="expert-block b-context">
+                        <span class="block-title">🟦 Contexte Possible</span>
+                        <span class="content-text">${item.c || "Contexte juridique général."}</span>
+                    </div>
+                    <div class="expert-block b-advice">
+                        <span class="block-title">🟨 Conseil Pro</span>
+                        <span class="content-text">${item.cp || "Analyse au cas par cas nécessaire."}</span>
+                    </div>
+                    <div class="expert-block b-danger">
+                        <span class="block-title">🟥 Zone de Vigilance</span>
+                        <span class="content-text">${item.v || "Soyez vigilant sur l'application stricte."}</span>
+                    </div>
+                    <div class="expert-block b-example">
+                        <span class="block-title">🟩 Exemple / Contexte</span>
+                        <span class="content-text">${item.e || "Voir la définition pour l'exemple."}</span>
+                    </div>
+                    <div class="expert-block b-case">
+                        <span class="block-title">🟧 Jurisprudence</span>
+                        <span class="content-text">${item.j || "Recherche jurisprudentielle nécessaire."}</span>
+                    </div>
+                `;
+
+                const card = `
+                    <div class="expert-card">
+                        <div class="card-top">
+                            <span class="card-number">${num}</span>
+                            <div class="badges-group">${badgesHtml}</div>
+                            <div class="latin-title-row">
+                                <div class="latin-term">${item.l}</div>
+                                <button class="pronounce-btn" onclick="speakText('${item.l.replace(/'/g, "\\'")}')" title="Prononciation Latine">
+                                    <i class="fas fa-volume-up"></i>
+                                </button>
+                            </div>
+                            <div class="translation">${item.t}</div>
+                        </div>
+
+                        <div class="expert-content" id="content-${index}">
+                             <div class="definition-container">
+                                <span class="block-title" style="color:var(--brand-blue); margin-bottom:10px;">📖 Définition Officielle</span>
+                                <div class="definition-text">${item.d}</div>
+                            </div>
+                            ${contentBlocks}
+                        </div>
+
+                        <div class="card-bottom-actions">
+                            <button class="btn-read-all" onclick="speakFullCard(this)" title="Lecture complète de la fiche">
+                                <i class="fas fa-bullhorn"></i> Lire la fiche complète
+                            </button>
+                             <button class="btn-pause" onclick="togglePause()" title="Pause/Reprise lecture">
+                                <i class="fas fa-pause"></i>
+                            </button>
+                        </div>
+                        <button class="expert-toggle" onclick="toggleExpert(this, 'content-${index}')">
+                            <span>Déployer l'Expertise (Verso)</span>
+                            <i class="fas fa-chevron-down chevron"></i>
+                        </button>
+                    </div>
+                `;
+                grid.innerHTML += card;
+            });
+        }
+
+        function toggleExpert(btn, contentId) {
+            btn.classList.toggle('active');
+            const content = document.getElementById(contentId);
+            content.classList.toggle('open');
+            const span = btn.querySelector('span');
+            span.textContent = content.classList.contains('open') ? "Masquer l'Expertise" : "Déployer l'Expertise (Verso)";
+        }
+
+        // --- AUDIO ENGINE AMÉLIORÉ (SANS EMOJI) ---
+
+        function cleanTextForSpeech(text) {
+            // Enlève les emojis et les symboles graphiques pour la lecture
+            return text.replace(/🟦|🟨|🟥|🟩|🟧|💜|📖/g, "").trim();
+        }
+
+        function speakText(text) {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                isPaused = false;
+                resetPauseButtons();
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'it-IT'; 
+                utterance.rate = 0.8;
+                window.speechSynthesis.speak(utterance);
+            }
+        }
+
+        function speakFullCard(btn) {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                isPaused = false;
+                resetPauseButtons();
+
+                const card = btn.closest('.expert-card');
+                const latin = card.querySelector('.latin-term').innerText;
+                const trad = card.querySelector('.translation').innerText;
+                const def = card.querySelector('.definition-text').innerText;
+                
+                // Récupération propre du texte sans les titres de blocs qui contiennent des emojis
+                // On lit : Titre du bloc (sans emoji) -> Contenu
+                
+                const getBlockText = (selector, label) => {
+                    const el = card.querySelector(selector);
+                    if (!el) return "";
+                    // On prend juste le texte du contenu, pas le titre qui a l'emoji
+                    const content = el.querySelector('.content-text')?.innerText || "";
+                    return `${label} : ${content}. `;
+                };
+
+                const vulg = getBlockText('.b-vulg', "Pour faire simple");
+                const context = getBlockText('.b-context', "Contexte");
+                const advice = getBlockText('.b-advice', "Conseil Pro");
+                const danger = getBlockText('.b-danger', "Zone de vigilance");
+                const ex = getBlockText('.b-example', "Exemple");
+                const jur = getBlockText('.b-case', "Jurisprudence");
+
+                const fullText = `
+                    Expression : ${latin}. 
+                    Traduction : ${trad}. 
+                    ${vulg}
+                    Définition officielle : ${def}. 
+                    ${context}
+                    ${advice}
+                    ${danger}
+                    ${ex}
+                    ${jur}
+                `;
+
+                const utterance = new SpeechSynthesisUtterance(fullText);
+                utterance.lang = 'fr-FR';
+                utterance.rate = 1;
+                currentUtterance = utterance; // Stockage pour la pause
+                
+                utterance.onend = function() {
+                    resetPauseButtons();
+                    currentUtterance = null;
+                };
+
+                window.speechSynthesis.speak(utterance);
+                
+                // Visuel bouton pause
+                document.querySelectorAll('.btn-pause').forEach(b => {
+                    b.innerHTML = '<i class="fas fa-pause"></i>';
+                    b.classList.remove('playing');
+                });
+                const pauseBtn = btn.nextElementSibling;
+                if(pauseBtn) pauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+            }
+        }
+
+        function togglePause() {
+            if (!window.speechSynthesis) return;
+
+            if (window.speechSynthesis.speaking && !window.speechSynthesis.paused) {
+                window.speechSynthesis.pause();
+                isPaused = true;
+                document.querySelectorAll('.btn-pause').forEach(btn => {
+                    btn.innerHTML = '<i class="fas fa-play"></i>';
+                    btn.classList.add('playing');
+                });
+            } else if (window.speechSynthesis.paused) {
+                window.speechSynthesis.resume();
+                isPaused = false;
+                document.querySelectorAll('.btn-pause').forEach(btn => {
+                    btn.innerHTML = '<i class="fas fa-pause"></i>';
+                    btn.classList.remove('playing');
+                });
+            }
+        }
+
+        function resetPauseButtons() {
+            document.querySelectorAll('.btn-pause').forEach(btn => {
+                btn.innerHTML = '<i class="fas fa-pause"></i>';
+                btn.classList.remove('playing');
+            });
+        }
+
+        // CORRECTION DU FILTRE : Utilisation de filterTerms direct
+        window.filterTerms = function(tag) {
+            // Gestion des boutons
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+                // Si le onclick correspond au tag
+                if(btn.getAttribute('onclick').includes(`'${tag}'`)) {
+                    btn.classList.add('active');
+                }
+            });
+            
+            // Lancement du rendu
+            const searchVal = document.getElementById('searchInput').value;
+            renderDictionary(tag, searchVal);
+        };
+
+        document.getElementById('searchInput').addEventListener('input', (e) => {
+            // Retrouver le tag actif
+            let activeTag = 'all';
+            const activeBtn = document.querySelector('.filter-btn.active');
+            if (activeBtn) {
+                const text = activeBtn.innerText;
+                if (text.includes('Social')) activeTag = 'DS';
+                else if (text.includes('Affaires')) activeTag = 'DA';
+                else if (text.includes('Juriste')) activeTag = 'JE';
+            }
+            renderDictionary(activeTag, e.target.value);
+        });
+
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) backToTop.classList.add('show'); // Correction classe
+            else backToTop.classList.remove('show');
+        });
+        backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+        renderDictionary();
+    </script>
+</body>
+</html>

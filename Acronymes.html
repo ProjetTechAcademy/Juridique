@@ -1,0 +1,1242 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lexique Juridique Général - The Jurist Elite Club</title>
+    <!-- Font Awesome pour les icônes -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Police Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- CHARTE GRAPHIQUE --- */
+        :root {
+            --color-blue: #0F2C48;      /* Titres & séparations */
+            --color-ivory: #F6F2E8;     /* Surfaces / cartes / encadrés */
+            --color-yellow: #D9A526;    /* Boutons CTA */
+            --color-bronze: #B4792A;    /* Alertes / éditions spéciales */
+            --color-white: #FFFFFF;
+            --color-text: #333333;
+            
+            /* Codes Couleurs Spécifiques Lexique */
+            --tag-je-color: #007bff;    /* Bleu Juriste Ent. */
+            --tag-ds-color: #C71585;    /* Fuchsia Foncé Droit Social */
+            --tag-da-color: #228B22;    /* Vert Droit des Affaires */
+        }
+
+        /* --- RESET & GLOBAL --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--color-white);
+            color: var(--color-text);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+
+        /* --- HEADER STYLES --- */
+        .top-bar {
+            background-color: var(--color-blue);
+            color: var(--color-ivory);
+            padding: 10px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .top-bar-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .top-bar-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-top-bar {
+            height: 50px;
+            width: auto;
+            border-radius: 50%;
+            border: 2px solid var(--color-yellow);
+            background-color: white;
+        }
+
+        .identity-stack {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .club-title-main {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            color: var(--color-yellow);
+            font-weight: bold;
+        }
+
+        .club-subtitle {
+            font-size: 0.8rem;
+            color: var(--color-ivory);
+            opacity: 0.9;
+        }
+
+        .top-bar-center {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .header-icon-btn {
+            font-size: 1.2rem;
+            transition: transform 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .header-icon-btn:hover {
+            transform: scale(1.1);
+            color: var(--color-yellow);
+        }
+
+        .nav-mmpa-img, .nav-profile-img {
+            height: 35px;
+            width: 35px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 1px solid var(--color-yellow);
+        }
+
+        .btn-portfolio-cosmic {
+            background-color: var(--color-yellow);
+            color: var(--color-blue);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            transition: background 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .btn-portfolio-cosmic:hover {
+            background-color: var(--color-bronze);
+            color: white;
+        }
+
+        /* --- CONTENU PRINCIPAL --- */
+        .main-content {
+            flex: 1;
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+            width: 100%;
+        }
+
+        .page-title {
+            text-align: center;
+            color: var(--color-blue);
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .page-intro {
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--color-bronze);
+            font-style: italic;
+        }
+
+        /* --- BARRE DE RECHERCHE & FILTRES --- */
+        .search-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .search-input {
+            width: 100%;
+            max-width: 600px;
+            padding: 15px;
+            border: 2px solid var(--color-blue);
+            border-radius: 30px;
+            font-size: 1rem;
+            background-color: var(--color-ivory);
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .search-input:focus {
+            border-color: var(--color-yellow);
+            box-shadow: 0 0 10px rgba(217, 165, 38, 0.2);
+        }
+
+        /* Nouveaux Filtres Catégories */
+        .category-filters {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .cat-btn {
+            padding: 8px 15px;
+            border-radius: 20px;
+            border: 1px solid #ddd;
+            background: white;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .cat-btn:hover { transform: translateY(-2px); }
+        .cat-btn.active { color: white; border-color: transparent; }
+
+        .cat-btn[data-cat="all"].active { background-color: var(--color-blue); }
+        .cat-btn[data-cat="JE"].active { background-color: var(--tag-je-color); }
+        .cat-btn[data-cat="DS"].active { background-color: var(--tag-ds-color); }
+        .cat-btn[data-cat="DA"].active { background-color: var(--tag-da-color); }
+
+
+        .alphabet-filter {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 5px;
+            margin-bottom: 40px;
+        }
+
+        .alpha-btn {
+            background-color: var(--color-ivory);
+            color: var(--color-blue);
+            border: 1px solid var(--color-blue);
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .alpha-btn:hover, .alpha-btn.active {
+            background-color: var(--color-blue);
+            color: var(--color-yellow);
+        }
+
+        /* --- GRILLE DES DÉFINITIONS --- */
+        .definitions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .def-card {
+            background-color: var(--color-ivory);
+            border-left: 5px solid #ccc; /* Sera coloré par JS/CSS selon catégorie */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            transition: transform 0.2s, box-shadow 0.2s;
+            position: relative;
+        }
+
+        /* Couleurs des bordures selon catégorie */
+        .def-card[data-cat="JE"] { border-left-color: var(--tag-je-color); }
+        .def-card[data-cat="DS"] { border-left-color: var(--tag-ds-color); }
+        .def-card[data-cat="DA"] { border-left-color: var(--tag-da-color); }
+
+        .def-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 10px;
+            border-bottom: 1px solid rgba(15, 44, 72, 0.1);
+            padding-bottom: 5px;
+        }
+
+        .def-term {
+            color: var(--color-blue);
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            margin: 0;
+            line-height: 1.3;
+        }
+
+        .entry-number {
+            font-size: 0.8rem;
+            font-weight: bold;
+            color: #777;
+            margin-right: 5px;
+        }
+
+        /* Styles des Tags */
+        .tag {
+            font-size: 0.7rem;
+            padding: 2px 8px;
+            border-radius: 10px;
+            color: white;
+            font-weight: bold;
+            margin-left: 5px;
+            white-space: nowrap;
+        }
+        .tag-je { background-color: var(--tag-je-color); }
+        .tag-ds { background-color: var(--tag-ds-color); }
+        .tag-da { background-color: var(--tag-da-color); }
+
+        .def-desc {
+            font-size: 0.95rem;
+            color: #444;
+        }
+
+        .no-result {
+            grid-column: 1 / -1;
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--color-bronze);
+            padding: 40px;
+            display: none;
+        }
+
+        /* --- FOOTER STYLES --- */
+        .main-footer {
+            background-color: var(--color-blue);
+            color: var(--color-ivory);
+            padding: 40px 0 20px;
+            margin-top: auto;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .footer-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 30px;
+            border-bottom: 1px solid rgba(246, 242, 232, 0.2);
+            padding-bottom: 20px;
+        }
+
+        .footer-left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .footer-logo-img {
+            height: 80px;
+            width: 80px;
+            border-radius: 10px;
+            object-fit: cover;
+            border: 2px solid var(--color-yellow);
+        }
+
+        .footer-name {
+            font-family: 'Playfair Display', serif;
+            color: var(--color-yellow);
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+
+        .footer-details {
+            display: flex;
+            flex-direction: column;
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .footer-right {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .icon-btn {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+            color: var(--color-ivory);
+        }
+
+        .icon-btn:hover {
+            background-color: var(--color-yellow);
+            color: var(--color-blue);
+            transform: translateY(-3px);
+        }
+
+        .dock-separator {
+            width: 1px;
+            height: 30px;
+            background-color: rgba(255, 255, 255, 0.3);
+            margin: 0 10px;
+        }
+
+        .footer-copyright {
+            text-align: center;
+            font-size: 0.85rem;
+            color: rgba(246, 242, 232, 0.7);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .top-bar-container, .footer-row {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .top-bar-left, .top-bar-center {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .search-input { width: 100%; }
+            .footer-left { flex-direction: column; }
+            .definitions-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ✅ HEADER -->
+    <div class="top-bar" id="mainHeader">
+        <div class="top-bar-container">
+            <div class="top-bar-left">
+                <img src="../Asset/Logo_juriste.png" onerror="this.src='https://via.placeholder.com/50?text=Logo';" alt="Logo Club" class="logo-top-bar">
+                <div class="identity-stack">
+                    <span class="club-title-main">💫 The Jurist Elite Club By Studi ✨</span>
+                    <span class="club-subtitle">La Villa des Juristes Brisés 💔 sur l’Île de L’INSTRUCTION ! 🏝</span>
+                </div>
+            </div>
+            <div class="top-bar-center">
+                <a href="https://projettechacademy.github.io/Juridique/index.html" class="header-icon-btn" title="Start/Accueil">
+                    <img src="../Asset/Logo_MMPA.jpeg" onerror="this.src='https://via.placeholder.com/35?text=MMPA';" alt="MMPA" class="nav-mmpa-img">
+                </a>
+                <a href="https://projettechacademy.github.io/Juridique/00_Autres/Mon_Espace_Juriste_Tableau_de_bord_personnel.html" class="header-icon-btn" title="Mon Espace">📊</a>
+                <a href="https://projettechacademy.github.io/Juridique/00_Autres/Lexique_Latin_Juridique.html" class="header-icon-btn" title="Lexique Latin">📜</a>
+                <a href="https://projettechacademy.github.io/Juridique/00_Autres/Atelier_de_Competence.html" class="header-icon-btn" title="Atelier">🛠️</a>
+                <a href="https://projettechacademy.github.io/Juridique/00_Autres/formation_live_juriste.html" class="header-icon-btn" title="Planning Live">📅</a>
+                <a href="https://projettechacademy.github.io/Juridique/00_Autres/Fiche_RNCP_Juriste.html" class="header-icon-btn" title="Fiche RNCP">🎓</a>
+                <a href="https://projettechacademy.github.io/Juridique/00_Autres/Univers_Actes_Juridiques.html" class="header-icon-btn" title="Rédaction Juridique">✍️</a>
+                <a href="https://projettechacademy.github.io/Juridique/00_Autres/A_propos_de_moi.html" class="header-icon-btn" title="À propos de moi">
+                    <img src="../Asset/Photo_Mathilde_Martine_PAISLEY.png"
+                         onerror="this.src='https://via.placeholder.com/35?text=MMP';"
+                         alt="Profil" class="nav-profile-img">
+                </a>
+            </div>
+            <a href="https://projettechacademy.github.io/Juridique/00_Autres/Portfolio_Mathilde-Martine-PAISLEY.html" 
+               target="_blank" class="btn-portfolio-cosmic">
+                <span>📄</span> Mon portfolio
+            </a>
+        </div>
+    </div>
+
+    <!-- CONTENU PRINCIPAL -->
+    <main class="main-content">
+        <h1 class="page-title">Lexique Juridique Général</h1>
+        <p class="page-intro">"La précision des termes est la première vertu du Juriste. De l'Entreprise au Social, en passant par les Affaires." ⚖️</p>
+
+        <!-- Barre de recherche -->
+        <div class="search-container">
+            <input type="text" id="searchInput" class="search-input" placeholder="Rechercher une définition (ex: Kbis, DSN, NDA...) 🔍">
+        </div>
+
+        <!-- Filtres Catégories -->
+        <div class="category-filters">
+            <button class="cat-btn active" data-cat="all">Tout voir</button>
+            <button class="cat-btn" data-cat="JE" style="color:var(--tag-je-color)">Juriste d'Ent. (JE)</button>
+            <button class="cat-btn" data-cat="DS" style="color:var(--tag-ds-color)">Droit Social (DS)</button>
+            <button class="cat-btn" data-cat="DA" style="color:var(--tag-da-color)">Droit Affaires (DA)</button>
+        </div>
+
+        <!-- Filtre alphabétique -->
+        <div class="alphabet-filter" id="alphabetFilter">
+            <button class="alpha-btn active" data-filter="all">Tous</button>
+            <button class="alpha-btn" data-filter="A">A</button>
+            <button class="alpha-btn" data-filter="B">B</button>
+            <button class="alpha-btn" data-filter="C">C</button>
+            <button class="alpha-btn" data-filter="D">D</button>
+            <button class="alpha-btn" data-filter="E">E</button>
+            <button class="alpha-btn" data-filter="F">F</button>
+            <button class="alpha-btn" data-filter="G">G</button>
+            <button class="alpha-btn" data-filter="H">H</button>
+            <button class="alpha-btn" data-filter="I">I</button>
+            <button class="alpha-btn" data-filter="J">J</button>
+            <button class="alpha-btn" data-filter="K">K</button>
+            <button class="alpha-btn" data-filter="L">L</button>
+            <button class="alpha-btn" data-filter="M">M</button>
+            <button class="alpha-btn" data-filter="N">N</button>
+            <button class="alpha-btn" data-filter="O">O</button>
+            <button class="alpha-btn" data-filter="P">P</button>
+            <button class="alpha-btn" data-filter="Q">Q</button>
+            <button class="alpha-btn" data-filter="R">R</button>
+            <button class="alpha-btn" data-filter="S">S</button>
+            <button class="alpha-btn" data-filter="T">T</button>
+            <button class="alpha-btn" data-filter="U">U</button>
+            <button class="alpha-btn" data-filter="V">V</button>
+        </div>
+
+        <!-- Liste des définitions -->
+        <!-- Note: Le script en bas ajoute automatiquement les Numéros (#001) et les Badges (DS, JE, DA) -->
+        <div class="definitions-grid" id="definitionsList">
+            
+            <!-- A -->
+            <div class="def-card" data-letter="A" data-cat="DS">
+                <h3 class="def-term">ACC (Assurance Chômage)</h3>
+                <p class="def-desc">Cotisation finançant les allocations chômage.</p>
+            </div>
+            <div class="def-card" data-letter="A" data-cat="DS">
+                <h3 class="def-term">ACPM (AT/MP)</h3>
+                <p class="def-desc">Régime couvrant les accidents du travail et maladies professionnelles.</p>
+            </div>
+            <div class="def-card" data-letter="A" data-cat="JE">
+                <h3 class="def-term">AFJE</h3>
+                <p class="def-desc">Association Française des Juristes d'Entreprise. Principale organisation représentative.</p>
+            </div>
+            <div class="def-card" data-letter="A" data-cat="DA">
+                <h3 class="def-term">AG (Assemblée Générale)</h3>
+                <p class="def-desc">Réunion des actionnaires ou associés pour prendre les décisions importantes (AGO/AGE).</p>
+            </div>
+             <div class="def-card" data-letter="A" data-cat="DS">
+                <h3 class="def-term">AGIRC-ARRCO</h3>
+                <p class="def-desc">Régime de retraite complémentaire obligatoire.</p>
+            </div>
+             <div class="def-card" data-letter="A" data-cat="DS">
+                <h3 class="def-term">AGS</h3>
+                <p class="def-desc">Association pour la gestion du régime de Garantie des Salaires (défaillance d'entreprise).</p>
+            </div>
+             <div class="def-card" data-letter="A" data-cat="DA">
+                <h3 class="def-term">AMF</h3>
+                <p class="def-desc">Autorité des Marchés Financiers. Régulateur de la place financière française.</p>
+            </div>
+             <div class="def-card" data-letter="A" data-cat="DS">
+                <h3 class="def-term">ANACT</h3>
+                <p class="def-desc">Agence Nationale pour l'Amélioration des Conditions de Travail.</p>
+            </div>
+             <div class="def-card" data-letter="A" data-cat="DS">
+                <h3 class="def-term">APEC</h3>
+                <p class="def-desc">Association Pour l'Emploi des Cadres.</p>
+            </div>
+            <div class="def-card" data-letter="A" data-cat="DS">
+                <h3 class="def-term">Abandon de poste</h3>
+                <p class="def-desc">Rupture non officielle du contrat, souvent considérée comme démission (présomption).</p>
+            </div>
+            <div class="def-card" data-letter="A" data-cat="DS">
+                <h3 class="def-term">Acompte sur salaire</h3>
+                <p class="def-desc">Paiement anticipé pour travail déjà effectué.</p>
+            </div>
+            <div class="def-card" data-letter="A" data-cat="DS">
+                <h3 class="def-term">Activité partielle</h3>
+                <p class="def-desc">Dispositif de réduction d'activité avec indemnisation (ex-chômage partiel).</p>
+            </div>
+            <div class="def-card" data-letter="A" data-cat="DS">
+                <h3 class="def-term">Affichage obligatoire</h3>
+                <p class="def-desc">Informations légales à afficher (Inspection, sécurité, égalité H/F).</p>
+            </div>
+             <div class="def-card" data-letter="A" data-cat="DS">
+                <h3 class="def-term">Ancienneté</h3>
+                <p class="def-desc">Durée de présence, impactant rémunération et indemnités.</p>
+            </div>
+            <div class="def-card" data-letter="A" data-cat="DA">
+                <h3 class="def-term">Apport en nature</h3>
+                <p class="def-desc">Biens (immeubles, marques...) apportés au capital d'une société, distincts du numéraire.</p>
+            </div>
+            <div class="def-card" data-letter="A" data-cat="DS">
+                <h3 class="def-term">Assiette de cotisation</h3>
+                <p class="def-desc">Base de calcul des cotisations sociales.</p>
+            </div>
+            <div class="def-card" data-letter="A" data-cat="DS">
+                <h3 class="def-term">Astreintes</h3>
+                <p class="def-desc">Période de disponibilité hors lieu de travail.</p>
+            </div>
+            <div class="def-card" data-letter="A" data-cat="DS">
+                <h3 class="def-term">Audit de paie</h3>
+                <p class="def-desc">Contrôle de conformité légale et conventionnelle.</p>
+            </div>
+            <div class="def-card" data-letter="A" data-cat="DS">
+                <h3 class="def-term">Avantages en nature</h3>
+                <p class="def-desc">Biens/services fournis (voiture, logement) soumis à cotisations.</p>
+            </div>
+            <div class="def-card" data-letter="A" data-cat="DS">
+                <h3 class="def-term">Avertissement</h3>
+                <p class="def-desc">Sanction disciplinaire mineure.</p>
+            </div>
+
+            <!-- B -->
+            <div class="def-card" data-letter="B" data-cat="DA">
+                <h3 class="def-term">Bail commercial</h3>
+                <p class="def-desc">Contrat de location de locaux pour l'exploitation d'un fonds de commerce (3-6-9).</p>
+            </div>
+            <div class="def-card" data-letter="B" data-cat="DS">
+                <h3 class="def-term">BDESE</h3>
+                <p class="def-desc">Base de Données Économiques Sociales et Environnementales (pour le CSE).</p>
+            </div>
+            <div class="def-card" data-letter="B" data-cat="DS">
+                <h3 class="def-term">BOETH</h3>
+                <p class="def-desc">Bénéficiaire de l'Obligation d'Emploi des Travailleurs Handicapés.</p>
+            </div>
+            <div class="def-card" data-letter="B" data-cat="DS">
+                <h3 class="def-term">BOSS</h3>
+                <p class="def-desc">Bulletin Officiel de la Sécurité Sociale.</p>
+            </div>
+            <div class="def-card" data-letter="B" data-cat="DS">
+                <h3 class="def-term">Bilan social</h3>
+                <p class="def-desc">Récapitulatif annuel des données sociales.</p>
+            </div>
+            <div class="def-card" data-letter="B" data-cat="DS">
+                <h3 class="def-term">Blocs DSN</h3>
+                <p class="def-desc">Structure de la DSN (Versement, Contrat, etc.).</p>
+            </div>
+
+            <!-- C -->
+            <div class="def-card" data-letter="C" data-cat="DA">
+                <h3 class="def-term">CA (Conseil d'Administration)</h3>
+                <p class="def-desc">Organe collégial déterminant les orientations de l'activité de la société (SA).</p>
+            </div>
+            <div class="def-card" data-letter="C" data-cat="DS">
+                <h3 class="def-term">CDD / CDI</h3>
+                <p class="def-desc">Contrat à Durée Déterminée / Indéterminée.</p>
+            </div>
+            <div class="def-card" data-letter="C" data-cat="DS">
+                <h3 class="def-term">CEC</h3>
+                <p class="def-desc">Compte d'Engagement Citoyen.</p>
+            </div>
+            <div class="def-card" data-letter="C" data-cat="DS">
+                <h3 class="def-term">CESU</h3>
+                <p class="def-desc">Chèque Emploi Service Universel.</p>
+            </div>
+             <div class="def-card" data-letter="C" data-cat="DS">
+                <h3 class="def-term">CET</h3>
+                <p class="def-desc">Compte Épargne Temps.</p>
+            </div>
+            <div class="def-card" data-letter="C" data-cat="DA">
+                <h3 class="def-term">CGV (Conditions Générales de Vente)</h3>
+                <p class="def-desc">Socle de la négociation commerciale, elles informent le client sur les conditions de vente.</p>
+            </div>
+            <div class="def-card" data-letter="C" data-cat="DS">
+                <h3 class="def-term">CICE</h3>
+                <p class="def-desc">Crédit d'Impôt pour la Compétitivité et l'Emploi (Historique).</p>
+            </div>
+            <div class="def-card" data-letter="C" data-cat="DS">
+                <h3 class="def-term">CPF</h3>
+                <p class="def-desc">Compte Personnel de Formation.</p>
+            </div>
+            <div class="def-card" data-letter="C" data-cat="DS">
+                <h3 class="def-term">CRM</h3>
+                <p class="def-desc">Compte Rendu Métier (Retours DSN).</p>
+            </div>
+            <div class="def-card" data-letter="C" data-cat="DS">
+                <h3 class="def-term">CSG / CRDS</h3>
+                <p class="def-desc">Contributions sociales (Protection sociale / Dette sociale).</p>
+            </div>
+            <div class="def-card" data-letter="C" data-cat="DS">
+                <h3 class="def-term">CSE</h3>
+                <p class="def-desc">Comité Social et Économique (Instance représentative du personnel).</p>
+            </div>
+            <div class="def-card" data-letter="C" data-cat="DS">
+                <h3 class="def-term">Carence</h3>
+                <p class="def-desc">Jours non indemnisés en début d'arrêt maladie.</p>
+            </div>
+            <div class="def-card" data-letter="C" data-cat="JE">
+                <h3 class="def-term">Clause de non-concurrence</h3>
+                <p class="def-desc">Interdit au salarié, après rupture, d'exercer une activité concurrente (doit être rémunérée).</p>
+            </div>
+            <div class="def-card" data-letter="C" data-cat="JE">
+                <h3 class="def-term">Compliance</h3>
+                <p class="def-desc">Conformité. Ensemble des processus assurant le respect des normes et de l'éthique.</p>
+            </div>
+            <div class="def-card" data-letter="C" data-cat="JE">
+                <h3 class="def-term">Contract Management</h3>
+                <p class="def-desc">Gestion du cycle de vie des contrats, de la négociation à l'exécution.</p>
+            </div>
+            <div class="def-card" data-letter="C" data-cat="DS">
+                <h3 class="def-term">Congés payés</h3>
+                <p class="def-desc">2,5 jours ouvrables/mois. Droit au repos rémunéré.</p>
+            </div>
+            <div class="def-card" data-letter="C" data-cat="DS">
+                <h3 class="def-term">Contingent heures sup.</h3>
+                <p class="def-desc">Volume d'heures supplémentaires autorisé par an sans contrepartie obligatoire (220h défaut).</p>
+            </div>
+            <div class="def-card" data-letter="C" data-cat="DS">
+                <h3 class="def-term">Convention collective</h3>
+                <p class="def-desc">Accord de branche adaptant le Code du travail (IDCC).</p>
+            </div>
+
+            <!-- D -->
+            <div class="def-card" data-letter="D" data-cat="DS">
+                <h3 class="def-term">DGFIP</h3>
+                <p class="def-desc">Direction Générale des Finances Publiques.</p>
+            </div>
+             <div class="def-card" data-letter="D" data-cat="DS">
+                <h3 class="def-term">DOETH</h3>
+                <p class="def-desc">Déclaration Obligatoire d'Emploi des Travailleurs Handicapés.</p>
+            </div>
+            <div class="def-card" data-letter="D" data-cat="DS">
+                <h3 class="def-term">DPAE</h3>
+                <p class="def-desc">Déclaration Préalable À l'Embauche.</p>
+            </div>
+            <div class="def-card" data-letter="D" data-cat="DS">
+                <h3 class="def-term">DSN</h3>
+                <p class="def-desc">Déclaration Sociale Nominative.</p>
+            </div>
+            <div class="def-card" data-letter="D" data-cat="DS">
+                <h3 class="def-term">DUERP</h3>
+                <p class="def-desc">Document Unique d'Évaluation des Risques Professionnels.</p>
+            </div>
+            <div class="def-card" data-letter="D" data-cat="DA">
+                <h3 class="def-term">Due Diligence</h3>
+                <p class="def-desc">Audits préalables (juridiques, financiers) avant une acquisition d'entreprise.</p>
+            </div>
+            <div class="def-card" data-letter="D" data-cat="DS">
+                <h3 class="def-term">Décalage de paie</h3>
+                <p class="def-desc">Versement du salaire le mois suivant l'activité.</p>
+            </div>
+            <div class="def-card" data-letter="D" data-cat="DS">
+                <h3 class="def-term">Déduction Forfaitaire Spécifique (DFS)</h3>
+                <p class="def-desc">Abattement pour frais professionnels (BTP, etc.).</p>
+            </div>
+            <div class="def-card" data-letter="D" data-cat="DS">
+                <h3 class="def-term">Démission</h3>
+                <p class="def-desc">Acte de rupture à l'initiative du salarié.</p>
+            </div>
+
+            <!-- E -->
+            <div class="def-card" data-letter="E" data-cat="DS">
+                <h3 class="def-term">EA / ESAT</h3>
+                <p class="def-desc">Entreprises Adaptées / Établissements et Services d'Aide par le Travail.</p>
+            </div>
+            <div class="def-card" data-letter="E" data-cat="DA">
+                <h3 class="def-term">EBE (Excédent Brut d'Exploitation)</h3>
+                <p class="def-desc">Indicateur financier de la rentabilité opérationnelle.</p>
+            </div>
+             <div class="def-card" data-letter="E" data-cat="DS">
+                <h3 class="def-term">ETP</h3>
+                <p class="def-desc">Équivalent Temps Plein.</p>
+            </div>
+
+            <!-- F -->
+            <div class="def-card" data-letter="F" data-cat="DS">
+                <h3 class="def-term">FNAL</h3>
+                <p class="def-desc">Fonds National d'Aide au Logement.</p>
+            </div>
+             <div class="def-card" data-letter="F" data-cat="DS">
+                <h3 class="def-term">Forfait jours</h3>
+                <p class="def-desc">Décompte du temps de travail en jours (Cadres autonomes).</p>
+            </div>
+            <div class="def-card" data-letter="F" data-cat="DS">
+                <h3 class="def-term">Frais professionnels</h3>
+                <p class="def-desc">Dépenses engagées pour le travail, remboursées.</p>
+            </div>
+            <div class="def-card" data-letter="F" data-cat="DA">
+                <h3 class="def-term">Fusion-Acquisition (M&A)</h3>
+                <p class="def-desc">Opérations de rapprochement entre entreprises (Mergers & Acquisitions).</p>
+            </div>
+
+            <!-- G -->
+            <div class="def-card" data-letter="G" data-cat="JE">
+                <h3 class="def-term">GPEC</h3>
+                <p class="def-desc">Gestion Prévisionnelle des Emplois et des Compétences.</p>
+            </div>
+            <div class="def-card" data-letter="G" data-cat="DS">
+                <h3 class="def-term">Gratification de stage</h3>
+                <p class="def-desc">Obligatoire pour stages > 2 mois.</p>
+            </div>
+            <div class="def-card" data-letter="G" data-cat="DA">
+                <h3 class="def-term">Greffe</h3>
+                <p class="def-desc">Secrétariat du Tribunal de Commerce, gère le RCS.</p>
+            </div>
+            <div class="def-card" data-letter="G" data-cat="DS">
+                <h3 class="def-term">Grève</h3>
+                <p class="def-desc">Cessation collective et concertée du travail.</p>
+            </div>
+
+            <!-- H -->
+            <div class="def-card" data-letter="H" data-cat="DS">
+                <h3 class="def-term">Heures Complémentaires (HC)</h3>
+                <p class="def-desc">Heures au-delà du contrat temps partiel.</p>
+            </div>
+            <div class="def-card" data-letter="H" data-cat="DS">
+                <h3 class="def-term">Heures Supplémentaires (HS)</h3>
+                <p class="def-desc">Heures au-delà de 35h.</p>
+            </div>
+
+            <!-- I -->
+            <div class="def-card" data-letter="I" data-cat="DS">
+                <h3 class="def-term">IDCC</h3>
+                <p class="def-desc">Identifiant de la Convention Collective.</p>
+            </div>
+            <div class="def-card" data-letter="I" data-cat="DS">
+                <h3 class="def-term">IJSS</h3>
+                <p class="def-desc">Indemnités Journalières de Sécurité Sociale.</p>
+            </div>
+            <div class="def-card" data-letter="I" data-cat="DA">
+                <h3 class="def-term">INPI</h3>
+                <p class="def-desc">Institut National de la Propriété Industrielle (Marques, Brevets).</p>
+            </div>
+            <div class="def-card" data-letter="I" data-cat="DS">
+                <h3 class="def-term">Impôt à la source (PAS)</h3>
+                <p class="def-desc">Prélèvement de l'IR sur le bulletin.</p>
+            </div>
+            <div class="def-card" data-letter="I" data-cat="DS">
+                <h3 class="def-term">Indemnité congés payés</h3>
+                <p class="def-desc">Règle du 10ème ou maintien.</p>
+            </div>
+
+            <!-- J -->
+            <div class="def-card" data-letter="J" data-cat="JE">
+                <h3 class="def-term">Juriste d'Entreprise</h3>
+                <p class="def-desc">Professionnel du droit salarié assurant la sécurité juridique de son entreprise.</p>
+            </div>
+            <div class="def-card" data-letter="J" data-cat="DS">
+                <h3 class="def-term">Journée de solidarité</h3>
+                <p class="def-desc">Journée travaillée non rémunérée (CSA).</p>
+            </div>
+
+            <!-- K -->
+            <div class="def-card" data-letter="K" data-cat="DA">
+                <h3 class="def-term">Kbis</h3>
+                <p class="def-desc">Carte d'identité de l'entreprise, attestant de son existence légale au RCS.</p>
+            </div>
+            <div class="def-card" data-letter="K" data-cat="JE">
+                <h3 class="def-term">KPI</h3>
+                <p class="def-desc">Key Performance Indicator. Indicateur clé de performance.</p>
+            </div>
+
+            <!-- L -->
+            <div class="def-card" data-letter="L" data-cat="JE">
+                <h3 class="def-term">Legal Design</h3>
+                <p class="def-desc">Application du design au droit pour rendre les documents juridiques clairs et accessibles.</p>
+            </div>
+            <div class="def-card" data-letter="L" data-cat="JE">
+                <h3 class="def-term">Legal Ops</h3>
+                <p class="def-desc">Legal Operations. Fonction optimisant les processus, la tech et la gestion du département juridique.</p>
+            </div>
+            <div class="def-card" data-letter="L" data-cat="DA">
+                <h3 class="def-term">Liquidation Judiciaire</h3>
+                <p class="def-desc">Procédure collective mettant fin à l'activité d'une entreprise en cessation de paiement.</p>
+            </div>
+            <div class="def-card" data-letter="L" data-cat="DS">
+                <h3 class="def-term">Livre de paie</h3>
+                <p class="def-desc">Document mensuel récapitulatif.</p>
+            </div>
+            <div class="def-card" data-letter="L" data-cat="DS">
+                <h3 class="def-term">Loi de mensualisation</h3>
+                <p class="def-desc">Paiement mensuel lissé.</p>
+            </div>
+
+            <!-- M -->
+            <div class="def-card" data-letter="M" data-cat="DA">
+                <h3 class="def-term">Mandataire Social</h3>
+                <p class="def-desc">Personne physique ou morale représentant la société (Gérant, Président, DG).</p>
+            </div>
+            <div class="def-card" data-letter="M" data-cat="DS">
+                <h3 class="def-term">MSA</h3>
+                <p class="def-desc">Mutuelle Sociale Agricole.</p>
+            </div>
+            <div class="def-card" data-letter="M" data-cat="DS">
+                <h3 class="def-term">Maintien de salaire</h3>
+                <p class="def-desc">Complément employeur aux IJSS.</p>
+            </div>
+             <div class="def-card" data-letter="M" data-cat="DS">
+                <h3 class="def-term">Montant Net Social</h3>
+                <p class="def-desc">Base pour le RSA et la Prime d'activité.</p>
+            </div>
+            <div class="def-card" data-letter="M" data-cat="DS">
+                <h3 class="def-term">Mutuelle</h3>
+                <p class="def-desc">Complémentaire santé obligatoire.</p>
+            </div>
+
+            <!-- N -->
+            <div class="def-card" data-letter="N" data-cat="JE">
+                <h3 class="def-term">NDA</h3>
+                <p class="def-desc">Non-Disclosure Agreement. Accord de confidentialité.</p>
+            </div>
+            <div class="def-card" data-letter="N" data-cat="DS">
+                <h3 class="def-term">NIR</h3>
+                <p class="def-desc">Numéro de Sécurité Sociale.</p>
+            </div>
+             <div class="def-card" data-letter="N" data-cat="DS">
+                <h3 class="def-term">NTT</h3>
+                <p class="def-desc">Numéro Technique Temporaire.</p>
+            </div>
+             <div class="def-card" data-letter="N" data-cat="DS">
+                <h3 class="def-term">Net à payer</h3>
+                <p class="def-desc">Somme virée au salarié.</p>
+            </div>
+
+            <!-- O -->
+            <div class="def-card" data-letter="O" data-cat="DS">
+                <h3 class="def-term">OETH</h3>
+                <p class="def-desc">Obligation d'Emploi des Travailleurs Handicapés.</p>
+            </div>
+             <div class="def-card" data-letter="O" data-cat="DS">
+                <h3 class="def-term">OPCO</h3>
+                <p class="def-desc">Opérateurs de Compétences.</p>
+            </div>
+
+            <!-- P -->
+            <div class="def-card" data-letter="P" data-cat="DS">
+                <h3 class="def-term">PAS</h3>
+                <p class="def-desc">Prélèvement à la Source.</p>
+            </div>
+             <div class="def-card" data-letter="P" data-cat="DS">
+                <h3 class="def-term">PEEC</h3>
+                <p class="def-desc">Participation Employeur Effort Construction (Action Logement).</p>
+            </div>
+            <div class="def-card" data-letter="P" data-cat="DS">
+                <h3 class="def-term">PMSS / PSS</h3>
+                <p class="def-desc">Plafond (Mensuel) de la Sécurité Sociale.</p>
+            </div>
+            <div class="def-card" data-letter="P" data-cat="DS">
+                <h3 class="def-term">PPV</h3>
+                <p class="def-desc">Prime de Partage de la Valeur.</p>
+            </div>
+            <div class="def-card" data-letter="P" data-cat="DA">
+                <h3 class="def-term">Pacte d'actionnaires</h3>
+                <p class="def-desc">Accord extra-statutaire organisant les relations entre actionnaires.</p>
+            </div>
+            <div class="def-card" data-letter="P" data-cat="JE">
+                <h3 class="def-term">Privilège de juriste (Legal Privilege)</h3>
+                <p class="def-desc">Protection de la confidentialité des avis juridiques (En débat pour les JE en France).</p>
+            </div>
+            <div class="def-card" data-letter="P" data-cat="DS">
+                <h3 class="def-term">Période d'essai</h3>
+                <p class="def-desc">Période d'évaluation au début du contrat.</p>
+            </div>
+            <div class="def-card" data-letter="P" data-cat="DS">
+                <h3 class="def-term">Prévoyance</h3>
+                <p class="def-desc">Couverture Décès/Invalidité (Obligatoire Cadres).</p>
+            </div>
+
+            <!-- Q -->
+            <div class="def-card" data-letter="Q" data-cat="DS">
+                <h3 class="def-term">Quotité de temps</h3>
+                <p class="def-desc">Pourcentage de temps de travail.</p>
+            </div>
+
+            <!-- R -->
+            <div class="def-card" data-letter="R" data-cat="DA">
+                <h3 class="def-term">RCS</h3>
+                <p class="def-desc">Registre du Commerce et des Sociétés.</p>
+            </div>
+            <div class="def-card" data-letter="R" data-cat="DS">
+                <h3 class="def-term">RGCP</h3>
+                <p class="def-desc">Réduction Générale des Cotisations Patronales.</p>
+            </div>
+            <div class="def-card" data-letter="R" data-cat="JE">
+                <h3 class="def-term">RGPD</h3>
+                <p class="def-desc">Règlement Général sur la Protection des Données (Privacy).</p>
+            </div>
+            <div class="def-card" data-letter="R" data-cat="JE">
+                <h3 class="def-term">RSE</h3>
+                <p class="def-desc">Responsabilité Sociétale des Entreprises.</p>
+            </div>
+            <div class="def-card" data-letter="R" data-cat="DS">
+                <h3 class="def-term">RTT</h3>
+                <p class="def-desc">Réduction du Temps de Travail.</p>
+            </div>
+            <div class="def-card" data-letter="R" data-cat="DS">
+                <h3 class="def-term">Reçu pour solde de tout compte</h3>
+                <p class="def-desc">Inventaire des sommes versées à la rupture.</p>
+            </div>
+            <div class="def-card" data-letter="R" data-cat="DS">
+                <h3 class="def-term">Rupture conventionnelle</h3>
+                <p class="def-desc">Rupture amiable du CDI.</p>
+            </div>
+
+            <!-- S -->
+            <div class="def-card" data-letter="S" data-cat="DA">
+                <h3 class="def-term">SA / SARL / SAS</h3>
+                <p class="def-desc">Société Anonyme / Responsabilité Limitée / Actions Simplifiée.</p>
+            </div>
+            <div class="def-card" data-letter="S" data-cat="DS">
+                <h3 class="def-term">SIRH</h3>
+                <p class="def-desc">Système d'Information des Ressources Humaines.</p>
+            </div>
+             <div class="def-card" data-letter="S" data-cat="DS">
+                <h3 class="def-term">SJR</h3>
+                <p class="def-desc">Salaire Journalier de Référence.</p>
+            </div>
+             <div class="def-card" data-letter="S" data-cat="DS">
+                <h3 class="def-term">SMIC</h3>
+                <p class="def-desc">Salaire Minimum Interprofessionnel de Croissance.</p>
+            </div>
+            <div class="def-card" data-letter="S" data-cat="DS">
+                <h3 class="def-term">SOLTÉA</h3>
+                <p class="def-desc">Plateforme taxe d'apprentissage.</p>
+            </div>
+            <div class="def-card" data-letter="S" data-cat="JE">
+                <h3 class="def-term">Soft Skills</h3>
+                <p class="def-desc">Compétences comportementales (écoute, négociation) essentielles au juriste.</p>
+            </div>
+            <div class="def-card" data-letter="S" data-cat="DS">
+                <h3 class="def-term">Subrogation</h3>
+                <p class="def-desc">L'employeur perçoit les IJSS et maintient le salaire.</p>
+            </div>
+
+            <!-- T -->
+            <div class="def-card" data-letter="T" data-cat="DS">
+                <h3 class="def-term">Taxe d'Apprentissage (TA)</h3>
+                <p class="def-desc">Financement de l'apprentissage.</p>
+            </div>
+            <div class="def-card" data-letter="T" data-cat="DS">
+                <h3 class="def-term">Taxe sur les Salaires (TS)</h3>
+                <p class="def-desc">Pour employeurs non assujettis à la TVA.</p>
+            </div>
+            <div class="def-card" data-letter="T" data-cat="DA">
+                <h3 class="def-term">Tribunal de Commerce (TC)</h3>
+                <p class="def-desc">Juridiction des litiges entre commerçants.</p>
+            </div>
+            <div class="def-card" data-letter="T" data-cat="DS">
+                <h3 class="def-term">Télétravail</h3>
+                <p class="def-desc">Travail hors locaux.</p>
+            </div>
+            <div class="def-card" data-letter="T" data-cat="DS">
+                <h3 class="def-term">Titres restaurant</h3>
+                <p class="def-desc">Avantage repas co-financé.</p>
+            </div>
+
+            <!-- U -->
+            <div class="def-card" data-letter="U" data-cat="DS">
+                <h3 class="def-term">URSSAF</h3>
+                <p class="def-desc">Organisme collecteur des cotisations sociales.</p>
+            </div>
+            <div class="def-card" data-letter="U" data-cat="DS">
+                <h3 class="def-term">Usage d'entreprise</h3>
+                <p class="def-desc">Avantage non écrit, général, constant et fixe.</p>
+            </div>
+
+            <!-- V -->
+            <div class="def-card" data-letter="V" data-cat="DS">
+                <h3 class="def-term">VAE</h3>
+                <p class="def-desc">Validation des Acquis de l'Expérience.</p>
+            </div>
+             <div class="def-card" data-letter="V" data-cat="DS">
+                <h3 class="def-term">VRP</h3>
+                <p class="def-desc">Voyageur Représentant Placier.</p>
+            </div>
+             <div class="def-card" data-letter="V" data-cat="JE">
+                <h3 class="def-term">Veille Juridique</h3>
+                <p class="def-desc">Surveillance active de l'évolution des lois et jurisprudences.</p>
+            </div>
+             <div class="def-card" data-letter="V" data-cat="DS">
+                <h3 class="def-term">Veille sociale</h3>
+                <p class="def-desc">Suivi des évolutions légales sociales.</p>
+            </div>
+            <div class="def-card" data-letter="V" data-cat="DS">
+                <h3 class="def-term">Versement Mobilité</h3>
+                <p class="def-desc">Contribution transport.</p>
+            </div>
+            
+            <div class="no-result" id="noResult">Aucun terme trouvé pour cette recherche. 🧐</div>
+        </div>
+    </main>
+
+    <!-- ✅ FOOTER -->
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-row">
+                <div class="footer-left">
+                    <img src="../Asset/Logo_MMPA.jpeg" alt="Logo" class="footer-logo-img" onerror="this.src='https://via.placeholder.com/80?text=Logo';">
+                    <div class="footer-info">
+                        <h3 class="footer-name">Mathilde Martine PAISLEY</h3>
+                        <div class="footer-details">
+                            <span>📧 Mathilde.martine.paisley@gmail.com</span>
+                            <span>📲 06 85 90 08 87</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-right">
+                    <a href="https://projettechacademy.github.io/Juridique/index.html" class="icon-btn logo-home-btn" title="Accueil">
+                        <img src="../Asset/Logo_juriste.png" alt="Accueil" onerror="this.src='https://via.placeholder.com/30?text=Home';" style="width:100%; height:100%; border-radius:50%; object-fit:cover;">
+                    </a>
+                    <a href="https://projettechacademy.github.io/Juridique/00_Autres/Mon_Espace_Juriste_Tableau_de_bord_personnel.html" class="icon-btn" title="Mon Espace">
+                        <span class="brand-nav">📊</span>
+                    </a>
+                    <a href="https://projettechacademy.github.io/Juridique/00_Autres/Lexique_Latin_Juridique.html" class="icon-btn" title="Lexique">
+                        <span class="brand-nav">📜</span>
+                    </a>
+                    <a href="https://projettechacademy.github.io/Juridique/00_Autres/formation_live_juriste.html" class="icon-btn" title="Planning">
+                        <span class="brand-nav">📅</span>
+                    </a>
+                    <a href="https://projettechacademy.github.io/Juridique/00_Autres/Fiche_RNCP_Juriste.html" class="icon-btn" title="Fiche RNCP">
+                        <span class="brand-nav">🎓</span>
+                    </a>
+                    <a href="https://projettechacademy.github.io/Juridique/00_Autres/Univers_Actes_Juridiques.html" class="icon-btn" title="Rédaction Juridique">
+                        <span class="brand-nav">✍️</span>
+                    </a>
+                    <a href="https://projettechacademy.github.io/Juridique/00_Autres/A_propos_de_moi.html" class="icon-btn" title="Bio">
+                        <span class="brand-nav">👤</span>
+                    </a>
+                    <div class="dock-separator"></div>
+                    <a href="https://chat.whatsapp.com/IoMXFl4o2otExYKCPVj22b" target="_blank" class="icon-btn" title="WhatsApp">
+                        <i class="fab fa-whatsapp brand-whatsapp"></i>
+                    </a>
+                    <a href="https://discord.gg/qwNPV8QzFt" target="_blank" class="icon-btn" title="Discord">
+                        <i class="fab fa-discord brand-discord"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/mathilde-martine-paisley-1a4422382/" target="_blank" class="icon-btn" title="LinkedIn">
+                        <i class="fab fa-linkedin brand-linkedin"></i>
+                    </a>
+                    <a href="https://www.instagram.com/enervyx/" target="_blank" class="icon-btn" title="Instagram">
+                        <i class="fab fa-instagram brand-instagram"></i>
+                    </a>
+                    <a href="https://www.tiktok.com/@enervyx/" target="_blank" class="icon-btn" title="TikTok">
+                        <i class="fab fa-tiktok brand-tiktok"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-copyright">
+                <p>
+                    💫 The Jurist Elite Club By Studi ✨  
+                    La Villa des Juristes Brisés 💔 sur l’Île de L’INSTRUCTION ! 🏝  
+                    | By Mathilde Martine PAISLEY | © 2025 Tous droits réservés <br>
+                    Création : 07/12/2025 – Dernière mise à jour : 07/12/2025
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // --- LOGIQUE AUTOMATISATION & INTERACTIVITÉ ---
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // 1. AUTOMATISATION DES NUMÉROS ET TAGS
+            const cards = document.querySelectorAll('.def-card');
+            
+            cards.forEach((card, index) => {
+                // Numérotation #001
+                const number = index + 1;
+                const formattedNumber = '#' + number.toString().padStart(3, '0');
+                
+                // Récupération catégorie
+                const category = card.getAttribute('data-cat') || 'JE';
+                let catLabel = '';
+                let catClass = '';
+
+                if(category === 'JE') { catLabel = 'JE'; catClass = 'tag-je'; }
+                else if(category === 'DS') { catLabel = 'DS'; catClass = 'tag-ds'; }
+                else if(category === 'DA') { catLabel = 'DA'; catClass = 'tag-da'; }
+
+                // Injection HTML dans le titre
+                const titleElement = card.querySelector('.def-term');
+                const originalText = titleElement.textContent;
+                
+                titleElement.innerHTML = `
+                    <span class="entry-number">${formattedNumber}</span>
+                    ${originalText}
+                    <span class="tag ${catClass}">${catLabel}</span>
+                `;
+            });
+
+
+            // 2. FILTRAGE
+            const searchInput = document.getElementById('searchInput');
+            const alphabetBtns = document.querySelectorAll('.alpha-btn');
+            const catBtns = document.querySelectorAll('.cat-btn');
+            const noResult = document.getElementById('noResult');
+
+            let currentLetter = 'all';
+            let currentCat = 'all';
+            let currentSearch = '';
+
+            function updateDisplay() {
+                let visibleCount = 0;
+                
+                cards.forEach(card => {
+                    const term = card.querySelector('.def-term').textContent.toLowerCase();
+                    const desc = card.querySelector('.def-desc').textContent.toLowerCase();
+                    const cardLetter = card.getAttribute('data-letter');
+                    const cardCat = card.getAttribute('data-cat');
+
+                    // Filtre Lettre
+                    const letterMatch = (currentLetter === 'all' || cardLetter === currentLetter);
+                    // Filtre Catégorie
+                    const catMatch = (currentCat === 'all' || cardCat === currentCat);
+                    // Filtre Recherche
+                    const searchMatch = (term.includes(currentSearch) || desc.includes(currentSearch));
+
+                    if (letterMatch && catMatch && searchMatch) {
+                        card.style.display = 'block';
+                        visibleCount++;
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+
+                noResult.style.display = (visibleCount === 0) ? 'block' : 'none';
+            }
+
+            // Listeners Recherche
+            searchInput.addEventListener('input', (e) => {
+                currentSearch = e.target.value.toLowerCase();
+                updateDisplay();
+            });
+
+            // Listeners Alphabet
+            alphabetBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    alphabetBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    currentLetter = btn.getAttribute('data-filter');
+                    updateDisplay();
+                });
+            });
+
+            // Listeners Catégories
+            catBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    catBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    currentCat = btn.getAttribute('data-cat');
+                    updateDisplay();
+                });
+            });
+        });
+    </script>
+</body>
+</html>

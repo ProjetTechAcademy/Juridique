@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Référentiel Compétences RNCP 40844 - V3 (Intégré)</title>
+    
+    <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/e/e0/Balance_of_Justice_SVG.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="styles.css"> 
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&family=Montserrat:wght@500;600;700&family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* CHARTE COSMIC PREMIUM (Conservée pour le contenu central) */
+        :root {
+            --cta: #D9A526;         /* Or */
+            --brand-blue: #0F2C48;  /* Bleu Nuit */
+            --ivory: #F6F2E8;       /* Fond */
+            --bronze: #B4792A;      /* Accent */
+        }
+
+        body { 
+            margin: 0; background-color: var(--ivory); color: var(--brand-blue); 
+            font-family: 'Outfit', sans-serif; display: flex; flex-direction: column; min-height: 100vh;
+        }
+
+        /* Styles spécifiques pour le NOUVEAU Header (Adaptation minimale) */
+        .top-bar { background-color: var(--brand-blue); padding: 15px 0; color: white; }
+        .header-content { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .left-section { display: flex; align-items: center; gap: 20px; }
+        .logo { height: 50px; } /* Ajuste selon ton logo.png */
+        .header-title { font-family: 'Playfair Display', serif; margin: 0; font-size: 1.5rem; }
+        .contact-button { background: var(--cta); color: white; padding: 8px 15px; border-radius: 5px; text-decoration: none; font-weight: bold; }
+        
+        .nav-tabs-container { background: white; border-bottom: 1px solid #ddd; padding: 10px 0; }
+        .nav-tabs { list-style: none; padding: 0; margin: 0; display: flex; justify-content: center; gap: 20px; }
+        .nav-tabs a { text-decoration: none; color: #333; font-weight: 600; padding: 5px 10px; }
+        .nav-tabs a.active, .nav-tabs a:hover { color: var(--cta); border-bottom: 2px solid var(--cta); }
+
+        /* --- STYLES EXISTANTS POUR LE CONTENU (Onglets internes, Blocs...) --- */
+        .tabs-container {
+            background: white; border-radius: 50px; padding: 5px; display: flex; justify-content: space-between;
+            margin: 30px auto; max-width: 900px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid #e2e8f0; overflow-x: auto;
+        }
+        .tab-btn {
+            padding: 12px 25px; border-radius: 40px; border: none; background: transparent; color: #64748b;
+            font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 0.9rem; cursor: pointer;
+            transition: all 0.3s ease; white-space: nowrap; display: flex; align-items: center; gap: 8px;
+        }
+        .tab-btn:hover { color: var(--brand-blue); background: #f1f5f9; }
+        .tab-btn.active { background: var(--brand-blue); color: white; box-shadow: 0 4px 10px rgba(15, 44, 72, 0.3); }
+        .tab-btn[onclick="openTab('bloc1')"].active { background: linear-gradient(135deg, #0F2C48 0%, #1e3a8a 100%); }
+        .tab-btn[onclick="openTab('bloc2')"].active { background: linear-gradient(135deg, #B4792A 0%, #D9A526 100%); }
+        .tab-btn[onclick="openTab('bloc3')"].active { background: linear-gradient(135deg, #475569 0%, #0F2C48 100%); }
+
+        .tab-content { display: none; animation: fadeIn 0.5s ease; }
+        .tab-content.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .section-title { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 1rem; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; display: flex; align-items: center; gap: 10px; }
+        .justified-text { text-align: justify; line-height: 1.8; color: #334155; }
+        .bloc-wrapper { background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.05); border: 1px solid rgba(0,0,0,0.05); }
+        .bloc-banner { padding: 30px 40px; color: white; display: flex; align-items: center; justify-content: space-between; position: relative; overflow: hidden; }
+        .bloc-banner h2 { font-family: 'Playfair Display', serif; font-size: 2rem; margin: 0; font-weight: 700; z-index: 1; }
+        .bloc-bg-icon { position: absolute; right: -20px; bottom: -40px; font-size: 12rem; opacity: 0.1; transform: rotate(-15deg); z-index: 0; }
+        .bloc-cols { display: grid; grid-template-columns: 1.8fr 1.2fr; }
+        .col-left { padding: 40px; border-right: 1px solid #f1f5f9; }
+        .col-right { padding: 40px; background: #f8fafc; }
+        .comp-list { list-style: none; padding: 0; }
+        .comp-item { position: relative; padding-left: 30px; margin-bottom: 15px; }
+        .comp-item::before { content: '✔'; position: absolute; left: 0; top: 0; color: var(--cta); font-weight: bold; }
+        .welcome-card { background: white; border-radius: 16px; padding: 40px; text-align: center; margin-bottom: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .rncp-big { font-size: 4rem; font-weight: 900; color: #f1f5f9; line-height: 1; margin-bottom: -20px; display: block; }
+        .welcome-title { font-family: 'Playfair Display', serif; font-size: 2.5rem; color: var(--brand-blue); position: relative; }
+
+        /* Styles NOUVEAU Footer */
+        .main-footer { background: #333; color: white; padding: 40px 0; margin-top: auto; }
+        .footer-columns { display: flex; justify-content: space-between; max-width: 1000px; margin: 0 auto; padding: 0 20px; flex-wrap: wrap;}
+        .footer-column { flex: 1; min-width: 200px; margin-bottom: 20px; }
+        .footer-column h3 { color: var(--cta); border-bottom: 2px solid var(--cta); padding-bottom: 10px; display: inline-block; }
+        .footer-column ul { list-style: none; padding: 0; }
+        .footer-column ul li { margin-bottom: 8px; }
+        .footer-column a { color: #ddd; text-decoration: none; }
+        .footer-column a:hover { color: white; }
+        .footer-bottom { text-align: center; border-top: 1px solid #444; padding-top: 20px; margin-top: 20px; color: #888; }
+
+        @media (max-width: 800px) {
+            .bloc-cols { grid-template-columns: 1fr; }
+            .col-left { border-right: none; border-bottom: 1px solid #f1f5f9; }
+            .tabs-container { flex-wrap: nowrap; padding: 10px; justify-content: flex-start; }
+            .header-content { flex-direction: column; text-align: center; gap: 10px; }
+            .left-section { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <div class="container header-content">
+            <div class="left-section">
+                <a href="index.html" class="logo-container">
+                    <img src="logo.png" alt="Logo" class="logo">
+                </a>
+                <h1 class="header-title">Atelier des Compétences</h1>
+            </div>
+            <div class="right-section">
+                <a href="#" class="contact-button">Contact</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="nav-tabs-container">
+        <div class="container">
+            <ul class="nav-tabs">
+                <li><a href="Atelier_de_Competence.html">Atelier des Compétences</a></li>
+                <li><a href="Fiche_RNCP_Juriste.html" class="active">RNCP Juriste</a></li>
+                <li><a href="Glossaire.html">Glossaire</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <main class="container mb-12" style="max-width: 1000px; margin: 30px auto; padding: 0 20px;">
+        
+        <div class="tabs-container">
+            <button class="tab-btn active" onclick="openTab('accueil')"><i class="fa-solid fa-house"></i> Accueil</button>
+            <button class="tab-btn" onclick="openTab('bloc1')"><i class="fa-solid fa-chess-queen"></i> Bloc 1</button>
+            <button class="tab-btn" onclick="openTab('bloc2')"><i class="fa-solid fa-handshake"></i> Bloc 2</button>
+            <button class="tab-btn" onclick="openTab('bloc3')"><i class="fa-solid fa-gavel"></i> Bloc 3</button>
+            <button class="tab-btn" onclick="openTab('validation')"><i class="fa-solid fa-check-double"></i> Validation</button>
+        </div>
+
+        <div id="accueil" class="tab-content active">
+            <div class="welcome-card">
+                <span class="rncp-big">RNCP 40844</span>
+                <h1 class="welcome-title">Juriste d'Entreprise</h1>
+                <p class="text-xl text-[#B4792A] font-bold mt-2 mb-6">Niveau 7 (Bac+5) • Certificateur ESGCV</p>
+                
+                <div class="max-w-2xl mx-auto justified-text">
+                    <p>
+                        Ce titre certifie des experts du droit capables de sécuriser les activités de l'entreprise, 
+                        d'accompagner la direction dans ses décisions stratégiques et de gérer les contentieux. 
+                        Il est structuré en <strong>3 blocs de compétences distincts</strong> qu'il faut valider intégralement pour obtenir le titre.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10 text-left">
+                    <div class="p-4 border border-gray-100 rounded-xl bg-gray-50">
+                        <strong class="block text-[#0F2C48] mb-1">Code NSF</strong>
+                        <span class="text-gray-600">128 (Droit)</span>
+                    </div>
+                    <div class="p-4 border border-gray-100 rounded-xl bg-gray-50">
+                        <strong class="block text-[#0F2C48] mb-1">Validité</strong>
+                        <span class="text-green-600 font-bold">Active jusqu'en 2030</span>
+                    </div>
+                    <div class="p-4 border border-gray-100 rounded-xl bg-gray-50">
+                        <strong class="block text-[#0F2C48] mb-1">Métiers</strong>
+                        <span class="text-gray-600">Juriste, Responsable Juridique, DPO</span>
+                    </div>
+                </div>
+                
+                <div class="mt-8">
+                    <a href="https://www.francecompetences.fr/recherche/rncp/40844/" target="_blank" class="text-sm text-gray-400 hover:text-[#D9A526] underline">
+                        Voir la fiche officielle France Compétences
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div id="bloc1" class="tab-content">
+            <div class="bloc-wrapper">
+                <div class="bloc-banner" style="background: linear-gradient(135deg, #0F2C48 0%, #173859 100%);">
+                    <div>
+                        <h2>Bloc 1 : Pilotage Stratégique</h2>
+                        <span class="text-sm opacity-80 uppercase tracking-widest mt-2 block">Assurer le pilotage stratégique et opérationnel de la fonction juridique</span>
+                    </div>
+                    <i class="fa-solid fa-chess-queen bloc-bg-icon"></i>
+                </div>
+                
+                <div class="bloc-cols">
+                    <div class="col-left">
+                        <h3 class="section-title text-[#0F2C48]"><i class="fa-solid fa-list-check text-[#D9A526]"></i> Compétences à valider</h3>
+                        <ul class="comp-list justified-text">
+                            <li class="comp-item"><strong>Mettre en place une veille juridique</strong> en s’appuyant sur des processus de collecte, d’analyse et de diffusion des informations relatives aux évolutions législatives, réglementaires et jurisprudentielles, afin d’anticiper les changements pouvant affecter l’organisation.</li>
+                            <li class="comp-item"><strong>Participer à la définition de la stratégie juridique</strong> (avec la direction) et des chantiers prioritaires, en tenant compte les priorités stratégiques de l’entreprise, de ses projets de développement, ainsi que des évolutions législatives, fiscales et technologiques.</li>
+                            <li class="comp-item"><strong>Réaliser un audit juridique</strong> en collectant et examinant les documents juridiques, en conduisant des entretiens avec les parties prenantes, et en analysant les processus internes pour renforcer la sécurité.</li>
+                            <li class="comp-item"><strong>Élaborer des politiques internes de conformité</strong> en établissant les règles et directives régissant les comportements et pratiques au sein de l’entreprise pour prévenir les risques.</li>
+                            <li class="comp-item"><strong>Mettre en place un système d’archivage numérique</strong> de la documentation juridique (contrats, pouvoirs, baux, décisions) en définissant les procédures de gestion interne.</li>
+                        </ul>
+                    </div>
+                    <div class="col-right">
+                        <h3 class="section-title text-[#0F2C48]"><i class="fa-solid fa-file-signature text-[#D9A526]"></i> Modalités d'Examen</h3>
+                        <div class="bg-white p-5 rounded-lg border border-gray-200 shadow-sm justified-text">
+                            <span class="inline-block bg-[#0F2C48] text-white px-3 py-1 rounded text-xs font-bold mb-3">Mises en situation professionnelle</span>
+                            <p class="mb-4 text-sm">Vous serez évalué(e) sur des cas concrets couvrant :</p>
+                            <ul class="text-sm space-y-2">
+                                <li><i class="fa-solid fa-angle-right text-[#D9A526] mr-2"></i> La veille juridique</li>
+                                <li><i class="fa-solid fa-angle-right text-[#D9A526] mr-2"></i> La stratégie juridique</li>
+                                <li><i class="fa-solid fa-angle-right text-[#D9A526] mr-2"></i> La gestion de la conformité et des risques</li>
+                                <li><i class="fa-solid fa-angle-right text-[#D9A526] mr-2"></i> La procédure d'archivage</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="bloc2" class="tab-content">
+            <div class="bloc-wrapper">
+                <div class="bloc-banner" style="background: linear-gradient(135deg, #B4792A 0%, #D9A526 100%);">
+                    <div>
+                        <h2>Bloc 2 : Accompagnement Opérationnel</h2>
+                        <span class="text-sm opacity-80 uppercase tracking-widest mt-2 block">Accompagner juridiquement les opérations de l’entreprise et ses acteurs</span>
+                    </div>
+                    <i class="fa-solid fa-handshake bloc-bg-icon"></i>
+                </div>
+                
+                <div class="bloc-cols">
+                    <div class="col-left">
+                        <h3 class="section-title text-[#B4792A]"><i class="fa-solid fa-list-check text-[#0F2C48]"></i> Compétences à valider</h3>
+                        <ul class="comp-list justified-text">
+                            <li class="comp-item"><strong>Conseiller juridiquement les départements opérationnels</strong> sur les questions juridiques courantes, en formulant des avis et des recommandations juridiques.</li>
+                            <li class="comp-item"><strong>Accompagner la prise de décisions stratégiques</strong> en évaluant les implications juridiques, fiscales et environnementales (RSE) des projets pour garantir la conformité.</li>
+                            <li class="comp-item"><strong>Rédiger et passer en revue les documents contractuels</strong> en tenant compte des besoins spécifiques, en anticipant les risques et en intégrant des mécanismes de protection (clauses résolutoires, pénalités...).</li>
+                            <li class="comp-item"><strong>Mettre en œuvre des actions de formation et de sensibilisation</strong> auprès des collaborateurs internes, en élaborant des outils pédagogiques adaptés.</li>
+                            <li class="comp-item"><strong>Coordonner une équipe de collaborateurs</strong> (directs ou transverses), en adaptant le style de communication et en veillant à l’inclusion (sociale et handicap).</li>
+                        </ul>
+                    </div>
+                    <div class="col-right">
+                        <h3 class="section-title text-[#B4792A]"><i class="fa-solid fa-file-signature text-[#0F2C48]"></i> Modalités d'Examen</h3>
+                        
+                        <div class="bg-white p-5 rounded-lg border border-gray-200 shadow-sm mb-4 justified-text">
+                            <strong class="block text-[#B4792A] text-sm mb-2 uppercase">1. Mises en situation</strong>
+                            <ul class="text-sm space-y-1 list-disc list-inside">
+                                <li>Recommandations juridiques</li>
+                                <li>Analyse et sécurisation de contrats</li>
+                                <li>Analyse réflexive sur la gestion de projet</li>
+                            </ul>
+                        </div>
+
+                        <div class="bg-white p-5 rounded-lg border border-gray-200 shadow-sm justified-text">
+                            <strong class="block text-[#B4792A] text-sm mb-2 uppercase">2. Cas Pratique Spécifique</strong>
+                            <p class="text-sm">Conception d'une action de <strong>sensibilisation/formation</strong> pour des collaborateurs.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="bloc3" class="tab-content">
+            <div class="bloc-wrapper">
+                <div class="bloc-banner" style="background: linear-gradient(135deg, #475569 0%, #0F2C48 100%);">
+                    <div>
+                        <h2>Bloc 3 : Contentieux</h2>
+                        <span class="text-sm opacity-80 uppercase tracking-widest mt-2 block">Gérer les précontentieux et les contentieux</span>
+                    </div>
+                    <i class="fa-solid fa-gavel bloc-bg-icon"></i>
+                </div>
+                
+                <div class="bloc-cols">
+                    <div class="col-left">
+                        <h3 class="section-title text-[#475569]"><i class="fa-solid fa-list-check text-[#D9A526]"></i> Compétences à valider</h3>
+                        <ul class="comp-list justified-text">
+                            <li class="comp-item"><strong>Mettre en œuvre des règlements amiables</strong> : Conduire des négociations, rédiger/valider les accords de règlement, recourir aux modes alternatifs (MARD).</li>
+                            <li class="comp-item"><strong>Élaborer une stratégie de défense juridique</strong> en collaboration avec des avocats, en évaluant les impacts (financiers, réputationnels) et les risques juridiques.</li>
+                            <li class="comp-item"><strong>Développer des plans de gestion de crise</strong> en coordination avec la direction, en identifiant les risques critiques (litige, non-conformités) et en déterminant les protocoles.</li>
+                            <li class="comp-item"><strong>Exécuter et suivre la mise en œuvre des décisions judiciaires</strong> en élaborant un plan d’action (ressources, délais) pour minimiser les risques de non-exécution.</li>
+                        </ul>
+                    </div>
+                    <div class="col-right">
+                        <h3 class="section-title text-[#475569]"><i class="fa-solid fa-file-signature text-[#D9A526]"></i> Modalités d'Examen</h3>
+                        <div class="bg-white p-5 rounded-lg border border-gray-200 shadow-sm justified-text">
+                            <span class="inline-block bg-[#475569] text-white px-3 py-1 rounded text-xs font-bold mb-3">Mises en situation professionnelle</span>
+                            <p class="mb-4 text-sm">Vous serez évalué(e) sur deux axes majeurs :</p>
+                            
+                            <div class="border-l-4 border-[#D9A526] pl-3 mb-3">
+                                <strong class="text-sm block">La Négociation Amiable</strong>
+                                <span class="text-xs text-gray-500">Capacité à transiger et rédiger un accord.</span>
+                            </div>
+
+                            <div class="border-l-4 border-[#D9A526] pl-3">
+                                <strong class="text-sm block">La Gestion de Contentieux</strong>
+                                <span class="text-xs text-gray-500">Stratégie judiciaire et gestion de crise.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="validation" class="tab-content">
+            <div class="bg-white rounded-16 p-10 border border-gray-200 shadow-sm rounded-xl">
+                <h2 class="text-2xl font-bold text-[#0F2C48] mb-6 flex items-center gap-3">
+                    <i class="fa-solid fa-circle-info text-[#D9A526]"></i> Conditions de Validation du Titre
+                </h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 justified-text">
+                    <div class="bg-blue-50 p-6 rounded-xl border border-blue-100">
+                        <h3 class="text-lg font-bold text-[#0F2C48] mb-2"><i class="fa-solid fa-trophy text-[#D9A526] mr-2"></i> Obtention du Titre</h3>
+                        <p class="text-sm text-gray-700">La certification RNCP "Juriste d'Entreprise" n'est délivrée que si vous validez <strong>l'ensemble des 3 blocs de compétences</strong>. Aucun bloc ne peut être "sauté".</p>
+                    </div>
+
+                    <div class="bg-green-50 p-6 rounded-xl border border-green-100">
+                        <h3 class="text-lg font-bold text-[#0F2C48] mb-2"><i class="fa-solid fa-check-double text-green-600 mr-2"></i> Capitalisation</h3>
+                        <p class="text-sm text-gray-700">Chaque bloc est acquis <strong>définitivement</strong>. Si vous validez le Bloc 1 mais échouez au Bloc 2, le Bloc 1 reste validé à vie (capitalisation). Vous pouvez repasser les autres plus tard.</p>
+                    </div>
+
+                    <div class="bg-orange-50 p-6 rounded-xl border border-orange-100">
+                        <h3 class="text-lg font-bold text-[#0F2C48] mb-2"><i class="fa-solid fa-universal-access text-orange-500 mr-2"></i> Handicap</h3>
+                        <p class="text-sm text-gray-700">Sur avis du référent handicap, des aménagements sont possibles (tiers temps, assistance) sans remettre en cause la valeur du diplôme.</p>
+                    </div>
+                    
+                    <div class="bg-gray-50 p-6 rounded-xl border border-gray-200">
+                        <h3 class="text-lg font-bold text-[#0F2C48] mb-2"><i class="fa-solid fa-graduation-cap text-gray-500 mr-2"></i> Équivalences</h3>
+                        <p class="text-sm text-gray-700">Pour toute équivalence ou VAE, le candidat doit présenter son dossier au jury pour validation.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <div class="main-footer">
+        <div class="container">
+            <div class="footer-columns">
+                <div class="footer-column">
+                    <h3>Liens utiles</h3>
+                    <ul>
+                        <li><a href="Atelier_de_Competence.html">Atelier des Compétences</a></li>
+                        <li><a href="Fiche_RNCP_Juriste.html">RNCP Juriste</a></li>
+                        <li><a href="Glossaire.html">Glossaire</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <p>Email : contact@example.com</p>
+                    <p>Téléphone : 01 23 45 67 89</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Réseaux</h3>
+                    <p>Suivez-nous :</p>
+                    <p>Facebook | Twitter | LinkedIn</p>
+                </div>
+            </div>
+            <p class="footer-bottom">© 2024 Atelier des Compétences - Tous droits réservés.</p>
+        </div>
+    </div>
+
+    <button id="scrollToTop" style="display:none; position:fixed; bottom:20px; right:20px; background:var(--cta); color:white; border:none; padding:10px 15px; border-radius:50%; cursor:pointer;"><i class="fas fa-arrow-up"></i></button>
+
+    <script>
+        // LOGIQUE INTERNE DE LA FICHE RNCP (ONGLETS)
+        function openTab(tabName) {
+            var i;
+            var x = document.getElementsByClassName("tab-content");
+            for (i = 0; i < x.length; i++) { x[i].classList.remove("active"); }
+            
+            var btns = document.getElementsByClassName("tab-btn");
+            for (i = 0; i < btns.length; i++) { btns[i].classList.remove("active"); }
+            
+            document.getElementById(tabName).classList.add("active");
+            event.currentTarget.classList.add("active");
+        }
+
+        // ==========================================
+        // 4. LE SCRIPT QUE TU M'AS DEMANDÉ D'INTÉGRER
+        // ==========================================
+        // Note: Ce script semble fait pour gérer un tableau qui n'est pas présent 
+        // dans cette page (tableauCompetences), mais je l'inclus comme demandé.
+        const grades = [
+            { a: "I.", f: "Insuffisant" },
+            { a: "II.", f: "Passable" },
+            { a: "III.", f: "Satisfaisant" },
+            { a: "IV.", f: "Bon" },
+            { a: "V.", f: "Très bon" },
+            { a: "VI.", f: "Excellent" },
+            { a: "VII.", f: "Remarquable" },
+            { a: "VIII.", f: "Exceptionnel" }
+            // Note: J'ai nettoyé la fin de ta liste qui était coupée dans ton message
+        ];
+
+        // Attention : Le tableau #tableauCompetences n'existant pas dans cette fiche RNCP,
+        // je mets ce bloc dans un try/catch pour éviter que ça plante ta page.
+        try {
+            const tableBody = document.querySelector("#tableauCompetences tbody");
+            const searchInput = document.getElementById("searchInput");
+
+            function filterResults() {
+                if(!searchInput || !tableBody) return; // Sécurité
+                const input = searchInput.value.toLowerCase();
+                tableBody.innerHTML = "";
+
+                grades.forEach(grade => {
+                    if (grade.f.toLowerCase().includes(input)) {
+                        const row = document.createElement("tr");
+                        row.innerHTML = `<td>${grade.a}</td><td>${grade.f}</td>`;
+                        tableBody.appendChild(row);
+                    }
+                });
+            }
+
+            if(searchInput) {
+                searchInput.addEventListener("input", filterResults);
+            }
+        } catch (e) {
+            console.log("Le tableau de compétences n'est pas présent sur cette page.");
+        }
+
+        // Script pour le bouton ScrollToTop
+        const scrollToTopBtn = document.getElementById("scrollToTop");
+        if(scrollToTopBtn) {
+            window.addEventListener("scroll", () => {
+                scrollToTopBtn.style.display = window.scrollY > 300 ? "block" : "none";
+            });
+            scrollToTopBtn.addEventListener("click", () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+        }
+    </script>
+
+</body>
+</html>
