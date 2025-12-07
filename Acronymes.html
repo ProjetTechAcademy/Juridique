@@ -1,1242 +1,838 @@
-<!DOCTYPE html>
-<html lang="fr">
+<!doctype html>
+<html lang="fr" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lexique Juridique Général - The Jurist Elite Club</title>
-    <!-- Font Awesome pour les icônes -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Police Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Acronymes Juridiques — The Jurist Elite Club ⚖️</title>
 
-    <style>
-        /* --- CHARTE GRAPHIQUE --- */
-        :root {
-            --color-blue: #0F2C48;      /* Titres & séparations */
-            --color-ivory: #F6F2E8;     /* Surfaces / cartes / encadrés */
-            --color-yellow: #D9A526;    /* Boutons CTA */
-            --color-bronze: #B4792A;    /* Alertes / éditions spéciales */
-            --color-white: #FFFFFF;
-            --color-text: #333333;
-            
-            /* Codes Couleurs Spécifiques Lexique */
-            --tag-je-color: #007bff;    /* Bleu Juriste Ent. */
-            --tag-ds-color: #C71585;    /* Fuchsia Foncé Droit Social */
-            --tag-da-color: #228B22;    /* Vert Droit des Affaires */
-        }
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&family=Montserrat:wght@500;600;700&family=Outfit:wght@300;400;600;800&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 
-        /* --- RESET & GLOBAL --- */
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+  <style>
+    :root { 
+        --brand-blue: #0F2C48; 
+        --brandGold: #D9A526; 
+        --ivory: #F6F2E8; 
+        --footer-bg: #0F2C48; 
+        --footer-text: #F6F2E8; 
+        
+        /* Ajout pour les cartes acronymes */
+        --card-bg: #FFFFFF;
+        --card-border-light: rgba(15, 44, 72, 0.1);
+    }
+    
+    body { margin: 0; font-family: 'Outfit', sans-serif; background: var(--ivory); color: var(--brand-blue); display: flex; flex-direction: column; min-height: 100vh; }
+    
+    /* --- HEADER (V2 Optimisé - Bouton Expert) --- */
+    .top-bar { 
+        background: linear-gradient(135deg, #B4792A, #F2C94C); 
+        padding: 12px 20px; 
+        position: sticky; 
+        top: 0; 
+        z-index: 9999; 
+        border-bottom: 4px solid var(--brand-blue); 
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    
+    .top-bar-container { 
+        width: 100%; 
+        max-width: 100%; 
+        padding: 0 10px; 
+        margin: 0; 
+        display: flex; 
+        align-items: center; 
+        gap: 16px; 
+    }
+    
+    .top-left { 
+        display: flex; 
+        align-items: center; 
+        gap: 14px; 
+        margin-right: auto; 
+    }
+    
+    .logo-top { 
+        width: 64px; height: 64px; 
+        border-radius: 8px; object-fit: cover; 
+        border: 2px solid var(--brand-blue); 
+        background: #fff; 
+        transition: transform 0.3s ease;
+    }
+    .logo-top:hover { transform: scale(1.05); }
 
-        body {
-            font-family: 'Roboto', sans-serif;
-            background-color: var(--color-white);
-            color: var(--color-text);
-            line-height: 1.6;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
+    .identity-stack { display: flex; flex-direction: column; }
+    .club-title-main { font-family: 'Playfair Display', serif; font-weight: 800; color: var(--brand-blue); font-size: 1.1rem; }
+    .club-subtitle { color: #fff; font-weight: 700; font-size: 0.85rem; text-shadow: 0 1px 2px rgba(0,0,0,0.1); }
+    
+    .top-center { display: flex; gap: 10px; align-items: center; }
+    
+    .header-icon-btn { 
+        width: 44px; height: 44px; flex-shrink: 0;
+        border-radius: 50%; 
+        display: inline-flex; align-items: center; justify-content: center; 
+        text-decoration: none; 
+        background: linear-gradient(135deg, var(--brandGold), #B4792A); 
+        color: #fff; 
+        border: 1px solid rgba(255, 255, 255, 0.4); 
+        transition: all 0.2s ease;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        font-size: 1.2rem;
+        position: relative;
+    }
+    .header-icon-btn:hover { transform: translateY(-3px); box-shadow: 0 4px 8px rgba(0,0,0,0.2); background: var(--brand-blue); border-color: var(--brandGold); }
+    .header-icon-btn img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
+    
+    /* Bouton EXPERT Spécifique */
+    .btn-portfolio-cosmic { 
+        padding: 8px 18px; 
+        border-radius: 999px; 
+        background: var(--brand-blue); 
+        color: var(--brandGold); 
+        text-decoration: none; 
+        font-weight: 700; 
+        display: inline-flex; gap: 8px; align-items: center; 
+        transition: background 0.3s, color 0.3s;
+        white-space: nowrap;
+        box-shadow: 0 4px 10px rgba(15, 44, 72, 0.2);
+    }
+    .btn-portfolio-cosmic:hover { background: #fff; color: var(--brand-blue); transform: translateY(-2px); }
 
-        a { text-decoration: none; color: inherit; }
-        ul { list-style: none; }
+    /* Main Content Placeholder */
+    .main-content { flex: 1; padding: 20px; max-width: 1400px; margin: 0 auto; width: 100%; }
 
-        /* --- HEADER STYLES --- */
-        .top-bar {
-            background-color: var(--color-blue);
-            color: var(--color-ivory);
-            padding: 10px 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
+    /* --- FOOTER (V2) --- */
+    .main-footer { background: var(--footer-bg); color: var(--footer-text); padding: 40px 18px; margin-top: auto; border-top: 4px solid var(--brandGold); }
+    .footer-container { max-width: 1400px; margin: 0 auto; display: flex; gap: 20px; align-items: center; justify-content: space-between; flex-wrap: wrap; }
+    .footer-left { display: flex; gap: 12px; align-items: center; }
+    .footer-logo-img { width: 60px; height: 60px; border-radius: 8px; object-fit: cover; border: 2px solid var(--brandGold); background: #fff; }
+    
+    .footer-details { color: var(--footer-text); opacity: 0.95; display: flex; flex-direction: column; gap: 4px; }
+    .footer-contact-link { 
+        color: var(--footer-text); 
+        text-decoration: none; 
+        transition: color 0.2s; 
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+    }
+    .footer-contact-link:hover { color: var(--brandGold); text-decoration: underline; }
+    
+    .footer-right { display: flex; flex-direction: column; align-items: flex-end; gap: 15px; }
+    .footer-links-row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
+    
+    .icon-btn { 
+        width: 44px; height: 44px; flex-shrink: 0;
+        border-radius: 50%; 
+        display: inline-flex; align-items: center; justify-content: center; 
+        background: rgba(255, 255, 255, 0.06); 
+        color: var(--footer-text); 
+        text-decoration: none; 
+        border: 1px solid rgba(217, 165, 38, 0.15); 
+        transition: all 0.2s;
+        font-size: 1.1rem;
+    }
+    .icon-btn:hover { background: var(--brandGold); color: var(--brand-blue); transform: scale(1.1); border-color: #fff; }
+    
+    .footer-divider { width: 2px; height: 32px; background: rgba(255,255,255,0.3); margin: 0 12px; border-radius: 2px; }
 
-        .top-bar-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 20px;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
+    .copyright { width: 100%; text-align: center; color: rgba(255, 255, 255, 0.35); margin-top: 24px; font-size: 0.9rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; }
 
-        .top-bar-left {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
+    /* --- RESPONSIVE MOBILE --- */
+    @media (max-width: 1100px) {
+        .top-bar-container { flex-direction: column; gap: 15px; align-items: center; text-align: center; padding-bottom: 5px; }
+        .top-left { margin-right: 0; flex-direction: column; text-align: center; }
+        .top-center { width: 100%; overflow-x: auto; padding-bottom: 10px; justify-content: flex-start; padding-left: 5px; padding-right: 5px; -webkit-overflow-scrolling: touch; }
+        .top-center::-webkit-scrollbar { height: 4px; }
+        .top-center::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.3); border-radius: 4px; }
+        .footer-container { flex-direction: column; text-align: center; }
+        .footer-left { flex-direction: column; }
+        .footer-details { align-items: center; margin-top: 10px; }
+        .footer-right { align-items: center; width: 100%; margin-top: 20px; }
+        .footer-links-row { justify-content: center; width: 100%; overflow-x: auto; padding-bottom: 10px; }
+        .footer-divider { display: none; } 
+    }
 
-        .logo-top-bar {
-            height: 50px;
-            width: auto;
-            border-radius: 50%;
-            border: 2px solid var(--color-yellow);
-            background-color: white;
-        }
+    /* --- STYLES SPECIFIQUES ACRONYMES --- */
+    .page-title {
+        text-align: center;
+        font-family: 'Playfair Display', serif;
+        font-size: 2.5rem;
+        font-weight: 800;
+        color: var(--brand-blue);
+        margin-bottom: 10px;
+    }
+    .page-intro {
+        text-align: center;
+        color: var(--brandGold);
+        font-style: italic;
+        margin-bottom: 40px;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+    }
 
-        .identity-stack {
-            display: flex;
-            flex-direction: column;
-        }
+    /* Recherche */
+    .search-wrapper {
+        position: sticky;
+        top: 90px;
+        z-index: 50;
+        background: rgba(246, 242, 232, 0.95);
+        padding: 10px 0;
+        backdrop-filter: blur(5px);
+        margin-bottom: 30px;
+        display: flex;
+        justify-content: center;
+    }
+    .search-input {
+        width: 100%;
+        max-width: 600px;
+        padding: 16px 24px;
+        border-radius: 50px;
+        border: 2px solid var(--brand-blue);
+        font-size: 1.1rem;
+        outline: none;
+        transition: all 0.3s;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        font-family: 'Outfit', sans-serif;
+    }
+    .search-input:focus {
+        border-color: var(--brandGold);
+        box-shadow: 0 0 0 4px rgba(217, 165, 38, 0.2);
+    }
 
-        .club-title-main {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.1rem;
-            color: var(--color-yellow);
-            font-weight: bold;
-        }
+    /* Grille Acronymes */
+    .acronym-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 20px;
+    }
 
-        .club-subtitle {
-            font-size: 0.8rem;
-            color: var(--color-ivory);
-            opacity: 0.9;
-        }
+    .acronym-card {
+        background: white;
+        border-radius: 12px;
+        padding: 20px;
+        border-left: 5px solid var(--brand-blue);
+        box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        transition: transform 0.2s, box-shadow 0.2s;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+    }
+    .acronym-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        border-left-color: var(--brandGold);
+    }
 
-        .top-bar-center {
-            display: flex;
-            gap: 15px;
-            align-items: center;
-        }
-
-        .header-icon-btn {
-            font-size: 1.2rem;
-            transition: transform 0.2s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .header-icon-btn:hover {
-            transform: scale(1.1);
-            color: var(--color-yellow);
-        }
-
-        .nav-mmpa-img, .nav-profile-img {
-            height: 35px;
-            width: 35px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 1px solid var(--color-yellow);
-        }
-
-        .btn-portfolio-cosmic {
-            background-color: var(--color-yellow);
-            color: var(--color-blue);
-            padding: 8px 15px;
-            border-radius: 20px;
-            font-weight: bold;
-            font-size: 0.9rem;
-            transition: background 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .btn-portfolio-cosmic:hover {
-            background-color: var(--color-bronze);
-            color: white;
-        }
-
-        /* --- CONTENU PRINCIPAL --- */
-        .main-content {
-            flex: 1;
-            max-width: 1200px;
-            margin: 40px auto;
-            padding: 0 20px;
-            width: 100%;
-        }
-
-        .page-title {
-            text-align: center;
-            color: var(--color-blue);
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-        }
-
-        .page-intro {
-            text-align: center;
-            margin-bottom: 40px;
-            color: var(--color-bronze);
-            font-style: italic;
-        }
-
-        /* --- BARRE DE RECHERCHE & FILTRES --- */
-        .search-container {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 20px;
-        }
-
-        .search-input {
-            width: 100%;
-            max-width: 600px;
-            padding: 15px;
-            border: 2px solid var(--color-blue);
-            border-radius: 30px;
-            font-size: 1rem;
-            background-color: var(--color-ivory);
-            outline: none;
-            transition: border-color 0.3s;
-        }
-
-        .search-input:focus {
-            border-color: var(--color-yellow);
-            box-shadow: 0 0 10px rgba(217, 165, 38, 0.2);
-        }
-
-        /* Nouveaux Filtres Catégories */
-        .category-filters {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-        }
-
-        .cat-btn {
-            padding: 8px 15px;
-            border-radius: 20px;
-            border: 1px solid #ddd;
-            background: white;
-            cursor: pointer;
-            font-weight: bold;
-            font-size: 0.9rem;
-            transition: all 0.2s;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .cat-btn:hover { transform: translateY(-2px); }
-        .cat-btn.active { color: white; border-color: transparent; }
-
-        .cat-btn[data-cat="all"].active { background-color: var(--color-blue); }
-        .cat-btn[data-cat="JE"].active { background-color: var(--tag-je-color); }
-        .cat-btn[data-cat="DS"].active { background-color: var(--tag-ds-color); }
-        .cat-btn[data-cat="DA"].active { background-color: var(--tag-da-color); }
-
-
-        .alphabet-filter {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 5px;
-            margin-bottom: 40px;
-        }
-
-        .alpha-btn {
-            background-color: var(--color-ivory);
-            color: var(--color-blue);
-            border: 1px solid var(--color-blue);
-            width: 35px;
-            height: 35px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 5px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .alpha-btn:hover, .alpha-btn.active {
-            background-color: var(--color-blue);
-            color: var(--color-yellow);
-        }
-
-        /* --- GRILLE DES DÉFINITIONS --- */
-        .definitions-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
-        }
-
-        .def-card {
-            background-color: var(--color-ivory);
-            border-left: 5px solid #ccc; /* Sera coloré par JS/CSS selon catégorie */
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            transition: transform 0.2s, box-shadow 0.2s;
-            position: relative;
-        }
-
-        /* Couleurs des bordures selon catégorie */
-        .def-card[data-cat="JE"] { border-left-color: var(--tag-je-color); }
-        .def-card[data-cat="DS"] { border-left-color: var(--tag-ds-color); }
-        .def-card[data-cat="DA"] { border-left-color: var(--tag-da-color); }
-
-        .def-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        .card-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 10px;
-            border-bottom: 1px solid rgba(15, 44, 72, 0.1);
-            padding-bottom: 5px;
-        }
-
-        .def-term {
-            color: var(--color-blue);
-            font-family: 'Playfair Display', serif;
-            font-size: 1.1rem;
-            margin: 0;
-            line-height: 1.3;
-        }
-
-        .entry-number {
-            font-size: 0.8rem;
-            font-weight: bold;
-            color: #777;
-            margin-right: 5px;
-        }
-
-        /* Styles des Tags */
-        .tag {
-            font-size: 0.7rem;
-            padding: 2px 8px;
-            border-radius: 10px;
-            color: white;
-            font-weight: bold;
-            margin-left: 5px;
-            white-space: nowrap;
-        }
-        .tag-je { background-color: var(--tag-je-color); }
-        .tag-ds { background-color: var(--tag-ds-color); }
-        .tag-da { background-color: var(--tag-da-color); }
-
-        .def-desc {
-            font-size: 0.95rem;
-            color: #444;
-        }
-
-        .no-result {
-            grid-column: 1 / -1;
-            text-align: center;
-            font-size: 1.2rem;
-            color: var(--color-bronze);
-            padding: 40px;
-            display: none;
-        }
-
-        /* --- FOOTER STYLES --- */
-        .main-footer {
-            background-color: var(--color-blue);
-            color: var(--color-ivory);
-            padding: 40px 0 20px;
-            margin-top: auto;
-        }
-
-        .footer-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .footer-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            flex-wrap: wrap;
-            gap: 30px;
-            margin-bottom: 30px;
-            border-bottom: 1px solid rgba(246, 242, 232, 0.2);
-            padding-bottom: 20px;
-        }
-
-        .footer-left {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .footer-logo-img {
-            height: 80px;
-            width: 80px;
-            border-radius: 10px;
-            object-fit: cover;
-            border: 2px solid var(--color-yellow);
-        }
-
-        .footer-name {
-            font-family: 'Playfair Display', serif;
-            color: var(--color-yellow);
-            font-size: 1.5rem;
-            margin-bottom: 5px;
-        }
-
-        .footer-details {
-            display: flex;
-            flex-direction: column;
-            font-size: 0.9rem;
-            opacity: 0.9;
-        }
-
-        .footer-right {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        .icon-btn {
-            width: 40px;
-            height: 40px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            transition: all 0.3s;
-            color: var(--color-ivory);
-        }
-
-        .icon-btn:hover {
-            background-color: var(--color-yellow);
-            color: var(--color-blue);
-            transform: translateY(-3px);
-        }
-
-        .dock-separator {
-            width: 1px;
-            height: 30px;
-            background-color: rgba(255, 255, 255, 0.3);
-            margin: 0 10px;
-        }
-
-        .footer-copyright {
-            text-align: center;
-            font-size: 0.85rem;
-            color: rgba(246, 242, 232, 0.7);
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .top-bar-container, .footer-row {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-            }
-            .top-bar-left, .top-bar-center {
-                flex-direction: column;
-                gap: 10px;
-            }
-            .search-input { width: 100%; }
-            .footer-left { flex-direction: column; }
-            .definitions-grid { grid-template-columns: 1fr; }
-        }
-    </style>
+    .acro-code {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.6rem;
+        font-weight: 700;
+        color: var(--brand-blue);
+        margin-bottom: 8px;
+    }
+    .acro-meaning {
+        font-size: 1.05rem;
+        color: #333;
+        font-weight: 500;
+        line-height: 1.4;
+    }
+    .acro-cat {
+        display: inline-block;
+        margin-top: 12px;
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        color: #B4792A;
+        font-weight: 700;
+        background: rgba(180, 121, 42, 0.1);
+        padding: 4px 10px;
+        border-radius: 99px;
+        align-self: flex-start;
+    }
+    .acro-id {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: 0.7rem;
+        color: #ccc;
+        font-weight: bold;
+    }
+  </style>
 </head>
 <body>
 
-    <!-- ✅ HEADER -->
-    <div class="top-bar" id="mainHeader">
-        <div class="top-bar-container">
-            <div class="top-bar-left">
-                <img src="../Asset/Logo_juriste.png" onerror="this.src='https://via.placeholder.com/50?text=Logo';" alt="Logo Club" class="logo-top-bar">
-                <div class="identity-stack">
-                    <span class="club-title-main">💫 The Jurist Elite Club By Studi ✨</span>
-                    <span class="club-subtitle">La Villa des Juristes Brisés 💔 sur l’Île de L’INSTRUCTION ! 🏝</span>
-                </div>
-            </div>
-            <div class="top-bar-center">
-                <a href="https://projettechacademy.github.io/Juridique/index.html" class="header-icon-btn" title="Start/Accueil">
-                    <img src="../Asset/Logo_MMPA.jpeg" onerror="this.src='https://via.placeholder.com/35?text=MMPA';" alt="MMPA" class="nav-mmpa-img">
-                </a>
-                <a href="https://projettechacademy.github.io/Juridique/00_Autres/Mon_Espace_Juriste_Tableau_de_bord_personnel.html" class="header-icon-btn" title="Mon Espace">📊</a>
-                <a href="https://projettechacademy.github.io/Juridique/00_Autres/Lexique_Latin_Juridique.html" class="header-icon-btn" title="Lexique Latin">📜</a>
-                <a href="https://projettechacademy.github.io/Juridique/00_Autres/Atelier_de_Competence.html" class="header-icon-btn" title="Atelier">🛠️</a>
-                <a href="https://projettechacademy.github.io/Juridique/00_Autres/formation_live_juriste.html" class="header-icon-btn" title="Planning Live">📅</a>
-                <a href="https://projettechacademy.github.io/Juridique/00_Autres/Fiche_RNCP_Juriste.html" class="header-icon-btn" title="Fiche RNCP">🎓</a>
-                <a href="https://projettechacademy.github.io/Juridique/00_Autres/Univers_Actes_Juridiques.html" class="header-icon-btn" title="Rédaction Juridique">✍️</a>
-                <a href="https://projettechacademy.github.io/Juridique/00_Autres/A_propos_de_moi.html" class="header-icon-btn" title="À propos de moi">
-                    <img src="../Asset/Photo_Mathilde_Martine_PAISLEY.png"
-                         onerror="this.src='https://via.placeholder.com/35?text=MMP';"
-                         alt="Profil" class="nav-profile-img">
-                </a>
-            </div>
-            <a href="https://projettechacademy.github.io/Juridique/00_Autres/Portfolio_Mathilde-Martine-PAISLEY.html" 
-               target="_blank" class="btn-portfolio-cosmic">
-                <span>📄</span> Mon portfolio
-            </a>
+  <!-- ==================== HEADER ==================== -->
+  <div class="top-bar" id="mainHeader">
+    <div class="top-bar-container">
+      
+      <!-- Logo & Titre (Aligné à Gauche) -->
+      <div class="top-left">
+        <a href="https://projettechacademy.github.io/Juridique/index.html" title="Start/Accueil" target="_blank">
+          <img class="logo-top" src="https://projettechacademy.github.io/Juridique/Asset/Logo_juriste.png" onerror="this.src='https://projettechacademy.github.io/Juridique/Asset/Logo_juriste.jpg'" alt="Logo Juriste">
+        </a>
+        <div class="identity-stack">
+          <div class="club-title-main">💫 The Jurist Elite Club By Studi ✨</div>
+          <div class="club-subtitle">La Villa des Juristes Brisés 💔 sur l’Île de L’INSTRUCTION ! 🏝</div>
         </div>
+      </div>
+
+      <!-- Navigation Icônes (Collé à Expert à droite) -->
+      <nav class="top-center" aria-label="Navigation principale">
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Juridique/00_Autres/A_propos_de_moi.html" title="A propos de moi" target="_blank">
+          <img src="https://projettechacademy.github.io/Juridique/Asset/Photo_Mathilde_Martine_PAISLEY.jpg" alt="Mathilde" style="width:100%;height:100%;border-radius:50%;object-fit:cover;border:2px solid #fff;" onerror="this.src='https://projettechacademy.github.io/Juridique/Asset/Photo_Mathilde_Martine_PAISLEY.jpeg'">
+        </a>
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Juridique/index.html" title="Start/Accueil" target="_blank">🏠</a>
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Juridique/00_Autres/Mon_Espace_Juriste_Tableau_de_bord_personnel.html" title="Mon Espace" target="_blank">📊</a>
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Juridique/00_Autres/formation_live_juriste.html" title="Planning Live" target="_blank">📅</a>
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Juridique/00_Autres/Lexique_Latin_Juridique.html" title="Lexique Latin" target="_blank">📜</a>
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Juridique/00_Autres/Atelier_de_Competence.html" title="Atelier de Compétence Élite" target="_blank">🛠️</a>
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Juridique/00_Autres/Fiche_RNCP_Juriste.html" title="Fiche RNCP" target="_blank">📚</a>
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Juridique/00_Autres/Univers_Actes_Juridiques.html" title="Rédaction Juridique" target="_blank">✍️</a>
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Juridique/Jurist_Elite_Panorama_IA.html" title="Panorama IA" target="_blank">🤖</a>
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Juridique/Acronymes.html" title="Acronymes" target="_blank">🔤</a>
+      </nav>
+
+      <!-- Bouton EXPERT (BIEN PRÉSENT AVEC LABEL EXPERT) -->
+      <div>
+        <a class="btn-portfolio-cosmic" href="https://projettechacademy.github.io/Juridique/00_Autres/Portfolio_Mathilde-Martine-PAISLEY.html" target="_blank" title="Mon Expertise / Projets">
+           <img src="https://projettechacademy.github.io/Juridique/Asset/Logo_MMPA.jpeg" alt="Logo" style="width:24px; height:24px; border-radius:50%; object-fit:cover; border:1px solid #fff;" onerror="this.src='https://projettechacademy.github.io/Juridique/Asset/Logo_MMPA.jpg'"> 
+           Expert
+        </a>
+      </div>
     </div>
+  </div>
+  <!-- ==================== FIN HEADER ==================== -->
 
-    <!-- CONTENU PRINCIPAL -->
-    <main class="main-content">
-        <h1 class="page-title">Lexique Juridique Général</h1>
-        <p class="page-intro">"La précision des termes est la première vertu du Juriste. De l'Entreprise au Social, en passant par les Affaires." ⚖️</p>
 
-        <!-- Barre de recherche -->
-        <div class="search-container">
-            <input type="text" id="searchInput" class="search-input" placeholder="Rechercher une définition (ex: Kbis, DSN, NDA...) 🔍">
+  <!-- ZONE DE CONTENU -->
+  <main class="main-content">
+      <h1 class="page-title">Acronymes Juridiques</h1>
+      <p class="page-intro">"La maîtrise des sigles est la première étape vers l'expertise. Retrouvez ici la liste exhaustive des acronymes du droit français et européen." ⚖️</p>
+
+      <!-- Recherche -->
+      <div class="search-wrapper">
+          <input type="text" id="searchInput" class="search-input" placeholder="Rechercher un sigle (ex: Cass., GDPR, URSSAF...) 🔍">
+      </div>
+
+      <!-- Compteur -->
+      <div id="resultCount" class="text-center text-gray-500 mb-6 font-bold font-mono"></div>
+
+      <!-- Grille -->
+      <div class="acronym-grid" id="acronymGrid">
+          <!-- Injection JS ici -->
+      </div>
+      
+      <div id="noResult" class="text-center py-10 hidden">
+          <p class="text-xl text-yellow-600 font-bold">Aucun acronyme trouvé. 🤔</p>
+      </div>
+  </main>
+
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="main-footer" role="contentinfo">
+    <div class="footer-container">
+      <div class="footer-left">
+        <a href="https://projettechacademy.github.io/Juridique/index.html" target="_blank">
+          <!-- Logo MMPA -->
+          <img class="footer-logo-img" src="https://projettechacademy.github.io/Juridique/Asset/Logo_MMPA.jpeg" alt="Logo MMPA" onerror="this.src='https://projettechacademy.github.io/Juridique/Asset/Logo_MMPA.jpg'">
+        </a>
+        
+        <!-- DÉTAILS DE CONTACT -->
+        <div class="footer-details">
+          <div style="font-weight:700; font-size: 1.1rem; margin-bottom:4px;">Mathilde Martine PAISLEY</div>
+          
+          <!-- Email cliquable (minuscule m) -->
+          <a href="mailto:mathilde.martine.paisley@gmail.com" class="footer-contact-link">
+              📧 mathilde.martine.paisley@gmail.com
+          </a>
+          
+          <!-- Téléphone cliquable (dessous) -->
+          <a href="tel:0685900887" class="footer-contact-link">
+              📲 06 85 90 08 87
+          </a>
         </div>
+      </div>
 
-        <!-- Filtres Catégories -->
-        <div class="category-filters">
-            <button class="cat-btn active" data-cat="all">Tout voir</button>
-            <button class="cat-btn" data-cat="JE" style="color:var(--tag-je-color)">Juriste d'Ent. (JE)</button>
-            <button class="cat-btn" data-cat="DS" style="color:var(--tag-ds-color)">Droit Social (DS)</button>
-            <button class="cat-btn" data-cat="DA" style="color:var(--tag-da-color)">Droit Affaires (DA)</button>
-        </div>
-
-        <!-- Filtre alphabétique -->
-        <div class="alphabet-filter" id="alphabetFilter">
-            <button class="alpha-btn active" data-filter="all">Tous</button>
-            <button class="alpha-btn" data-filter="A">A</button>
-            <button class="alpha-btn" data-filter="B">B</button>
-            <button class="alpha-btn" data-filter="C">C</button>
-            <button class="alpha-btn" data-filter="D">D</button>
-            <button class="alpha-btn" data-filter="E">E</button>
-            <button class="alpha-btn" data-filter="F">F</button>
-            <button class="alpha-btn" data-filter="G">G</button>
-            <button class="alpha-btn" data-filter="H">H</button>
-            <button class="alpha-btn" data-filter="I">I</button>
-            <button class="alpha-btn" data-filter="J">J</button>
-            <button class="alpha-btn" data-filter="K">K</button>
-            <button class="alpha-btn" data-filter="L">L</button>
-            <button class="alpha-btn" data-filter="M">M</button>
-            <button class="alpha-btn" data-filter="N">N</button>
-            <button class="alpha-btn" data-filter="O">O</button>
-            <button class="alpha-btn" data-filter="P">P</button>
-            <button class="alpha-btn" data-filter="Q">Q</button>
-            <button class="alpha-btn" data-filter="R">R</button>
-            <button class="alpha-btn" data-filter="S">S</button>
-            <button class="alpha-btn" data-filter="T">T</button>
-            <button class="alpha-btn" data-filter="U">U</button>
-            <button class="alpha-btn" data-filter="V">V</button>
-        </div>
-
-        <!-- Liste des définitions -->
-        <!-- Note: Le script en bas ajoute automatiquement les Numéros (#001) et les Badges (DS, JE, DA) -->
-        <div class="definitions-grid" id="definitionsList">
+      <div class="footer-right">
+        <div class="footer-links-row" aria-label="Liens utilitaires">
+            <a class="icon-btn" href="https://projettechacademy.github.io/Juridique/00_Autres/A_propos_de_moi.html" title="A propos de moi" target="_blank">👤</a>
+            <a class="icon-btn" href="https://projettechacademy.github.io/Juridique/index.html" title="Accueil" target="_blank">🏠</a>
+            <a class="icon-btn" href="https://projettechacademy.github.io/Juridique/00_Autres/Mon_Espace_Juriste_Tableau_de_bord_personnel.html" title="Mon Espace" target="_blank">📊</a>
+            <a class="icon-btn" href="https://projettechacademy.github.io/Juridique/00_Autres/formation_live_juriste.html" title="Planning" target="_blank">📅</a>
+            <a class="icon-btn" href="https://projettechacademy.github.io/Juridique/00_Autres/Lexique_Latin_Juridique.html" title="Lexique" target="_blank">📜</a>
+            <a class="icon-btn" href="https://projettechacademy.github.io/Juridique/00_Autres/Atelier_de_Competence.html" title="Atelier" target="_blank">🛠️</a>
+            <a class="icon-btn" href="https://projettechacademy.github.io/Juridique/00_Autres/Portfolio_Mathilde-Martine-PAISLEY.html" title="Portfolio" target="_blank">🎨</a>
+            <a class="icon-btn" href="https://projettechacademy.github.io/Juridique/00_Autres/Fiche_RNCP_Juriste.html" title="RNCP" target="_blank">📚</a>
+            <a class="icon-btn" href="https://projettechacademy.github.io/Juridique/00_Autres/Univers_Actes_Juridiques.html" title="Rédaction Juridique" target="_blank">✍️</a>
+            <a class="icon-btn" href="https://projettechacademy.github.io/Juridique/Jurist_Elite_Panorama_IA.html" title="Panorama IA" target="_blank">🤖</a>
+            <a class="icon-btn" href="https://projettechacademy.github.io/Juridique/Acronymes.html" title="Acronymes" target="_blank">🔤</a>
             
-            <!-- A -->
-            <div class="def-card" data-letter="A" data-cat="DS">
-                <h3 class="def-term">ACC (Assurance Chômage)</h3>
-                <p class="def-desc">Cotisation finançant les allocations chômage.</p>
-            </div>
-            <div class="def-card" data-letter="A" data-cat="DS">
-                <h3 class="def-term">ACPM (AT/MP)</h3>
-                <p class="def-desc">Régime couvrant les accidents du travail et maladies professionnelles.</p>
-            </div>
-            <div class="def-card" data-letter="A" data-cat="JE">
-                <h3 class="def-term">AFJE</h3>
-                <p class="def-desc">Association Française des Juristes d'Entreprise. Principale organisation représentative.</p>
-            </div>
-            <div class="def-card" data-letter="A" data-cat="DA">
-                <h3 class="def-term">AG (Assemblée Générale)</h3>
-                <p class="def-desc">Réunion des actionnaires ou associés pour prendre les décisions importantes (AGO/AGE).</p>
-            </div>
-             <div class="def-card" data-letter="A" data-cat="DS">
-                <h3 class="def-term">AGIRC-ARRCO</h3>
-                <p class="def-desc">Régime de retraite complémentaire obligatoire.</p>
-            </div>
-             <div class="def-card" data-letter="A" data-cat="DS">
-                <h3 class="def-term">AGS</h3>
-                <p class="def-desc">Association pour la gestion du régime de Garantie des Salaires (défaillance d'entreprise).</p>
-            </div>
-             <div class="def-card" data-letter="A" data-cat="DA">
-                <h3 class="def-term">AMF</h3>
-                <p class="def-desc">Autorité des Marchés Financiers. Régulateur de la place financière française.</p>
-            </div>
-             <div class="def-card" data-letter="A" data-cat="DS">
-                <h3 class="def-term">ANACT</h3>
-                <p class="def-desc">Agence Nationale pour l'Amélioration des Conditions de Travail.</p>
-            </div>
-             <div class="def-card" data-letter="A" data-cat="DS">
-                <h3 class="def-term">APEC</h3>
-                <p class="def-desc">Association Pour l'Emploi des Cadres.</p>
-            </div>
-            <div class="def-card" data-letter="A" data-cat="DS">
-                <h3 class="def-term">Abandon de poste</h3>
-                <p class="def-desc">Rupture non officielle du contrat, souvent considérée comme démission (présomption).</p>
-            </div>
-            <div class="def-card" data-letter="A" data-cat="DS">
-                <h3 class="def-term">Acompte sur salaire</h3>
-                <p class="def-desc">Paiement anticipé pour travail déjà effectué.</p>
-            </div>
-            <div class="def-card" data-letter="A" data-cat="DS">
-                <h3 class="def-term">Activité partielle</h3>
-                <p class="def-desc">Dispositif de réduction d'activité avec indemnisation (ex-chômage partiel).</p>
-            </div>
-            <div class="def-card" data-letter="A" data-cat="DS">
-                <h3 class="def-term">Affichage obligatoire</h3>
-                <p class="def-desc">Informations légales à afficher (Inspection, sécurité, égalité H/F).</p>
-            </div>
-             <div class="def-card" data-letter="A" data-cat="DS">
-                <h3 class="def-term">Ancienneté</h3>
-                <p class="def-desc">Durée de présence, impactant rémunération et indemnités.</p>
-            </div>
-            <div class="def-card" data-letter="A" data-cat="DA">
-                <h3 class="def-term">Apport en nature</h3>
-                <p class="def-desc">Biens (immeubles, marques...) apportés au capital d'une société, distincts du numéraire.</p>
-            </div>
-            <div class="def-card" data-letter="A" data-cat="DS">
-                <h3 class="def-term">Assiette de cotisation</h3>
-                <p class="def-desc">Base de calcul des cotisations sociales.</p>
-            </div>
-            <div class="def-card" data-letter="A" data-cat="DS">
-                <h3 class="def-term">Astreintes</h3>
-                <p class="def-desc">Période de disponibilité hors lieu de travail.</p>
-            </div>
-            <div class="def-card" data-letter="A" data-cat="DS">
-                <h3 class="def-term">Audit de paie</h3>
-                <p class="def-desc">Contrôle de conformité légale et conventionnelle.</p>
-            </div>
-            <div class="def-card" data-letter="A" data-cat="DS">
-                <h3 class="def-term">Avantages en nature</h3>
-                <p class="def-desc">Biens/services fournis (voiture, logement) soumis à cotisations.</p>
-            </div>
-            <div class="def-card" data-letter="A" data-cat="DS">
-                <h3 class="def-term">Avertissement</h3>
-                <p class="def-desc">Sanction disciplinaire mineure.</p>
-            </div>
+            <div class="footer-divider"></div>
 
-            <!-- B -->
-            <div class="def-card" data-letter="B" data-cat="DA">
-                <h3 class="def-term">Bail commercial</h3>
-                <p class="def-desc">Contrat de location de locaux pour l'exploitation d'un fonds de commerce (3-6-9).</p>
-            </div>
-            <div class="def-card" data-letter="B" data-cat="DS">
-                <h3 class="def-term">BDESE</h3>
-                <p class="def-desc">Base de Données Économiques Sociales et Environnementales (pour le CSE).</p>
-            </div>
-            <div class="def-card" data-letter="B" data-cat="DS">
-                <h3 class="def-term">BOETH</h3>
-                <p class="def-desc">Bénéficiaire de l'Obligation d'Emploi des Travailleurs Handicapés.</p>
-            </div>
-            <div class="def-card" data-letter="B" data-cat="DS">
-                <h3 class="def-term">BOSS</h3>
-                <p class="def-desc">Bulletin Officiel de la Sécurité Sociale.</p>
-            </div>
-            <div class="def-card" data-letter="B" data-cat="DS">
-                <h3 class="def-term">Bilan social</h3>
-                <p class="def-desc">Récapitulatif annuel des données sociales.</p>
-            </div>
-            <div class="def-card" data-letter="B" data-cat="DS">
-                <h3 class="def-term">Blocs DSN</h3>
-                <p class="def-desc">Structure de la DSN (Versement, Contrat, etc.).</p>
-            </div>
-
-            <!-- C -->
-            <div class="def-card" data-letter="C" data-cat="DA">
-                <h3 class="def-term">CA (Conseil d'Administration)</h3>
-                <p class="def-desc">Organe collégial déterminant les orientations de l'activité de la société (SA).</p>
-            </div>
-            <div class="def-card" data-letter="C" data-cat="DS">
-                <h3 class="def-term">CDD / CDI</h3>
-                <p class="def-desc">Contrat à Durée Déterminée / Indéterminée.</p>
-            </div>
-            <div class="def-card" data-letter="C" data-cat="DS">
-                <h3 class="def-term">CEC</h3>
-                <p class="def-desc">Compte d'Engagement Citoyen.</p>
-            </div>
-            <div class="def-card" data-letter="C" data-cat="DS">
-                <h3 class="def-term">CESU</h3>
-                <p class="def-desc">Chèque Emploi Service Universel.</p>
-            </div>
-             <div class="def-card" data-letter="C" data-cat="DS">
-                <h3 class="def-term">CET</h3>
-                <p class="def-desc">Compte Épargne Temps.</p>
-            </div>
-            <div class="def-card" data-letter="C" data-cat="DA">
-                <h3 class="def-term">CGV (Conditions Générales de Vente)</h3>
-                <p class="def-desc">Socle de la négociation commerciale, elles informent le client sur les conditions de vente.</p>
-            </div>
-            <div class="def-card" data-letter="C" data-cat="DS">
-                <h3 class="def-term">CICE</h3>
-                <p class="def-desc">Crédit d'Impôt pour la Compétitivité et l'Emploi (Historique).</p>
-            </div>
-            <div class="def-card" data-letter="C" data-cat="DS">
-                <h3 class="def-term">CPF</h3>
-                <p class="def-desc">Compte Personnel de Formation.</p>
-            </div>
-            <div class="def-card" data-letter="C" data-cat="DS">
-                <h3 class="def-term">CRM</h3>
-                <p class="def-desc">Compte Rendu Métier (Retours DSN).</p>
-            </div>
-            <div class="def-card" data-letter="C" data-cat="DS">
-                <h3 class="def-term">CSG / CRDS</h3>
-                <p class="def-desc">Contributions sociales (Protection sociale / Dette sociale).</p>
-            </div>
-            <div class="def-card" data-letter="C" data-cat="DS">
-                <h3 class="def-term">CSE</h3>
-                <p class="def-desc">Comité Social et Économique (Instance représentative du personnel).</p>
-            </div>
-            <div class="def-card" data-letter="C" data-cat="DS">
-                <h3 class="def-term">Carence</h3>
-                <p class="def-desc">Jours non indemnisés en début d'arrêt maladie.</p>
-            </div>
-            <div class="def-card" data-letter="C" data-cat="JE">
-                <h3 class="def-term">Clause de non-concurrence</h3>
-                <p class="def-desc">Interdit au salarié, après rupture, d'exercer une activité concurrente (doit être rémunérée).</p>
-            </div>
-            <div class="def-card" data-letter="C" data-cat="JE">
-                <h3 class="def-term">Compliance</h3>
-                <p class="def-desc">Conformité. Ensemble des processus assurant le respect des normes et de l'éthique.</p>
-            </div>
-            <div class="def-card" data-letter="C" data-cat="JE">
-                <h3 class="def-term">Contract Management</h3>
-                <p class="def-desc">Gestion du cycle de vie des contrats, de la négociation à l'exécution.</p>
-            </div>
-            <div class="def-card" data-letter="C" data-cat="DS">
-                <h3 class="def-term">Congés payés</h3>
-                <p class="def-desc">2,5 jours ouvrables/mois. Droit au repos rémunéré.</p>
-            </div>
-            <div class="def-card" data-letter="C" data-cat="DS">
-                <h3 class="def-term">Contingent heures sup.</h3>
-                <p class="def-desc">Volume d'heures supplémentaires autorisé par an sans contrepartie obligatoire (220h défaut).</p>
-            </div>
-            <div class="def-card" data-letter="C" data-cat="DS">
-                <h3 class="def-term">Convention collective</h3>
-                <p class="def-desc">Accord de branche adaptant le Code du travail (IDCC).</p>
-            </div>
-
-            <!-- D -->
-            <div class="def-card" data-letter="D" data-cat="DS">
-                <h3 class="def-term">DGFIP</h3>
-                <p class="def-desc">Direction Générale des Finances Publiques.</p>
-            </div>
-             <div class="def-card" data-letter="D" data-cat="DS">
-                <h3 class="def-term">DOETH</h3>
-                <p class="def-desc">Déclaration Obligatoire d'Emploi des Travailleurs Handicapés.</p>
-            </div>
-            <div class="def-card" data-letter="D" data-cat="DS">
-                <h3 class="def-term">DPAE</h3>
-                <p class="def-desc">Déclaration Préalable À l'Embauche.</p>
-            </div>
-            <div class="def-card" data-letter="D" data-cat="DS">
-                <h3 class="def-term">DSN</h3>
-                <p class="def-desc">Déclaration Sociale Nominative.</p>
-            </div>
-            <div class="def-card" data-letter="D" data-cat="DS">
-                <h3 class="def-term">DUERP</h3>
-                <p class="def-desc">Document Unique d'Évaluation des Risques Professionnels.</p>
-            </div>
-            <div class="def-card" data-letter="D" data-cat="DA">
-                <h3 class="def-term">Due Diligence</h3>
-                <p class="def-desc">Audits préalables (juridiques, financiers) avant une acquisition d'entreprise.</p>
-            </div>
-            <div class="def-card" data-letter="D" data-cat="DS">
-                <h3 class="def-term">Décalage de paie</h3>
-                <p class="def-desc">Versement du salaire le mois suivant l'activité.</p>
-            </div>
-            <div class="def-card" data-letter="D" data-cat="DS">
-                <h3 class="def-term">Déduction Forfaitaire Spécifique (DFS)</h3>
-                <p class="def-desc">Abattement pour frais professionnels (BTP, etc.).</p>
-            </div>
-            <div class="def-card" data-letter="D" data-cat="DS">
-                <h3 class="def-term">Démission</h3>
-                <p class="def-desc">Acte de rupture à l'initiative du salarié.</p>
-            </div>
-
-            <!-- E -->
-            <div class="def-card" data-letter="E" data-cat="DS">
-                <h3 class="def-term">EA / ESAT</h3>
-                <p class="def-desc">Entreprises Adaptées / Établissements et Services d'Aide par le Travail.</p>
-            </div>
-            <div class="def-card" data-letter="E" data-cat="DA">
-                <h3 class="def-term">EBE (Excédent Brut d'Exploitation)</h3>
-                <p class="def-desc">Indicateur financier de la rentabilité opérationnelle.</p>
-            </div>
-             <div class="def-card" data-letter="E" data-cat="DS">
-                <h3 class="def-term">ETP</h3>
-                <p class="def-desc">Équivalent Temps Plein.</p>
-            </div>
-
-            <!-- F -->
-            <div class="def-card" data-letter="F" data-cat="DS">
-                <h3 class="def-term">FNAL</h3>
-                <p class="def-desc">Fonds National d'Aide au Logement.</p>
-            </div>
-             <div class="def-card" data-letter="F" data-cat="DS">
-                <h3 class="def-term">Forfait jours</h3>
-                <p class="def-desc">Décompte du temps de travail en jours (Cadres autonomes).</p>
-            </div>
-            <div class="def-card" data-letter="F" data-cat="DS">
-                <h3 class="def-term">Frais professionnels</h3>
-                <p class="def-desc">Dépenses engagées pour le travail, remboursées.</p>
-            </div>
-            <div class="def-card" data-letter="F" data-cat="DA">
-                <h3 class="def-term">Fusion-Acquisition (M&A)</h3>
-                <p class="def-desc">Opérations de rapprochement entre entreprises (Mergers & Acquisitions).</p>
-            </div>
-
-            <!-- G -->
-            <div class="def-card" data-letter="G" data-cat="JE">
-                <h3 class="def-term">GPEC</h3>
-                <p class="def-desc">Gestion Prévisionnelle des Emplois et des Compétences.</p>
-            </div>
-            <div class="def-card" data-letter="G" data-cat="DS">
-                <h3 class="def-term">Gratification de stage</h3>
-                <p class="def-desc">Obligatoire pour stages > 2 mois.</p>
-            </div>
-            <div class="def-card" data-letter="G" data-cat="DA">
-                <h3 class="def-term">Greffe</h3>
-                <p class="def-desc">Secrétariat du Tribunal de Commerce, gère le RCS.</p>
-            </div>
-            <div class="def-card" data-letter="G" data-cat="DS">
-                <h3 class="def-term">Grève</h3>
-                <p class="def-desc">Cessation collective et concertée du travail.</p>
-            </div>
-
-            <!-- H -->
-            <div class="def-card" data-letter="H" data-cat="DS">
-                <h3 class="def-term">Heures Complémentaires (HC)</h3>
-                <p class="def-desc">Heures au-delà du contrat temps partiel.</p>
-            </div>
-            <div class="def-card" data-letter="H" data-cat="DS">
-                <h3 class="def-term">Heures Supplémentaires (HS)</h3>
-                <p class="def-desc">Heures au-delà de 35h.</p>
-            </div>
-
-            <!-- I -->
-            <div class="def-card" data-letter="I" data-cat="DS">
-                <h3 class="def-term">IDCC</h3>
-                <p class="def-desc">Identifiant de la Convention Collective.</p>
-            </div>
-            <div class="def-card" data-letter="I" data-cat="DS">
-                <h3 class="def-term">IJSS</h3>
-                <p class="def-desc">Indemnités Journalières de Sécurité Sociale.</p>
-            </div>
-            <div class="def-card" data-letter="I" data-cat="DA">
-                <h3 class="def-term">INPI</h3>
-                <p class="def-desc">Institut National de la Propriété Industrielle (Marques, Brevets).</p>
-            </div>
-            <div class="def-card" data-letter="I" data-cat="DS">
-                <h3 class="def-term">Impôt à la source (PAS)</h3>
-                <p class="def-desc">Prélèvement de l'IR sur le bulletin.</p>
-            </div>
-            <div class="def-card" data-letter="I" data-cat="DS">
-                <h3 class="def-term">Indemnité congés payés</h3>
-                <p class="def-desc">Règle du 10ème ou maintien.</p>
-            </div>
-
-            <!-- J -->
-            <div class="def-card" data-letter="J" data-cat="JE">
-                <h3 class="def-term">Juriste d'Entreprise</h3>
-                <p class="def-desc">Professionnel du droit salarié assurant la sécurité juridique de son entreprise.</p>
-            </div>
-            <div class="def-card" data-letter="J" data-cat="DS">
-                <h3 class="def-term">Journée de solidarité</h3>
-                <p class="def-desc">Journée travaillée non rémunérée (CSA).</p>
-            </div>
-
-            <!-- K -->
-            <div class="def-card" data-letter="K" data-cat="DA">
-                <h3 class="def-term">Kbis</h3>
-                <p class="def-desc">Carte d'identité de l'entreprise, attestant de son existence légale au RCS.</p>
-            </div>
-            <div class="def-card" data-letter="K" data-cat="JE">
-                <h3 class="def-term">KPI</h3>
-                <p class="def-desc">Key Performance Indicator. Indicateur clé de performance.</p>
-            </div>
-
-            <!-- L -->
-            <div class="def-card" data-letter="L" data-cat="JE">
-                <h3 class="def-term">Legal Design</h3>
-                <p class="def-desc">Application du design au droit pour rendre les documents juridiques clairs et accessibles.</p>
-            </div>
-            <div class="def-card" data-letter="L" data-cat="JE">
-                <h3 class="def-term">Legal Ops</h3>
-                <p class="def-desc">Legal Operations. Fonction optimisant les processus, la tech et la gestion du département juridique.</p>
-            </div>
-            <div class="def-card" data-letter="L" data-cat="DA">
-                <h3 class="def-term">Liquidation Judiciaire</h3>
-                <p class="def-desc">Procédure collective mettant fin à l'activité d'une entreprise en cessation de paiement.</p>
-            </div>
-            <div class="def-card" data-letter="L" data-cat="DS">
-                <h3 class="def-term">Livre de paie</h3>
-                <p class="def-desc">Document mensuel récapitulatif.</p>
-            </div>
-            <div class="def-card" data-letter="L" data-cat="DS">
-                <h3 class="def-term">Loi de mensualisation</h3>
-                <p class="def-desc">Paiement mensuel lissé.</p>
-            </div>
-
-            <!-- M -->
-            <div class="def-card" data-letter="M" data-cat="DA">
-                <h3 class="def-term">Mandataire Social</h3>
-                <p class="def-desc">Personne physique ou morale représentant la société (Gérant, Président, DG).</p>
-            </div>
-            <div class="def-card" data-letter="M" data-cat="DS">
-                <h3 class="def-term">MSA</h3>
-                <p class="def-desc">Mutuelle Sociale Agricole.</p>
-            </div>
-            <div class="def-card" data-letter="M" data-cat="DS">
-                <h3 class="def-term">Maintien de salaire</h3>
-                <p class="def-desc">Complément employeur aux IJSS.</p>
-            </div>
-             <div class="def-card" data-letter="M" data-cat="DS">
-                <h3 class="def-term">Montant Net Social</h3>
-                <p class="def-desc">Base pour le RSA et la Prime d'activité.</p>
-            </div>
-            <div class="def-card" data-letter="M" data-cat="DS">
-                <h3 class="def-term">Mutuelle</h3>
-                <p class="def-desc">Complémentaire santé obligatoire.</p>
-            </div>
-
-            <!-- N -->
-            <div class="def-card" data-letter="N" data-cat="JE">
-                <h3 class="def-term">NDA</h3>
-                <p class="def-desc">Non-Disclosure Agreement. Accord de confidentialité.</p>
-            </div>
-            <div class="def-card" data-letter="N" data-cat="DS">
-                <h3 class="def-term">NIR</h3>
-                <p class="def-desc">Numéro de Sécurité Sociale.</p>
-            </div>
-             <div class="def-card" data-letter="N" data-cat="DS">
-                <h3 class="def-term">NTT</h3>
-                <p class="def-desc">Numéro Technique Temporaire.</p>
-            </div>
-             <div class="def-card" data-letter="N" data-cat="DS">
-                <h3 class="def-term">Net à payer</h3>
-                <p class="def-desc">Somme virée au salarié.</p>
-            </div>
-
-            <!-- O -->
-            <div class="def-card" data-letter="O" data-cat="DS">
-                <h3 class="def-term">OETH</h3>
-                <p class="def-desc">Obligation d'Emploi des Travailleurs Handicapés.</p>
-            </div>
-             <div class="def-card" data-letter="O" data-cat="DS">
-                <h3 class="def-term">OPCO</h3>
-                <p class="def-desc">Opérateurs de Compétences.</p>
-            </div>
-
-            <!-- P -->
-            <div class="def-card" data-letter="P" data-cat="DS">
-                <h3 class="def-term">PAS</h3>
-                <p class="def-desc">Prélèvement à la Source.</p>
-            </div>
-             <div class="def-card" data-letter="P" data-cat="DS">
-                <h3 class="def-term">PEEC</h3>
-                <p class="def-desc">Participation Employeur Effort Construction (Action Logement).</p>
-            </div>
-            <div class="def-card" data-letter="P" data-cat="DS">
-                <h3 class="def-term">PMSS / PSS</h3>
-                <p class="def-desc">Plafond (Mensuel) de la Sécurité Sociale.</p>
-            </div>
-            <div class="def-card" data-letter="P" data-cat="DS">
-                <h3 class="def-term">PPV</h3>
-                <p class="def-desc">Prime de Partage de la Valeur.</p>
-            </div>
-            <div class="def-card" data-letter="P" data-cat="DA">
-                <h3 class="def-term">Pacte d'actionnaires</h3>
-                <p class="def-desc">Accord extra-statutaire organisant les relations entre actionnaires.</p>
-            </div>
-            <div class="def-card" data-letter="P" data-cat="JE">
-                <h3 class="def-term">Privilège de juriste (Legal Privilege)</h3>
-                <p class="def-desc">Protection de la confidentialité des avis juridiques (En débat pour les JE en France).</p>
-            </div>
-            <div class="def-card" data-letter="P" data-cat="DS">
-                <h3 class="def-term">Période d'essai</h3>
-                <p class="def-desc">Période d'évaluation au début du contrat.</p>
-            </div>
-            <div class="def-card" data-letter="P" data-cat="DS">
-                <h3 class="def-term">Prévoyance</h3>
-                <p class="def-desc">Couverture Décès/Invalidité (Obligatoire Cadres).</p>
-            </div>
-
-            <!-- Q -->
-            <div class="def-card" data-letter="Q" data-cat="DS">
-                <h3 class="def-term">Quotité de temps</h3>
-                <p class="def-desc">Pourcentage de temps de travail.</p>
-            </div>
-
-            <!-- R -->
-            <div class="def-card" data-letter="R" data-cat="DA">
-                <h3 class="def-term">RCS</h3>
-                <p class="def-desc">Registre du Commerce et des Sociétés.</p>
-            </div>
-            <div class="def-card" data-letter="R" data-cat="DS">
-                <h3 class="def-term">RGCP</h3>
-                <p class="def-desc">Réduction Générale des Cotisations Patronales.</p>
-            </div>
-            <div class="def-card" data-letter="R" data-cat="JE">
-                <h3 class="def-term">RGPD</h3>
-                <p class="def-desc">Règlement Général sur la Protection des Données (Privacy).</p>
-            </div>
-            <div class="def-card" data-letter="R" data-cat="JE">
-                <h3 class="def-term">RSE</h3>
-                <p class="def-desc">Responsabilité Sociétale des Entreprises.</p>
-            </div>
-            <div class="def-card" data-letter="R" data-cat="DS">
-                <h3 class="def-term">RTT</h3>
-                <p class="def-desc">Réduction du Temps de Travail.</p>
-            </div>
-            <div class="def-card" data-letter="R" data-cat="DS">
-                <h3 class="def-term">Reçu pour solde de tout compte</h3>
-                <p class="def-desc">Inventaire des sommes versées à la rupture.</p>
-            </div>
-            <div class="def-card" data-letter="R" data-cat="DS">
-                <h3 class="def-term">Rupture conventionnelle</h3>
-                <p class="def-desc">Rupture amiable du CDI.</p>
-            </div>
-
-            <!-- S -->
-            <div class="def-card" data-letter="S" data-cat="DA">
-                <h3 class="def-term">SA / SARL / SAS</h3>
-                <p class="def-desc">Société Anonyme / Responsabilité Limitée / Actions Simplifiée.</p>
-            </div>
-            <div class="def-card" data-letter="S" data-cat="DS">
-                <h3 class="def-term">SIRH</h3>
-                <p class="def-desc">Système d'Information des Ressources Humaines.</p>
-            </div>
-             <div class="def-card" data-letter="S" data-cat="DS">
-                <h3 class="def-term">SJR</h3>
-                <p class="def-desc">Salaire Journalier de Référence.</p>
-            </div>
-             <div class="def-card" data-letter="S" data-cat="DS">
-                <h3 class="def-term">SMIC</h3>
-                <p class="def-desc">Salaire Minimum Interprofessionnel de Croissance.</p>
-            </div>
-            <div class="def-card" data-letter="S" data-cat="DS">
-                <h3 class="def-term">SOLTÉA</h3>
-                <p class="def-desc">Plateforme taxe d'apprentissage.</p>
-            </div>
-            <div class="def-card" data-letter="S" data-cat="JE">
-                <h3 class="def-term">Soft Skills</h3>
-                <p class="def-desc">Compétences comportementales (écoute, négociation) essentielles au juriste.</p>
-            </div>
-            <div class="def-card" data-letter="S" data-cat="DS">
-                <h3 class="def-term">Subrogation</h3>
-                <p class="def-desc">L'employeur perçoit les IJSS et maintient le salaire.</p>
-            </div>
-
-            <!-- T -->
-            <div class="def-card" data-letter="T" data-cat="DS">
-                <h3 class="def-term">Taxe d'Apprentissage (TA)</h3>
-                <p class="def-desc">Financement de l'apprentissage.</p>
-            </div>
-            <div class="def-card" data-letter="T" data-cat="DS">
-                <h3 class="def-term">Taxe sur les Salaires (TS)</h3>
-                <p class="def-desc">Pour employeurs non assujettis à la TVA.</p>
-            </div>
-            <div class="def-card" data-letter="T" data-cat="DA">
-                <h3 class="def-term">Tribunal de Commerce (TC)</h3>
-                <p class="def-desc">Juridiction des litiges entre commerçants.</p>
-            </div>
-            <div class="def-card" data-letter="T" data-cat="DS">
-                <h3 class="def-term">Télétravail</h3>
-                <p class="def-desc">Travail hors locaux.</p>
-            </div>
-            <div class="def-card" data-letter="T" data-cat="DS">
-                <h3 class="def-term">Titres restaurant</h3>
-                <p class="def-desc">Avantage repas co-financé.</p>
-            </div>
-
-            <!-- U -->
-            <div class="def-card" data-letter="U" data-cat="DS">
-                <h3 class="def-term">URSSAF</h3>
-                <p class="def-desc">Organisme collecteur des cotisations sociales.</p>
-            </div>
-            <div class="def-card" data-letter="U" data-cat="DS">
-                <h3 class="def-term">Usage d'entreprise</h3>
-                <p class="def-desc">Avantage non écrit, général, constant et fixe.</p>
-            </div>
-
-            <!-- V -->
-            <div class="def-card" data-letter="V" data-cat="DS">
-                <h3 class="def-term">VAE</h3>
-                <p class="def-desc">Validation des Acquis de l'Expérience.</p>
-            </div>
-             <div class="def-card" data-letter="V" data-cat="DS">
-                <h3 class="def-term">VRP</h3>
-                <p class="def-desc">Voyageur Représentant Placier.</p>
-            </div>
-             <div class="def-card" data-letter="V" data-cat="JE">
-                <h3 class="def-term">Veille Juridique</h3>
-                <p class="def-desc">Surveillance active de l'évolution des lois et jurisprudences.</p>
-            </div>
-             <div class="def-card" data-letter="V" data-cat="DS">
-                <h3 class="def-term">Veille sociale</h3>
-                <p class="def-desc">Suivi des évolutions légales sociales.</p>
-            </div>
-            <div class="def-card" data-letter="V" data-cat="DS">
-                <h3 class="def-term">Versement Mobilité</h3>
-                <p class="def-desc">Contribution transport.</p>
-            </div>
-            
-            <div class="no-result" id="noResult">Aucun terme trouvé pour cette recherche. 🧐</div>
+            <a class="icon-btn" href="https://chat.whatsapp.com/IoMXFl4o2otExYKCPVj22b" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp" style="color:#25D366;"></i></a>
+            <a class="icon-btn" href="https://discord.gg/qwNPV8QzFt" target="_blank" title="Discord"><i class="fab fa-discord" style="color:#5865F2;"></i></a>
+            <a class="icon-btn" href="https://www.linkedin.com/in/mathilde-martine-paisley-1a4422382/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin" style="color:#0077b5;"></i></a>
+            <a class="icon-btn" href="https://www.instagram.com/enervyx/" target="_blank" title="Instagram"><i class="fab fa-instagram" style="color:#E1306C;"></i></a>
+            <a class="icon-btn" href="https://www.tiktok.com/@enervyx/" target="_blank" title="TikTok"><i class="fab fa-tiktok" style="color:#00f2ea;"></i></a>
         </div>
-    </main>
+      </div>
 
-    <!-- ✅ FOOTER -->
-    <footer class="main-footer">
-        <div class="footer-container">
-            <div class="footer-row">
-                <div class="footer-left">
-                    <img src="../Asset/Logo_MMPA.jpeg" alt="Logo" class="footer-logo-img" onerror="this.src='https://via.placeholder.com/80?text=Logo';">
-                    <div class="footer-info">
-                        <h3 class="footer-name">Mathilde Martine PAISLEY</h3>
-                        <div class="footer-details">
-                            <span>📧 Mathilde.martine.paisley@gmail.com</span>
-                            <span>📲 06 85 90 08 87</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="footer-right">
-                    <a href="https://projettechacademy.github.io/Juridique/index.html" class="icon-btn logo-home-btn" title="Accueil">
-                        <img src="../Asset/Logo_juriste.png" alt="Accueil" onerror="this.src='https://via.placeholder.com/30?text=Home';" style="width:100%; height:100%; border-radius:50%; object-fit:cover;">
-                    </a>
-                    <a href="https://projettechacademy.github.io/Juridique/00_Autres/Mon_Espace_Juriste_Tableau_de_bord_personnel.html" class="icon-btn" title="Mon Espace">
-                        <span class="brand-nav">📊</span>
-                    </a>
-                    <a href="https://projettechacademy.github.io/Juridique/00_Autres/Lexique_Latin_Juridique.html" class="icon-btn" title="Lexique">
-                        <span class="brand-nav">📜</span>
-                    </a>
-                    <a href="https://projettechacademy.github.io/Juridique/00_Autres/formation_live_juriste.html" class="icon-btn" title="Planning">
-                        <span class="brand-nav">📅</span>
-                    </a>
-                    <a href="https://projettechacademy.github.io/Juridique/00_Autres/Fiche_RNCP_Juriste.html" class="icon-btn" title="Fiche RNCP">
-                        <span class="brand-nav">🎓</span>
-                    </a>
-                    <a href="https://projettechacademy.github.io/Juridique/00_Autres/Univers_Actes_Juridiques.html" class="icon-btn" title="Rédaction Juridique">
-                        <span class="brand-nav">✍️</span>
-                    </a>
-                    <a href="https://projettechacademy.github.io/Juridique/00_Autres/A_propos_de_moi.html" class="icon-btn" title="Bio">
-                        <span class="brand-nav">👤</span>
-                    </a>
-                    <div class="dock-separator"></div>
-                    <a href="https://chat.whatsapp.com/IoMXFl4o2otExYKCPVj22b" target="_blank" class="icon-btn" title="WhatsApp">
-                        <i class="fab fa-whatsapp brand-whatsapp"></i>
-                    </a>
-                    <a href="https://discord.gg/qwNPV8QzFt" target="_blank" class="icon-btn" title="Discord">
-                        <i class="fab fa-discord brand-discord"></i>
-                    </a>
-                    <a href="https://www.linkedin.com/in/mathilde-martine-paisley-1a4422382/" target="_blank" class="icon-btn" title="LinkedIn">
-                        <i class="fab fa-linkedin brand-linkedin"></i>
-                    </a>
-                    <a href="https://www.instagram.com/enervyx/" target="_blank" class="icon-btn" title="Instagram">
-                        <i class="fab fa-instagram brand-instagram"></i>
-                    </a>
-                    <a href="https://www.tiktok.com/@enervyx/" target="_blank" class="icon-btn" title="TikTok">
-                        <i class="fab fa-tiktok brand-tiktok"></i>
-                    </a>
-                </div>
-            </div>
-            <div class="footer-copyright">
-                <p>
-                    💫 The Jurist Elite Club By Studi ✨  
-                    La Villa des Juristes Brisés 💔 sur l’Île de L’INSTRUCTION ! 🏝  
-                    | By Mathilde Martine PAISLEY | © 2025 Tous droits réservés <br>
-                    Création : 07/12/2025 – Dernière mise à jour : 07/12/2025
-                </p>
-            </div>
-        </div>
-    </footer>
+      <div class="copyright">
+        💫 The Jurist Elite Club By Studi ✨ La Villa des Juristes Brisés 💔 sur l’Île de L’INSTRUCTION !🏝 <br> 
+        By Mathilde Martine PAISLEY | © 2025 Tous droits réservés
+      </div>
+    </div>
+  </footer>
+  <!-- ==================== FIN FOOTER ==================== -->
 
-    <script>
-        // --- LOGIQUE AUTOMATISATION & INTERACTIVITÉ ---
-        document.addEventListener('DOMContentLoaded', () => {
-            
-            // 1. AUTOMATISATION DES NUMÉROS ET TAGS
-            const cards = document.querySelectorAll('.def-card');
-            
-            cards.forEach((card, index) => {
-                // Numérotation #001
-                const number = index + 1;
-                const formattedNumber = '#' + number.toString().padStart(3, '0');
-                
-                // Récupération catégorie
-                const category = card.getAttribute('data-cat') || 'JE';
-                let catLabel = '';
-                let catClass = '';
+  <script>
+    // --- BASE DE DONNÉES : ACRONYMES JURIDIQUES COMPLÈTE (LISTE 1-500) ---
+    const dbAcronyms = [
+      { id: 1, c: "A. / Arr.", m: "Arrêté (texte réglementaire)", cat: "Texte / règlement" },
+      { id: 2, c: "Art. / art.", m: "Article (d’une loi, décret, code…)", cat: "Texte / code" },
+      { id: 3, c: "al. / §", m: "Alinéa (dans un texte de loi / décret / code)", cat: "Texte / code" },
+      { id: 4, c: "anc.", m: "Ancien / ancienne (texte abrogé ou antérieur)", cat: "Texte / code" },
+      { id: 5, c: "c. / C.", m: "Code (ex. « C. civ. »)", cat: "Texte / code" },
+      { id: 6, c: "C. civ.", m: "Code civil", cat: "Code" },
+      { id: 7, c: "C. com.", m: "Code de commerce", cat: "Code" },
+      { id: 8, c: "C. civ. loc.", m: "Code civil local (collectivités territoriales)", cat: "Code" },
+      { id: 9, c: "C. com. loc.", m: "Code de commerce local", cat: "Code" },
+      { id: 10, c: "C. déont. PNGN", m: "Code de déontologie police nationale & gendarmerie", cat: "Code / déontologie" },
+      { id: 11, c: "C. déont. comm. comptes", m: "Code de déontologie des commissaires aux comptes", cat: "Code / déontologie" },
+      { id: 12, c: "C. déont. agents pol. mun.", m: "Code de déontologie des agents de police municipale", cat: "Code / déontologie" },
+      { id: 13, c: "CA / C. App.", m: "Cour d’appel", cat: "Juridiction" },
+      { id: 14, c: "C. Cass. / Cass.", m: "Cour de cassation", cat: "Juridiction" },
+      { id: 15, c: "Cass. civ. 1ʳᵉ", m: "Chambre civile 1ʳᵉ", cat: "Juridiction" },
+      { id: 16, c: "Cass. civ. 2ᵉ", m: "Chambre civile 2ᵉ", cat: "Juridiction" },
+      { id: 17, c: "Cass. civ. 3ᵉ", m: "Chambre civile 3ᵉ", cat: "Juridiction" },
+      { id: 18, c: "Cass. com.", m: "Chambre commerciale", cat: "Juridiction" },
+      { id: 19, c: "Cass. crim.", m: "Chambre criminelle", cat: "Juridiction" },
+      { id: 20, c: "Cass. soc.", m: "Chambre sociale", cat: "Juridiction" },
+      { id: 21, c: "Cass. ch. mixte", m: "Chambre mixte", cat: "Juridiction" },
+      { id: 22, c: "Cass. ch. réun.", m: "Chambres réunies", cat: "Juridiction" },
+      { id: 23, c: "Ass. plén.", m: "Assemblée plénière", cat: "Juridiction" },
+      { id: 24, c: "Bull. civ.", m: "Bulletin civil de jurisprudence", cat: "Publication" },
+      { id: 25, c: "Bull. crim.", m: "Bulletin criminel de jurisprudence", cat: "Publication" },
+      { id: 26, c: "BICC", m: "Bulletin d’information de la Cour de cassation", cat: "Publication" },
+      { id: 27, c: "BODACC", m: "Bulletin Officiel des Annonces Civiles et Commerciales", cat: "Publication" },
+      { id: 28, c: "BOCC", m: "Bulletin officiel de la concurrence, consommation et répression des fraudes", cat: "Publication" },
+      { id: 29, c: "Dr. adm.", m: "Droit administratif", cat: "Discipline" },
+      { id: 30, c: "Dr. soc.", m: "Droit social", cat: "Discipline" },
+      { id: 31, c: "Dr. fam.", m: "Droit de la famille", cat: "Discipline" },
+      { id: 32, c: "Dr. sociétés", m: "Droit des sociétés", cat: "Discipline" },
+      { id: 33, c: "AJDA", m: "Actualité juridique : Droit administratif", cat: "Publication" },
+      { id: 34, c: "AJDI", m: "Actualité juridique : Droit immobilier", cat: "Publication" },
+      { id: 35, c: "AJP", m: "Actualité juridique : Droit pénal", cat: "Publication" },
+      { id: 36, c: "AJIL", m: "American Journal of International Law", cat: "Publication internationale" },
+      { id: 37, c: "AAI", m: "Autorité administrative indépendante", cat: "Institution" },
+      { id: 38, c: "AFNOR", m: "Association française de normalisation", cat: "Institution / norme" },
+      { id: 39, c: "ARCEP", m: "Autorité de régulation des communications électroniques et des postes", cat: "Institution" },
+      { id: 40, c: "ARJEL", m: "Autorité de régulation des jeux en ligne (ancien)", cat: "Institution" },
+      { id: 41, c: "AELE", m: "Association européenne de libre-échange", cat: "Institution internationale" },
+      { id: 42, c: "AFDI", m: "Annuaire français de droit international", cat: "Publication" },
+      { id: 43, c: "EURL", m: "Entreprise unipersonnelle à responsabilité limitée", cat: "Entreprise" },
+      { id: 44, c: "SARL", m: "Société à responsabilité limitée", cat: "Entreprise" },
+      { id: 45, c: "CDI", m: "Contrat à durée indéterminée", cat: "Contrat / droit du travail" },
+      { id: 46, c: "CDD", m: "Contrat à durée déterminée", cat: "Contrat / droit du travail" },
+      { id: 47, c: "CNE", m: "Contrat nouvelle embauche (historique)", cat: "Contrat / droit du travail" },
+      { id: 48, c: "TGI", m: "Tribunal de grande instance (ancien)", cat: "Juridiction" },
+      { id: 49, c: "TI", m: "Tribunal d’instance (ancien)", cat: "Juridiction" },
+      { id: 50, c: "TA", m: "Tribunal administratif", cat: "Juridiction" },
+      { id: 51, c: "TASS", m: "Tribunal des affaires de sécurité sociale", cat: "Juridiction" },
+      { id: 52, c: "TC", m: "Tribunal de commerce", cat: "Juridiction" },
+      { id: 53, c: "TJ", m: "Tribunal judiciaire", cat: "Juridiction" },
+      { id: 54, c: "JP", m: "Jurisprudence", cat: "Référence" },
+      { id: 55, c: "CE", m: "Conseil d’État", cat: "Juridiction / institution" },
+      { id: 56, c: "CAA", m: "Cour administrative d’appel", cat: "Juridiction" },
+      { id: 57, c: "CNIL", m: "Commission nationale de l’informatique et des libertés", cat: "Institution" },
+      { id: 58, c: "CNRS", m: "Centre national de la recherche scientifique", cat: "Institution / recherche" },
+      { id: 59, c: "OIT", m: "Organisation internationale du travail", cat: "Institution internationale" },
+      { id: 60, c: "ONU", m: "Organisation des Nations Unies", cat: "Institution internationale" },
+      { id: 61, c: "UE", m: "Union européenne", cat: "Institution internationale" },
+      { id: 62, c: "CJUE", m: "Cour de justice de l’Union européenne", cat: "Juridiction internationale" },
+      { id: 63, c: "CEDH", m: "Cour européenne des droits de l’homme", cat: "Juridiction internationale" },
+      { id: 64, c: "DUE", m: "Directive de l’Union européenne", cat: "Texte européen" },
+      { id: 65, c: "RGPD", m: "Règlement général sur la protection des données", cat: "Texte / réglementation" },
+      { id: 66, c: "INSEE", m: "Institut national de la statistique et des études économiques", cat: "Institution" },
+      { id: 67, c: "URSSAF", m: "Union de recouvrement des cotisations de sécurité sociale", cat: "Institution" },
+      { id: 68, c: "ACOSS", m: "Agence centrale des organismes de sécurité sociale", cat: "Institution" },
+      { id: 69, c: "MSA", m: "Mutualité sociale agricole", cat: "Institution" },
+      { id: 70, c: "RSI", m: "Régime social des indépendants (ancien)", cat: "Institution / historique" },
+      { id: 71, c: "UES", m: "Unité économique et sociale", cat: "Droit social" },
+      { id: 72, c: "OMC", m: "Organisation mondiale du commerce", cat: "Institution internationale" },
+      { id: 73, c: "OCDE", m: "Organisation de coopération et de développement économiques", cat: "Institution internationale" },
+      { id: 74, c: "BCE", m: "Banque centrale européenne", cat: "Institution financière" },
+      { id: 75, c: "FI", m: "Fonds d’investissement", cat: "Finance / droit des affaires" },
+      { id: 76, c: "IPO", m: "Initial public offering", cat: "Finance / droit des affaires" },
+      { id: 77, c: "M&A", m: "Mergers & acquisitions", cat: "Droit des affaires" },
+      { id: 78, c: "SAS", m: "Société par actions simplifiée", cat: "Entreprise" },
+      { id: 79, c: "SA", m: "Société anonyme", cat: "Entreprise" },
+      { id: 80, c: "SNC", m: "Société en nom collectif", cat: "Entreprise" },
+      { id: 81, c: "SCOP", m: "Société coopérative et participative", cat: "Entreprise" },
+      { id: 82, c: "SCIC", m: "Société coopérative d’intérêt collectif", cat: "Entreprise" },
+      { id: 83, c: "FCPE", m: "Fonds commun de placement d’entreprise", cat: "Finance / droit des affaires" },
+      { id: 84, c: "OPCVM", m: "Organisme de placement collectif en valeurs mobilières", cat: "Finance" },
+      { id: 85, c: "IS", m: "Impôt sur les sociétés", cat: "Fiscalité" },
+      { id: 86, c: "IR", m: "Impôt sur le revenu", cat: "Fiscalité" },
+      { id: 87, c: "TVA", m: "Taxe sur la valeur ajoutée", cat: "Fiscalité" },
+      { id: 88, c: "TFR", m: "Taxe sur les frais de rémunération", cat: "Fiscalité" },
+      { id: 89, c: "DALO", m: "Droit au logement opposable", cat: "Droit social / logement" },
+      { id: 90, c: "ALUR", m: "Accès au logement et un urbanisme rénové", cat: "Droit immobilier" },
+      { id: 91, c: "LME", m: "Loi de modernisation de l’économie", cat: "Loi / texte" },
+      { id: 92, c: "PACTE", m: "Plan d’action pour la croissance et la transformation des entreprises", cat: "Loi / texte" },
+      { id: 93, c: "DIF", m: "Droit individuel à la formation (historique)", cat: "Droit social" },
+      { id: 94, c: "CPF", m: "Compte personnel de formation", cat: "Droit social" },
+      { id: 95, c: "CICE", m: "Crédit d’impôt pour la compétitivité et l’emploi (historique)", cat: "Fiscalité" },
+      { id: 96, c: "CIR", m: "Crédit d’impôt recherche", cat: "Fiscalité / innovation" },
+      { id: 97, c: "CESE", m: "Conseil économique, social et environnemental", cat: "Institution" },
+      { id: 98, c: "CNB", m: "Conseil national des barreaux", cat: "Institution / droit" },
+      { id: 99, c: "OAPI", m: "Organisation africaine de la propriété intellectuelle", cat: "Institution internationale" },
+      { id: 100, c: "INPI", m: "Institut national de la propriété industrielle", cat: "Institution / droit des affaires" },
+      { id: 101, c: "CPI", m: "Code de la propriété intellectuelle", cat: "Code" },
+      { id: 105, c: "CRPA", m: "Code des relations entre le public et l’administration", cat: "Code" },
+      { id: 106, c: "CGCT", m: "Code général des collectivités territoriales", cat: "Code" },
+      { id: 107, c: "CGPPP", m: "Code général de la propriété des personnes publiques", cat: "Code" },
+      { id: 108, c: "CSP", m: "Code de la santé publique", cat: "Code" },
+      { id: 109, c: "CASF", m: "Code de l’action sociale et des familles", cat: "Code" },
+      { id: 110, c: "CES", m: "Conseil économique et social (historique)", cat: "Institution" },
+      { id: 111, c: "CRR", m: "Code de règlementation routière", cat: "Code" },
+      { id: 112, c: "CT", m: "Conseil territorial / comité technique", cat: "Juridiction / Institution" },
+      { id: 113, c: "CHSCT", m: "Comité d’hygiène, de sécurité et des conditions de travail (historique)", cat: "Droit social" },
+      { id: 114, c: "CSE", m: "Comité social et économique", cat: "Droit social / institution" },
+      { id: 115, c: "CP", m: "Code pénal", cat: "Code" },
+      { id: 116, c: "CPP", m: "Code de procédure pénale", cat: "Code" },
+      { id: 117, c: "CPC", m: "Code de procédure civile", cat: "Code" },
+      { id: 120, c: "LME", m: "Loi de modernisation de l’économie", cat: "Loi / texte" },
+      { id: 122, c: "LDF", m: "Loi de finances", cat: "Loi / texte" },
+      { id: 123, c: "LF", m: "Loi de finances", cat: "Loi / texte" },
+      { id: 124, c: "LFR", m: "Loi de finances rectificative", cat: "Loi / texte" },
+      { id: 125, c: "LCAP", m: "Loi sur la concurrence et les pratiques commerciales", cat: "Loi / texte" },
+      { id: 134, c: "FMI", m: "Fonds monétaire international", cat: "Institution internationale" },
+      { id: 201, c: "AA", m: "Autorité administrative", cat: "Institution" },
+      { id: 202, c: "AAA", m: "Autorité administrative indépendante (variante)", cat: "Institution" },
+      { id: 203, c: "AAI", m: "Autorité administrative indépendante", cat: "Institution" },
+      { id: 204, c: "AB", m: "Assemblée de base", cat: "Institution / sociale" },
+      { id: 205, c: "ABC", m: "Autorité bancaire centrale", cat: "Institution financière" },
+      { id: 206, c: "ABF", m: "Architecte des bâtiments de France", cat: "Institution" },
+      { id: 207, c: "AC", m: "Arrêté conjoint", cat: "Texte / réglementation" },
+      { id: 208, c: "ACC", m: "Accord collectif", cat: "Droit social / convention" },
+      { id: 209, c: "ACE", m: "Accord cadre européen", cat: "Droit / texte européen" },
+      { id: 210, c: "ACOSS", m: "Agence centrale des organismes de sécurité sociale", cat: "Institution" },
+      { id: 211, c: "ACT", m: "Action", cat: "Droit des sociétés / finance" },
+      { id: 212, c: "ACUE", m: "Agence universitaire de la francophonie (Europe)", cat: "Institution" },
+      { id: 213, c: "ADA", m: "Association pour le droit des affaires", cat: "Institution / ONG" },
+      { id: 214, c: "ADL", m: "Autorité de la concurrence locale", cat: "Institution" },
+      { id: 215, c: "ADN", m: "Autorité de déontologie nationale", cat: "Institution / déontologie" },
+      { id: 216, c: "AE", m: "Autorité européenne", cat: "Institution internationale" },
+      { id: 217, c: "AEM", m: "Autorité européenne des marchés", cat: "Institution internationale" },
+      { id: 218, c: "AFE", m: "Autorité financière européenne", cat: "Institution internationale" },
+      { id: 219, c: "AFP", m: "Agence France Presse (références presse juridique)", cat: "Institution / média" },
+      { id: 220, c: "AG", m: "Assemblée générale", cat: "Entreprise / société" },
+      { id: 221, c: "AGS", m: "Association pour la gestion du régime de garantie des créances des salariés", cat: "Institution / social" },
+      { id: 222, c: "AH", m: "Autorité hospitalière", cat: "Institution / santé" },
+      { id: 223, c: "AI", m: "Autorité indépendante", cat: "Institution" },
+      { id: 224, c: "AIA", m: "Autorité internationale administrative", cat: "Institution internationale" },
+      { id: 225, c: "AIF", m: "Autorité des investissements financiers", cat: "Institution / finance" },
+      { id: 226, c: "AJ", m: "Avocat judiciaire / action judiciaire", cat: "Droit / juridiction" },
+      { id: 227, c: "AJI", m: "Association des juristes internationaux", cat: "Institution / ONG" },
+      { id: 228, c: "AJT", m: "Assistance juridique et technique", cat: "Droit / prestation" },
+      { id: 229, c: "AL", m: "Assemblée législative", cat: "Institution / parlement" },
+      { id: 230, c: "ALE", m: "Accord de libre-échange", cat: "Droit international / commerce" },
+      { id: 231, c: "AMF", m: "Autorité des marchés financiers", cat: "Institution / finance" },
+      { id: 232, c: "AMI", m: "Assistance médicale internationale", cat: "Institution / santé" },
+      { id: 233, c: "AN", m: "Assemblée nationale", cat: "Institution / parlement" },
+      { id: 234, c: "ANACT", m: "Agence nationale pour l’amélioration des conditions de travail", cat: "Institution / social" },
+      { id: 235, c: "ANSM", m: "Agence nationale de sécurité du médicament", cat: "Institution / santé" },
+      { id: 236, c: "AO", m: "Appel d’offres", cat: "Droit / marchés publics" },
+      { id: 237, c: "APE", m: "Activité principale exercée", cat: "Droit des sociétés / entreprise" },
+      { id: 238, c: "API", m: "Accord de partenariat international", cat: "Droit / international" },
+      { id: 239, c: "AP", m: "Administration publique", cat: "Institution / droit public" },
+      { id: 240, c: "APA", m: "Allocation personnalisée d’autonomie", cat: "Droit social / protection" },
+      { id: 241, c: "APC", m: "Accord de partenariat commercial", cat: "Droit / commerce" },
+      { id: 242, c: "APCE", m: "Agence pour la création d’entreprises", cat: "Institution / entreprises" },
+      { id: 243, c: "APDF", m: "Autorité de protection des données financières", cat: "Institution / finance" },
+      { id: 244, c: "AP-HP", m: "Assistance publique – Hôpitaux de Paris", cat: "Institution / santé" },
+      { id: 245, c: "AQ", m: "Autorité de qualité", cat: "Institution / contrôle" },
+      { id: 246, c: "AR", m: "Arrêté", cat: "Texte / réglementation" },
+      { id: 247, c: "ARC", m: "Autorité de régulation des communications", cat: "Institution" },
+      { id: 248, c: "ARH", m: "Autorité régionale de santé", cat: "Institution / santé" },
+      { id: 249, c: "ART", m: "Autorité de régulation des transports", cat: "Institution / infrastructure" },
+      { id: 250, c: "ARS", m: "Agence régionale de santé", cat: "Institution / santé" },
+      { id: 251, c: "AS", m: "Assistant social", cat: "Droit social / protection" },
+      { id: 252, c: "ASA", m: "Autorisation spéciale d’absentéisme", cat: "Droit social / RH" },
+      { id: 253, c: "ASH", m: "Aide sociale à l’enfance", cat: "Droit social / protection" },
+      { id: 254, c: "ASSEDIC", m: "Association pour l’emploi dans l’industrie et le commerce (historique)", cat: "Institution / social" },
+      { id: 255, c: "AST", m: "Autorité de sécurité du travail", cat: "Institution / sécurité" },
+      { id: 256, c: "AT", m: "Accident du travail", cat: "Droit social / protection" },
+      { id: 257, c: "ATI", m: "Allocation temporaire d’insertion", cat: "Droit social / protection" },
+      { id: 258, c: "AV", m: "Avocat", cat: "Profession / droit" },
+      { id: 259, c: "AVP", m: "Avant-projet", cat: "Texte / projet de loi" },
+      { id: 260, c: "AVQ", m: "Aide à la vie quotidienne", cat: "Droit social / protection" },
+      { id: 261, c: "AWA", m: "Autorité du travail administratif", cat: "Institution / droit social" },
+      { id: 262, c: "BA", m: "Bulletin administratif", cat: "Publication" },
+      { id: 263, c: "BAC", m: "Baccalauréat (référence juridique sur diplômes)", cat: "Droit / éducation" },
+      { id: 264, c: "BAIIA", m: "Bénéfice avant intérêts, impôts et amortissements", cat: "Finance / droit des affaires" },
+      { id: 265, c: "BAN", m: "Banque", cat: "Institution / finance" },
+      { id: 266, c: "BAREM", m: "Barème", cat: "Droit / fiscalité" },
+      { id: 267, c: "BDF", m: "Banque de France", cat: "Institution / finance" },
+      { id: 268, c: "BE", m: "Bulletin officiel / Bulletin d’enseignement", cat: "Publication" },
+      { id: 269, c: "BEP", m: "Brevet d’études professionnelles", cat: "Droit / éducation" },
+      { id: 270, c: "BIC", m: "Bénéfices industriels et commerciaux", cat: "Fiscalité" },
+      { id: 271, c: "BIM", m: "Bulletin d’information ministériel", cat: "Publication" },
+      { id: 272, c: "BIS", m: "Référence légale (bis, ter…) / Bissextile", cat: "Texte / code" },
+      { id: 273, c: "BNC", m: "Bénéfices non commerciaux", cat: "Fiscalité" },
+      { id: 274, c: "BO", m: "Bulletin officiel", cat: "Publication" },
+      { id: 275, c: "BOAMP", m: "Bulletin officiel des annonces des marchés publics", cat: "Publication" },
+      { id: 276, c: "BOE", m: "Bulletin officiel de l’État (international / Espagne)", cat: "Publication" },
+      { id: 277, c: "BODACC", m: "Bulletin officiel des annonces civiles et commerciales", cat: "Publication" },
+      { id: 278, c: "BOE", m: "Bulletin officiel européen", cat: "Publication" },
+      { id: 279, c: "BOP", m: "Budget opérationnel de programme", cat: "Finance / droit public" },
+      { id: 280, c: "BOU", m: "Bourse", cat: "Finance / droit des affaires" },
+      { id: 281, c: "BR", m: "Bulletin réglementaire", cat: "Publication" },
+      { id: 282, c: "BRH", m: "Bulletin des ressources humaines", cat: "Publication / RH" },
+      { id: 283, c: "BS", m: "Bulletin de sécurité", cat: "Publication / sécurité" },
+      { id: 284, c: "BT", m: "Bulletin technique", cat: "Publication / technique" },
+      { id: 285, c: "BTP", m: "Bâtiment et travaux publics", cat: "Droit / entreprise" },
+      { id: 286, c: "BU", m: "Bibliothèque universitaire / documentation", cat: "Institution / recherche" },
+      { id: 287, c: "BUC", m: "Bureau de l’unité de contrôle", cat: "Institution / contrôle" },
+      { id: 288, c: "BUREAU", m: "Bureau administratif", cat: "Institution / administration" },
+      { id: 289, c: "BVC", m: "Bureau des vérifications et contrôles", cat: "Institution / contrôle" },
+      { id: 290, c: "BV", m: "Bulletin de vote", cat: "Droit électoral" },
+      { id: 291, c: "BW", m: "Banque mondiale", cat: "Institution internationale / finance" },
+      { id: 292, c: "CAA", m: "Cour administrative d’appel", cat: "Juridiction" },
+      { id: 293, c: "CACE", m: "Contrat d’appui au changement d’entreprise", cat: "Droit / entreprise" },
+      { id: 294, c: "CAD", m: "Code de l’administration de la défense", cat: "Code" },
+      { id: 295, c: "CAF", m: "Caisse d’allocations familiales", cat: "Institution / social" },
+      { id: 296, c: "CAP", m: "Certificat d’aptitude professionnelle", cat: "Droit / éducation" },
+      { id: 297, c: "CAPEB", m: "Confédération de l’artisanat et des petites entreprises du bâtiment", cat: "Institution / entreprise" },
+      { id: 298, c: "CAPM", m: "Caisse d’assurance pour le personnel maritime", cat: "Institution / social" },
+      { id: 299, c: "CARPA", m: "Caisse des règlements pécuniaires des avocats", cat: "Institution / finance" },
+      { id: 300, c: "CARSAT", m: "Caisse d’assurance retraite et de la santé au travail", cat: "Institution / social" },
+      { id: 301, c: "CAT", m: "Commission administrative paritaire", cat: "Institution / droit social" },
+      { id: 302, c: "CATS", m: "Comité d’action territoriale et sociale", cat: "Institution / social" },
+      { id: 303, c: "CB", m: "Code bancaire", cat: "Code / finance" },
+      { id: 304, c: "CBC", m: "Code de la banque et du crédit", cat: "Code / finance" },
+      { id: 305, c: "CBCT", m: "Code des brevets et du commerce technologique", cat: "Code / droit des affaires" },
+      { id: 306, c: "CC", m: "Code civil", cat: "Code" },
+      { id: 307, c: "CCH", m: "Code de la construction et de l’habitation", cat: "Code / droit immobilier" },
+      { id: 308, c: "CCAG", m: "Cahier des clauses administratives générales", cat: "Contrat / marchés publics" },
+      { id: 309, c: "CCI", m: "Chambre de commerce et d’industrie", cat: "Institution / entreprise" },
+      { id: 310, c: "CCIP", m: "Chambre de commerce et d’industrie de Paris", cat: "Institution / entreprise" },
+      { id: 311, c: "CCL", m: "Code des collectivités locales", cat: "Code / droit public" },
+      { id: 312, c: "CCNR", m: "Commission consultative nationale des comptes de résultats", cat: "Institution / finance" },
+      { id: 313, c: "CCP", m: "Code des marchés publics / Code de procédure civile", cat: "Code / contrat" },
+      { id: 314, c: "CCTP", m: "Cahier des clauses techniques particulières", cat: "Contrat / marché public" },
+      { id: 315, c: "CD", m: "Code du domaine", cat: "Code / droit public" },
+      { id: 316, c: "CDAD", m: "Conseil départemental de l’accès au droit", cat: "Institution / droit" },
+      { id: 317, c: "CDD", m: "Contrat à durée déterminée", cat: "Contrat / droit social" },
+      { id: 318, c: "CDI", m: "Contrat à durée indéterminée", cat: "Contrat / droit social" },
+      { id: 319, c: "CDE", m: "Contrat de développement économique", cat: "Contrat / droit des affaires" },
+      { id: 320, c: "CDF", m: "Code de la fonction publique", cat: "Code / droit public" },
+      { id: 321, c: "CDG", m: "Centre de gestion (fonction publique)", cat: "Institution / administration" },
+      { id: 322, c: "CDI", m: "Comité de direction", cat: "Institution / entreprise" },
+      { id: 324, c: "CE", m: "Conseil d’État", cat: "Juridiction / institution" },
+      { id: 325, c: "CECA", m: "Communauté européenne du charbon et de l’acier", cat: "Institution internationale / historique" },
+      { id: 326, c: "CEDEFOP", m: "Centre européen pour le développement de la formation professionnelle", cat: "Institution internationale" },
+      { id: 327, c: "CEE", m: "Communauté économique européenne (historique)", cat: "Institution internationale" },
+      { id: 328, c: "CESE", m: "Conseil économique, social et environnemental", cat: "Institution" },
+      { id: 329, c: "CESEDA", m: "Code de l’entrée et du séjour des étrangers et du droit d’asile", cat: "Code / droit public" },
+      { id: 330, c: "CETA", m: "Comprehensive Economic and Trade Agreement", cat: "Droit international / commerce" },
+      { id: 331, c: "CFA", m: "Contrat de formation en alternance", cat: "Droit social / éducation" },
+      { id: 332, c: "CFDT", m: "Confédération française démocratique du travail", cat: "Institution / syndicat" },
+      { id: 333, c: "CFE", m: "Cotisation foncière des entreprises", cat: "Fiscalité" },
+      { id: 334, c: "CFO", m: "Chief Financial Officer", cat: "Entreprise / direction" },
+      { id: 335, c: "CFPC", m: "Comité de formation professionnelle continue", cat: "Institution / RH" },
+      { id: 336, c: "CFPR", m: "Centre de formation professionnelle et de recherche", cat: "Institution / éducation" },
+      { id: 337, c: "CGCT", m: "Code général des collectivités territoriales", cat: "Code / droit public" },
+      { id: 338, c: "CGU", m: "Conditions générales d’utilisation", cat: "Contrat / droit numérique" },
+      { id: 339, c: "CHSCT", m: "Comité d’hygiène, de sécurité et des conditions de travail (historique)", cat: "Droit social" },
+      { id: 340, c: "CIR", m: "Crédit d’impôt recherche", cat: "Fiscalité / innovation" },
+      { id: 341, c: "CIS", m: "Code de l’investissement social", cat: "Code / droit social" },
+      { id: 342, c: "CJEU", m: "Cour de justice de l’Union européenne", cat: "Juridiction internationale" },
+      { id: 343, c: "CJUE", m: "Cour de justice de l’Union européenne", cat: "Juridiction internationale" },
+      { id: 344, c: "CLAN", m: "Comité local d’action nationale", cat: "Institution / administration" },
+      { id: 345, c: "CLA", m: "Clause", cat: "Contrat / droit civil" },
+      { id: 346, c: "CLC", m: "Code du logement et de la construction", cat: "Code / droit immobilier" },
+      { id: 347, c: "CLCV", m: "Consommation, logement et cadre de vie", cat: "Association / protection" },
+      { id: 348, c: "CNR", m: "Conseil national de la résistance (historique / juridique)", cat: "Institution historique" },
+      { id: 349, c: "CNIL", m: "Commission nationale de l’informatique et des libertés", cat: "Institution" },
+      { id: 350, c: "CNRS", m: "Centre national de la recherche scientifique", cat: "Institution / recherche" },
+      { id: 351, c: "CNSS", m: "Caisse nationale de sécurité sociale", cat: "Institution / social" },
+      { id: 352, c: "CNAV", m: "Caisse nationale d’assurance vieillesse", cat: "Institution / social" },
+      { id: 353, c: "CNFPT", m: "Centre national de la fonction publique territoriale", cat: "Institution / administration" },
+      { id: 354, c: "CNB", m: "Conseil national des barreaux", cat: "Institution / droit" },
+      { id: 355, c: "CNAM", m: "Caisse nationale de l’assurance maladie", cat: "Institution / social" },
+      { id: 356, c: "CNESER", m: "Conseil national de l’enseignement supérieur et de la recherche", cat: "Institution / éducation" },
+      { id: 357, c: "CO", m: "Code des obligations", cat: "Code / droit civil" },
+      { id: 358, c: "CO2", m: "Carbone / environnement (références juridiques environnementales)", cat: "Droit / environnement" },
+      { id: 359, c: "COG", m: "Contrat d’objectifs et de gestion", cat: "Contrat / administration" },
+      { id: 360, c: "COGIC", m: "Contrat d’objectifs et de gestion des institutions culturelles", cat: "Contrat / administration" },
+      { id: 361, c: "COMEX", m: "Comité exécutif", cat: "Institution / entreprise" },
+      { id: 362, c: "COP", m: "Comité opérationnel / conférence des parties", cat: "Institution / environnement" },
+      { id: 363, c: "COP21", m: "Conférence des parties 21 (climat)", cat: "Institution / environnement" },
+      { id: 364, c: "COPANT", m: "Comité permanent", cat: "Institution / administration" },
+      { id: 365, c: "CORDIS", m: "Community Research and Development Information Service", cat: "Institution / UE / recherche" },
+      { id: 366, c: "COT", m: "Comité opérationnel technique", cat: "Institution / entreprise" },
+      { id: 367, c: "COTER", m: "Comité territorial", cat: "Institution / administration" },
+      { id: 368, c: "CP", m: "Code pénal", cat: "Code" },
+      { id: 369, c: "CPP", m: "Code de procédure pénale", cat: "Code" },
+      { id: 370, c: "CPC", m: "Code de procédure civile", cat: "Code" },
+      { id: 371, c: "CPH", m: "Code du patrimoine / Conseil de Prud'hommes (selon contexte)", cat: "Code / Juridiction" },
+      { id: 372, c: "CPI", m: "Code de la propriété intellectuelle", cat: "Code" },
+      { id: 401, c: "DALO", m: "Droit au logement opposable", cat: "Droit social / logement" },
+      { id: 402, c: "DAT", m: "Délégation à l’aménagement du territoire", cat: "Institution / administration" },
+      { id: 403, c: "DDA", m: "Directive sur la distribution d’assurance", cat: "Droit / assurance" },
+      { id: 404, c: "DE", m: "Décret", cat: "Texte / règlement" },
+      { id: 405, c: "DEB", m: "Déclaration d’échanges de biens", cat: "Fiscalité / commerce" },
+      { id: 406, c: "DEC", m: "Décision", cat: "Texte / juridiction" },
+      { id: 407, c: "DEF", m: "Défenseur (des droits)", cat: "Juridiction / droit" },
+      { id: 408, c: "DEI", m: "Droit des étrangers et de l’immigration", cat: "Droit public" },
+      { id: 409, c: "DEM", m: "Démarche / procédure", cat: "Droit administratif" },
+      { id: 410, c: "DEPT", m: "Département", cat: "Institution / administration" },
+      { id: 411, c: "DGE", m: "Direction générale des entreprises", cat: "Institution / administration" },
+      { id: 412, c: "DGCCRF", m: "Direction générale de la concurrence, de la consommation et de la répression des fraudes", cat: "Institution / droit économique" },
+      { id: 413, c: "DGT", m: "Direction générale du travail", cat: "Institution / droit social" },
+      { id: 414, c: "DGFiP", m: "Direction générale des finances publiques", cat: "Institution / finance" },
+      { id: 415, c: "DILA", m: "Direction de l’information légale et administrative", cat: "Institution / documentation" },
+      { id: 416, c: "DLP", m: "Délégation locale de protection", cat: "Institution / droit social" },
+      { id: 417, c: "DLT", m: "Droit du travail", cat: "Discipline" },
+      { id: 418, c: "DNP", m: "Direction nationale de la protection", cat: "Institution / droit social" },
+      { id: 419, c: "DOJ", m: "Département de la justice (Department of Justice - US)", cat: "Institution / international" },
+      { id: 420, c: "DPC", m: "Développement professionnel continu", cat: "Droit social / formation" },
+      { id: 421, c: "DPAE", m: "Déclaration préalable à l’embauche", cat: "Droit social / RH" },
+      { id: 422, c: "DP", m: "Délégué du personnel", cat: "Droit social / RH" },
+      { id: 423, c: "DPS", m: "Droit de préemption salarié", cat: "Droit social / entreprise" },
+      { id: 424, c: "DPCE", m: "Droit de préemption communal et européen", cat: "Droit public / urbanisme" },
+      { id: 425, c: "DPE", m: "Diagnostic de performance énergétique", cat: "Droit immobilier / environnement" },
+      { id: 426, c: "DPU", m: "Droit de préemption urbain", cat: "Droit immobilier / urbanisme" },
+      { id: 427, c: "DRH", m: "Directeur des ressources humaines", cat: "Institution / entreprise" },
+      { id: 428, c: "DREETS", m: "Direction régionale de l’économie, de l’emploi, du travail et des solidarités", cat: "Institution / administration" },
+      { id: 429, c: "DSN", m: "Déclaration sociale nominative", cat: "Droit social / RH" },
+      { id: 430, c: "DSS", m: "Direction de la sécurité sociale", cat: "Institution / social" },
+      { id: 431, c: "DT", m: "Droit de transfert", cat: "Droit / entreprise" },
+      { id: 432, c: "DUT", m: "Diplôme universitaire de technologie", cat: "Droit / éducation" },
+      { id: 433, c: "DUE", m: "Directive de l’Union européenne", cat: "Droit européen" },
+      { id: 434, c: "DUV", m: "Déclaration unique de vente", cat: "Fiscalité / commerce" },
+      { id: 435, c: "EHPAD", m: "Établissement d’hébergement pour personnes âgées dépendantes", cat: "Droit social / santé" },
+      { id: 436, c: "EIRL", m: "Entreprise individuelle à responsabilité limitée", cat: "Entreprise" },
+      { id: 437, c: "EURL", m: "Entreprise unipersonnelle à responsabilité limitée", cat: "Entreprise" },
+      { id: 438, c: "EU", m: "European Union (Union européenne)", cat: "Institution internationale" },
+      { id: 439, c: "EPCI", m: "Établissement public de coopération intercommunale", cat: "Institution / administration" },
+      { id: 440, c: "ECTS", m: "European Credit Transfer and Accumulation System", cat: "Droit / éducation" },
+      { id: 441, c: "ED", m: "Éditeur", cat: "Publication / documentation" },
+      { id: 442, c: "EDH", m: "European Convention on Human Rights (CEDH)", cat: "Juridiction internationale" },
+      { id: 443, c: "EEG", m: "Électricité et énergie générale", cat: "Droit / énergie" },
+      { id: 444, c: "EI", m: "Entreprise individuelle", cat: "Entreprise" },
+      { id: 445, c: "EIRE", m: "Entreprise d’intérêt régional", cat: "Entreprise" },
+      { id: 446, c: "EL", m: "État / loi", cat: "Texte / code" },
+      { id: 447, c: "EMA", m: "État-major des armées", cat: "Institution / défense" },
+      { id: 448, c: "EMPL", m: "Emploi", cat: "Droit social / RH" },
+      { id: 449, c: "ENA", m: "École nationale d’administration", cat: "Institution / éducation" },
+      { id: 450, c: "EP", m: "Établissement public", cat: "Institution / droit public" },
+      { id: 451, c: "EPIC", m: "Établissement public à caractère industriel et commercial", cat: "Institution / droit public" },
+      { id: 452, c: "EPS", m: "Établissement public de santé", cat: "Institution / santé" },
+      { id: 453, c: "EPST", m: "Établissement public scientifique et technologique", cat: "Institution / recherche" },
+      { id: 454, c: "EUIPO", m: "Office de l’Union européenne pour la propriété intellectuelle", cat: "Institution internationale" },
+      { id: 455, c: "FCA", m: "Fonds de commerce et d’activité", cat: "Finance / entreprise" },
+      { id: 456, c: "FCP", m: "Fonds commun de placement", cat: "Finance" },
+      { id: 457, c: "FHF", m: "Fédération hospitalière de France", cat: "Institution / santé" },
+      { id: 458, c: "FIP", m: "Fonds d’investissement de proximité", cat: "Finance / entreprise" },
+      { id: 459, c: "FNE", m: "Fonds national pour l’emploi", cat: "Institution / social" },
+      { id: 460, c: "FPI", m: "Fonds de placement immobilier", cat: "Finance / droit immobilier" },
+      { id: 461, c: "FSE", m: "Fonds social européen", cat: "Institution / Europe / social" },
+      { id: 462, c: "FTT", m: "Fonds de transfert technique", cat: "Finance / entreprise" },
+      { id: 463, c: "GA", m: "Gestion administrative", cat: "Institution / administration" },
+      { id: 464, c: "GIE", m: "Groupement d’intérêt économique", cat: "Entreprise" },
+      { id: 465, c: "GIP", m: "Groupement d’intérêt public", cat: "Institution / droit public" },
+      { id: 466, c: "GRC", m: "Gestion des relations clients", cat: "Entreprise / droit commercial" },
+      { id: 467, c: "GRH", m: "Gestion des ressources humaines", cat: "Institution / entreprise" },
+      { id: 468, c: "GRETA", m: "Groupement d’établissements pour la formation continue des adultes", cat: "Institution / formation" },
+      { id: 469, c: "GTC", m: "Gestion technique centralisée", cat: "Institution / administration" },
+      { id: 470, c: "HCSF", m: "Haut conseil de stabilité financière", cat: "Institution / finance" },
+      { id: 471, c: "HLM", m: "Habitation à loyer modéré", cat: "Droit immobilier / social" },
+      { id: 472, c: "HR", m: "Human resources", cat: "Entreprise / RH" },
+      { id: 473, c: "IA", m: "Intelligence artificielle (références légales)", cat: "Droit / technologie" },
+      { id: 474, c: "IAE", m: "Institut d’administration des entreprises", cat: "Institution / éducation" },
+      { id: 475, c: "IARD", m: "Incendie, accidents et risques divers", cat: "Droit / assurance" },
+      { id: 476, c: "ICB", m: "International Chamber of Commerce", cat: "Institution internationale" },
+      { id: 477, c: "ICPE", m: "Installation classée pour la protection de l’environnement", cat: "Droit environnement / réglementation" },
+      { id: 478, c: "IGC", m: "Inspection générale des carrières", cat: "Institution / contrôle" },
+      { id: 479, c: "IGF", m: "Inspection générale des finances", cat: "Institution / contrôle" },
+      { id: 480, c: "IGPN", m: "Inspection générale de la police nationale", cat: "Institution / sécurité" },
+      { id: 481, c: "IGSS", m: "Inspection générale de la sécurité sociale", cat: "Institution / social" },
+      { id: 482, c: "IGP", m: "Indication géographique protégée", cat: "Droit / propriété industrielle" },
+      { id: 483, c: "ILO", m: "International Labour Organization", cat: "Institution internationale" },
+      { id: 484, c: "IMF", m: "International Monetary Fund", cat: "Institution internationale / finance" },
+      { id: 485, c: "INPI", m: "Institut national de la propriété industrielle", cat: "Institution / droit des affaires" },
+      { id: 486, c: "INSEE", m: "Institut national de la statistique et des études économiques", cat: "Institution" },
+      { id: 487, c: "IP", m: "Intellectual property", cat: "Droit / propriété industrielle" },
+      { id: 488, c: "IR", m: "Impôt sur le revenu", cat: "Fiscalité" },
+      { id: 489, c: "IS", m: "Impôt sur les sociétés", cat: "Fiscalité" },
+      { id: 490, c: "ISS", m: "Institut de sécurité sociale", cat: "Institution / social" },
+      { id: 491, c: "IT", m: "Information technology", cat: "Droit / numérique" },
+      { id: 492, c: "JAF", m: "Juges aux affaires familiales", cat: "Juridiction / droit civil" },
+      { id: 493, c: "JAPD", m: "Journée d’appel de préparation à la défense", cat: "Droit / militaire" },
+      { id: 494, c: "JDC", m: "Journée défense et citoyenneté", cat: "Droit / militaire" },
+      { id: 495, c: "JEX", m: "Juge de l’exécution", cat: "Juridiction / droit civil" },
+      { id: 496, c: "JIRS", m: "Juridiction interrégionale spécialisée", cat: "Juridiction / pénal" },
+      { id: 497, c: "JLD", m: "Juge des libertés et de la détention", cat: "Juridiction / pénal" },
+      { id: 498, c: "JOP", m: "Journal officiel de la propriété", cat: "Publication / droit" },
+      { id: 499, c: "JO", m: "Journal officiel", cat: "Publication / texte officiel" },
+      { id: 500, c: "JR", m: "Jurisprudence", cat: "Référence" }
+    ];
 
-                if(category === 'JE') { catLabel = 'JE'; catClass = 'tag-je'; }
-                else if(category === 'DS') { catLabel = 'DS'; catClass = 'tag-ds'; }
-                else if(category === 'DA') { catLabel = 'DA'; catClass = 'tag-da'; }
+    document.addEventListener('DOMContentLoaded', () => {
+      const grid = document.getElementById('acronymGrid');
+      const searchInput = document.getElementById('searchInput');
+      const countEl = document.getElementById('resultCount');
+      const noResult = document.getElementById('noResult');
 
-                // Injection HTML dans le titre
-                const titleElement = card.querySelector('.def-term');
-                const originalText = titleElement.textContent;
-                
-                titleElement.innerHTML = `
-                    <span class="entry-number">${formattedNumber}</span>
-                    ${originalText}
-                    <span class="tag ${catClass}">${catLabel}</span>
-                `;
-            });
+      function renderCards() {
+        grid.innerHTML = '';
+        const search = searchInput.value.toLowerCase();
+        let visibleCount = 0;
 
+        dbAcronyms.forEach((item) => {
+          const code = item.c.toLowerCase();
+          const meaning = item.m.toLowerCase();
+          const cat = item.cat.toLowerCase();
 
-            // 2. FILTRAGE
-            const searchInput = document.getElementById('searchInput');
-            const alphabetBtns = document.querySelectorAll('.alpha-btn');
-            const catBtns = document.querySelectorAll('.cat-btn');
-            const noResult = document.getElementById('noResult');
-
-            let currentLetter = 'all';
-            let currentCat = 'all';
-            let currentSearch = '';
-
-            function updateDisplay() {
-                let visibleCount = 0;
-                
-                cards.forEach(card => {
-                    const term = card.querySelector('.def-term').textContent.toLowerCase();
-                    const desc = card.querySelector('.def-desc').textContent.toLowerCase();
-                    const cardLetter = card.getAttribute('data-letter');
-                    const cardCat = card.getAttribute('data-cat');
-
-                    // Filtre Lettre
-                    const letterMatch = (currentLetter === 'all' || cardLetter === currentLetter);
-                    // Filtre Catégorie
-                    const catMatch = (currentCat === 'all' || cardCat === currentCat);
-                    // Filtre Recherche
-                    const searchMatch = (term.includes(currentSearch) || desc.includes(currentSearch));
-
-                    if (letterMatch && catMatch && searchMatch) {
-                        card.style.display = 'block';
-                        visibleCount++;
-                    } else {
-                        card.style.display = 'none';
-                    }
-                });
-
-                noResult.style.display = (visibleCount === 0) ? 'block' : 'none';
-            }
-
-            // Listeners Recherche
-            searchInput.addEventListener('input', (e) => {
-                currentSearch = e.target.value.toLowerCase();
-                updateDisplay();
-            });
-
-            // Listeners Alphabet
-            alphabetBtns.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    alphabetBtns.forEach(b => b.classList.remove('active'));
-                    btn.classList.add('active');
-                    currentLetter = btn.getAttribute('data-filter');
-                    updateDisplay();
-                });
-            });
-
-            // Listeners Catégories
-            catBtns.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    catBtns.forEach(b => b.classList.remove('active'));
-                    btn.classList.add('active');
-                    currentCat = btn.getAttribute('data-cat');
-                    updateDisplay();
-                });
-            });
+          if (code.includes(search) || meaning.includes(search) || cat.includes(search)) {
+            visibleCount++;
+            const card = document.createElement('div');
+            card.className = 'acronym-card';
+            card.innerHTML = `
+              <div class="acro-id">#${item.id}</div>
+              <div class="acro-code">${item.c}</div>
+              <div class="acro-meaning">${item.m}</div>
+              <div class="acro-cat">${item.cat}</div>
+            `;
+            grid.appendChild(card);
+          }
         });
-    </script>
+
+        countEl.textContent = `${visibleCount} Acronyme(s) trouvé(s)`;
+        
+        if(visibleCount === 0) {
+            noResult.classList.remove('hidden');
+        } else {
+            noResult.classList.add('hidden');
+        }
+      }
+
+      // Écouteur de recherche
+      searchInput.addEventListener('input', renderCards);
+
+      // Initialisation
+      renderCards();
+    });
+  </script>
 </body>
 </html>
