@@ -28,89 +28,141 @@
   </script>
 
   <style>
-    :root{
-      /* Couleurs Générales */
-      --cta: #D9A526;
-      --brand-blue: #0F2C48;
-      --ivory: #F6F2E8;
-      --bronze: #B4792A;
-      
-      /* Variables Footer */
-      --footer-bg: #0F2C48; 
-      --footer-text: #F6F2E8; 
-      --footer-accent: #D9A526;
-      
-      /* Variables Header PREMIUM (GOLD) */
-      --h-bg: #D9A526; 
-      --h-text: #0F2C48; 
-      --h-accent: #ffffff;
-      
-      --header-height: 96px; 
+    /* --- NOUVEAU CSS (Design 2025) --- */
+    :root {
+        --brand-blue: #0F2C48;
+        --brandGold: #D9A526;
+        --ivory: #F6F2E8;
+        --footer-bg: #0F2C48;
+        --footer-text: #F6F2E8;
+        --header-height: 96px; 
+        --cta: #D9A526;
     }
 
-    body { margin: 0; background-color: var(--ivory); color: var(--brand-blue); min-height: 100vh; font-family: 'Outfit', sans-serif; display: flex; flex-direction: column; }
+    body { margin: 0; font-family: 'Outfit', sans-serif; background: var(--ivory); color: var(--brand-blue); display: flex; flex-direction: column; min-height: 100vh; }
+
+    /* --- HEADER --- */
+    .top-bar { 
+        background: linear-gradient(135deg, #B4792A, #F2C94C); 
+        padding: 12px 20px; 
+        position: sticky; 
+        top: 0; 
+        z-index: 9999; 
+        border-bottom: 4px solid var(--brand-blue); 
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .top-bar-container { 
+        max-width: 1400px; 
+        margin: 0 auto; 
+        display: flex; 
+        align-items: center; 
+        justify-content: space-between; 
+        gap: 16px; 
+    }
+
+    .top-left { display: flex; align-items: center; gap: 14px; }
+
+    .logo-top { 
+        width: 64px; height: 64px; 
+        border-radius: 8px; object-fit: cover; 
+        border: 2px solid var(--brand-blue); 
+        background: #fff; 
+        transition: transform 0.3s ease;
+    }
+    .logo-top:hover { transform: scale(1.05); }
+
+    .identity-stack { display: flex; flex-direction: column; }
+    .club-title-main { font-family: 'Playfair Display', serif; font-weight: 800; color: var(--brand-blue); font-size: 1.1rem; }
+    .club-subtitle { color: #fff; font-weight: 700; font-size: 0.85rem; text-shadow: 0 1px 2px rgba(0,0,0,0.1); }
+
+    .top-center { display: flex; gap: 10px; align-items: center; }
+
+    .header-icon-btn { 
+        width: 44px; height: 44px; flex-shrink: 0;
+        border-radius: 50%; 
+        display: inline-flex; align-items: center; justify-content: center; 
+        text-decoration: none; 
+        background: linear-gradient(135deg, var(--brandGold), #B4792A); 
+        color: #fff; 
+        border: 1px solid rgba(255, 255, 255, 0.4); 
+        transition: all 0.2s ease;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        font-size: 1.2rem;
+        position: relative;
+    }
+    .header-icon-btn:hover { transform: translateY(-3px); box-shadow: 0 4px 8px rgba(0,0,0,0.2); background: var(--brand-blue); border-color: var(--brandGold); }
+    .header-icon-btn img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
+
+    .btn-portfolio-cosmic { 
+        padding: 8px 18px; 
+        border-radius: 999px; 
+        background: var(--brand-blue); 
+        color: var(--brandGold); 
+        text-decoration: none; 
+        font-weight: 700; 
+        display: inline-flex; gap: 8px; align-items: center; 
+        transition: background 0.3s, color 0.3s;
+        white-space: nowrap;
+        box-shadow: 0 4px 10px rgba(15, 44, 72, 0.2);
+    }
+    .btn-portfolio-cosmic:hover { background: #fff; color: var(--brand-blue); transform: translateY(-2px); }
+
+    /* --- FOOTER --- */
+    .main-footer { background: var(--footer-bg); color: var(--footer-text); padding: 40px 18px; margin-top: auto; border-top: 4px solid var(--brandGold); }
+    .footer-container { max-width: 1400px; margin: 0 auto; display: flex; gap: 20px; align-items: center; justify-content: space-between; flex-wrap: wrap; }
+    .footer-left { display: flex; gap: 12px; align-items: center; }
+    .footer-logo-img { width: 60px; height: 60px; border-radius: 8px; object-fit: cover; border: 2px solid var(--brandGold); background: #fff; }
+    .footer-details { color: var(--footer-text); opacity: 0.95; }
+
+    .footer-right { display: flex; flex-direction: column; align-items: flex-end; gap: 15px; }
+    .footer-links-row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
+
+    .icon-btn { 
+        width: 44px; height: 44px; flex-shrink: 0;
+        border-radius: 50%; 
+        display: inline-flex; align-items: center; justify-content: center; 
+        background: rgba(255, 255, 255, 0.06); 
+        color: var(--footer-text); 
+        text-decoration: none; 
+        border: 1px solid rgba(217, 165, 38, 0.15); 
+        transition: all 0.2s;
+        font-size: 1.1rem;
+    }
+    .icon-btn:hover { background: var(--brandGold); color: var(--brand-blue); transform: scale(1.1); border-color: #fff; }
+
+    .footer-divider { 
+        width: 2px; 
+        height: 32px; 
+        background: rgba(255,255,255,0.3); 
+        margin: 0 12px; 
+        border-radius: 2px;
+    }
+
+    .copyright { width: 100%; text-align: center; color: rgba(255, 255, 255, 0.35); margin-top: 24px; font-size: 0.9rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; }
+
+    @media (max-width: 1100px) {
+        .top-bar-container { flex-direction: column; gap: 15px; align-items: center; text-align: center; }
+        .top-left { flex-direction: column; text-align: center; }
+        .top-center { width: 100%; overflow-x: auto; padding-bottom: 10px; justify-content: flex-start; padding-left: 5px; padding-right: 5px; -webkit-overflow-scrolling: touch; }
+        .top-center::-webkit-scrollbar { height: 4px; }
+        .top-center::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.3); border-radius: 4px; }
+        .footer-container { flex-direction: column; text-align: center; }
+        .footer-left { flex-direction: column; }
+        .footer-right { align-items: center; width: 100%; }
+        .footer-links-row { justify-content: center; width: 100%; overflow-x: auto; padding-bottom: 10px; }
+        .footer-divider { display: none; } 
+    }
+
+    /* --- CSS EXISTANT (POUR LE CONTENU PRINCIPAL) --- */
+    
     .wrap { max-width: 1400px; margin: 0 auto 60px auto; padding: 24px; width: 100%; flex: 1;}
     
-    /* === HEADER PREMIUM GOLD === */
     @keyframes cosmic-pulse {
         0% { transform: scale(1); box-shadow: 0 5px 15px rgba(15, 44, 72, 0.2); }
         50% { transform: scale(1.02); box-shadow: 0 8px 20px rgba(15, 44, 72, 0.4); }
         100% { transform: scale(1); box-shadow: 0 5px 15px rgba(15, 44, 72, 0.2); }
     }
-
-    .top-bar {
-        background: linear-gradient(135deg, #B4792A 0%, #F2C94C 50%, #B4792A 100%);
-        color: var(--h-text);
-        padding: 15px 0;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-        position: sticky; top: 0; left: 0; right: 0; z-index: 10000;
-        font-family: 'Lato', sans-serif; border-bottom: 4px solid var(--brand-blue);
-        transition: height 0.3s ease;
-    }
-    
-    .top-bar-container { max-width: 1400px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
-    .top-bar-left { display: flex; align-items: center; gap: 15px; flex: 1; min-width: 320px; }
-    .logo-top-bar { width: 60px; height: 60px; border-radius: 50%; border: 2px solid var(--brand-blue); object-fit: cover; flex-shrink: 0; background: #fff; }
-    .identity-stack { display: flex; flex-direction: column; justify-content: center; }
-    
-    .club-title-main { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 800; letter-spacing: 0.5px; color: #0F2C48; line-height: 1.2; margin-bottom: 3px; text-shadow: 0 1px 0 rgba(255,255,255,0.3); }
-    .club-subtitle { font-family: 'Lato', sans-serif; font-size: 0.75rem; color: #ffffff; font-weight: 700; opacity: 1; line-height: 1.2; text-shadow: 0 1px 2px rgba(0,0,0,0.1); }
-    
-    .top-bar-center { display: flex; gap: 12px; align-items: center; }
-
-    /* BOUTONS NAVIGATION */
-    .header-icon-btn {
-        position: relative; width: 40px; height: 40px; border-radius: 50%;
-        background: linear-gradient(135deg, #D9A526 0%, #B4792A 100%); 
-        border: 1px solid rgba(255,255,255,0.3); display: flex; align-items: center; justify-content: center;
-        font-size: 1.1rem; text-decoration: none; transition: all 0.3s ease; color: white;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    }
-    .header-icon-btn:hover { 
-        transform: translateY(-3px) scale(1.1); 
-        background: linear-gradient(135deg, #FFD700 0%, #D9A526 100%);
-        color: white;
-        box-shadow: 0 0 15px rgba(217, 165, 38, 0.6);
-    }
-    
-    .nav-mmpa-img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 2px solid #fff; }
-    .nav-profile-img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 2px solid #fff; }
-    
-    .header-icon-btn::after {
-        content: attr(data-tooltip); position: absolute; top: 130%; left: 50%; transform: translateX(-50%) translateY(-10px);
-        background-color: #0F2C48; color: #D9A526; padding: 4px 10px; border-radius: 20px;
-        font-size: 0.7rem; font-weight: 700; white-space: nowrap; opacity: 0; visibility: hidden; transition: all 0.3s ease;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.2); pointer-events: none; z-index: 100;
-    }
-    .header-icon-btn:hover::after { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
-
-    .btn-portfolio-cosmic {
-        padding: 8px 20px; border-radius: 50px; font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 0.9rem;
-        background: linear-gradient(135deg, #0F2C48 0%, #1a3b5c 100%);
-        color: #D9A526 !important; text-decoration: none; 
-        border: 1px solid rgba(255,255,255,0.2); display: inline-flex; align-items: center; gap: 8px; animation: cosmic-pulse 4s ease-in-out infinite;
-    }
-    .btn-portfolio-cosmic:hover { background: #163b5e; color: #fff !important; }
 
     /* NAVIGATION ONGLETS */
     .tabs-nav-container {
@@ -226,7 +278,7 @@
         width: 50px; height: 50px; border-radius: 12px; 
         background: linear-gradient(135deg, #0F2C48 0%, #1a3b5c 100%); 
         color: #D9A526; display: flex; align-items: center; justify-content: center; 
-        font-size: 1.2rem; margin-right: 20px; box-shadow: 0 4px 10px rgba(15, 44, 72, 0.2);
+        font-size: 1.2rem; margin: right: 20px; box-shadow: 0 4px 10px rgba(15, 44, 72, 0.2);
         transition: transform 0.3s ease;
     }
     details.module-accordion[open] .module-icon-box { transform: rotate(-10deg) scale(1.1); background: linear-gradient(135deg, #D9A526 0%, #B4792A 100%); color: #fff; }
@@ -298,66 +350,46 @@
     .btn-bell { color: #eab308; background-color: #fefce8; border-color: #fef08a; }
     .btn-link { color: #2563eb; background-color: #eff6ff; border-color: #dbeafe; }
 
-    /* FOOTER */
-    .main-footer { background-color: var(--footer-bg); color: var(--footer-text); padding-top: 50px; font-family: 'Lato', sans-serif; font-size: 0.95rem; position: relative; width: 100%; margin-top: auto; box-sizing: border-box; }
-    .footer-container { max-width: 1400px; margin: 0 auto; padding: 0 25px; }
-    .footer-row { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding-bottom: 30px; }
-    .footer-left { display: flex; align-items: center; gap: 15px; }
-    .footer-logo-img { width: 50px; height: 50px; border-radius: 8px; border: 2px solid var(--footer-accent); background: #fff; object-fit: cover; }
-    .footer-info { display: flex; flex-direction: column; justify-content: center; }
-    .footer-name { color: var(--footer-accent); font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; margin: 0; line-height: 1.2; }
-    .footer-details { font-size: 0.8rem; opacity: 0.8; display: flex; gap: 15px; }
-    .footer-link { text-decoration: none; color: inherit; transition: 0.3s; display: inline-block; }
-    .footer-link:hover { color: var(--footer-accent); transform: translateX(2px); }
-    .footer-right { display: flex; align-items: center; gap: 15px; }
-    .icon-btn { position: relative; width: 40px; height: 40px; border-radius: 50%; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(217, 165, 38, 0.4); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; text-decoration: none; color: #fff; transition: all 0.3s; }
-    .icon-btn:hover { transform: translateY(-3px); background: #fff; border-color: #fff; box-shadow: 0 4px 10px rgba(217, 165, 38, 0.3); }
-    .logo-home-btn { padding: 0; overflow: hidden; border: 2px solid var(--footer-accent); background: white; }
-    .logo-home-btn img { width: 100%; height: 100%; object-fit: cover; }
-    .logo-home-btn:hover { border-color: white; background: white; }
-    .brand-whatsapp { color: #25D366 !important; } .icon-btn:hover .brand-whatsapp { color: #25D366 !important; }
-    .brand-discord { color: #5865F2 !important; } .icon-btn:hover .brand-discord { color: #5865F2 !important; }
-    .brand-linkedin { color: #0077b5 !important; } .icon-btn:hover .brand-linkedin { color: #0077b5 !important; }
-    .brand-instagram { color: #E1306C !important; } .icon-btn:hover .brand-instagram { color: #E1306C !important; }
-    .brand-tiktok { color: #00f2ea !important; text-shadow: 2px 2px 0px #ff0050; } .icon-btn:hover .brand-tiktok { color: #000 !important; text-shadow: none; } 
-    .brand-nav { color: var(--footer-accent) !important; } .icon-btn:hover .brand-nav { color: var(--footer-bg) !important; }
-    .icon-btn::after { content: attr(data-tooltip); position: absolute; bottom: 125%; left: 50%; transform: translateX(-50%); background-color: #fff; color: var(--footer-bg); padding: 4px 8px; border-radius: 4px; font-size: 0.7rem; font-weight: 700; white-space: nowrap; opacity: 0; visibility: hidden; transition: all 0.3s; pointer-events: none; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
-    .icon-btn:hover::after { opacity: 1; visibility: visible; }
-    .dock-separator { width: 1px; height: 25px; background-color: rgba(255,255,255,0.2); margin: 0 10px; }
-    .footer-copyright { text-align: center; font-size: 0.75rem; color: rgba(255,255,255,0.3); margin-top: 15px; padding: 10px 0; border-top: 1px solid rgba(255,255,255,0.05); }
-    
-    #backToTop { position: fixed; bottom: 30px; right: 30px; background: var(--f-accent); color: var(--f-bg); width: 50px; height: 50px; border-radius: 50%; display: flex; justify-content: center; align-items: center; cursor: pointer; opacity: 0; pointer-events: none; transition: 0.3s; }
+    #backToTop { position: fixed; bottom: 30px; right: 30px; background: var(--brandGold); color: var(--brand-blue); width: 50px; height: 50px; border-radius: 50%; display: flex; justify-content: center; align-items: center; cursor: pointer; opacity: 0; pointer-events: none; transition: 0.3s; z-index: 9999; }
     #backToTop.show { opacity: 1; pointer-events: all; }
-    @media (max-width: 900px) {
-        .footer-row { flex-direction: column; text-align: center; gap: 20px; }
-        .footer-left { flex-direction: column; }
-        .footer-details { flex-direction: column; gap: 5px; }
-        .footer-right { flex-wrap: wrap; justify-content: center; }
-    }
   </style>
 </head>
 <body>
 
-  <div class="top-bar" id="mainHeader">
+<!-- NOUVEAU HEADER -->
+<div class="top-bar" id="mainHeader">
     <div class="top-bar-container">
-        <div class="top-bar-left">
-            <img src="https://projettechacademy.github.io/Juridique/Asset/Logo_juriste.png" onerror="this.src='https://projettechacademy.github.io/Juridique/Asset/Logo_juriste.jpg';" alt="Logo Club" class="logo-top-bar">
-            <div class="identity-stack">
-                <span class="club-title-main">💫 The Jurist Elite Club By Studi ✨</span>
-                <span class="club-subtitle">La Villa des Juristes Brisés 💔 sur l’Île de L’INSTRUCTION ! 🏝</span>
-            </div>
-        </div>
-        <div class="top-bar-center">
-            <a href="index.html" class="header-icon-btn" data-tooltip="Start/Accueil"><img src="https://projettechacademy.github.io/Juridique/Asset/Logo_MMPA.jpeg" alt="MMPA" class="nav-mmpa-img"></a>
-            <a href="https://projettechacademy.github.io/Juridique/00_Autres/Mon_Espace_Juriste_Tableau_de_bord_personnel.html" target="_blank" class="header-icon-btn" data-tooltip="Mon Espace">📊</a>
-            <a href="https://projettechacademy.github.io/Juridique/00_Autres/Lexique_Latin_Juridique.html" target="_blank" class="header-icon-btn" data-tooltip="Lexique Latin">📜</a>
-            <a href="https://projettechacademy.github.io/Juridique/00_Autres/Atelier_de_Competence.html" target="_blank" class="header-icon-btn" data-tooltip="Atelier">🛠️</a>
-            <a href="https://projettechacademy.github.io/Juridique/00_Autres/formation_live_juriste.html" target="_blank" class="header-icon-btn" data-tooltip="Planning Live">📅</a>
-            <a href="https://projettechacademy.github.io/Juridique/00_Autres/A_propos_de_moi.html" target="_blank" class="header-icon-btn" data-tooltip="À propos de moi"><img src="https://projettechacademy.github.io/Juridique/Asset/Photo_Mathilde_Martine_PAISLEY.png" onerror="this.src='https://projettechacademy.github.io/Juridique/Asset/Photo_Mathilde_Martine_PAISLEY.jpg';" alt="Profil" class="nav-profile-img"></a>
-        </div>
-        <a href="https://projettechacademy.github.io/CV_MMPA-CV-Mathilde-Martine-PAISLEY/" target="_blank" class="btn-portfolio-cosmic"><span>📄</span> Mon portfolio</a>
+    <div class="top-left">
+    <a href="https://projettechacademy.github.io/Juridique/index.html" title="Start/Accueil" target="_blank">
+    <img class="logo-top" src="https://projettechacademy.github.io/Juridique/Asset/Logo_juriste.png" onerror="this.src='https://projettechacademy.github.io/Juridique/Asset/Logo_juriste.jpg'" alt="Logo Juriste">
+    </a>
+    <div class="identity-stack">
+    <div class="club-title-main">💫 The Jurist Elite Club By Studi ✨</div>
+    <div class="club-subtitle">La Villa des Juristes Brisés 💔 sur l’Île de L’INSTRUCTION ! 🏝</div>
     </div>
-  </div>
+    </div>
+    <nav class="top-center" aria-label="Navigation principale">
+    <a class="header-icon-btn" href="https://www.google.com/search?q=https://projettechacademy.github.io/Juridique/A_propos_de_moi.html" title="A propos de moi" target="_blank">
+    <img src="https://projettechacademy.github.io/Juridique/Asset/Photo_Mathilde_Martine_PAISLEY.jpg" alt="Mathilde Martine PAISLEY" style="width:100%;height:100%;border-radius:50%;object-fit:cover;border:2px solid #fff;" onerror="this.src='https://projettechacademy.github.io/Juridique/Asset/Photo_Mathilde_Martine_PAISLEY.jpeg'">
+    </a>
+    <a class="header-icon-btn" href="https://projettechacademy.github.io/Juridique/index.html" title="Start/Accueil" target="_blank">🏠</a>
+    <a class="header-icon-btn" href="https://www.google.com/search?q=https://projettechacademy.github.io/Juridique/Mon_Espace_Juriste_Tableau_de_bord_personnel.html" title="Mon Espace" target="_blank">📊</a>
+    <a class="header-icon-btn" href="https://www.google.com/search?q=https://projettechacademy.github.io/Juridique/formation_live_juriste.html" title="Planning Live" target="_blank">📅</a>
+    <a class="header-icon-btn" href="https://www.google.com/search?q=https://projettechacademy.github.io/Juridique/Lexique_Latin_Juridique.html" title="Lexique Latin" target="_blank">📜</a>
+    <a class="header-icon-btn" href="https://www.google.com/search?q=https://projettechacademy.github.io/Juridique/Atelier_de_Competence.html" title="Atelier de Compétence Élite" target="_blank">🛠️</a>
+    <a class="header-icon-btn" href="https://www.google.com/search?q=https://projettechacademy.github.io/Juridique/Fiche_RNCP_Juriste.html" title="RNCP" target="_blank">📚</a>
+    <a class="header-icon-btn" href="https://www.google.com/search?q=https://projettechacademy.github.io/Juridique/Univers_Actes_Juridiques.html" title="Rédaction Juridique" target="_blank">✍️</a>
+    <a class="header-icon-btn" href="https://www.google.com/search?q=https://projettechacademy.github.io/Juridique/Jurist_Elite_Panorama_IA.html" title="Panorama IA" target="_blank">🤖</a>
+    <a class="header-icon-btn" href="https://www.google.com/search?q=https://projettechacademy.github.io/Juridique/Acronymes.html" title="Acronymes" target="_blank">🔤</a>
+    </nav>
+    <div>
+    <a class="btn-portfolio-cosmic" href="https://www.google.com/search?q=https://projettechacademy.github.io/Juridique/Portfolio_Mathilde-Martine-PAISLEY.html" target="_blank" title="Mon Expertise / Projets">
+    <img src="https://projettechacademy.github.io/Juridique/Asset/Logo_MMPA.jpeg" alt="Logo" style="width:24px; height:24px; border-radius:50%; object-fit:cover; border:1px solid #fff;" onerror="this.src='https://www.google.com/search?q=https://projettechacademy.github.io/Juridique/Asset/Logo_MMPA.jpg'">
+    Expert
+    </a>
+    </div>
+    </div>
+</div>
 
   <div class="tabs-nav-container">
       <div class="tabs-wrapper">
@@ -508,38 +540,46 @@
 
   </main>
 
-  <footer class="main-footer">
+  <!-- NOUVEAU FOOTER -->
+  <footer class="main-footer" role="contentinfo">
     <div class="footer-container">
-        <div class="footer-row">
-            <div class="footer-left">
-                <img src="https://projettechacademy.github.io/Juridique/Asset/Logo_MMPA.jpeg" alt="Logo" class="footer-logo-img">
-                <div class="footer-info">
-                    <h3 class="footer-name">Mathilde Martine PAISLEY</h3>
-                    <div class="footer-details">
-                        <span>📧 Mathilde.martine.paisley@gmail.com</span>
-                        <span>📲 06 85 90 08 87</span>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-right">
-                <a href="https://projettechacademy.github.io/Juridique/index.html" target="_blank" class="icon-btn logo-home-btn" data-tooltip="Accueil">
-                    <img src="https://projettechacademy.github.io/Juridique/Asset/Logo_juriste.png" alt="Accueil" onerror="this.src='https://projettechacademy.github.io/Juridique/Asset/Logo_juriste.jpg'">
-                </a>
-                <a href="https://projettechacademy.github.io/Juridique/00_Autres/Mon_Espace_Juriste_Tableau_de_bord_personnel.html" target="_blank" class="icon-btn" data-tooltip="Mon Espace"><span class="brand-nav">📊</span></a>
-                <a href="https://projettechacademy.github.io/Juridique/00_Autres/Lexique_Latin_Juridique.html" target="_blank" class="icon-btn" data-tooltip="Lexique"><span class="brand-nav">📜</span></a>
-                <a href="https://projettechacademy.github.io/Juridique/00_Autres/formation_live_juriste.html" target="_blank" class="icon-btn" data-tooltip="Planning"><span class="brand-nav">📅</span></a>
-                <a href="https://projettechacademy.github.io/Juridique/00_Autres/A_propos_de_moi.html" target="_blank" class="icon-btn" data-tooltip="Bio"><span class="brand-nav">👤</span></a>
-                <div class="dock-separator"></div>
-                <a href="https://chat.whatsapp.com/IoMXFl4o2otExYKCPVj22b" target="_blank" class="icon-btn" data-tooltip="WhatsApp"><i class="fab fa-whatsapp brand-whatsapp"></i></a>
-                <a href="https://discord.gg/qwNPV8QzFt" target="_blank" class="icon-btn" data-tooltip="Discord"><i class="fab fa-discord brand-discord"></i></a>
-                <a href="https://www.linkedin.com/in/mathilde-martine-paisley-1a4422382/" target="_blank" class="icon-btn" data-tooltip="LinkedIn"><i class="fab fa-linkedin brand-linkedin"></i></a>
-                <a href="https://www.instagram.com/enervyx/" target="_blank" class="icon-btn" data-tooltip="Instagram"><i class="fab fa-instagram brand-instagram"></i></a>
-                <a href="https://www.tiktok.com/@enervyx/" target="_blank" class="icon-btn" data-tooltip="TikTok"><i class="fab fa-tiktok brand-tiktok"></i></a>
-            </div>
+    <div class="footer-left">
+    <a href="https://projettechacademy.github.io/Juridique/index.html" target="_blank">
+    <img class="footer-logo-img" src="https://projettechacademy.github.io/Juridique/Asset/Logo_MMPA.jpeg" alt="Logo MMPA" onerror="this.src='https://www.google.com/search?q=https://projettechacademy.github.io/Juridique/Asset/Logo_MMPA.jpg'">
+    </a>
+    <div class="footer-details">
+    <div style="font-weight:700; font-size: 1.1rem;">Mathilde Martine PAISLEY</div>
+    <div style="opacity:0.95; margin-top:6px; font-size: 0.9rem;">
+    📧 Mathilde.martine.paisley@gmail.com <br class="md:hidden"> • 📲 06 85 90 08 87
+    </div>
+    </div>
+    </div>
+    <div class="footer-right">
+    <div class="footer-links-row" aria-label="Liens utilitaires">
+    <a class="icon-btn" href="https://www.google.com/search?q=https://projettechacademy.github.io/Juridique/A_propos_de_moi.html" title="A propos de moi" target="_blank">👤</a>
+    <a class="icon-btn" href="https://projettechacademy.github.io/Juridique/index.html" title="Accueil" target="_blank">🏠</a>
+    <a class="icon-btn" href="https://www.google.com/search?q=https://projettechacademy.github.io/Juridique/Mon_Espace_Juriste_Tableau_de_bord_personnel.html" title="Mon Espace" target="_blank">📊</a>
+    <a class="icon-btn" href="https://www.google.com/search?q=https://projettechacademy.github.io/Juridique/formation_live_juriste.html" title="Planning" target="_blank">📅</a>
+    <a class="icon-btn" href="https://www.google.com/search?q=https://projettechacademy.github.io/Juridique/Lexique_Latin_Juridique.html" title="Lexique" target="_blank">📜</a>
+    <a class="icon-btn" href="https://www.google.com/search?q=https://projettechacademy.github.io/Juridique/Atelier_de_Competence.html" title="Atelier" target="_blank">🛠️</a>
+    <a class="icon-btn" href="https://www.google.com/search?q=https://projettechacademy.github.io/Juridique/Portfolio_Mathilde-Martine-PAISLEY.html" title="Portfolio" target="_blank">🎨</a>
+    <a class="icon-btn" href="https://www.google.com/search?q=https://projettechacademy.github.io/Juridique/Fiche_RNCP_Juriste.html" title="RNCP" target="_blank">📚</a>
+    <a class="icon-btn" href="https://www.google.com/search?q=https://projettechacademy.github.io/Juridique/Univers_Actes_Juridiques.html" title="Rédaction Juridique" target="_blank">✍️</a>
+    <a class="icon-btn" href="https://www.google.com/search?q=https://projettechacademy.github.io/Juridique/Jurist_Elite_Panorama_IA.html" title="Panorama IA" target="_blank">🤖</a>
+    <a class="icon-btn" href="https://www.google.com/search?q=https://projettechacademy.github.io/Juridique/Acronymes.html" title="Acronymes" target="_blank">🔤</a>
+            <div class="footer-divider"></div>
+    
+            <a class="icon-btn" href="https://chat.whatsapp.com/IoMXFl4o2otExYKCPVj22b" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp" style="color:#25D366;"></i></a>
+            <a class="icon-btn" href="https://discord.gg/qwNPV8QzFt" target="_blank" title="Discord"><i class="fab fa-discord" style="color:#5865F2;"></i></a>
+            <a class="icon-btn" href="https://www.linkedin.com/in/mathilde-martine-paisley-1a4422382/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin" style="color:#0077b5;"></i></a>
+            <a class="icon-btn" href="https://www.instagram.com/enervyx/" target="_blank" title="Instagram"><i class="fab fa-instagram" style="color:#E1306C;"></i></a>
+            <a class="icon-btn" href="https://www.tiktok.com/@enervyx/" target="_blank" title="TikTok"><i class="fab fa-tiktok" style="color:#00f2ea;"></i></a>
         </div>
-        <div class="footer-copyright">
-            <p>💫 The Jurist Elite Club By Studi ✨ La Villa des Juristes Brisés 💔 sur l’Île de L’INSTRUCTION !🏝 | By Mathilde Martine PAISLEY | © 2025 Tous droits réservés</p>
-        </div>
+      </div>
+      <div class="copyright">
+        💫 The Jurist Elite Club By Studi ✨ La Villa des Juristes Brisés 💔 sur l’Île de L’INSTRUCTION !🏝 <br> 
+        By Mathilde Martine PAISLEY | © 2025 Tous droits réservés
+      </div>
     </div>
   </footer>
 
@@ -570,27 +610,27 @@
 🟧B0_M01_S007_Le contrat de travail à temps partiel
 🟧B0_M01_S008_Les contrats de formation
 🟧B0_M01_S009_La rédaction du contrat de travail
-🟧B0_M01_S010_Application : Etablir les contrats de travail
+🟧B0_M01_S010_Application - Etablir les contrats de travail
 🟧B0_M01_S011_Comment et pourquoi se former à gestion des parcours salariés
 🟧B0_M01_S012_Le recrutement
 🟧B0_M01_S013_Les formalités administratives d'embauche
 🟧B0_M01_S014_La suspension du contrat de travail
 🟧B0_M01_S015_L'édition des documents de suspension du contrat
-🟧B0_M01_S016_La rupture du contrat de travail : introduction
+🟧B0_M01_S016_La rupture du contrat de travail - introduction
 🟧B0_M01_S017_Le licenciement
 🟧B0_M01_S018_Les autres modes de rupture du contrat de travail
-🟧B0_M01_S019_Les fins de contrat : indemnité de précarité, ICP, Indemnité RTT, et autres indemnités
-🟧B0_M01_S020_Les fins de contrat : rupture conventionnelle, départ et mise à la retraite
+🟧B0_M01_S019_Les fins de contrat - indemnité de précarité, ICP, Indemnité RTT, et autres indemnités
+🟧B0_M01_S020_Les fins de contrat - rupture conventionnelle, départ et mise à la retraite
 🟧B0_M01_S021_Les formalités de rupture du contrat de travail
 🟧B0_M01_S022_L'édition des documents de fin de contrat
-🟧B0_M01_S023_Synthèse et application : Traiter les entrées et sorties des salariés
+🟧B0_M01_S023_Synthèse et application - Traiter les entrées et sorties des salariés
 🟦B0_M02_Mise à niveau en droit - L’organisation judiciaire
 🟧B0_M02_S001_L'organisation judiciaire européenne
 🟧B0_M02_S002_L'organisation judiciaire nationale
 🟧B0_M02_S003_L'action en justice
 🟧B0_M02_S004_Les MARD
 🟧B0_M02_S005_Application : Comprendre l'organisation judiciaire
-🟦B0_M03__Mise à niveau en droit - Propriété intellectuelle et industrielle
+🟦B0_M03_Mise à niveau en droit - Propriété intellectuelle et industrielle
 🟧B0_M03_S001_La théorie du patrimoine
 🟧B0_M03_S002_La propriété
 🟧B0_M03_S003_Le fonds de commerce et le contrat de bail commercial
@@ -644,11 +684,11 @@
 🟧B0_M07_S018_Focus sur les statuts juridiques - SARL
 🟧B0_M07_S019_Focus sur les statuts juridiques - SA
 🟧B0_M07_S020_Focus sur les statuts juridiques - SAS
-🟦B0_M08_Mise à niveau en droit fiscal
+🟦B0_M08__Mise à niveau en droit fiscal
 🟧B0_M08__S001_Les caractéristiques et les sources du droit fiscal
 🟧B0_M08__S002_La classification des impôts et taxes
-🟧B0_M08__S003_Organisation et rôle de l'administration fiscale et veille fiscale
-🟧B0_M08__S004_Application : Introduire le droit fiscal
+🟧B0_M08__3_Organisation et rôle de l'administration fiscale et veille fiscale
+🟧B0_M08__4_Application : Introduire le droit fiscal
 🟦B0_M09__Mise à niveau en droit de la concurrence
 🟧B0_M09__S001_Le contrôle des concentrations
 🟧B0_M09__S002_Les pratiques anticoncurrentielles
@@ -666,8 +706,8 @@
 🟧B0_M10__S008_La procédure de redressement judiciaire
 🟧B0_M10__S009_La procédure de liquidation judiciaire
 🟧B0_M10__S010_Application : Pérenniser l'entreprise en difficulté
-🟦B0_M11_Mise à niveau en droit de l’intelligence artificielle
-🟧B0_M11_1_Un droit de l'IA dans les pratiques de l'entreprise
+🟦B0_M11__Mise à niveau en droit de l’intelligence artificielle
+🟧B0_M11__S001_Un droit de l'IA dans les pratiques de l'entreprise
 🟨B1_Pilotage stratégique et opérationnel de la fonction juridique et RH
 🟦B1_M01_Optimiser et présenter la veille
 🟧B1_M01_S001_Délimiter et structurer une veille pour une entreprise
@@ -704,33 +744,28 @@
 🟧B1_M04_S003_Réaliser une note interne à partir d'une veille juridique en matière de TVA
 🟧B1_M04_S004_Réaliser une note interne à partir d'une veille juridique en droit des contrats
 🟦B1_M05_Définir la stratégie juridique de l’entreprise
-🟧B1_M05_S001_En attente
-🟧B1_M05_S002_En attente
-🟧B1_M05_S003_En attente
 🟦B1_M06_Intégrer des LegalTech et de l’IA dans la stratégie juridique
-🟧B1_M06_S001_En attente
-🟧B1_M06_S002_En attente
-🟧B1_M06_S003_En attente
 🟦B1_M07_Maîtriser la méthodologie complète de l’audit juridique
-🟧B1_M07_S001_En attente
-🟧B1_M07_S002_En attente
-🟧B1_M07_S003_En attente
 🟦B1_M08_Elaborer un plan d’action correctives et préventives
-🟧B1_M08_S001_En attente
-🟧B1_M08_S002_En attente
-🟧B1_M08_S003_En attente
+🟧B1_M09_S001_Onboarding - Élaborer un plan d'actions correctives et préventives
+🟧B1_M09_S002_Fondamentaux du plan d'actions correctives et préventives
+🟧B1_M08_S003_Analyse et hiérarchisation des risques juridiques
+🟧B1_M08_S004_En bref - Les matrices de risques en pratique
+🟧B1_M08_S005_Conception des actions correctives
+🟧B1_M08_S006_Conception des actions préventives
+🟧B1_M08_S007_Attribution des responsabilités et définition des délais
+🟧B1_M08_S008_Focus sur - La communication du plan d'actions
+🟧B1_M08_S009_Budgétisation et allocation des ressources
+🟧B1_M08_S010_Conception du système de suivi et de contrôle
+🟧B1_M08_S011_Gestion des résistances au changement
+🟧B1_M08_S012_Documentation et traçabilité du plan d'actions
+🟧B1_M08_S013_Évaluation et amélioration continue du plan d'actions
+🟧B1_M08_S014_Offboarding - Élaborer un plan d'actions correctives et préventives
+🟧B1_M08_S015_Auto-évaluation - Élaborer un plan d'actions correctives et préventives
+🟧B1_M08_S016_Application - Élaborer un plan d'actions correctives et préventives
 🟦B1_M09_Digitaliser et automatiser les processus juridiques
-🟧B1_M09_S001_En attente
-🟧B1_M09_S002_En attente
-🟧B1_M09_S003_En attente
 🟦B1_M10_Concevoir et rédiger des politiques de conformité
-🟧B1_M10_S001_En attente
-🟧B1_M10_S002_En attente
-🟧B1_M10_S003_En attente
 🟦B1_M11_Déployer et piloter les dispositifs de conformité
-🟧B1_M11_S001_En attente
-🟧B1_M11_S002_En attente
-🟧B1_M11_S003_En attente
 🟦B1_M12_Optimiser et sécuriser l’archivage
 🟧B1_M12_S001_Optimiser et sécuriser l’archivage
 🟧B1_M12_S002_Introduction au RGPD et archivage numérique
@@ -784,7 +819,7 @@
 🟧B1_M15_S008_Offboarding vidéo : Synthèse - Comprendre et analyser des situations en droit de la sécurité sociale
 🟧B1_M15_S009_Application : Comprendre et analyser des situations en droit de la sécurité sociale
 🟧B1_M15_S010_Auto-évaluation : Comprendre et analyser des situations en droit de la sécurité sociale
-🟦B1_M16_Construire une politique de compensations and benefits
+🟦B1_M16__Construire une politique de compensations and benefits
 🟧B1_M16_S001_La politique de rémunération
 🟧B1_M16_S002_La politique de rémunération et les politiques RH
 🟧B1_M16_S003_La politique de rémunération : élaborer et piloter
@@ -841,7 +876,7 @@
 🟧B1_M18_S014_La gestion du budget du projet
 🟧B1_M18_S015_Application : Faire face aux évolutions RH
 🟦B1_M19_Piloter les impacts en matière de droit de la responsabilité
-🟧B1_M19_S001_Onboarding vidéo : Comprendre et analyser des situations en droit de la sécurité sociale
+🟧B1_M19_S001_Onboarding vidéo : Piloter les impacts en matière de droit de la responsabilité
 🟧B1_M19_S002_Les bases du droit de la responsabilité
 🟧B1_M19_S003_La responsabilité des dirigeants et des administrateurs
 🟧B1_M19_S004_La responsabilité des professionnel
@@ -866,11 +901,16 @@
 🟧B2_M01_S011_Application - Réaliser le conseil juridique et opérationnel aux collaborateurs et à la direction
 🟧B2_M01_S012_Offboarding - Réaliser le conseil juridique et opérationnel aux collaborateurs et à la direction
 🟦B2_M02_Piloter le changement structurel d’une entreprise
-🟧B2_M02_S001_Le cadre législatif et réglementaire
-🟧B2_M02_S002_Des actions volontaristes possibles relatives à la RSE
-🟧B2_M02_S003_La carte de transformation
-🟧B2_M02_S004_La communication en externe et en interne sur la RSE
-🟧B2_M02_S005_Application : Piloter le changement structurel d'une entreprise
+🟧B2_M02_S001_Les préalables à une stratégie RSE
+🟧B2_M02_S002_Le cadre législatif et règlementaire
+🟧B2_M02_S003_Quelques obligations réglementaires relatives à la RSE en France
+🟧B2_M02_S004_Des actions volontaires possibles relatives à la RSE
+🟧B2_M02_S005_La carte de transformation
+🟧B3_M03_S006_La communication en externe et en interne sur la RSE
+🟧B4_M04_S007_L'entrepreneuriat responsable et durable
+🟧B5_M05_S008_Les enjeux de la transformation digitale
+🟧B6_M06_S009_Les deux chantiers préliminaires à la TD
+🟧B7_M07_S010_Application : Piloter le changement structurel d'une entreprise
 🟦B2_M03_Gérer le budget de son service
 🟧B2_M03_S001_Onboarding - Gérer le budget de son service
 🟧B2_M03_S002_Budget prévisionnel : présentation et méthode
@@ -908,10 +948,6 @@
 🟧B2_M05_S005_La rédaction des documents pour un magistrat
 🟧B2_M05_S006_La rédaction des documents pour un notaire
 🟦B2_M06_Intégrer les technologies juridiques dans la gestion contractuelle
-🟧B2_M06_S001_En attente
-🟧B2_M06_S002_En attente
-🟧B2_M06_S003_En attente
-🟧B2_M06_S004_En attente
 🟦B2_M07_Utiliser les concepts de base de l’ingénierie pédagogique
 🟧B2_M07_S001_Les méthodes pédagogiques
 🟧B2_M07_S002_Les concept, modalités et démarches pédagogiques
@@ -1008,10 +1044,6 @@
 🟧B3_M02_S012_Application - Conseil stratégique en contentieux
 🟧B3_M02_S013_Offboarding - Conseil stratégique en contentieux
 🟦B3_M03_Elaborer une stratégie de gestion de crise juridique
-🟧B3_M03_S001_En attente
-🟧B4_M03_S002_En attente
-🟧B5_M03_S003_En attente
-🟧6_M03_S004_En attente
 🟦B3_M04_Gestion des contentieux judiciaires
 🟧B3_M04_S001_Onboarding - Gestion des contentieux judiciaires
 🟧B3_M04_S002_Principes du procès civil en droit français
@@ -1028,11 +1060,6 @@
 🟧B3_M04_S013_Application - Gestion des contentieux judiciaires
 🟧B3_M04_S014_Offboarding - Gestion des contentieux judiciaires
 🟦B3_M05_Piloter l’exécution des décisions judiciaires
-🟧B3_M05_S001_En attente
-🟧B4_M05_S002_En attente
-🟧5_M05_S003_En attente
-🟧6_M05_S004_En attente
-🟧7_M05_S005_En attente
 `;
 
     function cleanName(str) {

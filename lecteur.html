@@ -9,18 +9,16 @@
     
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
     
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&family=Montserrat:wght@500;600;700&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&family=Montserrat:wght@500;600;700&family=Outfit:wght@300;400;600;800&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 
     <style>
-        /* --- STYLE IDENTIQUE AU TABLEAU DE BORD (Branding) --- */
-        :root{
-            --cta: #D9A526;
+        /* --- DESIGN 2025 (COPIE CONFORME INDEX.HTML) --- */
+        :root {
             --brand-blue: #0F2C48;
+            --brandGold: #D9A526;
             --ivory: #F6F2E8;
-            --bronze: #B4792A;
-            --footer-bg: #0F2C48; 
-            --footer-text: #F6F2E8; 
-            --footer-accent: #D9A526;
+            --footer-bg: #0F2C48;
+            --footer-text: #F6F2E8;
         }
 
         body { 
@@ -29,57 +27,79 @@
             color: var(--brand-blue); 
             margin: 0;
             display: flex; flex-direction: column; min-height: 100vh;
-            /* CORRECTION : Espace exact pour la barre d'outils (60px) */
-            padding-top: 60px; 
+            /* Espace pour la barre d'outils qui est en position fixed */
+            padding-top: 70px; 
         }
 
-        /* --- HEADER (Copie Conforme Cosmic Premium) --- */
-        .top-bar {
-            background: linear-gradient(135deg, #B4792A 0%, #F2C94C 50%, #B4792A 100%);
-            color: #0F2C48; padding: 15px 0;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-            font-family: 'Lato', sans-serif; border-bottom: 4px solid var(--brand-blue);
-            /* CORRECTION : Colle parfaitement sous la barre d'outils */
-            position: sticky; top: 60px; z-index: 900; 
+        /* --- HEADER ADAPTÉ (Sticky sous la toolbar) --- */
+        .top-bar { 
+            background: linear-gradient(135deg, #B4792A, #F2C94C); 
+            padding: 12px 20px; 
+            position: sticky; 
+            /* On le place juste en dessous de la toolbar (environ 60-70px) */
+            top: 70px; 
+            z-index: 900; 
+            border-bottom: 4px solid var(--brand-blue); 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
-        .top-bar-container { max-width: 1400px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
-        .top-bar-left { display: flex; align-items: center; gap: 15px; flex: 1; min-width: 320px; }
-        .logo-top-bar { width: 60px; height: 60px; border-radius: 50%; border: 2px solid var(--brand-blue); background: #fff; object-fit: cover; }
-        .identity-stack { display: flex; flex-direction: column; justify-content: center; }
-        .club-title-main { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 800; color: #0F2C48; line-height: 1.1; margin-bottom: 3px; }
-        .club-subtitle { font-family: 'Lato', sans-serif; font-size: 0.75rem; color: #ffffff; font-weight: 700; }
-        .top-bar-center { display: flex; gap: 12px; align-items: center; }
-        
-        /* BOUTONS NAVIGATION (Style Cosmic Premium - Doré/Bronze) */
-        .header-icon-btn {
-            width: 40px; height: 40px; border-radius: 50%; 
-            background: linear-gradient(135deg, #D9A526 0%, #B4792A 100%);
-            border: 1px solid rgba(255,255,255,0.3);
-            display: flex; align-items: center; justify-content: center; font-size: 1.1rem; text-decoration: none; color: white; transition: 0.3s;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
-        .header-icon-btn:hover { 
-            transform: translateY(-3px) scale(1.1); 
-            background: linear-gradient(135deg, #FFD700 0%, #D9A526 100%);
-            box-shadow: 0 0 15px rgba(217, 165, 38, 0.6);
-        }
-        .nav-img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 2px solid #fff; }
 
-        /* BOUTON PORTFOLIO ANIMÉ */
-        @keyframes cosmic-pulse {
-            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(217, 165, 38, 0.7); }
-            70% { transform: scale(1.02); box-shadow: 0 0 0 10px rgba(217, 165, 38, 0); }
-            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(217, 165, 38, 0); }
+        .top-bar-container { 
+            max-width: 1400px; 
+            margin: 0 auto; 
+            display: flex; 
+            align-items: center; 
+            justify-content: space-between; 
+            gap: 16px; 
         }
-        .btn-portfolio-cosmic {
-            padding: 8px 20px; border-radius: 50px; font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 0.9rem;
-            background: linear-gradient(135deg, #0F2C48 0%, #1a3b5c 100%);
-            color: #D9A526 !important; text-decoration: none; 
-            border: 1px solid rgba(255,255,255,0.2); display: inline-flex; align-items: center; gap: 8px; animation: cosmic-pulse 2s infinite;
-        }
-        .btn-portfolio-cosmic:hover { background: #163b5e; color: #fff !important; transform: translateY(-2px); }
 
-        /* --- ZONE CONTENU --- */
+        .top-left { display: flex; align-items: center; gap: 14px; }
+
+        .logo-top { 
+            width: 64px; height: 64px; 
+            border-radius: 8px; object-fit: cover; 
+            border: 2px solid var(--brand-blue); 
+            background: #fff; 
+            transition: transform 0.3s ease;
+        }
+        .logo-top:hover { transform: scale(1.05); }
+
+        .identity-stack { display: flex; flex-direction: column; }
+        .club-title-main { font-family: 'Playfair Display', serif; font-weight: 800; color: var(--brand-blue); font-size: 1.1rem; }
+        .club-subtitle { color: #fff; font-weight: 700; font-size: 0.85rem; text-shadow: 0 1px 2px rgba(0,0,0,0.1); }
+
+        .top-center { display: flex; gap: 10px; align-items: center; }
+
+        .header-icon-btn { 
+            width: 44px; height: 44px; flex-shrink: 0;
+            border-radius: 50%; 
+            display: inline-flex; align-items: center; justify-content: center; 
+            text-decoration: none; 
+            background: linear-gradient(135deg, var(--brandGold), #B4792A); 
+            color: #fff; 
+            border: 1px solid rgba(255, 255, 255, 0.4); 
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            font-size: 1.2rem;
+            position: relative;
+        }
+        .header-icon-btn:hover { transform: translateY(-3px); box-shadow: 0 4px 8px rgba(0,0,0,0.2); background: var(--brand-blue); border-color: var(--brandGold); }
+        .header-icon-btn img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
+
+        .btn-portfolio-cosmic { 
+            padding: 8px 18px; 
+            border-radius: 999px; 
+            background: var(--brand-blue); 
+            color: var(--brandGold); 
+            text-decoration: none; 
+            font-weight: 700; 
+            display: inline-flex; gap: 8px; align-items: center; 
+            transition: background 0.3s, color 0.3s;
+            white-space: nowrap;
+            box-shadow: 0 4px 10px rgba(15, 44, 72, 0.2);
+        }
+        .btn-portfolio-cosmic:hover { background: #fff; color: var(--brand-blue); transform: translateY(-2px); }
+
+        /* --- ZONE CONTENU PRINCIPAL --- */
         .main-wrapper {
             flex: 1;
             max-width: 1300px; width: 95%; margin: 40px auto;
@@ -90,7 +110,7 @@
         h1 { color: #0F2C48; font-size: 2rem; font-weight: 800; margin-bottom: 10px; line-height: 1.2; font-family: 'Playfair Display', serif; }
         .course-id-tag { background: #D9A526; color: #fff; padding: 5px 15px; border-radius: 50px; font-size: 0.8rem; font-weight: 700; margin-bottom: 10px; display: inline-block; }
 
-        /* --- GRILLE 5 CARTES --- */
+        /* --- GRILLE 5 CARTES (Conservée) --- */
         .inspiration-grid { display: grid; grid-template-columns: repeat(1, 1fr); gap: 25px; width: 100%; }
         @media (min-width: 768px) { .inspiration-grid { grid-template-columns: repeat(2, 1fr); } .card-music-span { grid-column: span 2; } }
         @media (min-width: 1200px) { 
@@ -99,7 +119,7 @@
             .card-music-span { grid-column: 2 / span 2; grid-row: 2; }
         }
 
-        /* --- CARTES --- */
+        /* --- STYLES DES CARTES --- */
         .card-box {
             background: white; border-radius: 20px; padding: 30px;
             box-shadow: 0 10px 30px rgba(15, 44, 72, 0.05); border: 1px solid rgba(15, 44, 72, 0.05);
@@ -112,7 +132,6 @@
         
         .card-bg-icon { position: absolute; bottom: -15px; right: -15px; font-size: 8rem; opacity: 0.05; color: #0F2C48; pointer-events: none; }
         
-        /* Badges */
         .card-badge { padding: 6px 14px; border-radius: 20px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; margin-bottom: 15px; display: inline-flex; align-items: center; gap: 8px; }
         .badge-mindset { background: #fff7ed; color: #c2410c; }
         .badge-method { background: #eff6ff; color: #1d4ed8; }
@@ -126,43 +145,83 @@
         .card-clickable:hover .card-action { opacity: 1; }
 
         /* --- FOOTER --- */
-        .main-footer { background-color: var(--footer-bg); color: var(--footer-text); padding: 40px 0; font-family: 'Lato', sans-serif; font-size: 0.9rem; margin-top: auto; }
-        .footer-container { max-width: 1400px; margin: 0 auto; padding: 0 25px; display: flex; flex-direction: column; gap: 20px; }
-        .footer-row { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
-        .footer-left { display: flex; align-items: center; gap: 15px; }
-        .footer-right { display: flex; gap: 10px; flex-wrap: wrap; }
-        .footer-copyright { text-align: center; opacity: 0.5; font-size: 0.8rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 15px; }
-        
-        .icon-btn { width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; color: white; transition: 0.3s; }
-        .icon-btn:hover { background: white; color: var(--brand-blue); }
+        .main-footer { background: var(--footer-bg); color: var(--footer-text); padding: 40px 18px; margin-top: auto; border-top: 4px solid var(--brandGold); }
+        .footer-container { max-width: 1400px; margin: 0 auto; display: flex; gap: 20px; align-items: center; justify-content: space-between; flex-wrap: wrap; }
+        .footer-left { display: flex; gap: 12px; align-items: center; }
+        .footer-logo-img { width: 60px; height: 60px; border-radius: 8px; object-fit: cover; border: 2px solid var(--brandGold); background: #fff; }
+        .footer-details { color: var(--footer-text); opacity: 0.95; }
+
+        .footer-right { display: flex; flex-direction: column; align-items: flex-end; gap: 15px; }
+        .footer-links-row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
+
+        .icon-btn { 
+            width: 44px; height: 44px; flex-shrink: 0;
+            border-radius: 50%; 
+            display: inline-flex; align-items: center; justify-content: center; 
+            background: rgba(255, 255, 255, 0.06); 
+            color: var(--footer-text); 
+            text-decoration: none; 
+            border: 1px solid rgba(217, 165, 38, 0.15); 
+            transition: all 0.2s;
+            font-size: 1.1rem;
+        }
+        .icon-btn:hover { background: var(--brandGold); color: var(--brand-blue); transform: scale(1.1); border-color: #fff; }
+
+        .footer-divider { width: 2px; height: 32px; background: rgba(255,255,255,0.3); margin: 0 12px; border-radius: 2px; }
+        .copyright { width: 100%; text-align: center; color: rgba(255, 255, 255, 0.35); margin-top: 24px; font-size: 0.9rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; }
+
+        @media (max-width: 1100px) {
+            .top-bar-container { flex-direction: column; gap: 15px; align-items: center; text-align: center; }
+            .top-left { flex-direction: column; text-align: center; }
+            .top-center { width: 100%; overflow-x: auto; padding-bottom: 10px; justify-content: flex-start; padding-left: 5px; padding-right: 5px; -webkit-overflow-scrolling: touch; }
+            .top-center::-webkit-scrollbar { height: 4px; }
+            .top-center::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.3); border-radius: 4px; }
+            .footer-container { flex-direction: column; text-align: center; }
+            .footer-left { flex-direction: column; }
+            .footer-right { align-items: center; width: 100%; }
+            .footer-links-row { justify-content: center; width: 100%; overflow-x: auto; padding-bottom: 10px; }
+            .footer-divider { display: none; } 
+        }
     </style>
 </head>
 <body>
 
-    <div class="top-bar">
+    <!-- NOUVEAU HEADER (Identique Index) -->
+    <div class="top-bar" id="mainHeader">
         <div class="top-bar-container">
-            <div class="top-bar-left">
-                <img src="https://projettechacademy.github.io/Juridique/Asset/Logo_juriste.png" onerror="this.src='https://projettechacademy.github.io/Juridique/Asset/Logo_juriste.jpg';" alt="Logo" class="logo-top-bar">
-                <div class="identity-stack">
-                    <span class="club-title-main">The Jurist Elite Club</span>
-                    <span class="club-subtitle">Espace Formation & Ressources</span>
-                </div>
-            </div>
-            <div class="top-bar-center">
-                <a href="index.html" class="header-icon-btn" title="Retour Accueil"><i class="fa-solid fa-home"></i></a>
-                <a href="https://projettechacademy.github.io/Juridique/00_Autres/Mon_Espace_Juriste_Tableau_de_bord_personnel.html" target="_blank" class="header-icon-btn" title="Mon Espace">📊</a>
-                <a href="https://projettechacademy.github.io/Juridique/00_Autres/Lexique_Latin_Juridique.html" target="_blank" class="header-icon-btn" title="Lexique">📜</a>
-                
-                <a href="https://projettechacademy.github.io/Juridique/00_Autres/Atelier_de_Competence.html" target="_blank" class="header-icon-btn" title="Atelier">🛠️</a>
-
-                <a href="https://projettechacademy.github.io/Juridique/00_Autres/formation_live_juriste.html" target="_blank" class="header-icon-btn" title="Planning">📅</a>
-                <a href="https://projettechacademy.github.io/Juridique/00_Autres/A_propos_de_moi.html" target="_blank" class="header-icon-btn" title="Profil"><img src="https://projettechacademy.github.io/Juridique/Asset/Photo_Mathilde_Martine_PAISLEY.png" onerror="this.src='https://projettechacademy.github.io/Juridique/Asset/Photo_Mathilde_Martine_PAISLEY.jpg';" class="nav-img"></a>
-            </div>
-            
-            <a href="https://projettechacademy.github.io/CV_MMPA-CV-Mathilde-Martine-PAISLEY/" target="_blank" class="btn-portfolio-cosmic"><span>📄</span> Mon portfolio</a>
+        <div class="top-left">
+        <a href="https://projettechacademy.github.io/Juridique/index.html" title="Start/Accueil" target="_blank">
+        <img class="logo-top" src="https://projettechacademy.github.io/Juridique/Asset/Logo_juriste.png" onerror="this.src='https://projettechacademy.github.io/Juridique/Asset/Logo_juriste.jpg'" alt="Logo Juriste">
+        </a>
+        <div class="identity-stack">
+        <div class="club-title-main">💫 The Jurist Elite Club By Studi ✨</div>
+        <div class="club-subtitle">La Villa des Juristes Brisés 💔 sur l’Île de L’INSTRUCTION ! 🏝</div>
+        </div>
+        </div>
+        <nav class="top-center" aria-label="Navigation principale">
+        <a class="header-icon-btn" href="https://www.google.com/search?q=https://projettechacademy.github.io/Juridique/A_propos_de_moi.html" title="A propos de moi" target="_blank">
+        <img src="https://projettechacademy.github.io/Juridique/Asset/Photo_Mathilde_Martine_PAISLEY.jpg" alt="Mathilde Martine PAISLEY" style="width:100%;height:100%;border-radius:50%;object-fit:cover;border:2px solid #fff;" onerror="this.src='https://projettechacademy.github.io/Juridique/Asset/Photo_Mathilde_Martine_PAISLEY.jpeg'">
+        </a>
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Juridique/index.html" title="Start/Accueil" target="_blank">🏠</a>
+        <a class="header-icon-btn" href="https://www.google.com/search?q=https://projettechacademy.github.io/Juridique/Mon_Espace_Juriste_Tableau_de_bord_personnel.html" title="Mon Espace" target="_blank">📊</a>
+        <a class="header-icon-btn" href="https://www.google.com/search?q=https://projettechacademy.github.io/Juridique/formation_live_juriste.html" title="Planning Live" target="_blank">📅</a>
+        <a class="header-icon-btn" href="https://www.google.com/search?q=https://projettechacademy.github.io/Juridique/Lexique_Latin_Juridique.html" title="Lexique Latin" target="_blank">📜</a>
+        <a class="header-icon-btn" href="https://www.google.com/search?q=https://projettechacademy.github.io/Juridique/Atelier_de_Competence.html" title="Atelier de Compétence Élite" target="_blank">🛠️</a>
+        <a class="header-icon-btn" href="https://www.google.com/search?q=https://projettechacademy.github.io/Juridique/Fiche_RNCP_Juriste.html" title="RNCP" target="_blank">📚</a>
+        <a class="header-icon-btn" href="https://www.google.com/search?q=https://projettechacademy.github.io/Juridique/Univers_Actes_Juridiques.html" title="Rédaction Juridique" target="_blank">✍️</a>
+        <a class="header-icon-btn" href="https://www.google.com/search?q=https://projettechacademy.github.io/Juridique/Jurist_Elite_Panorama_IA.html" title="Panorama IA" target="_blank">🤖</a>
+        <a class="header-icon-btn" href="https://www.google.com/search?q=https://projettechacademy.github.io/Juridique/Acronymes.html" title="Acronymes" target="_blank">🔤</a>
+        </nav>
+        <div>
+        <a class="btn-portfolio-cosmic" href="https://www.google.com/search?q=https://projettechacademy.github.io/Juridique/Portfolio_Mathilde-Martine-PAISLEY.html" target="_blank" title="Mon Expertise / Projets">
+        <img src="https://projettechacademy.github.io/Juridique/Asset/Logo_MMPA.jpeg" alt="Logo" style="width:24px; height:24px; border-radius:50%; object-fit:cover; border:1px solid #fff;" onerror="this.src='https://www.google.com/search?q=https://projettechacademy.github.io/Juridique/Asset/Logo_MMPA.jpg'">
+        Expert
+        </a>
+        </div>
         </div>
     </div>
 
+    <!-- CONTENU PRINCIPAL (Cartes) -->
     <div class="main-wrapper">
         
         <div class="header-course">
@@ -215,23 +274,46 @@
 
     </div>
 
-    <footer class="main-footer">
+    <!-- NOUVEAU FOOTER (Identique Index) -->
+    <footer class="main-footer" role="contentinfo">
         <div class="footer-container">
-            <div class="footer-row">
-                <div class="footer-left">
-                    <div class="identity-stack">
-                        <span style="color:#D9A526; font-weight:700;">Mathilde Martine PAISLEY</span>
-                        <span>The Jurist Elite Club</span>
-                    </div>
-                </div>
-                <div class="footer-right">
-                    <a href="https://www.linkedin.com/in/mathilde-martine-paisley-1a4422382/" target="_blank" class="icon-btn"><i class="fab fa-linkedin"></i></a>
-                    <a href="https://www.instagram.com/enervyx/" target="_blank" class="icon-btn"><i class="fab fa-instagram"></i></a>
-                </div>
+        <div class="footer-left">
+        <a href="https://projettechacademy.github.io/Juridique/index.html" target="_blank">
+        <img class="footer-logo-img" src="https://projettechacademy.github.io/Juridique/Asset/Logo_MMPA.jpeg" alt="Logo MMPA" onerror="this.src='https://www.google.com/search?q=https://projettechacademy.github.io/Juridique/Asset/Logo_MMPA.jpg'">
+        </a>
+        <div class="footer-details">
+        <div style="font-weight:700; font-size: 1.1rem;">Mathilde Martine PAISLEY</div>
+        <div style="opacity:0.95; margin-top:6px; font-size: 0.9rem;">
+        📧 Mathilde.martine.paisley@gmail.com <br class="md:hidden"> • 📲 06 85 90 08 87
+        </div>
+        </div>
+        </div>
+        <div class="footer-right">
+        <div class="footer-links-row" aria-label="Liens utilitaires">
+        <a class="icon-btn" href="https://www.google.com/search?q=https://projettechacademy.github.io/Juridique/A_propos_de_moi.html" title="A propos de moi" target="_blank">👤</a>
+        <a class="icon-btn" href="https://projettechacademy.github.io/Juridique/index.html" title="Accueil" target="_blank">🏠</a>
+        <a class="icon-btn" href="https://www.google.com/search?q=https://projettechacademy.github.io/Juridique/Mon_Espace_Juriste_Tableau_de_bord_personnel.html" title="Mon Espace" target="_blank">📊</a>
+        <a class="icon-btn" href="https://www.google.com/search?q=https://projettechacademy.github.io/Juridique/formation_live_juriste.html" title="Planning" target="_blank">📅</a>
+        <a class="icon-btn" href="https://www.google.com/search?q=https://projettechacademy.github.io/Juridique/Lexique_Latin_Juridique.html" title="Lexique" target="_blank">📜</a>
+        <a class="icon-btn" href="https://www.google.com/search?q=https://projettechacademy.github.io/Juridique/Atelier_de_Competence.html" title="Atelier" target="_blank">🛠️</a>
+        <a class="icon-btn" href="https://www.google.com/search?q=https://projettechacademy.github.io/Juridique/Portfolio_Mathilde-Martine-PAISLEY.html" title="Portfolio" target="_blank">🎨</a>
+        <a class="icon-btn" href="https://www.google.com/search?q=https://projettechacademy.github.io/Juridique/Fiche_RNCP_Juriste.html" title="RNCP" target="_blank">📚</a>
+        <a class="icon-btn" href="https://www.google.com/search?q=https://projettechacademy.github.io/Juridique/Univers_Actes_Juridiques.html" title="Rédaction Juridique" target="_blank">✍️</a>
+        <a class="icon-btn" href="https://www.google.com/search?q=https://projettechacademy.github.io/Juridique/Jurist_Elite_Panorama_IA.html" title="Panorama IA" target="_blank">🤖</a>
+        <a class="icon-btn" href="https://www.google.com/search?q=https://projettechacademy.github.io/Juridique/Acronymes.html" title="Acronymes" target="_blank">🔤</a>
+                <div class="footer-divider"></div>
+        
+                <a class="icon-btn" href="https://chat.whatsapp.com/IoMXFl4o2otExYKCPVj22b" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp" style="color:#25D366;"></i></a>
+                <a class="icon-btn" href="https://discord.gg/qwNPV8QzFt" target="_blank" title="Discord"><i class="fab fa-discord" style="color:#5865F2;"></i></a>
+                <a class="icon-btn" href="https://www.linkedin.com/in/mathilde-martine-paisley-1a4422382/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin" style="color:#0077b5;"></i></a>
+                <a class="icon-btn" href="https://www.instagram.com/enervyx/" target="_blank" title="Instagram"><i class="fab fa-instagram" style="color:#E1306C;"></i></a>
+                <a class="icon-btn" href="https://www.tiktok.com/@enervyx/" target="_blank" title="TikTok"><i class="fab fa-tiktok" style="color:#00f2ea;"></i></a>
             </div>
-            <div class="footer-copyright">
-                © 2025 Tous droits réservés | MMPA 🌹
-            </div>
+          </div>
+          <div class="copyright">
+            💫 The Jurist Elite Club By Studi ✨ La Villa des Juristes Brisés 💔 sur l’Île de L’INSTRUCTION !🏝 <br> 
+            By Mathilde Martine PAISLEY | © 2025 Tous droits réservés
+          </div>
         </div>
     </footer>
 
@@ -239,24 +321,28 @@
     <script src="toolbar_injector.js"></script>
 
     <script>
-        // 1. GESTION DU TITRE
+        // 1. GESTION DU TITRE (Compatible avec les nouvelles clés Bx_Mx_Sx)
         const params = new URLSearchParams(window.location.search);
         const courseId = params.get('id');
         if(courseId) {
             const parts = courseId.split('_');
             let cleanTitle = courseId.replace(/_/g, ' ');
             let idTag = "MODULE";
+            
+            // Logique pour détecter B0_M01 etc.
             if(parts.length > 3) {
+                // On essaie de récupérer le tag Bx_Mx_Sx
                 idTag = parts.slice(0, 3).join(' '); 
                 cleanTitle = parts.slice(3).join(' '); 
             }
+            
             document.getElementById('course-title').textContent = cleanTitle;
             document.getElementById('course-id-display').textContent = idTag;
-            document.title = cleanTitle; 
+            document.title = cleanTitle + " - JEC"; 
         }
 
         // ============================================================
-        // 🇫🇷 BASE DE DONNÉES 100% FRANCOPHONE & FIABLE
+        // 🇫🇷 BASE DE DONNÉES 100% FRANCOPHONE & FIABLE (CONSERVÉE)
         // ============================================================
         
         // 1. MINDSET (En français)

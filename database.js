@@ -1,9 +1,16 @@
 // ======================================================================
-// 🧠 BASE DE DONNÉES CENTRALE (MMPA🌹)
+// 🧠 BASE DE DONNÉES CENTRALE (MMPA🌹) - FORMAT VERTICAL
 // ======================================================================
+// Chaque module est présenté sur plusieurs lignes pour faciliter l'ajout
+// de tes liens Google Drive.
+
 window.dbRessources = {
 
-    // --- BLOC 0 : FONDAMENTAUX ---
+    // ==================================================================
+    // BLOC 0 : FONDAMENTAUX DU DROIT
+    // ==================================================================
+
+    // --- Module 01 : Mise à niveau en droit social ---
 
     "B0_M01_S001_La_notion_de_droit_du_travail": {
         audio: "https://drive.google.com/file/d/1YXvlY1gZThr7tmNMCNs4zV_stpAsp7wm/view?usp=sharing",
@@ -11,436 +18,4398 @@ window.dbRessources = {
         mindmap: "https://drive.google.com/file/d/1_OcOsCuAw_gazFfIvMJsmgYDBkheSMYN/view?usp=sharing",
         info: "https://drive.google.com/file/d/1_jIUvYOrpshFHRC_aWuXCybVZDqTQiwc/view?usp=sharing",
         pdf: "https://drive.google.com/file/d/1E6Hk9kVz6mCEgr5vWKL0xv9JGUQEbv42/view?usp=sharing",
-        learn: "https://drive.google.com/file/d/1vUznGNyvG8MKyPCyJnjlh4v18cKQwvLW/view?usp=sharing", 
+        learn: "https://drive.google.com/file/d/1vUznGNyvG8MKyPCyJnjlh4v18cKQwvLW/view?usp=sharing",
         studi: "https://app.comptalia.com/v3/dashboard"
     },
-    "B0_M01_S002_La_formation_du_contrat_de_travail": { audio: "https://drive.google.com/file/d/1IGRA7U8VUtMiyYyr95Y1qh_h_0H8-W5e/view?usp=drive_link", video: "https://drive.google.com/file/d/1LVnOyY0jgasHsYPqaEQ67UKwWgfwh-Wh/view?usp=drive_link", mindmap: "", info: "https://drive.google.com/file/d/1Ikv_6R2-3WM8nliwvLXH_5alqTdM3N6l/view?usp=drive_link", pdf: "https://drive.google.com/file/d/1pUqCUUWVbgpgz6M4PkhASF_wZIfpYOZ0/view?usp=drive_link", learn: "https://drive.google.com/file/d/1C1dG_P0jk4hFlm6DOM9ttkHQOq2lNzt6/view?usp=sharing", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B0_M01_S003_Maitriser_la_redaction_dun_contrat_de_travail": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "https://drive.google.com/file/d/1atD-lDsLBrWBaJrrts5DhtVyM6dQsAgG/view?usp=drive_link", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B0_M01_S004_Lexecution_du_contrat_de_travail": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "https://drive.google.com/file/d/101KTfKNVm5nCE9DdX_Kr7Ot8Hp_wtzEC/view?usp=drive_link", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B0_M01_S005_Le_contrat_de_travail_a_duree_indeterminee": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "https://drive.google.com/file/d/1Aygdq4_x8F8OC4qxXLZEaEbTBaO-PwtX/view?usp=drive_link", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B0_M01_S006_Le_CDD_et_le_contrat_de_travail_temporaire": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "https://drive.google.com/file/d/1FD_wIsTwk1MCDEPFrRHY1QokHV0wBi8h/view?usp=drive_link", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B0_M01_S007_Le_contrat_de_travail_a_temps_partiel": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "https://drive.google.com/file/d/15wX0mdym-W3vucTjn9TMwYaLRdjsyaeQ/view?usp=drive_link", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B0_M01_S008_Les_contrats_de_formation": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "https://drive.google.com/file/d/1fFGDf1JfiVSY3s4N7Bks7WWFsftWwnkn/view?usp=drive_link", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B0_M01_S009_La_redaction_du_contrat_de_travail": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "https://drive.google.com/file/d/1XTkhLQEe_HKY5-yT-nEZ0msHtmzboA9p/view?usp=drive_link", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B0_M01_S010_Application_Etablir_les_contrats_de_travail": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "https://drive.google.com/file/d/1DDCA8ifMdLX8UCFPEa60ENlWjj2mJs8U/view?usp=drive_link", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B0_M01_S011_Comment_et_pourquoi_se_former_a_gestion_des_parcours_salaries": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "https://drive.google.com/file/d/15zRp5-dudL-bGqgtUwbu-aAf9D-InmiJ/view?usp=sharing", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B0_M01_S012_Le_recrutement": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B0_M01_S013_Les_formalites_administratives_dembauche": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B0_M01_S014_La_suspension_du_contrat_de_travail": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B0_M01_S015_Ledition_des_documents_de_suspension_du_contrat": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B0_M01_S016_La_rupture_du_contrat_de_travail_introduction": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B0_M01_S017_Le_licenciement": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B0_M01_S018_Les_autres_modes_de_rupture_du_contrat_de_travail": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B0_M01_S019_Les_fins_de_contrat_indemnite_de_precarite_ICP_Indemnite_RTT_et_autres_indemnites": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B0_M01_S020_Les_fins_de_contrat_rupture_conventionnelle_depart_et_mise_a_la_retraite": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B0_M01_S021_Les_formalites_de_rupture_du_contrat_de_travail": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B0_M01_S022_Ledition_des_documents_de_fin_de_contrat": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B0_M01_S023_Synthese_et_application_Traiter_les_entrees_et_sorties_des_salaries": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B0_M02_S001_Lorganisation_judiciaire_europeenne": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B0_M02_S002_Lorganisation_judiciaire_nationale": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B0_M02_S003_Laction_en_justice": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B0_M02_S004_Les_MARD": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B0_M02_S005_Application_Comprendre_lorganisation_judiciaire": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B0_M03_S001_La_theorie_du_patrimoine": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B0_M03_S002_La_propriete": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B0_M03_S003_Le_fonds_de_commerce_et_le_contrat_de_bail_commercial": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B0_M03_S004_La_propriete_industrielle_brevet_marque_dessins_et_modeles": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B0_M03_S005_La_propriete_litteraire_et_artistique_le_droit_dauteur": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B0_M03_S006_Le_droit_de_linformatique_et_de_la_propriete_industrielle": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B0_M03_S007_La_protection_juridique_des_sites_internet_et_des_creations_numeriques": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B0_M03_S008_Les_regles_juridiques_dutilisation_dinternet": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B0_M03_S009_Application_Caracteriser_les_biens": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B0_M04_S001_La_theorie_generale_du_contrat": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B0_M04_S002_La_validite_du_contrat": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B0_M04_S003_Les_clauses_contractuelles_particulieres": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B0_M04_S004_Lexecution_du_contrat": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B0_M04_S005_Linexecution_du_contrat": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B0_M04_S006_Application_Maitriser_la_theorie_generale_du_contrat": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B0_M05_S001_Le_contrat_de_vente_du_fonds_de_commerce": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B0_M05_S002_Le_contrat_de_locationgerance_du_fonds_de_commerce": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B0_M05_S003_Le_contrat_de_vente": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B0_M05_S004_Les_contrats_de_consommation": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B0_M05_S005_Le_compte_de_depot_bancaire": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B0_M05_S006_Les_contrats_de_credit_aux_entreprises": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B0_M05_S007_Les_suretes": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B0_M06_S001_Application_Maitriser_les_contrats_de_lentreprise": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B0_M06_S002_Les_responsabilites_civile_et_penale": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B0_M06_S003_La_responsabilite_penale": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B0_M06_S004_La_procedure_penale": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B0_M06_S005_La_responsabilite_civile_extracontractuelle": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B0_M06_S006_Les_responsabilites_du_fait_des_produits_defectueux_et_du_prejudice_environnemental": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B0_M06_S007_Application_Lentreprise_et_ses_responsabilites": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B0_M07_S001_Les_notions_dentreprise_et_de_societe": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B0_M07_S002_Les_elements_constitutifs_du_contrat_de_societe": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B0_M07_S003_Le_contrat_de_societe": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B0_M07_S004_La_constitution_de_la_societe": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B0_M07_S005_La_societe_en_formation": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B0_M07_S006_Les_attributs_de_la_personnalite_morale": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B0_M07_S007_Les_notions_dinteret_social_et_dabus_de_droit": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B0_M07_S008_Les_organes_de_gestion": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B0_M07_S009_Les_associes": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B0_M07_S010_Le_controle_de_la_societe": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B0_M07_S011_Le_statut_du_commissaire_aux_comptes": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B0_M07_S012_La_dissolution_et_la_liquidation_des_societes": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B0_M07_S013_La_transformation_des_societes": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B0_M07_S014_Les_societes_sans_personnalite_juridique": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B0_M07_S015_Application_Comprendre_la_nature_et_le_fonctionnement_dune_entreprise_en_societe": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B0_M07_S016_Les_formes_juridiques_des_societes": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B0_M07_S017_Redaction_et_gestion_des_documents_juridiques": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B0_M07_S018_Focus_sur_les_statuts_juridiques_SARL": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B0_M07_S019_Focus_sur_les_statuts_juridiques_SA": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B0_M07_S020_Focus_sur_les_statuts_juridiques_SAS": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B0_M08__S001_Les_caracteristiques_et_les_sources_du_droit_fiscal": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B0_M08__S002_La_classification_des_impots_et_taxes": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B0_M08__S003_Organisation_et_role_de_ladministration_fiscale_et_veille_fiscale": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B0_M08__S004_Application_Introduire_le_droit_fiscal": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B0_M09__S001_Le_controle_des_concentrations": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B0_M09__S002_Les_pratiques_anticoncurrentielles": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B0_M09__S003_Lentreprise_et_la_concurrence_deloyale": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B0_M09__S004_La_transparence_et_les_pratiques_restrictives_de_concurrence": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B0_M09__S005_Application_Maitriser_les_situations_contraires_au_droit_de_la_concurrence": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B0_M10__S001_Levolution_du_droit_de_lentreprise_en_difficulte": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B0_M10__S002_La_prevention_des_difficultes_de_lentreprise": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B0_M10__S003_Le_traitement_amiable_des_difficultes_par_la_procedure_de_conciliation": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B0_M10__S004_Le_traitement_judiciaire_par_les_procedures_collectives": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B0_M10__S005_La_procedure_de_sauvegarde": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B0_M10__S006_Le_sort_des_creanciers_en_periode_dobservation": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B0_M10__S007_Le_plan_de_sauvegarde_ordinaire_et_la_sauvegarde_acceleree": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B0_M10__S008_La_procedure_de_redressement_judiciaire": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B0_M10__S009_La_procedure_de_liquidation_judiciaire": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B0_M10__S010_Application_Perenniser_lentreprise_en_difficulte": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B0_M11_1_Un_droit_de_lIA_dans_les_pratiques_de_lentreprise": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
 
-    // --- BLOC 1 : PILOTAGE ---
+    "B0_M01_S002_La_formation_du_contrat_de_travail": {
+        audio: "https://drive.google.com/file/d/1IGRA7U8VUtMiyYyr95Y1qh_h_0H8-W5e/view?usp=drive_link",
+        video: "https://drive.google.com/file/d/1LVnOyY0jgasHsYPqaEQ67UKwWgfwh-Wh/view?usp=drive_link",
+        mindmap: "",
+        info: "https://drive.google.com/file/d/1Ikv_6R2-3WM8nliwvLXH_5alqTdM3N6l/view?usp=drive_link",
+        pdf: "https://drive.google.com/file/d/1pUqCUUWVbgpgz6M4PkhASF_wZIfpYOZ0/view?usp=drive_link",
+        learn: "https://drive.google.com/file/d/1C1dG_P0jk4hFlm6DOM9ttkHQOq2lNzt6/view?usp=sharing",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
 
-    "B1_M01_S001_Delimiter_et_structurer_une_veille_pour_une_entreprise": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M01_S002_Developper_un_reseau_dexperts_pour_une_veille_partagee": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M02_S001_Les_differents_types_de_veille": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M02_S002_Introduction_la_notion_de_veille_juridique": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M02_S003_Comment_faire_de_la_veille_juridique": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M02_S004_Les_principaux_sites_dactualite_juridique": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M02_S005_Les_differents_flux_juridiques_officiels": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M02_S006_La_realisation_de_veille_juridique": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M02_S007_Les_outils_pour_une_veille_juridique_efficace": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M02_S008_Le_pilotage_de_veille_juridique": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M02_S009_Les_grandes_tendances_juridiques_en_France_et_leurs_effets_sur_lorganisation": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M03_S001_Onboarding_Proceder_de_la_veille_juridique_a_la_recommandation_strategique": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M03_S002_Utilisation_de_Village_Justice_et_experts_LinkedIn": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M03_S003_Presentation_des_bases_de_donnees_juridiques_et_outils_de_veille": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M03_S004_Methodologie_de_recherche_et_dorganisation_de_la_veille": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M03_S005_Techniques_de_communication_ecrite": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M03_S006_Introduction_aux_bases_de_donnees_juridiques": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M03_S007_Analyse_des_evolutions_legislatives": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M03_S008_Application_Recherche_et_presentation_dinformations": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M03_S009_Reporting_extrafinancier_et_directives": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M03_S010_Mise_en_situation_pratique_de_la_veille_juridique": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M03_S011_Impact_des_evolutions_legislatives_internationales": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M03_S012_Outils_numeriques_avances_pour_la_veille_juridique": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M03_S013_AutoEvaluation_Proceder_de_la_veille_juridique_a_la_recommandation_strategique": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M03_S014_Application_Proceder_de_la_veille_juridique_a_la_recommandation_strategique": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M03_S015_Offboarding_Proceder_de_la_veille_juridique_a_la_recommandation_strategique": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M04_S001_Prise_de_connaissance_et_methodologie_dutilisation_des_sites_institutionnels": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M04_S002_Realiser_une_note_interne_a_partir_dune_veille_juridique_en_droit_des_donnees_personnelles": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M04_S003_Realiser_une_note_interne_a_partir_dune_veille_juridique_en_matiere_de_TVA": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M04_S004_Realiser_une_note_interne_a_partir_dune_veille_juridique_en_droit_des_contrats": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M05_S001_En_attente": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M05_S002_En_attente": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M05_S003_En_attente": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M06_S001_En_attente": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M06_S002_En_attente": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M06_S003_En_attente": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M07_S001_En_attente": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M07_S002_En_attente": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M07_S003_En_attente": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M08_S001_En_attente": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M08_S002_En_attente": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M08_S003_En_attente": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M09_S001_En_attente": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M09_S002_En_attente": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M09_S003_En_attente": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M10_S001_En_attente": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M10_S002_En_attente": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M10_S003_En_attente": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M11_S001_En_attente": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M11_S002_En_attente": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M11_S003_En_attente": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M12_S001_Optimiser_et_securiser_larchivage": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M12_S002_Introduction_au_RGPD_et_archivage_numerique": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M12_S003_Les_regles_darchivage_temporaire_et_lanonymisation": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M12_S004_Minimisation_des_donnees_et_droit_dacces": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M12_S005_Securisation_des_acces_et_des_donnees_archivees": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M12_S006_Consequences_des_violations_de_donnees": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M12_S007_Durees_de_conservation_legale_des_documents": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M12_S008_Exemples_de_solutions_techniques_disponibles": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M12_S009_Elaboration_dune_procedure_darchivage_numerique": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M12_S010_Presentation_des_procedures_darchivage_par_secteur_dactivite": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M12_S011_AutoEvaluation_Optimiser_et_securiser_larchivage": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M12_S012_Application_Optimiser_et_securiser_larchivage": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M12_S013_Offboarding_Optimiser_et_securiser_larchivage": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M13_S001_Une_fonction_RH_alignee_avec_les_attentes_et_besoins_de_ses_clients": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M13_S002_DRH_et_defis_digitaux": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M13_S003_La_mesure_de_la_performance_de_la_fonction_RH": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M13_S004_Decliner_la_strategie_en_action": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M13_S005_Des_competences_reperees_a_lequipe_operationnelle": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M13_S006_Lidentification_des_competences": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M13_S007_Evaluer_le_niveau_de_competences": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M13_S008_Debriefer_toute_acquisition_de_competence": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M13_S009_Acter_la_competence_acquise": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M13_S010_Talent_Review": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M13_S011_Capitaliser_sur_lexperience_tracer_une_roadmap": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M13_S012_Application_Piloter_une_equipe_RH": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M14_S001_Les_theories_de_lorganisation_au_service_du_management": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M14_S002_Le_management_et_le_manager": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M14_S003_Le_management_des_individus_et_des_groupes": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M14_S004_Le_management_a_distance": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M14_S005_Les_plateformes_de_travail_collaboratives": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M14_S006_Fixer_des_objectifs_SMART": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M14_S007_Lutilite_du_suivi_de_la_performance": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M14_S008_Les_indicateurs_de_suivi_selon_les_objectifs": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M14_S009_La_fixation_des_objectifs_de_lequipe": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M14_S010_Le_suivi_des_objectifs_de_lequipe": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M14_S011_Faire_faire_sans_se_substituer": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M14_S012_Integrer_la_vision_cadre_de_reference_de_lautre": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M14_S013_Obtenir_regulierement": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M14_S014_Application_Accompagner_les_collaborateurs_dans_la_definition_et_la_realisation_de_leurs_objectifs": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M15_S001_Onboarding_video_Comprendre_et_analyser_des_situations_en_droit_de_la_securite_sociale": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M15_S002_Introduction_au_droit_de_la_securite_sociale": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M15_S003_Le_droit_europeen_de_la_securite_sociale": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M15_S004_Les_regimes_de_la_securite_sociale": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M15_S005_Les_regimes_complementaires_de_securite_sociale": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M15_S006_Le_contentieux_en_droit_de_la_securite_sociale": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M15_S007_La_veille_juridique_et_actualite": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M15_S008_Offboarding_video_Synthese_Comprendre_et_analyser_des_situations_en_droit_de_la_securite_sociale": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M15_S009_Application_Comprendre_et_analyser_des_situations_en_droit_de_la_securite_sociale": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M15_S010_Autoevaluation_Comprendre_et_analyser_des_situations_en_droit_de_la_securite_sociale": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M16_S001_La_politique_de_remuneration": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M16_S002_La_politique_de_remuneration_et_les_politiques_RH": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M16_S003_La_politique_de_remuneration_elaborer_et_piloter": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M16_S004_La_mise_en_oeuvre_de_sa_politique_salariale": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M16_S005_Loptimisation_de_sa_politique_salariale": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M16_S006_Levaluation_dimpact_de_la_politique_de_remuneration": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M16_S007_Le_Comp_Ben_Manager": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M16_S008_Le_benchmark_de_remuneration": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M16_S009_Les_outils_de_benchmark_pour_sassurer_de_la_meilleure_competitivite_en_matiere_de_remuneration": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M16_S010_Les_primes_et_avantages_allies_pour_convaincre": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M16_S011_Lentretien_de_decision_salariale": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M16_S012_Presentation_de_la_remuneration_brute_et_le_decompte_du_temps_de_travail": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M16_S013_La_remuneration_brute_le_salaire_de_base_les_primes_et_la_retenue_pour_absence": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M16_S014_La_remuneration_brute_le_salaire_de_base_les_primes_et_la_retenue_pour_absence_Type_Lecons": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M16_S015_Cas_pratique_Salaire_de_base_Type_Exercices": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M16_S016_Cas_pratique_Primes_et_indemnites_Type_Exercices": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M16_S017_La_remuneration_brute_les_avantages_en_nature": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M16_S018_Les_salaires_net_imposable_et_a_payer": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M16_S019_Lassociation_des_salaries_aux_performances_de_lentreprise_generalites": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M16_S020_La_protection_sociale_generalites": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M16_S021_La_protection_sociale_generalites_Type_Lecons": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M16_S022_Applications_Generalites_Type_Exercices": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M16_S023_Lassurance_maladie_du_regime_general": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M16_S024_Lassurance_maladie_du_regime_general_Type_Lecons": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M16_S025_Cas_Analyse_dune_documentation_juridique_Type_Exercices": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M16_S026_Cas_Anthony_La_branche_assurance_maladie_du_regime_general_Type_Exercices": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M16_S027_Cas_Marie_Line_La_branche_assurance_maladie_du_regime_general_Type_Exercices": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M16_S028_Application_Construire_une_politique_de_compensations_and_benefits": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M17_S001_Les_prealables_a_une_strategie_RSE": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M17_S002_Le_cadre_legislatif_et_reglementaire": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M17_S003_Quelques_obligations_reglementaires_relatives_a_la_RSE_en_France": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M17_S004_Des_actions_volontaristes_possibles_relatives_a_la_RSE": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M17_S005_La_carte_de_transformation": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M17_S006_La_communication_en_externe_et_en_interne_sur_la_RSE": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M17_S007_Lentrepreneuriat_responsable_et_durable": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M17_S008_Les_enjeux_de_la_transformation_digitale": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M17_S009_Les_deux_chantiers_preliminaires_a_la_TD": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M17_S010_Application_Piloter_le_changement_structurel_dune_entreprise": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M18_S001_Les_projets_de_transformation": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M18_S002_Le_diagnostic_de_la_transformation": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M18_S003_Les_evaluations_des_impacts": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M18_S004_Les_interactions_et_les_humains": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M18_S005_Le_DRH_project_manager": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M18_S006_Les_modes_de_gestion_de_projet_dits_classiques": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M18_S007_Les_methodologies_agiles": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M18_S008_Les_processus_et_les_disciplines_de_la_gestion_de_projet_selon_le_PMBOK": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M18_S009_Le_pilotage_du_projet": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M18_S010_Les_acteurs_et_les_ressources_du_projet": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M18_S011_La_premiere_decoupe_du_projet": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M18_S012_La_construction_du_planning": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M18_S013_Le_retroplanning": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M18_S014_La_gestion_du_budget_du_projet": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M18_S015_Application_Faire_face_aux_evolutions_RH": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M19_S001_Onboarding_video_Piloter_les_impacts_en_matiere_de_droit_de_la_responsabilite": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M19_S002_Les_bases_du_droit_de_la_responsabilite": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M19_S003_La_responsabilite_des_dirigeants_et_des_administrateurs": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M19_S004_La_responsabilite_des_professionnel": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M19_S005_La_responsabilite_environnementale": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M19_S006_La_responsabilite_en_matiere_de_donnees_personnelles": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M19_S007_La_responsabilite_penale_des_entreprises": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M19_S008_Offboarding_video_Piloter_les_impacts_en_matiere_de_droit_de_la_responsabilite": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M19_S009_Application_Piloter_les_impacts_en_matiere_de_droit_de_la_responsabilite": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B1_M19_S010_Autoevaluation_Piloter_les_impacts_en_matiere_de_droit_de_la_responsabilite": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
+    "B0_M01_S003_Maitriser_la_redaction_dun_contrat_de_travail": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "https://drive.google.com/file/d/1atD-lDsLBrWBaJrrts5DhtVyM6dQsAgG/view?usp=drive_link",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
 
-    // --- BLOC 2 : OPÉRATIONS ---
+    "B0_M01_S004_Lexecution_du_contrat_de_travail": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "https://drive.google.com/file/d/101KTfKNVm5nCE9DdX_Kr7Ot8Hp_wtzEC/view?usp=drive_link",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
 
-    "B2_M01_S001_Onboarding_Realiser_le_conseil_juridique_et_operationnel_aux_collaborateurs_et_a_la_direction": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M01_S002_Introduction_au_conseil_juridique": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M01_S003_Introduction_a_la_conformite_reglementaire": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M01_S004_Identification_des_problematiques_juridiques": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M01_S005_Recherche_juridique_et_documentation": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M01_S006_Analyse_des_risques_juridiques": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M01_S007_Communication_et_presentation_orale_des_recommandations": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M01_S008_Gestion_des_litiges_contractuels": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M01_S009_Veille_juridique_et_mise_a_jour_des_connaissances": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M01_S010_AutoEvaluation_Realiser_le_conseil_juridique_et_operationnel_aux_collaborateurs_et_a_la_direction": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M01_S011_Application_Realiser_le_conseil_juridique_et_operationnel_aux_collaborateurs_et_a_la_direction": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M01_S012_Offboarding_Realiser_le_conseil_juridique_et_operationnel_aux_collaborateurs_et_a_la_direction": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M02_S001_Le_cadre_legislatif_et_reglementaire": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M02_S002_Des_actions_volontaristes_possibles_relatives_a_la_RSE": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M02_S003_La_carte_de_transformation": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M02_S004_La_communication_en_externe_et_en_interne_sur_la_RSE": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M02_S005_Application_Piloter_le_changement_structurel_dune_entreprise": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M03_S001_Onboarding_Gerer_le_budget_de_son_service": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M03_S002_Budget_previsionnel_presentation_et_methode": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M03_S003_Outils_de_suivi_et_de_pilotage_tableaux_indicateurs": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M03_S004_Adapter_les_postes_de_depense": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M03_S005_Gerer_le_budget_alloue_a_un_service_de_lentreprise": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M03_S006_Suivi_budgetaire_et_analyse": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M03_S007_Gestion_des_imprevus_budgetaires": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M03_S008_Evaluation_des_performances_budgetaires": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M03_S009_Communication_dans_la_gestion_budgetaire": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M03_S010_Etude_de_cas_Gestion_budgetaire_dun_service": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M03_S011_Autoevaluation_Gerer_le_budget_de_son_service": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M03_S012_Application_Gerer_le_budget_de_son_service": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M03_S013_Offboarding_Synthese_de_la_gestion_budgetaire": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M04_S001_Onboarding_Comprendre_et_maitriser_le_droit_des_contrats_commerciaux_et_des_societes": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M04_S002_Principes_de_base_des_contrats_commerciaux": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M04_S003_Les_formes_juridiques_des_societes": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M04_S004_Redaction_et_gestion_des_documents_juridiques": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M04_S005_Focus_sur_les_statuts_juridiques_SARL": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M04_S006_Focus_sur_les_statuts_juridiques_SA": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M04_S007_Focus_sur_les_statuts_juridiques_SAS": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M04_S008_Impact_des_contrats_commerciaux_sur_la_gestion_RH": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M04_S009_Participation_aux_assemblees_generales_et_decisions_collectives": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M04_S010_Offboarding_Comprendre_et_maitriser_le_droit_des_contrats_commerciaux_et_des_societes": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M04_S011_Autoevaluation_Comprendre_et_maitriser_le_droit_des_contrats_commerciaux_et_des_societes": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M04_S012_Application_Comprendre_et_maitriser_le_droit_des_contrats_commerciaux_et_des_societes": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M04_S013_Live_1_Focus_theorique_sur_le_droit_des_contrats_commerciaux": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M04_S014_Live_2_Focus_pratique_sur_les_formes_juridiques_des_societes": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M05_S001_Les_elements_dun_document_juridique": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M05_S002_Les_bonnes_pratiques_de_la_redaction_de_documents_juridiques": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M05_S003_La_redaction_des_documents_pour_un_avocat": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M05_S004_La_redaction_des_documents_pour_un_huissier": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M05_S005_La_redaction_des_documents_pour_un_magistrat": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M05_S006_La_redaction_des_documents_pour_un_notaire": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M06_S001_En_attente": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M06_S002_En_attente": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M06_S003_En_attente": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M06_S004_En_attente": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M07_S001_Les_methodes_pedagogiques": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M07_S002_Les_concept, modalités et démarches pédagogiques": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M08_S001_Les_objectifs_pedagogiques": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M08_S002_Les_environnements_et_services_numeriques_mobilisables": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M08_S003_Les_principales_obligations_des_organismes_de_formation_sur_le_handicap": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M08_S004_Les_etapes_cles_structurant_un_temps_de_formation": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M08_S005_La_construction_du_scenario_pedagogique": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M08_S006_Les_actions_de_sensibilisation": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M08_S007_Application_sur_la_formation_aux_problematiques_et_risques_juridiques": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M09_S001_La_politique_dinclusion_en_entreprise": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M09_S002_Les_enjeux_de_la_diversite_en_entreprise": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M09_S003_La_lutte_contre_les_discriminations": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M09_S004_Legalite_Femmes_Hommes": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M09_S005_La_deconstruction_des_stereotypes": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M09_S006_La_prevention_du_harcelement": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M09_S007_Les_libertes_individuelles_dans_lentreprise": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M09_S008_Le_referent_handicap_en_entreprise": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M09_S009_La_qualite_de_vie_et_des_conditions_de_travail": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M09_S010_Le_bonheur_au_travail": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M09_S011_Le_management_interculturel": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M09_S012_Le_management_intergenerationnel": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M09_S013_Application_Piloter_une_politique_dinclusion_dans_une_entreprise": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M10_S001_Onboarding_Manager_une_equipe_dun_service_juridique_et_transverse": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M10_S002_Identifier_les_competences_de_lequipe": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M10_S003_Fixer_des_objectifs_pertinents": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M10_S004_Methodes_et_outils_de_suivi_des_activites": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M10_S005_Application_des_methodes_de_suivi": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M10_S006_Resolution_de_problemes_et_gestion_des_conflits": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M10_S007_Gestion_du_temps_et_des_priorites": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M10_S008_Gestion_de_projet_au_sein_dune_equipe_juridique": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M10_S009_AutoEvaluation_Manager_une_equipe_dun_service_juridique_et_transverse": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M10_S010_Application_Manager_une_equipe_dun_service_juridique_et_transverse": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M10_S011_Offboarding_Manager_une_equipe_dun_service_juridique_et_transverse": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M11_S001_Lhistoire_et_levolution_de_la_fonction_RH": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M11_S002_Lorganisation_du_travail_evolutions_et_defis": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M11_S003_Lorganisation_de_la_fonction_RH": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M11_S004_Le_partage_de_la_fonction_RH": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M11_S005_Les_defis_de_la_fonction_RH": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M11_S006_La_place_des_RH_dans_larchitecture_organisationnelle": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M11_S007_Larchitecture_RH_au_service_de_la_strategie": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M11_S008_Le_climat_social_dune_entreprise": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M11_S009_Le_barometre_social": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M11_S010_Laudit_definition": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M11_S011_Laudit_organisationnel": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M11_S012_Laudit_social": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M11_S013_Les_orientations_RH_apres_audit_social": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M11_S014_Application_Diagnostiquer_les_pratiques_RH_au_sein_de_lorganisation": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M12_S001_La_formation_du_contrat_de_travail": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M12_S002_Lexecution_du_contrat_de_travail": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M12_S003_Le_contrat_de_travail_a_duree_indeterminee": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M12_S004_Le_CDD_et_le_contrat_de_travail_temporaire": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M12_S005_Le_contrat_de_travail_a_temps_partiel": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M12_S006_Les_contrats_de_formation": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M12_S007_Levolution_des_conditions_demploi": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M13_S001_La_gestion_de_la_fin_de_CDD": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M13_S002_La_gestion_dune_demission": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M13_S003_La_gestion_dun_licenciement_economique": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M13_S004_La_gestion_dun_depart_a_la_retraite": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M13_S005_Les_fins_de_contrats": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M14_S001_La_redaction_dun_CDI_et_dun_CDD": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B2_M14_S002_Application_Etablir_les_documents_administratifs": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
+    "B0_M01_S005_Le_contrat_de_travail_a_duree_indeterminee": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "https://drive.google.com/file/d/1Aygdq4_x8F8OC4qxXLZEaEbTBaO-PwtX/view?usp=drive_link",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
 
-    // --- BLOC 3 : CONTENTIEUX ---
+    "B0_M01_S006_Le_CDD_et_le_contrat_de_travail_temporaire": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "https://drive.google.com/file/d/1FD_wIsTwk1MCDEPFrRHY1QokHV0wBi8h/view?usp=drive_link",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
 
-    "B3_M01_S001_Onboarding_Anticiper_les_risques_de_contentieux": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B3_M01_S002_Introduction_a_la_cartographie_des_risques": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B3_M01_S003_Identifier_les_risques_juridiques": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B3_M01_S004_Responsabilite_contractuelle_et_lettres_de_mise_en_demeure": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B3_M01_S005_Protocole_transactionnel": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B3_M01_S006_Modes_Alternatifs_de_Reglement_des_Differends_MARD": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B3_M01_S007_Importance_de_larchivage": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B3_M01_S008_Autoevaluation_Anticiper_les_risques_de_contentieux": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B3_M01_S009_Application_Anticiper_les_risques_de_contentieux": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B3_M01_S010_Offboarding_Anticiper_les_risques_de_contentieux": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B3_M02_S001_Onboarding_Conseil_strategique_en_contentieux": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B3_M02_S002_Introduction_au_contentieux_dans_lentreprise": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B3_M02_S003_Analyse_des_risques_et_evaluation_des_preuves": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B3_M02_S004_Conseil_strategique": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B3_M02_S005_Strategies_contentieuses_par_domaine_juridique": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B3_M02_S006_Redaction_des_ecrits_judiciaires": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B3_M02_S007_Voies_de_recours": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B3_M02_S008_Modalites_et_voies_de_recours": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B3_M02_S009_Negociation_et_resolution_alternative_des_conflits": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B3_M02_S010_Strategies_de_negociation_avancees": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B3_M02_S011_Autoevaluation_Conseil_strategique_en_contentieux": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B3_M02_S012_Application_Conseil_strategique_en_contentieux": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B3_M02_S013_Offboarding_Conseil_strategique_en_contentieux": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B3_M03_S001_En_attente": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B4_M03_S002_En_attente": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B5_M03_S003_En_attente": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B6_M03_S004_En_attente": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B3_M04_S001_Onboarding_Gestion_des_contentieux_judiciaires": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B3_M04_S002_Principes_du_proces_civil_en_droit_francais": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B3_M04_S003_Ordres_de_juridiction_et_competences": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B3_M04_S004_Regles_de_procedure_civile_et_commerciale": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B3_M04_S005_Regles_de_procedure_prudhommale": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B3_M04_S006_Regles_de_procedure_penale": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B3_M04_S007_Modes_de_preuve_et_exemples_pratiques": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B3_M04_S008_Execution_des_decisions_judiciaires": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B3_M04_S009_Conclusion_dun_accord_transactionnel": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B3_M04_S010_Evaluation_des_risques_lies_aux_verdicts": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B3_M04_S011_Strategie_contentieuse_et_redaction_de_notes_explicatives": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B3_M04_S012_Autoevaluation_Gestion_des_contentieux_judiciaires": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B3_M04_S013_Application_Gestion_des_contentieux_judiciaires": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B3_M04_S014_Offboarding_Gestion_des_contentieux_judiciaires": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B3_M05_S001_En_attente": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B4_M05_S002_En_attente": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B5_M05_S003_En_attente": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B6_M05_S004_En_attente": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" },
-    "B7_M05_S005_En_attente": { audio: "", video: "", mindmap: "", info: "", pdf: "", learn: "", studi: "https://app.comptalia.com/v3/dashboard" }
+    "B0_M01_S007_Le_contrat_de_travail_a_temps_partiel": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "https://drive.google.com/file/d/15wX0mdym-W3vucTjn9TMwYaLRdjsyaeQ/view?usp=drive_link",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B0_M01_S008_Les_contrats_de_formation": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "https://drive.google.com/file/d/1fFGDf1JfiVSY3s4N7Bks7WWFsftWwnkn/view?usp=drive_link",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B0_M01_S009_La_redaction_du_contrat_de_travail": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "https://drive.google.com/file/d/1XTkhLQEe_HKY5-yT-nEZ0msHtmzboA9p/view?usp=drive_link",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B0_M01_S010_Application_Etablir_les_contrats_de_travail": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "https://drive.google.com/file/d/1DDCA8ifMdLX8UCFPEa60ENlWjj2mJs8U/view?usp=drive_link",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B0_M01_S011_Comment_et_pourquoi_se_former_a_gestion_des_parcours_salaries": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "https://drive.google.com/file/d/15zRp5-dudL-bGqgtUwbu-aAf9D-InmiJ/view?usp=sharing",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B0_M01_S012_Le_recrutement": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B0_M01_S013_Les_formalites_administratives_dembauche": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B0_M01_S014_La_suspension_du_contrat_de_travail": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B0_M01_S015_Ledition_des_documents_de_suspension_du_contrat": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B0_M01_S016_La_rupture_du_contrat_de_travail_introduction": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B0_M01_S017_Le_licenciement": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B0_M01_S018_Les_autres_modes_de_rupture_du_contrat_de_travail": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B0_M01_S019_Les_fins_de_contrat_indemnite_de_precarite_ICP_Indemnite_RTT_et_autres_indemnites": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B0_M01_S020_Les_fins_de_contrat_rupture_conventionnelle_depart_et_mise_a_la_retraite": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B0_M01_S021_Les_formalites_de_rupture_du_contrat_de_travail": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B0_M01_S022_Ledition_des_documents_de_fin_de_contrat": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B0_M01_S023_Synthese_et_application_Traiter_les_entrees_et_sorties_des_salaries": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    // --- Module 02 : L’organisation judiciaire ---
+
+    "B0_M02_S001_Lorganisation_judiciaire_europeenne": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B0_M02_S002_Lorganisation_judiciaire_nationale": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B0_M02_S003_Laction_en_justice": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B0_M02_S004_Les_MARD": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B0_M02_S005_Application_Comprendre_lorganisation_judiciaire": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    // --- Module 03 : Propriété intellectuelle et industrielle ---
+
+    "B0_M03_S001_La_theorie_du_patrimoine": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B0_M03_S002_La_propriete": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B0_M03_S003_Le_fonds_de_commerce_et_le_contrat_de_bail_commercial": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B0_M03_S004_La_propriete_industrielle_brevet_marque_dessins_et_modeles": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B0_M03_S005_La_propriete_litteraire_et_artistique_le_droit_dauteur": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B0_M03_S006_Le_droit_de_linformatique_et_de_la_propriete_industrielle": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B0_M03_S007_La_protection_juridique_des_sites_internet_et_des_creations_numeriques": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B0_M03_S008_Les_regles_juridiques_dutilisation_dinternet": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B0_M03_S009_Application_Caracteriser_les_biens": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    // --- Module 04 : Théorie générale du contrat ---
+
+    "B0_M04_S001_La_theorie_generale_du_contrat": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B0_M04_S002_La_validite_du_contrat": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B0_M04_S003_Les_clauses_contractuelles_particulieres": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B0_M04_S004_Lexecution_du_contrat": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B0_M04_S005_Linexecution_du_contrat": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B0_M04_S006_Application_Maitriser_la_theorie_generale_du_contrat": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    // --- Module 05 : Les contrats de l’entreprise ---
+
+    "B0_M05_S001_Le_contrat_de_vente_du_fonds_de_commerce": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B0_M05_S002_Le_contrat_de_locationgerance_du_fonds_de_commerce": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B0_M05_S003_Le_contrat_de_vente": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B0_M05_S004_Les_contrats_de_consommation": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B0_M05_S005_Le_compte_de_depot_bancaire": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B0_M05_S006_Les_contrats_de_credit_aux_entreprises": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B0_M05_S007_Les_suretes": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    // --- Module 06 : L’entreprise et ses responsabilités ---
+
+    "B0_M06_S001_Application_Maitriser_les_contrats_de_lentreprise": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B0_M06_S002_Les_responsabilites_civile_et_penale": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B0_M06_S003_La_responsabilite_penale": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B0_M06_S004_La_procedure_penale": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B0_M06_S005_La_responsabilite_civile_extracontractuelle": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B0_M06_S006_Les_responsabilites_du_fait_des_produits_defectueux_et_du_prejudice_environnemental": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B0_M06_S007_Application_Lentreprise_et_ses_responsabilites": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    // --- Module 07 : Droit des sociétés ---
+
+    "B0_M07_S001_Les_notions_dentreprise_et_de_societe": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B0_M07_S002_Les_elements_constitutifs_du_contrat_de_societe": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B0_M07_S003_Le_contrat_de_societe": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B0_M07_S004_La_constitution_de_la_societe": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B0_M07_S005_La_societe_en_formation": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B0_M07_S006_Les_attributs_de_la_personnalite_morale": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B0_M07_S007_Les_notions_dinteret_social_et_dabus_de_droit": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B0_M07_S008_Les_organes_de_gestion": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B0_M07_S009_Les_associes": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B0_M07_S010_Le_controle_de_la_societe": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B0_M07_S011_Le_statut_du_commissaire_aux_comptes": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B0_M07_S012_La_dissolution_et_la_liquidation_des_societes": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B0_M07_S013_La_transformation_des_societes": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B0_M07_S014_Les_societes_sans_personnalite_juridique": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B0_M07_S015_Application_Comprendre_la_nature_et_le_fonctionnement_dune_entreprise_en_societe": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B0_M07_S016_Les_formes_juridiques_des_societes": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B0_M07_S017_Redaction_et_gestion_des_documents_juridiques": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B0_M07_S018_Focus_sur_les_statuts_juridiques_SARL": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B0_M07_S019_Focus_sur_les_statuts_juridiques_SA": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B0_M07_S020_Focus_sur_les_statuts_juridiques_SAS": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    // --- Module 08 : Droit fiscal ---
+
+    "B0_M08_S001_Les_caracteristiques_et_les_sources_du_droit_fiscal": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B0_M08_S002_La_classification_des_impots_et_taxes": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B0_M08_3_Organisation_et_role_de_ladministration_fiscale_et_veille_fiscale": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B0_M08_4_Application_Introduire_le_droit_fiscal": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    // --- Module 09 : Droit de la concurrence ---
+
+    "B0_M09_S001_Le_controle_des_concentrations": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B0_M09_S002_Les_pratiques_anticoncurrentielles": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B0_M09_S003_Lentreprise_et_la_concurrence_deloyale": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B0_M09_S004_La_transparence_et_les_pratiques_restrictives_de_concurrence": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B0_M09_S005_Application_Maitriser_les_situations_contraires_au_droit_de_la_concurrence": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    // --- Module 10 : Procédures collectives ---
+
+    "B0_M10_S001_Levolution_du_droit_de_lentreprise_en_difficulte": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B0_M10_S002_La_prevention_des_difficultes_de_lentreprise": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B0_M10_S003_Le_traitement_amiable_des_difficultes_par_la_procedure_de_conciliation": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B0_M10_S004_Le_traitement_judiciaire_par_les_procedures_collectives": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B0_M10_S005_La_procedure_de_sauvegarde": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B0_M10_S006_Le_sort_des_creanciers_en_periode_dobservation": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B0_M10_S007_Le_plan_de_sauvegarde_ordinaire_et_la_sauvegarde_acceleree": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B0_M10_S008_La_procedure_de_redressement_judiciaire": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B0_M10_S009_La_procedure_de_liquidation_judiciaire": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B0_M10_S010_Application_Perenniser_lentreprise_en_difficulte": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    // --- Module 11 : IA ---
+
+    "B0_M11_S001_Un_droit_de_lIA_dans_les_pratiques_de_lentreprise": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    // ==================================================================
+    // BLOC 1 : PILOTAGE STRATÉGIQUE
+    // ==================================================================
+
+    "B1_M01_S001_Delimiter_et_structurer_une_veille_pour_une_entreprise": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M01_S002_Developper_un_reseau_dexperts_pour_une_veille_partagee": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    // --- Module 02 ---
+
+    "B1_M02_S001_Les_differents_types_de_veille": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M02_S002_Introduction_la_notion_de_veille_juridique": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M02_S003_Comment_faire_de_la_veille_juridique": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M02_S004_Les_principaux_sites_dactualite_juridique": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M02_S005_Les_differents_flux_juridiques_officiels": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M02_S006_La_realisation_de_veille_juridique": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M02_S007_Les_outils_pour_une_veille_juridique_efficace": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M02_S008_Le_pilotage_de_veille_juridique": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M02_S009_Les_grandes_tendances_juridiques_en_France_et_leurs_effets_sur_lorganisation": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    // --- Module 03 ---
+
+    "B1_M03_S001_Onboarding_Proceder_de_la_veille_juridique_a_la_recommandation_strategique": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M03_S002_Utilisation_de_Village_Justice_et_experts_LinkedIn": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M03_S003_Presentation_des_bases_de_donnees_juridiques_et_outils_de_veille": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M03_S004_Methodologie_de_recherche_et_dorganisation_de_la_veille": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M03_S005_Techniques_de_communication_ecrite": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M03_S006_Introduction_aux_bases_de_donnees_juridiques": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M03_S007_Analyse_des_evolutions_legislatives": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M03_S008_Application_Recherche_et_presentation_dinformations": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M03_S009_Reporting_extrafinancier_et_directives": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M03_S010_Mise_en_situation_pratique_de_la_veille_juridique": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M03_S011_Impact_des_evolutions_legislatives_internationales": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M03_S012_Outils_numeriques_avances_pour_la_veille_juridique": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M03_S013_AutoEvaluation_Proceder_de_la_veille_juridique_a_la_recommandation_strategique": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M03_S014_Application_Proceder_de_la_veille_juridique_a_la_recommandation_strategique": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M03_S015_Offboarding_Proceder_de_la_veille_juridique_a_la_recommandation_strategique": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    // --- Module 04 ---
+
+    "B1_M04_S001_Prise_de_connaissance_et_methodologie_dutilisation_des_sites_institutionnels": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M04_S002_Realiser_une_note_interne_a_partir_dune_veille_juridique_en_droit_des_donnees_personnelles": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M04_S003_Realiser_une_note_interne_a_partir_dune_veille_juridique_en_matiere_de_TVA": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M04_S004_Realiser_une_note_interne_a_partir_dune_veille_juridique_en_droit_des_contrats": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    // --- Placeholders Module 05-11 ---
+
+    "B1_M05_S001_En_attente": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M05_S002_En_attente": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M05_S003_En_attente": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M06_S001_En_attente": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M06_S002_En_attente": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M06_S003_En_attente": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M07_S001_En_attente": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M07_S002_En_attente": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M07_S003_En_attente": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M08_S001_En_attente": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M08_S002_En_attente": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    // --- Module 08/09 (Plan d'action) ---
+
+    "B1_M08_S003_Analyse_et_hierarchisation_des_risques_juridiques": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M08_S004_En_bref_Les_matrices_de_risques_en_pratique": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M08_S005_Conception_des_actions_correctives": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M08_S006_Conception_des_actions_preventives": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M08_S007_Attribution_des_responsabilites_et_definition_des_delais": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M08_S008_Focus_sur_La_communication_du_plan_dactions": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M08_S009_Budgetisation_et_allocation_des_ressources": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M08_S010_Conception_du_systeme_de_suivi_et_de_controle": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M08_S011_Gestion_des_resistances_au_changement": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M08_S012_Documentation_et_tracabilite_du_plan_dactions": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M08_S013_Evaluation_et_amelioration_continue_du_plan_dactions": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M08_S014_Offboarding_Elaborer_un_plan_dactions_correctives_et_preventives": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M08_S015_Autoevaluation_Elaborer_un_plan_dactions_correctives_et_preventives": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M08_S016_Application_Elaborer_un_plan_dactions_correctives_et_preventives": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M09_S001_Onboarding_Elaborer_un_plan_dactions_correctives_et_preventives": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M09_S002_Fondamentaux_du_plan_dactions_correctives_et_preventives": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M09_S003_En_attente": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M10_S001_En_attente": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M10_S002_En_attente": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M10_S003_En_attente": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M11_S001_En_attente": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M11_S002_En_attente": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M11_S003_En_attente": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    // --- Module 12 : Archivage ---
+
+    "B1_M12_S001_Optimiser_et_securiser_larchivage": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M12_S002_Introduction_au_RGPD_et_archivage_numerique": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M12_S003_Les_regles_darchivage_temporaire_et_lanonymisation": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M12_S004_Minimisation_des_donnees_et_droit_dacces": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M12_S005_Securisation_des_acces_et_des_donnees_archivees": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M12_S006_Consequences_des_violations_de_donnees": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M12_S007_Durees_de_conservation_legale_des_documents": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M12_S008_Exemples_de_solutions_techniques_disponibles": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M12_S009_Elaboration_dune_procedure_darchivage_numerique": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M12_S010_Presentation_des_procedures_darchivage_par_secteur_dactivite": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M12_S011_AutoEvaluation_Optimiser_et_securiser_larchivage": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M12_S012_Application_Optimiser_et_securiser_larchivage": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M12_S013_Offboarding_Optimiser_et_securiser_larchivage": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    // --- Module 13 : Equipe RH ---
+
+    "B1_M13_S001_Une_fonction_RH_alignee_avec_les_attentes_et_besoins_de_ses_clients": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M13_S002_DRH_et_defis_digitaux": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M13_S003_La_mesure_de_la_performance_de_la_fonction_RH": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M13_S004_Decliner_la_strategie_en_action": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M13_S005_Des_competences_reperees_a_lequipe_operationnelle": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M13_S006_Lidentification_des_competences": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M13_S007_Evaluer_le_niveau_de_competences": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M13_S008_Debriefer_toute_acquisition_de_competence": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M13_S009_Acter_la_competence_acquise": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M13_S010_Talent_Review": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M13_S011_Capitaliser_sur_lexperience_tracer_une_roadmap": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M13_S012_Application_Piloter_une_equipe_RH": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    // --- Module 14 ---
+
+    "B1_M14_S001_Les_theories_de_lorganisation_au_service_du_management": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M14_S002_Le_management_et_le_manager": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M14_S003_Le_management_des_individus_et_des_groupes": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M14_S004_Le_management_a_distance": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M14_S005_Les_plateformes_de_travail_collaboratives": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M14_S006_Fixer_des_objectifs_SMART": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M14_S007_Lutilite_du_suivi_de_la_performance": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M14_S008_Les_indicateurs_de_suivi_selon_les_objectifs": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M14_S009_La_fixation_des_objectifs_de_lequipe": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M14_S010_Le_suivi_des_objectifs_de_lequipe": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M14_S011_Faire_faire_sans_se_substituer": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M14_S012_Integrer_la_vision_cadre_de_reference_de_lautre": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M14_S013_Obtenir_regulierement": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M14_S014_Application_Accompagner_les_collaborateurs_dans_la_definition_et_la_realisation_de_leurs_objectifs": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    // --- Module 15 : Sécurité sociale ---
+
+    "B1_M15_S001_Onboarding_video_Comprendre_et_analyser_des_situations_en_droit_de_la_securite_sociale": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M15_S002_Introduction_au_droit_de_la_securite_sociale": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M15_S003_Le_droit_europeen_de_la_securite_sociale": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M15_S004_Les_regimes_de_la_securite_sociale": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M15_S005_Les_regimes_complementaires_de_securite_sociale": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M15_S006_Le_contentieux_en_droit_de_la_securite_sociale": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M15_S007_La_veille_juridique_et_actualite": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M15_S008_Offboarding_video_Synthese_Comprendre_et_analyser_des_situations_en_droit_de_la_securite_sociale": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M15_S009_Application_Comprendre_et_analyser_des_situations_en_droit_de_la_securite_sociale": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M15_S010_Autoevaluation_Comprendre_et_analyser_des_situations_en_droit_de_la_securite_sociale": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    // --- Module 16 : Compensation & Benefits ---
+
+    "B1_M16_S001_La_politique_de_remuneration": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M16_S002_La_politique_de_remuneration_et_les_politiques_RH": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M16_S003_La_politique_de_remuneration_elaborer_et_piloter": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M16_S004_La_mise_en_oeuvre_de_sa_politique_salariale": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M16_S005_Loptimisation_de_sa_politique_salariale": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M16_S006_Levaluation_dimpact_de_la_politique_de_remuneration": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M16_S007_Le_Comp_Ben_Manager": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M16_S008_Le_benchmark_de_remuneration": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M16_S009_Les_outils_de_benchmark_pour_sassurer_de_la_meilleure_competitivite_en_matiere_de_remuneration": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M16_S010_Les_primes_et_avantages_allies_pour_convaincre": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M16_S011_Lentretien_de_decision_salariale": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M16_S012_Presentation_de_la_remuneration_brute_et_le_decompte_du_temps_de_travail": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M16_S013_La_remuneration_brute_le_salaire_de_base_les_primes_et_la_retenue_pour_absence": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M16_S014_La_remuneration_brute_le_salaire_de_base_les_primes_et_la_retenue_pour_absence_Type_Lecons": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M16_S015_Cas_pratique_Salaire_de_base_Type_Exercices": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M16_S016_Cas_pratique_Primes_et_indemnites_Type_Exercices": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M16_S017_La_remuneration_brute_les_avantages_en_nature": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M16_S018_Les_salaires_net_imposable_et_a_payer": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M16_S019_Lassociation_des_salaries_aux_performances_de_lentreprise_generalites": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M16_S020_La_protection_sociale_generalites": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M16_S021_La_protection_sociale_generalites_Type_Lecons": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M16_S022_Applications_Generalites_Type_Exercices": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M16_S023_Lassurance_maladie_du_regime_general": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M16_S024_Lassurance_maladie_du_regime_general_Type_Lecons": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M16_S025_Cas_Analyse_dune_documentation_juridique_Type_Exercices": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M16_S026_Cas_Anthony_La_branche_assurance_maladie_du_regime_general_Type_Exercices": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M16_S027_Cas_Marie_Line_La_branche_assurance_maladie_du_regime_general_Type_Exercices": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M16_S028_Application_Construire_une_politique_de_compensations_and_benefits": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    // --- Module 17 : RSE / Changement structurel ---
+
+    "B1_M17_S001_Les_prealables_a_une_strategie_RSE": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M17_S002_Le_cadre_legislatif_et_reglementaire": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M17_S003_Quelques_obligations_reglementaires_relatives_a_la_RSE_en_France": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M17_S004_Des_actions_volontaristes_possibles_relatives_a_la_RSE": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M17_S005_La_carte_de_transformation": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M17_S006_La_communication_en_externe_et_en_interne_sur_la_RSE": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M17_S007_Lentrepreneuriat_responsable_et_durable": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M17_S008_Les_enjeux_de_la_transformation_digitale": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M17_S009_Les_deux_chantiers_preliminaires_a_la_TD": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M17_S010_Application_Piloter_le_changement_structurel_dune_entreprise": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    // --- Module 18 : Projets de transformation ---
+
+    "B1_M18_S001_Les_projets_de_transformation": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M18_S002_Le_diagnostic_de_la_transformation": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M18_S003_Les_evaluations_des_impacts": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M18_S004_Les_interactions_et_les_humains": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M18_S005_Le_DRH_project_manager": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M18_S006_Les_modes_de_gestion_de_projet_dits_classiques": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M18_S007_Les_methodologies_agiles": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M18_S008_Les_processus_et_les_disciplines_de_la_gestion_de_projet_selon_le_PMBOK": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M18_S009_Le_pilotage_du_projet": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M18_S010_Les_acteurs_et_les_ressources_du_projet": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M18_S011_La_premiere_decoupe_du_projet": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M18_S012_La_construction_du_planning": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M18_S013_Le_retroplanning": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M18_S014_La_gestion_du_budget_du_projet": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M18_S015_Application_Faire_face_aux_evolutions_RH": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    // --- Module 19 : Droit de la responsabilité ---
+
+    "B1_M19_S001_Onboarding_video_Piloter_les_impacts_en_matiere_de_droit_de_la_responsabilite": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M19_S002_Les_bases_du_droit_de_la_responsabilite": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M19_S003_La_responsabilite_des_dirigeants_et_des_administrateurs": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M19_S004_La_responsabilite_des_professionnel": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M19_S005_La_responsabilite_environnementale": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M19_S006_La_responsabilite_en_matiere_de_donnees_personnelles": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M19_S007_La_responsabilite_penale_des_entreprises": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M19_S008_Offboarding_video_Piloter_les_impacts_en_matiere_de_droit_de_la_responsabilite": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M19_S009_Application_Piloter_les_impacts_en_matiere_de_droit_de_la_responsabilite": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B1_M19_S010_Autoevaluation_Piloter_les_impacts_en_matiere_de_droit_de_la_responsabilite": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    // ==================================================================
+    // BLOC 2 : OPÉRATIONS ET CONTRATS
+    // ==================================================================
+
+    "B2_M01_S001_Onboarding_Realiser_le_conseil_juridique_et_operationnel_aux_collaborateurs_et_a_la_direction": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B2_M01_S002_Introduction_au_conseil_juridique": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B2_M01_S003_Introduction_a_la_conformite_reglementaire": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B2_M01_S004_Identification_des_problematiques_juridiques": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B2_M01_S005_Recherche_juridique_et_documentation": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B2_M01_S006_Analyse_des_risques_juridiques": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B2_M01_S007_Communication_et_presentation_orale_des_recommandations": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B2_M01_S008_Gestion_des_litiges_contractuels": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B2_M01_S009_Veille_juridique_et_mise_a_jour_des_connaissances": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B2_M01_S010_AutoEvaluation_Realiser_le_conseil_juridique_et_operationnel_aux_collaborateurs_et_a_la_direction": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B2_M01_S011_Application_Realiser_le_conseil_juridique_et_operationnel_aux_collaborateurs_et_a_la_direction": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B2_M01_S012_Offboarding_Realiser_le_conseil_juridique_et_operationnel_aux_collaborateurs_et_a_la_direction": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    // --- Module 02 : Changement structurel ---
+
+    "B2_M02_S001_Les_prealables_a_une_strategie_RSE": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B2_M02_S002_Le_cadre_legislatif_et_reglementaire": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B2_M02_S003_Quelques_obligations_reglementaires_relatives_a_la_RSE_en_France": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B2_M02_S004_Des_actions_volontaires_possibles_relatives_a_la_RSE": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B2_M02_S005_La_carte_de_transformation": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B3_M03_S006_La_communication_en_externe_et_en_interne_sur_la_RSE": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B4_M04_S007_Lentrepreneuriat_responsable_et_durable": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B5_M05_S008_Les_enjeux_de_la_transformation_digitale": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B6_M06_S009_Les_deux_chantiers_preliminaires_a_la_TD": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B7_M07_S010_Application_Piloter_le_changement_structurel_dune_entreprise": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    // --- Module 03 : Budget ---
+
+    "B2_M03_S001_Onboarding_Gerer_le_budget_de_son_service": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B2_M03_S002_Budget_previsionnel_presentation_et_methode": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B2_M03_S003_Outils_de_suivi_et_de_pilotage_tableaux_indicateurs": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B2_M03_S004_Adapter_les_postes_de_depense": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B2_M03_S005_Gerer_le_budget_alloue_a_un_service_de_lentreprise": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B2_M03_S006_Suivi_budgetaire_et_analyse": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B2_M03_S007_Gestion_des_imprevus_budgetaires": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B2_M03_S008_Evaluation_des_performances_budgetaires": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B2_M03_S009_Communication_dans_la_gestion_budgetaire": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B2_M03_S010_Etude_de_cas_Gestion_budgetaire_dun_service": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B2_M03_S011_Autoevaluation_Gerer_le_budget_de_son_service": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B2_M03_S012_Application_Gerer_le_budget_de_son_service": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B2_M03_S013_Offboarding_Synthese_de_la_gestion_budgetaire": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    // --- Module 04 : Contrats commerciaux ---
+
+    "B2_M04_S001_Onboarding_Comprendre_et_maitriser_le_droit_des_contrats_commerciaux_et_des_societes": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B2_M04_S002_Principes_de_base_des_contrats_commerciaux": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B2_M04_S003_Les_formes_juridiques_des_societes": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B2_M04_S004_Redaction_et_gestion_des_documents_juridiques": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B2_M04_S005_Focus_sur_les_statuts_juridiques_SARL": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B2_M04_S006_Focus_sur_les_statuts_juridiques_SA": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B2_M04_S007_Focus_sur_les_statuts_juridiques_SAS": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B2_M04_S008_Impact_des_contrats_commerciaux_sur_la_gestion_RH": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B2_M04_S009_Participation_aux_assemblees_generales_et_decisions_collectives": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B2_M04_S010_Offboarding_Comprendre_et_maitriser_le_droit_des_contrats_commerciaux_et_des_societes": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B2_M04_S011_Autoevaluation_Comprendre_et_maitriser_le_droit_des_contrats_commerciaux_et_des_societes": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B2_M04_S012_Application_Comprendre_et_maitriser_le_droit_des_contrats_commerciaux_et_des_societes": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B2_M04_S013_Live_1_Focus_theorique_sur_le_droit_des_contrats_commerciaux": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B2_M04_S014_Live_2_Focus_pratique_sur_les_formes_juridiques_des_societes": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    // --- Module 05 : Rédaction doc juridique ---
+
+    "B2_M05_S001_Les_elements_dun_document_juridique": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B2_M05_S002_Les_bonnes_pratiques_de_la_redaction_de_documents_juridiques": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B2_M05_S003_La_redaction_des_documents_pour_un_avocat": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B2_M05_S004_La_redaction_des_documents_pour_un_huissier": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B2_M05_S005_La_redaction_des_documents_pour_un_magistrat": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B2_M05_S006_La_redaction_des_documents_pour_un_notaire": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    // --- Module 06 ---
+
+    "B2_M06_S001_En_attente": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B2_M06_S002_En_attente": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B2_M06_S003_En_attente": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B2_M06_S004_En_attente": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    // --- Module 07 ---
+
+    "B2_M07_S001_Les_methodes_pedagogiques": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B2_M07_S002_Les_concept_modalites_et_demarches_pedagogiques": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    // --- Module 08 ---
+
+    "B2_M08_S001_Les_objectifs_pedagogiques": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B2_M08_S002_Les_environnements_et_services_numeriques_mobilisables": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B2_M08_S003_Les_principales_obligations_des_organismes_de_formation_sur_le_handicap": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B2_M08_S004_Les_etapes_cles_structurant_un_temps_de_formation": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B2_M08_S005_La_construction_du_scenario_pedagogique": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B2_M08_S006_Les_actions_de_sensibilisation": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B2_M08_S007_Application_sur_la_formation_aux_problematiques_et_risques_juridiques": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    // --- Module 09 : Politique d'inclusion ---
+
+    "B2_M09_S001_La_politique_dinclusion_en_entreprise": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B2_M09_S002_Les_enjeux_de_la_diversite_en_entreprise": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B2_M09_S003_La_lutte_contre_les_discriminations": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B2_M09_S004_Legalite_Femmes_Hommes": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B2_M09_S005_La_deconstruction_des_stereotypes": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B2_M09_S006_La_prevention_du_harcelement": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B2_M09_S007_Les_libertes_individuelles_dans_lentreprise": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B2_M09_S008_Le_referent_handicap_en_entreprise": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B2_M09_S009_La_qualite_de_vie_et_des_conditions_de_travail": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B2_M09_S010_Le_bonheur_au_travail": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B2_M09_S011_Le_management_interculturel": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B2_M09_S012_Le_management_intergenerationnel": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B2_M09_S013_Application_Piloter_une_politique_dinclusion_dans_une_entreprise": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    // --- Module 10 : Manager une équipe ---
+
+    "B2_M10_S001_Onboarding_Manager_une_equipe_dun_service_juridique_et_transverse": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B2_M10_S002_Identifier_les_competences_de_lequipe": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B2_M10_S003_Fixer_des_objectifs_pertinents": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B2_M10_S004_Methodes_et_outils_de_suivi_des_activites": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B2_M10_S005_Application_des_methodes_de_suivi": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B2_M10_S006_Resolution_de_problemes_et_gestion_des_conflits": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B2_M10_S007_Gestion_du_temps_et_des_priorites": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B2_M10_S008_Gestion_de_projet_au_sein_dune_equipe_juridique": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B2_M10_S009_AutoEvaluation_Manager_une_equipe_dun_service_juridique_et_transverse": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B2_M10_S010_Application_Manager_une_equipe_dun_service_juridique_et_transverse": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B2_M10_S011_Offboarding_Manager_une_equipe_dun_service_juridique_et_transverse": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    // --- Module 11 : Diagnostiquer RH ---
+
+    "B2_M11_S001_Lhistoire_et_levolution_de_la_fonction_RH": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B2_M11_S002_Lorganisation_du_travail_evolutions_et_defis": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B2_M11_S003_Lorganisation_de_la_fonction_RH": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B2_M11_S004_Le_partage_de_la_fonction_RH": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B2_M11_S005_Les_defis_de_la_fonction_RH": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B2_M11_S006_La_place_des_RH_dans_larchitecture_organisationnelle": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B2_M11_S007_Larchitecture_RH_au_service_de_la_strategie": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B2_M11_S008_Le_climat_social_dune_entreprise": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B2_M11_S009_Le_barometre_social": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B2_M11_S010_Laudit_definition": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B2_M11_S011_Laudit_organisationnel": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B2_M11_S012_Laudit_social": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B2_M11_S013_Les_orientations_RH_apres_audit_social": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B2_M11_S014_Application_Diagnostiquer_les_pratiques_RH_au_sein_de_lorganisation": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    // --- Module 12 : Contrat de travail ---
+
+    "B2_M12_S001_La_formation_du_contrat_de_travail": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B2_M12_S002_Lexecution_du_contrat_de_travail": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B2_M12_S003_Le_contrat_de_travail_a_duree_indeterminee": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B2_M12_S004_Le_CDD_et_le_contrat_de_travail_temporaire": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B2_M12_S005_Le_contrat_de_travail_a_temps_partiel": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B2_M12_S006_Les_contrats_de_formation": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B2_M12_S007_Levolution_des_conditions_demploi": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    // --- Module 13 : Rupture contrat ---
+
+    "B2_M13_S001_La_gestion_de_la_fin_de_CDD": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B2_M13_S002_La_gestion_dune_demission": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B2_M13_S003_La_gestion_dun_licenciement_economique": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B2_M13_S004_La_gestion_dun_depart_a_la_retraite": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B2_M13_S005_Les_fins_de_contrats": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    // --- Module 14 : Documents ---
+
+    "B2_M14_S001_La_redaction_dun_CDI_et_dun_CDD": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B2_M14_S002_Application_Etablir_les_documents_administratifs": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    // ==================================================================
+    // BLOC 3 : CONTENTIEUX
+    // ==================================================================
+
+    "B3_M01_S001_Onboarding_Anticiper_les_risques_de_contentieux": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B3_M01_S002_Introduction_a_la_cartographie_des_risques": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B3_M01_S003_Identifier_les_risques_juridiques": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B3_M01_S004_Responsabilite_contractuelle_et_lettres_de_mise_en_demeure": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B3_M01_S005_Protocole_transactionnel": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B3_M01_S006_Modes_Alternatifs_de_Reglement_des_Differends_MARD": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B3_M01_S007_Importance_de_larchivage": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B3_M01_S008_Autoevaluation_Anticiper_les_risques_de_contentieux": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B3_M01_S009_Application_Anticiper_les_risques_de_contentieux": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B3_M01_S010_Offboarding_Anticiper_les_risques_de_contentieux": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    // --- Module 02 : Conseil stratégique ---
+
+    "B3_M02_S001_Onboarding_Conseil_strategique_en_contentieux": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B3_M02_S002_Introduction_au_contentieux_dans_lentreprise": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B3_M02_S003_Analyse_des_risques_et_evaluation_des_preuves": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B3_M02_S004_Conseil_strategique": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B3_M02_S005_Strategies_contentieuses_par_domaine_juridique": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B3_M02_S006_Redaction_des_ecrits_judiciaires": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B3_M02_S007_Voies_de_recours": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B3_M02_S008_Modalites_et_voies_de_recours": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B3_M02_S009_Negociation_et_resolution_alternative_des_conflits": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B3_M02_S010_Strategies_de_negociation_avancees": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B3_M02_S011_Autoevaluation_Conseil_strategique_en_contentieux": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B3_M02_S012_Application_Conseil_strategique_en_contentieux": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B3_M02_S013_Offboarding_Conseil_strategique_en_contentieux": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    // --- Module 04 : Gestion contentieux judiciaires ---
+
+    "B3_M04_S001_Onboarding_Gestion_des_contentieux_judiciaires": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B3_M04_S002_Principes_du_proces_civil_en_droit_francais": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B3_M04_S003_Ordres_de_juridiction_et_competences": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B3_M04_S004_Regles_de_procedure_civile_et_commerciale": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B3_M04_S005_Regles_de_procedure_prudhommale": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B3_M04_S006_Regles_de_procedure_penale": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B3_M04_S007_Modes_de_preuve_et_exemples_pratiques": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B3_M04_S008_Execution_des_decisions_judiciaires": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B3_M04_S009_Conclusion_dun_accord_transactionnel": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B3_M04_S010_Evaluation_des_risques_lies_aux_verdicts": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B3_M04_S011_Strategie_contentieuse_et_redaction_de_notes_explicatives": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B3_M04_S012_Autoevaluation_Gestion_des_contentieux_judiciaires": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B3_M04_S013_Application_Gestion_des_contentieux_judiciaires": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    "B3_M04_S014_Offboarding_Gestion_des_contentieux_judiciaires": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    },
+
+    // --- Module 05 : Piloter l'exécution ---
+
+    "B3_M05_Piloter_lexecution_des_decisions_judiciaires": {
+        audio: "",
+        video: "",
+        mindmap: "",
+        info: "",
+        pdf: "",
+        learn: "",
+        studi: "https://app.comptalia.com/v3/dashboard"
+    }
+
 };
