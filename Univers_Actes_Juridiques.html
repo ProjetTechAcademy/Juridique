@@ -35,58 +35,115 @@
   </script>
 
   <style>
-    :root{
-      --cta: #D9A526;
-      --brand-blue: #0F2C48;
-      --ivory: #F6F2E8;
-      --bronze: #B4792A;
-      --footer-bg: #0F2C48; 
-      --footer-text: #F6F2E8; 
-      --footer-accent: #D9A526;
-      --h-bg: #D9A526; 
-      --h-text: #0F2C48; 
-      --h-accent: #ffffff;
+    /* ========================================
+       VARIABLES GLOBALES & BASE
+       ======================================== */
+    :root {
+        --color-bg: #F6F2E8;
+        --color-primary: #0F2C48;
+        --color-accent: #D9A526; 
+        --color-alert: #B4792A;  
+        --color-text: #2c3e50;
+        --color-white: #ffffff;
+        
+        /* Pour le Header/Footer (Compatibilité) */
+        --cta: #D9A526;
+        --brand-blue: #0F2C48;
+        --ivory: #F6F2E8;
+        --bronze: #B4792A;
+        --footer-bg: #0F2C48; 
+        --footer-text: #F6F2E8; 
+        --header-height: 96px; 
     }
 
     body { margin: 0; background-color: var(--ivory); color: var(--brand-blue); min-height: 100vh; font-family: 'Outfit', sans-serif; display: flex; flex-direction: column; }
     .wrap { max-width: 1400px; margin: 0 auto 60px auto; padding: 24px; width: 100%; flex: 1;}
     
-    /* HEADER PREMIUM */
-    .top-bar {
-        background: linear-gradient(135deg, #B4792A 0%, #F2C94C 50%, #B4792A 100%);
-        color: var(--h-text);
-        padding: 15px 0;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-        position: sticky; top: 0; left: 0; right: 0; z-index: 10000;
-        font-family: 'Lato', sans-serif; border-bottom: 4px solid var(--brand-blue);
+    /* ========================================
+       HEADER "GRAND ÉCART"
+       ======================================== */
+    .top-bar { 
+        background: linear-gradient(135deg, #B4792A, #F2C94C); 
+        padding: 12px 20px; 
+        position: sticky; 
+        top: 0; 
+        z-index: 9999; 
+        border-bottom: 4px solid var(--brand-blue); 
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .top-bar-container { 
+        max-width: 1400px; 
+        margin: 0 auto; 
+        display: flex; 
+        align-items: center; 
+        justify-content: space-between; /* Clé pour écarter */
+        gap: 16px; 
     }
     
-    .top-bar-container { max-width: 1400px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
-    .top-bar-left { display: flex; align-items: center; gap: 15px; flex: 1; min-width: 320px; }
-    .logo-top-bar { width: 60px; height: 60px; border-radius: 50%; border: 2px solid var(--brand-blue); object-fit: cover; flex-shrink: 0; background: #fff; }
-    .identity-stack { display: flex; flex-direction: column; justify-content: center; }
-    .club-title-main { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 800; letter-spacing: 0.5px; color: #0F2C48; line-height: 1.2; margin-bottom: 3px; text-shadow: 0 1px 0 rgba(255,255,255,0.3); }
-    .club-subtitle { font-family: 'Lato', sans-serif; font-size: 0.75rem; color: #ffffff; font-weight: 700; opacity: 1; line-height: 1.2; text-shadow: 0 1px 2px rgba(0,0,0,0.1); }
-    .top-bar-center { display: flex; gap: 12px; align-items: center; }
+    .top-left { 
+        display: flex; 
+        align-items: center; 
+        gap: 14px; 
+    }
 
-    .header-icon-btn {
-        position: relative; width: 40px; height: 40px; border-radius: 50%;
-        background: linear-gradient(135deg, #D9A526 0%, #B4792A 100%); 
-        border: 1px solid rgba(255,255,255,0.3); display: flex; align-items: center; justify-content: center;
-        font-size: 1.1rem; text-decoration: none; transition: all 0.3s ease; color: white;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    .top-right-group {
+        display: flex;
+        align-items: center;
+        gap: 20px;
     }
-    .header-icon-btn:hover { 
-        transform: translateY(-3px) scale(1.1); 
-        background: linear-gradient(135deg, #FFD700 0%, #D9A526 100%); color: white;
+
+    .logo-top-bar { 
+        width: 64px; height: 64px; 
+        border-radius: 8px; object-fit: cover; 
+        border: 2px solid var(--brand-blue); 
+        background: #fff; 
+        transition: transform 0.3s ease;
+        flex-shrink: 0; display: block; overflow: hidden;
     }
-    .nav-mmpa-img, .nav-profile-img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 2px solid #fff; }
-    .btn-portfolio-cosmic {
-        padding: 8px 20px; border-radius: 50px; font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 0.9rem;
-        background: linear-gradient(135deg, #0F2C48 0%, #1a3b5c 100%); color: #D9A526 !important; text-decoration: none; 
-        border: 1px solid rgba(255,255,255,0.2); display: inline-flex; align-items: center; gap: 8px;
+    .logo-top-bar img { width: 100%; height: 100%; object-fit: cover; }
+    .logo-top-bar:hover { transform: scale(1.05); }
+
+    .identity-stack { display: flex; flex-direction: column; min-width: 0; overflow: hidden; }
+    .club-title-main { 
+        font-family: 'Playfair Display', serif; font-weight: 800; 
+        color: var(--brand-blue); font-size: 1.1rem; 
+        white-space: nowrap; 
     }
-    .btn-portfolio-cosmic:hover { background: #163b5e; color: #fff !important; }
+    .club-subtitle { color: #fff; font-weight: 700; font-size: 0.85rem; text-shadow: 0 1px 2px rgba(0,0,0,0.1); }
+
+    .top-bar-center { display: flex; gap: 10px; align-items: center; }
+
+    .header-icon-btn { 
+        width: 44px; height: 44px; flex-shrink: 0;
+        border-radius: 50%; 
+        display: inline-flex; align-items: center; justify-content: center; 
+        text-decoration: none; 
+        background: linear-gradient(135deg, var(--cta), var(--bronze)); 
+        color: #fff; 
+        border: 1px solid rgba(255, 255, 255, 0.4); 
+        transition: all 0.2s ease;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        font-size: 1.2rem;
+        position: relative;
+    }
+    .header-icon-btn:hover { transform: translateY(-3px); box-shadow: 0 4px 8px rgba(0,0,0,0.2); background: var(--brand-blue); border-color: var(--cta); }
+    .nav-profile-img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
+
+    .btn-portfolio-cosmic { 
+        padding: 8px 18px; 
+        border-radius: 999px; 
+        background: var(--brand-blue); 
+        color: var(--cta); 
+        text-decoration: none; 
+        font-weight: 700; 
+        display: inline-flex; gap: 8px; align-items: center; 
+        transition: background 0.3s, color 0.3s;
+        white-space: nowrap;
+        box-shadow: 0 4px 10px rgba(15, 44, 72, 0.2);
+    }
+    .btn-portfolio-cosmic:hover { background: #fff; color: var(--brand-blue); transform: translateY(-2px); }
+    .btn-portfolio-cosmic img { display: none; } 
 
     /* --- NOUVEAU DESIGN CONTENU EXECUTIVE --- */
     
@@ -104,16 +161,15 @@
     .premium-tab-btn.active {
         background: var(--brand-blue); color: #fff; box-shadow: 0 4px 15px rgba(15, 44, 72, 0.3);
     }
-    .premium-tab-btn.active i { color: var(--brandGold); }
+    .premium-tab-btn.active i { color: var(--cta); }
 
     /* DESIGN FICHE "DOSSIER" */
     .dossier-card {
         background: white; border-radius: 12px; overflow: hidden;
         border-left: 5px solid var(--brand-blue);
         box-shadow: 0 2px 15px rgba(0,0,0,0.03); margin-bottom: 24px;
-        display: flex; flex-direction: column; md:flex-row;
+        display: flex; flex-direction: column;
     }
-    /* Sur mobile on empile, sur desktop on met côte à côte */
     @media (min-width: 768px) {
         .dossier-card { flex-direction: row; }
     }
@@ -132,7 +188,7 @@
     
     .dossier-header-item { display: flex; align-items: center; gap: 15px; margin-bottom: 15px; }
     .dossier-icon {
-        width: 44px; height: 44px; background: var(--brand-blue); color: var(--brandGold);
+        width: 44px; height: 44px; background: var(--brand-blue); color: var(--cta);
         border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0;
     }
     .dossier-title { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 1.4rem; color: var(--brand-blue); line-height: 1.2; }
@@ -164,54 +220,123 @@
     .alert-box {
         background: #fff1f2; border-left: 4px solid #f43f5e; padding: 15px; border-radius: 4px;
         color: #be123c; font-size: 0.9rem; font-weight: 600; display: flex; gap: 12px; align-items: flex-start;
-        margin-top: auto; /* Pousse vers le bas si espace dispo */
+        margin-top: auto;
     }
 
-    /* FOOTER */
-    .main-footer { background-color: var(--footer-bg); color: var(--footer-text); padding-top: 50px; font-family: 'Lato', sans-serif; font-size: 0.95rem; margin-top: auto; border-top: 4px solid var(--brandGold); }
-    .footer-container { max-width: 1400px; margin: 0 auto; padding: 0 25px; }
-    .footer-row { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding-bottom: 30px; }
-    .footer-left { display: flex; align-items: center; gap: 15px; }
-    .footer-logo-img { width: 50px; height: 50px; border-radius: 8px; border: 2px solid var(--footer-accent); background: #fff; object-fit: cover; }
-    .footer-info { display: flex; flex-direction: column; justify-content: center; }
-    .footer-name { color: var(--footer-accent); font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; margin: 0; line-height: 1.2; }
-    .footer-details { font-size: 0.8rem; opacity: 0.8; display: flex; gap: 15px; }
-    .footer-link { text-decoration: none; color: inherit; transition: 0.3s; display: inline-block; }
-    .footer-link:hover { color: var(--footer-accent); transform: translateX(2px); }
-    .footer-right { display: flex; align-items: center; gap: 15px; }
-    .icon-btn { position: relative; width: 40px; height: 40px; border-radius: 50%; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(217, 165, 38, 0.4); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; text-decoration: none; color: #fff; transition: all 0.3s; }
-    .icon-btn:hover { transform: translateY(-3px); background: #fff; border-color: #fff; box-shadow: 0 4px 10px rgba(217, 165, 38, 0.3); }
-    .logo-home-btn { padding: 0; overflow: hidden; border: 2px solid var(--footer-accent); background: white; }
-    .logo-home-btn img { width: 100%; height: 100%; object-fit: cover; }
-    .brand-whatsapp { color: #25D366 !important; } .icon-btn:hover .brand-whatsapp { color: #25D366 !important; }
-    .brand-discord { color: #5865F2 !important; } .icon-btn:hover .brand-discord { color: #5865F2 !important; }
-    .brand-linkedin { color: #0077b5 !important; } .icon-btn:hover .brand-linkedin { color: #0077b5 !important; }
-    .brand-instagram { color: #E1306C !important; } .icon-btn:hover .brand-instagram { color: #E1306C !important; }
-    .brand-tiktok { color: #00f2ea !important; text-shadow: 2px 2px 0px #ff0050; } .icon-btn:hover .brand-tiktok { color: #000 !important; text-shadow: none; } 
-    .brand-nav { color: var(--footer-accent) !important; } .icon-btn:hover .brand-nav { color: var(--footer-bg) !important; }
-    .footer-copyright { text-align: center; font-size: 0.75rem; color: rgba(255,255,255,0.3); margin-top: 15px; padding: 10px 0; border-top: 1px solid rgba(255,255,255,0.05); }
+    /* ========================================
+       FOOTER "SINGLE LINE"
+       ======================================== */
+    .main-footer { 
+        background: var(--footer-bg); color: var(--footer-text); 
+        padding: 25px 0; margin-top: auto; border-top: 4px solid var(--cta); 
+    }
+    .footer-container { 
+        max-width: 1400px; margin: 0 auto; padding: 0 20px;
+        display: flex; align-items: center; justify-content: space-between;
+        flex-wrap: nowrap; /* Force la ligne unique */
+        gap: 30px;
+    }
+    
+    .footer-left { 
+        display: flex; align-items: center; gap: 15px; flex-shrink: 0; 
+    }
+    /* FIX POUR LE LOGO DU FOOTER */
+    .footer-logo-img { 
+        width: 55px; height: 55px; border-radius: 8px; object-fit: cover; 
+        border: 2px solid var(--cta); background: #fff; display: block;
+    }
+    .footer-details { display: flex; flex-direction: column; justify-content: center; }
+    .footer-name { font-weight: 700; font-size: 1rem; color: var(--cta); line-height: 1.2; }
+    .footer-contact { font-size: 0.8rem; opacity: 0.9; line-height: 1.3; }
+    .footer-contact a { color: inherit; text-decoration: none; }
+    .footer-contact a:hover { color: #fff; text-decoration: underline; }
+
+    .footer-right { 
+        display: flex; align-items: center; gap: 20px; 
+        flex-grow: 1; justify-content: flex-end; 
+    }
+
+    .social-group { display: flex; gap: 10px; align-items: center; }
+    .nav-group { display: flex; gap: 10px; align-items: center; }
+    
+    .footer-divider { 
+        width: 1px; height: 30px; background: rgba(255,255,255,0.3); margin: 0 5px; 
+    }
+
+    .footer-emoji-btn { 
+        width: 40px; height: 40px; border-radius: 50%; 
+        display: flex; align-items: center; justify-content: center; 
+        background: rgba(255, 255, 255, 0.08); color: #fff; 
+        text-decoration: none; border: 1px solid rgba(255, 255, 255, 0.15); 
+        transition: all 0.2s ease; font-size: 1.2rem;
+        position: relative;
+    }
+    .footer-emoji-btn:hover { 
+        background: var(--brand-blue); border-color: var(--cta); 
+        transform: translateY(-3px); box-shadow: 0 4px 8px rgba(0,0,0,0.3); 
+    }
+    .footer-emoji-btn::before {
+        content: attr(title); position: absolute; bottom: 120%; left: 50%; transform: translateX(-50%);
+        background: #fff; color: var(--brand-blue); padding: 4px 8px; border-radius: 4px; font-size: 0.7rem; font-weight: 700;
+        white-space: nowrap; opacity: 0; pointer-events: none; transition: opacity 0.2s; box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+    .footer-emoji-btn:hover::before { opacity: 1; }
+
+    .copyright { width: 100%; text-align: center; color: rgba(255, 255, 255, 0.3); margin-top: 15px; font-size: 0.75rem; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 10px; }
+
+    /* Responsive Global */
+    @media (max-width: 990px) {
+        .top-bar-container { flex-direction: column; justify-content: center; gap: 15px; }
+        .top-left { width: 100%; justify-content: center; }
+        .top-right-group { width: 100%; justify-content: center; flex-wrap: wrap; }
+        .top-bar-center { overflow-x: auto; padding-bottom: 5px; -webkit-overflow-scrolling: touch; }
+
+        .footer-container { flex-direction: column; text-align: center; gap: 20px; }
+        .footer-left { flex-direction: column; }
+        .footer-right { flex-direction: column; width: 100%; }
+        .footer-divider { width: 80%; height: 1px; margin: 10px auto; } 
+        .nav-group { flex-wrap: wrap; justify-content: center; }
+    }
   </style>
 </head>
 <body>
 
+  <!-- HEADER (GRAND ÉCART) -->
   <div class="top-bar" id="mainHeader">
     <div class="top-bar-container">
-        <div class="top-bar-left">
-            <img src="../Asset/Logo_juriste.png" onerror="this.src='../Asset/Logo_juriste.jpg';" alt="Logo Club" class="logo-top-bar">
+        <div class="top-left">
+            <a href="https://projettechacademy.github.io/Juridique/index.html" title="Start/Accueil" target="_blank">
+                <div class="logo-top-bar">
+                    <img src="https://projettechacademy.github.io/Juridique/Asset/Logo_juriste.png" onerror="this.src='https://projettechacademy.github.io/Juridique/Asset/Logo_juriste.jpg'" alt="Logo Juriste">
+                </div>
+            </a>
             <div class="identity-stack">
-                <span class="club-title-main">💫 The Jurist Elite Club By Studi ✨</span>
-                <span class="club-subtitle">La Villa des Juristes Brisés 💔 sur l’Île de L’INSTRUCTION ! 🏝</span>
+                <div class="club-title-main">💫 The Jurist Elite Club By Studi ✨</div>
+                <div class="club-subtitle">La Villa des Juristes Brisés 💔 sur l’Île de L’INSTRUCTION ! 🏝</div>
             </div>
         </div>
-        <div class="top-bar-center">
-            <a href="../index.html" class="header-icon-btn" title="Start/Accueil"><img src="../Asset/Logo_MMPA.jpeg" alt="MMPA" class="nav-mmpa-img"></a>
-            <a href="Mon_Espace_Juriste_Tableau_de_bord_personnel.html" class="header-icon-btn" title="Mon Espace">📊</a>
-            <a href="Lexique_Latin_Juridique.html" class="header-icon-btn" title="Lexique Latin">📜</a>
-            <a href="Atelier_de_Competence.html" class="header-icon-btn" title="Atelier">🛠️</a>
-            <a href="formation_live_juriste.html" class="header-icon-btn" title="Planning Live">📅</a>
-            <a href="A_propos_de_moi.html" class="header-icon-btn" title="À propos de moi"><img src="../Asset/Photo_Mathilde_Martine_PAISLEY.png" onerror="this.src='../Asset/Photo_Mathilde_Martine_PAISLEY.jpg';" alt="Profil" class="nav-profile-img"></a>
+        
+        <div class="top-right-group">
+            <nav class="top-bar-center" aria-label="Navigation principale">
+                <a class="header-icon-btn" href="https://projettechacademy.github.io/Juridique/A_propos_de_moi.html" title="A propos de moi" target="_blank">
+                    <img src="https://projettechacademy.github.io/Juridique/Asset/Photo_Mathilde_Martine_PAISLEY.jpg" alt="Mathilde Martine PAISLEY" class="nav-profile-img" onerror="this.src='https://projettechacademy.github.io/Juridique/Asset/Photo_Mathilde_Martine_PAISLEY.jpeg'">
+                </a>
+                <a class="header-icon-btn" href="https://projettechacademy.github.io/Juridique/index.html" title="Start/Accueil" target="_blank">🏠</a>
+                <a class="header-icon-btn" href="https://projettechacademy.github.io/Juridique/Mon_Espace_Juriste_Tableau_de_bord_personnel.html" title="Mon Espace" target="_blank">📊</a>
+                <a class="header-icon-btn" href="https://projettechacademy.github.io/Juridique/formation_live_juriste.html" title="Planning Live" target="_blank">📅</a>
+                <a class="header-icon-btn" href="https://projettechacademy.github.io/Juridique/Lexique_Latin_Juridique.html" title="Lexique Latin" target="_blank">📜</a>
+                <a class="header-icon-btn" href="https://projettechacademy.github.io/Juridique/Atelier_de_Competence.html" title="Atelier de Compétence Élite" target="_blank">🛠️</a>
+                <a class="header-icon-btn" href="https://projettechacademy.github.io/Juridique/Fiche_RNCP_Juriste.html" title="RNCP" target="_blank">📚</a>
+                <!-- BOUTON ACTIF -->
+                <a class="header-icon-btn" href="https://projettechacademy.github.io/Juridique/Univers_Actes_Juridiques.html" title="Rédaction Juridique" target="_blank" style="background: white; color: var(--brand-blue); border: 2px solid var(--cta); transform: scale(1.1);">✍️</a>
+                <a class="header-icon-btn" href="https://projettechacademy.github.io/Juridique/Jurist_Elite_Panorama_IA.html" title="Panorama IA" target="_blank">🤖</a>
+                <a class="header-icon-btn" href="https://projettechacademy.github.io/Juridique/Acronymes.html" title="Acronymes" target="_blank">🔤</a>
+            </nav>
+            
+            <a class="btn-portfolio-cosmic" href="https://projettechacademy.github.io/Juridique/Portfolio_Mathilde-Martine-PAISLEY.html" target="_blank" title="Mon Expertise / Projets">
+                💎 Expert
+            </a>
         </div>
-        <a href="https://projettechacademy.github.io/CV_MMPA-CV-Mathilde-Martine-PAISLEY/" target="_blank" class="btn-portfolio-cosmic"><span>📄</span> Mon portfolio</a>
     </div>
   </div>
 
@@ -253,43 +378,83 @@
 
   </main>
 
-  <footer class="main-footer">
+  <!-- FOOTER "SINGLE LINE" -->
+  <footer class="main-footer" role="contentinfo">
     <div class="footer-container">
-        <div class="footer-row">
-            <div class="footer-left">
-                <img src="../Asset/Logo_MMPA.jpeg" alt="Logo" class="footer-logo-img">
-                <div class="footer-info">
-                    <h3 class="footer-name">Mathilde Martine PAISLEY</h3>
-                    <div class="footer-details">
-                        <span>📧 Mathilde.martine.paisley@gmail.com</span>
-                        <span>📲 06 85 90 08 87</span>
-                    </div>
+        
+        <!-- GAUCHE : IDENTITÉ + CONTACT -->
+        <div class="footer-left">
+            <a href="https://projettechacademy.github.io/Juridique/index.html" target="_blank">
+                <img class="footer-logo-img" src="https://projettechacademy.github.io/Juridique/Asset/Logo_MMPA.jpeg" alt="Logo MMPA" onerror="this.src='https://projettechacademy.github.io/Juridique/Asset/Logo_MMPA.jpg'">
+            </a>
+            <div class="footer-details">
+                <div class="footer-name">Mathilde Martine PAISLEY</div>
+                <div class="footer-contact">
+                    📧 <a href="mailto:mathilde.martine.paisley@gmail.com">mathilde.martine.paisley@gmail.com</a><br>
+                    📲 <a href="tel:+33685900887">06 85 90 08 87</a>
                 </div>
             </div>
-            <div class="footer-right">
-                <a href="../index.html" class="icon-btn logo-home-btn" title="Accueil">
-                    <img src="../Asset/Logo_juriste.png" alt="Accueil" onerror="this.src='../Asset/Logo_juriste.jpg'">
-                </a>
-                <a href="Mon_Espace_Juriste_Tableau_de_bord_personnel.html" class="icon-btn" title="Mon Espace"><span class="brand-nav">📊</span></a>
-                <a href="Lexique_Latin_Juridique.html" class="icon-btn" title="Lexique"><span class="brand-nav">📜</span></a>
-                <a href="formation_live_juriste.html" class="icon-btn" title="Planning"><span class="brand-nav">📅</span></a>
-                <a href="A_propos_de_moi.html" class="icon-btn" title="Bio"><span class="brand-nav">👤</span></a>
-                <div class="dock-separator"></div>
-                <a href="https://chat.whatsapp.com/IoMXFl4o2otExYKCPVj22b" target="_blank" class="icon-btn" title="WhatsApp"><i class="fab fa-whatsapp brand-whatsapp"></i></a>
-                <a href="https://discord.gg/qwNPV8QzFt" target="_blank" class="icon-btn" title="Discord"><i class="fab fa-discord brand-discord"></i></a>
-                <a href="https://www.linkedin.com/in/mathilde-martine-paisley-1a4422382/" target="_blank" class="icon-btn" title="LinkedIn"><i class="fab fa-linkedin brand-linkedin"></i></a>
-                <a href="https://www.instagram.com/enervyx/" target="_blank" class="icon-btn" title="Instagram"><i class="fab fa-instagram brand-instagram"></i></a>
-                <a href="https://www.tiktok.com/@enervyx/" target="_blank" class="icon-btn" title="TikTok"><i class="fab fa-tiktok brand-tiktok"></i></a>
+        </div>
+
+        <!-- DROITE : TOUT ALIGNÉ (Réseaux | Barre | Navigation) -->
+        <div class="footer-right">
+            
+            <!-- Réseaux Sociaux (Couleurs) -->
+            <div class="social-group">
+                <a class="footer-emoji-btn" href="https://chat.whatsapp.com/IoMXFl4o2otExYKCPVj22b" target="_blank" title="WhatsApp" style="color: #25D366; border-color: rgba(37, 211, 102, 0.3);"><i class="fab fa-whatsapp"></i></a>
+                <a class="footer-emoji-btn" href="https://discord.gg/qwNPV8QzFt" target="_blank" title="Discord" style="color: #5865F2; border-color: rgba(88, 101, 242, 0.3);"><i class="fab fa-discord"></i></a>
+                <a class="footer-emoji-btn" href="https://www.linkedin.com/in/mathilde-martine-paisley-1a4422382/" target="_blank" title="LinkedIn" style="color: #0077b5; border-color: rgba(0, 119, 181, 0.3);"><i class="fab fa-linkedin-in"></i></a>
+                <a class="footer-emoji-btn" href="https://www.instagram.com/enervyx/" target="_blank" title="Instagram" style="color: #E1306C; border-color: rgba(225, 48, 108, 0.3);"><i class="fab fa-instagram"></i></a>
+                <a class="footer-emoji-btn" href="https://www.tiktok.com/@enervyx/" target="_blank" title="TikTok" style="color: #00f2ea; border-color: rgba(0, 242, 234, 0.3);"><i class="fab fa-tiktok"></i></a>
             </div>
+
+            <div class="footer-divider"></div>
+
+            <!-- Navigation (Emojis) -->
+            <div class="nav-group">
+                <a class="footer-emoji-btn" href="https://projettechacademy.github.io/Juridique/A_propos_de_moi.html" title="A propos de moi" target="_blank">👤</a>
+                <a class="footer-emoji-btn" href="https://projettechacademy.github.io/Juridique/index.html" title="Accueil" target="_blank">🏠</a>
+                <a class="footer-emoji-btn" href="https://projettechacademy.github.io/Juridique/Mon_Espace_Juriste_Tableau_de_bord_personnel.html" title="Mon Espace" target="_blank">📊</a>
+                <a class="footer-emoji-btn" href="https://projettechacademy.github.io/Juridique/formation_live_juriste.html" title="Planning" target="_blank">📅</a>
+                <a class="footer-emoji-btn" href="https://projettechacademy.github.io/Juridique/Lexique_Latin_Juridique.html" title="Lexique" target="_blank">📜</a>
+                <a class="footer-emoji-btn" href="https://projettechacademy.github.io/Juridique/Atelier_de_Competence.html" title="Atelier" target="_blank">🛠️</a>
+                <a class="footer-emoji-btn" href="https://projettechacademy.github.io/Juridique/Portfolio_Mathilde-Martine-PAISLEY.html" title="Portfolio" target="_blank">🎨</a>
+                <a class="footer-emoji-btn" href="https://projettechacademy.github.io/Juridique/Fiche_RNCP_Juriste.html" title="RNCP" target="_blank">📚</a>
+                <a class="footer-emoji-btn" href="https://projettechacademy.github.io/Juridique/Univers_Actes_Juridiques.html" title="Rédaction" target="_blank">✍️</a>
+                <a class="footer-emoji-btn" href="https://projettechacademy.github.io/Juridique/Jurist_Elite_Panorama_IA.html" title="Panorama IA" target="_blank">🤖</a>
+                <a class="footer-emoji-btn" href="https://projettechacademy.github.io/Juridique/Acronymes.html" title="Acronymes" target="_blank">🔤</a>
+            </div>
+
         </div>
-        <div class="footer-copyright">
-            <p>💫 The Jurist Elite Club By Studi ✨ La Villa des Juristes Brisés 💔 sur l’Île de L’INSTRUCTION !🏝 | By Mathilde Martine PAISLEY | © 2025 Tous droits réservés</p>
-        </div>
+    </div>
+    <div class="copyright">
+        💫 The Jurist Elite Club By Studi ✨ La Villa des Juristes Brisés 💔 sur l’Île de L’INSTRUCTION !🏝 <br> 
+        By Mathilde Martine PAISLEY | © 2025 Tous droits réservés
     </div>
   </footer>
 
+  <div id="backToTop" onclick="window.scrollTo(0,0)"><i class="fas fa-arrow-up"></i></div>
+
   <script>
-    // --- DATA CONTENT EXPERT ---
+    // Scroll Top Logic
+    window.addEventListener('scroll', () => {
+        const btn = document.getElementById('backToTop');
+        if (btn) {
+            if (window.scrollY > 300) btn.classList.add('visible'); else btn.classList.remove('visible');
+        }
+    });
+
+    // Header Height Logic
+    function updateHeaderHeight() { 
+        const header = document.getElementById('mainHeader'); 
+        if(header) {
+            document.documentElement.style.setProperty('--header-height', header.offsetHeight + 'px');
+        }
+    }
+    window.addEventListener('load', updateHeaderHeight); 
+    window.addEventListener('resize', updateHeaderHeight);
+
+    // --- DATA CONTENT EXPERT (Inchangé) ---
     const data = {
         fondamentaux: {
             title: "Les Piliers de la Rédaction Juridique",
