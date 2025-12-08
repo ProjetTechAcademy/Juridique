@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,7 +11,7 @@
     <!-- FAVICON -->
     <link rel="icon" type="image/png" href="https://projettechacademy.github.io/Juridique/Asset/Logo_juriste.png">
 
-    <!-- Tailwind CSS (Gardé en secours) -->
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
     <!-- FontAwesome & Fonts -->
@@ -20,19 +20,35 @@
 
     <style>
         /* ========================================
-           VARIABLES CSS
+           VARIABLES GLOBALES (NOUVELLE CHARTE)
            ======================================== */
         :root {
             --color-bg: #F6F2E8;
             --color-primary: #0F2C48;
-            --color-accent: #D9A526; /* Jaune Moutarde / Doré */
+            --color-accent: #D9A526; /* Doré */
             --color-alert: #B4792A;  /* Bronze */
             --color-text: #2c3e50;
             --color-white: #ffffff;
+            
+            /* Pour le Header/Footer */
+            --cta: #D9A526;
+            --brand-blue: #0F2C48;
+            --ivory: #F6F2E8;
+            --bronze: #B4792A;
+            --footer-bg: #0F2C48; 
+            --footer-text: #F6F2E8; 
+            --header-height: 96px; 
+        }
+
+        /* Animation "Pulse" */
+        @keyframes cosmic-pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(217, 165, 38, 0.7); }
+            70% { transform: scale(1.02); box-shadow: 0 0 0 10px rgba(217, 165, 38, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(217, 165, 38, 0); }
         }
 
         /* ========================================
-           RESET & BASE
+           STRUCTURE GLOBALE
            ======================================== */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
@@ -46,120 +62,97 @@
             flex-direction: column;
         }
 
-        /* Animation "Pulse" (Le petit truc sympa !) */
-        @keyframes cosmic-pulse {
-            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(217, 165, 38, 0.7); }
-            70% { transform: scale(1.02); box-shadow: 0 0 0 10px rgba(217, 165, 38, 0); }
-            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(217, 165, 38, 0); }
-        }
-
-        /* ========================================
-           TOP BAR
-           ======================================== */
-        .top-bar {
-            background-color: var(--color-primary);
-            color: var(--color-white);
-            padding: 15px 0;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
         .container { max-width: 1400px; margin: 0 auto; padding: 0 20px; }
+        
+        /* ========================================
+           HEADER "GRAND ÉCART" (NOUVEAU)
+           ======================================== */
+        .top-bar { 
+            background: linear-gradient(135deg, #B4792A, #F2C94C); 
+            padding: 12px 20px; 
+            position: sticky; 
+            top: 0; 
+            z-index: 9999; 
+            border-bottom: 4px solid var(--brand-blue); 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
 
-        .top-bar-content {
+        .top-bar-container { 
+            max-width: 1400px; 
+            margin: 0 auto; 
+            display: flex; 
+            align-items: center; 
+            justify-content: space-between; /* Clé pour écarter */
+            gap: 16px; 
+        }
+        
+        .top-left { 
+            display: flex; 
+            align-items: center; 
+            gap: 14px; 
+        }
+
+        .top-right-group {
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
             gap: 20px;
         }
 
-        .top-bar-left {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            flex: 1;
-            min-width: 300px;
+        .logo-top-bar { 
+            width: 64px; height: 64px; 
+            border-radius: 8px; object-fit: cover; 
+            border: 2px solid var(--brand-blue); 
+            background: #fff; 
+            transition: transform 0.3s ease;
+            flex-shrink: 0; display: block; overflow: hidden;
         }
+        .logo-top-bar img { width: 100%; height: 100%; object-fit: cover; }
+        .logo-top-bar:hover { transform: scale(1.05); }
 
-        .logo-top-bar {
-            width: 55px; height: 55px;
-            border-radius: 50%;
-            border: 2px solid var(--color-accent);
-            object-fit: cover;
-            background: white;
+        .identity-stack { display: flex; flex-direction: column; min-width: 0; overflow: hidden; }
+        .club-title-main { 
+            font-family: 'Playfair Display', serif; font-weight: 800; 
+            color: var(--brand-blue); font-size: 1.1rem; 
+            white-space: nowrap; 
         }
+        .club-subtitle { color: #fff; font-weight: 700; font-size: 0.85rem; text-shadow: 0 1px 2px rgba(0,0,0,0.1); }
 
-        .identity-stack { display: flex; flex-direction: column; justify-content: center; }
-        
-        .name-top-bar {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.4rem; font-weight: 700;
-            color: var(--color-white); line-height: 1.2;
-        }
-        
-        /* Modification ici : Tout le sous-titre sur une ligne, même style */
-        .club-subtitle { 
-            font-size: 0.85rem; 
-            color: var(--color-accent); 
-            font-weight: 700; 
-            margin-top: 2px;
-        }
+        .top-bar-center { display: flex; gap: 10px; align-items: center; }
 
-        .top-bar-center { display: flex; gap: 15px; align-items: center; }
-
-        /* Onglets Or/Bronze */
-        .header-icon-btn {
+        .header-icon-btn { 
+            width: 44px; height: 44px; flex-shrink: 0;
+            border-radius: 50%; 
+            display: inline-flex; align-items: center; justify-content: center; 
+            text-decoration: none; 
+            background: linear-gradient(135deg, var(--cta), var(--bronze)); 
+            color: #fff; 
+            border: 1px solid rgba(255, 255, 255, 0.4); 
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            font-size: 1.2rem;
             position: relative;
-            width: 42px; height: 42px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #D9A526 0%, #B4792A 100%);
-            border: 2px solid rgba(255, 255, 255, 0.8);
-            display: flex; align-items: center; justify-content: center;
-            font-size: 1.2rem; transition: all 0.3s ease;
-            cursor: pointer; color: white; text-decoration: none;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
-        .header-icon-btn:hover {
-            transform: translateY(-3px) scale(1.1);
-            background: linear-gradient(135deg, #FFD700 0%, #D9A526 100%);
-            box-shadow: 0 0 15px rgba(217, 165, 38, 0.6);
-            border-color: #fff;
-        }
-        .nav-profile-img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: none; }
-        .header-icon-btn::after {
-            content: attr(data-tooltip);
-            position: absolute; top: 130%; left: 50%;
-            transform: translateX(-50%) translateY(-10px);
-            background-color: var(--color-white); color: var(--color-primary);
-            padding: 5px 12px; border-radius: 20px;
-            font-size: 0.75rem; font-weight: 700; white-space: nowrap;
-            opacity: 0; visibility: hidden; transition: all 0.3s ease;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2); pointer-events: none; z-index: 100;
-        }
-        .header-icon-btn:hover::after { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+        .header-icon-btn:hover { transform: translateY(-3px); box-shadow: 0 4px 8px rgba(0,0,0,0.2); background: var(--brand-blue); border-color: var(--cta); }
+        .nav-profile-img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
 
-        /* Bouton Portfolio Pulse */
-        .btn-portfolio-cosmic {
-            padding: 10px 25px; border-radius: 50px;
-            font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 0.95rem;
-            background: linear-gradient(135deg, #D9A526 0%, #B4792A 100%);
-            color: white; border: 1px solid rgba(255,255,255,0.4);
-            cursor: pointer; display: inline-flex; align-items: center; gap: 8px;
-            transition: all 0.3s ease; text-decoration: none;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            animation: cosmic-pulse 2s infinite;
+        .btn-portfolio-cosmic { 
+            padding: 8px 18px; 
+            border-radius: 999px; 
+            background: var(--brand-blue); 
+            color: var(--cta); 
+            text-decoration: none; 
+            font-weight: 700; 
+            display: inline-flex; gap: 8px; align-items: center; 
+            transition: background 0.3s, color 0.3s;
+            white-space: nowrap;
+            box-shadow: 0 4px 10px rgba(15, 44, 72, 0.2);
         }
-        .btn-portfolio-cosmic:hover {
-            background: linear-gradient(135deg, #F1C40F 0%, #D9A526 100%);
-            transform: translateY(-2px);
-            color: white;
-        }
+        .btn-portfolio-cosmic:hover { background: #fff; color: var(--brand-blue); transform: translateY(-2px); }
+        .btn-portfolio-cosmic img { display: none; } /* Pas d'image dans le bouton expert */
+
 
         /* ========================================
-           MAIN CONTENT
+           STYLES SPÉCIFIQUES PAGE FORMATION
            ======================================== */
         main { flex: 1; padding: 40px 0; }
 
@@ -169,8 +162,7 @@
             color: var(--color-primary); margin-bottom: 10px;
             display: flex; align-items: center; justify-content: center; gap: 15px;
         }
-        .page-subtitle { font-size: 1.1rem; color: var(--color-alert); margin-bottom: 20px; }
-
+        
         .notice-access {
             background: #e0f2fe; color: #0c4a6e;
             padding: 15px 25px; border-radius: 8px;
@@ -277,11 +269,11 @@
         /* Month Separators - Couleur "Novembre" */
         .month-header-row td { padding: 0; border: none; }
         .month-header-content {
-            background: var(--color-bg); /* Le crème que tu aimais */
-            color: var(--color-alert); /* Bronze */
+            background: var(--color-bg); 
+            color: var(--color-alert); 
             font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
             padding: 12px 20px; display: flex; justify-content: space-between; align-items: center;
-            border-left: 4px solid var(--color-accent); /* Liseré doré */
+            border-left: 4px solid var(--color-accent);
             cursor: pointer; transition: background 0.3s;
         }
         .month-header-content:hover { background: #ece8de; }
@@ -301,100 +293,78 @@
         }
 
         /* ========================================
-           FOOTER
+           FOOTER "SINGLE LINE" (NOUVEAU)
            ======================================== */
-        .main-footer {
-            background-color: var(--color-primary); color: var(--color-bg);
-            padding: 50px 0 20px; margin-top: auto;
+        .main-footer { 
+            background: var(--footer-bg); color: var(--footer-text); 
+            padding: 25px 0; margin-top: auto; border-top: 4px solid var(--cta); 
         }
-        .footer-content {
-            display: flex; justify-content: space-between; align-items: flex-start;
-            flex-wrap: wrap; gap: 30px; margin-bottom: 30px;
-        }
-        .footer-identity { display: flex; align-items: center; gap: 15px; }
-        .footer-logo-img {
-            width: 60px; height: 60px; border-radius: 8px;
-            border: 2px solid var(--color-accent); object-fit: cover; background: white;
-        }
-        .footer-info-col { display: flex; flex-direction: column; }
-        .footer-name {
-            color: var(--color-accent); font-family: 'Playfair Display', serif;
-            font-weight: 700; font-size: 1.2rem; margin-bottom: 5px;
-        }
-        .footer-contact-stack {
-            font-size: 0.9rem; opacity: 0.8;
-            display: flex; flex-direction: column; gap: 4px;
-        }
-        .footer-link { color: inherit; text-decoration: none; transition: color 0.3s ease; }
-        .footer-link:hover { color: var(--color-accent); }
-
-        .dock-group { display: flex; flex-direction: column; align-items: flex-end; gap: 10px; }
-        .dock-label {
-            font-family: 'Montserrat', sans-serif; font-size: 0.8rem;
-            text-transform: uppercase; color: var(--color-accent); opacity: 0.8;
-        }
-        .icon-dock {
-            display: flex; gap: 12px; align-items: center;
-            flex-wrap: wrap; justify-content: flex-end;
-        }
-        .icon-btn {
-            width: 40px; height: 40px; border-radius: 50%;
-            background: rgba(255,255,255,0.1);
-            display: flex; align-items: center; justify-content: center;
-            transition: all 0.3s ease; border: 1px solid rgba(255,255,255,0.2);
-            color: white; text-decoration: none; font-size: 1.1rem; position: relative;
-        }
-        .icon-btn:hover {
-            background: white; color: var(--color-primary);
-            transform: translateY(-3px); border-color: white;
+        .footer-container { 
+            max-width: 1400px; margin: 0 auto; padding: 0 20px;
+            display: flex; align-items: center; justify-content: space-between;
+            flex-wrap: nowrap; /* Force la ligne unique */
+            gap: 30px;
         }
         
-        .brand-whatsapp { color: #25D366; } .icon-btn:hover .brand-whatsapp { color: #25D366; }
-        .brand-discord { color: #5865F2; } .icon-btn:hover .brand-discord { color: #5865F2; }
-        .brand-linkedin { color: #0077b5; } .icon-btn:hover .brand-linkedin { color: #0077b5; }
-        .brand-instagram { color: #E1306C; } .icon-btn:hover .brand-instagram { color: #E1306C; }
-        .brand-tiktok { color: #00f2ea; } .icon-btn:hover .brand-tiktok { color: #000; }
-
-        .icon-btn::after {
-            content: attr(data-tooltip); position: absolute; bottom: 125%; left: 50%;
-            transform: translateX(-50%); background: white; color: var(--color-primary);
-            padding: 4px 8px; border-radius: 4px; font-size: 0.7rem; white-space: nowrap;
-            opacity: 0; visibility: hidden; transition: 0.2s; pointer-events: none; font-weight: bold;
+        .footer-left { 
+            display: flex; align-items: center; gap: 15px; flex-shrink: 0; 
         }
-        .icon-btn:hover::after { opacity: 1; visibility: visible; }
+        .footer-details { display: flex; flex-direction: column; justify-content: center; }
+        .footer-name { font-weight: 700; font-size: 1rem; color: var(--cta); line-height: 1.2; }
+        .footer-contact { font-size: 0.8rem; opacity: 0.9; line-height: 1.3; }
+        .footer-contact a { color: inherit; text-decoration: none; }
+        .footer-contact a:hover { color: #fff; text-decoration: underline; }
 
-        .footer-bottom {
-            text-align: center; padding-top: 20px;
-            border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.85rem; opacity: 0.6;
+        .footer-right { 
+            display: flex; align-items: center; gap: 20px; 
+            flex-grow: 1; justify-content: flex-end; 
         }
 
-        /* Back To Top - Style Premium */
-        #backToTop {
-            position: fixed; bottom: 30px; right: 30px;
-            width: 50px; height: 50px;
-            background: linear-gradient(135deg, #D9A526, #B4792A);
-            color: white; border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            cursor: pointer; opacity: 0; visibility: hidden;
-            transition: all 0.3s ease; box-shadow: 0 4px 12px rgba(0,0,0,0.3); z-index: 1000;
+        .social-group { display: flex; gap: 10px; align-items: center; }
+        .nav-group { display: flex; gap: 10px; align-items: center; }
+        
+        .footer-divider { 
+            width: 1px; height: 30px; background: rgba(255,255,255,0.3); margin: 0 5px; 
         }
-        #backToTop.visible { opacity: 1; visibility: visible; }
-        #backToTop:hover { transform: translateY(-5px) scale(1.1); box-shadow: 0 6px 16px rgba(217, 165, 38, 0.5); }
 
-        /* Responsive */
-        @media (max-width: 900px) {
-            .page-title { font-size: 1.8rem; flex-direction: column; }
-            .stats-bar { flex-direction: column; align-items: flex-start; }
-            .progress-container { width: 100%; max-width: none; margin: 10px 0; }
+        /* BOUTONS EMOJIS FOOTER */
+        .footer-emoji-btn { 
+            width: 40px; height: 40px; border-radius: 50%; 
+            display: flex; align-items: center; justify-content: center; 
+            background: rgba(255, 255, 255, 0.08); color: #fff; 
+            text-decoration: none; border: 1px solid rgba(255, 255, 255, 0.15); 
+            transition: all 0.2s ease; font-size: 1.2rem;
+            position: relative;
+        }
+        .footer-emoji-btn:hover { 
+            background: var(--brand-blue); border-color: var(--cta); 
+            transform: translateY(-3px); box-shadow: 0 4px 8px rgba(0,0,0,0.3); 
+        }
+        .footer-emoji-btn::before {
+            content: attr(title); position: absolute; bottom: 120%; left: 50%; transform: translateX(-50%);
+            background: #fff; color: var(--brand-blue); padding: 4px 8px; border-radius: 4px; font-size: 0.7rem; font-weight: 700;
+            white-space: nowrap; opacity: 0; pointer-events: none; transition: opacity 0.2s; box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        .footer-emoji-btn:hover::before { opacity: 1; }
+
+        /* Responsive Global */
+        @media (max-width: 990px) {
+            .top-bar-container { flex-direction: column; justify-content: center; gap: 15px; }
+            .top-left { width: 100%; justify-content: center; }
+            .top-right-group { width: 100%; justify-content: center; flex-wrap: wrap; }
+            .top-bar-center { overflow-x: auto; padding-bottom: 5px; -webkit-overflow-scrolling: touch; }
+
+            .footer-container { flex-direction: column; text-align: center; gap: 20px; }
+            .footer-left { flex-direction: column; }
+            .footer-right { flex-direction: column; width: 100%; }
+            .footer-divider { width: 80%; height: 1px; margin: 10px auto; } 
+            .nav-group { flex-wrap: wrap; justify-content: center; }
+            
             .table-container { overflow-x: auto; }
             table { min-width: 800px; }
-            .top-bar-content { flex-direction: column; text-align: center; }
-            .top-bar-left { justify-content: center; }
-            .footer-content { flex-direction: column; align-items: center; text-align: center; }
-            .dock-group, .icon-dock { align-items: center; justify-content: center; }
-            .notice-access { flex-direction: column; align-items: flex-start; }
         }
         
+        /* Mobile Table */
         @media (max-width: 768px) {
             .table-container table, .table-container thead, .table-container tbody, .table-container th, .table-container td, .table-container tr { display: block; }
             .table-container thead tr { position: absolute; top: -9999px; left: -9999px; }
@@ -421,45 +391,49 @@
 </head>
 <body>
 
-    <!-- === HEADER === -->
-
-    <div class="top-bar">
-        <div class="container">
-            <div class="top-bar-content">
-                <div class="top-bar-left">
-                    <img src="https://projettechacademy.github.io/Juridique/Asset/Logo_juriste.png" onerror="this.src='https://projettechacademy.github.io/Juridique/Asset/Logo_juriste.jpg';" alt="Logo Club" class="logo-top-bar">
-                    <div class="identity-stack">
-                        <span class="name-top-bar">💫The Jurist Elite Club By Studi ✨</span>
-                        <span class="club-subtitle">La Villa des Juristes Brisés 💔 sur l’Île de  L’INSTRUCTION !🏝</span>
+    <!-- HEADER (GRAND ÉCART) -->
+    <div class="top-bar" id="mainHeader">
+        <div class="top-bar-container">
+            <!-- GAUCHE : Logo + Titre -->
+            <div class="top-left">
+                <a href="https://projettechacademy.github.io/Juridique/index.html" title="Start/Accueil" target="_blank">
+                    <div class="logo-top-bar">
+                        <img src="https://projettechacademy.github.io/Juridique/Asset/Logo_juriste.png" onerror="this.src='https://projettechacademy.github.io/Juridique/Asset/Logo_juriste.jpg'" alt="Logo Juriste">
                     </div>
+                </a>
+                <div class="identity-stack">
+                    <div class="club-title-main">💫 The Jurist Elite Club By Studi ✨</div>
+                    <div class="club-subtitle">La Villa des Juristes Brisés 💔 sur l’Île de L’INSTRUCTION ! 🏝</div>
                 </div>
+            </div>
+            
+            <!-- DROITE : Navigation + Expert -->
+            <div class="top-right-group">
+                <nav class="top-bar-center" aria-label="Navigation principale">
+                    <a class="header-icon-btn" href="https://projettechacademy.github.io/Juridique/A_propos_de_moi.html" title="A propos de moi" target="_blank">
+                        <img src="https://projettechacademy.github.io/Juridique/Asset/Photo_Mathilde_Martine_PAISLEY.jpg" alt="Mathilde Martine PAISLEY" class="nav-profile-img" onerror="this.src='https://projettechacademy.github.io/Juridique/Asset/Photo_Mathilde_Martine_PAISLEY.jpeg'">
+                    </a>
+                    <a class="header-icon-btn" href="https://projettechacademy.github.io/Juridique/index.html" title="Start/Accueil" target="_blank">🏠</a>
+                    <a class="header-icon-btn" href="https://projettechacademy.github.io/Juridique/Mon_Espace_Juriste_Tableau_de_bord_personnel.html" title="Mon Espace" target="_blank">📊</a>
+                    <a class="header-icon-btn" href="https://projettechacademy.github.io/Juridique/formation_live_juriste.html" title="Planning Live" target="_blank" style="background: white; color: var(--brand-blue); border: 2px solid var(--cta); transform: scale(1.1);">📅</a>
+                    <a class="header-icon-btn" href="https://projettechacademy.github.io/Juridique/Lexique_Latin_Juridique.html" title="Lexique Latin" target="_blank">📜</a>
+                    <a class="header-icon-btn" href="https://projettechacademy.github.io/Juridique/Atelier_de_Competence.html" title="Atelier de Compétence Élite" target="_blank">🛠️</a>
+                    <a class="header-icon-btn" href="https://projettechacademy.github.io/Juridique/Fiche_RNCP_Juriste.html" title="RNCP" target="_blank">📚</a>
+                    <a class="header-icon-btn" href="https://projettechacademy.github.io/Juridique/Univers_Actes_Juridiques.html" title="Rédaction Juridique" target="_blank">✍️</a>
+                    <a class="header-icon-btn" href="https://projettechacademy.github.io/Juridique/Jurist_Elite_Panorama_IA.html" title="Panorama IA" target="_blank">🤖</a>
+                    <a class="header-icon-btn" href="https://projettechacademy.github.io/Juridique/Acronymes.html" title="Acronymes" target="_blank">🔤</a>
+                </nav>
                 
-                <div class="top-bar-center">
-                    <a href="https://projettechacademy.github.io/Juridique/index.html" target="_blank" class="header-icon-btn" aria-label="Start/Accueil" data-tooltip="Accueil" style="padding: 0; overflow: hidden; border: none;">
-                        <img src="https://projettechacademy.github.io/Juridique/Asset/Logo_MMPA.jpeg" alt="MMPA" class="nav-profile-img" style="width: 100%; height: 100%; object-fit: cover;">
-                    </a>
-                    <a href="https://projettechacademy.github.io/Juridique/00_Autres/Mon_Espace_Juriste_Tableau_de_bord_personnel.html" target="_blank" class="header-icon-btn" aria-label="Mon Espace" data-tooltip="Mon Espace">📊</a>
-                    <a href="https://projettechacademy.github.io/Juridique/00_Autres/Lexique_Latin_Juridique.html" target="_blank" class="header-icon-btn" aria-label="Lexique Latin" data-tooltip="Lexique">📜</a>
-                    
-                    <a href="https://projettechacademy.github.io/Juridique/00_Autres/Atelier_de_Competence.html" target="_blank" class="header-icon-btn" aria-label="Atelier" data-tooltip="Atelier">🛠️</a>
-
-                    <a href="https://projettechacademy.github.io/Juridique/00_Autres/formation_live_juriste.html" target="_blank" class="header-icon-btn" aria-label="Planning Live" data-tooltip="Planning">📅</a>
-                    <a href="https://projettechacademy.github.io/Juridique/00_Autres/A_propos_de_moi.html" target="_blank" class="header-icon-btn" aria-label="À propos de moi" data-tooltip="Profil" style="padding: 0; overflow: hidden; border: 2px solid #D9A526;">
-                        <img src="https://projettechacademy.github.io/Juridique/Asset/Photo_Mathilde_Martine_PAISLEY.png" onerror="this.src='https://projettechacademy.github.io/Juridique/Asset/Photo_Mathilde_Martine_PAISLEY.jpg';" alt="Profil" class="nav-profile-img" style="width: 100%; height: 100%; object-fit: cover;">
-                    </a>
-                </div>
-
-                <a href="https://projettechacademy.github.io/CV_MMPA-CV-Mathilde-Martine-PAISLEY/" target="_blank" class="btn-portfolio-cosmic">
-                    <span>📄</span> Mon portfolio
+                <a class="btn-portfolio-cosmic" href="https://projettechacademy.github.io/Juridique/Portfolio_Mathilde-Martine-PAISLEY.html" target="_blank" title="Mon Expertise / Projets">
+                    💎 Expert
                 </a>
             </div>
         </div>
     </div>
 
-    <!-- === MAIN CONTENT === -->
+    <!-- MAIN CONTENT -->
     <main class="container">
-        
-        <!-- Page Header -->
+        <!-- En-tête de la page -->
         <div class="page-header">
             <h1 class="page-title">
                 <i class="fa-solid fa-scale-balanced" style="color: var(--color-accent);"></i>
@@ -474,7 +448,7 @@
             </div>
         </div>
 
-        <!-- Filters & Stats Section -->
+        <!-- Filtres & Recherche -->
         <div class="filters-section">
             <div class="filters-grid">
                 <div class="filter-group-search">
@@ -482,13 +456,12 @@
                     <input type="text" id="searchInput" placeholder="Rechercher un cours, un sujet, une date..." oninput="renderTable(getCurrentFilteredEvents())">
                 </div>
             </div>
-            
             <div id="filter-container">
                 <!-- Boutons générés par JS -->
             </div>
         </div>
 
-        <!-- Stats Bar -->
+        <!-- Barre de Stats -->
         <div class="stats-bar">
             <div class="stat-item">
                 <span>Total Lives:</span>
@@ -511,7 +484,7 @@
             </div>
         </div>
 
-        <!-- Table -->
+        <!-- Tableau -->
         <div class="table-container">
             <table>
                 <thead>
@@ -540,42 +513,60 @@
         <div style="text-align: center; margin-top: 20px; font-size: 0.8rem; opacity: 0.6; font-family: monospace;">
             Dernière mise à jour : 30/11/2025
         </div>
-
     </main>
 
-    <!-- === FOOTER === -->
-    <footer class="main-footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-identity">
-                    <img src="https://projettechacademy.github.io/Juridique/Asset/Logo_MMPA.jpeg" alt="Logo MMPA" class="footer-logo-img">
-                    <div class="footer-info-col">
-                        <div class="footer-name">Mathilde Martine PAISLEY</div>
-                        <div class="footer-contact-stack">
-                            <a href="mailto:Mathilde.martine.paisley@gmail.com" class="footer-link">📧 Mathilde.martine.paisley@gmail.com</a>
-                            <a href="tel:+33685900887" class="footer-link">📲 06 85 90 08 87</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="dock-group">
-                    <div class="dock-label">Navigation & Réseaux</div>
-                    <div class="icon-dock">
-                        <a href="https://projettechacademy.github.io/Juridique/index.html" target="_blank" class="icon-btn" data-tooltip="Accueil">🏠</a>
-                        <a href="https://projettechacademy.github.io/Juridique/00_Autres/Mon_Espace_Juriste_Tableau_de_bord_personnel.html" target="_blank" class="icon-btn" data-tooltip="Mon Espace">📊</a>
-                        <a href="https://projettechacademy.github.io/Juridique/00_Autres/Lexique_Latin_Juridique.html" target="_blank" class="icon-btn" data-tooltip="Lexique">📜</a>
-                        <a href="https://chat.whatsapp.com/IoMXFl4o2otExYKCPVj22b" target="_blank" class="icon-btn" data-tooltip="WhatsApp"><i class="fab fa-whatsapp brand-whatsapp"></i></a>
-                        <a href="https://discord.gg/qwNPV8QzFt" target="_blank" class="icon-btn" data-tooltip="Discord"><i class="fab fa-discord brand-discord"></i></a>
-                        <a href="https://www.linkedin.com/in/mathilde-martine-paisley-1a4422382/" target="_blank" class="icon-btn" data-tooltip="LinkedIn"><i class="fab fa-linkedin brand-linkedin"></i></a>
-                        <a href="https://www.instagram.com/enervyx/" target="_blank" class="icon-btn" data-tooltip="Instagram"><i class="fab fa-instagram brand-instagram"></i></a>
-                        <a href="https://www.tiktok.com/@enervyx/" target="_blank" class="icon-btn" data-tooltip="TikTok"><i class="fab fa-tiktok brand-tiktok"></i></a>
-                    </div>
-                </div>
-            </div>
+    <!-- FOOTER "SINGLE LINE" -->
+    <footer class="main-footer" role="contentinfo">
+        <div class="footer-container">
             
-            <div class="footer-bottom">
-                <p>© 2025 Tous droits réservés – Création : 2025 – Dernière mise à jour : Novembre 2025</p>
+            <!-- GAUCHE : IDENTITÉ + CONTACT -->
+            <div class="footer-left">
+                <a href="https://projettechacademy.github.io/Juridique/index.html" target="_blank">
+                    <img class="footer-logo-img" src="https://projettechacademy.github.io/Juridique/Asset/Logo_MMPA.jpeg" alt="Logo MMPA" onerror="this.src='https://projettechacademy.github.io/Juridique/Asset/Logo_MMPA.jpg'">
+                </a>
+                <div class="footer-details">
+                    <div class="footer-name">Mathilde Martine PAISLEY</div>
+                    <div class="footer-contact">
+                        📧 <a href="mailto:mathilde.martine.paisley@gmail.com">mathilde.martine.paisley@gmail.com</a><br>
+                        📲 <a href="tel:+33685900887">06 85 90 08 87</a>
+                    </div>
+                </div>
             </div>
+
+            <!-- DROITE : TOUT ALIGNÉ (Réseaux | Barre | Navigation) -->
+            <div class="footer-right">
+                
+                <!-- Réseaux Sociaux (Couleurs) -->
+                <div class="social-group">
+                    <a class="footer-emoji-btn" href="https://chat.whatsapp.com/IoMXFl4o2otExYKCPVj22b" target="_blank" title="WhatsApp" style="color: #25D366; border-color: rgba(37, 211, 102, 0.3);"><i class="fab fa-whatsapp"></i></a>
+                    <a class="footer-emoji-btn" href="https://discord.gg/qwNPV8QzFt" target="_blank" title="Discord" style="color: #5865F2; border-color: rgba(88, 101, 242, 0.3);"><i class="fab fa-discord"></i></a>
+                    <a class="footer-emoji-btn" href="https://www.linkedin.com/in/mathilde-martine-paisley-1a4422382/" target="_blank" title="LinkedIn" style="color: #0077b5; border-color: rgba(0, 119, 181, 0.3);"><i class="fab fa-linkedin-in"></i></a>
+                    <a class="footer-emoji-btn" href="https://www.instagram.com/enervyx/" target="_blank" title="Instagram" style="color: #E1306C; border-color: rgba(225, 48, 108, 0.3);"><i class="fab fa-instagram"></i></a>
+                    <a class="footer-emoji-btn" href="https://www.tiktok.com/@enervyx/" target="_blank" title="TikTok" style="color: #00f2ea; border-color: rgba(0, 242, 234, 0.3);"><i class="fab fa-tiktok"></i></a>
+                </div>
+
+                <div class="footer-divider"></div>
+
+                <!-- Navigation (Emojis) -->
+                <div class="nav-group">
+                    <a class="footer-emoji-btn" href="https://projettechacademy.github.io/Juridique/A_propos_de_moi.html" title="A propos de moi" target="_blank">👤</a>
+                    <a class="footer-emoji-btn" href="https://projettechacademy.github.io/Juridique/index.html" title="Accueil" target="_blank">🏠</a>
+                    <a class="footer-emoji-btn" href="https://projettechacademy.github.io/Juridique/Mon_Espace_Juriste_Tableau_de_bord_personnel.html" title="Mon Espace" target="_blank">📊</a>
+                    <a class="footer-emoji-btn" href="https://projettechacademy.github.io/Juridique/formation_live_juriste.html" title="Planning" target="_blank">📅</a>
+                    <a class="footer-emoji-btn" href="https://projettechacademy.github.io/Juridique/Lexique_Latin_Juridique.html" title="Lexique" target="_blank">📜</a>
+                    <a class="footer-emoji-btn" href="https://projettechacademy.github.io/Juridique/Atelier_de_Competence.html" title="Atelier" target="_blank">🛠️</a>
+                    <a class="footer-emoji-btn" href="https://projettechacademy.github.io/Juridique/Portfolio_Mathilde-Martine-PAISLEY.html" title="Portfolio" target="_blank">🎨</a>
+                    <a class="footer-emoji-btn" href="https://projettechacademy.github.io/Juridique/Fiche_RNCP_Juriste.html" title="RNCP" target="_blank">📚</a>
+                    <a class="footer-emoji-btn" href="https://projettechacademy.github.io/Juridique/Univers_Actes_Juridiques.html" title="Rédaction" target="_blank">✍️</a>
+                    <a class="footer-emoji-btn" href="https://projettechacademy.github.io/Juridique/Jurist_Elite_Panorama_IA.html" title="Panorama IA" target="_blank">🤖</a>
+                    <a class="footer-emoji-btn" href="https://projettechacademy.github.io/Juridique/Acronymes.html" title="Acronymes" target="_blank">🔤</a>
+                </div>
+
+            </div>
+        </div>
+        <div class="copyright">
+            💫 The Jurist Elite Club By Studi ✨ La Villa des Juristes Brisés 💔 sur l’Île de L’INSTRUCTION !🏝 <br> 
+            By Mathilde Martine PAISLEY | © 2025 Tous droits réservés
         </div>
     </footer>
 
@@ -588,7 +579,17 @@
             if (window.scrollY > 300) btn.classList.add('visible'); else btn.classList.remove('visible');
         });
 
-        // --- DONNÉES ---
+        // Header Height Logic
+        function updateHeaderHeight() { 
+            const header = document.getElementById('mainHeader'); 
+            if(header) {
+                document.documentElement.style.setProperty('--header-height', header.offsetHeight + 'px');
+            }
+        }
+        window.addEventListener('load', updateHeaderHeight); 
+        window.addEventListener('resize', updateHeaderHeight);
+
+        // --- DONNÉES PLANNING ---
         const rawData = [
             { link: "https://app.comptalia.com/v3/events/98331/stream?type=0", date: "01/12/2025", time: "15:00 - 16:00", type: "Cours", title: "Career Coaching - Masterclass Pro : Droit - Droit du numérique et protection données", desc: "De quelle façon naviguer dans le droit digital ? RGPD évolutions, contrats numériques et propriété intellectuelle. Sécurisez vos activités digitales !", count: 38 },
             { link: "https://app.comptalia.com/v3/events/97718/stream?type=1", date: "28/11/2025", time: "14:30 - 15:30", type: "Travaux Dirigés", title: "Théorie & pratique - Les compétences Droit des affaires numériques", desc: "Comment structurer juridiquement une société numérique performante ? Choisissez la forme sociale adaptée, optimisez la gouvernance digitale et anticipez les évolutions. Construisez votre architecture ...", count: 8 },
@@ -672,8 +673,8 @@
             'Travaux Dirigés': 'type-atelier',
             'Objectif Examens': 'type-exam',
             'Méthodologie': 'type-methode',
-            'Accompagnement pédagogique': 'type-accompagnement',
             'Live': 'type-live',
+            'Accompagnement pédagogique': 'type-accompagnement',
         };
 
         const filterCategories = [
@@ -761,7 +762,7 @@
             tableBody.innerHTML = '';
             if (data.length === 0) { 
                 noResults.style.display = 'block'; 
-                noResults.classList.remove('hidden'); // Tailwind override just in case
+                noResults.classList.remove('hidden'); 
             } else { 
                 noResults.style.display = 'none'; 
                 noResults.classList.add('hidden');
@@ -815,7 +816,7 @@
                 
                 const linkButton = event.link 
                     ? `<a href="${event.link}" target="_blank" class="btn-action" title="Accéder au live"><i class="fa-solid fa-play"></i></a>`
-                    : `<span class="btn-action btn-disabled"><i class="fa-solid fa-ban"></i></span>`;
+                    : `<span class="btn-action btn-disabled" title="Lien non disponible"><i class="fa-solid fa-ban"></i></span>`;
 
                 const checkedAttr = event.seen ? 'checked' : '';
 
@@ -867,13 +868,9 @@
                 if (valA > valB) return currentSort.direction === 'asc' ? 1 : -1;
                 return 0;
             });
-            // Update UI sort indicators would go here in a full framework, simpler here to just re-render
             const headers = document.querySelectorAll('th.sortable');
             headers.forEach(h => {
                 h.classList.remove('sorted-asc', 'sorted-desc');
-                if (h.innerText.toLowerCase().includes(column === 'dateRaw' ? 'date' : column)) {
-                    h.classList.add(currentSort.direction === 'asc' ? 'sorted-asc' : 'sorted-desc');
-                }
             });
 
             renderTable(getCurrentFilteredEvents());

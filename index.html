@@ -1,379 +1,429 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr" class="scroll-smooth">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>💫 The Jurist Elite Club By Studi ✨ La Villa des Juristes Brisés 💔 sur l’Île de L’INSTRUCTION ! 🏝</title>
-  
-  <script src="https://cdn.tailwindcss.com"></script>
-  
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
-  
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&family=Montserrat:wght@500;600;700&family=Outfit:wght@300;400;600;800&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-  
-  <script>
-    tailwind.config = {
-        theme: {
-            extend: {
-                fontFamily: { sans: ['Outfit', 'sans-serif'] },
-                colors: {
-                    brandBlue: '#0F2C48',
-                    brandGold: '#D9A526',
-                    brandIvory: '#F6F2E8',
-                    brandBronze: '#B4792A',
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💫 The Jurist Elite Club By Studi ✨ La Villa des Juristes Brisés 💔 sur l’Île de L’INSTRUCTION ! 🏝</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Lato', 'sans-serif'] },
+                    colors: {
+                        brandBlue: '#0F2C48',
+                        brandGold: '#D9A526',
+                        brandIvory: '#F6F2E8',
+                        brandBronze: '#B4792A',
+                    }
                 }
             }
         }
-    }
-  </script>
+    </script>
+    
+    <!-- FontAwesome & Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&family=Montserrat:wght@500;600;700&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
 
-  <style>
-    /* --- NOUVEAU CSS (Mise à jour Header/Footer) --- */
-    :root {
-        --brand-blue: #0F2C48;
-        --brandGold: #D9A526;
-        --ivory: #F6F2E8;
-        --footer-bg: #0F2C48;
-        --footer-text: #F6F2E8;
+    <style>
+        /* ========================================
+           NOUVELLES VARIABLES & BASE (Mise à jour)
+           ======================================== */
+        :root {
+            --color-bg: #F6F2E8;
+            --color-primary: #0F2C48;
+            --color-accent: #D9A526; 
+            --color-alert: #B4792A;  
+            --color-text: #2c3e50;
+            --color-white: #ffffff;
+            
+            /* Pour le Header/Footer & Compatibilité */
+            --cta: #D9A526;
+            --brand-blue: #0F2C48;
+            --ivory: #F6F2E8;
+            --bronze: #B4792A;
+            --footer-bg: #0F2C48; 
+            --footer-text: #F6F2E8; 
+            --header-height: 96px; 
+            --brandGold: #D9A526; /* Alias pour compatibilité ancien code */
+        }
+
+        /* Animation "Pulse" */
+        @keyframes cosmic-pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(217, 165, 38, 0.7); }
+            70% { transform: scale(1.02); box-shadow: 0 0 0 10px rgba(217, 165, 38, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(217, 165, 38, 0); }
+        }
+
+        /* ========================================
+           STRUCTURE GLOBALE & BASE
+           ======================================== */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container { max-width: 1400px; margin: 0 auto; padding: 0 20px; }
         
-        /* Variables de compatibilité */
-        --cta: #D9A526;
-        --bronze: #B4792A;
-        --header-height: 96px; 
-    }
+        /* ========================================
+           HEADER STABLE
+           ======================================== */
+        .top-bar { 
+            background: linear-gradient(135deg, #B4792A, #F2C94C); 
+            padding: 12px 20px; 
+            position: sticky; 
+            top: 0; 
+            z-index: 9999; 
+            border-bottom: 4px solid var(--brand-blue); 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
 
-    body { margin: 0; font-family: 'Outfit', sans-serif; background: var(--ivory); color: var(--brand-blue); display: flex; flex-direction: column; min-height: 100vh; }
+        .top-bar-container { 
+            max-width: 1400px; 
+            margin: 0 auto; 
+            display: flex; 
+            align-items: center; 
+            justify-content: space-between; 
+            gap: 16px; 
+        }
+        .top-left { 
+            display: flex; 
+            align-items: center; 
+            gap: 14px; 
+            flex-shrink: 1; 
+            min-width: 0; 
+        }
+        
+        /* LOGO PRINCIPAL DU CLUB */
+        .logo-top-bar { 
+            width: 64px; 
+            height: 64px; 
+            border-radius: 8px; 
+            border: 2px solid var(--brand-blue); 
+            background: #fff; 
+            transition: transform 0.3s ease;
+            flex-shrink: 0; 
+            display: block; 
+            overflow: hidden;
+        }
+        .logo-top-bar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .logo-top-bar:hover { transform: scale(1.05); }
 
-    /* --- HEADER --- */
-    .top-bar { 
-        background: linear-gradient(135deg, #B4792A, #F2C94C); 
-        padding: 12px 20px; 
-        position: sticky; 
-        top: 0; 
-        z-index: 9999; 
-        border-bottom: 4px solid var(--brand-blue); 
-        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    }
+        .identity-stack { 
+            display: flex; 
+            flex-direction: column; 
+            min-width: 0; 
+            overflow: hidden; 
+        }
+        .club-title-main { 
+            font-family: 'Playfair Display', serif; font-weight: 800; 
+            color: var(--brand-blue); font-size: 1.1rem; 
+            white-space: nowrap; 
+            overflow: hidden; 
+            text-overflow: ellipsis; 
+        }
+        .club-subtitle { color: #fff; font-weight: 700; font-size: 0.85rem; text-shadow: 0 1px 2px rgba(0,0,0,0.1); }
 
-    .top-bar-container { 
-        max-width: 1400px; 
-        margin: 0 auto; 
-        display: flex; 
-        align-items: center; 
-        justify-content: space-between; 
-        gap: 16px; 
-    }
+        .top-bar-center { display: flex; gap: 10px; align-items: center; }
 
-    .top-left { display: flex; align-items: center; gap: 14px; }
+        .header-icon-btn { 
+            width: 44px; height: 44px; flex-shrink: 0;
+            border-radius: 50%; 
+            display: inline-flex; align-items: center; justify-content: center; 
+            text-decoration: none; 
+            background: linear-gradient(135deg, var(--cta), var(--bronze)); 
+            color: #fff; 
+            border: 1px solid rgba(255, 255, 255, 0.4); 
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            font-size: 1.2rem;
+            position: relative;
+        }
+        .header-icon-btn:hover { transform: translateY(-3px); box-shadow: 0 4px 8px rgba(0,0,0,0.2); background: var(--brand-blue); border-color: var(--cta); }
+        .nav-profile-img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
 
-    .logo-top { 
-        width: 64px; height: 64px; 
-        border-radius: 8px; object-fit: cover; 
-        border: 2px solid var(--brand-blue); 
-        background: #fff; 
-        transition: transform 0.3s ease;
-    }
-    .logo-top:hover { transform: scale(1.05); }
+        .btn-portfolio-cosmic { 
+            padding: 8px 18px; 
+            border-radius: 999px; 
+            background: var(--brand-blue); 
+            color: var(--cta); 
+            text-decoration: none; 
+            font-weight: 700; 
+            display: inline-flex; gap: 8px; align-items: center; 
+            transition: background 0.3s, color 0.3s;
+            white-space: nowrap;
+            box-shadow: 0 4px 10px rgba(15, 44, 72, 0.2);
+        }
+        .btn-portfolio-cosmic:hover { background: #fff; color: var(--brand-blue); transform: translateY(-2px); }
+        
+        .btn-portfolio-cosmic img { display: none; } /* Suppression image pour le bouton Expert */
 
-    .identity-stack { display: flex; flex-direction: column; }
-    .club-title-main { font-family: 'Playfair Display', serif; font-weight: 800; color: var(--brand-blue); font-size: 1.1rem; }
-    .club-subtitle { color: #fff; font-weight: 700; font-size: 0.85rem; text-shadow: 0 1px 2px rgba(0,0,0,0.1); }
 
-    .top-center { display: flex; gap: 10px; align-items: center; }
+        /* ========================================
+           FOOTER STABLE
+           ======================================== */
+        .main-footer { background: var(--footer-bg); color: var(--footer-text); padding: 40px 18px; margin-top: auto; border-top: 4px solid var(--cta); }
+        .footer-container { max-width: 1400px; margin: 0 auto; display: flex; gap: 20px; align-items: center; justify-content: space-between; flex-wrap: wrap; }
+        .footer-left { display: flex; align-items: center; gap: 12px; }
+        .footer-logo-img { width: 60px; height: 60px; border-radius: 8px; object-fit: cover; border: 2px solid var(--cta); background: #fff; }
+        .footer-details { color: var(--footer-text); opacity: 0.95; }
+        
+        .footer-right { display: flex; flex-direction: column; align-items: flex-end; gap: 15px; }
+        .footer-links-row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
+        .footer-divider { 
+            width: 2px; 
+            height: 32px; 
+            background: rgba(255,255,255,0.3); 
+            margin: 0 12px; 
+            border-radius: 2px;
+        }
 
-    .header-icon-btn { 
-        width: 44px; height: 44px; flex-shrink: 0;
-        border-radius: 50%; 
-        display: inline-flex; align-items: center; justify-content: center; 
-        text-decoration: none; 
-        background: linear-gradient(135deg, var(--brandGold), #B4792A); 
-        color: #fff; 
-        border: 1px solid rgba(255, 255, 255, 0.4); 
-        transition: all 0.2s ease;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        font-size: 1.2rem;
-        position: relative;
-    }
-    .header-icon-btn:hover { transform: translateY(-3px); box-shadow: 0 4px 8px rgba(0,0,0,0.2); background: var(--brand-blue); border-color: var(--brandGold); }
-    .header-icon-btn img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
+        .icon-btn { 
+            width: 44px; height: 44px; flex-shrink: 0;
+            border-radius: 50%; 
+            display: inline-flex; align-items: center; justify-content: center; 
+            background: rgba(255, 255, 255, 0.06); 
+            color: var(--footer-text); 
+            text-decoration: none; 
+            border: 1px solid rgba(217, 165, 38, 0.15); 
+            transition: all 0.2s;
+            font-size: 1.1rem;
+        }
+        .icon-btn:hover { background: var(--cta); color: var(--brand-blue); transform: scale(1.1); border-color: #fff; }
 
-    .btn-portfolio-cosmic { 
-        padding: 8px 18px; 
-        border-radius: 999px; 
-        background: var(--brand-blue); 
-        color: var(--brandGold); 
-        text-decoration: none; 
-        font-weight: 700; 
-        display: inline-flex; gap: 8px; align-items: center; 
-        transition: background 0.3s, color 0.3s;
-        white-space: nowrap;
-        box-shadow: 0 4px 10px rgba(15, 44, 72, 0.2);
-    }
-    .btn-portfolio-cosmic:hover { background: #fff; color: var(--brand-blue); transform: translateY(-2px); }
+        .copyright { width: 100%; text-align: center; color: rgba(255, 255, 255, 0.35); margin-top: 24px; font-size: 0.9rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; }
 
-    /* --- FOOTER --- */
-    .main-footer { background: var(--footer-bg); color: var(--footer-text); padding: 40px 18px; margin-top: auto; border-top: 4px solid var(--brandGold); }
-    .footer-container { max-width: 1400px; margin: 0 auto; display: flex; gap: 20px; align-items: center; justify-content: space-between; flex-wrap: wrap; }
-    .footer-left { display: flex; align-items: center; gap: 12px; }
-    .footer-logo-img { width: 60px; height: 60px; border-radius: 8px; object-fit: cover; border: 2px solid var(--brandGold); background: #fff; }
-    .footer-details { color: var(--footer-text); opacity: 0.95; }
+        /* Responsive */
+        @media (max-width: 900px) {
+            .top-bar-container { flex-direction: column; gap: 10px; } /* Ajustement gap */
+            .top-left { justify-content: center; flex-direction: column; text-align: center; }
+            .top-bar-center { width: 100%; overflow-x: auto; padding-bottom: 10px; justify-content: flex-start; padding-left: 5px; padding-right: 5px; -webkit-overflow-scrolling: touch; }
+            .top-bar-center::-webkit-scrollbar { height: 4px; }
+            .top-bar-center::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.3); border-radius: 4px; }
+            .footer-container { flex-direction: column; align-items: center; text-align: center; }
+            .footer-left { flex-direction: column; }
+            .footer-right { align-items: center; width: 100%; }
+            .footer-links-row { justify-content: center; width: 100%; overflow-x: auto; padding-bottom: 10px; }
+            .footer-divider { display: none; } 
+        }
 
-    .footer-right { display: flex; flex-direction: column; align-items: flex-end; gap: 15px; }
-    .footer-links-row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
+        /* ========================================
+           STYLES DU CONTENU (Préservés)
+           ======================================== */
+        .wrap { max-width: 1400px; margin: 0 auto 60px auto; padding: 24px; width: 100%; flex: 1; }
 
-    .icon-btn { 
-        width: 44px; height: 44px; flex-shrink: 0;
-        border-radius: 50%; 
-        display: inline-flex; align-items: center; justify-content: center; 
-        background: rgba(255, 255, 255, 0.06); 
-        color: var(--footer-text); 
-        text-decoration: none; 
-        border: 1px solid rgba(217, 165, 38, 0.15); 
-        transition: all 0.2s;
-        font-size: 1.1rem;
-    }
-    .icon-btn:hover { background: var(--brandGold); color: var(--brand-blue); transform: scale(1.1); border-color: #fff; }
+        /* NAVIGATION ONGLETS */
+        .tabs-nav-container {
+            background: #fff; box-shadow: 0 2px 10px rgba(0,0,0,0.03); padding: 15px 0; margin-bottom: 30px;
+            position: sticky; top: var(--header-height); z-index: 9000; transition: top 0.3s ease;
+        }
+        .tabs-wrapper { max-width: 1100px; margin: 0 auto; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; padding: 0 20px; }
+        .tab-button {
+            padding: 12px 28px; border-radius: 30px; font-weight: 700; font-size: 15px; cursor: pointer; transition: all 0.3s ease; 
+            background-color: var(--ivory); color: var(--brand-blue); border: 2px solid transparent; display: flex; align-items: center; gap: 10px;
+        }
+        .tab-button:hover { transform: translateY(-2px); border-color: var(--cta); background-color: #fff; }
+        .tab-button.active { background-color: var(--brand-blue); color: white; border-color: var(--brand-blue); box-shadow: 0 4px 15px rgba(15, 44, 72, 0.3); }
+        .tab-button.active i { color: var(--cta); }
 
-    .footer-divider { 
-        width: 2px; 
-        height: 32px; 
-        background: rgba(255,255,255,0.3); 
-        margin: 0 12px; 
-        border-radius: 2px;
-    }
+        /* CONTENU */
+        .tab-pane { display: none; animation: fadeIn 0.5s ease; }
+        .tab-pane.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-    .copyright { width: 100%; text-align: center; color: rgba(255, 255, 255, 0.35); margin-top: 24px; font-size: 0.9rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; }
+        /* HOME STYLES */
+        .bg-animated {
+            background: linear-gradient(-45deg, #0F2C48, #0e7490, #D9A526, #b45309);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: white; border-radius: 20px; padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        @keyframes gradientBG { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
 
-    @media (max-width: 1100px) {
-        .top-bar-container { flex-direction: column; gap: 15px; align-items: center; text-align: center; }
-        .top-left { flex-direction: column; text-align: center; }
-        .top-center { width: 100%; overflow-x: auto; padding-bottom: 10px; justify-content: flex-start; padding-left: 5px; padding-right: 5px; -webkit-overflow-scrolling: touch; }
-        .top-center::-webkit-scrollbar { height: 4px; }
-        .top-center::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.3); border-radius: 4px; }
-        .footer-container { flex-direction: column; text-align: center; }
-        .footer-left { flex-direction: column; }
-        .footer-right { align-items: center; width: 100%; }
-        .footer-links-row { justify-content: center; width: 100%; overflow-x: auto; padding-bottom: 10px; }
-        .footer-divider { display: none; } 
-    }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 16px; padding: 25px; transition: 0.3s; color: white; text-align: left; cursor: pointer;
+        }
+        .glass-card:hover { transform: translateY(-5px); background: rgba(255, 255, 255, 0.25); border-color: #D9A526; }
+        .glass-title { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; margin-bottom: 10px; color: #fff; }
+        .glass-txt { font-size: 0.95rem; line-height: 1.5; opacity: 0.9; margin-bottom: 15px; }
 
-    /* --- CSS EXISTANT (POUR LE CONTENU PRINCIPAL) --- */
-    
-    .wrap { max-width: 1400px; margin: 0 auto 60px auto; padding: 24px; width: 100%; flex: 1;}
-    
-    @keyframes cosmic-pulse {
-        0% { transform: scale(1); box-shadow: 0 5px 15px rgba(15, 44, 72, 0.2); }
-        50% { transform: scale(1.02); box-shadow: 0 8px 20px rgba(15, 44, 72, 0.4); }
-        100% { transform: scale(1); box-shadow: 0 5px 15px rgba(15, 44, 72, 0.2); }
-    }
+        /* MINI BOUTONS SOCIAUX (ACCUEIL) */
+        .mini-social-bar { display: flex; justify-content: center; gap: 15px; margin-top: 20px; flex-wrap: wrap; }
+        .mini-social-btn {
+            display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+            padding: 8px 20px; border-radius: 30px; color: white; text-decoration: none;
+            font-size: 0.85rem; font-weight: 700; transition: 0.3s;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        .mini-social-btn:hover { transform: translateY(-3px); filter: brightness(1.1); }
+        
+        .btn-whatsapp { background-color: #25D366; border: 1px solid #20b858; }
+        .btn-discord { background-color: #5865F2; border: 1px solid #4752c4; }
+        .btn-linkedin { background-color: #0077b5; border: 1px solid #005e93; }
+        .btn-insta { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); border: 1px solid #dc2743; }
+        .btn-tiktok { background-color: #000000; border: 1px solid #333; text-shadow: 2px 2px 0px #ff0050; }
+        
+        .btn-social-prog {
+            background: linear-gradient(135deg, #C026D3 0%, #9D174D 100%);
+            border: 1px solid #FBCFE8;
+            box-shadow: 0 0 15px rgba(192, 38, 211, 0.5);
+            text-transform: uppercase; letter-spacing: 0.5px;
+        }
+        .btn-social-prog:hover {
+            background: linear-gradient(135deg, #DB2777 0%, #BE185D 100%);
+            box-shadow: 0 0 25px rgba(192, 38, 211, 0.8); transform: translateY(-3px) scale(1.05);
+        }
 
-    /* NAVIGATION ONGLETS */
-    .tabs-nav-container {
-        background: #fff; box-shadow: 0 2px 10px rgba(0,0,0,0.03); padding: 15px 0; margin-bottom: 30px;
-        position: sticky; top: var(--header-height); z-index: 9000; transition: top 0.3s ease;
-    }
-    .tabs-wrapper { max-width: 1100px; margin: 0 auto; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; padding: 0 20px; }
-    .tab-button {
-        padding: 12px 28px; border-radius: 30px; font-weight: 700; font-size: 15px; cursor: pointer; transition: all 0.3s ease; 
-        background-color: var(--ivory); color: var(--brand-blue); border: 2px solid transparent; display: flex; align-items: center; gap: 10px;
-    }
-    .tab-button:hover { transform: translateY(-2px); border-color: var(--cta); background-color: #fff; }
-    .tab-button.active { background-color: var(--brand-blue); color: white; border-color: var(--brand-blue); box-shadow: 0 4px 15px rgba(15, 44, 72, 0.3); }
-    .tab-button.active i { color: var(--cta); }
+        /* DISCLAIMER */
+        .disclaimer-box {
+            background-color: #fff; border-left: 5px solid #ea580c; 
+            border-radius: 8px; padding: 20px; margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05); font-size: 0.95rem; color: #475569;
+        }
+        .disclaimer-title { color: #ea580c; font-weight: 800; font-size: 1.05rem; display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+        .disclaimer-text { line-height: 1.6; text-align: justify; }
+        .disclaimer-text strong { color: var(--brand-blue); font-weight: 700; }
 
-    /* CONTENU */
-    .tab-pane { display: none; animation: fadeIn 0.5s ease; }
-    .tab-pane.active { display: block; }
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        /* --- BLOCS NAVIGATION & MODULES --- */
+        .block-nav-grid { display: grid; grid-template-columns: repeat(1, 1fr); gap: 20px; margin-bottom: 30px; }
+        @media (min-width: 768px) { .block-nav-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (min-width: 1024px) { .block-nav-grid { grid-template-columns: repeat(4, 1fr); } }
+        
+        .block-nav-card { 
+            background: white; border-radius: 16px; padding: 20px; cursor: pointer; 
+            border: 2px solid transparent; box-shadow: 0 4px 15px rgba(0,0,0,0.05); 
+            transition: all 0.3s ease; text-align: center; position: relative; overflow: hidden; 
+        }
+        .block-nav-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); border-color: var(--cta); }
+        .block-nav-card.active-block { background: var(--brand-blue); color: white; border-color: var(--cta); box-shadow: 0 10px 30px rgba(15, 44, 72, 0.3); }
+        
+        .block-nav-icon { width: 50px; height: 50px; border-radius: 50%; background: #f1f5f9; color: var(--brand-blue); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin: 0 auto 10px auto; transition: all 0.3s; }
+        .block-nav-card.active-block .block-nav-icon { background: var(--cta); color: white; }
+        .block-nav-card h3 { font-size: 1.1rem; font-weight: 800; margin: 5px 0; }
 
-    /* HOME STYLES */
-    .bg-animated {
-        background: linear-gradient(-45deg, #0F2C48, #0e7490, #D9A526, #b45309);
-        background-size: 400% 400%;
-        animation: gradientBG 15s ease infinite;
-        color: white; border-radius: 20px; padding: 40px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-    }
-    @keyframes gradientBG { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+        /* MODULES LIST */
+        .modules-list-container { display: flex; flex-direction: column; gap: 20px; }
+        
+        details.module-accordion { 
+            background: #fff; border-radius: 16px; margin-bottom: 20px;
+            border: 1px solid rgba(15, 44, 72, 0.1); border-left: 6px solid #0F2C48;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03); transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            overflow: hidden;
+        }
+        details.module-accordion:hover { box-shadow: 0 10px 30px rgba(15, 44, 72, 0.1); transform: translateY(-2px); border-left-color: #D9A526; }
+        details.module-accordion[open] { border-left-color: #D9A526; box-shadow: 0 15px 40px rgba(15, 44, 72, 0.15); }
+        
+        summary.module-summary { 
+            padding: 20px 25px; cursor: pointer; list-style: none; display: flex; align-items: center; 
+            justify-content: space-between; background: white; transition: background 0.2s;
+        }
+        summary.module-summary:hover { background: #fdfbf7; }
+        summary.module-summary::-webkit-details-marker { display: none; }
+        
+        .module-icon-box {
+            width: 50px; height: 50px; border-radius: 12px; 
+            background: linear-gradient(135deg, #0F2C48 0%, #1a3b5c 100%); 
+            color: #D9A526; display: flex; align-items: center; justify-content: center; 
+            font-size: 1.2rem; margin: right: 20px; box-shadow: 0 4px 10px rgba(15, 44, 72, 0.2);
+            transition: transform 0.3s ease;
+        }
+        details.module-accordion[open] .module-icon-box { transform: rotate(-10deg) scale(1.1); background: linear-gradient(135deg, #D9A526 0%, #B4792A 100%); color: #fff; }
 
-    .glass-card {
-        background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.3);
-        border-radius: 16px; padding: 25px; transition: 0.3s; color: white; text-align: left; cursor: pointer;
-    }
-    .glass-card:hover { transform: translateY(-5px); background: rgba(255, 255, 255, 0.25); border-color: #D9A526; }
-    .glass-title { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; margin-bottom: 10px; color: #fff; }
-    .glass-txt { font-size: 0.95rem; line-height: 1.5; opacity: 0.9; margin-bottom: 15px; }
+        .mini-module-progress { width: 100px; height: 6px; background: #e2e8f0; border-radius: 10px; overflow: hidden; margin-right: 10px; }
+        .mini-fill { height: 100%; background: #D9A526; width: 0%; transition: width 0.5s; box-shadow: 0 0 5px rgba(217, 165, 38, 0.4); }
 
-    /* MINI BOUTONS SOCIAUX (ACCUEIL) */
-    .mini-social-bar { display: flex; justify-content: center; gap: 15px; margin-top: 20px; flex-wrap: wrap; }
-    .mini-social-btn {
-        display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-        padding: 8px 20px; border-radius: 30px; color: white; text-decoration: none;
-        font-size: 0.85rem; font-weight: 700; transition: 0.3s;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    }
-    .mini-social-btn:hover { transform: translateY(-3px); filter: brightness(1.1); }
-    
-    .btn-whatsapp { background-color: #25D366; border: 1px solid #20b858; }
-    .btn-discord { background-color: #5865F2; border: 1px solid #4752c4; }
-    .btn-linkedin { background-color: #0077b5; border: 1px solid #005e93; }
-    .btn-insta { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); border: 1px solid #dc2743; }
-    .btn-tiktok { background-color: #000000; border: 1px solid #333; text-shadow: 2px 2px 0px #ff0050; }
-    
-    .btn-social-prog {
-        background: linear-gradient(135deg, #C026D3 0%, #9D174D 100%); /* Fuchsia */
-        border: 1px solid #FBCFE8;
-        box-shadow: 0 0 15px rgba(192, 38, 211, 0.5);
-        text-transform: uppercase; letter-spacing: 0.5px;
-    }
-    .btn-social-prog:hover {
-        background: linear-gradient(135deg, #DB2777 0%, #BE185D 100%);
-        box-shadow: 0 0 25px rgba(192, 38, 211, 0.8); transform: translateY(-3px) scale(1.05);
-    }
+        /* SESSIONS (CARTES) */
+        .sessions-grid { 
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); 
+            gap: 20px; padding: 30px; background: linear-gradient(to bottom, #fff, #f8fafc); 
+            border-top: 1px solid #f1f5f9;
+        }
+        .session-card { 
+            background: white; border-radius: 16px; padding: 20px; 
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03); border: 1px solid rgba(15, 44, 72, 0.08); 
+            display: flex; flex-direction: column; gap: 15px; transition: all 0.3s ease; position: relative;
+        }
+        .session-card:hover { transform: translateY(-5px) scale(1.01); box-shadow: 0 15px 30px rgba(15, 44, 72, 0.1); border-color: #D9A526; }
+        .session-card.completed { background: #f0fdf4; border-color: #10b981; }
+        .session-card.completed .session-title { color: #064e3b; opacity: 0.7; text-decoration: none; }
 
-    /* DISCLAIMER */
-    .disclaimer-box {
-        background-color: #fff; border-left: 5px solid #ea580c; 
-        border-radius: 8px; padding: 20px; margin-bottom: 30px;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.05); font-size: 0.95rem; color: #475569;
-    }
-    .disclaimer-title { color: #ea580c; font-weight: 800; font-size: 1.05rem; display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
-    .disclaimer-text { line-height: 1.6; text-align: justify; }
-    .disclaimer-text strong { color: var(--brand-blue); font-weight: 700; }
+        .session-header { display: flex; align-items: flex-start; gap: 15px; justify-content: space-between; }
+        .session-info { display: flex; align-items: flex-start; gap: 15px; flex: 1; }
+        
+        .session-number { 
+            background: #ef4444; color: white; font-size: 1rem; font-weight: 800; font-family: 'Montserrat', sans-serif; 
+            width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; 
+            flex-shrink: 0; box-shadow: 0 3px 8px rgba(15, 44, 72, 0.2); border: 2px solid #fff;
+            transition: all 0.3s ease;
+        }
+        .session-card.completed .session-number { background: #10b981; color: white; box-shadow: none; transform: scale(1.1); }
 
-    /* --- BLOCS NAVIGATION --- */
-    .block-nav-grid { display: grid; grid-template-columns: repeat(1, 1fr); gap: 20px; margin-bottom: 30px; }
-    @media (min-width: 768px) { .block-nav-grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (min-width: 1024px) { .block-nav-grid { grid-template-columns: repeat(4, 1fr); } }
-    
-    .block-nav-card { 
-        background: white; border-radius: 16px; padding: 20px; cursor: pointer; 
-        border: 2px solid transparent; box-shadow: 0 4px 15px rgba(0,0,0,0.05); 
-        transition: all 0.3s ease; text-align: center; position: relative; overflow: hidden; 
-    }
-    .block-nav-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); border-color: var(--cta); }
-    .block-nav-card.active-block { background: var(--brand-blue); color: white; border-color: var(--cta); box-shadow: 0 10px 30px rgba(15, 44, 72, 0.3); }
-    
-    .block-nav-icon { width: 50px; height: 50px; border-radius: 50%; background: #f1f5f9; color: var(--brand-blue); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin: 0 auto 10px auto; transition: all 0.3s; }
-    .block-nav-card.active-block .block-nav-icon { background: var(--cta); color: white; }
-    .block-nav-card h3 { font-size: 1.1rem; font-weight: 800; margin: 5px 0; }
+        .session-title { font-weight: 700; color: #334155; font-size: 1.05rem; line-height: 1.4; text-decoration: none; transition: color 0.3s; }
+        .session-title:hover { color: var(--brandGold); }
 
-    /* --- MODULES (DESIGN PREMIUM) --- */
-    .modules-list-container { display: flex; flex-direction: column; gap: 20px; }
-    
-    details.module-accordion { 
-        background: #fff; border-radius: 16px; margin-bottom: 20px;
-        border: 1px solid rgba(15, 44, 72, 0.1); border-left: 6px solid #0F2C48;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.03); transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-        overflow: hidden;
-    }
-    details.module-accordion:hover { box-shadow: 0 10px 30px rgba(15, 44, 72, 0.1); transform: translateY(-2px); border-left-color: #D9A526; }
-    details.module-accordion[open] { border-left-color: #D9A526; box-shadow: 0 15px 40px rgba(15, 44, 72, 0.15); }
-    
-    summary.module-summary { 
-        padding: 20px 25px; cursor: pointer; list-style: none; display: flex; align-items: center; 
-        justify-content: space-between; background: white; transition: background 0.2s;
-    }
-    summary.module-summary:hover { background: #fdfbf7; }
-    summary.module-summary::-webkit-details-marker { display: none; }
-    
-    .module-icon-box {
-        width: 50px; height: 50px; border-radius: 12px; 
-        background: linear-gradient(135deg, #0F2C48 0%, #1a3b5c 100%); 
-        color: #D9A526; display: flex; align-items: center; justify-content: center; 
-        font-size: 1.2rem; margin: right: 20px; box-shadow: 0 4px 10px rgba(15, 44, 72, 0.2);
-        transition: transform 0.3s ease;
-    }
-    details.module-accordion[open] .module-icon-box { transform: rotate(-10deg) scale(1.1); background: linear-gradient(135deg, #D9A526 0%, #B4792A 100%); color: #fff; }
+        .btn-check-top {
+            width: 32px; height: 32px; border-radius: 8px; border: 1px solid #e2e8f0; color: #cbd5e1;
+            display: flex; align-items: center; justify-content: center; cursor: pointer; transition: 0.2s; flex-shrink: 0;
+        }
+        .btn-check-top:hover { border-color: #10b981; color: #10b981; }
+        .btn-check-top.active { background-color: #10b981; color: white; border-color: #10b981; box-shadow: 0 3px 10px rgba(16, 185, 129, 0.3); }
 
-    .mini-module-progress { width: 100px; height: 6px; background: #e2e8f0; border-radius: 10px; overflow: hidden; margin-right: 10px; }
-    .mini-fill { height: 100%; background: #D9A526; width: 0%; transition: width 0.5s; box-shadow: 0 0 5px rgba(217, 165, 38, 0.4); }
+        .session-actions { display: flex; flex-wrap: wrap; gap: 10px; padding-top: 12px; border-top: 1px dashed #e2e8f0; align-items: center; }
+        
+        .action-btn { 
+            width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; 
+            transition: all 0.2s; cursor: pointer; font-size: 0.9rem; 
+            border: 1px solid #e2e8f0; background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.05); 
+        }
+        .action-btn:hover { transform: scale(1.15); box-shadow: 0 5px 12px rgba(0,0,0,0.1); }
 
-    /* --- SESSIONS (CARTES DE COURS) --- */
-    .sessions-grid { 
-        display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); 
-        gap: 20px; padding: 30px; background: linear-gradient(to bottom, #fff, #f8fafc); 
-        border-top: 1px solid #f1f5f9;
-    }
-    .session-card { 
-        background: white; border-radius: 16px; padding: 20px; 
-        box-shadow: 0 2px 10px rgba(0,0,0,0.03); border: 1px solid rgba(15, 44, 72, 0.08); 
-        display: flex; flex-direction: column; gap: 15px; transition: all 0.3s ease; position: relative;
-    }
-    .session-card:hover { transform: translateY(-5px) scale(1.01); box-shadow: 0 15px 30px rgba(15, 44, 72, 0.1); border-color: #D9A526; }
-    .session-card.completed { background: #f0fdf4; border-color: #10b981; }
-    
-    /* STYLE DU TITRE VALIDÉ (Légèrement grisé) */
-    .session-card.completed .session-title { color: #064e3b; opacity: 0.7; text-decoration: none; }
+        .btn-audio { color: #8b5cf6; background-color: #f5f3ff; border-color: #ddd6fe; }
+        .btn-video { color: #ef4444; background-color: #fef2f2; border-color: #fca5a5; }
+        .btn-info { color: #06b6d4; background-color: #ecfeff; border-color: #cffafe; }
+        .btn-learn { color: #10b981; background-color: #ecfdf5; border-color: #a7f3d0; }
+        .btn-pdf { color: #f97316; background-color: #fff7ed; border-color: #ffedd5; }
+        .btn-bell { color: #eab308; background-color: #fefce8; border-color: #fef08a; }
+        .btn-link { color: #2563eb; background-color: #eff6ff; border-color: #dbeafe; }
 
-    .session-header { display: flex; align-items: flex-start; gap: 15px; justify-content: space-between; }
-    .session-info { display: flex; align-items: flex-start; gap: 15px; flex: 1; }
-    
-    /* NUMÉRO DE SESSION (CORRECTION: RESTE VISIBLE) */
-    .session-number { 
-        background: #ef4444; /* Rouge initial */
-        color: white; font-size: 1rem; font-weight: 800; font-family: 'Montserrat', sans-serif; 
-        width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; 
-        flex-shrink: 0; box-shadow: 0 3px 8px rgba(15, 44, 72, 0.2); border: 2px solid #fff;
-        transition: all 0.3s ease;
-    }
-    .session-card.completed .session-number { 
-        background: #10b981; /* Vert validé */
-        color: white; box-shadow: none; 
-        transform: scale(1.1); /* Petit effet pop */
-    }
-
-    .session-title { font-weight: 700; color: #334155; font-size: 1.05rem; line-height: 1.4; text-decoration: none; transition: color 0.3s; }
-    .session-title:hover { color: var(--brandGold); }
-
-    /* BOUTON VALIDER */
-    .btn-check-top {
-        width: 32px; height: 32px; border-radius: 8px; border: 1px solid #e2e8f0; color: #cbd5e1;
-        display: flex; align-items: center; justify-content: center; cursor: pointer; transition: 0.2s; flex-shrink: 0;
-    }
-    .btn-check-top:hover { border-color: #10b981; color: #10b981; }
-    .btn-check-top.active { background-color: #10b981; color: white; border-color: #10b981; box-shadow: 0 3px 10px rgba(16, 185, 129, 0.3); }
-
-    /* --- BOUTONS D'ACTION (COULEURS SPÉCIFIQUES RESTAURÉES) --- */
-    .session-actions { display: flex; flex-wrap: wrap; gap: 10px; padding-top: 12px; border-top: 1px dashed #e2e8f0; align-items: center; }
-    
-    .action-btn { 
-        width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; 
-        transition: all 0.2s; cursor: pointer; font-size: 0.9rem; 
-        border: 1px solid #e2e8f0; background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.05); 
-    }
-    .action-btn:hover { transform: scale(1.15); box-shadow: 0 5px 12px rgba(0,0,0,0.1); }
-
-    /* COULEURS SPÉCIFIQUES */
-    .btn-audio { color: #8b5cf6; background-color: #f5f3ff; border-color: #ddd6fe; }
-    .btn-video { color: #ef4444; background-color: #fef2f2; border-color: #fca5a5; }
-    .btn-info { color: #06b6d4; background-color: #ecfeff; border-color: #cffafe; }
-    .btn-learn { color: #10b981; background-color: #ecfdf5; border-color: #a7f3d0; }
-    .btn-pdf { color: #f97316; background-color: #fff7ed; border-color: #ffedd5; }
-    .btn-bell { color: #eab308; background-color: #fefce8; border-color: #fef08a; }
-    .btn-link { color: #2563eb; background-color: #eff6ff; border-color: #dbeafe; }
-
-    #backToTop { position: fixed; bottom: 30px; right: 30px; background: var(--brandGold); color: var(--brand-blue); width: 50px; height: 50px; border-radius: 50%; display: flex; justify-content: center; align-items: center; cursor: pointer; opacity: 0; pointer-events: none; transition: 0.3s; z-index: 9999; }
-    #backToTop.show { opacity: 1; pointer-events: all; }
-  </style>
+        #backToTop { position: fixed; bottom: 30px; right: 30px; background: var(--brandGold); color: var(--brand-blue); width: 50px; height: 50px; border-radius: 50%; display: flex; justify-content: center; align-items: center; cursor: pointer; opacity: 0; pointer-events: none; transition: 0.3s; z-index: 9999; }
+        #backToTop.show { opacity: 1; pointer-events: all; }
+    </style>
 </head>
 <body>
 
-<!-- HEADER (CORRIGÉ) -->
+<!-- NOUVEAU HEADER -->
 <div class="top-bar" id="mainHeader">
     <div class="top-bar-container">
     <div class="top-left">
     <a href="https://projettechacademy.github.io/Juridique/index.html" title="Start/Accueil" target="_blank">
-    <img class="logo-top" src="https://projettechacademy.github.io/Juridique/Asset/Logo_juriste.png" onerror="this.src='https://projettechacademy.github.io/Juridique/Asset/Logo_juriste.jpg'" alt="Logo Juriste">
+    <!-- LOGO DU CLUB: Utilise l'image Juriste et force sa taille 64x64px -->
+    <div class="logo-top-bar">
+        <img src="https://projettechacademy.github.io/Juridique/Asset/Logo_juriste.png" onerror="this.src='https://projettechacademy.github.io/Juridique/Asset/Logo_juriste.jpg'" alt="Logo Juriste">
+    </div>
     </a>
     <div class="identity-stack">
     <div class="club-title-main">💫 The Jurist Elite Club By Studi ✨</div>
     <div class="club-subtitle">La Villa des Juristes Brisés 💔 sur l’Île de L’INSTRUCTION ! 🏝</div>
     </div>
     </div>
-    <nav class="top-center" aria-label="Navigation principale">
+    <nav class="top-bar-center" aria-label="Navigation principale">
     <a class="header-icon-btn" href="https://projettechacademy.github.io/Juridique/A_propos_de_moi.html" title="A propos de moi" target="_blank">
-    <img src="https://projettechacademy.github.io/Juridique/Asset/Photo_Mathilde_Martine_PAISLEY.jpg" alt="Mathilde Martine PAISLEY" style="width:100%;height:100%;border-radius:50%;object-fit:cover;border:2px solid #fff;" onerror="this.src='https://projettechacademy.github.io/Juridique/Asset/Photo_Mathilde_Martine_PAISLEY.jpeg'">
+    <img src="https://projettechacademy.github.io/Juridique/Asset/Photo_Mathilde_Martine_PAISLEY.jpg" alt="Mathilde Martine PAISLEY" class="nav-profile-img" onerror="this.src='https://projettechacademy.github.io/Juridique/Asset/Photo_Mathilde_Martine_PAISLEY.jpeg'">
     </a>
     <a class="header-icon-btn" href="https://projettechacademy.github.io/Juridique/index.html" title="Start/Accueil" target="_blank">🏠</a>
     <a class="header-icon-btn" href="https://projettechacademy.github.io/Juridique/Mon_Espace_Juriste_Tableau_de_bord_personnel.html" title="Mon Espace" target="_blank">📊</a>
@@ -387,23 +437,24 @@
     </nav>
     <div>
     <a class="btn-portfolio-cosmic" href="https://projettechacademy.github.io/Juridique/Portfolio_Mathilde-Martine-PAISLEY.html" target="_blank" title="Mon Expertise / Projets">
-    <img src="https://projettechacademy.github.io/Juridique/Asset/Logo_MMPA.jpeg" alt="Logo" style="width:24px; height:24px; border-radius:50%; object-fit:cover; border:1px solid #fff;" onerror="this.src='https://projettechacademy.github.io/Juridique/Asset/Logo_MMPA.jpg'">
-    Expert
+    💎 Expert
     </a>
     </div>
     </div>
 </div>
 
-  <div class="tabs-nav-container">
-      <div class="tabs-wrapper">
-          <div class="tab-button active" onclick="switchFormation('accueil')"><i class="fa-solid fa-star"></i> Accueil & Présentation</div>
-          <div class="tab-button" onclick="switchFormation('social')"><i class="fa-solid fa-users"></i> Droit Social (Actif)</div>
-          <div class="tab-button" onclick="switchFormation('affaires')"><i class="fa-solid fa-briefcase"></i> Droit des Affaires</div>
-          <div class="tab-button" onclick="switchFormation('entreprise')"><i class="fa-solid fa-building-columns"></i> Juriste d'Entreprise</div>
-      </div>
-  </div>
+<!-- NAVIGATION SECONDAIRE / ONGLETS -->
+<div class="tabs-nav-container">
+    <div class="tabs-wrapper">
+        <div class="tab-button active" onclick="switchFormation('accueil')"><i class="fa-solid fa-star"></i> Accueil & Présentation</div>
+        <div class="tab-button" onclick="switchFormation('social')"><i class="fa-solid fa-users"></i> Droit Social (Actif)</div>
+        <div class="tab-button" onclick="switchFormation('affaires')"><i class="fa-solid fa-briefcase"></i> Droit des Affaires</div>
+        <div class="tab-button" onclick="switchFormation('entreprise')"><i class="fa-solid fa-building-columns"></i> Juriste d'Entreprise</div>
+    </div>
+</div>
 
-  <main class="wrap">
+<main class="wrap">
+    <!-- VUE ACCUEIL -->
     <div id="view-accueil" class="tab-pane active">
         <div class="bg-animated">
             <div class="text-center mb-10">
@@ -421,7 +472,6 @@
                     <a href="https://chat.whatsapp.com/IoMXFl4o2otExYKCPVj22b" target="_blank" class="mini-social-btn btn-whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
                     <a href="https://discord.gg/qwNPV8QzFt" target="_blank" class="mini-social-btn btn-discord"><i class="fab fa-discord"></i> Discord</a>
                     <a href="https://www.linkedin.com/in/mathilde-martine-paisley-1a4422382/" target="_blank" class="mini-social-btn btn-linkedin"><i class="fab fa-linkedin"></i> LinkedIn</a>
-                    
                     <a href="https://drive.google.com/file/d/1Wbw-YZxA-BwSL4g1ElsSTnr37_U8eYaC/view?usp=sharing" target="_blank" class="mini-social-btn btn-social-prog"><i class="fa-solid fa-file-pdf"></i> Programme Social</a>
                 </div>
             </div>
@@ -478,6 +528,7 @@
         </div>
     </div>
 
+    <!-- VUE SOCIAL (LE GROS SYLLABUS) -->
     <div id="view-social" class="tab-pane">
         <div class="disclaimer-box">
             <div class="disclaimer-title"><i class="fa-solid fa-triangle-exclamation"></i> Avertissement Légal & Accès</div>
@@ -499,6 +550,7 @@
         <div id="social-active-content" class="active-block-content"></div>
     </div>
 
+    <!-- VUE AFFAIRES -->
     <div id="view-affaires" class="tab-pane">
         <div class="bg-animated" style="text-align: center;">
             <div class="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-6 text-white text-3xl"><i class="fa-solid fa-briefcase"></i></div>
@@ -510,9 +562,6 @@
             <div class="mini-social-bar mb-8">
                 <a href="https://chat.whatsapp.com/IoMXFl4o2otExYKCPVj22b" target="_blank" class="mini-social-btn btn-whatsapp"><i class="fab fa-whatsapp"></i> Chat Quotidien</a>
                 <a href="https://discord.gg/qwNPV8QzFt" target="_blank" class="mini-social-btn btn-discord"><i class="fab fa-discord"></i> Groupe de Travail</a>
-                <a href="https://www.linkedin.com/in/mathilde-martine-paisley-1a4422382/" target="_blank" class="mini-social-btn btn-linkedin"><i class="fab fa-linkedin"></i> Réseau</a>
-                <a href="https://www.instagram.com/enervyx/" target="_blank" class="mini-social-btn btn-insta"><i class="fab fa-instagram"></i> Insta</a>
-                <a href="https://www.tiktok.com/@enervyx/" target="_blank" class="mini-social-btn btn-tiktok"><i class="fab fa-tiktok"></i> TikTok</a>
             </div>
             <a href="https://drive.google.com/file/d/1u5UGQUihD1yIwDLXoJxeoqihsSWPKgAs/view?usp=sharing" target="_blank" class="inline-flex items-center gap-2 px-8 py-4 bg-white text-[#0F2C48] rounded-full font-bold hover:bg-[#B4792A] hover:text-white transition shadow-lg hover:shadow-xl hover:-translate-y-1">
                 <i class="fa-solid fa-file-pdf"></i> Voir le Programme Officiel
@@ -520,6 +569,7 @@
         </div>
     </div>
 
+    <!-- VUE ENTREPRISE -->
     <div id="view-entreprise" class="tab-pane">
         <div class="bg-animated" style="text-align: center;">
             <div class="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-6 text-white text-3xl"><i class="fa-solid fa-building-columns"></i></div>
@@ -531,20 +581,16 @@
             <div class="mini-social-bar mb-8">
                 <a href="https://chat.whatsapp.com/IoMXFl4o2otExYKCPVj22b" target="_blank" class="mini-social-btn btn-whatsapp"><i class="fab fa-whatsapp"></i> Chat Quotidien</a>
                 <a href="https://discord.gg/qwNPV8QzFt" target="_blank" class="mini-social-btn btn-discord"><i class="fab fa-discord"></i> Groupe de Travail</a>
-                <a href="https://www.linkedin.com/in/mathilde-martine-paisley-1a4422382/" target="_blank" class="mini-social-btn btn-linkedin"><i class="fab fa-linkedin"></i> Réseau</a>
-                <a href="https://www.instagram.com/enervyx/" target="_blank" class="mini-social-btn btn-insta"><i class="fab fa-instagram"></i> Insta</a>
-                <a href="https://www.tiktok.com/@enervyx/" target="_blank" class="mini-social-btn btn-tiktok"><i class="fab fa-tiktok"></i> TikTok</a>
             </div>
             <a href="https://drive.google.com/file/d/1e4r7RbmFU4xreo64xso2nQB040NkUkJb/view?usp=sharing" target="_blank" class="inline-flex items-center gap-2 px-8 py-4 bg-white text-[#0F2C48] rounded-full font-bold hover:bg-[#B4792A] hover:text-white transition shadow-lg hover:shadow-xl hover:-translate-y-1">
                 <i class="fa-solid fa-file-pdf"></i> Voir le Programme Officiel
             </a>
         </div>
     </div>
+</main>
 
-  </main>
-
-  <!-- NOUVEAU FOOTER -->
-  <footer class="main-footer" role="contentinfo">
+<!-- NOUVEAU FOOTER -->
+<footer class="main-footer" role="contentinfo">
     <div class="footer-container">
     <div class="footer-left">
     <a href="https://projettechacademy.github.io/Juridique/index.html" target="_blank">
@@ -584,23 +630,33 @@
         By Mathilde Martine PAISLEY | © 2025 Tous droits réservés
       </div>
     </div>
-  </footer>
+</footer>
 
-  <div id="backToTop" onclick="window.scrollTo(0,0)"><i class="fas fa-arrow-up"></i></div>
-  
-  <script src="database.js"></script>
+<div id="backToTop" onclick="window.scrollTo(0,0)"><i class="fas fa-arrow-up"></i></div>
 
-  <script>
-    // --- PROTECTION CONTRE LES ERREURS ---
+<script src="database.js"></script>
+<script>
+    // PROTECTION CONTRE LES ERREURS DB
     window.dbRessources = window.dbRessources || {};
     if (Object.keys(window.dbRessources).length === 0) { console.warn("⚠️ Attention : dbRessources est vide ou non chargé."); }
 
-    function updateHeaderHeight() { const header = document.getElementById('mainHeader'); if(header) document.documentElement.style.setProperty('--header-height', header.offsetHeight + 'px'); }
-    window.addEventListener('load', updateHeaderHeight); window.addEventListener('resize', updateHeaderHeight);
-    window.addEventListener('scroll', () => { const btn = document.getElementById('backToTop'); if (btn) { if (window.scrollY > 300) btn.classList.add('show'); else btn.classList.remove('show'); } });
+    function updateHeaderHeight() { 
+        const header = document.getElementById('mainHeader'); 
+        if(header) {
+            document.documentElement.style.setProperty('--header-height', header.offsetHeight + 'px');
+        }
+    }
+    
+    window.addEventListener('load', updateHeaderHeight); 
+    window.addEventListener('resize', updateHeaderHeight);
+    window.addEventListener('scroll', () => { 
+        const btn = document.getElementById('backToTop'); 
+        if (btn) { 
+            if (window.scrollY > 300) btn.classList.add('show'); else btn.classList.remove('show'); 
+        } 
+    });
 
-    // --- DONNÉES DE NAVIGATION ---
-    const BASE_URL = "https://projettechacademy.github.io/Juridique/";
+    // --- DONNÉES DE NAVIGATION MISE À JOUR (SYLLABUS) ---
     const socialData = `
 🟨B0_Fondamentaux du droit
 🟦B0_M01_Mise à niveau en droit social
@@ -613,20 +669,20 @@
 🟧B0_M01_S007_Le contrat de travail à temps partiel
 🟧B0_M01_S008_Les contrats de formation
 🟧B0_M01_S009_La rédaction du contrat de travail
-🟧B0_M01_S010_Application - Etablir les contrats de travail
+🟧B0_M01_S010_Application : Etablir les contrats de travail
 🟧B0_M01_S011_Comment et pourquoi se former à gestion des parcours salariés
 🟧B0_M01_S012_Le recrutement
 🟧B0_M01_S013_Les formalités administratives d'embauche
 🟧B0_M01_S014_La suspension du contrat de travail
 🟧B0_M01_S015_L'édition des documents de suspension du contrat
-🟧B0_M01_S016_La rupture du contrat de travail - introduction
+🟧B0_M01_S016_La rupture du contrat de travail : introduction
 🟧B0_M01_S017_Le licenciement
 🟧B0_M01_S018_Les autres modes de rupture du contrat de travail
-🟧B0_M01_S019_Les fins de contrat - indemnité de précarité, ICP, Indemnité RTT, et autres indemnités
-🟧B0_M01_S020_Les fins de contrat - rupture conventionnelle, départ et mise à la retraite
+🟧B0_M01_S019_Les fins de contrat : indemnité de précarité, ICP, Indemnité RTT, et autres indemnités
+🟧B0_M01_S020_Les fins de contrat : rupture conventionnelle, départ et mise à la retraite
 🟧B0_M01_S021_Les formalités de rupture du contrat de travail
 🟧B0_M01_S022_L'édition des documents de fin de contrat
-🟧B0_M01_S023_Synthèse et application - Traiter les entrées et sorties des salariés
+🟧B0_M01_S023_Synthèse et application : Traiter les entrées et sorties des salariés
 🟦B0_M02_Mise à niveau en droit - L’organisation judiciaire
 🟧B0_M02_S001_L'organisation judiciaire européenne
 🟧B0_M02_S002_L'organisation judiciaire nationale
@@ -690,8 +746,8 @@
 🟦B0_M08__Mise à niveau en droit fiscal
 🟧B0_M08__S001_Les caractéristiques et les sources du droit fiscal
 🟧B0_M08__S002_La classification des impôts et taxes
-🟧B0_M08__3_Organisation et rôle de l'administration fiscale et veille fiscale
-🟧B0_M08__4_Application : Introduire le droit fiscal
+🟧B0_M08__S003_Organisation et rôle de l'administration fiscale et veille fiscale
+🟧B0_M08__S004_Application : Introduire le droit fiscal
 🟦B0_M09__Mise à niveau en droit de la concurrence
 🟧B0_M09__S001_Le contrôle des concentrations
 🟧B0_M09__S002_Les pratiques anticoncurrentielles
@@ -747,11 +803,34 @@
 🟧B1_M04_S003_Réaliser une note interne à partir d'une veille juridique en matière de TVA
 🟧B1_M04_S004_Réaliser une note interne à partir d'une veille juridique en droit des contrats
 🟦B1_M05_Définir la stratégie juridique de l’entreprise
+🟧B1_M05_S001_En attente_1
+🟧B1_M05_S002_En attente_2
+🟧B1_M05_S003_En attente_3
+🟧B1_M05_S004_En attente_4
+🟧B1_M05_S005_En attente_5
+🟧B1_M05_S006_En attente_6
+🟧B1_M05_S007_En attente_7
+🟧B1_M05_S008_En attente_8
+🟧B1_M05_S009_En attente_9
 🟦B1_M06_Intégrer des LegalTech et de l’IA dans la stratégie juridique
+🟧B1_M06_S001_En attente_1
+🟧B1_M06_S002_En attente_2
+🟧B1_M06_S003_En attente_3
+🟧B1_M06_S004_En attente_4
+🟧B1_M06_S005_En attente_5
+🟧B1_M06_S006_En attente_6
+🟧B1_M06_S007_En attente_7
 🟦B1_M07_Maîtriser la méthodologie complète de l’audit juridique
+🟧B1_M07_S001_En attente_1
+🟧B1_M07_S002_En attente_2
+🟧B1_M07_S003_En attente_3
+🟧B1_M07_S004_En attente_4
+🟧B1_M07_S005_En attente_5
+🟧B1_M07_S006_En attente_6
+🟧B1_M07_S007_En attente_7
 🟦B1_M08_Elaborer un plan d’action correctives et préventives
-🟧B1_M09_S001_Onboarding - Élaborer un plan d'actions correctives et préventives
-🟧B1_M09_S002_Fondamentaux du plan d'actions correctives et préventives
+🟧B1_M08_S001_Onboarding - Élaborer un plan d'actions correctives et préventives
+🟧B1_M08_S002_Fondamentaux du plan d'actions correctives et préventives
 🟧B1_M08_S003_Analyse et hiérarchisation des risques juridiques
 🟧B1_M08_S004_En bref - Les matrices de risques en pratique
 🟧B1_M08_S005_Conception des actions correctives
@@ -767,8 +846,26 @@
 🟧B1_M08_S015_Auto-évaluation - Élaborer un plan d'actions correctives et préventives
 🟧B1_M08_S016_Application - Élaborer un plan d'actions correctives et préventives
 🟦B1_M09_Digitaliser et automatiser les processus juridiques
+🟧B1_M09_S001_En attente_1
+🟧B1_M09_S002_En attente_2
+🟧B1_M09_S003_En attente_3
+🟧B1_M09_S004_En attente_4
+🟧B1_M09_S005_En attente_5
+🟧B1_M09_S006_En attente_6
 🟦B1_M10_Concevoir et rédiger des politiques de conformité
+🟧B1_M10_S001_En attente_1
+🟧B1_M10_S002_En attente_2
+🟧B1_M10_S003_En attente_3
+🟧B1_M10_S004_En attente_4
+🟧B1_M10_S005_En attente_5
+🟧B1_M10_S006_En attente_6
 🟦B1_M11_Déployer et piloter les dispositifs de conformité
+🟧B1_M11_S001_En attente_1
+🟧B1_M11_S002_En attente_2
+🟧B1_M11_S003_En attente_3
+🟧B1_M11_S004_En attente_4
+🟧B1_M11_S005_En attente_5
+🟧B1_M11_S006_En attente_6
 🟦B1_M12_Optimiser et sécuriser l’archivage
 🟧B1_M12_S001_Optimiser et sécuriser l’archivage
 🟧B1_M12_S002_Introduction au RGPD et archivage numérique
@@ -951,6 +1048,7 @@
 🟧B2_M05_S005_La rédaction des documents pour un magistrat
 🟧B2_M05_S006_La rédaction des documents pour un notaire
 🟦B2_M06_Intégrer les technologies juridiques dans la gestion contractuelle
+🟧B2_M06_S001_En attente
 🟦B2_M07_Utiliser les concepts de base de l’ingénierie pédagogique
 🟧B2_M07_S001_Les méthodes pédagogiques
 🟧B2_M07_S002_Les concept, modalités et démarches pédagogiques
@@ -1047,6 +1145,7 @@
 🟧B3_M02_S012_Application - Conseil stratégique en contentieux
 🟧B3_M02_S013_Offboarding - Conseil stratégique en contentieux
 🟦B3_M03_Elaborer une stratégie de gestion de crise juridique
+🟧B3_M03_S001_En attente
 🟦B3_M04_Gestion des contentieux judiciaires
 🟧B3_M04_S001_Onboarding - Gestion des contentieux judiciaires
 🟧B3_M04_S002_Principes du procès civil en droit français
@@ -1063,6 +1162,9 @@
 🟧B3_M04_S013_Application - Gestion des contentieux judiciaires
 🟧B3_M04_S014_Offboarding - Gestion des contentieux judiciaires
 🟦B3_M05_Piloter l’exécution des décisions judiciaires
+🟧B3_M05_S001_En attente
+🟧B3_M05_S002_En attente
+🟧B3_M05_S003_En attente
 `;
 
     function cleanName(str) {
@@ -1393,7 +1495,7 @@
         updateHeaderHeight();
         initSocial();
     });
-  </script>
+</script>
 
 </body>
 </html>

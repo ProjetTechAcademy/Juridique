@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,14 +12,18 @@
     <script src="https://cdn.tailwindcss.com"></script>
 
     <style>
-        /* === CHARTE GRAPHIQUE COSMIC PREMIUM === */
+        /* === CHARTE GRAPHIQUE GLOBALE & NOUVEAU DESIGN HEADER/FOOTER === */
         :root {
             --cta: #D9A526;       /* Or */
             --brand-blue: #0F2C48; /* Bleu Nuit */
             --ivory: #F6F2E8;     
             --bronze: #B4792A;
+            --footer-bg: #0F2C48; 
+            --footer-text: #F6F2E8; 
+            --footer-accent: #D9A526;
+            --header-height: 96px; /* Ajusté pour la navigation interne */
             
-            /* Couleurs spécifiques */
+            /* Couleurs spécifiques (Syllogisme) */
             --bg-rule: #fffbeb; --border-rule: #d97706; --text-rule: #92400e;
             --bg-fact: #eff6ff; --border-fact: #2563eb; --text-fact: #1e40af;
             --bg-solution: #f0fdf4; --border-solution: #16a34a; --text-solution: #166534;
@@ -30,53 +34,133 @@
             font-family: 'Outfit', sans-serif; display: flex; flex-direction: column; min-height: 100vh;
         }
 
-        /* --- HEADER --- */
-        .top-bar {
-            background-color: var(--brand-blue); padding: 15px 0;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.15); position: sticky; top: 0; z-index: 10000;
-            border-bottom: 4px solid var(--cta);
+        /* --- HEADER GLOBAL (Nouveau Design) --- */
+        .top-bar { 
+            background: linear-gradient(135deg, #B4792A, #F2C94C); 
+            padding: 12px 20px; 
+            position: sticky; 
+            top: 0; 
+            z-index: 9999; 
+            border-bottom: 4px solid var(--brand-blue); 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
-        .top-bar-container {
-            max-width: 1400px; margin: 0 auto; padding: 0 20px;
-            display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px;
-        }
-        .top-bar-left { display: flex; align-items: center; gap: 15px; flex: 1; min-width: 320px; }
-        .logo-top-bar { width: 60px; height: 60px; border-radius: 50%; border: 2px solid var(--cta); object-fit: cover; background: white; }
-        .identity-stack { display: flex; flex-direction: column; justify-content: center; }
-        .club-title-main { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; color: #ffffff; line-height: 1.1; margin-bottom: 3px; }
-        .club-subtitle { font-family: 'Lato', sans-serif; font-size: 0.75rem; color: var(--cta); font-weight: 600; }
-        .top-bar-center { display: flex; gap: 12px; align-items: center; }
 
-        .header-icon-btn {
-            position: relative; width: 40px; height: 40px; border-radius: 50%;
-            background: linear-gradient(135deg, #D9A526 0%, #B4792A 100%);
-            border: 1px solid rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center;
-            font-size: 1.1rem; text-decoration: none; transition: all 0.3s ease; color: white;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        .top-bar-container { 
+            max-width: 1400px; 
+            margin: 0 auto; 
+            display: flex; 
+            align-items: center; 
+            justify-content: space-between; 
+            gap: 16px; 
         }
-        .header-icon-btn:hover { transform: translateY(-3px) scale(1.1); background: linear-gradient(135deg, #FFD700 0%, #D9A526 100%); box-shadow: 0 6px 15px rgba(217, 165, 38, 0.4); }
+
+        .top-left { display: flex; align-items: center; gap: 14px; }
+
+        .logo-top { 
+            width: 64px; height: 64px; 
+            border-radius: 8px; object-fit: cover; 
+            border: 2px solid var(--brand-blue); 
+            background: #fff; 
+            transition: transform 0.3s ease;
+        }
+        .logo-top:hover { transform: scale(1.05); }
+
+        .identity-stack { display: flex; flex-direction: column; }
+        .club-title-main { font-family: 'Playfair Display', serif; font-weight: 800; color: var(--brand-blue); font-size: 1.1rem; }
+        .club-subtitle { color: #fff; font-weight: 700; font-size: 0.85rem; text-shadow: 0 1px 2px rgba(0,0,0,0.1); }
+
+        .top-center { display: flex; gap: 10px; align-items: center; }
+
+        .header-icon-btn { 
+            width: 44px; height: 44px; flex-shrink: 0;
+            border-radius: 50%; 
+            display: inline-flex; align-items: center; justify-content: center; 
+            text-decoration: none; 
+            background: linear-gradient(135deg, var(--cta), var(--bronze)); 
+            color: #fff; 
+            border: 1px solid rgba(255, 255, 255, 0.4); 
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            font-size: 1.2rem;
+            position: relative;
+        }
+        .header-icon-btn:hover { transform: translateY(-3px); box-shadow: 0 4px 8px rgba(0,0,0,0.2); background: var(--brand-blue); border-color: var(--cta); }
+        .header-icon-btn img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
         .nav-profile-img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 2px solid #fff; }
         
-        .header-icon-btn::after {
-            content: attr(data-tooltip); position: absolute; top: 130%; left: 50%; transform: translateX(-50%) translateY(-10px);
-            background-color: #fff; color: var(--brand-blue); padding: 4px 10px; border-radius: 20px;
-            font-size: 0.7rem; font-weight: 700; white-space: nowrap; opacity: 0; visibility: hidden; transition: all 0.3s ease;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2); pointer-events: none; z-index: 100;
+        .btn-portfolio-cosmic { 
+            padding: 8px 18px; 
+            border-radius: 999px; 
+            background: var(--brand-blue); 
+            color: var(--cta); 
+            text-decoration: none; 
+            font-weight: 700; 
+            display: inline-flex; gap: 8px; align-items: center; 
+            transition: background 0.3s, color 0.3s;
+            white-space: nowrap;
+            box-shadow: 0 4px 10px rgba(15, 44, 72, 0.2);
         }
-        .header-icon-btn:hover::after { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+        .btn-portfolio-cosmic:hover { background: #fff; color: var(--brand-blue); transform: translateY(-2px); }
 
-        @keyframes cosmic-pulse { 0% { transform: scale(1); } 50% { transform: scale(1.02); } 100% { transform: scale(1); } }
-        .btn-portfolio-cosmic {
-            padding: 8px 20px; border-radius: 50px; font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 0.9rem;
-            background: linear-gradient(135deg, #D9A526 0%, #B4792A 100%); color: white !important; text-decoration: none; 
-            border: 1px solid rgba(255,255,255,0.2); display: inline-flex; align-items: center; gap: 8px; animation: cosmic-pulse 2s infinite;
+        /* --- FOOTER GLOBAL (Nouveau Design) --- */
+        .main-footer { background: var(--footer-bg); color: var(--footer-text); padding: 40px 18px; margin-top: auto; border-top: 4px solid var(--cta); }
+        .footer-container { max-width: 1400px; margin: 0 auto; display: flex; gap: 20px; align-items: center; justify-content: space-between; flex-wrap: wrap; }
+        .footer-left { display: flex; align-items: center; gap: 12px; }
+        .footer-logo-img { width: 60px; height: 60px; border-radius: 8px; object-fit: cover; border: 2px solid var(--cta); background: #fff; }
+        .footer-details { color: var(--footer-text); opacity: 0.95; }
+
+        .footer-right { display: flex; flex-direction: column; align-items: flex-end; gap: 15px; }
+        .footer-links-row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
+
+        .icon-btn { 
+            width: 44px; height: 44px; flex-shrink: 0;
+            border-radius: 50%; 
+            display: inline-flex; align-items: center; justify-content: center; 
+            background: rgba(255, 255, 255, 0.06); 
+            color: var(--footer-text); 
+            text-decoration: none; 
+            border: 1px solid rgba(217, 165, 38, 0.15); 
+            transition: all 0.2s;
+            font-size: 1.1rem;
         }
-        .btn-portfolio-cosmic:hover { background: linear-gradient(135deg, #F1C40F 0%, #D9A526 100%); transform: translateY(-2px); }
+        .icon-btn:hover { background: var(--cta); color: var(--brand-blue); transform: scale(1.1); border-color: #fff; }
+
+        .footer-divider { 
+            width: 2px; 
+            height: 32px; 
+            background: rgba(255,255,255,0.3); 
+            margin: 0 12px; 
+            border-radius: 2px;
+        }
+
+        .copyright { width: 100%; text-align: center; color: rgba(255, 255, 255, 0.35); margin-top: 24px; font-size: 0.9rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; }
+
+        @media (max-width: 1100px) {
+            .top-bar-container { flex-direction: column; gap: 15px; align-items: center; text-align: center; }
+            .top-left { flex-direction: column; text-align: center; }
+            .top-center { width: 100%; overflow-x: auto; padding-bottom: 10px; justify-content: flex-start; padding-left: 5px; padding-right: 5px; -webkit-overflow-scrolling: touch; }
+            .top-center::-webkit-scrollbar { height: 4px; }
+            .top-center::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.3); border-radius: 4px; }
+            .footer-container { flex-direction: column; text-align: center; }
+            .footer-left { flex-direction: column; }
+            .footer-right { align-items: center; width: 100%; }
+            .footer-links-row { justify-content: center; width: 100%; overflow-x: auto; padding-bottom: 10px; }
+            .footer-divider { display: none; } 
+        }
+        
+        /* --- CSS ATELIER (Conservé et Adapté) --- */
+        
+        .main-content, main.container { max-width:1200px; margin-left:auto; margin-right:auto; }
+        .container{ max-width:1200px; margin-left:auto; margin-right:auto; }
+        .tab-content { margin-left:auto; margin-right:auto; }
+        .nav-tabs-container .container{ justify-content:center; }
+        .top-center { justify-content:center; }
+        .intro-box { margin-left:auto; margin-right:auto; }
 
         /* --- NAVIGATION INTERNE --- */
         .nav-tabs-container {
             background: white; box-shadow: 0 4px 15px rgba(0,0,0,0.05); z-index: 40; 
-            position: sticky; top: 95px; 
+            position: sticky; top: var(--header-height); /* UTILISE LA VAR CSS */
         }
         .tab-btn {
             font-family: 'Montserrat', sans-serif; color: var(--brand-blue); border-bottom: 4px solid transparent;
@@ -114,7 +198,7 @@
         /* --- SYLLOGISMES --- */
         .cases-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(550px, 1fr)); gap: 30px; }
         .case-card { background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid rgba(0,0,0,0.05); display: flex; flex-direction: column; transition: transform 0.3s; }
-        .case-card:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(0,0,0,0.1); }
+        .case-card:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(0,0,0,0.1); border-color: var(--cta); }
         .case-header { padding: 20px; background: #fcfbfc; border-bottom: 1px solid #f1f5f9; display: flex; justify-content: space-between; align-items: center; }
         .badge-circle { width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 800; color: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
         .bg-social { background-color: #be185d; } .bg-affaires { background-color: #b45309; } .bg-divers { background-color: #0369a1; }
@@ -236,79 +320,51 @@
         .btn-audio-small:hover { background: rgba(255,255,255,0.4); transform: scale(1.1); }
         .btn-audio-dark { width: 30px; height: 30px; border-radius: 50%; border: 1px solid #cbd5e1; color: var(--brand-blue); display: flex; align-items: center; justify-content: center; cursor: pointer; z-index:10; }
         .btn-audio-dark:hover { background: var(--brand-blue); color: white; }
-
-        /* FOOTER */
-        .main-footer { background-color: var(--brand-blue); color: #F6F2E8; padding-top: 50px; font-family: 'Lato', sans-serif; font-size: 0.95rem; width: 100%; margin-top: auto; }
-        .footer-container { max-width: 1400px; margin: 0 auto; padding: 0 25px; }
-        .footer-content { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 30px; padding-bottom: 30px; align-items: flex-start; }
-        .footer-identity { display: flex; flex-direction: row; align-items: center; gap: 20px; min-width: 300px; }
-        .footer-logo-img { width: 60px; height: 60px; border-radius: 8px; border: 2px solid var(--cta); background: #fff; object-fit: cover; }
-        .footer-info-compact { display: flex; flex-direction: column; text-align: left; }
-        .footer-name { color: var(--cta); font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; margin: 0; line-height: 1.2; }
-        .footer-contact-stack { display: flex; flex-direction: column; gap: 5px; font-size: 0.85rem; opacity: 0.8; }
-        .footer-link { text-decoration: none; color: inherit; transition: color 0.3s; display: inline-block; }
-        .footer-link:hover { color: var(--cta); }
-        .footer-dock-col { display: flex; flex-direction: column; align-items: flex-end; gap: 10px; margin-left: auto; }
-        .dock-group { display: flex; flex-direction: column; align-items: flex-end; gap: 5px; }
-        .dock-label { font-family: 'Montserrat', sans-serif; font-size: 0.8rem; text-transform: uppercase; color: var(--cta); opacity: 0.7; }
-        .icon-dock { display: flex; gap: 15px; flex-wrap: wrap; justify-content: flex-end; align-items: center; }
-        .icon-btn { position: relative; width: 45px; height: 45px; border-radius: 50%; background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(217, 165, 38, 0.3); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; text-decoration: none; transition: all 0.3s; cursor: pointer; color: #fff; }
-        .icon-btn:hover { transform: translateY(-5px) scale(1.1); background: #fff; border-color: #fff; }
-        .brand-whatsapp { color: #25D366 !important; } .icon-btn:hover .brand-whatsapp { color: #25D366 !important; }
-        .brand-discord { color: #5865F2 !important; } .icon-btn:hover .brand-discord { color: #5865F2 !important; }
-        .brand-linkedin { color: #0077b5 !important; } .icon-btn:hover .brand-linkedin { color: #0077b5 !important; }
-        .brand-instagram { color: #E1306C !important; } .icon-btn:hover .brand-instagram { color: #E1306C !important; }
-        .brand-tiktok { color: #00f2ea !important; text-shadow: 2px 2px 0px #ff0050; } .icon-btn:hover .brand-tiktok { color: #000 !important; text-shadow: none; } 
-        .brand-nav { color: var(--cta) !important; } .icon-btn:hover .brand-nav { color: var(--brand-blue) !important; }
-        .dock-separator { width: 1px; height: 30px; background-color: rgba(255,255,255,0.2); margin: 0 10px; }
-        .footer-bottom { text-align: center; padding: 15px 0; font-size: 0.8rem; color: rgba(255,255,255,0.4); background-color: rgba(0,0,0,0.2); border-top: 1px solid rgba(255,255,255,0.05); width: 100%; }
         
         #backToTop { position: fixed; bottom: 30px; right: 30px; background: var(--cta); color: var(--brand-blue); width: 50px; height: 50px; border-radius: 50%; display: flex; justify-content: center; align-items: center; cursor: pointer; opacity: 0; transition: 0.3s; z-index: 1000; }
         #backToTop.visible { opacity: 1; }
 
-        @media (max-width: 900px) {
-            .cases-grid, .reflexe-grid, .lexique-grid { grid-template-columns: 1fr; }
-            .footer-content { flex-direction: column; align-items: center; text-align: center; }
-            .footer-dock-col { align-items: center; width: 100%; margin-left: 0; }
-            .icon-dock { justify-content: center; }
-        }
     </style>
-
-<style>
-/* Center main content container without altering structure */
-.container{ max-width:1200px; margin-left:auto; margin-right:auto; }
-.main-content, main.container { max-width:1200px; margin-left:auto; margin-right:auto; }
-.tab-content { margin-left:auto; margin-right:auto; }
-.nav-tabs-container .container{ justify-content:center; }
-.top-center { justify-content:center; }
-.intro-box { margin-left:auto; margin-right:auto; }
-</style>
 
 </head>
 <body>
 
-    <div class="top-bar">
+    <!-- NOUVEAU HEADER -->
+    <div class="top-bar" id="mainHeader">
         <div class="top-bar-container">
-            <div class="top-bar-left">
-                <img src="https://projettechacademy.github.io/Juridique/Asset/Logo_juriste.png" alt="Logo Club" class="logo-top-bar">
-                <div class="identity-stack">
-                    <span class="club-title-main">💫 The Jurist Elite Club By Studi ✨</span>
-                    <span class="club-subtitle">La Villa des Juristes Brisés 💔 sur l’Île de L’INSTRUCTION ! 🏝</span>
-                </div>
-            </div>
-            
-            <div class="top-bar-center">
-                <a href="https://projettechacademy.github.io/Juridique/index.html" target="_blank" class="header-icon-btn" aria-label="Accueil" data-tooltip="Accueil">🏠</a>
-                <a href="https://projettechacademy.github.io/Juridique/Mon_Espace_Juriste_Tableau_de_bord_personnel.html" target="_blank" class="header-icon-btn" aria-label="Mon Espace" data-tooltip="Mon Espace">📊</a>
-                <a href="https://projettechacademy.github.io/Juridique/Lexique_Latin_Juridique.html" target="_blank" class="header-icon-btn" aria-label="Lexique Latin" data-tooltip="Lexique">📜</a>
-                <a href="#" class="header-icon-btn" aria-label="Atelier" data-tooltip="Atelier" style="background: white; color: var(--brand-blue); border: 2px solid var(--cta); transform: scale(1.1);">🛠️</a>
-                <a href="https://projettechacademy.github.io/Juridique/formation_live_juriste.html" target="_blank" class="header-icon-btn" aria-label="Planning Live" data-tooltip="Planning">📅</a>
-                <a href="https://projettechacademy.github.io/Juridique/A_propos_de_moi.html" target="_blank" class="header-icon-btn" aria-label="À propos de moi" data-tooltip="Profil">👤</a>
-            </div>
-
-            <a href="https://projettechacademy.github.io/CV_MMPA-CV-Mathilde-Martine-PAISLEY/" target="_blank" class="btn-portfolio-cosmic"><span>📄</span> Mon portfolio</a>
+        <div class="top-left">
+        <a href="https://projettechacademy.github.io/Juridique/index.html" title="Start/Accueil" target="_blank">
+        <img class="logo-top" src="https://projettechacademy.github.io/Juridique/Asset/Logo_juriste.png" onerror="this.src='https://projettechacademy.github.io/Juridique/Asset/Logo_juriste.jpg'" alt="Logo Juriste">
+        </a>
+        <div class="identity-stack">
+        <div class="club-title-main">💫 The Jurist Elite Club By Studi ✨</div>
+        <div class="club-subtitle">La Villa des Juristes Brisés 💔 sur l’Île de L’INSTRUCTION ! 🏝</div>
+        </div>
+        </div>
+        <nav class="top-center" aria-label="Navigation principale">
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Juridique/A_propos_de_moi.html" title="A propos de moi" target="_blank">
+        <img src="https://projettechacademy.github.io/Juridique/Asset/Photo_Mathilde_Martine_PAISLEY.jpg" alt="Mathilde Martine PAISLEY" style="width:100%;height:100%;border-radius:50%;object-fit:cover;border:2px solid #fff;" onerror="this.src='https://projettechacademy.github.io/Juridique/Asset/Photo_Mathilde_Martine_PAISLEY.jpeg'">
+        </a>
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Juridique/index.html" title="Start/Accueil" target="_blank">🏠</a>
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Juridique/Mon_Espace_Juriste_Tableau_de_bord_personnel.html" title="Mon Espace" target="_blank">📊</a>
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Juridique/formation_live_juriste.html" title="Planning Live" target="_blank">📅</a>
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Juridique/Lexique_Latin_Juridique.html" title="Lexique Latin" target="_blank">📜</a>
+        <!-- BOUTON ACTIF -->
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Juridique/Atelier_de_Competence.html" title="Atelier de Compétence Élite" target="_blank" style="background: white; color: var(--brand-blue); border: 2px solid var(--cta); transform: scale(1.1);">🛠️</a>
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Juridique/Fiche_RNCP_Juriste.html" title="RNCP" target="_blank">📚</a>
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Juridique/Univers_Actes_Juridiques.html" title="Rédaction Juridique" target="_blank">✍️</a>
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Juridique/Jurist_Elite_Panorama_IA.html" title="Panorama IA" target="_blank">🤖</a>
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Juridique/Acronymes.html" title="Acronymes" target="_blank">🔤</a>
+        </nav>
+        <div>
+        <a class="btn-portfolio-cosmic" href="https://projettechacademy.github.io/Juridique/Portfolio_Mathilde-Martine-PAISLEY.html" target="_blank" title="Mon Expertise / Projets">
+        <img src="https://projettechacademy.github.io/Juridique/Asset/Logo_MMPA.jpeg" alt="Logo" style="width:24px; height:24px; border-radius:50%; object-fit:cover; border:1px solid #fff;" onerror="this.src='https://projettechacademy.github.io/Juridique/Asset/Logo_MMPA.jpg'"> 
+        Expert
+        </a>
+        </div>
         </div>
     </div>
+
 
     <div class="nav-tabs-container">
         <div class="container" style="display: flex; justify-content: center; overflow-x: auto;">
@@ -523,40 +579,46 @@
 
     </main>
 
-    <footer class="main-footer">
+    <!-- NOUVEAU FOOTER -->
+    <footer class="main-footer" role="contentinfo">
         <div class="footer-container">
-            <div class="footer-content">
-                <div class="footer-identity">
-                    <img src="https://projettechacademy.github.io/Juridique/Asset/Logo_MMPA.jpeg" alt="Logo MMPA" class="footer-logo-img">
-                    <div class="footer-info-compact">
-                        <div class="footer-name">Mathilde Martine PAISLEY</div>
-                        <div class="footer-contact-stack">
-                            <a href="mailto:Mathilde.martine.paisley@gmail.com" target="_blank" class="footer-link">📧 Mathilde.martine.paisley@gmail.com</a>
-                            <a href="tel:+33685900887" class="footer-link">📲 06 85 90 08 87</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="footer-dock-col">
-                    <div class="dock-group">
-                        <div class="dock-label">Navigation & Réseaux</div>
-                        <div class="icon-dock">
-                            <a href="https://projettechacademy.github.io/Juridique/index.html" target="_blank" class="icon-btn" data-tooltip="Accueil"><span class="brand-nav">🏠</span></a>
-                            <a href="https://projettechacademy.github.io/Juridique/Mon_Espace_Juriste_Tableau_de_bord_personnel.html" target="_blank" class="icon-btn" data-tooltip="Mon Espace"><span class="brand-nav">📊</span></a>
-                            <a href="https://projettechacademy.github.io/Juridique/Lexique_Latin_Juridique.html" target="_blank" class="icon-btn" data-tooltip="Lexique"><span class="brand-nav">📜</span></a>
-                            <a href="https://projettechacademy.github.io/Juridique/formation_live_juriste.html" target="_blank" class="icon-btn" data-tooltip="Planning"><span class="brand-nav">📅</span></a>
-                            <div class="dock-separator"></div>
-                            <a href="https://chat.whatsapp.com/IoMXFl4o2otExYKCPVj22b" target="_blank" class="icon-btn"><i class="fab fa-whatsapp brand-whatsapp"></i></a>
-                            <a href="https://discord.gg/qwNPV8QzFt" target="_blank" class="icon-btn"><i class="fab fa-discord brand-discord"></i></a>
-                            <a href="https://www.linkedin.com/in/mathilde-martine-paisley-1a4422382/" target="_blank" class="icon-btn"><i class="fab fa-linkedin brand-linkedin"></i></a>
-                            <a href="https://www.instagram.com/enervyx/" target="_blank" class="icon-btn"><i class="fab fa-instagram brand-instagram"></i></a>
-                            <a href="https://www.tiktok.com/@enervyx/" target="_blank" class="icon-btn"><i class="fab fa-tiktok brand-tiktok"></i></a>
-                        </div>
-                    </div>
-                </div>
+        <div class="footer-left">
+        <a href="https://projettechacademy.github.io/Juridique/index.html" target="_blank">
+        <img class="footer-logo-img" src="https://projettechacademy.github.io/Juridique/Asset/Logo_MMPA.jpeg" alt="Logo MMPA" onerror="this.src='https://projettechacademy.github.io/Juridique/Asset/Logo_MMPA.jpg'">
+        </a>
+        <div class="footer-details">
+        <div style="font-weight:700; font-size: 1.1rem;">Mathilde Martine PAISLEY</div>
+        <div style="opacity:0.95; margin-top:6px; font-size: 0.9rem;">
+        📧 Mathilde.martine.paisley@gmail.com <br class="md:hidden"> • 📲 06 85 90 08 87
+        </div>
+        </div>
+        </div>
+        <div class="footer-right">
+        <div class="footer-links-row" aria-label="Liens utilitaires">
+        <a class="icon-btn" href="https://projettechacademy.github.io/Juridique/A_propos_de_moi.html" title="A propos de moi" target="_blank">👤</a>
+        <a class="icon-btn" href="https://projettechacademy.github.io/Juridique/index.html" title="Accueil" target="_blank">🏠</a>
+        <a class="icon-btn" href="https://projettechacademy.github.io/Juridique/Mon_Espace_Juriste_Tableau_de_bord_personnel.html" title="Mon Espace" target="_blank">📊</a>
+        <a class="icon-btn" href="https://projettechacademy.github.io/Juridique/formation_live_juriste.html" title="Planning" target="_blank">📅</a>
+        <a class="icon-btn" href="https://projettechacademy.github.io/Juridique/Lexique_Latin_Juridique.html" title="Lexique" target="_blank">📜</a>
+        <a class="icon-btn" href="https://projettechacademy.github.io/Juridique/Atelier_de_Competence.html" title="Atelier" target="_blank">🛠️</a>
+        <a class="icon-btn" href="https://projettechacademy.github.io/Juridique/Portfolio_Mathilde-Martine-PAISLEY.html" title="Portfolio" target="_blank">🎨</a>
+        <a class="icon-btn" href="https://projettechacademy.github.io/Juridique/Fiche_RNCP_Juriste.html" title="RNCP" target="_blank">📚</a>
+        <a class="icon-btn" href="https://projettechacademy.github.io/Juridique/Univers_Actes_Juridiques.html" title="Rédaction Juridique" target="_blank">✍️</a>
+        <a class="icon-btn" href="https://projettechacademy.github.io/Juridique/Jurist_Elite_Panorama_IA.html" title="Panorama IA" target="_blank">🤖</a>
+        <a class="icon-btn" href="https://projettechacademy.github.io/Juridique/Acronymes.html" title="Acronymes" target="_blank">🔤</a>
+                <div class="footer-divider"></div>
+        
+                <a class="icon-btn" href="https://chat.whatsapp.com/IoMXFl4o2otExYKCPVj22b" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp" style="color:#25D366;"></i></a>
+                <a class="icon-btn" href="https://discord.gg/qwNPV8QzFt" target="_blank" title="Discord"><i class="fab fa-discord" style="color:#5865F2;"></i></a>
+                <a class="icon-btn" href="https://www.linkedin.com/in/mathilde-martine-paisley-1a4422382/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin" style="color:#0077b5;"></i></a>
+                <a class="icon-btn" href="https://www.instagram.com/enervyx/" target="_blank" title="Instagram"><i class="fab fa-instagram" style="color:#E1306C;"></i></a>
+                <a class="icon-btn" href="https://www.tiktok.com/@enervyx/" target="_blank" title="TikTok"><i class="fab fa-tiktok" style="color:#00f2ea;"></i></a>
             </div>
-            <div class="footer-bottom">
-                <p>© 2025 Tous droits réservés – Création : 2025 – Dernière mise à jour : Décembre 2025</p>
-            </div>
+          </div>
+          <div class="copyright">
+            💫 The Jurist Elite Club By Studi ✨ La Villa des Juristes Brisés 💔 sur l’Île de L’INSTRUCTION !🏝 <br> 
+            By Mathilde Martine PAISLEY | © 2025 Tous droits réservés
+          </div>
         </div>
     </footer>
 
@@ -572,7 +634,7 @@
             { cat: "Social", title: "Ivresse Travail", context: "Un cariste titube et sent l'alcool sur un poste dangereux.", majeure: "L'employeur a une obligation de sécurité de résultat. Il peut contrôler l'alcoolémie si le règlement intérieur le prévoit pour les postes à risque.", mineure: "Le poste de cariste est un poste de sécurité. L'état d'ébriété crée un danger imminent.", conclusion: "Mise à pied conservatoire immédiate, suivie d'un licenciement pour faute grave.", advice: "Faites constater l'état par un témoin tiers neutre en attendant le test." },
             { cat: "Affaires", title: "Concurrence Déloyale", context: "Un ex-commercial utilise le fichier client de l'entreprise.", majeure: "Le fichier client est un actif immatériel appartenant à l'entreprise. Son utilisation par un tiers est un vol et un acte de concurrence déloyale.", mineure: "La preuve du transfert de données et du démarchage est rapportée.", conclusion: "Action en référé possible pour interdiction sous astreinte + dommages et intérêts.", advice: "Insérez toujours une clause de confidentialité post-contractuelle renforcée." },
             { cat: "Social", title: "Refus Mutation", context: "Refus d'aller sur un site à 20km. Clause de mobilité signée.", majeure: "Le refus d'application d'une clause de mobilité valide (zone géographique précise) est une insubordination.", mineure: "La clause couvre le département. Le nouveau lieu est dans la zone.", conclusion: "Le refus est fautif et justifie un licenciement (sauf atteinte excessive à la vie privée).", advice: "Vérifiez que le délai de prévenance a bien été respecté avant de sanctionner." },
-            { cat: "Social", title: "Preuve 'Déloyale'", context: "Une caméra cachée (non déclarée) filme un vol grave.", majeure: "Revirement de jurisprudence (Cass. 2023) : Une preuve déloyale peut être admise si elle est indispensable à l'exercice du droit à la preuve et proportionnée au but poursuivi.", mineure: "C'était le seul moyen de prouver des vols répétés indétectables autrement.", conclusion: "La preuve est recevable et le licenciement validé par le juge.", advice: "Attention, le juge vérifie strictement la proportionnalité. À utiliser en dernier recours." },
+            { cat: "Social", title: "Preuve 'Déloyale'", context: "Une caméra cachée (non déclarée) filme un vol grave.", majeure: "Revirement de jurisprudence (Cass. 2023) : Une preuve déloyale peut être admise si elle est indispensable à l'exercice du droit à la preuve et proportionnée au but poursuivi.", mineure: "C'était le seul moyen de prouver des vols répétés indétectables autrement.", conclusion: "La preuve est recevable et le licenciement validé par le juge.", advice: "Vérifiez strictement la proportionnalité. À utiliser en dernier recours." },
             { cat: "Social", title: "Grossesse et Essai", context: "Rupture de la période d'essai le lendemain de l'annonce de la grossesse.", majeure: "Il est interdit de prendre en compte l'état de grossesse pour rompre le contrat (Discrimination).", mineure: "La concomitance entre l'annonce et la rupture laisse présumer un motif discriminatoire.", conclusion: "La rupture est nulle. La salariée peut demander sa réintégration ou des dommages punitifs.", advice: "Ne jamais rompre un essai juste après une telle annonce, même pour un motif réel." },
             { cat: "Affaires", title: "Caution Gérant", context: "La société ne paie pas, la banque appelle la caution personnelle du gérant.", majeure: "Le cautionnement solidaire engage le patrimoine personnel du garant si le débiteur principal est défaillant.", mineure: "La société est en défaut de paiement.", conclusion: "Le gérant doit payer la dette sur ses biens propres (maison, comptes).", advice: "Tentez de négocier un échéancier ou vérifiez le formalisme de l'acte de caution (souvent vicié)." },
             { cat: "Social", title: "Harcèlement Moral", context: "Un manager humilie publiquement et critique violemment un salarié.", majeure: "Le harcèlement moral se caractérise par des agissements répétés ayant pour effet une dégradation des conditions de travail.", mineure: "Les faits sont répétés, publics et portent atteinte à la dignité.", conclusion: "Faute grave du manager. L'employeur doit le sanctionner et protéger la victime.", advice: "Déclenchez une enquête interne immédiate dès le premier signalement." },
@@ -747,7 +809,7 @@
             { t: "Entretien Professionnel", c: "Gestion", d: "Bilan parcours tous les 2 ans.", s: ["Convocation distincte de l'EAE", "Bilan formation", "Projet pro", "Compte rendu écrit"], p: "Si pas fait tous les 6 ans + pas de formation = Abondement correctif CPF (3000€)." },
             { t: "Démission", c: "Gestion", d: "Départ volontaire.", s: ["Réception lettre", "Accuser réception", "Calcul préavis", "Documents fin contrat"], p: "Ne jamais 'forcer' une démission. Elle serait requalifiée en licenciement abusif." },
             { t: "Retraite", c: "Gestion", d: "Départ ou Mise à la retraite.", s: ["Demande salarié ou Initiative employeur (conditions âge)", "Préavis", "Indemnité départ", "Documents"], p: "Mettre à la retraite d'office avant 70 ans sans accord du salarié est nul (Discrimination âge)." },
-            { t: "Dénonciation Usage", c: "Gestion", d: "Supprimer un avantage non écrit.", s: ["Information CSE", "Information individuelle chaque salarié", "Délai prévenance suffisant"], p: "Si la procédure n'est pas respectée à la lettre, l'usage continue de s'appliquer." },
+            { t: "Dénonciation Usage", c: "Gestion", d: "Supprimer un avantage non écrit.", s: ["Information CSE", "Information individuelle chaque salarié", "Délai prévenance"], p: "Si la procédure n'est pas respectée à la lettre, l'usage continue de s'appliquer." },
             { t: "BDESE", c: "Gestion", d: "Base de Données Éco Sociale.", s: ["Mise à jour régulière", "Accès IRP", "Contenu légal (Investissement, Social, Égalité...)"], p: "L'absence de BDESE est un délit d'entrave au fonctionnement du CSE." },
             { t: "Index Égalité", c: "Gestion", d: "Mesure écarts salaires H/F.", s: ["Calcul indicateurs", "Publication site web (1er mars)", "Transmission ministère", "Mesures correctives si < 75"], p: "Pénalité financière jusqu'à 1% de la masse salariale si non publication ou note insuffisante." },
             { t: "Mise à Pied Disc.", c: "Procedure", d: "Suspension salaire pour sanction.", s: ["Faute", "Entretien préalable", "Notification durée fixe", "Exécution"], p: "Ne peut pas être à durée indéterminée (sinon c'est une mise à pied conservatoire)." },
@@ -990,7 +1052,7 @@
                 badgeColor: "bg-social-gradient", // Fuchsia
                 pdfUrl: "https://drive.google.com/file/d/1Wbw-YZxA-BwSL4g1ElsSTnr37_U8eYaC/view?usp=drive_link",
                 subjects: [
-                    { t: "Relations Individuelles de Travail", d: "Du recrutement à la rupture : contrats, clauses, pouvoir disciplinaire et licenciements.", books: [{n: "Code du Travail 2025", u: "https://www.boutique-dalloz.fr/code-du-travail-2025-p.html"}, {n: "Mémento Social", u: "#"}] },
+                    { t: "Relations Individuelles de Travail", d: "Du recrutement à la rupture : contrats, clauses, pouvoir disciplinaire et licenciements.", books: [{n: "Code du Travail 2025", u: "#"}, {n: "Mémento Social", u: "#"}] },
                     { t: "Relations Collectives (CSE & Syndicats)", d: "Négociation d'accords, élections pro, gestion des élus et du dialogue social.", books: [{n: "Les Grands Arrêts Droit Travail", u: "#"}, {n: "Guide du CSE", u: "#"}] },
                     { t: "Droit de la Protection Sociale", d: "Comprendre l'URSSAF, la Prévoyance, la Retraite et les risques AT/MP.", books: [{n: "Code de la Sécurité Sociale", u: "#"}] }
                 ]

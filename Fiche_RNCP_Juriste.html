@@ -1,24 +1,32 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Référentiel Compétences RNCP 40844 - V3 (Intégré)</title>
+    <title>Référentiel Compétences RNCP 40844 - V3 (Mise à jour)</title>
     
     <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/e/e0/Balance_of_Justice_SVG.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="styles.css"> 
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&family=Montserrat:wght@500;600;700&family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
 
     <style>
-        /* CHARTE COSMIC PREMIUM (Conservée pour le contenu central) */
+        /* === CHARTE GRAPHIQUE GLOBALE & NOUVEAU DESIGN HEADER/FOOTER === */
         :root {
-            --cta: #D9A526;         /* Or */
-            --brand-blue: #0F2C48;  /* Bleu Nuit */
-            --ivory: #F6F2E8;       /* Fond */
-            --bronze: #B4792A;      /* Accent */
+            --cta: #D9A526;       /* Or */
+            --brand-blue: #0F2C48; /* Bleu Nuit */
+            --ivory: #F6F2E8;     
+            --bronze: #B4792A;
+            --footer-bg: #0F2C48; 
+            --footer-text: #F6F2E8; 
+            --footer-accent: #D9A526;
+            --header-height: 96px; 
+            
+            /* Couleurs spécifiques (Syllogisme) */
+            --bg-rule: #fffbeb; --border-rule: #d97706; --text-rule: #92400e;
+            --bg-fact: #eff6ff; --border-fact: #2563eb; --text-fact: #1e40af;
+            --bg-solution: #f0fdf4; --border-solution: #16a34a; --text-solution: #166534;
         }
 
         body { 
@@ -26,20 +34,122 @@
             font-family: 'Outfit', sans-serif; display: flex; flex-direction: column; min-height: 100vh;
         }
 
-        /* Styles spécifiques pour le NOUVEAU Header (Adaptation minimale) */
-        .top-bar { background-color: var(--brand-blue); padding: 15px 0; color: white; }
-        .header-content { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-        .left-section { display: flex; align-items: center; gap: 20px; }
-        .logo { height: 50px; } /* Ajuste selon ton logo.png */
-        .header-title { font-family: 'Playfair Display', serif; margin: 0; font-size: 1.5rem; }
-        .contact-button { background: var(--cta); color: white; padding: 8px 15px; border-radius: 5px; text-decoration: none; font-weight: bold; }
-        
-        .nav-tabs-container { background: white; border-bottom: 1px solid #ddd; padding: 10px 0; }
-        .nav-tabs { list-style: none; padding: 0; margin: 0; display: flex; justify-content: center; gap: 20px; }
-        .nav-tabs a { text-decoration: none; color: #333; font-weight: 600; padding: 5px 10px; }
-        .nav-tabs a.active, .nav-tabs a:hover { color: var(--cta); border-bottom: 2px solid var(--cta); }
+        /* --- HEADER GLOBAL (Nouveau Design) --- */
+        .top-bar { 
+            background: linear-gradient(135deg, #B4792A, #F2C94C); 
+            padding: 12px 20px; 
+            position: sticky; 
+            top: 0; 
+            z-index: 9999; 
+            border-bottom: 4px solid var(--brand-blue); 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
 
-        /* --- STYLES EXISTANTS POUR LE CONTENU (Onglets internes, Blocs...) --- */
+        .top-bar-container { 
+            max-width: 1400px; 
+            margin: 0 auto; 
+            display: flex; 
+            align-items: center; 
+            justify-content: space-between; 
+            gap: 16px; 
+        }
+
+        .top-left { display: flex; align-items: center; gap: 14px; }
+
+        .logo-top { 
+            width: 64px; height: 64px; 
+            border-radius: 8px; object-fit: cover; 
+            border: 2px solid var(--brand-blue); 
+            background: #fff; 
+            transition: transform 0.3s ease;
+        }
+        .logo-top:hover { transform: scale(1.05); }
+
+        .identity-stack { display: flex; flex-direction: column; }
+        .club-title-main { font-family: 'Playfair Display', serif; font-weight: 800; color: var(--brand-blue); font-size: 1.1rem; }
+        .club-subtitle { color: #fff; font-weight: 700; font-size: 0.85rem; text-shadow: 0 1px 2px rgba(0,0,0,0.1); }
+
+        .top-center { display: flex; gap: 10px; align-items: center; }
+
+        .header-icon-btn { 
+            width: 44px; height: 44px; flex-shrink: 0;
+            border-radius: 50%; 
+            display: inline-flex; align-items: center; justify-content: center; 
+            text-decoration: none; 
+            background: linear-gradient(135deg, var(--cta), var(--bronze)); 
+            color: #fff; 
+            border: 1px solid rgba(255, 255, 255, 0.4); 
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            font-size: 1.2rem;
+            position: relative;
+        }
+        .header-icon-btn:hover { transform: translateY(-3px); box-shadow: 0 4px 8px rgba(0,0,0,0.2); background: var(--brand-blue); border-color: var(--cta); }
+        .header-icon-btn img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
+        .nav-profile-img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 2px solid #fff; }
+        
+        .btn-portfolio-cosmic { 
+            padding: 8px 18px; 
+            border-radius: 999px; 
+            background: var(--brand-blue); 
+            color: var(--cta); 
+            text-decoration: none; 
+            font-weight: 700; 
+            display: inline-flex; gap: 8px; align-items: center; 
+            transition: background 0.3s, color 0.3s;
+            white-space: nowrap;
+            box-shadow: 0 4px 10px rgba(15, 44, 72, 0.2);
+        }
+        .btn-portfolio-cosmic:hover { background: #fff; color: var(--brand-blue); transform: translateY(-2px); }
+
+        /* --- FOOTER GLOBAL (Nouveau Design) --- */
+        .main-footer { background: var(--footer-bg); color: var(--footer-text); padding: 40px 18px; margin-top: auto; border-top: 4px solid var(--cta); }
+        .footer-container { max-width: 1400px; margin: 0 auto; display: flex; gap: 20px; align-items: center; justify-content: space-between; flex-wrap: wrap; }
+        .footer-left { display: flex; align-items: center; gap: 12px; }
+        .footer-logo-img { width: 60px; height: 60px; border-radius: 8px; object-fit: cover; border: 2px solid var(--cta); background: #fff; }
+        .footer-details { color: var(--footer-text); opacity: 0.95; }
+
+        .footer-right { display: flex; flex-direction: column; align-items: flex-end; gap: 15px; }
+        .footer-links-row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
+
+        .icon-btn { 
+            width: 44px; height: 44px; flex-shrink: 0;
+            border-radius: 50%; 
+            display: inline-flex; align-items: center; justify-content: center; 
+            background: rgba(255, 255, 255, 0.06); 
+            color: var(--footer-text); 
+            text-decoration: none; 
+            border: 1px solid rgba(217, 165, 38, 0.15); 
+            transition: all 0.2s;
+            font-size: 1.1rem;
+        }
+        .icon-btn:hover { background: var(--cta); color: var(--brand-blue); transform: scale(1.1); border-color: #fff; }
+
+        .footer-divider { 
+            width: 2px; 
+            height: 32px; 
+            background: rgba(255,255,255,0.3); 
+            margin: 0 12px; 
+            border-radius: 2px;
+        }
+
+        .copyright { width: 100%; text-align: center; color: rgba(255, 255, 255, 0.35); margin-top: 24px; font-size: 0.9rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; }
+
+        @media (max-width: 1100px) {
+            .top-bar-container { flex-direction: column; gap: 15px; align-items: center; text-align: center; }
+            .top-left { flex-direction: column; text-align: center; }
+            .top-center { width: 100%; overflow-x: auto; padding-bottom: 10px; justify-content: flex-start; padding-left: 5px; padding-right: 5px; -webkit-overflow-scrolling: touch; }
+            .top-center::-webkit-scrollbar { height: 4px; }
+            .top-center::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.3); border-radius: 4px; }
+            .footer-container { flex-direction: column; text-align: center; }
+            .footer-left { flex-direction: column; }
+            .footer-right { align-items: center; width: 100%; }
+            .footer-links-row { justify-content: center; width: 100%; overflow-x: auto; padding-bottom: 10px; }
+            .footer-divider { display: none; } 
+        }
+
+        /* --- STYLES RNCP (Conservés et Adaptés) --- */
+        .container { max-width: 1200px; margin: 0 auto; }
         .tabs-container {
             background: white; border-radius: 50px; padding: 5px; display: flex; justify-content: space-between;
             margin: 30px auto; max-width: 900px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid #e2e8f0; overflow-x: auto;
@@ -54,7 +164,6 @@
         .tab-btn[onclick="openTab('bloc1')"].active { background: linear-gradient(135deg, #0F2C48 0%, #1e3a8a 100%); }
         .tab-btn[onclick="openTab('bloc2')"].active { background: linear-gradient(135deg, #B4792A 0%, #D9A526 100%); }
         .tab-btn[onclick="openTab('bloc3')"].active { background: linear-gradient(135deg, #475569 0%, #0F2C48 100%); }
-
         .tab-content { display: none; animation: fadeIn 0.5s ease; }
         .tab-content.active { display: block; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
@@ -74,49 +183,58 @@
         .welcome-card { background: white; border-radius: 16px; padding: 40px; text-align: center; margin-bottom: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
         .rncp-big { font-size: 4rem; font-weight: 900; color: #f1f5f9; line-height: 1; margin-bottom: -20px; display: block; }
         .welcome-title { font-family: 'Playfair Display', serif; font-size: 2.5rem; color: var(--brand-blue); position: relative; }
-
-        /* Styles NOUVEAU Footer */
-        .main-footer { background: #333; color: white; padding: 40px 0; margin-top: auto; }
-        .footer-columns { display: flex; justify-content: space-between; max-width: 1000px; margin: 0 auto; padding: 0 20px; flex-wrap: wrap;}
-        .footer-column { flex: 1; min-width: 200px; margin-bottom: 20px; }
-        .footer-column h3 { color: var(--cta); border-bottom: 2px solid var(--cta); padding-bottom: 10px; display: inline-block; }
-        .footer-column ul { list-style: none; padding: 0; }
-        .footer-column ul li { margin-bottom: 8px; }
-        .footer-column a { color: #ddd; text-decoration: none; }
-        .footer-column a:hover { color: white; }
-        .footer-bottom { text-align: center; border-top: 1px solid #444; padding-top: 20px; margin-top: 20px; color: #888; }
-
-        @media (max-width: 800px) {
-            .bloc-cols { grid-template-columns: 1fr; }
-            .col-left { border-right: none; border-bottom: 1px solid #f1f5f9; }
-            .tabs-container { flex-wrap: nowrap; padding: 10px; justify-content: flex-start; }
-            .header-content { flex-direction: column; text-align: center; gap: 10px; }
-            .left-section { flex-direction: column; }
-        }
+        
+        #scrollToTop { position: fixed; bottom: 30px; right: 30px; background: var(--cta); color: var(--brand-blue); width: 50px; height: 50px; border-radius: 50%; display: flex; justify-content: center; align-items: center; cursor: pointer; opacity: 0; transition: 0.3s; z-index: 1000; }
+        #scrollToTop.visible { opacity: 1; }
     </style>
 </head>
 <body>
 
-    <div class="top-bar">
-        <div class="container header-content">
-            <div class="left-section">
-                <a href="index.html" class="logo-container">
-                    <img src="logo.png" alt="Logo" class="logo">
-                </a>
-                <h1 class="header-title">Atelier des Compétences</h1>
-            </div>
-            <div class="right-section">
-                <a href="#" class="contact-button">Contact</a>
-            </div>
+    <!-- NOUVEAU HEADER -->
+    <div class="top-bar" id="mainHeader">
+        <div class="top-bar-container">
+        <div class="top-left">
+        <a href="https://projettechacademy.github.io/Juridique/index.html" title="Start/Accueil" target="_blank">
+        <img class="logo-top" src="https://projettechacademy.github.io/Juridique/Asset/Logo_juriste.png" onerror="this.src='https://projettechacademy.github.io/Juridique/Asset/Logo_juriste.jpg'" alt="Logo Juriste">
+        </a>
+        <div class="identity-stack">
+        <div class="club-title-main">💫 The Jurist Elite Club By Studi ✨</div>
+        <div class="club-subtitle">La Villa des Juristes Brisés 💔 sur l’Île de L’INSTRUCTION ! 🏝</div>
+        </div>
+        </div>
+        <nav class="top-center" aria-label="Navigation principale">
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Juridique/A_propos_de_moi.html" title="A propos de moi" target="_blank">
+        <img src="https://projettechacademy.github.io/Juridique/Asset/Photo_Mathilde_Martine_PAISLEY.jpg" alt="Mathilde Martine PAISLEY" style="width:100%;height:100%;border-radius:50%;object-fit:cover;border:2px solid #fff;" onerror="this.src='https://projettechacademy.github.io/Juridique/Asset/Photo_Mathilde_Martine_PAISLEY.jpeg'">
+        </a>
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Juridique/index.html" title="Start/Accueil" target="_blank">🏠</a>
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Juridique/Mon_Espace_Juriste_Tableau_de_bord_personnel.html" title="Mon Espace" target="_blank">📊</a>
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Juridique/formation_live_juriste.html" title="Planning Live" target="_blank">📅</a>
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Juridique/Lexique_Latin_Juridique.html" title="Lexique Latin" target="_blank">📜</a>
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Juridique/Atelier_de_Competence.html" title="Atelier de Compétence Élite" target="_blank">🛠️</a>
+        <!-- BOUTON ACTIF -->
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Juridique/Fiche_RNCP_Juriste.html" title="RNCP" target="_blank" style="background: white; color: var(--brand-blue); border: 2px solid var(--cta); transform: scale(1.1);">📚</a>
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Juridique/Univers_Actes_Juridiques.html" title="Rédaction Juridique" target="_blank">✍️</a>
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Juridique/Jurist_Elite_Panorama_IA.html" title="Panorama IA" target="_blank">🤖</a>
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Juridique/Acronymes.html" title="Acronymes" target="_blank">🔤</a>
+        </nav>
+        <div>
+        <a class="btn-portfolio-cosmic" href="https://projettechacademy.github.io/Juridique/Portfolio_Mathilde-Martine-PAISLEY.html" target="_blank" title="Mon Expertise / Projets">
+        <img src="https://projettechacademy.github.io/Juridique/Asset/Logo_MMPA.jpeg" alt="Logo" style="width:24px; height:24px; border-radius:50%; object-fit:cover; border:1px solid #fff;" onerror="this.src='https://projettechacademy.github.io/Juridique/Asset/Logo_MMPA.jpg'"> 
+        Expert
+        </a>
+        </div>
         </div>
     </div>
 
+    <!-- NAVIGATION SECONDAIRE (Spécifique RNCP) -->
     <div class="nav-tabs-container">
         <div class="container">
             <ul class="nav-tabs">
+                <!-- Liens corrigés vers la racine -->
                 <li><a href="Atelier_de_Competence.html">Atelier des Compétences</a></li>
                 <li><a href="Fiche_RNCP_Juriste.html" class="active">RNCP Juriste</a></li>
-                <li><a href="Glossaire.html">Glossaire</a></li>
+                <!-- J'ai supposé que Glossaire.html est Acronymes.html ou Lexique_Latin_Juridique.html, je le laisse pour le moment mais il faudrait le corriger vers une des 11 pages si possible -->
+                <li><a href="Lexique_Latin_Juridique.html">Glossaire/Lexique</a></li> 
             </ul>
         </div>
     </div>
@@ -170,7 +288,7 @@
 
         <div id="bloc1" class="tab-content">
             <div class="bloc-wrapper">
-                <div class="bloc-banner" style="background: linear-gradient(135deg, #0F2C48 0%, #173859 100%);">
+                <div class="bloc-banner" style="background: linear-gradient(135deg, #0F2C48 0%, #1e3a8a 100%);">
                     <div>
                         <h2>Bloc 1 : Pilotage Stratégique</h2>
                         <span class="text-sm opacity-80 uppercase tracking-widest mt-2 block">Assurer le pilotage stratégique et opérationnel de la fonction juridique</span>
@@ -183,7 +301,7 @@
                         <h3 class="section-title text-[#0F2C48]"><i class="fa-solid fa-list-check text-[#D9A526]"></i> Compétences à valider</h3>
                         <ul class="comp-list justified-text">
                             <li class="comp-item"><strong>Mettre en place une veille juridique</strong> en s’appuyant sur des processus de collecte, d’analyse et de diffusion des informations relatives aux évolutions législatives, réglementaires et jurisprudentielles, afin d’anticiper les changements pouvant affecter l’organisation.</li>
-                            <li class="comp-item"><strong>Participer à la définition de la stratégie juridique</strong> (avec la direction) et des chantiers prioritaires, en tenant compte les priorités stratégiques de l’entreprise, de ses projets de développement, ainsi que des évolutions législatives, fiscales et technologiques.</li>
+                            <li class="comp-item"><strong>Participer à la définition de la stratégie juridique</strong> (avec la direction) en tenant compte les priorités stratégiques de l’entreprise, de ses projets de développement, ainsi que des évolutions législatives, fiscales et technologiques.</li>
                             <li class="comp-item"><strong>Réaliser un audit juridique</strong> en collectant et examinant les documents juridiques, en conduisant des entretiens avec les parties prenantes, et en analysant les processus internes pour renforcer la sécurité.</li>
                             <li class="comp-item"><strong>Élaborer des politiques internes de conformité</strong> en établissant les règles et directives régissant les comportements et pratiques au sein de l’entreprise pour prévenir les risques.</li>
                             <li class="comp-item"><strong>Mettre en place un système d’archivage numérique</strong> de la documentation juridique (contrats, pouvoirs, baux, décisions) en définissant les procédures de gestion interne.</li>
@@ -321,33 +439,50 @@
 
     </main>
 
-    <div class="main-footer">
-        <div class="container">
-            <div class="footer-columns">
-                <div class="footer-column">
-                    <h3>Liens utiles</h3>
-                    <ul>
-                        <li><a href="Atelier_de_Competence.html">Atelier des Compétences</a></li>
-                        <li><a href="Fiche_RNCP_Juriste.html">RNCP Juriste</a></li>
-                        <li><a href="Glossaire.html">Glossaire</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Contact</h3>
-                    <p>Email : contact@example.com</p>
-                    <p>Téléphone : 01 23 45 67 89</p>
-                </div>
-                <div class="footer-column">
-                    <h3>Réseaux</h3>
-                    <p>Suivez-nous :</p>
-                    <p>Facebook | Twitter | LinkedIn</p>
-                </div>
-            </div>
-            <p class="footer-bottom">© 2024 Atelier des Compétences - Tous droits réservés.</p>
+    <!-- NOUVEAU FOOTER -->
+    <footer class="main-footer" role="contentinfo">
+        <div class="footer-container">
+        <div class="footer-left">
+        <a href="https://projettechacademy.github.io/Juridique/index.html" target="_blank">
+        <img class="footer-logo-img" src="https://projettechacademy.github.io/Juridique/Asset/Logo_MMPA.jpeg" alt="Logo MMPA" onerror="this.src='https://projettechacademy.github.io/Juridique/Asset/Logo_MMPA.jpg'">
+        </a>
+        <div class="footer-details">
+        <div style="font-weight:700; font-size: 1.1rem;">Mathilde Martine PAISLEY</div>
+        <div style="opacity:0.95; margin-top:6px; font-size: 0.9rem;">
+        📧 Mathilde.martine.paisley@gmail.com <br class="md:hidden"> • 📲 06 85 90 08 87
         </div>
-    </div>
+        </div>
+        </div>
+        <div class="footer-right">
+        <div class="footer-links-row" aria-label="Liens utilitaires">
+        <a class="icon-btn" href="https://projettechacademy.github.io/Juridique/A_propos_de_moi.html" title="A propos de moi" target="_blank">👤</a>
+        <a class="icon-btn" href="https://projettechacademy.github.io/Juridique/index.html" title="Accueil" target="_blank">🏠</a>
+        <a class="icon-btn" href="https://projettechacademy.github.io/Juridique/Mon_Espace_Juriste_Tableau_de_bord_personnel.html" title="Mon Espace" target="_blank">📊</a>
+        <a class="icon-btn" href="https://projettechacademy.github.io/Juridique/formation_live_juriste.html" title="Planning" target="_blank">📅</a>
+        <a class="icon-btn" href="https://projettechacademy.github.io/Juridique/Lexique_Latin_Juridique.html" title="Lexique" target="_blank">📜</a>
+        <a class="icon-btn" href="https://projettechacademy.github.io/Juridique/Atelier_de_Competence.html" title="Atelier" target="_blank">🛠️</a>
+        <a class="icon-btn" href="https://projettechacademy.github.io/Juridique/Portfolio_Mathilde-Martine-PAISLEY.html" title="Portfolio" target="_blank">🎨</a>
+        <a class="icon-btn" href="https://projettechacademy.github.io/Juridique/Fiche_RNCP_Juriste.html" title="RNCP" target="_blank">📚</a>
+        <a class="icon-btn" href="https://projettechacademy.github.io/Juridique/Univers_Actes_Juridiques.html" title="Rédaction Juridique" target="_blank">✍️</a>
+        <a class="icon-btn" href="https://projettechacademy.github.io/Juridique/Jurist_Elite_Panorama_IA.html" title="Panorama IA" target="_blank">🤖</a>
+        <a class="icon-btn" href="https://projettechacademy.github.io/Juridique/Acronymes.html" title="Acronymes" target="_blank">🔤</a>
+                <div class="footer-divider"></div>
+        
+                <a class="icon-btn" href="https://chat.whatsapp.com/IoMXFl4o2otExYKCPVj22b" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp" style="color:#25D366;"></i></a>
+                <a class="icon-btn" href="https://discord.gg/qwNPV8QzFt" target="_blank" title="Discord"><i class="fab fa-discord" style="color:#5865F2;"></i></a>
+                <a class="icon-btn" href="https://www.linkedin.com/in/mathilde-martine-paisley-1a4422382/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin" style="color:#0077b5;"></i></a>
+                <a class="icon-btn" href="https://www.instagram.com/enervyx/" target="_blank" title="Instagram"><i class="fab fa-instagram" style="color:#E1306C;"></i></a>
+                <a class="icon-btn" href="https://www.tiktok.com/@enervyx/" target="_blank" title="TikTok"><i class="fab fa-tiktok" style="color:#00f2ea;"></i></a>
+            </div>
+          </div>
+          <div class="copyright">
+            💫 The Jurist Elite Club By Studi ✨ La Villa des Juristes Brisés 💔 sur l’Île de L’INSTRUCTION !🏝 <br> 
+            By Mathilde Martine PAISLEY | © 2025 Tous droits réservés
+          </div>
+        </div>
+    </footer>
 
-    <button id="scrollToTop" style="display:none; position:fixed; bottom:20px; right:20px; background:var(--cta); color:white; border:none; padding:10px 15px; border-radius:50%; cursor:pointer;"><i class="fas fa-arrow-up"></i></button>
+    <button id="scrollToTop" style="display:none; position:fixed; bottom:20px; right:20px; background:var(--cta); color:var(--brand-blue); border:none; padding:10px 15px; border-radius:50%; cursor:pointer;"><i class="fas fa-arrow-up"></i></button>
 
     <script>
         // LOGIQUE INTERNE DE LA FICHE RNCP (ONGLETS)
@@ -364,10 +499,8 @@
         }
 
         // ==========================================
-        // 4. LE SCRIPT QUE TU M'AS DEMANDÉ D'INTÉGRER
+        // SCRIPT EXISTANT POUR LE TABLEAU DES GRADES (Non modifié)
         // ==========================================
-        // Note: Ce script semble fait pour gérer un tableau qui n'est pas présent 
-        // dans cette page (tableauCompetences), mais je l'inclus comme demandé.
         const grades = [
             { a: "I.", f: "Insuffisant" },
             { a: "II.", f: "Passable" },
@@ -377,17 +510,14 @@
             { a: "VI.", f: "Excellent" },
             { a: "VII.", f: "Remarquable" },
             { a: "VIII.", f: "Exceptionnel" }
-            // Note: J'ai nettoyé la fin de ta liste qui était coupée dans ton message
         ];
 
-        // Attention : Le tableau #tableauCompetences n'existant pas dans cette fiche RNCP,
-        // je mets ce bloc dans un try/catch pour éviter que ça plante ta page.
         try {
             const tableBody = document.querySelector("#tableauCompetences tbody");
             const searchInput = document.getElementById("searchInput");
 
             function filterResults() {
-                if(!searchInput || !tableBody) return; // Sécurité
+                if(!searchInput || !tableBody) return; 
                 const input = searchInput.value.toLowerCase();
                 tableBody.innerHTML = "";
 
@@ -411,10 +541,24 @@
         const scrollToTopBtn = document.getElementById("scrollToTop");
         if(scrollToTopBtn) {
             window.addEventListener("scroll", () => {
-                scrollToTopBtn.style.display = window.scrollY > 300 ? "block" : "none";
+                scrollToTopBtn.classList.toggle("visible", window.scrollY > 300);
             });
             scrollToTopBtn.addEventListener("click", () => window.scrollTo({ top: 0, behavior: 'smooth' }));
         }
+
+        // Ajuster la hauteur du header pour la navigation secondaire (si elle existe)
+        function updateHeaderHeight() { 
+            const header = document.getElementById('mainHeader'); 
+            const navTabs = document.querySelector('.nav-tabs-container');
+            if(header && navTabs) {
+                const height = header.offsetHeight + 'px';
+                document.documentElement.style.setProperty('--header-height', height);
+                navTabs.style.top = height; // Coller la nav secondaire sous le header principal
+            }
+        }
+        window.addEventListener('load', updateHeaderHeight); 
+        window.addEventListener('resize', updateHeaderHeight);
+
     </script>
 
 </body>
